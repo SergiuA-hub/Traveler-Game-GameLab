@@ -507,8 +507,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   currentSpeed: 0
-  startSpeed: 1
-  MaxSpeed: 0
+  moveSpeed: 0
+  startSpeed: 3
+  acceleration: 0.5
+  MaxSpeeed: 5
+  speedModifier: 1
   moveInput: {x: 0, y: 0}
   currentState: 0
   gameInput: {fileID: 1498783606}
