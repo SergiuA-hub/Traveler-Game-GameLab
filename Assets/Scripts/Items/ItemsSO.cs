@@ -4,8 +4,11 @@ using UnityEngine;
 public class ItemsSO : ScriptableObject
 {
     public Sprite sprite;
+    public GameObject DisplayPrefab;
     public string itemName;
+    public int baseValue; 
     public int amount;
     public float weight;
     public float volume;
+    
 }
