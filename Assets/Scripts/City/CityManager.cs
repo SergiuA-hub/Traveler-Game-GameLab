@@ -50,7 +50,7 @@ public class CityManager : MonoBehaviour
     {
         for(int i = 0;i< buyItems.Length; i++)
         {
-            Instantiate(buyItems[i].DisplayPrefab, buyItemsPostions[i]);
+            Instantiate(buyItems[i].CityDisplayPrefab, buyItemsPostions[i]);
         }
     }
 

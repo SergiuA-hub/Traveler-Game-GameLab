@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca015d7e93a953f4bbd13f3a9759cec7, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: Assembly-CSharp::ItemsSO
-  sprite: {fileID: 0}
-  DisplayPrefab: {fileID: 6900874666075845560, guid: 1a704d52ddb99134e97ea36e696f7e41, type: 3}
   itemName: Rock
+  sprite: {fileID: 0}
+  CityDisplayPrefab: {fileID: 6900874666075845560, guid: 1a704d52ddb99134e97ea36e696f7e41, type: 3}
+  itemType: 0
   baseValue: 0
   amount: 1
   weight: 4

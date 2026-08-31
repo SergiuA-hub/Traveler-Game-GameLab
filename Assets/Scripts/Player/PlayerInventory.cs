@@ -1,14 +1,23 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class PlayerInventory : MonoBehaviour
 {
+    [System.Serializable]
+    public class InvetoryItem
+    {
+        public ItemsSO itemSO;
+        public int amount;
+        
+    }
+    public List<InvetoryItem> invetori = new List<InvetoryItem>();
     public List<ItemsSO> Invetory;
 
     //Adding Backpack to create a volume and weight limit based on it 
 
-
+    [Header("Backpack")]
     [SerializeField] private float maxWeight;
     [SerializeField] private float maxVolume;
     [SerializeField] private float curretnWeight;
@@ -20,11 +29,30 @@ public class PlayerInventory : MonoBehaviour
         CheckWeightAndVolume();
     }
 
+    private void Update()
+    {
+        foreach (ItemsSO item in Invetory)
+        {
+            Debug.Log(item.amount);
+        }
+    }
+
     //ADD & REMOVE
 
-    public void AddItem(ItemsSO item)
+    public void AddItem(ItemsSO item,int amount =1 )
     {
-        Invetory.Add(item);
+        ItemsSO existingItem = Invetory.Find(x => x ==  item);
+
+        if(existingItem != null)
+        {
+            existingItem.amount += amount;
+        }
+        else
+        {
+            Invetory.Add(item);
+        }
+
+        
     }
 
     public void Remove(ItemsSO item)
