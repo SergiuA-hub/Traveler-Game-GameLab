@@ -1,6 +1,6 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
+
+
 
 public class CameraFollowPlayer : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class CameraFollowPlayer : MonoBehaviour
 
     private void Update()
     {
+       
         transform.position = Vector3.Lerp(transform.position, Target.position + offset, Time.deltaTime* cameraSmooth);
     }
 }
