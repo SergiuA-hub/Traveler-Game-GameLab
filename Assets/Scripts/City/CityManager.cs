@@ -7,9 +7,17 @@ public class CityManager : MonoBehaviour
     [SerializeField] private GameObject CityUI;
 
     [SerializeField] private ItemsSO[] buyItems;
+    
     [SerializeField] private Transform[] buyItemsPostions;
 
+    [Header("Amount")]
+
+    public float amount;
+
+    //Player refrences
     private const string PlayerLayer = "Player";
+    public PlayerInventory playerInventory;
+    
 
     private void Start()
     {
@@ -22,33 +30,30 @@ public class CityManager : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer(PlayerLayer))
         {
             CityUI.SetActive(true);
+            DisplayItemsForSale();
             
-            /*
-              if(collision.gameObject.TryGetComponent(out PlayerInventory inventory))
+            
+            if(collision.gameObject.TryGetComponent(out PlayerInventory inventory))
             {
                 
+                playerInventory = inventory;
+
             }
-            */
+            
 
         }
     }
 
-    private void Update()
-    {
-        DisplayItemsForSale();
-    }
-
+    
+    //Display UI
     private void DisplayItemsForSale()
     {
-        foreach (var item in buyItems) 
+        for(int i = 0;i< buyItems.Length; i++)
         {
-            foreach(var pos in buyItemsPostions)
-            {
-                Instantiate(item.DisplayPrefab, pos);
-            }
-        
+            Instantiate(buyItems[i].DisplayPrefab, buyItemsPostions[i]);
         }
     }
 
+    //Get current Production Amount based on DAYS
     
 }
