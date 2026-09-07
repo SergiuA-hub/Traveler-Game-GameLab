@@ -2,21 +2,21 @@ using UnityEngine;
 
 public enum ResourceType
 {
-    Goods,
+    Trade,
     Eat,
     Drink
 
 
 }
-[CreateAssetMenu(menuName = "SO", fileName = "ResourceSO", order = 1)]
+[CreateAssetMenu( fileName = "ResourceSO",menuName ="ResoursceSO")]
 public class ResourceSO : ScriptableObject
 {
 
     public string itemName;
     public Sprite sprite;
     public GameObject CityDisplayPrefab;
-    public ItemType itemType;
-
+    public ResourceType resourceType;
+    
     public int baseValue;
     public int amount;
     public float weight;

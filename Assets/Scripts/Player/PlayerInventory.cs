@@ -22,7 +22,7 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
     //Adding Backpack to create a volume and weight limit based on it 
 
     [Header("Backpack")]
-    [SerializeField] private Backpack backpack;
+    [SerializeField] private Backpack currentBackpack;
     [SerializeField] private float maxWeight;
     [SerializeField] private float maxVolume;
     [SerializeField] private float curretnWeight;
@@ -31,8 +31,8 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
 
     private void Start()
     {
-        maxVolume = backpack.GetVolume();
-        maxWeight = backpack.GetWeight();
+        maxVolume = currentBackpack.GetVolume();
+        maxWeight = currentBackpack.GetWeight();
     }
 
     private void Update()
@@ -53,7 +53,6 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
         }
         InvetoryItem existingItem = Inventory.Find(x => x.resourceSO == resource);
 
-        InvetoryItem existingItem= invetory.Find( x =>x.resourceSO = resource );
 
         if (existingItem != null)
         {
@@ -70,7 +69,9 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
     public void Remove(ResourceSO resource, int amount = 1)
     {
         InvetoryItem existingItem = Inventory.Find(x => x.resourceSO == resource);
+
         if (existingItem == null) return;
+
         if (existingItem.amount > amount)
         {
             existingItem.amount -= amount;
@@ -87,8 +88,6 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
     {
         foreach (var item in Inventory)
         {
-            curretnWeight += item.itemSO.weight;
-            currentVolume += item.itemSO.volume;
         }
     }
 
