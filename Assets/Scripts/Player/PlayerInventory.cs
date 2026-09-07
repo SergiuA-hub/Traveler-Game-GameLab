@@ -1,4 +1,3 @@
-using Mono.Cecil;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +24,7 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
     [SerializeField] private Backpack currentBackpack;
     [SerializeField] private float maxWeight;
     [SerializeField] private float maxVolume;
-    [SerializeField] private float curretnWeight;
+    [SerializeField] private float currentWeight;
     [SerializeField] private float currentVolume;
 
 
@@ -33,14 +32,12 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
     {
         maxVolume = currentBackpack.GetVolume();
         maxWeight = currentBackpack.GetWeight();
+        HandleWeightAndVolume();
     }
 
     private void Update()
     {
-        foreach (InvetoryItem item in Inventory)
-        {
-            Debug.Log(item.amount);
-        }
+        
     }
 
     //ADD & REMOVE
@@ -88,13 +85,15 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
     {
         foreach (var item in Inventory)
         {
+            currentVolume += item.resourceSO.volume;
+            currentWeight += item.resourceSO.weight;
         }
     }
 
     //Check if player can add items
     public bool CanCarry()
     {
-        if (currentVolume >= maxVolume || curretnWeight >= maxWeight)
+        if (currentVolume >= maxVolume || currentWeight >= maxWeight)
         {
             return false;
         }

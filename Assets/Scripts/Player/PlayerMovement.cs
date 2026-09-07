@@ -34,12 +34,19 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private GameInput gameInput;
+    private PlayerInventory playerInventory;
     private Rigidbody2D rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerInventory = GetComponent<PlayerInventory>();
         currentStamina = maxStamina;
+    }
+
+    private void Update()
+    {
+        //Decrease Stamina on moving 
     }
 
     private void FixedUpdate()
@@ -68,30 +75,24 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void HandleStamina()
-    {
-        if (currentStamina<= 0)
-        {
-            
-        }
-        if (IsMoving())
-        {
-            //daca se misca scade stamina, daca nu sa st
-        }
-    }
+    
     public bool IsMoving()
     {
         Vector2 inputMove = gameInput.GetMoveVectorNormalized();
         if(inputMove.magnitude > 0)
         {
             return true;
+            
         }
         else{
             return false;
         }
     }
 
-
+    private void RestoreStamina()
+    {
+        currentStamina = maxStamina;
+    }
 
 
 }

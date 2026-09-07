@@ -1085,11 +1085,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acba99cb2abd944fa54e4b500b09072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
-  Inventory: []
+  Inventory:
+  - resourceSO: {fileID: 11400000, guid: cf23858f5ed539f43b85fdd88d1b293c, type: 2}
+    amount: 8
+  - resourceSO: {fileID: 11400000, guid: 4ba6b85d27f214442a30c33be8df8e87, type: 2}
+    amount: 2
+  - resourceSO: {fileID: 11400000, guid: bd4b42c652ba9c94da6d95e33a465157, type: 2}
+    amount: 4
+  - resourceSO: {fileID: 11400000, guid: 1c8f8ca846032ec479d1044edc2c361a, type: 2}
+    amount: 5
   currentBackpack: {fileID: 1899591643835232334, guid: 1a7625fc71bd2d54bb05b24c11fd3bd3, type: 3}
   maxWeight: 0
   maxVolume: 0
-  curretnWeight: 0
+  currentWeight: 0
   currentVolume: 0
 --- !u!114 &1985308398
 MonoBehaviour:
