@@ -1,23 +1,29 @@
-using System;
+using Mono.Cecil;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
+
 
 public class PlayerInventory : MonoBehaviour
 {
     [System.Serializable]
     public class InvetoryItem
     {
-        public ItemsSO itemSO;
+        public ResourceSO resourceSO;
         public int amount;
-        
+
+        public InvetoryItem(ResourceSO resourceSO,int amount)
+        {
+            this.resourceSO = resourceSO;
+            this.amount = amount;
+        }
     }
-    public List<InvetoryItem> invetori = new List<InvetoryItem>();
-    public List<ItemsSO> Invetory;
+    public List<InvetoryItem> invetory = new List<InvetoryItem>();
+    
 
     //Adding Backpack to create a volume and weight limit based on it 
 
     [Header("Backpack")]
+    [SerializeField] private Backpack backpack;
     [SerializeField] private float maxWeight;
     [SerializeField] private float maxVolume;
     [SerializeField] private float curretnWeight;
@@ -26,53 +32,65 @@ public class PlayerInventory : MonoBehaviour
 
     private void Start()
     {
-        CheckWeightAndVolume();
+        maxVolume = backpack.GetVolume();
+        maxWeight = backpack.GetWeight();
     }
 
     private void Update()
     {
-        foreach (ItemsSO item in Invetory)
-        {
-            Debug.Log(item.amount);
-        }
+
     }
 
     //ADD & REMOVE
 
-    public void AddItem(ItemsSO item,int amount =1 )
+    public void AddItem(ResourceSO resource, int amount = 1)
     {
-        ItemsSO existingItem = Invetory.Find(x => x ==  item);
+        if (!CanCarry())
+        {
+            return;
+        }
 
-        if(existingItem != null)
+        InvetoryItem existingItem= invetory.Find( x =>x.resourceSO = resource );
+
+        if (existingItem != null)
         {
             existingItem.amount += amount;
         }
         else
         {
-            Invetory.Add(item);
+            invetory.Add(new InvetoryItem(resource,amount));
         }
 
-        
+
     }
 
-    public void Remove(ItemsSO item)
+    public void Remove(ResourceSO resource, int amount = 1)
     {
-        Invetory.Remove(item);
+        InvetoryItem existingItem = invetory.Find(x => x.resourceSO = resource);
+
+        if (existingItem.amount ==1)
+        {
+            //Sterge acest item
+            invetory.Remove(existingItem);
+        }
+
+        if(existingItem.amount >1)
+        {
+            existingItem.amount -= amount;
+        }
+
     }
 
     //WEIGHT & VOLUME
-    public void CheckWeightAndVolume()
+    public void HandleWeightAndVolume()
     {
-        foreach (var item in Invetory)
-        {
-            curretnWeight += item.weight;
-            currentVolume += item.volume;
-        }
+
     }
 
+    //Check if player can add items
     public bool CanCarry()
     {
-        if(currentVolume>= maxVolume && curretnWeight >= maxWeight)
+        if (currentVolume >= maxVolume || curretnWeight >= maxWeight)
         {
             return false;
         }
