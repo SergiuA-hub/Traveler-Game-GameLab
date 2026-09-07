@@ -1,12 +1,10 @@
 using UnityEngine;
 public enum ItemType
 {
-    Goods,
-    Eat,
-    Drink
+    Usable
     
 }
-[CreateAssetMenu(menuName ="SO",fileName ="ItemSO",order =1)]
+[CreateAssetMenu(menuName ="SO",fileName ="ItemSO",order =2)]
 public class ItemsSO : ScriptableObject
 {
     public string itemName;

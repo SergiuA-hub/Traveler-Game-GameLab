@@ -21,6 +21,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float MaxSpeeed;
     public float speedModifier;
 
+    [Header("Stamina")]
+    [SerializeField] private float currentStamina;
+    public float maxStamina;
+    [SerializeField] private float staminaDrainMultiplier;
+
+
+    //LATER
     public Vector2 moveInput;
     public PlayerMoveState currentState;
 
@@ -32,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+        currentStamina = maxStamina;
     }
 
     private void FixedUpdate()
@@ -61,6 +68,17 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void HandleStamina()
+    {
+        if (currentStamina<= 0)
+        {
+            
+        }
+        if (IsMoving())
+        {
+            //daca se misca scade stamina, daca nu sa st
+        }
+    }
     public bool IsMoving()
     {
         Vector2 inputMove = gameInput.GetMoveVectorNormalized();
