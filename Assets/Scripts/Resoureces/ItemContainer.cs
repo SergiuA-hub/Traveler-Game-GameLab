@@ -37,7 +37,7 @@ public class ItemContainer : MonoBehaviour
     {
         city.amount -= 1;
         //take money from Player;
-        city.playerInventory.AddItem(itemsSO);
+        //city.playerInventory.AddItem(itemsSO);
         //Display Again
         Amount.text = "Amount: " + city.amount;
     }
