@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
@@ -18,7 +19,7 @@ public class PlayerInventory : MonoBehaviour
 public List<InvetoryItem> Inventory = new List<InvetoryItem>();
     
 
-    //Adding Backpack to create a volume and weight limit based on it 
+    
 
     [Header("Backpack")]
     [SerializeField] private Backpack currentBackpack;
@@ -27,9 +28,16 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
     [SerializeField] private float currentWeight;
     [SerializeField] private float currentVolume;
 
+    [Header("Movement modifier V/W ")]
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private float TierIMoveModifier;
+
+    [SerializeField] private float TierIIMoveModifier;
+    [SerializeField] private float TierIIIMoveModifier;
 
     private void Start()
     {
+        playerMovement = GetComponent<PlayerMovement>();
         maxVolume = currentBackpack.GetVolume();
         maxWeight = currentBackpack.GetWeight();
         HandleWeightAndVolume();
@@ -44,10 +52,7 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
 
     public void AddItem(ResourceSO resource, int amount = 1)
     {
-        if (!CanCarry())
-        {
-            return;
-        }
+        
         InvetoryItem existingItem = Inventory.Find(x => x.resourceSO == resource);
 
 
@@ -83,17 +88,37 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
     //WEIGHT & VOLUME
     public void HandleWeightAndVolume()
     {
+        
+
         foreach (var item in Inventory)
         {
-            currentVolume += item.resourceSO.volume;
-            currentWeight += item.resourceSO.weight;
+                     
+            currentVolume += item.resourceSO.volume * GetItemAmount(item);
+            currentWeight += item.resourceSO.weight * GetItemAmount(item);
+        }
+
+        if(currentVolume > 0 && currentVolume <= maxVolume / 2)
+        {
+            playerMovement.speedModifier = TierIMoveModifier;
+        }
+        else if(currentVolume > maxVolume / 2 && currentVolume <= maxVolume * 0.75f)
+        {
+            playerMovement.speedModifier= TierIIMoveModifier;
+        }
+        else if (currentVolume > maxVolume *0.75f)
+        {
+            playerMovement.speedModifier = TierIIIMoveModifier;
+        }
+        else
+        {
+            Debug.Log("Speed Modifier logic problem");
         }
     }
 
     //Check if player can add items
-    public bool CanCarry()
+    public bool CanCarry(float addVolume,float addWeight)
     {
-        if (currentVolume >= maxVolume || currentWeight >= maxWeight)
+        if (currentVolume + addVolume > maxVolume || currentWeight + addWeight > maxWeight)
         {
             return false;
         }
@@ -101,6 +126,12 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
         {
             return true;
         }
+    }
+
+    public int GetItemAmount(InvetoryItem item)
+    {
+
+        return item.amount;
     }
     
 
