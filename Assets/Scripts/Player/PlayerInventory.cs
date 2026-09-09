@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
@@ -96,16 +95,17 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
             currentVolume += item.resourceSO.volume * GetItemAmount(item);
             currentWeight += item.resourceSO.weight * GetItemAmount(item);
         }
+        //Aplly Weight effect on player movement
 
-        if(currentVolume > 0 && currentVolume <= maxVolume / 2)
+        if(currentWeight> 0 && currentWeight<= maxWeight/ 2)
         {
             playerMovement.speedModifier = TierIMoveModifier;
         }
-        else if(currentVolume > maxVolume / 2 && currentVolume <= maxVolume * 0.75f)
+        else if(currentWeight > maxWeight/ 2 && currentWeight <= maxWeight* 0.75f)
         {
             playerMovement.speedModifier= TierIIMoveModifier;
         }
-        else if (currentVolume > maxVolume *0.75f)
+        else if (currentWeight > maxWeight *0.75f)
         {
             playerMovement.speedModifier = TierIIIMoveModifier;
         }
@@ -115,7 +115,7 @@ public List<InvetoryItem> Inventory = new List<InvetoryItem>();
         }
     }
 
-    //Check if player can add items
+    //Check if player have space for new items
     public bool CanCarry(float addVolume,float addWeight)
     {
         if (currentVolume + addVolume > maxVolume || currentWeight + addWeight > maxWeight)

@@ -11,19 +11,16 @@ public class Player : MonoBehaviour
     //Get refrences from every script that the player uses
     [SerializeField] private PlayerInventory inventory;
 
-    
-
-    //
-
-    //health
-    //Hunger
-
-    //Visuals
-    /*
-     -backpack
-     -UI
-        Health
-        Hunger
-        Thirst
-     */
+    public void RestoreHealth(int amount)
+    {
+        int adaosHealth= currentHealth += amount;
+        if (adaosHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth += amount;
+        }
+    }
 }
