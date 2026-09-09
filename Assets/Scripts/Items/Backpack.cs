@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Backpack : MonoBehaviour
 {
-    
+
     [SerializeField] private float volume;
     [SerializeField] private float weight;
 
