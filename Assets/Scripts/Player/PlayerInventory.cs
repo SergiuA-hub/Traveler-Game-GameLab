@@ -1,21 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable] public class InvetoryItem
+{
+    public ResourceSO resourceSO;
+    public int amount;
+
+    public InvetoryItem(ResourceSO resourceSO, int amount)
+    {
+        this.resourceSO = resourceSO;
+        this.amount = amount;
+    }
+}
 public class PlayerInventory : MonoBehaviour
 {
-    [System.Serializable]
-    public class InvetoryItem
-    {
-        public ResourceSO resourceSO;
-        public int amount;
-
-        public InvetoryItem(ResourceSO resourceSO,int amount)
-        {
-            this.resourceSO = resourceSO;
-            this.amount = amount;
-        }
-    }
-public List<InvetoryItem> Inventory = new List<InvetoryItem>();
+    
+    
+[SerializeField] public List<InvetoryItem> Inventory = new List<InvetoryItem>();
     
 
     

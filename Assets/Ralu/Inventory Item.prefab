@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7483695008955263991}
   - component: {fileID: 1067447890378394952}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: name text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,6 +146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3417557742350368786}
+  - component: {fileID: 7431607267846412418}
   m_Layer: 5
   m_Name: Inventory Item
   m_TagString: Untagged
@@ -172,9 +173,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 37.93451, y: -48.68821}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 75.869, y: 97.3765}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7431607267846412418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876554756627009130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510868d416cbbee4cb0dceb875155647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DISPLAYinventoryITEM
+  amntText: {fileID: 5947586801589818433}
+  nameText: {fileID: 1067447890378394952}
+  img: {fileID: 2013239359170910276}
 --- !u!1 &5416990399788539584
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +278,7 @@ GameObject:
   - component: {fileID: 3082686201845460009}
   - component: {fileID: 5947586801589818433}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Amount text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
