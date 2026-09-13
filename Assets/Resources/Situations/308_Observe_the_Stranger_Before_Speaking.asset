@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ede13e939c1a8146b24d2a82d83d8a3, type: 3}
+  m_Name: 308_Observe_the_Stranger_Before_Speaking
+  m_EditorClassIdentifier: Assembly-CSharp::Situation
+  phase: 3
+  nextPhase: 4
+  situationName: Observe the Stranger Before Speaking
+  situationDescription: You remain at a distance and watch the stranger's movements
+    before deciding whether to engage.
+  RequiredContexts: 4c000000
+  GivenContexts: be000000
+  RemovedContexts: 
