@@ -14,6 +14,7 @@ public class PlayerStats_M : MonoBehaviour
     public float consumableSpeedModifier;
 
     [Header("Weight speed modifier")]
+    public float currentWeightModifier;
     public float TierIMoveModifier;
     public float TierIIMoveModifier;
     public float TierIIIMoveModifier;

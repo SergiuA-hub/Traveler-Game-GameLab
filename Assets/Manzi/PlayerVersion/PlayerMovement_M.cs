@@ -36,7 +36,7 @@ public class PlayerMovement_M : MonoBehaviour
             player.stats.moveSpeed = player.stats.startSpeed;
         }
 
-        float modifierSpeed = player.stats.staminaSpeedModifier * player.stats.consumableSpeedModifier * player.stats.terrainSpeedModifier;
+        float modifierSpeed = player.stats.staminaSpeedModifier * player.stats.consumableSpeedModifier * player.stats.terrainSpeedModifier * player.stats.currentWeightModifier;
         
         player.stats.moveSpeed *= modifierSpeed;
         Vector2 moveInput = player.gameInput.GetMoveVectorNormalized();
