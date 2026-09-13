@@ -32,19 +32,12 @@ public class Player_M : MonoBehaviour
         invetory.HandleWeightAndVolume();
     }
     
-    
-    
-
-    private void Update()
-    {
-        
-
-    }
+   
 
     //FOR MOVESPEED
     //hunger
     //Thirst
-    //Terrain
+   
 
 
     //Publics 
