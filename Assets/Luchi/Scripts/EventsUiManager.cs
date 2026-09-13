@@ -1,4 +1,4 @@
-using NUnit.Framework;
+using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -145,6 +145,17 @@ public class EventsUiManager : MonoBehaviour
             optionButton
                 .GetComponent<OptionPrefab>()
                 .Setup(option, this);
+        }
+    }
+
+    public void Update()
+    {
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            Situation startSituation = situationManager.pickStartSituation();
+            currentContexts = startSituation.GivenContexts;
+
+            DisplaySituations(startSituation);
         }
     }
 }
