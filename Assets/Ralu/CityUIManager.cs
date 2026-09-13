@@ -22,6 +22,11 @@ public class CityUIManager : MonoBehaviour
         
     }
 
+    private void GameInput_OnInteract(object sender, System.EventArgs e)
+    {
+        cityUI.gameObject.SetActive(true);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -41,7 +46,7 @@ public class CityUIManager : MonoBehaviour
             playerInCity = true;
             tradeButton.gameObject.SetActive(true);
             //prompt.gameObject.SetActive(true);
-            
+            gameInput.OnInteract += GameInput_OnInteract;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -52,7 +57,8 @@ public class CityUIManager : MonoBehaviour
             UIup = false;
             playerInCity = false;
             tradeButton.gameObject.SetActive(false) ;
-           // prompt.gameObject.SetActive(false);
+            // prompt.gameObject.SetActive(false);
+            gameInput.OnInteract -= GameInput_OnInteract;
         }
     }
     
