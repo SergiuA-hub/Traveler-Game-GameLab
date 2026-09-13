@@ -1,12 +1,6 @@
 using UnityEngine;
 
-public enum PlayerMoveState
-{
-    Stay,
-    Moving,
-    Running,
-    OnCart
-}
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -29,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     //LATER
     public Vector2 moveInput;
-    public PlayerMoveState currentState;
+    
 
 
     [Header("Components")]
