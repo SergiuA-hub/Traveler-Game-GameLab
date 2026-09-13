@@ -31,11 +31,6 @@ public class PlayerStats_M : MonoBehaviour
     public float maxVolume;
     public float maxWeight;
     
-
     //Components
-
-
-
-
 
 }

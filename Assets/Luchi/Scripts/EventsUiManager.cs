@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class EventsUiManager : MonoBehaviour
 {
+    public EventConclussionUI eventConclussion;
+    //public CampManager campManager;
     public TMP_Text EventDscription;
 
     public GameObject optionsPrefab;
@@ -124,6 +126,8 @@ public class EventsUiManager : MonoBehaviour
             {
                 Debug.Log("Game Over. No more situations to display.");
                 EventDscription.text += "\n\nEVENT ENDS.";
+                eventConclussion.Setup();
+                eventConclussion.Show();
                 return;
             }
             Debug.LogWarning(
@@ -148,14 +152,29 @@ public class EventsUiManager : MonoBehaviour
         }
     }
 
+    public void ShowNewEvent()
+    {
+        Situation startSituation = situationManager.pickStartSituation();
+        if(startSituation == null)
+        {
+            Debug.LogError("No start situation found.");
+            return;
+        }
+        currentContexts = startSituation.GivenContexts;
+
+        DisplaySituations(startSituation);
+    }
+
+    private void OnEnable()
+    {
+        //ShowNewEvent();
+    }
+
     public void Update()
     {
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
-            Situation startSituation = situationManager.pickStartSituation();
-            currentContexts = startSituation.GivenContexts;
-
-            DisplaySituations(startSituation);
+            ShowNewEvent();
         }
     }
 }
