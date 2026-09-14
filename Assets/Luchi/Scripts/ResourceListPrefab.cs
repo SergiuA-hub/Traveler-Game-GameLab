@@ -15,7 +15,11 @@ public class ResourceListPrefab : MonoBehaviour
         resourceImage.sprite = item.resourceSO.sprite;
         resourceName.text = item.resourceSO.itemName;
         resourceAmount.text = $"{item.amount}";
-        info.text = "-";
+        if(item.resourceSO.resourceType == ResourceType.Eat)
+            info.text = $"+ {item.resourceSO.stat_restore} Hunger";
+        else if (item.resourceSO.resourceType == ResourceType.Drink)
+            info.text = $"+ {item.resourceSO.stat_restore} Thirst";
+        else info.text = "-";
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

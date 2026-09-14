@@ -16,10 +16,18 @@ public class CampDisplayUI : MonoBehaviour
     public Image thirst_progress;
     public TMP_Text thirst_text;
     public TMP_Text hours_to_rest_text;
+    public TMP_Text newHP;
+    public TMP_Text newStamina;
+    public TMP_Text newHunger;
+    public TMP_Text newThirst;
     public Player_M player;
+    public CampManager camp;
 
     public GameObject supplyPrefab;
     public GameObject foodSuppliesList;
+    public GameObject campConsumptionResPrefab;
+    public GameObject ConsumptionList;
+
     public GameObject drinkSuppliesList;
 
     public CampManager campManager;
@@ -27,11 +35,11 @@ public class CampDisplayUI : MonoBehaviour
     public void OnEnable()
     {
         cleanSupplies();
-
-        HP_Text.text = $" - / {player.stats.maxHp}";
-        stamina_text.text = $"- / {player.stats.maxStamina}";
-        hunger_text.text = $"- / {player.stats.maxHunger}";
-        thirst_text.text = $"- / {player.stats.maxThirst}";
+        
+        HP_Text.text = $" {player.stats.currentHp} / {player.stats.maxHp}";
+        stamina_text.text = $" {player.stats.currentStamina} / {player.stats.maxStamina}";
+        hunger_text.text = $" {player.stats.currentHunger} / {player.stats.maxHunger}";
+        thirst_text.text = $" {player.stats.currentThirst} / {player.stats.maxThirst}";
 
         foreach (var item in player.invetory.Inventory)
         {
@@ -46,6 +54,41 @@ public class CampDisplayUI : MonoBehaviour
                 go.GetComponent<ResourceListPrefab>().Setup(item);
             }
         }
+        camp.CalculateFood();
+        camp.CalculateDrink();
+
+        int totalHoursToRest = camp.calculateRestDuration();
+        float totalHPRestore = 0f;
+        float totalStaminaRestore = totalHoursToRest * 1f;
+        float totalHungerRestore = 0f;
+        float totalThirstRestore = 0f;
+
+        foreach (var item in camp.drinkItems)
+        {
+            totalThirstRestore += item.amount * item.resourceSO.stat_restore;
+            GameObject go = Instantiate(campConsumptionResPrefab, ConsumptionList.transform);
+            go.GetComponent<CampConsumedResourcePrefab>().Setup(item);
+        }
+
+        foreach (var item in camp.foodItems)
+        {
+            totalHungerRestore += item.amount * item.resourceSO.stat_restore;
+            totalHPRestore += item.amount * item.resourceSO.HP_restore;
+            GameObject go = Instantiate(campConsumptionResPrefab, ConsumptionList.transform);
+            go.GetComponent<CampConsumedResourcePrefab>().Setup(item);
+        }
+
+        hours_to_rest_text.text = $"Hours to Rest: {totalHoursToRest}";
+
+        float finalHP = Mathf.Min(player.stats.currentHp + totalHPRestore,player.stats.maxHp);
+        float finalStamina = Mathf.Min(player.stats.currentStamina + totalStaminaRestore, player.stats.maxStamina);
+        float finalHunger = Mathf.Min(player.stats.currentHunger + totalHungerRestore, player.stats.maxHunger);
+        float finalThirst = Mathf.Min(player.stats.currentThirst + totalThirstRestore, player.stats.maxThirst);
+        
+        newHP.text = $"New HP: {finalHP}";
+        newStamina.text = $"New Stamina: {finalStamina}";
+        newHunger.text = $"New Hunger: {finalHunger}";
+        newThirst.text = $"New Thirst: {finalThirst}";
     }
     public void cleanSupplies()
     {
@@ -54,6 +97,10 @@ public class CampDisplayUI : MonoBehaviour
             Destroy(go.gameObject);
         }
         foreach (Transform go in drinkSuppliesList.transform)
+        {
+            Destroy(go.gameObject);
+        }
+        foreach (Transform go in ConsumptionList.transform)
         {
             Destroy(go.gameObject);
         }

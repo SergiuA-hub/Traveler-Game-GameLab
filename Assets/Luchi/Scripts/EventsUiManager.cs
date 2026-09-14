@@ -12,6 +12,7 @@ public class EventsUiManager : MonoBehaviour
     public TMP_Text EventDscription;
 
     public GameObject optionsPrefab;
+    public GameObject endEventPrefab;
     public GameObject optionsList;
 
     public SituationalEventsManager situationManager;
@@ -126,8 +127,8 @@ public class EventsUiManager : MonoBehaviour
             {
                 Debug.Log("Game Over. No more situations to display.");
                 EventDscription.text += "\n\nEVENT ENDS.";
-                eventConclussion.Setup();
-                eventConclussion.Show();
+                GameObject endOption = Instantiate(endEventPrefab, optionsList.transform);
+                endOption.GetComponent<OptionEndPrefab>().Setup(situation, this);
                 return;
             }
             Debug.LogWarning(
@@ -152,6 +153,12 @@ public class EventsUiManager : MonoBehaviour
         }
     }
 
+    public void onEndEventPhase()
+    {
+        eventConclussion.Setup();
+        eventConclussion.Show();
+    }
+
     public void ShowNewEvent()
     {
         Situation startSituation = situationManager.pickStartSituation();
@@ -167,7 +174,7 @@ public class EventsUiManager : MonoBehaviour
 
     private void OnEnable()
     {
-        //ShowNewEvent();
+        ShowNewEvent();
     }
 
     public void Update()

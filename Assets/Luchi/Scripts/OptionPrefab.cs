@@ -12,7 +12,7 @@ public class OptionPrefab : MonoBehaviour
     {
         situation = s;
         callBack = callBack_;
-        optionDescription.text = s.situationName;
+        optionDescription.text = s.act;
     }
 
     public void OnOptionSelected()

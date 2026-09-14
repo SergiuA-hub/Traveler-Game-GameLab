@@ -38,11 +38,13 @@ public class TimeCountManager : MonoBehaviour
 
     public void pause()
     {
+        Debug.Log("Time paused.");
         time_stopped = true;
     }
 
     public void resume()
     {
+        Debug.Log("Time resumed.");
         time_stopped = false;
     }
 
@@ -90,7 +92,8 @@ public class TimeCountManager : MonoBehaviour
         {
             timeLeft = hour_duration;
             currentTime = currentTime.AddHours(1);
-
+            
+            Debug.Log($"Hour changed to: {currentTime.Hour}.");
             onHourChanged?.Invoke(currentTime);
             
             if(currentTime.Hour == 7)

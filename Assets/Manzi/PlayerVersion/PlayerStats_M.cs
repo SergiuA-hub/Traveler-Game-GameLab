@@ -20,12 +20,16 @@ public class PlayerStats_M : MonoBehaviour
 
     [Header("Stamina")]
     public float maxStamina;
+    public float currentStamina;
     public float staminaDrainMultiplier;
     
     [Header("Consumable")]
     public float maxHunger;
+    public float currentHunger;
     public float maxThirst;
+    public float currentThirst;
     public int maxHp;
+    public int currentHp;
 
     [Header("Invetory")]
     public float maxVolume;
