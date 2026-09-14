@@ -22,8 +22,14 @@ public class PlayerStats_M : MonoBehaviour
     [Header("Stamina")]
     public float maxStamina;
     public float staminaDrainMultiplier;
-    
-    [Header("Consumable")]
+
+    [Header("Consumable_CURRENT")]
+    public float currentStamina;
+    public float curretnHunger;
+    public float currentThirst;
+    public float currentHp;
+
+    [Header("Consumable_MAX")]
     public float maxHunger;
     public float maxThirst;
     public int maxHp;
@@ -31,12 +37,18 @@ public class PlayerStats_M : MonoBehaviour
     [Header("Invetory")]
     public float maxVolume;
     public float maxWeight;
+
+
+    public void Start()
+    {
+        currentHp = maxHp;
+        curretnHunger = maxHunger;
+        currentThirst = maxThirst;
+        currentStamina = maxStamina;
+
+    }
+
     
-
-    //Components
-
-
-
 
 
 }

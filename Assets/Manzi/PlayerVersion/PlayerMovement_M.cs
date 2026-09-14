@@ -6,12 +6,6 @@ public class PlayerMovement_M : MonoBehaviour
 {
     private Player_M player;
 
-    private float currentSpeed;
-    private float currentStamina;
-    private float currentHunger;
-    private float currentThirst;
-    //simple movement
-    //modifier on moveSpeed
 
    
     private void Start()
