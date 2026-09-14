@@ -21,7 +21,19 @@ public class PlayerStats_M : MonoBehaviour
 
     [Header("Stamina")]
     public float maxStamina;
+    public float currentStaminaDrainMultiplier;
+
+    [Header("Drain Modifiers")]
+    //stamina
     public float staminaDrainMultiplier;
+    public float StationanryDrainMultiplier;
+
+    //Thirts
+    public float thirstDrainMultiplier;
+    
+
+    //hunger
+    public float hungerDrainMultiplier;
 
     [Header("Consumable_CURRENT")]
     public float currentStamina;

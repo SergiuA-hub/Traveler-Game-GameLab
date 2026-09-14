@@ -1,12 +1,5 @@
 using UnityEngine;
-public enum EnemyStaminaState
-{
-    Full,
-    NoHunger,
-    NoThirst,
-    NoStamina,
-    NoHungerAndThirst
-}
+
 
 public class Player_M : MonoBehaviour
 {
@@ -23,10 +16,10 @@ public class Player_M : MonoBehaviour
     public GameInput gameInput;
     public TimeManager timeManager;
 
-    public float hourDuration = 15f;
+    
     public float moveCounter = 0;
     public float stationaryCounter = 0;
-    public float currentStamina;
+    
 
     private void Awake()
     {
@@ -48,9 +41,10 @@ public class Player_M : MonoBehaviour
 
     private void Update()
     {
-        DrainStatOnHour(ref stats.currentStamina);
-        DrainStatOnHour(ref stats.currentThirst);
-        DrainStatOnHour(ref stats.curretnHunger);
+        //Drain stats on hour, based of movement
+        DrainStatOnHour(ref stats.currentStamina,stats.currentStaminaDrainMultiplier,stats.StationanryDrainMultiplier);
+        DrainStatOnHour(ref stats.currentThirst,stats.thirstDrainMultiplier,stats.thirstDrainMultiplier);
+        DrainStatOnHour(ref stats.curretnHunger,stats.hungerDrainMultiplier, stats.hungerDrainMultiplier);
     }
 
     //Publics 
@@ -64,17 +58,17 @@ public class Player_M : MonoBehaviour
     //Handle Stats
 
 
-    private void DrainStatOnHour(ref float stat)
+    private void DrainStatOnHour(ref float stat,float drain,float idleDrain)
     {
         
 
             if (move.IsMoving())
             {
                 moveCounter += Time.deltaTime;
-                if(moveCounter>= hourDuration)
+                if(moveCounter>= timeManager.hour_duration)
                 {
                    
-                    stat -= 1f;
+                    stat -= drain;
                     ResetCounters();
                 }
 
@@ -83,20 +77,18 @@ public class Player_M : MonoBehaviour
             {
                 stationaryCounter += Time.deltaTime;
                 
-                if(stationaryCounter>= hourDuration)
+                if(stationaryCounter>= timeManager.hour_duration)
                 {
-                     stat -= 0.2f;
+                     stat -= idleDrain;
                     ResetCounters();
                 }
             }
 
-        
-        
-
-        Debug.Log("Move counter: " +moveCounter);
-        Debug.Log("Stationary counter: " + stationaryCounter);
-
-
+    }
+    private void CalculateStaminaDrain()
+    {
+        //in functie de hunger si thirst trebuie sa calculam currentStaminaDrainModifier
+        //daca sunt bune ala ramane 1 daca nu e se adauga o penalitate
     }
 
     private void ResetCounters()
@@ -105,7 +97,7 @@ public class Player_M : MonoBehaviour
         stationaryCounter = 0;
     }
 
-    //HP
+    // ------HP------ 
     public void TakeDamage(float damage)
     {
         stats.currentHp -= damage;
