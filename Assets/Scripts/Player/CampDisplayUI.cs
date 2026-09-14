@@ -34,8 +34,8 @@ public class CampDisplayUI : MonoBehaviour
 
     public void OnEnable()
     {
-        cleanSupplies();
-        
+        cleanSupplies();       
+
         HP_Text.text = $" {player.stats.currentHp} / {player.stats.maxHp}";
         stamina_text.text = $" {player.stats.currentStamina} / {player.stats.maxStamina}";
         hunger_text.text = $" {player.stats.currentHunger} / {player.stats.maxHunger}";
