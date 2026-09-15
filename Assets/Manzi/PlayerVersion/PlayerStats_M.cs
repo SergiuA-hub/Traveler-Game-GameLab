@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class PlayerStats_M : MonoBehaviour
 {
+    [Header("Coins")]
+    public int playerCoins;
+
     [Header("Movement")]
     public float moveSpeed;
     public float startSpeed;
     public float acceleration;
     public float MaxSpeeed;
+    public float exhaustSpeed;
 
     [Header("SpeedModifier")]
     public float staminaSpeedModifier;
@@ -23,10 +27,12 @@ public class PlayerStats_M : MonoBehaviour
     public float maxStamina;
     public float currentStaminaDrainMultiplier;
 
+
     [Header("Drain Modifiers")]
     //stamina
     public float staminaDrainMultiplier;
     public float StationanryDrainMultiplier;
+    
 
     //Thirts
     public float thirstDrainMultiplier;

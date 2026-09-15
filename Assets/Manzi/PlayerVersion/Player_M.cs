@@ -45,6 +45,11 @@ public class Player_M : MonoBehaviour
         DrainStatOnHour(ref stats.currentStamina,stats.currentStaminaDrainMultiplier,stats.StationanryDrainMultiplier);
         DrainStatOnHour(ref stats.currentThirst,stats.thirstDrainMultiplier,stats.thirstDrainMultiplier);
         DrainStatOnHour(ref stats.curretnHunger,stats.hungerDrainMultiplier, stats.hungerDrainMultiplier);
+
+        //CurrentStaminaDrainModifier
+        CalculateStaminaDrain();
+
+
     }
 
     //Publics 
@@ -87,8 +92,19 @@ public class Player_M : MonoBehaviour
     }
     private void CalculateStaminaDrain()
     {
-        //in functie de hunger si thirst trebuie sa calculam currentStaminaDrainModifier
-        //daca sunt bune ala ramane 1 daca nu e se adauga o penalitate
+        stats.currentStaminaDrainMultiplier *= 1 ;
+        
+        if(stats.curretnHunger <= 0 )
+        {
+            stats.currentStaminaDrainMultiplier *= stats.thirstDrainMultiplier;
+        }else if(stats.currentThirst <= 0)
+        {
+            stats.currentStaminaDrainMultiplier *= stats.thirstDrainMultiplier;
+        }else if(stats.currentThirst <= 0&& stats.curretnHunger <= 0)
+        {
+            stats.currentStaminaDrainMultiplier *= stats.hungerDrainMultiplier + stats.thirstDrainMultiplier;
+        }
+
     }
 
     private void ResetCounters()
