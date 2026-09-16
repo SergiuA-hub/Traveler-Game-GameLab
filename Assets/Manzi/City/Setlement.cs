@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 [System.Serializable]
 public class SeltelmentItem
@@ -13,23 +15,19 @@ public class Setlement : MonoBehaviour
     [SerializeField] private string setlementName;
 
     [Header("UI")]
-    [SerializeField] private GameObject CityUI;
+    [SerializeField] private GameObject CityObject;
 
     [Header("Components")]
     [SerializeField] private CityUI cityUI;
     [SerializeField] private TimeManager timeManager;
+    [SerializeField] public Player_M player;
 
     private void Start()
     {
         cityUI = GetComponent<CityUI>();
     }
     
-
-
-    //am nevoie sa stiu mereu unde este playerul in UI,
-    //Trebuie sa adaug un script care se ocupa de UI separat scriptul "Setlementuluil"
-
-    //Fiecare Setlement trebuie sa aiba un so cu anumite date in el 
+    
 
 
 }

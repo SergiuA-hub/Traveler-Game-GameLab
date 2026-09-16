@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 public enum CityUIPage
@@ -15,32 +16,45 @@ public class CityUI : MonoBehaviour
 {
 
     public CityUIPage currentpage;
+    [SerializeField] private VerticalInvetoryItem itemPrefab;
+    [SerializeField] private Transform Content;
+
+    public Player_M player;
 
     [Header("PAGES")]
     [SerializeField] private GameObject LobbyPanel;
     [SerializeField] private GameObject ShopPanel;
     [SerializeField] private GameObject TradePanel;
 
-    
-    public void Start()
+
+    private void OnEnable()
     {
-        currentpage = CityUIPage.Lobby;
+        ShowCurrentPage(currentpage);
     }
 
     
 
-    private void Update()
+    
+
+    private void ShowCurrentPage(CityUIPage page)
     {
+        currentpage = page;
+
+        LobbyPanel.SetActive(page == CityUIPage.Lobby);
+        ShopPanel.SetActive(page == CityUIPage.Shop);
+        TradePanel.SetActive(page == CityUIPage.Trade);
+
         switch (currentpage)
         {
             case CityUIPage.Lobby:
-                Lobby();
+                DisplayInvetory();
+               
                 break;
             case CityUIPage.Shop:
-                Shop();
+               
                 break;
             case CityUIPage.Trade:
-                Trade();
+               
                 break;
             case CityUIPage.TradeGuild:
 
@@ -56,32 +70,33 @@ public class CityUI : MonoBehaviour
         }
     }
 
-    private void Lobby()
+    
+    
+   
+
+    //Lobby void
+
+    private void DisplayInvetory()
     {
-        Debug.Log("Esti in lobby ");
+        //Delete old rows
+        foreach (Transform child in Content)
+        {
+            child.gameObject.SetActive(false);
+            Destroy(child.gameObject);
+        }
+
+        foreach (InvetoryItem item in player.invetory.Inventory)
+        {
+            VerticalInvetoryItem row = Instantiate(itemPrefab, Content);
+            row.CreateIcon(item);
+        }
     }
 
-    private void Shop()
-    {
-
-        Debug.Log("Esti in Shop");
-    }
-
-    private void Trade()
-    {
-
-        Debug.Log("Esti in Trade");
-    }
-
+    //BUTTONS FUNCTIONS
     public void ChangePage(int pageIndex)
     {
         ShowCurrentPage((CityUIPage)pageIndex);
     }
 
-    private void ShowCurrentPage(CityUIPage page)
-    {
-        LobbyPanel.SetActive(page == CityUIPage.Lobby);
-        ShopPanel.SetActive(page == CityUIPage.Shop);
-        TradePanel.SetActive(page == CityUIPage.Trade);
-    }
+    
 }
