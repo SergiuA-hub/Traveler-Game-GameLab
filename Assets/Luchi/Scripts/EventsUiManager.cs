@@ -21,6 +21,7 @@ public class EventsUiManager : MonoBehaviour
 
     private Coroutine typingCoroutine;
     private List<Context> currentContexts = new List<Context>();
+    private List<EventOutcome> eventOutcomes = new List<EventOutcome>();
 
     public void Start()
     {
@@ -32,6 +33,7 @@ public class EventsUiManager : MonoBehaviour
 
             return;
         }
+        eventOutcomes.Clear();
         Situation startSituation = situationManager.pickStartSituation();
         currentContexts.AddRange(startSituation.GivenContexts);
 
@@ -44,6 +46,10 @@ public class EventsUiManager : MonoBehaviour
         foreach(Transform child in optionsList.transform)
         {
             Destroy(child.gameObject);
+        }
+        if(!eventOutcomes.Contains(situationToShow.outcome))
+        {
+            eventOutcomes.Add(situationToShow.outcome);
         }
 
         if (situationToShow == null)
@@ -159,7 +165,7 @@ public class EventsUiManager : MonoBehaviour
 
     public void onEndEventPhase()
     {
-        eventConclussion.Setup();
+        eventConclussion.Setup(eventOutcomes);
         eventConclussion.Show();
     }
 
@@ -173,6 +179,8 @@ public class EventsUiManager : MonoBehaviour
             return;
         }
         currentContexts.Clear();
+        eventOutcomes.Clear();
+
         currentContexts.AddRange(startSituation.GivenContexts);
 
         contextText.text = $"Debug Contexts: {string.Join(", ", currentContexts)}";

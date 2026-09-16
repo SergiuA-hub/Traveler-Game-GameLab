@@ -1,7 +1,11 @@
+using NUnit.Framework;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EventConclussionUI : MonoBehaviour
 {
+    public TMP_Text statsText;
     public CampManager campManager;
 
     public void EndEvent()
@@ -10,9 +14,10 @@ public class EventConclussionUI : MonoBehaviour
         gameObject.SetActive(false);
     }
     
-    public void Setup()
+    public void Setup(List<EventOutcome> outcomes)
     {
         // Any setup logic for the event conclusion UI can go here
+        statsText.text = $"DEBUG - Event Outcomes:\n{string.Join("\n", outcomes)}";
     }
 
     public void Show()
