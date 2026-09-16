@@ -9,7 +9,7 @@ public class Player_M : MonoBehaviour
     //Components
     public PlayerStats_M stats;
     public PlayerMovement_M move;
-    public PlayerInvetory_M invetory;
+    public PlayerInventory_M invetory;
     public PlayerVisual_M visual;
     public Rigidbody2D rb;
     public GameInput gameInput;
@@ -19,7 +19,7 @@ public class Player_M : MonoBehaviour
         //Player Components
         stats = GetComponent<PlayerStats_M>();
         move = GetComponent<PlayerMovement_M>();
-        invetory = GetComponent<PlayerInvetory_M>();
+        invetory = GetComponent<PlayerInventory_M>();
         visual = GetComponent<PlayerVisual_M>();
 
         //OtherComponents
