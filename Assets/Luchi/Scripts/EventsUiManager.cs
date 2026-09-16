@@ -14,7 +14,7 @@ public class EventsUiManager : MonoBehaviour
     public GameObject optionsPrefab;
     public GameObject endEventPrefab;
     public GameObject optionsList;
-
+    public TMP_Text contextText;
     public SituationalEventsManager situationManager;
 
     [SerializeField] private float textSpeed = 0.03f;
@@ -33,7 +33,7 @@ public class EventsUiManager : MonoBehaviour
             return;
         }
         Situation startSituation = situationManager.pickStartSituation();
-        currentContexts = startSituation.GivenContexts;
+        currentContexts.AddRange(startSituation.GivenContexts);
 
         DisplaySituations(startSituation);
 
@@ -51,6 +51,7 @@ public class EventsUiManager : MonoBehaviour
             Debug.LogError("No start situation found.");
             return;
         }
+        contextText.text = $"Debug Contexts: {string.Join(", ", currentContexts)}";
 
         Debug.Log($"Picked start situation: {situationToShow.situationName}");
 
@@ -84,20 +85,22 @@ public class EventsUiManager : MonoBehaviour
 
     public void updateContext(Situation situation)
     {
+        // Remove old narrative states first.
+        foreach (Context context in situation.RemovedContexts)
+        {
+            if (currentContexts.Remove(context))
+            {
+                Debug.Log($"Removing context: {context}");
+            }
+        }
+
+        // Then add the new states created by this situation.
         foreach (Context context in situation.GivenContexts)
         {
             if (!currentContexts.Contains(context))
             {
-                Debug.Log($"Adding context: {context}");
                 currentContexts.Add(context);
-            }
-        }
-        foreach (Context context in situation.RemovedContexts)
-        {
-            if (currentContexts.Contains(context))
-            {
-                Debug.Log($"Removing context: {context}");
-                currentContexts.Remove(context);
+                Debug.Log($"Adding context: {context}");
             }
         }
     }
@@ -105,12 +108,13 @@ public class EventsUiManager : MonoBehaviour
     public void ShowOptions(Situation situation)
     {
         updateContext(situation);
+        contextText.text = $"Debug Contexts: {string.Join(", ", currentContexts)}";
 
         Debug.Log(
             $"Current contexts after {situation.situationName}: " +
             string.Join(", ", currentContexts)
         );
-
+        
         List<Situation> options =
             situationManager.getSituationsByPhase(
                 situation.nextPhase,
@@ -162,13 +166,16 @@ public class EventsUiManager : MonoBehaviour
     public void ShowNewEvent()
     {
         Situation startSituation = situationManager.pickStartSituation();
+
         if(startSituation == null)
         {
             Debug.LogError("No start situation found.");
             return;
         }
-        currentContexts = startSituation.GivenContexts;
+        currentContexts.Clear();
+        currentContexts.AddRange(startSituation.GivenContexts);
 
+        contextText.text = $"Debug Contexts: {string.Join(", ", currentContexts)}";
         DisplaySituations(startSituation);
     }
 

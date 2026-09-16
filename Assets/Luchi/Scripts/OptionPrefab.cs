@@ -1,8 +1,10 @@
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class OptionPrefab : MonoBehaviour
+public class OptionPrefab : MonoBehaviour, IPointerClickHandler
 {
     public TMP_Text optionDescription;
 
@@ -13,6 +15,10 @@ public class OptionPrefab : MonoBehaviour
         situation = s;
         callBack = callBack_;
         optionDescription.text = s.act;
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        OnOptionSelected();
     }
 
     public void OnOptionSelected()
