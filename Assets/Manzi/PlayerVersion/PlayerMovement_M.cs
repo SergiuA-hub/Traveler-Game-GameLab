@@ -6,12 +6,6 @@ public class PlayerMovement_M : MonoBehaviour
 {
     private Player_M player;
 
-    private float currentSpeed;
-    private float currentStamina;
-    private float currentHunger;
-    private float currentThirst;
-    //simple movement
-    //modifier on moveSpeed
 
    
     private void Start()
@@ -19,7 +13,10 @@ public class PlayerMovement_M : MonoBehaviour
         player = GetComponent<Player_M>();
         
     }
-    
+    private void Update()
+    {
+        
+    }
     private void FixedUpdate()
     {
         HandleMovement();
@@ -27,16 +24,19 @@ public class PlayerMovement_M : MonoBehaviour
     private void HandleMovement()
     {
 
-        if (IsMoving())
+        if (IsMoving() && HasStamina())
         {
             player.stats.moveSpeed = Mathf.MoveTowards(player.stats.moveSpeed, player.stats.MaxSpeeed, player.stats.acceleration * Time.deltaTime);
         }
-        else
+        else if(!IsMoving() && HasStamina())
         {
             player.stats.moveSpeed = player.stats.startSpeed;
+        }else if (!HasStamina())
+        {
+            player.stats.moveSpeed = player.stats.exhaustSpeed;
         }
 
-        float modifierSpeed = player.stats.staminaSpeedModifier * player.stats.consumableSpeedModifier * player.stats.terrainSpeedModifier;
+        float modifierSpeed = player.stats.staminaSpeedModifier * player.stats.consumableSpeedModifier * player.stats.terrainSpeedModifier * player.stats.currentWeightModifier;
         
         player.stats.moveSpeed *= modifierSpeed;
         Vector2 moveInput = player.gameInput.GetMoveVectorNormalized();
@@ -44,7 +44,21 @@ public class PlayerMovement_M : MonoBehaviour
         player.rb.MovePosition(player.rb.position + moveInput * player.stats.moveSpeed * Time.fixedDeltaTime);
 
     }
+  
+    
+    public bool HasStamina()
+    {
+        if (player.stats.currentStamina <= 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
+    //Publics
     public bool IsMoving()
     {
         Vector2 inputMove = player.gameInput.GetMoveVectorNormalized();

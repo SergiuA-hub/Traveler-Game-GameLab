@@ -75,18 +75,18 @@ public class PlayerInventory_M : MonoBehaviour
 
         if (currentWeight > 0 && currentWeight <= player.stats.maxWeight / 2)
         {
-            //playerMovement.speedModifier = TierIMoveModifier;
-            Debug.Log("tier 1");
+            player.stats.currentWeightModifier= player.stats.TierIMoveModifier;
+            
         }
         else if (currentWeight > player.stats.maxWeight / 2 && currentWeight <= player.stats.maxWeight * 0.75f)
         {
-            //playerMovement.speedModifier = TierIIMoveModifier;
-            Debug.Log("tier 2");
+            player.stats.currentWeightModifier = player.stats.TierIIMoveModifier;
+           
         }
         else if (currentWeight > player.stats.maxWeight * 0.75f)
         {
-            //playerMovement.speedModifier = TierIIIMoveModifier;
-            Debug.Log("tier 3");
+            player.stats.currentWeightModifier = player.stats.TierIIIMoveModifier;
+            
         }
         else
         {
