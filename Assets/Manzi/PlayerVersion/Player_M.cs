@@ -6,6 +6,8 @@ public class Player_M : MonoBehaviour
     //Backpack
     [SerializeField] private Backpack currentBackpack;
 
+    public bool isResting = false;
+    public bool rooted = false;
 
     //Components
     public PlayerStats_M stats;
@@ -15,7 +17,6 @@ public class Player_M : MonoBehaviour
     public Rigidbody2D rb;
     public GameInput gameInput;
     public TimeManager timeManager;
-
 
    
     
@@ -44,6 +45,12 @@ public class Player_M : MonoBehaviour
 
     private void Update()
     {
+        if(timeManager.time_stopped)
+            return;
+
+        if(isResting)
+            return;
+
         //Drain stats on hour, based of movement
         DrainStatOnHour(ref stats.currentStamina,stats.staminaDrainMultiplier,stats.StationanryDrainMultiplier);
         DrainStatOnHour(ref stats.currentThirst,stats.thirstDrainMultiplier,stats.thirstDrainMultiplier);
@@ -68,15 +75,15 @@ public class Player_M : MonoBehaviour
 
     private void DrainStatOnHour(ref float stat,float drain,float idleDrain)
     {
-        
-
             if (move.IsMoving())
             {
                 moveCounter += Time.deltaTime;
-                if(moveCounter>= timeManager.hour_duration)
+                if(moveCounter>= GlobalSettingsManager.HOUR_DURATION)
                 {
                    
                     stat -= drain;
+                    if(stat < 0)
+                        stat = 0;
                     ResetCounters();
                 }
 
@@ -85,7 +92,7 @@ public class Player_M : MonoBehaviour
             {
                 stationaryCounter += Time.deltaTime;
                 
-                if(stationaryCounter>= timeManager.hour_duration)
+                if(stationaryCounter>= GlobalSettingsManager.HOUR_DURATION)
                 {
                      stat -= idleDrain;
                     ResetCounters();

@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerMovement_M : MonoBehaviour
 {
     private Player_M player;
-
-
    
     private void Start()
     {
@@ -40,7 +38,11 @@ public class PlayerMovement_M : MonoBehaviour
         
         player.stats.moveSpeed *= modifierSpeed;
         Vector2 moveInput = player.gameInput.GetMoveVectorNormalized();
-
+        
+        if(player.rooted)
+        {
+            moveInput = Vector2.zero;
+        }
         player.rb.MovePosition(player.rb.position + moveInput * player.stats.moveSpeed * Time.fixedDeltaTime);
 
     }
