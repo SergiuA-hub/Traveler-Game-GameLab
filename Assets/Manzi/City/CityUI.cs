@@ -19,7 +19,8 @@ public class CityUI : MonoBehaviour
     [SerializeField] private VerticalInvetoryItem itemPrefab;
     [SerializeField] private Transform Content;
 
-    public Player_M player;
+    
+    public PlayerInvetory_M playerInvetory;
 
     [Header("PAGES")]
     [SerializeField] private GameObject LobbyPanel;
@@ -74,18 +75,12 @@ public class CityUI : MonoBehaviour
     
    
 
-    //Lobby void
+    //Lobby 
 
     private void DisplayInvetory()
     {
-        //Delete old rows
-        foreach (Transform child in Content)
-        {
-            child.gameObject.SetActive(false);
-            Destroy(child.gameObject);
-        }
-
-        foreach (InvetoryItem item in player.invetory.Inventory)
+        
+        foreach (InvetoryItem item in playerInvetory.Inventory)
         {
             VerticalInvetoryItem row = Instantiate(itemPrefab, Content);
             row.CreateIcon(item);
