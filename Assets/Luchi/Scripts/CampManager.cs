@@ -16,7 +16,7 @@ public class CampManager : MonoBehaviour
     public CanvasGroup restScreenCanvasGroup;
     public float fadeDuration = 1f;
     
-    private TimeCountManager timeManager;
+    private TimeManager timeManager;
     private Coroutine fadeCoroutine;
     private float restTimer = 0f;
     private bool resting = false;
@@ -35,7 +35,7 @@ public class CampManager : MonoBehaviour
             Debug.LogError("TimeManager GameObject reference is not set in CampManager.");
             return;
         }
-        timeManager = timeManagerGO.GetComponent<TimeCountManager>();
+        timeManager = timeManagerGO.GetComponent<TimeManager>();
 
         restScreenCanvasGroup.alpha = 0f;
         restScreenPanel.SetActive(false);
