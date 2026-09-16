@@ -34,7 +34,7 @@ public static class CreateSituationSOFromCSV
             return;
         }
 
-        int created = 0;
+        int processed = 0;
         int failed = 0;
 
         // Start from 1 because row 0 is the header
@@ -47,10 +47,10 @@ public static class CreateSituationSOFromCSV
 
             List<string> columns = ParseCsvLine(line);
 
-            if (columns.Count < 8)
+            if (columns.Count < 10)
             {
                 Debug.LogError(
-                    $"Invalid row {i + 1}. Expected 7 columns but found {columns.Count}."
+                    $"Invalid row {i + 1}. Expected 10 columns but found {columns.Count}."
                 );
 
                 failed++;
@@ -61,12 +61,16 @@ public static class CreateSituationSOFromCSV
             string phaseText = columns[1].Trim();
             string nextPhaseText = columns[2].Trim();
             string situationName = columns[3].Trim();
-            string situationDescription = columns[4].Trim();
+            string act = columns[4].Trim();
+            string situationDescription = columns[5].Trim();
 
-            string requiredContextText = columns[5].Trim();
-            string givenContextText = columns[6].Trim();
-            string removedContextText = columns[7].Trim();
+            string requiredContextText = columns[6].Trim();
+            string givenContextText = columns[7].Trim();
+            string removedContextText = columns[8].Trim();
 
+            string outcomeText = columns[9].Trim();
+
+            // PHASE
             if (!Enum.TryParse(
                     phaseText,
                     true,
@@ -79,7 +83,8 @@ public static class CreateSituationSOFromCSV
                 failed++;
                 continue;
             }
-            
+
+            // NEXT PHASE
             if (!Enum.TryParse(
                     nextPhaseText,
                     true,
@@ -93,11 +98,34 @@ public static class CreateSituationSOFromCSV
                 continue;
             }
 
+            // OUTCOME
+            EventOutcome outcome = EventOutcome.NONE;
+
+            if (!string.IsNullOrWhiteSpace(outcomeText) &&
+                outcomeText != "-")
+            {
+                if (!Enum.TryParse(
+                        outcomeText,
+                        true,
+                        out outcome))
+                {
+                    Debug.LogError(
+                        $"Invalid Outcome '{outcomeText}' at row {i + 1}. " +
+                        $"Add it to the EventOutcome enum."
+                    );
+
+                    failed++;
+                    continue;
+                }
+            }
+
             Situation situation = ScriptableObject.CreateInstance<Situation>();
 
             situation.phase = phase;
             situation.nextPhase = nextPhase;
+
             situation.situationName = situationName;
+            situation.act = act;
             situation.situationDescription = situationDescription;
 
             situation.RequiredContexts =
@@ -108,6 +136,8 @@ public static class CreateSituationSOFromCSV
 
             situation.RemovedContexts =
                 ParseContexts(removedContextText, i + 1);
+
+            situation.outcome = outcome;
 
             string safeName = MakeSafeFileName(situationName);
 
@@ -135,14 +165,14 @@ public static class CreateSituationSOFromCSV
                 Debug.Log($"Created Situation: {assetPath}");
             }
 
-            created++;
+            processed++;
         }
 
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
 
         Debug.Log(
-            $"Situation import finished. Processed: {created}, Failed: {failed}"
+            $"Situation import finished. Processed: {processed}, Failed: {failed}"
         );
     }
 
@@ -169,7 +199,10 @@ public static class CreateSituationSOFromCSV
                     true,
                     out Context context))
             {
-                result.Add(context);
+                if (!result.Contains(context))
+                {
+                    result.Add(context);
+                }
             }
             else
             {

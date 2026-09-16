@@ -3,14 +3,16 @@ using UnityEngine;
 public class InventoryDisplayUI : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    public PlayerInventory inventory;
+    
+    public Player_M player;
+    private PlayerInvetory_M inventory;
     public GameObject ItemPrefab;
     public GameObject ItemList;
 
 
     private void OnEnable()
     {
+        inventory = player.invetory;
         foreach (var item in inventory.Inventory)
         {
             GameObject go = Instantiate(ItemPrefab, ItemList.transform);

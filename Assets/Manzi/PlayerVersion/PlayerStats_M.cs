@@ -49,8 +49,11 @@ public class PlayerStats_M : MonoBehaviour
 
     [Header("Consumable_MAX")]
     public float maxHunger;
+    public float currentHunger;
     public float maxThirst;
+    public float currentThirst;
     public int maxHp;
+    public int currentHp;
 
     [Header("Invetory")]
     public float maxVolume;
