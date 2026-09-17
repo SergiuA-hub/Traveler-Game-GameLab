@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: Assembly-CSharp::ResourceSO
   itemName: Water
-  sprite: {fileID: 0}
+  sprite: {fileID: 1796361743177632847, guid: 0493a55334a9c914588b60ffb9f42899, type: 3}
   CityDisplayPrefab: {fileID: 0}
   resourceType: 2
   baseValue: 1
   amount: 1
   weight: 1
   volume: 1
+  speed_multiplier: 1
+  stat_restore: 10
+  HP_restore: 0

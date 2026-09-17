@@ -6,11 +6,20 @@ public class InvetoryItem
 {
     public ResourceSO resourceSO;
     public int amount;
+    public float averageValue;
 
     public InvetoryItem(ResourceSO resourceSO, int amount)
     {
         this.resourceSO = resourceSO;
         this.amount = amount;
+        this.averageValue = resourceSO.baseValue;
+
+    }
+    public InvetoryItem(ResourceSO resourceSO, int amount, float averageValue)
+    {
+        this.resourceSO = resourceSO;
+        this.amount = amount;
+        this.averageValue = averageValue;
     }
 }
 public class PlayerInventory_M : MonoBehaviour

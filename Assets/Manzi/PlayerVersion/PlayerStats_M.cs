@@ -43,7 +43,7 @@ public class PlayerStats_M : MonoBehaviour
 
     [Header("Consumable_CURRENT")]
     public float currentStamina;
-    public float curretnHunger;
+    public float currentHunger;
     public float currentThirst;
     public float currentHp;
 
@@ -60,7 +60,7 @@ public class PlayerStats_M : MonoBehaviour
     public void Start()
     {
         currentHp = maxHp;
-        curretnHunger = maxHunger;
+        currentHunger = maxHunger;
         currentThirst = maxThirst;
         currentStamina = maxStamina;
 

@@ -16,6 +16,9 @@ public class Player_M : MonoBehaviour
     public GameInput gameInput;
     public TimeManager timeManager;
 
+
+   
+    
     
     public float moveCounter = 0;
     public float stationaryCounter = 0;
@@ -42,9 +45,9 @@ public class Player_M : MonoBehaviour
     private void Update()
     {
         //Drain stats on hour, based of movement
-        DrainStatOnHour(ref stats.currentStamina,stats.currentStaminaDrainMultiplier,stats.StationanryDrainMultiplier);
+        DrainStatOnHour(ref stats.currentStamina,stats.staminaDrainMultiplier,stats.StationanryDrainMultiplier);
         DrainStatOnHour(ref stats.currentThirst,stats.thirstDrainMultiplier,stats.thirstDrainMultiplier);
-        DrainStatOnHour(ref stats.curretnHunger,stats.hungerDrainMultiplier, stats.hungerDrainMultiplier);
+        DrainStatOnHour(ref stats.currentHunger,stats.hungerDrainMultiplier, stats.hungerDrainMultiplier);
 
         //CurrentStaminaDrainModifier
         CalculateStaminaDrain();
@@ -93,14 +96,7 @@ public class Player_M : MonoBehaviour
     private void CalculateStaminaDrain()
     {
         stats.currentStaminaDrainMultiplier *= 1 ;
-        
-        if(stats.curretnHunger <= 0 )
-        {
-            stats.currentStaminaDrainMultiplier *= stats.thirstDrainMultiplier;
-        }else if(stats.currentThirst <= 0)
-        {
-            stats.currentStaminaDrainMultiplier *= stats.thirstDrainMultiplier;
-        }else if(stats.currentThirst <= 0&& stats.curretnHunger <= 0)
+        if(stats.currentThirst <= 0 || stats.currentHunger <= 0)
         {
             stats.currentStaminaDrainMultiplier *= stats.hungerDrainMultiplier + stats.thirstDrainMultiplier;
         }

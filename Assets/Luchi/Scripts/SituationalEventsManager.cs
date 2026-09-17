@@ -35,16 +35,42 @@ public class SituationalEventsManager : MonoBehaviour
         return startSituations[randomIndex];
     }
 
+    //public List<Situation> getSituationsByPhase(Phase phase, List<Context> currentContexts)
+    //{
+    //    return situations
+    //    .Where(s =>
+    //        s.phase == phase &&
+    //        s.RequiredContexts.All(
+    //            required => currentContexts.Contains(required)
+    //        )
+    //    )
+    //    .OrderBy(x => Random.value)
+    //    .ToList();
+    //}
     public List<Situation> getSituationsByPhase(Phase phase, List<Context> currentContexts)
     {
-        return situations
-        .Where(s =>
-            s.phase == phase &&
-            s.RequiredContexts.All(
-                required => currentContexts.Contains(required)
+        var candidates = situations
+            .Where(s =>
+                s.phase == phase &&
+                s.RequiredContexts.All(
+                    required => currentContexts.Contains(required)
+                )
             )
-        )
-        .OrderBy(x => Random.value)
-        .ToList();
+            .OrderBy(x => Random.value)
+            .ToList();
+
+        foreach (Situation situation in candidates)
+        {
+            if (phase != Phase.Start &&
+                situation.RequiredContexts.Count == 0)
+            {
+                Debug.LogWarning(
+                    $"Situation '{situation.situationName}' " +
+                    $"has NO required contexts and therefore matches EVERY story."
+                );
+            }
+        }
+
+        return candidates;
     }
 }

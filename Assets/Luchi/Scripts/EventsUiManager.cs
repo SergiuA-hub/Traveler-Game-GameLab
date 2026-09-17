@@ -7,17 +7,21 @@ using UnityEngine;
 
 public class EventsUiManager : MonoBehaviour
 {
+    public EventConclussionUI eventConclussion;
+    //public CampManager campManager;
     public TMP_Text EventDscription;
 
     public GameObject optionsPrefab;
+    public GameObject endEventPrefab;
     public GameObject optionsList;
-
+    public TMP_Text contextText;
     public SituationalEventsManager situationManager;
 
     [SerializeField] private float textSpeed = 0.03f;
 
     private Coroutine typingCoroutine;
     private List<Context> currentContexts = new List<Context>();
+    private List<EventOutcome> eventOutcomes = new List<EventOutcome>();
 
     public void Start()
     {
@@ -29,8 +33,9 @@ public class EventsUiManager : MonoBehaviour
 
             return;
         }
+        eventOutcomes.Clear();
         Situation startSituation = situationManager.pickStartSituation();
-        currentContexts = startSituation.GivenContexts;
+        currentContexts.AddRange(startSituation.GivenContexts);
 
         DisplaySituations(startSituation);
 
@@ -42,12 +47,17 @@ public class EventsUiManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        if(!eventOutcomes.Contains(situationToShow.outcome))
+        {
+            eventOutcomes.Add(situationToShow.outcome);
+        }
 
         if (situationToShow == null)
         {
             Debug.LogError("No start situation found.");
             return;
         }
+        contextText.text = $"Debug Contexts: {string.Join(", ", currentContexts)}";
 
         Debug.Log($"Picked start situation: {situationToShow.situationName}");
 
@@ -81,20 +91,22 @@ public class EventsUiManager : MonoBehaviour
 
     public void updateContext(Situation situation)
     {
+        // Remove old narrative states first.
+        foreach (Context context in situation.RemovedContexts)
+        {
+            if (currentContexts.Remove(context))
+            {
+                Debug.Log($"Removing context: {context}");
+            }
+        }
+
+        // Then add the new states created by this situation.
         foreach (Context context in situation.GivenContexts)
         {
             if (!currentContexts.Contains(context))
             {
-                Debug.Log($"Adding context: {context}");
                 currentContexts.Add(context);
-            }
-        }
-        foreach (Context context in situation.RemovedContexts)
-        {
-            if (currentContexts.Contains(context))
-            {
-                Debug.Log($"Removing context: {context}");
-                currentContexts.Remove(context);
+                Debug.Log($"Adding context: {context}");
             }
         }
     }
@@ -102,12 +114,13 @@ public class EventsUiManager : MonoBehaviour
     public void ShowOptions(Situation situation)
     {
         updateContext(situation);
+        contextText.text = $"Debug Contexts: {string.Join(", ", currentContexts)}";
 
         Debug.Log(
             $"Current contexts after {situation.situationName}: " +
             string.Join(", ", currentContexts)
         );
-
+        
         List<Situation> options =
             situationManager.getSituationsByPhase(
                 situation.nextPhase,
@@ -124,6 +137,8 @@ public class EventsUiManager : MonoBehaviour
             {
                 Debug.Log("Game Over. No more situations to display.");
                 EventDscription.text += "\n\nEVENT ENDS.";
+                GameObject endOption = Instantiate(endEventPrefab, optionsList.transform);
+                endOption.GetComponent<OptionEndPrefab>().Setup(situation, this);
                 return;
             }
             Debug.LogWarning(
@@ -148,14 +163,40 @@ public class EventsUiManager : MonoBehaviour
         }
     }
 
+    public void onEndEventPhase()
+    {
+        eventConclussion.Setup(eventOutcomes);
+        eventConclussion.Show();
+    }
+
+    public void ShowNewEvent()
+    {
+        Situation startSituation = situationManager.pickStartSituation();
+
+        if(startSituation == null)
+        {
+            Debug.LogError("No start situation found.");
+            return;
+        }
+        currentContexts.Clear();
+        eventOutcomes.Clear();
+
+        currentContexts.AddRange(startSituation.GivenContexts);
+
+        contextText.text = $"Debug Contexts: {string.Join(", ", currentContexts)}";
+        DisplaySituations(startSituation);
+    }
+
+    private void OnEnable()
+    {
+        ShowNewEvent();
+    }
+
     public void Update()
     {
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
-            Situation startSituation = situationManager.pickStartSituation();
-            currentContexts = startSituation.GivenContexts;
-
-            DisplaySituations(startSituation);
+            ShowNewEvent();
         }
     }
 }
