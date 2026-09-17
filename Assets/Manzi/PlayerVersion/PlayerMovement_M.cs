@@ -67,7 +67,6 @@ public class PlayerMovement_M : MonoBehaviour
         if (inputMove.magnitude > 0)
         {
             return true;
-
         }
         else
         {

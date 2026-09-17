@@ -49,13 +49,15 @@ public class Player_M : MonoBehaviour
         if(isResting)
             return;
 
-        if (move.IsMoving())
+        if (move.IsMoving() && !rooted)
         {
+            Debug.Log("MOVING");
             stats.currentStamina -= (stats.BASE_STAMINA_DROP_PER_H * stats.currentStaminaDrainMultiplier / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;            
             stats.currentThirst -= (stats.THIRST_DRAIN_PER_H / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;
         }
         else
         {
+            Debug.Log("IDLE");
             stats.currentStamina -= (stats.BASE_STAMINA_IDLE_DRAIN * stats.currentStaminaDrainMultiplier / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;
             stats.currentThirst -= (stats.BASE_THIRST_IDLE_DRAIN / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;
         }

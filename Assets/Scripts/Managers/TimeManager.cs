@@ -48,6 +48,7 @@ public class TimeManager : MonoBehaviour
 
     public void fastForwardTime()
     {
+        timeLeft = 2;
         hour_duration = GlobalSettingsManager.REST_HOUR_DURATION;
     }
 

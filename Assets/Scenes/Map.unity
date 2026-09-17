@@ -542797,7 +542797,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
       propertyPath: maxHp
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
       propertyPath: MaxSpeeed
@@ -542857,6 +542857,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
       propertyPath: currentStaminaDrainMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: Inventory.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: Inventory.Array.data[0].amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: Inventory.Array.data[1].amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: Inventory.Array.data[2].amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: Inventory.Array.data[0].resourceSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c8f8ca846032ec479d1044edc2c361a, type: 2}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: Inventory.Array.data[1].resourceSO
+      value: 
+      objectReference: {fileID: 11400000, guid: b3aad3b0b4bbd164a86d75f59d54b84e, type: 2}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: Inventory.Array.data[2].resourceSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e2f3b0e438a9dc4c905a4e8ca2d0c82, type: 2}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: Inventory.Array.data[0].averageValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: Inventory.Array.data[1].averageValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: Inventory.Array.data[2].averageValue
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2884730960851164330, guid: aa58115cd10123a4083e5244295e0465, type: 3}
@@ -550907,6 +550947,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 107723913}
+        m_TargetAssemblyTypeName: CampDisplayUI, Assembly-CSharp
+        m_MethodName: unRootPlayer
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

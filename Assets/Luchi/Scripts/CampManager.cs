@@ -31,6 +31,7 @@ public class CampManager : MonoBehaviour
 
     private float hungerRestoreAmount = 0f;
     private float thirstRestoreAmount = 0f;
+    private float hpRestoreAmount = 0f;
 
     private void Start()
     {
@@ -48,11 +49,12 @@ public class CampManager : MonoBehaviour
     public void StartRest()
     {
         player.isResting = true;
+        player.rooted = true;
 
         restScreenText.text = $"Preparing camp...";
         
-        restTimeCounter = 0;
         timeManager.fastForwardTime();
+        restTimeCounter = 0;        
 
         restScreenPanel.SetActive(true);
         resting = true;
@@ -80,12 +82,19 @@ public class CampManager : MonoBehaviour
             Debug.Log("No event occurred during rest.");
         }
 
+        foreach(var item in foodItems)
+            player.invetory.Remove(item.resourceSO, item.amount);
+
+        foreach (var item in drinkItems)
+            player.invetory.Remove(item.resourceSO, item.amount);
+
         player.stats.currentHunger += hungerRestoreAmount;
         player.stats.currentThirst += thirstRestoreAmount;
-        
+        player.stats.currentHp += hpRestoreAmount;
+
         player.stats.currentHunger = Mathf.Min(player.stats.currentHunger, player.stats.maxHunger);
         player.stats.currentThirst = Mathf.Min(player.stats.currentThirst, player.stats.maxThirst);
-
+        player.stats.currentHp = Mathf.Min(player.stats.currentHp, player.stats.maxHp);
         timeManager.onHourChanged.AddListener(hourlyUpdate);
     }
 
@@ -104,6 +113,7 @@ public class CampManager : MonoBehaviour
         timeManager.normalTime();
         
         player.isResting = false;
+        player.rooted = false;
     }
 
     private IEnumerator FadeRestScreen(float from, float to, bool disableAtEnd)
@@ -208,9 +218,12 @@ public class CampManager : MonoBehaviour
         }
 
         hungerRestoreAmount = 0f;
+        hpRestoreAmount = 0f;
+
         foreach (var consumed in foodItems)
         {
             hungerRestoreAmount += consumed.amount * consumed.resourceSO.stat_restore;
+            hpRestoreAmount += consumed.amount * consumed.resourceSO.HP_restore;
         }
     }
 
