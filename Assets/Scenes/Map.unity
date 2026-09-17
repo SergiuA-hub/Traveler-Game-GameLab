@@ -542800,12 +542800,32 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: MaxSpeeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
       propertyPath: maxHunger
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
       propertyPath: maxThirst
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: HUNGER_PENALTY
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: THIRST_PENALTY
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: HUNGER_DRAIN_PER_H
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: THIRST_DRAIN_PER_H
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
       propertyPath: currentWeightModifier
@@ -542818,6 +542838,26 @@ PrefabInstance:
     - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
       propertyPath: thirstDrainMultiplier
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: BASE_THIRST_IDLE_DRAIN
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: BASE_STAMINA_DROP_PER_H
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: BASE_STAMINA_IDLE_DRAIN
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: STAMINA_DRAIN_MULTIPLIER
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 238209708121339987, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: currentStaminaDrainMultiplier
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2884730960851164330, guid: aa58115cd10123a4083e5244295e0465, type: 3}
       propertyPath: gameInput
@@ -546835,7 +546875,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f0ab8d2e996474e95d7ee153ed60e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
-  hour_duration: 2
   time_stopped: 0
   onHourChanged:
     m_PersistentCalls:
@@ -549208,7 +549247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1120130142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571649,7 +571688,6 @@ MonoBehaviour:
   eventsUIManager: {fileID: 1455782817}
   restScreenCanvasGroup: {fileID: 397402721}
   fadeDuration: 1
-  EVENT_HOURLY_CHANCE: 0.03
   restDuration: 10
 --- !u!4 &1579438309
 Transform:

@@ -23,14 +23,16 @@ public class TerrainManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            player.gameObject.GetComponent<PlayerStats_M>().terrainSpeedModifier = RoadSpeedModifier;
+            player.stats.terrainSpeedModifier = RoadSpeedModifier;
+            //player.gameObject.GetComponent<PlayerStats_M>().terrainSpeedModifier = RoadSpeedModifier;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            player.gameObject.GetComponent<PlayerStats_M>().terrainSpeedModifier = GrassSpeedModifier;
+            player.stats.terrainSpeedModifier = GrassSpeedModifier;
+            //player.gameObject.GetComponent<PlayerStats_M>().terrainSpeedModifier = GrassSpeedModifier;
         }
     }
 }
