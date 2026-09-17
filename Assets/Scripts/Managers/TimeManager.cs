@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class TimeManager : MonoBehaviour
 {
     [Header("Time Settings")]
-    public float hour_duration = 5f;
+    private float hour_duration = GlobalSettingsManager.HOUR_DURATION;
     public bool time_stopped = false;
 
     [Header("Current Time")]
@@ -26,7 +26,7 @@ public class TimeManager : MonoBehaviour
     private int lastYear;
     void Start()
     {
-
+        hour_duration = GlobalSettingsManager.HOUR_DURATION;
         currentTime = new DateTime(1251, 3, 25, 0, 0, 0);
         timeLeft = hour_duration;
 
@@ -44,6 +44,16 @@ public class TimeManager : MonoBehaviour
     public void resume()
     {
         time_stopped = false;
+    }
+
+    public void fastForwardTime()
+    {
+        hour_duration = GlobalSettingsManager.REST_HOUR_DURATION;
+    }
+
+    public void normalTime()
+    {
+        hour_duration = GlobalSettingsManager.HOUR_DURATION;
     }
 
     private void HandleTimeInput()
