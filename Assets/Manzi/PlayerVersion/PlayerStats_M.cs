@@ -30,16 +30,18 @@ public class PlayerStats_M : MonoBehaviour
 
     [Header("Drain Modifiers")]
     //stamina
-    public float staminaDrainMultiplier;
-    public float StationanryDrainMultiplier;
+    public float STAMINA_DRAIN_MULTIPLIER;
+    public float BASE_STAMINA_DROP_PER_H;
+    public float BASE_STAMINA_IDLE_DRAIN;
+    public float BASE_THIRST_IDLE_DRAIN;
     
+    public float HUNGER_PENALTY;
+    public float THIRST_PENALTY;
 
     //Thirts
-    public float thirstDrainMultiplier;
-    
-
+    public float THIRST_DRAIN_PER_H;    
     //hunger
-    public float hungerDrainMultiplier;
+    public float HUNGER_DRAIN_PER_H;
 
     [Header("Consumable_CURRENT")]
     public float currentStamina;
@@ -64,9 +66,6 @@ public class PlayerStats_M : MonoBehaviour
         currentThirst = maxThirst;
         currentStamina = maxStamina;
 
+        currentStaminaDrainMultiplier = STAMINA_DRAIN_MULTIPLIER;
     }
-
-    
-
-
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -48,7 +49,7 @@ public class CampManager : MonoBehaviour
     {
         player.isResting = true;
 
-        restScreenText.text = $"Resting - Preparing to sleep...";
+        restScreenText.text = $"Preparing camp...";
         
         restTimeCounter = 0;
         timeManager.fastForwardTime();
@@ -81,6 +82,9 @@ public class CampManager : MonoBehaviour
 
         player.stats.currentHunger += hungerRestoreAmount;
         player.stats.currentThirst += thirstRestoreAmount;
+        
+        player.stats.currentHunger = Mathf.Min(player.stats.currentHunger, player.stats.maxHunger);
+        player.stats.currentThirst = Mathf.Min(player.stats.currentThirst, player.stats.maxThirst);
 
         timeManager.onHourChanged.AddListener(hourlyUpdate);
     }
@@ -89,6 +93,7 @@ public class CampManager : MonoBehaviour
     {
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
+        
         player.stats.currentStamina = player.stats.maxStamina;
 
         fadeCoroutine = StartCoroutine(FadeRestScreen(1f, 0f, true));
