@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -22,12 +23,15 @@ public class CampManager : MonoBehaviour
     private bool resting = false;
     private bool eventOccurred = false;
     private bool eventInProgress = false;
-    public float EVENT_HOURLY_CHANCE = 0.03f;
     public int restDuration = 8;
     private int restTimeCounter = 0;
     private int hourForEventTrigger;
     public List<ConsumedResource> foodItems = new List<ConsumedResource>();
     public List<ConsumedResource> drinkItems = new List<ConsumedResource>();
+
+    private float hungerRestoreAmount = 0f;
+    private float thirstRestoreAmount = 0f;
+
     private void Start()
     {
         if(timeManagerGO == null)
@@ -42,11 +46,13 @@ public class CampManager : MonoBehaviour
     }
 
     public void StartRest()
-    {        
-        restScreenText.text = $"Resting - Preparing to sleep...";
+    {
+        player.isResting = true;
+
+        restScreenText.text = $"Preparing camp...";
         
         restTimeCounter = 0;
-        timeManager.SetTimeSpeed(0.5f);
+        timeManager.fastForwardTime();
 
         restScreenPanel.SetActive(true);
         resting = true;
@@ -57,7 +63,8 @@ public class CampManager : MonoBehaviour
         fadeCoroutine = StartCoroutine(FadeRestScreen(0f, 1f, false));
 
         restScreenPanel.GetComponent<RestingUI>().showRestingMessage();
-        if (UnityEngine.Random.value < EVENT_HOURLY_CHANCE * restDuration)
+        Debug.Log($"Player has started resting and evnet chances are {GlobalSettingsManager.EVENT_HOURLY_CHANCE * restDuration}");
+        if (UnityEngine.Random.value < GlobalSettingsManager.EVENT_HOURLY_CHANCE * restDuration)
         {
             eventOccurred = true;
             hourForEventTrigger = Random.Range(1, restDuration + 1);
@@ -72,6 +79,13 @@ public class CampManager : MonoBehaviour
         {
             Debug.Log("No event occurred during rest.");
         }
+
+        player.stats.currentHunger += hungerRestoreAmount;
+        player.stats.currentThirst += thirstRestoreAmount;
+        
+        player.stats.currentHunger = Mathf.Min(player.stats.currentHunger, player.stats.maxHunger);
+        player.stats.currentThirst = Mathf.Min(player.stats.currentThirst, player.stats.maxThirst);
+
         timeManager.onHourChanged.AddListener(hourlyUpdate);
     }
 
@@ -79,14 +93,17 @@ public class CampManager : MonoBehaviour
     {
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
+        
+        player.stats.currentStamina = player.stats.maxStamina;
 
         fadeCoroutine = StartCoroutine(FadeRestScreen(1f, 0f, true));
         restScreenPanel.GetComponent<RestingUI>().hideRestingMessage();
         eventOccurred = false;
         resting = false;
 
-        timeManager.SetTimeSpeed(10f);
-        //timeManager.resume();
+        timeManager.normalTime();
+        
+        player.isResting = false;
     }
 
     private IEnumerator FadeRestScreen(float from, float to, bool disableAtEnd)
@@ -189,6 +206,12 @@ public class CampManager : MonoBehaviour
 
             statsToRestore -= restoredAmount;
         }
+
+        hungerRestoreAmount = 0f;
+        foreach (var consumed in foodItems)
+        {
+            hungerRestoreAmount += consumed.amount * consumed.resourceSO.stat_restore;
+        }
     }
 
     public void CalculateDrink()
@@ -252,6 +275,12 @@ public class CampManager : MonoBehaviour
             );
 
             statsToRestore -= restoredAmount;
+        }
+
+        thirstRestoreAmount = 0f;
+        foreach (var consumed in drinkItems)
+        {
+            thirstRestoreAmount += consumed.amount * consumed.resourceSO.stat_restore;
         }
     }
 
