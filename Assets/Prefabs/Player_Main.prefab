@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 2884730960851164330}
   - component: {fileID: 238209708121339987}
   - component: {fileID: 5046131827875257807}
-  - component: {fileID: 261485871703658884}
   - component: {fileID: 3307194113984905616}
   - component: {fileID: 6235600129664854702}
   - component: {fileID: 6239648524187585581}
   - component: {fileID: 3867667074609649735}
+  - component: {fileID: 879741902398196802}
   m_Layer: 6
   m_Name: Player_Main
   m_TagString: Untagged
@@ -122,7 +122,7 @@ MonoBehaviour:
   thirstDrainMultiplier: 0.1
   hungerDrainMultiplier: 0.1
   currentStamina: 0
-  curretnHunger: 0
+  currentHunger: 0
   currentThirst: 0
   currentHp: 0
   maxHunger: 10
@@ -142,23 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af53227175e03241baf5af5f245d3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement_M
---- !u!114 &261485871703658884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5051323546585759216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79e7bb69f1267dc46bc5ff589ac69ab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInvetory_M
-  currentWeight: 0
-  currentVolume: 0
-  Inventory:
-  - resourceSO: {fileID: 11400000, guid: 1c8f8ca846032ec479d1044edc2c361a, type: 2}
-    amount: 2
 --- !u!114 &3307194113984905616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +271,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.269846, y: 0.046395898}
   m_EdgeRadius: 0
+--- !u!114 &879741902398196802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5051323546585759216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e7bb69f1267dc46bc5ff589ac69ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInvetory_M
+  currentWeight: 0
+  currentVolume: 0
+  Inventory: []
 --- !u!1 &5335545227948498103
 GameObject:
   m_ObjectHideFlags: 0

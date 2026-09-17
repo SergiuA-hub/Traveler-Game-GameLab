@@ -26,19 +26,19 @@ public class PlayerMovement_M : MonoBehaviour
 
         if (IsMoving() && HasStamina())
         {
-            player.stats.moveSpeed = Mathf.MoveTowards(player.stats.moveSpeed, player.stats.MaxSpeeed, player.stats.acceleration * Time.deltaTime);
+            player.stats.baseSpeed = Mathf.MoveTowards(player.stats.baseSpeed, player.stats.MaxSpeeed, player.stats.acceleration * Time.deltaTime);
         }
         else if(!IsMoving() && HasStamina())
         {
-            player.stats.moveSpeed = player.stats.startSpeed;
+            player.stats.baseSpeed = player.stats.startSpeed;
         }else if (!HasStamina())
         {
-            player.stats.moveSpeed = player.stats.exhaustSpeed;
+            player.stats.baseSpeed = player.stats.exhaustSpeed;
         }
 
         float modifierSpeed = player.stats.staminaSpeedModifier * player.stats.consumableSpeedModifier * player.stats.terrainSpeedModifier * player.stats.currentWeightModifier;
         
-        player.stats.moveSpeed *= modifierSpeed;
+        player.stats.moveSpeed = player.stats.baseSpeed * modifierSpeed;
         Vector2 moveInput = player.gameInput.GetMoveVectorNormalized();
 
         player.rb.MovePosition(player.rb.position + moveInput * player.stats.moveSpeed * Time.fixedDeltaTime);

@@ -22,7 +22,7 @@ public class InvetoryItem
         this.averageValue = averageValue;
     }
 }
-public class PlayerInvetory_M : MonoBehaviour
+public class PlayerInventory_M : MonoBehaviour
 {
     private Player_M player;
     public float currentWeight;

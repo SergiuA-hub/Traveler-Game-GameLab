@@ -20,7 +20,7 @@ public class CityUI : MonoBehaviour
     [SerializeField] private Transform Content;
 
     
-    public PlayerInvetory_M playerInvetory;
+    public PlayerInventory_M playerInvetory;
 
     [Header("PAGES")]
     [SerializeField] private GameObject LobbyPanel;
