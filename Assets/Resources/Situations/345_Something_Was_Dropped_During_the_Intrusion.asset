@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ede13e939c1a8146b24d2a82d83d8a3, type: 3}
+  m_Name: 345_Something_Was_Dropped_During_the_Intrusion
+  m_EditorClassIdentifier: Assembly-CSharp::Situation
+  phase: 4
+  nextPhase: 5
+  situationName: Something Was Dropped During the Intrusion
+  act: Inspect the cut bag closely enough to find what was left behind.
+  situationDescription: Near the damaged bag, you find a small unfamiliar bundle
+    dropped by the intruder during the disturbance, separate from the goods you were
+    carrying.
+  RequiredContexts: 2e000000
+  GivenContexts: 
+  RemovedContexts: 
+  outcome: 12

@@ -4,7 +4,9 @@ public class TerrainManager : MonoBehaviour
 {
     public Player_M player;
 
-    public float speedModifier = 1;
+    public float RoadSpeedModifier = 1;
+    public float GrassSpeedModifier = 0.5f; 
+
 
     void Start()
     {
@@ -21,7 +23,14 @@ public class TerrainManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            player.gameObject.GetComponent<PlayerStats_M>().terrainSpeedModifier = speedModifier;
+            player.gameObject.GetComponent<PlayerStats_M>().terrainSpeedModifier = RoadSpeedModifier;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            player.gameObject.GetComponent<PlayerStats_M>().terrainSpeedModifier = GrassSpeedModifier;
         }
     }
 }

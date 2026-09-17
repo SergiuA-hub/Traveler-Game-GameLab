@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ede13e939c1a8146b24d2a82d83d8a3, type: 3}
+  m_Name: 436_Distract_Yourself_with_Camp_Chores
+  m_EditorClassIdentifier: Assembly-CSharp::Situation
+  phase: 1
+  nextPhase: 2
+  situationName: Distract Yourself with Camp Chores
+  act: Get up and busy yourself with small tasks around camp.
+  situationDescription: Rather than eat, you check straps, tidy the fire, and keep
+    your hands occupied.
+  RequiredContexts: 74000000
+  GivenContexts: 75000000
+  RemovedContexts: 
+  outcome: 0

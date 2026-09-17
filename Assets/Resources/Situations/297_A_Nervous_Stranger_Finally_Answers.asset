@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ede13e939c1a8146b24d2a82d83d8a3, type: 3}
+  m_Name: 297_A_Nervous_Stranger_Finally_Answers
+  m_EditorClassIdentifier: Assembly-CSharp::Situation
+  phase: 4
+  nextPhase: 5
+  situationName: A Nervous Stranger Finally Answers
+  act: Wait in silence a little longer for any response.
+  situationDescription: After you stop calling and simply wait, a nervous voice eventually
+    answers from beyond the camp. The stranger keeps their distance, explains that
+    they meant no harm, and leaves the area.
+  RequiredContexts: 9f000000
+  GivenContexts: 
+  RemovedContexts: 
+  outcome: 0

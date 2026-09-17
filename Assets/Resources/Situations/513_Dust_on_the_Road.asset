@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ede13e939c1a8146b24d2a82d83d8a3, type: 3}
+  m_Name: 513_Dust_on_the_Road
+  m_EditorClassIdentifier: Assembly-CSharp::Situation
+  phase: 0
+  nextPhase: 1
+  situationName: Dust on the Road
+  act: Watch the growing dust cloud along the road.
+  situationDescription: A pale cloud of dust rises along the road in the daylight
+    and slowly grows larger. Something is travelling toward this stretch of road,
+    but the dust hides whether it is a lone cart or a larger group.
+  RequiredContexts: 250000003f000000
+  GivenContexts: af000000
+  RemovedContexts: 
+  outcome: 0

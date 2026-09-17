@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ede13e939c1a8146b24d2a82d83d8a3, type: 3}
+  m_Name: 340_No_Second_Answer_Comes
+  m_EditorClassIdentifier: Assembly-CSharp::Situation
+  phase: 4
+  nextPhase: 5
+  situationName: No Second Answer Comes
+  act: Hold the torch signal a while longer before accepting no second answer comes.
+  situationDescription: You signal again and wait, but the distant darkness remains
+    still. No light answers this time.
+  RequiredContexts: 9c000000bd000000
+  GivenContexts: 
+  RemovedContexts: 
+  outcome: 0

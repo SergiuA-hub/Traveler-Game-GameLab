@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ede13e939c1a8146b24d2a82d83d8a3, type: 3}
+  m_Name: 534_The_Dust_Settles_Behind_an_Empty_Road
+  m_EditorClassIdentifier: Assembly-CSharp::Situation
+  phase: 2
+  nextPhase: 3
+  situationName: The Dust Settles Behind an Empty Road
+  act: Stay at camp and wait for the dust to clear on its own.
+  situationDescription: The dust drifts across the road and slowly settles, but whatever
+    raised it has already passed beyond your view. No traveller or cart remains close
+    enough to identify.
+  RequiredContexts: b1000000
+  GivenContexts: a1000000
+  RemovedContexts: 
+  outcome: 0

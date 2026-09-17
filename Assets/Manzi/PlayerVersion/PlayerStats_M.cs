@@ -7,6 +7,7 @@ public class PlayerStats_M : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed;
+    public float baseSpeed = 1f; 
     public float startSpeed;
     public float acceleration;
     public float MaxSpeeed;
