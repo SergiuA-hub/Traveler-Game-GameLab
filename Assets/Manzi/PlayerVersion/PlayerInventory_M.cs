@@ -72,15 +72,13 @@ public class PlayerInventory_M : MonoBehaviour
 
     public void HandleWeightAndVolume()
     {
-        if(player == null|| player.stats == null)
-        {
-            return;
-        }
 
+        currentVolume = 0;
+        currentWeight = 0;
         foreach (var item in Inventory)
         {
 
-            currentVolume += item.resourceSO.volume * GetItemAmount(item);
+           currentVolume += item.resourceSO.volume * GetItemAmount(item);
            currentWeight += item.resourceSO.weight * GetItemAmount(item);
         }
         //Aplly Weight effect on player movement
