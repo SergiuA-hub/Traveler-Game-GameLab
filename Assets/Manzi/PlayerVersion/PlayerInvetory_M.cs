@@ -72,7 +72,10 @@ public class PlayerInvetory_M : MonoBehaviour
 
     public void HandleWeightAndVolume()
     {
-
+        if(player == null|| player.stats == null)
+        {
+            return;
+        }
 
         foreach (var item in Inventory)
         {

@@ -1,8 +1,9 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TradeItemDisplay : MonoBehaviour
+public class TradeItemDisplay : MonoBehaviour,IPointerClickHandler
 {
     public Image itemIcon;
     public TextMeshProUGUI itemNameText;
@@ -30,5 +31,12 @@ public class TradeItemDisplay : MonoBehaviour
     public void SelectCurrentItem()
     {
 
-    } 
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Clicked" );
+    }
+
+    
 }
