@@ -555792,7 +555792,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f0ab8d2e996474e95d7ee153ed60e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
-  hour_duration: 2
   time_stopped: 0
   onHourChanged:
     m_PersistentCalls:
@@ -579397,6 +579396,11 @@ MonoBehaviour:
   currentpage: 0
   itemPrefab: {fileID: 7698181275806001906, guid: 8eb821cee3573cc41bea9cac25c9e540, type: 3}
   Content: {fileID: 1122477985}
+  tradePrfab: {fileID: 0}
+  buyContent: {fileID: 0}
+  tradePlayerPrefab: {fileID: 0}
+  SellContent: {fileID: 0}
+  setlement: {fileID: 0}
   playerInvetory: {fileID: 0}
   LobbyPanel: {fileID: 1971963028}
   ShopPanel: {fileID: 1263581862}
@@ -579414,6 +579418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Setlement
   setlementName: Test Setlement
+  settlementItems: []
   CityObject: {fileID: 1410749856}
   cityUI: {fileID: 0}
   timeManager: {fileID: 932758302}
@@ -582962,7 +582967,6 @@ MonoBehaviour:
   eventsUIManager: {fileID: 1455782817}
   restScreenCanvasGroup: {fileID: 397402721}
   fadeDuration: 1
-  EVENT_HOURLY_CHANCE: 0.03
   restDuration: 10
 --- !u!4 &1579438309
 Transform:
@@ -583428,10 +583432,10 @@ MonoBehaviour:
   player: {fileID: 1297677653}
   ItemPrefab: {fileID: 4876554756627009130, guid: dd232ee2a35f9e547bd83092d98586e3, type: 3}
   ItemList: {fileID: 731914931}
-  weightSlider: {fileID: 1799559096}
-  capSlider: {fileID: 225783775}
-  weightTxt: {fileID: 925960057}
-  capTxt: {fileID: 221342211}
+  weightSlider: {fileID: 0}
+  capSlider: {fileID: 0}
+  weightTxt: {fileID: 0}
+  capTxt: {fileID: 0}
 --- !u!1 &1597827308
 GameObject:
   m_ObjectHideFlags: 0

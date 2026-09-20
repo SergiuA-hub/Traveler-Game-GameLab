@@ -10,12 +10,12 @@ public class VerticalInvetoryItem : MonoBehaviour
 
 
 
-    public void CreateIcon(InvetoryItem invetoryItem)
+    public void CreateIcon(InventoryItem inventoryItem)
     {
     
-        itemNameText.text = invetoryItem.resourceSO.itemName.ToString();
-        itemNameAmountText.text = invetoryItem.amount.ToString();
-        itemIcon.sprite = invetoryItem.resourceSO.sprite; 
+        itemNameText.text = inventoryItem.resourceSO.itemName.ToString();
+        itemNameAmountText.text = inventoryItem.amount.ToString();
+        itemIcon.sprite = inventoryItem.resourceSO.sprite; 
     }
 
     

@@ -12,7 +12,7 @@ public class SettlementItem
 public class Setlement : MonoBehaviour
 {
     [Header("Setlements")]
-    [SerializeField] private string setlementName;
+    [SerializeField] private string settlementName;
     [SerializeField] public List<SettlementItem> settlementItems = new List<SettlementItem>();
 
     [Header("UI")]

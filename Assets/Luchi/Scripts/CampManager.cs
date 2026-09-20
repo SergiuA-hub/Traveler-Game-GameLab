@@ -164,7 +164,7 @@ public class CampManager : MonoBehaviour
         if (statsToRestore <= 0)
             return;
 
-        var tempFoodItems = new List<InvetoryItem>();
+        var tempFoodItems = new List<InventoryItem>();
 
         foreach (var item in player.invetory.Inventory)
         {
@@ -237,7 +237,7 @@ public class CampManager : MonoBehaviour
         if (statsToRestore <= 0)
             return;
 
-        var tempDrinkItems = new List<InvetoryItem>();
+        var tempDrinkItems = new List<InventoryItem>();
 
         foreach (var item in player.invetory.Inventory)
         {

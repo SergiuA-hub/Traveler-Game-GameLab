@@ -23,7 +23,7 @@ public class DisplayInventoryItem : MonoBehaviour
     {
         
     }
-    public void Setup(InvetoryItem invetoryItem)
+    public void Setup(InventoryItem invetoryItem)
     {
         amntText.text = invetoryItem.amount.ToString();
         nameText.text = invetoryItem.resourceSO.itemName;

@@ -8,8 +8,8 @@ public class ResourceListPrefab : MonoBehaviour
     public TMP_Text resourceName;
     public TMP_Text resourceAmount;
     public TMP_Text info;
-    private InvetoryItem inv_item;
-    public void Setup(InvetoryItem item)
+    private InventoryItem inv_item;
+    public void Setup(InventoryItem item)
     {
         inv_item = item;
         resourceImage.sprite = item.resourceSO.sprite;

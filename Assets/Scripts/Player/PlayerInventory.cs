@@ -6,7 +6,7 @@ public class PlayerInventory : MonoBehaviour
 {
     
     
-[SerializeField] public List<InvetoryItem> Inventory = new List<InvetoryItem>();
+[SerializeField] public List<InventoryItem> Inventory = new List<InventoryItem>();
     
 
     
@@ -43,7 +43,7 @@ public class PlayerInventory : MonoBehaviour
     public void AddItem(ResourceSO resource, int amount = 1)
     {
         
-        InvetoryItem existingItem = Inventory.Find(x => x.resourceSO == resource);
+        InventoryItem existingItem = Inventory.Find(x => x.resourceSO == resource);
 
 
         if (existingItem != null)
@@ -52,7 +52,7 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
-            Inventory.Add(new InvetoryItem(resource, amount));
+            Inventory.Add(new InventoryItem(resource, amount));
         }
 
 
@@ -60,7 +60,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void Remove(ResourceSO resource, int amount = 1)
     {
-        InvetoryItem existingItem = Inventory.Find(x => x.resourceSO == resource);
+        InventoryItem existingItem = Inventory.Find(x => x.resourceSO == resource);
 
         if (existingItem == null) return;
 
@@ -119,7 +119,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public int GetItemAmount(InvetoryItem item)
+    public int GetItemAmount(InventoryItem item)
     {
 
         return item.amount;

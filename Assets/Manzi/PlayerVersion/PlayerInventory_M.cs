@@ -2,20 +2,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class InvetoryItem
+public class InventoryItem
 {
     public ResourceSO resourceSO;
     public int amount;
     public float averageValue;
 
-    public InvetoryItem(ResourceSO resourceSO, int amount)
+    public InventoryItem(ResourceSO resourceSO, int amount)
     {
         this.resourceSO = resourceSO;
         this.amount = amount;
         this.averageValue = resourceSO.baseValue;
 
     }
-    public InvetoryItem(ResourceSO resourceSO, int amount, float averageValue)
+    public InventoryItem(ResourceSO resourceSO, int amount, float averageValue)
     {
         this.resourceSO = resourceSO;
         this.amount = amount;
@@ -28,7 +28,7 @@ public class PlayerInventory_M : MonoBehaviour
     public float currentWeight;
     public float currentVolume;
 
-    [SerializeField] public List<InvetoryItem> Inventory = new List<InvetoryItem>();
+    [SerializeField] public List<InventoryItem> Inventory = new List<InventoryItem>();
 
     private void Start()
     {
@@ -38,7 +38,7 @@ public class PlayerInventory_M : MonoBehaviour
     public void AddItem(ResourceSO resource, int amount = 1)
     {
 
-        InvetoryItem existingItem = Inventory.Find(x => x.resourceSO == resource);
+        InventoryItem existingItem = Inventory.Find(x => x.resourceSO == resource);
 
 
         if (existingItem != null)
@@ -47,7 +47,7 @@ public class PlayerInventory_M : MonoBehaviour
         }
         else
         {
-            Inventory.Add(new InvetoryItem(resource, amount));
+            Inventory.Add(new InventoryItem(resource, amount));
         }
 
 
@@ -55,7 +55,7 @@ public class PlayerInventory_M : MonoBehaviour
 
     public void Remove(ResourceSO resource, int amount = 1)
     {
-        InvetoryItem existingItem = Inventory.Find(x => x.resourceSO == resource);
+        InventoryItem existingItem = Inventory.Find(x => x.resourceSO == resource);
 
         if (existingItem == null) return;
 
@@ -104,7 +104,7 @@ public class PlayerInventory_M : MonoBehaviour
         }
     }
 
-    public int GetItemAmount(InvetoryItem item)
+    public int GetItemAmount(InventoryItem item)
     {
 
         return item.amount;
