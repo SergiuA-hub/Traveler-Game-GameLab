@@ -1,3 +1,4 @@
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 
@@ -6,19 +7,17 @@ public class Player_M : MonoBehaviour
     //Backpack
     [SerializeField] private Backpack currentBackpack;
 
+    public bool isResting = false;
+    public bool rooted = false;
 
     //Components
     public PlayerStats_M stats;
     public PlayerMovement_M move;
-    public PlayerInvetory_M invetory;
+    public PlayerInventory_M invetory;
     public PlayerVisual_M visual;
     public Rigidbody2D rb;
     public GameInput gameInput;
-    public TimeManager timeManager;
-
-
-   
-    
+    public TimeManager timeManager;      
     
     public float moveCounter = 0;
     public float stationaryCounter = 0;
@@ -29,7 +28,7 @@ public class Player_M : MonoBehaviour
         //Player Components
         stats = GetComponent<PlayerStats_M>();
         move = GetComponent<PlayerMovement_M>();
-        invetory = GetComponent<PlayerInvetory_M>();
+        invetory = GetComponent<PlayerInventory_M>();
         visual = GetComponent<PlayerVisual_M>();
 
         //OtherComponents
@@ -44,15 +43,40 @@ public class Player_M : MonoBehaviour
 
     private void Update()
     {
-        //Drain stats on hour, based of movement
-        DrainStatOnHour(ref stats.currentStamina,stats.staminaDrainMultiplier,stats.StationanryDrainMultiplier);
-        DrainStatOnHour(ref stats.currentThirst,stats.thirstDrainMultiplier,stats.thirstDrainMultiplier);
-        DrainStatOnHour(ref stats.currentHunger,stats.hungerDrainMultiplier, stats.hungerDrainMultiplier);
+        if(timeManager.time_stopped)
+            return;
 
-        //CurrentStaminaDrainModifier
-        CalculateStaminaDrain();
+        if(isResting)
+            return;
 
+        if (move.IsMoving() && !rooted)
+        {
+            Debug.Log("MOVING");
+            stats.currentStamina -= (stats.BASE_STAMINA_DROP_PER_H * stats.currentStaminaDrainMultiplier / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;            
+            stats.currentThirst -= (stats.THIRST_DRAIN_PER_H / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;
+        }
+        else
+        {
+            Debug.Log("IDLE");
+            stats.currentStamina -= (stats.BASE_STAMINA_IDLE_DRAIN * stats.currentStaminaDrainMultiplier / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;
+            stats.currentThirst -= (stats.BASE_THIRST_IDLE_DRAIN / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;
+        }
 
+        //not related to movement, but still needs to be updated
+        stats.currentHunger -= (stats.HUNGER_DRAIN_PER_H / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;
+
+        //update stamina drain multiplier based on hunger and thirst thresholds
+        if (stats.currentThirst < GlobalSettingsManager.PLAYER_THIRST_THRESHOLD || stats.currentHunger < GlobalSettingsManager.PLAYER_HUNGER_THRESHOLD)
+        {
+            float thirsP = stats.currentThirst<GlobalSettingsManager.PLAYER_THIRST_THRESHOLD ? stats.THIRST_PENALTY : 0f;
+            float hungerP = stats.currentHunger < GlobalSettingsManager.PLAYER_HUNGER_THRESHOLD ? stats.HUNGER_PENALTY : 0f;
+
+            stats.currentStaminaDrainMultiplier = stats.STAMINA_DRAIN_MULTIPLIER + thirsP + hungerP;
+        }else stats.currentStaminaDrainMultiplier = stats.STAMINA_DRAIN_MULTIPLIER;
+
+        stats.currentStamina = Mathf.Max(0, stats.currentStamina);
+        stats.currentHunger = Mathf.Max(0, stats.currentHunger);
+        stats.currentThirst = Mathf.Max(0, stats.currentThirst);
     }
 
     //Publics 
@@ -60,53 +84,6 @@ public class Player_M : MonoBehaviour
     {
         stats.maxVolume = currentBackpack.GetVolume();
         stats.maxWeight = currentBackpack.GetVolume();
-    }
-
-
-    //Handle Stats
-
-
-    private void DrainStatOnHour(ref float stat,float drain,float idleDrain)
-    {
-        
-
-            if (move.IsMoving())
-            {
-                moveCounter += Time.deltaTime;
-                if(moveCounter>= timeManager.hour_duration)
-                {
-                   
-                    stat -= drain;
-                    ResetCounters();
-                }
-
-            }
-            else
-            {
-                stationaryCounter += Time.deltaTime;
-                
-                if(stationaryCounter>= timeManager.hour_duration)
-                {
-                     stat -= idleDrain;
-                    ResetCounters();
-                }
-            }
-
-    }
-    private void CalculateStaminaDrain()
-    {
-        stats.currentStaminaDrainMultiplier *= 1 ;
-        if(stats.currentThirst <= 0 || stats.currentHunger <= 0)
-        {
-            stats.currentStaminaDrainMultiplier *= stats.hungerDrainMultiplier + stats.thirstDrainMultiplier;
-        }
-
-    }
-
-    private void ResetCounters()
-    {
-        moveCounter = 0;
-        stationaryCounter = 0;
     }
 
     // ------HP------ 

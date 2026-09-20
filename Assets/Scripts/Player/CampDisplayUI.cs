@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,7 +35,8 @@ public class CampDisplayUI : MonoBehaviour
 
     public void OnEnable()
     {
-        cleanSupplies();       
+        cleanSupplies();
+        player.rooted = true;
 
         HP_Text.text = $" {player.stats.currentHp} / {player.stats.maxHp}";
         stamina_text.text = $" {player.stats.currentStamina} / {player.stats.maxStamina}";
@@ -109,6 +111,11 @@ public class CampDisplayUI : MonoBehaviour
     public void startResting()
     {
         campManager.StartRest();
+    }
+
+    public void unRootPlayer()
+    {
+        player.rooted = false;
     }
 
     public void OnDisable()

@@ -5,7 +5,7 @@ public class InventoryDisplayUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
     public Player_M player;
-    private PlayerInvetory_M inventory;
+    private PlayerInventory_M inventory;
     public GameObject ItemPrefab;
     public GameObject ItemList;
 
