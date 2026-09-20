@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ede13e939c1a8146b24d2a82d83d8a3, type: 3}
+  m_Name: 529_The_Birds_Keep_Returning_to_a_Traveller's_Pack
+  m_EditorClassIdentifier: Assembly-CSharp::Situation
+  phase: 2
+  nextPhase: 3
+  situationName: The Birds Keep Returning to a Traveller's Pack
+  act: Keep watching the ground beneath the birds until you can tell what is attracting
+    them.
+  situationDescription: Watching from camp, you eventually notice a traveller resting
+    in the grass below the birds. The birds are interested in an open food bag beside
+    their pack. The traveller notices your camp, gathers the bag, and cautiously
+    walks closer.
+  RequiredContexts: 1f000000
+  GivenContexts: e6000000
+  RemovedContexts: 
+  outcome: 0

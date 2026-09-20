@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ede13e939c1a8146b24d2a82d83d8a3, type: 3}
+  m_Name: 66_Someone_Knows_Your_Name
+  m_EditorClassIdentifier: Assembly-CSharp::Situation
+  phase: 2
+  nextPhase: 3
+  situationName: Someone Knows Your Name
+  act: Check the ground and surroundings carefully.
+  situationDescription: A stranger hidden from view answers your call by using your
+    name before you have introduced yourself.
+  RequiredContexts: 240000006f000000
+  GivenContexts: c7000000
+  RemovedContexts: ea000000
+  outcome: 0

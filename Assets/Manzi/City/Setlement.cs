@@ -1,18 +1,19 @@
-using System;
-using Unity.VisualScripting;
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 [System.Serializable]
-public class SeltelmentItem
+public class SettlementItem
 {
-    ResourceSO resourceSO;
-    int amount;
-    int Price;
+    public ResourceSO resourceSO;
+    public int amount;
+    public int price;
 
 }
 public class Setlement : MonoBehaviour
 {
     [Header("Setlements")]
     [SerializeField] private string setlementName;
+    [SerializeField] public List<SettlementItem> settlementItems = new List<SettlementItem>();
 
     [Header("UI")]
     [SerializeField] private GameObject CityObject;
@@ -26,8 +27,11 @@ public class Setlement : MonoBehaviour
     {
         cityUI = GetComponent<CityUI>();
     }
-    
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //player in range
+    }
 
 
 }

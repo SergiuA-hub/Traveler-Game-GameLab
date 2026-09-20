@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ede13e939c1a8146b24d2a82d83d8a3, type: 3}
+  m_Name: 495_Nothing_Returns_Along_the_Tracks
+  m_EditorClassIdentifier: Assembly-CSharp::Situation
+  phase: 4
+  nextPhase: 5
+  situationName: Nothing Returns Along the Tracks
+  act: Watch the marked trail briefly before returning to rest.
+  situationDescription: You keep the trail under observation from camp, but nothing
+    follows the tracks back toward the fire. Eventually the area settles again.
+  RequiredContexts: 14000000
+  GivenContexts: 
+  RemovedContexts: 
+  outcome: 0

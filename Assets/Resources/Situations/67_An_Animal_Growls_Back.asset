@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ede13e939c1a8146b24d2a82d83d8a3, type: 3}
+  m_Name: 67_An_Animal_Growls_Back
+  m_EditorClassIdentifier: Assembly-CSharp::Situation
+  phase: 2
+  nextPhase: 3
+  situationName: An Animal Growls Back
+  act: Hold position and listen for the animal's response.
+  situationDescription: A low growl answers your voice from somewhere beyond the
+    camp.
+  RequiredContexts: 1000000024000000
+  GivenContexts: 04000000060000006300000086000000
+  RemovedContexts: ea000000
+  outcome: 0

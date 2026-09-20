@@ -1,6 +1,4 @@
-using System;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
+
 using UnityEngine;
 public enum CityUIPage
 {
@@ -16,10 +14,22 @@ public class CityUI : MonoBehaviour
 {
 
     public CityUIPage currentpage;
+    [Header("Lobby Panel")]
+    
     [SerializeField] private VerticalInvetoryItem itemPrefab;
     [SerializeField] private Transform Content;
 
+    [Header("Trade Panel")]
+
+    //BUY
+    [SerializeField] private TradeItemDisplay tradePrfab;
+    [SerializeField] private Transform buyContent;
     
+    //Sell
+
+    [SerializeField] private TradeItemDisplay tradePlayerPrefab;
+    [SerializeField] private Transform SellContent;
+    public Setlement setlement;
     public PlayerInvetory_M playerInvetory;
 
     [Header("PAGES")]
@@ -27,7 +37,10 @@ public class CityUI : MonoBehaviour
     [SerializeField] private GameObject ShopPanel;
     [SerializeField] private GameObject TradePanel;
 
-
+    private void Awake()
+    {
+        setlement = GetComponent<Setlement>();
+    }
     private void OnEnable()
     {
         ShowCurrentPage(currentpage);
@@ -55,7 +68,7 @@ public class CityUI : MonoBehaviour
                
                 break;
             case CityUIPage.Trade:
-               
+                DisplayTrade();
                 break;
             case CityUIPage.TradeGuild:
 
@@ -86,6 +99,23 @@ public class CityUI : MonoBehaviour
             row.CreateIcon(item);
         }
     }
+
+    private void DisplayTrade()
+    {
+        foreach(SettlementItem item in setlement.settlementItems)
+        {
+            TradeItemDisplay row = Instantiate(tradePrfab, buyContent);
+            row.PopulateIcon(item);
+        }
+
+        foreach (InvetoryItem item in playerInvetory.Inventory)
+        {
+            TradeItemDisplay row = Instantiate(tradePlayerPrefab, SellContent);
+            row.PopulateSellIcon(item);
+        }
+    }
+
+   
 
     //BUTTONS FUNCTIONS
     public void ChangePage(int pageIndex)
