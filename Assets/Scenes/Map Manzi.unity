@@ -2347,7 +2347,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2109485012}
   m_HandleRect: {fileID: 2109485011}
   m_Direction: 2
-  m_Value: -0.000001992867
+  m_Value: 0
   m_Size: 0.846866
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -552839,6 +552839,22 @@ PrefabInstance:
       propertyPath: thirstDrainMultiplier
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: CurrentCoins
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: Inventory.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: Inventory.Array.data[0].amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+      propertyPath: Inventory.Array.data[0].resourceSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 756e0e972a38b684196571473f7ae534, type: 2}
     - target: {fileID: 2884730960851164330, guid: aa58115cd10123a4083e5244295e0465, type: 3}
       propertyPath: gameInput
       value: 
@@ -553951,7 +553967,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 153.13426}
+  m_AnchoredPosition: {x: 0, y: 153.1339}
   m_SizeDelta: {x: 0, y: 1000}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &689429028
@@ -560894,7 +560910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 153.13426}
+  m_AnchoredPosition: {x: 0, y: 153.1339}
   m_SizeDelta: {x: 0, y: 1000}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1068705436
@@ -563713,7 +563729,7 @@ MonoBehaviour:
   tradePlayerPrefab: {fileID: 6307333992456499657, guid: 1736463a4b3435c42ba05194d6e8ff62, type: 3}
   SellContent: {fileID: 1068705435}
   setlement: {fileID: 0}
-  playerInventory: {fileID: 0}
+  playerInventory: {fileID: 1297677654}
   playerCoinsDisplay: {fileID: 1043576221}
   currentTradeItemImage: {fileID: 1355089858}
   currentTradeItemName: {fileID: 1355089856}
@@ -563773,8 +563789,8 @@ MonoBehaviour:
   CityObjectUI: {fileID: 1005486575}
   currentItemSelected: {fileID: 0}
   cityUI: {fileID: 0}
-  timeManager: {fileID: 0}
-  player: {fileID: 0}
+  timeManager: {fileID: 932758302}
+  player: {fileID: 1297677653}
 --- !u!61 &1225482062
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -565567,6 +565583,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc9064744276ff458f02ff83f5c03e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_M
+--- !u!114 &1297677654 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 879741902398196802, guid: aa58115cd10123a4083e5244295e0465, type: 3}
+  m_PrefabInstance: {fileID: 644121260}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e7bb69f1267dc46bc5ff589ac69ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInvetory_M
 --- !u!1001 &1299608139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -590108,7 +590135,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 96139910}
   m_HandleRect: {fileID: 96139909}
   m_Direction: 2
-  m_Value: -0.000001992867
+  m_Value: 0
   m_Size: 0.846866
   m_NumberOfSteps: 0
   m_OnValueChanged:
