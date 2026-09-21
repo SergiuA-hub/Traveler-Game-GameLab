@@ -1,4 +1,3 @@
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 
@@ -38,12 +37,14 @@ public class Player_M : MonoBehaviour
     private void Start()
     {
         GetBackpackMax();
-        invetory.HandleWeightAndVolume();
+        
     }
+    
 
     private void Update()
     {
-        if(timeManager.time_stopped)
+        invetory.HandleWeightAndVolume();
+        if (timeManager.time_stopped)
             return;
 
         if(isResting)

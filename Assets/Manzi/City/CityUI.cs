@@ -35,7 +35,10 @@ public class CityUI : MonoBehaviour
     public PlayerInventory_M playerInventory;
 
     [Header("Current Trade Item Display")]
-    [SerializeField] private CurrentItemDisplay currentItemDisplay;
+    [SerializeField] private TradeItemDisplay currentItemDisplay;
+    [SerializeField] private Image currentTradeItemImage;
+    [SerializeField] private TextMeshProUGUI currentTradeItemName;
+
     
 
     [Header("PAGES")]
@@ -111,22 +114,32 @@ public class CityUI : MonoBehaviour
         foreach(SettlementItem item in setlement.settlementItems)
         {
             TradeItemDisplay row = Instantiate(tradePrfab, buyContent);
-            row.SetCityUI(this);
-            row.PopulateIcon(item);
+            
+            row.PopulateIcon(item,this);
         }
 
         foreach (InventoryItem item in playerInventory.Inventory)
         {
             TradeItemDisplay row = Instantiate(tradePlayerPrefab, SellContent);
-            row.SetCityUI(this);
-            row.PopulateSellIcon(item);
+            
+            row.PopulateSellIcon(item,this);
         }
     }
-    public void DisplayCurrentTradeItem(TradeItemDisplay displayItem)
-    {
-        currentItemDisplay.DisplayCurrentItem(displayItem);
 
+    public void SetCurrentTradeItem(TradeItemDisplay item)
+    {
+        Debug.Log("Current item: " + item.itemNameText.text);
+        
+        currentTradeItemImage.sprite = item.itemIcon.sprite;
+        currentTradeItemName.text = item.itemNameText.text;
+        
     }
+
+    private void UpdateCurrentTradeItem()
+    {
+        
+    }
+
 
 
     //BUTTONS FUNCTIONS

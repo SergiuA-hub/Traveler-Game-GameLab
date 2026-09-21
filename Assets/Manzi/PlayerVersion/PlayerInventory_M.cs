@@ -83,7 +83,7 @@ public class PlayerInventory_M : MonoBehaviour
         }
         //Aplly Weight effect on player movement
 
-        if (currentWeight > 0 && currentWeight <= player.stats.maxWeight / 2)
+        if (currentWeight <= player.stats.maxWeight / 2)
         {
             player.stats.currentWeightModifier= player.stats.TierIMoveModifier;
             
