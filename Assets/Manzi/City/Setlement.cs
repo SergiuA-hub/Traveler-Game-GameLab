@@ -19,8 +19,6 @@ public class Setlement : MonoBehaviour
     [SerializeField] private string settlementName;
     [SerializeField] public List<SettlementItem> settlementItems = new List<SettlementItem>();
 
-
-
     [Header("UI")]
     public GameObject CityObjectUI;
     public TradeItemDisplay currentItemSelected;
@@ -44,17 +42,14 @@ public class Setlement : MonoBehaviour
     {
         cityUI = GetComponent<CityUI>();
         CityObjectUI.SetActive(false);
-
-        
-       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer(playerLayer))
-        {
-            CityObjectUI.SetActive(true);
-        }
+        //if(collision.gameObject.layer == LayerMask.NameToLayer(playerLayer))
+        //{
+        //    CityObjectUI.SetActive(true);
+        //}
     }
 
 

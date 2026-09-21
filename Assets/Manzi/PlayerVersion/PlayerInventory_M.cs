@@ -74,6 +74,8 @@ public class PlayerInventory_M : MonoBehaviour
 
     public void HandleWeightAndVolume()
     {
+        if (player == null)
+            return;
 
         currentVolume = 0;
         currentWeight = 0;
