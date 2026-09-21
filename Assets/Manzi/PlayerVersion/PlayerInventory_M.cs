@@ -24,7 +24,9 @@ public class InventoryItem
 }
 public class PlayerInventory_M : MonoBehaviour
 {
+
     private Player_M player;
+    public float CurrentCoins;
     public float currentWeight;
     public float currentVolume;
 
@@ -110,5 +112,28 @@ public class PlayerInventory_M : MonoBehaviour
         return item.amount;
     }
     
+    public bool CanCarry(float volume,float weight)
+    {
+        if (currentVolume + volume <= player.stats.maxVolume || currentWeight + weight<= player.stats.maxWeight)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
+
+
+    //Coins funcs 
+
+    public void Sell(float amount)
+    {
+        CurrentCoins += amount;
+    }
+    public void Buy(float amount)
+    {
+        CurrentCoins += amount;
+    }
 }

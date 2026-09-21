@@ -10,15 +10,22 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
     public TextMeshProUGUI itemNameText;
     public TextMeshProUGUI itemNameAmountText;
     public TextMeshProUGUI itemPriceText;
+
+    //Items Data
+    public SettlementItem tradeSettlementItem;
+    public InventoryItem tradeInventoryItem;
     public CityUI cityUI;
 
-    public void PopulateIcon(SettlementItem settlementItem,CityUI UI)
+    public void PopulateBuyIcon(SettlementItem settlementItem,CityUI UI)
     {
+       
         itemNameText.text = settlementItem.resourceSO.itemName.ToString();
         itemNameAmountText.text = settlementItem.amount.ToString();
         itemPriceText.text = settlementItem.price.ToString();
         itemIcon.sprite = settlementItem.resourceSO.sprite;
         cityUI = UI;
+        tradeSettlementItem = settlementItem;
+        tradeInventoryItem = null;
     }
 
     public void PopulateSellIcon(InventoryItem inventoryItem,CityUI UI)
@@ -28,6 +35,8 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
         itemPriceText.text = inventoryItem.resourceSO.baseValue.ToString();
         itemIcon.sprite = inventoryItem.resourceSO.sprite;
         cityUI = UI;
+        tradeInventoryItem = inventoryItem;
+        tradeSettlementItem = null;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -35,10 +44,9 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
         cityUI.SetCurrentTradeItem(this);
     }
 
-   
 
-    public void SetCityUI(CityUI city)
+    private void CalculatePrice()
     {
-        this.cityUI = city;
+
     }
 }

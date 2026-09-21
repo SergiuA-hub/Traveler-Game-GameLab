@@ -21,23 +21,30 @@ public class CityUI : MonoBehaviour
     [SerializeField] private VerticalInvetoryItem itemPrefab;
     [SerializeField] private Transform Content;
 
-    [Header("Trade Panel")]
+    [Header("Buy")]
 
     //BUY
     [SerializeField] private TradeItemDisplay tradePrfab;
     [SerializeField] private Transform buyContent;
-    
-    //Sell
 
+    //Sell
+    [Header("Sell")]
     [SerializeField] private TradeItemDisplay tradePlayerPrefab;
     [SerializeField] private Transform SellContent;
+
+    //Components
     public Setlement setlement;
     public PlayerInventory_M playerInventory;
 
+    //Player money
+    [SerializeField] private TextMeshProUGUI playerCoinsDisplay;
+
+
     [Header("Current Trade Item Display")]
-    [SerializeField] private TradeItemDisplay currentItemDisplay;
+    
     [SerializeField] private Image currentTradeItemImage;
     [SerializeField] private TextMeshProUGUI currentTradeItemName;
+    [SerializeField] private TextMeshProUGUI currentTradeItemPrice;
 
     
 
@@ -55,9 +62,11 @@ public class CityUI : MonoBehaviour
         ShowCurrentPage(currentpage);
     }
 
-    
-
-    
+    private void Update()
+    {
+        DisplayPlayerCoins();
+        
+    }
 
     private void ShowCurrentPage(CityUIPage page)
     {
@@ -93,29 +102,54 @@ public class CityUI : MonoBehaviour
         }
     }
 
-    
-    
-  
 
-    //Lobby 
+    //############
+    //LOBBY AREA
+    //############
 
     private void DisplayInvetory()
     {
-        
+        //Delete List
+        foreach(Transform child in Content)
+        {
+            Destroy(child.gameObject);
+        }
+
+
+        //Create List   
         foreach (InventoryItem item in playerInventory.Inventory)
         {
             VerticalInvetoryItem row = Instantiate(itemPrefab, Content);
             row.CreateIcon(item);
         }
     }
-    //Trade 
-    private void DisplayTrade()
+
+
+    //############
+    //TRADE AREA
+    //############
+
+    public void DisplayTrade()
     {
+        //Populate Player Money
+        DisplayPlayerCoins();
+        //Delete List 
+        foreach(Transform child in buyContent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach(Transform child in SellContent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        //Create list
         foreach(SettlementItem item in setlement.settlementItems)
         {
             TradeItemDisplay row = Instantiate(tradePrfab, buyContent);
             
-            row.PopulateIcon(item,this);
+            row.PopulateBuyIcon(item,this);
         }
 
         foreach (InventoryItem item in playerInventory.Inventory)
@@ -124,21 +158,27 @@ public class CityUI : MonoBehaviour
             
             row.PopulateSellIcon(item,this);
         }
+
+        
+    }
+
+    public void DisplayPlayerCoins()
+    {
+     playerCoinsDisplay.text= ": "+playerInventory.CurrentCoins.ToString();   
     }
 
     public void SetCurrentTradeItem(TradeItemDisplay item)
     {
-        Debug.Log("Current item: " + item.itemNameText.text);
         
+        setlement.currentItemSelected= item;
         currentTradeItemImage.sprite = item.itemIcon.sprite;
         currentTradeItemName.text = item.itemNameText.text;
         
-    }
-
-    private void UpdateCurrentTradeItem()
-    {
         
     }
+
+
+   
 
 
 
@@ -148,5 +188,9 @@ public class CityUI : MonoBehaviour
         ShowCurrentPage((CityUIPage)pageIndex);
     }
 
-    
+    public void LeaveSettlement()
+    {
+        ChangePage(0);
+        setlement.CityObjectUI.SetActive(false);
+    }
 }

@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class PlayerStats_M : MonoBehaviour
 {
-    [Header("Coins")]
-    public int playerCoins;
+   
 
     [Header("Movement")]
     public float moveSpeed;
