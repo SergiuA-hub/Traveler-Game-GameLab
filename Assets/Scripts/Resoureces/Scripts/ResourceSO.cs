@@ -16,7 +16,7 @@ public class ResourceSO : ScriptableObject
     public GameObject CityDisplayPrefab;
     public ResourceType resourceType;
 
-    public int baseValue;
+    public float baseValue;
     public int amount;
     public float weight;
     public float volume;

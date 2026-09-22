@@ -16,6 +16,8 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
     public InventoryItem tradeInventoryItem;
     public CityUI cityUI;
 
+
+    
     public void PopulateBuyIcon(SettlementItem settlementItem,CityUI UI)
     {
        
@@ -45,8 +47,5 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
     }
 
 
-    private void CalculatePrice()
-    {
-
-    }
+    
 }

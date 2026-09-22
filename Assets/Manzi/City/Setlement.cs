@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
@@ -8,6 +8,7 @@ public class SettlementItem
     public int amount;
     public int dailyProduce;
     public int dailyConsume;
+    public int STARTING_STOCK;
     public int MAX_STOCK;
     public int MIN_STOCK;
     public int price;
@@ -18,6 +19,8 @@ public class Setlement : MonoBehaviour
     [Header("Setlements")]
     [SerializeField] private string settlementName;
     [SerializeField] public List<SettlementItem> settlementItems = new List<SettlementItem>();
+
+
 
     [Header("UI")]
     public GameObject CityObjectUI;
@@ -42,14 +45,18 @@ public class Setlement : MonoBehaviour
     {
         cityUI = GetComponent<CityUI>();
         CityObjectUI.SetActive(false);
+        SetStartAmount();
+
+        
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if(collision.gameObject.layer == LayerMask.NameToLayer(playerLayer))
-        //{
-        //    CityObjectUI.SetActive(true);
-        //}
+        if(collision.gameObject.layer == LayerMask.NameToLayer(playerLayer))
+        {
+            CityObjectUI.SetActive(true);
+        }
     }
 
 
@@ -57,7 +64,7 @@ public class Setlement : MonoBehaviour
     {
         foreach (var item in settlementItems) 
         {
-        
+            
         }
     }
 
@@ -80,7 +87,7 @@ public class Setlement : MonoBehaviour
             {
                 player.invetory.AddItem(currentItemSelected.tradeSettlementItem.resourceSO);
                 player.invetory.Buy(currentItemSelected.tradeSettlementItem.price);
-
+                currentItemSelected.tradeSettlementItem.amount = -1;
                 //Display
                 cityUI.DisplayTrade();
                 cityUI.DisplayPlayerCoins();
@@ -92,7 +99,7 @@ public class Setlement : MonoBehaviour
         //Sell
         if (currentItemSelected.tradeInventoryItem != null)
         {
-            
+            currentItemSelected.tradeInventoryItem.amount = -1;
             player.invetory.Remove(currentItemSelected.tradeSettlementItem.resourceSO);
             player.invetory.Sell(currentItemSelected.tradeSettlementItem.price);
             
@@ -102,5 +109,11 @@ public class Setlement : MonoBehaviour
             return;
         }
     }
-
+    private void SetStartAmount()
+    {
+        foreach(SettlementItem item in settlementItems)
+        {
+            item.amount = item.STARTING_STOCK;
+        }
+    }
 }
