@@ -43,7 +43,7 @@ public class Player_M : MonoBehaviour
 
     private void Update()
     {
-        invetory.HandleWeightAndVolume();
+        
         if (timeManager.time_stopped)
             return;
 
@@ -78,6 +78,10 @@ public class Player_M : MonoBehaviour
         stats.currentThirst = Mathf.Max(0, stats.currentThirst);
     }
 
+    public void LateUpdate()
+    {
+        invetory.HandleWeightAndVolume();
+    }
     //Publics 
     public void GetBackpackMax()
     {
