@@ -49,7 +49,7 @@ public class CampManager : MonoBehaviour
     public void StartRest()
     {
         player.isResting = true;
-        player.rooted = true;
+        player.Root();
 
         restScreenText.text = $"Preparing camp...";
         
@@ -113,7 +113,7 @@ public class CampManager : MonoBehaviour
         timeManager.normalTime();
         
         player.isResting = false;
-        player.rooted = false;
+        player.UnRoot();
     }
 
     private IEnumerator FadeRestScreen(float from, float to, bool disableAtEnd)

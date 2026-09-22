@@ -2966,7 +2966,6 @@ MonoBehaviour:
   settlementsManager: {fileID: 2027388441}
   currentSettlement:
     settlementName: 
-    defaultSettlement: {fileID: 0}
     settlementStock: []
     settlementGo: {fileID: 0}
   currentpage: 0
@@ -552107,30 +552106,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1297677653}
-        m_TargetAssemblyTypeName: Player_M, Assembly-CSharp
-        m_MethodName: Root
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 932758302}
-        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
-        m_MethodName: pause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &700676058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560745,18 +560720,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1297677653}
-        m_TargetAssemblyTypeName: Player_M, Assembly-CSharp
-        m_MethodName: UnRoot
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -579557,7 +579520,6 @@ MonoBehaviour:
   settlementsManager: {fileID: 0}
   currentSettlement:
     settlementName: 
-    defaultSettlement: {fileID: 0}
     settlementStock: []
     settlementGo: {fileID: 0}
   currentpage: 0
@@ -581918,30 +581880,6 @@ MonoBehaviour:
       - m_Target: {fileID: 159374776}
         m_TargetAssemblyTypeName: CityUI, Assembly-CSharp
         m_MethodName: LeaveSettlement
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1297677653}
-        m_TargetAssemblyTypeName: Player_M, Assembly-CSharp
-        m_MethodName: UnRoot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 932758302}
-        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
-        m_MethodName: resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -589740,8 +589678,8 @@ MonoBehaviour:
   - settlementSo: {fileID: 11400000, guid: 3865eccc54f10a4468cd7fb4b17dc00f, type: 2}
     settlmentGo: {fileID: 569014043}
   settlements: []
-  currentItemSelected: {fileID: 0}
   timeManager: {fileID: 932758302}
+  currentItemSelected: {fileID: 0}
 --- !u!4 &2027388442
 Transform:
   m_ObjectHideFlags: 0

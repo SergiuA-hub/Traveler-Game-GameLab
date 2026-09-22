@@ -1,4 +1,3 @@
-
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,11 +9,13 @@ public enum CityUIPage
     TradeGuild=3,
     CartManagment=4,
     Rest =5
-
 }
+
+[System.Serializable]
 public class CityUI : MonoBehaviour
 {
-
+    public SettlementsManager settlementsManager;
+    public SettlementRuntime currentSettlement;
     public CityUIPage currentpage;
     [Header("Lobby Panel")]
     
@@ -59,6 +60,7 @@ public class CityUI : MonoBehaviour
     }
     private void OnEnable()
     {
+        setlement = GetComponent<Setlement>();        
         ShowCurrentPage(currentpage);
     }
 
@@ -133,33 +135,33 @@ public class CityUI : MonoBehaviour
     {
         //Populate Player Money
         DisplayPlayerCoins();
-        //Delete List 
-        foreach(Transform child in buyContent)
+
+        foreach (Transform child in buyContent)
         {
             Destroy(child.gameObject);
         }
 
-        foreach(Transform child in SellContent)
+        foreach (Transform child in SellContent)
         {
             Destroy(child.gameObject);
         }
-
+        //setlement = GetComponent<Setlement>();
         //Create list
-        foreach(SettlementItem item in setlement.settlementItems)
+        foreach (var item in currentSettlement.settlementStock)
         {
             TradeItemDisplay row = Instantiate(tradePrfab, buyContent);
-            
-            row.PopulateBuyIcon(item,this);
+
+            row.PopulateBuyIcon(item, this);
         }
 
         foreach (InventoryItem item in playerInventory.Inventory)
         {
             TradeItemDisplay row = Instantiate(tradePlayerPrefab, SellContent);
-            
-            row.PopulateSellIcon(item,this);
+
+            row.PopulateSellIcon(item, this);
         }
 
-        
+
     }
 
     public void DisplayPlayerCoins()
@@ -169,12 +171,9 @@ public class CityUI : MonoBehaviour
 
     public void SetCurrentTradeItem(TradeItemDisplay item)
     {
-        
-        setlement.currentItemSelected= item;
+        settlementsManager.currentItemSelected = item;
         currentTradeItemImage.sprite = item.itemIcon.sprite;
         currentTradeItemName.text = item.itemNameText.text;
-        
-        
     }
 
 
@@ -191,6 +190,15 @@ public class CityUI : MonoBehaviour
     public void LeaveSettlement()
     {
         ChangePage(0);
-        setlement.CityObjectUI.SetActive(false);
+        //setlement.CityObjectUI.SetActive(false);
+        this.gameObject.SetActive(false);
     }
+
+    //initial setup
+    public void prepareSettlement(SettlementRuntime settlement)
+    {
+        currentSettlement = settlement;
+        DisplayTrade();
+    }
+
 }

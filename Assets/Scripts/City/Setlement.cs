@@ -17,7 +17,7 @@ public class SettlementItem
 public class Setlement : MonoBehaviour
 {
     [Header("Setlements")]
-    [SerializeField] private string settlementName;
+    [SerializeField] public string settlementName;
     [SerializeField] public List<SettlementItem> settlementItems = new List<SettlementItem>();
 
 
@@ -55,7 +55,7 @@ public class Setlement : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer(playerLayer))
         {
-            CityObjectUI.SetActive(true);
+            //CityObjectUI.SetActive(true);
         }
     }
 
@@ -83,9 +83,9 @@ public class Setlement : MonoBehaviour
         {
             //Check player money & space in backpack
             if(player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price 
-            && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resourceSO.volume, currentItemSelected.tradeSettlementItem.resourceSO.weight))
+            && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume, currentItemSelected.tradeSettlementItem.resource.weight))
             {
-                player.invetory.AddItem(currentItemSelected.tradeSettlementItem.resourceSO);
+                player.invetory.AddItem(currentItemSelected.tradeSettlementItem.resource);
                 player.invetory.Buy(currentItemSelected.tradeSettlementItem.price);
                 currentItemSelected.tradeSettlementItem.amount = -1;
                 //Display
@@ -100,7 +100,7 @@ public class Setlement : MonoBehaviour
         if (currentItemSelected.tradeInventoryItem != null)
         {
             currentItemSelected.tradeInventoryItem.amount = -1;
-            player.invetory.Remove(currentItemSelected.tradeSettlementItem.resourceSO);
+            player.invetory.Remove(currentItemSelected.tradeSettlementItem.resource);
             player.invetory.Sell(currentItemSelected.tradeSettlementItem.price);
             
             //Display

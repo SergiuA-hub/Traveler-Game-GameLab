@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CityUIManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
+    public SettlementsManager settlementManager;
     public GameObject cityUI;
     bool playerInCity = false;
     bool UIup = false;
@@ -45,6 +45,7 @@ public class CityUIManager : MonoBehaviour
         {
             playerInCity = true;
             tradeButton.gameObject.SetActive(true);
+            settlementManager.playerAtSettlementGate(gameObject);
             //prompt.gameObject.SetActive(true);
             gameInput.OnInteract += GameInput_OnInteract;
         }
@@ -57,6 +58,7 @@ public class CityUIManager : MonoBehaviour
             UIup = false;
             playerInCity = false;
             tradeButton.gameObject.SetActive(false) ;
+            settlementManager.playerLeftSettlement();
             // prompt.gameObject.SetActive(false);
             gameInput.OnInteract -= GameInput_OnInteract;
         }

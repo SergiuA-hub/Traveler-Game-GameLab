@@ -100,4 +100,14 @@ public class Player_M : MonoBehaviour
     {
         stats.currentHp += amount;
     }
+
+    public void Root()
+    {
+        rooted = true;
+    }
+
+    public void UnRoot()
+    {
+        rooted = false;
+    }
 }

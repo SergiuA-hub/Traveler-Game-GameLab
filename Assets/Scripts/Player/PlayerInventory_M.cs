@@ -39,8 +39,8 @@ public class PlayerInventory_M : MonoBehaviour
 
     public void AddItem(ResourceSO resource, int amount = 1)
     {
-
-        InventoryItem existingItem = Inventory.Find(x => x.resourceSO == resource);
+        Debug.Log($"Add to inventory{resource.itemName} - {amount}");
+        InventoryItem existingItem = Inventory.Find(x => x.resourceSO.itemName == resource.itemName);
 
 
         if (existingItem != null)
@@ -57,10 +57,11 @@ public class PlayerInventory_M : MonoBehaviour
 
     public void Remove(ResourceSO resource, int amount = 1)
     {
-        InventoryItem existingItem = Inventory.Find(x => x.resourceSO == resource);
+        InventoryItem existingItem = Inventory.Find(x => x.resourceSO.itemName == resource.itemName);
 
         if (existingItem == null) return;
-
+        
+        Debug.Log($"Removing from inv {resource.itemName} - {existingItem.amount} the amount of {amount}");
         if (existingItem.amount > amount)
         {
             existingItem.amount -= amount;
@@ -69,7 +70,6 @@ public class PlayerInventory_M : MonoBehaviour
         {
             Inventory.Remove(existingItem);
         }
-
     }
 
     public void HandleWeightAndVolume()
