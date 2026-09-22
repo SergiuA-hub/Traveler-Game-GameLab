@@ -4,25 +4,35 @@ using UnityEngine.UI;
 
 public class HUDScript : MonoBehaviour
 {
+    [Header("Player Components")]
     public Player_M player;
     private PlayerInventory_M inventory;
 
     public TimeManager timeManager;
 
-    [Header ("UI elements")]
+    [Header("HUD elements")]
+    //Full Component
+    [SerializeField] private GameObject HUD;
+    [SerializeField] private GameObject CityUI;
+
+    //Stamina
     public Slider staminaSlider;
     public TextMeshProUGUI staText;
+    //HP
     public Slider hpSlider;
     public TextMeshProUGUI hpText;
+    //THIRST
     public Slider thirstSlider;
     public TextMeshProUGUI thirstText;
+    //Hunger
     public Slider hungerSlider; 
     public TextMeshProUGUI hungerText;
 
+    [Header("DateTime")]
     public TextMeshProUGUI dateText; 
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+   
     void Start()
     {
         inventory = player.invetory;
@@ -33,11 +43,12 @@ public class HUDScript : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         UpdateStats();
         UpdateTimeDisplay();
+        EnablePlayerHUD();
     }
 
     void UpdateStats()
@@ -58,5 +69,18 @@ public class HUDScript : MonoBehaviour
     void UpdateTimeDisplay ()
     {
         dateText.text = "Day " + timeManager.currentTime.Day.ToString() + "\n" + timeManager.currentTime.Hour.ToString() + ":00";
+    }
+
+    private void EnablePlayerHUD()
+    {
+        if(CityUI.activeSelf)
+        {
+            //Aici playerul intra in oras
+            HUD.SetActive(false);
+        }
+        if (!CityUI.activeSelf)
+        {
+            HUD.SetActive(true);
+        }
     }
 }

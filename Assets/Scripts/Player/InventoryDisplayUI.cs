@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class InventoryDisplayUI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+   
     
     public Player_M player;
     private PlayerInventory_M inventory;
@@ -14,6 +14,7 @@ public class InventoryDisplayUI : MonoBehaviour
     public Slider capSlider;
     public TextMeshProUGUI weightTxt; 
     public TextMeshProUGUI capTxt;
+    public TextMeshProUGUI moneyDisplay;
 
 
     private void OnEnable()
@@ -29,11 +30,14 @@ public class InventoryDisplayUI : MonoBehaviour
         weightSlider.maxValue = player.stats.maxWeight;
         weightSlider.minValue = 0; 
         weightSlider.value = inventory.currentWeight;
+        
 
         capTxt.text = inventory.currentVolume.ToString() + "/" + player.stats.maxVolume.ToString();
         capSlider.value = inventory.currentVolume;
         capSlider.maxValue = player.stats.maxVolume;
-        capSlider.minValue = 0;       
+        capSlider.minValue = 0;
+
+        moneyDisplay.text = inventory.CurrentCoins.ToString();
     }
 
     void Start()
