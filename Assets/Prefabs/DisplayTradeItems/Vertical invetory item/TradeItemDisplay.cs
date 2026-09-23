@@ -32,10 +32,10 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
     }
 
     public void PopulateSellIcon(InventoryItem inventoryItem,CityUI UI)
-    {
+    {        
         itemNameText.text = inventoryItem.resourceSO.itemName.ToString();
         itemNameAmountText.text = inventoryItem.amount.ToString();
-        itemPriceText.text = inventoryItem.resourceSO.baseValue.ToString();
+        itemPriceText.text = inventoryItem.averageValue.ToString();
         itemIcon.sprite = inventoryItem.resourceSO.sprite;
         cityUI = UI;
         tradeInventoryItem = inventoryItem;

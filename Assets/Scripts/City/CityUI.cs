@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 public enum CityUIPage
 {
     Lobby=0,
@@ -45,9 +46,8 @@ public class CityUI : MonoBehaviour
     
     [SerializeField] private Image currentTradeItemImage;
     [SerializeField] private TextMeshProUGUI currentTradeItemName;
-    [SerializeField] private TextMeshProUGUI currentTradeItemPrice;
+    [SerializeField] private TextMeshProUGUI currentTradeItemPrice;   
 
-    
 
     [Header("PAGES")]
     [SerializeField] private GameObject LobbyPanel;
@@ -150,8 +150,15 @@ public class CityUI : MonoBehaviour
         foreach (var item in currentSettlement.settlementStock)
         {
             TradeItemDisplay row = Instantiate(tradePrfab, buyContent);
-
             row.PopulateBuyIcon(item, this);
+            
+            if (settlementsManager.currentItemSelected != null && settlementsManager.currentItemSelected.tradeSettlementItem != null)
+                if(item.resource.itemName == settlementsManager.currentItemSelected.tradeSettlementItem.resource.itemName)
+                {
+                    Debug.Log($"item.resource.itemName:{item.resource.itemName}");
+                    SetCurrentTradeItem(row);
+                }
+            
         }
 
         foreach (InventoryItem item in playerInventory.Inventory)
@@ -161,12 +168,12 @@ public class CityUI : MonoBehaviour
             row.PopulateSellIcon(item, this);
         }
 
-
+        
     }
 
     public void DisplayPlayerCoins()
     {
-     playerCoinsDisplay.text= ": "+playerInventory.CurrentCoins.ToString();   
+        playerCoinsDisplay.text= ": "+playerInventory.CurrentCoins.ToString();
     }
 
     public void SetCurrentTradeItem(TradeItemDisplay item)
@@ -174,6 +181,10 @@ public class CityUI : MonoBehaviour
         settlementsManager.currentItemSelected = item;
         currentTradeItemImage.sprite = item.itemIcon.sprite;
         currentTradeItemName.text = item.itemNameText.text;
+
+        if (item.tradeSettlementItem != null)
+            currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeSettlementItem.resource).ToString("0.0");
+        else currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeInventoryItem.resourceSO).ToString("0.0");
     }
 
 

@@ -98,6 +98,35 @@ public class SettlementRuntime
 
         return currentPrice;
     }
+
+    public float getStockPrice(ResourceSO res)
+    {
+        foreach(var r in settlementStock)
+        {
+            if (r.resource.itemName == res.itemName)
+                return r.price;
+        }
+
+        return res.baseValue * GlobalSettingsManager.UNWANTED_GOOD_PRICE_MULTIPLIER;
+    }
+
+    public void increaseStock(ResourceSO res, int amount =1)
+    {
+        foreach (var r in settlementStock)
+        {
+            if (r.resource.itemName == res.itemName)
+                r.amount += amount;
+        }
+    }
+
+    public void decreaseStock(ResourceSO res, int amount = 1)
+    {
+        foreach (var r in settlementStock)
+        {
+            if (r.resource.itemName == res.itemName)
+                r.amount -= amount;
+        }
+    }
 }
 
 public class SettlementsManager : MonoBehaviour
@@ -109,6 +138,7 @@ public class SettlementsManager : MonoBehaviour
 
     public List<SettlementRuntime> settlements;
     public TradeItemDisplay currentItemSelected;
+    public SettlementRuntime currentSettlement;
     public TimeManager timeManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -160,6 +190,15 @@ public class SettlementsManager : MonoBehaviour
         }
     }
 
+    public void updateCurrentSettlementPrices()
+    {
+        foreach (var res in currentSettlement.settlementStock)
+        {            
+            res.price = currentSettlement.getPriceFor(res);
+            Debug.Log($"Res {res.resource.itemName} new pices -> {res.price}");
+        }
+    }
+
     public void dailyEvents(DateTime t)
     {
 
@@ -173,6 +212,7 @@ public class SettlementsManager : MonoBehaviour
     public void playerLeftSettlement()
     {
         playerAtSettlement = null;
+        currentSettlement = null;
     }
 
     public void EnterCity()
@@ -184,6 +224,7 @@ public class SettlementsManager : MonoBehaviour
             if (settlement.settlementGo == playerAtSettlement)
             {
                 Debug.Log($"Player entered in {settlement.settlementName}");
+                currentSettlement = settlement;
                 SettlementUI.GetComponent<CityUI>().prepareSettlement(settlement);
             }
         }
@@ -194,17 +235,19 @@ public class SettlementsManager : MonoBehaviour
     public void BuyOrSell()
     {
         Debug.Log("BUY SELL");
+        
         //BUY
         if (currentItemSelected.tradeSettlementItem != null)
         {
-            Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName}");
+            Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with proce {currentItemSelected.tradeSettlementItem.price}");
             //Check player money & space in backpack
             if (player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price
             && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume, currentItemSelected.tradeSettlementItem.resource.weight))
             {
-                player.invetory.AddItem(currentItemSelected.tradeSettlementItem.resource);
-                player.invetory.Buy(currentItemSelected.tradeSettlementItem.price);
-                currentItemSelected.tradeSettlementItem.amount -= 1;
+                player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, currentItemSelected.tradeSettlementItem.price);                
+                currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource);
+                updateCurrentSettlementPrices();
+                
                 //Display
                 SettlementUI.GetComponent<CityUI>().DisplayTrade();
                 SettlementUI.GetComponent<CityUI>().DisplayPlayerCoins();
@@ -215,10 +258,13 @@ public class SettlementsManager : MonoBehaviour
         //Sell
         if (currentItemSelected.tradeInventoryItem != null)
         {
-            //currentItemSelected.tradeInventoryItem.amount = -1;
-            player.invetory.Remove(currentItemSelected.tradeInventoryItem.resourceSO);
-            player.invetory.Sell(currentItemSelected.tradeInventoryItem.averageValue);
+            if (!player.invetory.hasResources(currentItemSelected.tradeInventoryItem.resourceSO))
+                return;
 
+            player.invetory.tradeOut(currentItemSelected.tradeInventoryItem.resourceSO, currentSettlement.getStockPrice(currentItemSelected.tradeInventoryItem.resourceSO));            
+            currentSettlement.increaseStock(currentItemSelected.tradeInventoryItem.resourceSO);
+            updateCurrentSettlementPrices();
+            
             //Display
             SettlementUI.GetComponent<CityUI>().DisplayTrade();
             SettlementUI.GetComponent<CityUI>().DisplayPlayerCoins();

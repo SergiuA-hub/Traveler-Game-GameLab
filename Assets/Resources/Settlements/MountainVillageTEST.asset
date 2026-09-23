@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735cc53ed61604a4d99c3db2244daee7, type: 3}
+  m_Name: MountainVillageTEST
+  m_EditorClassIdentifier: Assembly-CSharp::SettlementSO
+  settlementName: Mountain Village
+  production:
+  - resource: {fileID: 11400000, guid: b21a88f18b68d5247b2885e25831e83f, type: 2}
+    dailyChange: 8
+    startingStock: 80
+    minStock: 0
+    maxStock: 240
+    tier1_price_stock: 24
+    tier2_price_stock: 40
+    tier3_price_stock: 56
+    tier4_price_stock: 112
+    tier5_price_stock: 240
+    licenseCost: 0
+  - resource: {fileID: 11400000, guid: 1c8f8ca846032ec479d1044edc2c361a, type: 2}
+    dailyChange: 7
+    startingStock: 70
+    minStock: 0
+    maxStock: 210
+    tier1_price_stock: 21
+    tier2_price_stock: 35
+    tier3_price_stock: 49
+    tier4_price_stock: 98
+    tier5_price_stock: 210
+    licenseCost: 0
+  - resource: {fileID: 11400000, guid: 7e08b41a2d12ce443bcb2e67975f287a, type: 2}
+    dailyChange: 5
+    startingStock: 30
+    minStock: 0
+    maxStock: 150
+    tier1_price_stock: 15
+    tier2_price_stock: 25
+    tier3_price_stock: 35
+    tier4_price_stock: 70
+    tier5_price_stock: 150
+    licenseCost: 25
+  - resource: {fileID: 11400000, guid: 1803df224911e9348aa0033f2f65d7ad, type: 2}
+    dailyChange: 4
+    startingStock: 24
+    minStock: 0
+    maxStock: 120
+    tier1_price_stock: 12
+    tier2_price_stock: 20
+    tier3_price_stock: 28
+    tier4_price_stock: 56
+    tier5_price_stock: 120
+    licenseCost: 16
+  - resource: {fileID: 11400000, guid: 379b63d90c0fddd4ba4b5bd154b16d52, type: 2}
+    dailyChange: 2
+    startingStock: 12
+    minStock: 0
+    maxStock: 60
+    tier1_price_stock: 6
+    tier2_price_stock: 10
+    tier3_price_stock: 14
+    tier4_price_stock: 28
+    tier5_price_stock: 60
+    licenseCost: 30
+  consumption:
+  - resource: {fileID: 11400000, guid: cf23858f5ed539f43b85fdd88d1b293c, type: 2}
+    dailyChange: 2
+    startingStock: 12
+    minStock: 2
+    maxStock: 60
+    tier1_price_stock: 6
+    tier2_price_stock: 10
+    tier3_price_stock: 14
+    tier4_price_stock: 28
+    tier5_price_stock: 60
+    licenseCost: -1
+  - resource: {fileID: 11400000, guid: b3aad3b0b4bbd164a86d75f59d54b84e, type: 2}
+    dailyChange: 2
+    startingStock: 12
+    minStock: 2
+    maxStock: 60
+    tier1_price_stock: 6
+    tier2_price_stock: 10
+    tier3_price_stock: 14
+    tier4_price_stock: 28
+    tier5_price_stock: 60
+    licenseCost: -1
+  - resource: {fileID: 11400000, guid: bd4b42c652ba9c94da6d95e33a465157, type: 2}
+    dailyChange: 3
+    startingStock: 18
+    minStock: 3
+    maxStock: 90
+    tier1_price_stock: 9
+    tier2_price_stock: 15
+    tier3_price_stock: 21
+    tier4_price_stock: 42
+    tier5_price_stock: 90
+    licenseCost: -1
+  - resource: {fileID: 11400000, guid: dddc04a2a8132ff429a5819264360ad7, type: 2}
+    dailyChange: 1
+    startingStock: 6
+    minStock: 1
+    maxStock: 30
+    tier1_price_stock: 3
+    tier2_price_stock: 5
+    tier3_price_stock: 7
+    tier4_price_stock: 14
+    tier5_price_stock: 30
+    licenseCost: -1
+  - resource: {fileID: 11400000, guid: 4ba6b85d27f214442a30c33be8df8e87, type: 2}
+    dailyChange: 5
+    startingStock: 10
+    minStock: 1
+    maxStock: 90
+    tier1_price_stock: 15
+    tier2_price_stock: 25
+    tier3_price_stock: 35
+    tier4_price_stock: 70
+    tier5_price_stock: 90
+    licenseCost: -1
+  - resource: {fileID: 11400000, guid: 977e07f63e21de04eab6d24732cd7a04, type: 2}
+    dailyChange: 3
+    startingStock: 18
+    minStock: 3
+    maxStock: 90
+    tier1_price_stock: 9
+    tier2_price_stock: 15
+    tier3_price_stock: 21
+    tier4_price_stock: 42
+    tier5_price_stock: 90
+    licenseCost: -1

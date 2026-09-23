@@ -55,6 +55,50 @@ public class PlayerInventory_M : MonoBehaviour
 
     }
 
+    //player is buying goods
+    public void tradeIn(ResourceSO resource, float buyPrice, int amount = 1)
+    {
+        InventoryItem existingItem = Inventory.Find(x => x.resourceSO.itemName == resource.itemName);
+
+        if (existingItem != null)
+        {
+            float newAverage = (existingItem.averageValue * existingItem.amount + buyPrice * amount) / (existingItem.amount + amount);
+            Debug.Log($"new average for {resource.itemName} is {newAverage}");
+            existingItem.amount += amount;
+            existingItem.averageValue = newAverage;
+        }
+        else
+        {
+            InventoryItem r = new InventoryItem(resource, amount, buyPrice);
+            r.averageValue = buyPrice/ amount;
+
+            Inventory.Add(r);
+
+        }
+
+        Buy(buyPrice * amount);
+    }
+
+    //player is sellign goods
+    public void tradeOut(ResourceSO resource, float sellPrice, int amount = 1)
+    {
+        Remove(resource,amount);
+        
+        Sell(sellPrice * amount);
+    }
+
+    public bool hasResources(ResourceSO resource, int amount = 1)
+    {
+        InventoryItem existingItem = Inventory.Find(x => x.resourceSO.itemName == resource.itemName);
+
+        if (existingItem == null)
+            return false;
+        else if (amount > existingItem.amount)
+            return false;
+        
+        return true;
+    }
+
     public void Remove(ResourceSO resource, int amount = 1)
     {
         InventoryItem existingItem = Inventory.Find(x => x.resourceSO.itemName == resource.itemName);
@@ -136,6 +180,6 @@ public class PlayerInventory_M : MonoBehaviour
     }
     public void Buy(float amount)
     {
-        CurrentCoins += amount;
+        CurrentCoins -= amount;
     }
 }
