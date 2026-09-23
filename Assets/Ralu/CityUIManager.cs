@@ -44,7 +44,7 @@ public class CityUIManager : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerInCity = true;
-            tradeButton.gameObject.SetActive(true);
+            prompt.gameObject.SetActive(true);
             //prompt.gameObject.SetActive(true);
             gameInput.OnInteract += GameInput_OnInteract;
         }
@@ -56,7 +56,7 @@ public class CityUIManager : MonoBehaviour
             cityUI.gameObject.SetActive(false);
             UIup = false;
             playerInCity = false;
-            tradeButton.gameObject.SetActive(false) ;
+            prompt.gameObject.SetActive(false) ;
             // prompt.gameObject.SetActive(false);
             gameInput.OnInteract -= GameInput_OnInteract;
         }

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ede13e939c1a8146b24d2a82d83d8a3, type: 3}
+  m_Name: 493_The_Trail_Stays_Away_from_Camp
+  m_EditorClassIdentifier: Assembly-CSharp::Situation
+  phase: 4
+  nextPhase: 5
+  situationName: The Trail Stays Away from Camp
+  act: Keep the marked direction in mind and return to rest.
+  situationDescription: From the direction and spacing of the tracks, it is clear
+    the animal was moving away from the campsite rather than toward it. You return
+    to the fire reassured.
+  RequiredContexts: 14000000
+  GivenContexts: 
+  RemovedContexts: 
+  outcome: 4

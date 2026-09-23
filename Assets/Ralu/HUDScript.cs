@@ -4,12 +4,15 @@ using UnityEngine.UI;
 
 public class HUDScript : MonoBehaviour
 {
+
+    [Header ("References")]
     public Player_M player;
     private PlayerInventory_M inventory;
 
+
     public TimeManager timeManager;
 
-    [Header ("UI elements")]
+    [Header ("UI elements - Sliders")]
     public Slider staminaSlider;
     public TextMeshProUGUI staText;
     public Slider hpSlider;
@@ -19,7 +22,11 @@ public class HUDScript : MonoBehaviour
     public Slider hungerSlider; 
     public TextMeshProUGUI hungerText;
 
-    public TextMeshProUGUI dateText; 
+    [Header ("UI elements - Date display")]
+    public TextMeshProUGUI dateText;
+    public TextMeshProUGUI seasonText;
+
+    public string currentSeason = "Summer";
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,6 +37,7 @@ public class HUDScript : MonoBehaviour
         staminaSlider.maxValue = player.stats.maxStamina;
         thirstSlider.maxValue = player.stats.maxThirst;
         hungerSlider.maxValue = player.stats.maxHunger;
+        seasonText.text = currentSeason;
 
     }
 
@@ -55,8 +63,12 @@ public class HUDScript : MonoBehaviour
         thirstText.text = thirstSlider.value.ToString() + "/" + player.stats.maxThirst.ToString();
     }
 
-    void UpdateTimeDisplay ()
+    void UpdateTimeDisplay()
     {
         dateText.text = "Day " + timeManager.currentTime.Day.ToString() + "\n" + timeManager.currentTime.Hour.ToString() + ":00";
+    }
+    public void ChangeSeason()
+    {
+        seasonText.text = currentSeason; 
     }
 }

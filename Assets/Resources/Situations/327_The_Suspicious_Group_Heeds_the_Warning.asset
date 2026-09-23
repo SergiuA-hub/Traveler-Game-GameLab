@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ede13e939c1a8146b24d2a82d83d8a3, type: 3}
+  m_Name: 327_The_Suspicious_Group_Heeds_the_Warning
+  m_EditorClassIdentifier: Assembly-CSharp::Situation
+  phase: 4
+  nextPhase: 5
+  situationName: The Suspicious Group Heeds the Warning
+  act: Hold your warning without escalating and see whether the group backs off.
+  situationDescription: You warn the group away and hold your ground. After arguing
+    among themselves, they decide not to test you and continue away from camp.
+  RequiredContexts: cc000000
+  GivenContexts: 
+  RemovedContexts: 
+  outcome: 4
