@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+using System.ComponentModel.Design.Serialization;
 
 public class HUDScript : MonoBehaviour
 {
@@ -29,8 +31,9 @@ public class HUDScript : MonoBehaviour
     public TextMeshProUGUI hungerText;
 
     [Header("DateTime")]
-    public TextMeshProUGUI dateText; 
+    public TextMeshProUGUI dateText;
 
+    
 
    
     void Start()
@@ -77,10 +80,14 @@ public class HUDScript : MonoBehaviour
         {
             //Aici playerul intra in oras
             HUD.SetActive(false);
+           
         }
         if (!CityUI.activeSelf)
         {
             HUD.SetActive(true);
         }
     }
+
+
+    
 }

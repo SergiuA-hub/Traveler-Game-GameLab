@@ -14,6 +14,7 @@ public class SettlementItem
     public int price;
 
 }
+
 public class Setlement : MonoBehaviour
 {
     [Header("Setlements")]
@@ -25,6 +26,7 @@ public class Setlement : MonoBehaviour
     [Header("UI")]
     public GameObject CityObjectUI;
     public TradeItemDisplay currentItemSelected;
+    public CircelTransition circelTransition;
 
     [Header("Components")]
     [SerializeField] private CityUI cityUI;
@@ -55,6 +57,8 @@ public class Setlement : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer(playerLayer))
         {
+            
+            circelTransition.StartTransition();
             CityObjectUI.SetActive(true);
         }
     }
