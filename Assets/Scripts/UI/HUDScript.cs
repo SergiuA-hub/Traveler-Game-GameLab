@@ -29,10 +29,13 @@ public class HUDScript : MonoBehaviour
     public TextMeshProUGUI hungerText;
 
     [Header("DateTime")]
-    public TextMeshProUGUI dateText; 
+    public TextMeshProUGUI dateText;
+    public TextMeshProUGUI seasonText;
+
+    public string currentSeason = "Summer";
 
 
-   
+
     void Start()
     {
         inventory = player.invetory;
@@ -79,5 +82,10 @@ public class HUDScript : MonoBehaviour
         {
             HUD.SetActive(true);
         }
+    }
+    
+    public void ChangeSeason()
+    {
+        seasonText.text = currentSeason;
     }
 }
