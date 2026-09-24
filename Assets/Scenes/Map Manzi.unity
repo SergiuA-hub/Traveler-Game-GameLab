@@ -521368,7 +521368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollowPlayer
   Target: {fileID: 81045693}
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: -10}
   cameraSmooth: 3
 --- !u!114 &288995341
 MonoBehaviour:
@@ -521457,7 +521457,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13.080616
+  orthographic size: 4
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -559906,6 +559906,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CircelTransition
   circle: {fileID: 218725196}
   duration: 2.5
+  targetScale: 30
+  time: 0
 --- !u!1 &1128686717
 GameObject:
   m_ObjectHideFlags: 0
@@ -561771,7 +561773,7 @@ MonoBehaviour:
     price: 0
   CityObjectUI: {fileID: 1005486575}
   currentItemSelected: {fileID: 0}
-  circelTransition: {fileID: 0}
+  circelTransition: {fileID: 1120130147}
   cityUI: {fileID: 0}
   timeManager: {fileID: 932758302}
   player: {fileID: 81045701}

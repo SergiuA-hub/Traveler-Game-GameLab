@@ -6,49 +6,49 @@ public class CircelTransition : MonoBehaviour
 {
     public RectTransform circle;
     public float duration = 0.8f;
+    [SerializeField]private float targetScale = 30f;
 
-    public void StartTransition( )
+    [SerializeField] private float time;
+    private bool isExpanding;
+    private bool isShrinking;
+
+    
+    public void StartCircleTransition()
     {
-        StartCoroutine(Transition());
+        if (isExpanding) return;
+        isExpanding = true;
+        isShrinking = false;
+
+        
     }
 
-    IEnumerator Transition()
+    public void EndCircleTransition()
     {
-        float time = 0f;
+        isExpanding = false;
+        isShrinking = true;
+
+    }
+
+   public void Transition(GameObject ui)
+    {
+        StartCircleTransition();
+        Vector3 fullscale = Vector3.one * targetScale;
+        if (isExpanding)
+        {
+           
+            circle.localScale = Vector3.Lerp(Vector3.zero, fullscale, duration);   
         
-
-        circle.localScale = Vector3.zero;
-        circle.gameObject.SetActive(true);
-
-        // suficient de mare cât să acopere ecranul
-        float targetScale = 30f;
-
-        while (time < duration)
-        {
-            time += Time.deltaTime;
-
-            float t = time / duration;
-            
-            t = Mathf.SmoothStep(0f, 1f, t);
-
-            circle.localScale =
-                Vector3.Lerp(Vector3.zero,Vector3.one * targetScale,t);
-
-            yield return null;
+            if(circle.localScale == fullscale)
+            {
+                ui.SetActive(true);
+                EndCircleTransition();
+            }
         }
 
-        circle.localScale = Vector3.one * targetScale;
-        if( circle.localScale == Vector3.one * targetScale)
+        if (isShrinking)
         {
-            time += Time.deltaTime;
-
-            float t = time / duration;
-            t = Mathf.SmoothStep(0f, 1f, t);
-            
-            circle.localScale =
-               Vector3.Lerp(Vector3.one * targetScale, Vector3.zero,t);
+            circle.localScale = Vector3.Lerp(fullscale, Vector3.zero, duration);
         }
-
-
+        
     }
 }
