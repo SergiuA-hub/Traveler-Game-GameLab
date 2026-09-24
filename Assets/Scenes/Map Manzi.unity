@@ -2472,7 +2472,7 @@ MonoBehaviour:
   newStamina: {fileID: 367027972}
   newHunger: {fileID: 1891901497}
   newThirst: {fileID: 856719217}
-  player: {fileID: 0}
+  player: {fileID: 81045701}
   camp: {fileID: 1579438308}
   supplyPrefab: {fileID: 6687964379245329054, guid: ffcf12820dd957442807df95b821d5c8, type: 3}
   foodSuppliesList: {fileID: 2028871957}
@@ -550741,6 +550741,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Main_NoCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 3474024735083155942, guid: 40bfcf000c6fec34297e7f280f1361fd, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3474024735083155942, guid: 40bfcf000c6fec34297e7f280f1361fd, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5672254965190109154, guid: 40bfcf000c6fec34297e7f280f1361fd, type: 3}
       propertyPath: gameInput
       value: 
@@ -583745,7 +583753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70acdd2593fa4d941a9f72ca573ea40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CampManager
-  player: {fileID: 0}
+  player: {fileID: 81045701}
   timeManagerGO: {fileID: 932758299}
   restScreenPanel: {fileID: 397402720}
   restScreenText: {fileID: 1582435954}
@@ -584218,7 +584226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cf79cf2f725c84cb8cce46cbbc2132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDisplayUI
-  player: {fileID: 0}
+  player: {fileID: 81045701}
   ItemPrefab: {fileID: 4876554756627009130, guid: dd232ee2a35f9e547bd83092d98586e3, type: 3}
   ItemList: {fileID: 731914931}
   weightSlider: {fileID: 1799559096}

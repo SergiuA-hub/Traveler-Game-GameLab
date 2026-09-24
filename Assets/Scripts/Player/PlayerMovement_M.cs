@@ -43,14 +43,14 @@ public class PlayerMovement_M : MonoBehaviour
 
         //Gradele
         //45 = 0.70710678f
-        const float rotationFactor = 0.70710678f;
+        //const float rotationFactor = 0.70710678f;
 
         //65
         float sin = 0.8660254f;
         float cos = 0.5f;
 
         Vector2 moveDirection = new Vector2((moveInput.x - moveInput.y) * sin,(moveInput.x + moveInput.y) * cos);
-
+        
         if (player.rooted)
         {
             moveDirection = Vector2.zero;
