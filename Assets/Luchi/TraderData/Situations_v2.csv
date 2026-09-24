@@ -1,0 +1,411 @@
+﻿Situation Number,Phase,NextPhase,Situation Name,Situation Description,Required Context,Given Context,Removed Context
+1,START,REACTION,Night Movement,You wake during the night after hearing movement just beyond the light of your campfire.,-,"CAMP, MOVEMENT_HEARD, NIGHT, UNKNOWN_SOURCE",-
+2,START,REACTION,Distant Cry,"A distant cry wakes you from your rest. It sounds human, but the darkness makes it difficult to tell where it came from.",-,"CAMP, DISTRESS_POSSIBLE, NIGHT, UNKNOWN_SOURCE, VOICE_HEARD",-
+3,START,REACTION,Cargo Noise,You wake to the sound of something shifting among your supplies beside the camp.,-,"CAMP, CARGO_DISTURBED, CARGO_PRESENT, NIGHT, UNKNOWN_SOURCE",-
+4,START,REACTION,Dying Fire,"You wake and find the campfire almost extinguished, its last embers barely lighting the ground around you.",-,"CAMP, FIRE_LOW, NIGHT",-
+5,START,REACTION,Approaching Footsteps,Slow footsteps wake you as they approach the edge of your camp and then suddenly stop.,-,"CAMP, FOOTSTEPS_HEARD, HUMAN_POSSIBLE, NIGHT, UNKNOWN_SOURCE",-
+6,START,REACTION,Strange Light,A faint moving light between the trees catches your attention and pulls you from sleep.,-,"CAMP, LIGHT_SEEN, NIGHT, UNKNOWN_SOURCE",-
+7,START,REACTION,Animal Cry,A sharp animal cry breaks the silence of the night and wakes you immediately.,-,"ANIMAL_SOUND, CAMP, NIGHT, UNKNOWN_SOURCE",-
+8,START,REACTION,Broken Branch,"A loud crack from somewhere nearby wakes you, followed by branches shifting in the darkness.",-,"CAMP, FOREST_NEARBY, MOVEMENT_HEARD, NIGHT, UNKNOWN_SOURCE",-
+9,START,REACTION,Whispering Voices,You wake to quiet voices whispering somewhere beyond the edge of the firelight.,-,"CAMP, HUMAN_POSSIBLE, NIGHT, UNKNOWN_SOURCE, WHISPERS_HEARD",-
+10,START,REACTION,Storm Disturbance,Heavy wind and rain wake you as something strikes or pulls at the edge of your camp.,-,"CAMP, CARGO_PRESENT, NIGHT, SHELTER_PRESENT, STORM_ACTIVE",-
+11,REACTION,REVEAL,Get Up and Investigate,You leave the warmth of the fire and search for the source of the disturbance.,"CAMP, UNKNOWN_SOURCE",INVESTIGATING,-
+12,REACTION,REVEAL,Wait and Listen,You remain still and focus on every sound around the camp.,"CAMP, UNKNOWN_SOURCE",LISTENING,-
+13,REACTION,REVEAL,Grab a Torch,You light a torch and sweep its light across the surrounding darkness.,"NIGHT, UNKNOWN_SOURCE","OBSERVING, TORCH_LIT",-
+14,REACTION,REVEAL,Inspect the Ground,"You check the ground around camp for tracks, disturbed soil, or dropped objects.","CAMP, UNKNOWN_SOURCE",TRACK_SEARCH,-
+15,REACTION,REVEAL,Call Out into the Darkness,You ask whether anyone is there and wait for an answer.,UNKNOWN_SOURCE,CALLED_OUT,-
+16,REACTION,REVEAL,Circle Around the Camp,You quietly approach the disturbance from another direction.,"CAMP, UNKNOWN_SOURCE","FLANKING, INVESTIGATING",-
+17,REACTION,REVEAL,Stay Beside the Fire,You remain in the light and wait to see whether the disturbance comes closer.,"CAMP, NIGHT",WAITING_AT_FIRE,-
+18,REACTION,REVEAL,Prepare for Trouble,You ready yourself for a possible threat before doing anything else.,"CAMP, UNKNOWN_SOURCE","DEFENSIVE, LISTENING",-
+19,REACTION,REVEAL,Follow the Movement,You move cautiously toward where you last heard the movement.,"MOVEMENT_HEARD, UNKNOWN_SOURCE","FOLLOWING_MOVEMENT, INVESTIGATING",-
+20,REACTION,REVEAL,Search the Tree Line,You inspect the trees and bushes for whatever caused the disturbance.,"FOREST_NEARBY, UNKNOWN_SOURCE","INVESTIGATING, TREE_LINE_SEARCH",-
+21,REACTION,REVEAL,Call Back to the Voice,You call toward the voice and ask the person to answer clearly.,"UNKNOWN_SOURCE, VOICE_HEARD","CALLED_OUT, VOICE_CONTACT_ATTEMPT",-
+22,REACTION,REVEAL,Move Toward the Cry,You leave the fire and carefully move toward where the cry came from.,"DISTRESS_POSSIBLE, VOICE_HEARD","APPROACHING_VOICE, INVESTIGATING",-
+23,REACTION,REVEAL,Wait for Another Cry,You remain still and listen for the person to call again.,VOICE_HEARD,LISTENING_FOR_VOICE,-
+24,REACTION,REVEAL,Offer Help from a Distance,"You call out that you can help, but ask the unseen person to approach slowly.",VOICE_HEARD,"CALLED_OUT, HELP_OFFERED",-
+25,REACTION,REVEAL,Follow the Footsteps,You move after the footsteps before they can disappear into the night.,"FOOTSTEPS_HEARD, UNKNOWN_SOURCE","FOLLOWING_FOOTSTEPS, INVESTIGATING",-
+26,REACTION,REVEAL,Wait for the Footsteps to Return,You stay still and listen for the footsteps to move again.,FOOTSTEPS_HEARD,LISTENING_FOR_FOOTSTEPS,-
+27,REACTION,REVEAL,Challenge Whoever Is Approaching,You warn the unseen person that you are awake and prepared.,FOOTSTEPS_HEARD,"CALLED_OUT, DEFENSIVE",-
+28,REACTION,REVEAL,Listen to the Whispering,You remain quiet and try to make out what the voices are saying.,WHISPERS_HEARD,EAVESDROPPING,-
+29,REACTION,REVEAL,Reveal That You Are Awake,You speak toward the whispering voices and tell them to show themselves.,WHISPERS_HEARD,"CALLED_OUT, DEFENSIVE",-
+30,REACTION,REVEAL,Follow the Strange Light,You move cautiously toward the light while keeping your camp behind you.,"LIGHT_SEEN, UNKNOWN_SOURCE","FOLLOWING_LIGHT, INVESTIGATING",-
+31,REACTION,REVEAL,Signal with Your Torch,You wave a torch toward the distant light to see whether someone responds.,"LIGHT_SEEN, NIGHT","SIGNALLED_LIGHT, TORCH_LIT",-
+32,REACTION,REVEAL,Watch the Light from Camp,You stay beside the fire and observe the moving light without approaching.,LIGHT_SEEN,OBSERVING_LIGHT,-
+33,REACTION,REVEAL,Inspect the Cargo,You inspect the bags and crates to see what was moved.,"CARGO_DISTURBED, CARGO_PRESENT",CARGO_CHECK,-
+34,REACTION,REVEAL,Guard the Supplies,You position yourself between the darkness and your cargo.,"CARGO_DISTURBED, CARGO_PRESENT","CARGO_GUARDED, DEFENSIVE, OBSERVING_CARGO",-
+35,REACTION,REVEAL,Pretend to Sleep,You lie still and watch the cargo from the corner of your eye.,"CARGO_DISTURBED, CARGO_PRESENT","OBSERVING_CARGO, PRETENDING_SLEEP",-
+36,REACTION,REVEAL,Check for Missing Goods,You quickly count your most valuable goods to see whether anything has disappeared.,"CARGO_DISTURBED, CARGO_PRESENT",CARGO_INVENTORY_CHECK,-
+37,REACTION,REVEAL,Use a Torch on the Cargo,You light the bags and crates clearly to expose anything hiding among them.,"CARGO_PRESENT, NIGHT","CARGO_CHECK, TORCH_LIT",-
+38,REACTION,REVEAL,Secure the Cargo First,You tighten the straps and close every exposed bag before searching for the cause.,"CARGO_DISTURBED, CARGO_PRESENT","CARGO_CHECK, CARGO_SECURED_TEMP, DEFENSIVE",-
+39,REACTION,REVEAL,Listen for the Animal,"You remain still and listen for another cry, growl, or movement.",ANIMAL_SOUND,ANIMAL_LISTENING,-
+40,REACTION,REVEAL,Raise a Torch Toward the Animal Sound,You lift a torch and search the darkness for eyes or movement.,"ANIMAL_SOUND, NIGHT","ANIMAL_SEARCH, TORCH_LIT",-
+41,REACTION,REVEAL,Make Noise to Scare It Away,You shout and strike your equipment together to frighten the animal away.,ANIMAL_SOUND,ANIMAL_SCARE_ATTEMPT,-
+42,REACTION,REVEAL,Place Food Away from Camp,You leave a small amount of food away from your supplies and step back.,"ANIMAL_SOUND, CAMP",ANIMAL_BAIT_SET,-
+43,REACTION,REVEAL,Protect the Fire,You shield the weak embers from the wind and try to keep them alive.,FIRE_LOW,FIRE_PROTECTED,-
+44,REACTION,REVEAL,Rebuild the Fire,You gather fuel and try to restore the dying fire.,FIRE_LOW,FIRE_REBUILD_ATTEMPT,-
+45,REACTION,REVEAL,Inspect the Storm Damage,You step into the rain and inspect the campsite for damage.,STORM_ACTIVE,STORM_INSPECTION,-
+46,REACTION,REVEAL,Secure the Shelter,You tighten ropes and supports before the storm can tear the shelter apart.,"SHELTER_PRESENT, STORM_ACTIVE",SHELTER_SECURE_ATTEMPT,-
+47,REACTION,REVEAL,Protect the Cargo from Rain,You check the covers and move exposed goods away from the rain.,"CARGO_PRESENT, STORM_ACTIVE",CARGO_RAIN_PROTECTION,-
+48,REVEAL,RESPONSE,Fresh Human Footprints,Fresh human footprints cross the edge of the camp and continue into the darkness.,TRACK_SEARCH,"HUMAN_CONFIRMED, HUMAN_TRACKS",UNKNOWN_SOURCE
+49,REVEAL,RESPONSE,Fresh Animal Tracks,Fresh animal tracks pass close to the fire before leading away.,TRACK_SEARCH,"ANIMAL_CONFIRMED, ANIMAL_TRACKS",UNKNOWN_SOURCE
+50,REVEAL,RESPONSE,Fresh Blood Trail,Drops of fresh blood form a trail leading away from the camp.,TRACK_SEARCH,BLOOD_TRAIL,-
+51,REVEAL,RESPONSE,Broken Branches Form a Trail,Freshly broken branches form a rough trail away from the campsite.,TREE_LINE_SEARCH,TRAIL_FOUND,-
+52,REVEAL,RESPONSE,A Hidden Figure,You briefly see a human-shaped figure moving between the trees.,INVESTIGATING,"HIDDEN_PERSON, HUMAN_CONFIRMED",UNKNOWN_SOURCE
+53,REVEAL,RESPONSE,Eyes Beyond the Firelight,A pair of eyes reflects the firelight from somewhere beyond the camp.,OBSERVING,"ANIMAL_CONFIRMED, ANIMAL_WATCHING",UNKNOWN_SOURCE
+54,REVEAL,RESPONSE,Nothing Obvious Is Found,"Your search reveals no clear tracks, person, or animal nearby.",INVESTIGATING,NO_SOURCE_FOUND,-
+55,REVEAL,RESPONSE,Something Moves Near the Cargo,A dark shape moves beside the supplies before slipping out of view.,"CARGO_PRESENT, WAITING_AT_FIRE",CARGO_INTRUSION_POSSIBLE,-
+56,REVEAL,RESPONSE,The Movement Stops,The movement stops completely as soon as you approach.,FOLLOWING_MOVEMENT,"NO_SOURCE_FOUND, SOURCE_FLED_POSSIBLE",-
+57,REVEAL,RESPONSE,Someone Runs Away,You hear a person break into a run and disappear into the darkness.,FLANKING,"HUMAN_CONFIRMED, PERSON_FLEEING",UNKNOWN_SOURCE
+58,REVEAL,RESPONSE,Heavy Animal Breathing,"Slow, heavy breathing reveals that a large animal is very close.",LISTENING,"ANIMAL_CONFIRMED, LARGE_ANIMAL",UNKNOWN_SOURCE
+59,REVEAL,RESPONSE,Quiet Human Footsteps,The rhythm of the movement makes it clear that a person is walking around the camp.,LISTENING,"HUMAN_CONFIRMED, PERSON_NEARBY",UNKNOWN_SOURCE
+60,REVEAL,RESPONSE,Two People Whispering,You make out two people speaking quietly just outside the firelight.,LISTENING,"HUMAN_CONFIRMED, MULTIPLE_PEOPLE",UNKNOWN_SOURCE
+61,REVEAL,RESPONSE,Cargo Being Moved,You hear a bag scrape across the ground beside your supplies.,"CARGO_PRESENT, LISTENING",CARGO_INTRUSION_POSSIBLE,-
+62,REVEAL,RESPONSE,The Night Falls Silent,The disturbance disappears and nothing else moves or calls out.,LISTENING,"NO_SOURCE_FOUND, SILENCE",-
+63,REVEAL,RESPONSE,A Frightened Traveller Answers,A frightened traveller answers and asks whether it is safe to approach.,CALLED_OUT,"FRIGHTENED_TRAVELLER, HUMAN_CONFIRMED, TRAVELLER_PRESENT",UNKNOWN_SOURCE
+64,REVEAL,RESPONSE,A Warning from the Darkness,A tense voice tells you not to come any closer.,CALLED_OUT,"HOSTILE_WARNING, HUMAN_CONFIRMED",UNKNOWN_SOURCE
+65,REVEAL,RESPONSE,No One Answers,"Your call receives no answer, although you still sense movement nearby.","CALLED_OUT, UNKNOWN_SOURCE",NO_ANSWER,-
+66,REVEAL,RESPONSE,Someone Knows Your Name,A stranger in the darkness calls you by name before you have introduced yourself.,CALLED_OUT,"HUMAN_CONFIRMED, STRANGER_KNOWS_NAME",UNKNOWN_SOURCE
+67,REVEAL,RESPONSE,An Animal Growls Back,A low growl answers your voice from beyond the firelight.,"ANIMAL_SOUND, CALLED_OUT","ANIMAL_CONFIRMED, LARGE_ANIMAL",UNKNOWN_SOURCE
+68,REVEAL,RESPONSE,A Wounded Traveller Is Found,You find a wounded traveller sitting against a tree and struggling to stay conscious.,APPROACHING_VOICE,"HUMAN_CONFIRMED, TRAVELLER_PRESENT, WOUNDED_TRAVELLER",UNKNOWN_SOURCE
+69,REVEAL,RESPONSE,A Lost Merchant Is Found,A tired merchant steps into view and admits they became lost after nightfall.,APPROACHING_VOICE,"HUMAN_CONFIRMED, MERCHANT_PRESENT, TRAVELLER_PRESENT",UNKNOWN_SOURCE
+70,REVEAL,RESPONSE,A Suspicious Stranger Waits Ahead,A lone stranger stands off the road and gives no clear reason for being there.,APPROACHING_VOICE,"HUMAN_CONFIRMED, SUSPICIOUS_STRANGER",UNKNOWN_SOURCE
+71,REVEAL,RESPONSE,The Cry Leads to Abandoned Belongings,"You find a pack and scattered belongings, but no person nearby.",APPROACHING_VOICE,"ABANDONED_BELONGINGS, MISSING_PERSON_POSSIBLE",-
+72,REVEAL,RESPONSE,Another Weak Cry Comes from Nearby,"The person calls again, much closer and noticeably weaker.",LISTENING_FOR_VOICE,"DISTRESS_CONFIRMED, VOICE_LOCATED",-
+73,REVEAL,RESPONSE,A Traveller Steps into View,A lone traveller slowly steps into the firelight with empty hands.,LISTENING_FOR_FOOTSTEPS,"HUMAN_CONFIRMED, TRAVELLER_PRESENT",UNKNOWN_SOURCE
+74,REVEAL,RESPONSE,An Armed Stranger Is Waiting,The footsteps belong to an armed stranger standing just outside the light.,FOLLOWING_FOOTSTEPS,"ARMED_STRANGER, HUMAN_CONFIRMED",UNKNOWN_SOURCE
+75,REVEAL,RESPONSE,The Footsteps Lead to a Thief,"You catch a person moving quietly near the edge of your camp, clearly trying not to be seen.",FOLLOWING_FOOTSTEPS,"HUMAN_CONFIRMED, THEFT_THREAT, THIEF_PRESENT",UNKNOWN_SOURCE
+76,REVEAL,RESPONSE,The Whisperers Are Watching Your Camp,You realize the strangers are discussing your campsite and deciding whether to approach.,EAVESDROPPING,"HUMAN_CONFIRMED, MULTIPLE_PEOPLE, SUSPICIOUS_GROUP",UNKNOWN_SOURCE
+77,REVEAL,RESPONSE,The Whisperers Are Lost Travellers,The voices belong to travellers arguing quietly about which road to take.,EAVESDROPPING,"HUMAN_CONFIRMED, LOST_TRAVELLERS, TRAVELLERS_PRESENT, TRAVELLER_PRESENT",UNKNOWN_SOURCE
+78,REVEAL,RESPONSE,A Recently Extinguished Lantern,You find a lantern that appears to have been extinguished only moments ago.,FOLLOWING_LIGHT,"HUMAN_POSSIBLE, LANTERN_FOUND",-
+79,REVEAL,RESPONSE,The Light Belongs to a Traveller,The moving light is carried by a traveller searching for the road.,FOLLOWING_LIGHT,"HUMAN_CONFIRMED, LOST_TRAVELLER, TRAVELLER_PRESENT",UNKNOWN_SOURCE
+80,REVEAL,RESPONSE,The Light Disappears,The strange light vanishes the moment you get close enough to investigate.,FOLLOWING_LIGHT,"LIGHT_VANISHED, NO_SOURCE_FOUND",-
+81,REVEAL,RESPONSE,A Signal Is Returned,A distant light answers your torch signal with two deliberate flashes.,SIGNALLED_LIGHT,"HUMAN_POSSIBLE, LIGHT_SIGNAL_RETURNED",-
+82,REVEAL,RESPONSE,The Light Never Moves Again,"After several minutes of watching, the light remains fixed and then fades.",OBSERVING_LIGHT,"LIGHT_VANISHED, NO_SOURCE_FOUND",-
+83,REVEAL,RESPONSE,A Thief Is Searching the Bags,You catch a stranger quietly opening one of your bags.,CARGO_CHECK,"HUMAN_CONFIRMED, THEFT_CONFIRMED, THIEF_PRESENT",UNKNOWN_SOURCE
+84,REVEAL,RESPONSE,A Thief Runs with Stolen Goods,A figure runs from the camp carrying something taken from your supplies.,CARGO_INVENTORY_CHECK,"CARGO_MISSING, HUMAN_CONFIRMED, PERSON_FLEEING, THIEF_PRESENT",UNKNOWN_SOURCE
+85,REVEAL,RESPONSE,An Animal Is Inside the Cargo,An animal is rummaging between the bags in search of food.,CARGO_CHECK,"ANIMAL_CONFIRMED, ANIMAL_IN_CARGO",UNKNOWN_SOURCE
+86,REVEAL,RESPONSE,A Cargo Bag Has Been Cut,One of your bags has been cut open cleanly along the side.,CARGO_CHECK,"CARGO_DAMAGED, THEFT_POSSIBLE",-
+87,REVEAL,RESPONSE,Some Goods Are Missing,Your count confirms that part of your cargo is gone.,CARGO_INVENTORY_CHECK,CARGO_MISSING,-
+88,REVEAL,RESPONSE,A Loose Strap Caused the Noise,A cargo strap has come loose and several items have shifted.,CARGO_CHECK,"CARGO_LOOSE, NO_THREAT_FOUND",UNKNOWN_SOURCE
+89,REVEAL,RESPONSE,A Stranger Is Watching the Cargo,A person stands beyond the light and appears focused on your supplies.,OBSERVING_CARGO,"HUMAN_CONFIRMED, SUSPICIOUS_STRANGER, THEFT_THREAT",UNKNOWN_SOURCE
+90,REVEAL,RESPONSE,The Intruder Approaches While You Pretend to Sleep,"A person quietly approaches the cargo, believing you are still asleep.",PRETENDING_SLEEP,"HUMAN_CONFIRMED, THEFT_CONFIRMED, THIEF_PRESENT",UNKNOWN_SOURCE
+91,REVEAL,RESPONSE,A Fox Approaches the Food,A fox cautiously approaches the food and keeps glancing toward the camp.,ANIMAL_BAIT_SET,"ANIMAL_CONFIRMED, SMALL_ANIMAL",UNKNOWN_SOURCE
+92,REVEAL,RESPONSE,A Wolf Watches from the Darkness,A wolf stands just beyond the firelight and watches without approaching.,ANIMAL_SEARCH,"ANIMAL_CONFIRMED, LARGE_ANIMAL, WOLF_PRESENT",UNKNOWN_SOURCE
+93,REVEAL,RESPONSE,Several Wolves Circle the Camp,More than one pair of eyes moves around the camp outside the firelight.,ANIMAL_LISTENING,"ANIMAL_CONFIRMED, LARGE_ANIMAL, WOLF_PACK",UNKNOWN_SOURCE
+94,REVEAL,RESPONSE,An Injured Animal Is Nearby,You find an injured animal struggling to move near the edge of camp.,ANIMAL_SEARCH,"ANIMAL_CONFIRMED, INJURED_ANIMAL",UNKNOWN_SOURCE
+95,REVEAL,RESPONSE,The Animal Retreats from Your Noise,The animal moves farther away after hearing your attempt to scare it.,ANIMAL_SCARE_ATTEMPT,"ANIMAL_CONFIRMED, ANIMAL_RETREATING",UNKNOWN_SOURCE
+96,REVEAL,RESPONSE,The Embers Can Still Be Saved,"Beneath the ash, enough heat remains to rebuild the fire.",FIRE_PROTECTED,EMBERS_USABLE,-
+97,REVEAL,RESPONSE,The Firewood Is Too Wet,Most of the exposed firewood is soaked and difficult to use.,FIRE_REBUILD_ATTEMPT,FIREWOOD_WET,-
+98,REVEAL,RESPONSE,A Shelter Rope Has Snapped,One of the shelter ropes has broken and part of the cover is collapsing.,STORM_INSPECTION,SHELTER_DAMAGED,-
+99,REVEAL,RESPONSE,Water Is Reaching the Cargo,Rainwater is beginning to soak through the protection around your supplies.,"CARGO_PRESENT, STORM_INSPECTION",CARGO_WET_RISK,-
+100,REVEAL,RESPONSE,The Ground Is Beginning to Flood,Water collects around the campsite faster than it can drain away.,STORM_INSPECTION,FLOODING_RISK,-
+101,REVEAL,RESPONSE,The Shelter Holds for Now,The reinforced shelter bends in the wind but remains stable.,SHELTER_SECURE_ATTEMPT,SHELTER_STABLE,-
+102,REVEAL,RESPONSE,The Cargo Cover Is Tearing,A section of the cargo cover tears and exposes goods to the rain.,CARGO_RAIN_PROTECTION,"CARGO_COVER_TORN, CARGO_WET_RISK",-
+103,RESPONSE,RESOLUTION,Help the Wounded Traveller,You approach the wounded traveller and help with their immediate injuries.,WOUNDED_TRAVELLER,TRAVELLER_HELPED,-
+104,RESPONSE,RESOLUTION,Question the Wounded Traveller,You ask what happened before deciding how far you are willing to help.,WOUNDED_TRAVELLER,TRAVELLER_QUESTIONED,-
+105,RESPONSE,RESOLUTION,Invite the Traveller to the Fire,You allow the traveller to approach and warm themselves beside the fire.,TRAVELLER_PRESENT,TRAVELLER_INVITED,-
+106,RESPONSE,RESOLUTION,Question the Traveller,"You ask who they are, where they came from, and why they are travelling at night.",TRAVELLER_PRESENT,TRAVELLER_QUESTIONED,-
+107,RESPONSE,RESOLUTION,Send the Traveller Away,You decide not to risk sharing the camp and tell the traveller to continue on.,TRAVELLER_PRESENT,TRAVELLER_SENT_AWAY,-
+108,RESPONSE,RESOLUTION,Help the Lost Merchant Find the Road,You give the merchant directions toward the safest route you know.,MERCHANT_PRESENT,MERCHANT_DIRECTED,-
+109,RESPONSE,RESOLUTION,Question the Suspicious Stranger,You keep your distance and demand a clear explanation for their presence.,SUSPICIOUS_STRANGER,STRANGER_QUESTIONED,-
+110,RESPONSE,RESOLUTION,Warn the Suspicious Stranger Away,You make it clear that the stranger is not welcome near your camp.,SUSPICIOUS_STRANGER,STRANGER_WARNED,-
+111,RESPONSE,RESOLUTION,Confront the Armed Stranger,You take a defensive position and demand that the armed stranger stop approaching.,ARMED_STRANGER,ARMED_CONFRONTATION,-
+112,RESPONSE,RESOLUTION,Stay Hidden and Observe the Strangers,You remain concealed and watch the people outside your camp for a little longer.,MULTIPLE_PEOPLE,STRANGERS_OBSERVED,-
+113,RESPONSE,RESOLUTION,Approach the Person Calling for Help,You move toward the weak voice while watching carefully for danger.,"DISTRESS_CONFIRMED, VOICE_LOCATED",DISTRESS_APPROACHED,-
+114,RESPONSE,RESOLUTION,Search the Abandoned Belongings,You inspect the abandoned belongings for clues about the missing owner.,ABANDONED_BELONGINGS,BELONGINGS_SEARCHED,-
+115,RESPONSE,RESOLUTION,Follow the Human Footprints,You follow the human tracks far enough to learn where they lead.,HUMAN_TRACKS,HUMAN_TRACKS_FOLLOWED,-
+116,RESPONSE,RESOLUTION,Follow the Blood Trail,"You follow the blood trail carefully, unsure what you will find.",BLOOD_TRAIL,BLOOD_TRAIL_FOLLOWED,-
+117,RESPONSE,RESOLUTION,Challenge the Hidden Person,You reveal yourself and demand that the hidden person identify themselves.,HIDDEN_PERSON,HIDDEN_PERSON_CONFRONTED,-
+118,RESPONSE,RESOLUTION,Answer the Stranger Who Knows Your Name,You ask how the stranger knows who you are.,STRANGER_KNOWS_NAME,NAME_MYSTERY_CHALLENGED,-
+119,RESPONSE,RESOLUTION,Call Again After No Answer,You call out once more and demand that whoever is nearby reveal themselves.,NO_ANSWER,SECOND_CALL,-
+120,RESPONSE,RESOLUTION,Follow the Returned Light Signal,You move toward the direction from which the signal was returned.,LIGHT_SIGNAL_RETURNED,LIGHT_SIGNAL_FOLLOWED,-
+121,RESPONSE,RESOLUTION,Search Beyond the Extinguished Lantern,You search the area beyond the lantern for whoever carried it.,LANTERN_FOUND,LANTERN_TRAIL_SEARCHED,-
+122,RESPONSE,RESOLUTION,Follow Where the Light Vanished,You continue toward the place where the strange light disappeared.,LIGHT_VANISHED,VANISHED_LIGHT_FOLLOWED,-
+123,RESPONSE,RESOLUTION,Block the Thief's Escape,You move between the thief and the easiest route away from camp.,THIEF_PRESENT,THIEF_BLOCKED,-
+124,RESPONSE,RESOLUTION,Chase the Thief,You pursue the thief before they can disappear with your goods.,"PERSON_FLEEING, THIEF_PRESENT",THIEF_CHASED,-
+125,RESPONSE,RESOLUTION,Demand the Goods Back,You confront the thief and demand the return of anything taken.,THIEF_PRESENT,THIEF_CONFRONTED,-
+126,RESPONSE,RESOLUTION,Let the Thief Flee,You decide that your safety is worth more than the stolen goods.,THIEF_PRESENT,THIEF_ALLOWED_ESCAPE,-
+127,RESPONSE,RESOLUTION,Search for the Missing Goods,You search around the camp for anything dropped or hidden.,CARGO_MISSING,MISSING_GOODS_SEARCHED,-
+128,RESPONSE,RESOLUTION,Repair the Cut Cargo Bag,You secure the damaged bag before more goods can spill out.,CARGO_DAMAGED,CARGO_REPAIRED,-
+129,RESPONSE,RESOLUTION,Secure the Loose Cargo,You tighten every strap and return shifted goods to safe positions.,CARGO_LOOSE,CARGO_FULLY_SECURED,-
+130,RESPONSE,RESOLUTION,Watch for the Cargo Intruder,You stay near the supplies and wait for the intruder to make another move.,CARGO_INTRUSION_POSSIBLE,CARGO_AMBUSH_WAIT,-
+131,RESPONSE,RESOLUTION,Confront the Cargo Watcher,You call out the stranger who has been staring at your supplies.,"SUSPICIOUS_STRANGER, THEFT_THREAT",CARGO_WATCHER_CONFRONTED,-
+132,RESPONSE,RESOLUTION,Drive the Animal Away,You advance while making noise to force the animal away from camp.,ANIMAL_CONFIRMED,ANIMAL_SCARED,-
+133,RESPONSE,RESOLUTION,Stay Still and Observe the Animal,You avoid sudden movement and watch the animal's behavior.,ANIMAL_CONFIRMED,ANIMAL_OBSERVED,-
+134,RESPONSE,RESOLUTION,Offer Food Away from Camp,You place food away from the cargo to draw the animal away.,ANIMAL_CONFIRMED,ANIMAL_FED,-
+135,RESPONSE,RESOLUTION,Retreat from the Animal,You slowly give the animal space and move back toward safer ground.,ANIMAL_CONFIRMED,ANIMAL_AVOIDED,-
+136,RESPONSE,RESOLUTION,Protect the Cargo from the Animal,You position yourself between the animal and your supplies.,"ANIMAL_CONFIRMED, CARGO_PRESENT",ANIMAL_CARGO_DEFENDED,-
+137,RESPONSE,RESOLUTION,Follow the Animal Tracks,You follow the trail a short distance to learn where the animal went.,ANIMAL_TRACKS,ANIMAL_TRACKS_FOLLOWED,-
+138,RESPONSE,RESOLUTION,Approach the Injured Animal,You move closer carefully to see whether the animal can be helped.,INJURED_ANIMAL,INJURED_ANIMAL_APPROACHED,-
+139,RESPONSE,RESOLUTION,Leave the Injured Animal Alone,You decide not to risk approaching and return toward camp.,INJURED_ANIMAL,INJURED_ANIMAL_LEFT,-
+140,RESPONSE,RESOLUTION,Use the Fire to Keep the Animal Back,You strengthen the fire and use the flames to discourage the animal from approaching.,"CAMP, LARGE_ANIMAL",ANIMAL_HELD_BY_FIRE,-
+141,RESPONSE,RESOLUTION,Chase the Animal from the Cargo,You rush toward the bags and force the animal away from the supplies.,ANIMAL_IN_CARGO,"ANIMAL_SCARED, CARGO_DEFENDED",-
+142,RESPONSE,RESOLUTION,Wait for the Retreating Animal to Leave,You remain alert and watch until the retreating animal is farther from camp.,ANIMAL_RETREATING,ANIMAL_RETREAT_CONFIRMED,-
+143,RESPONSE,RESOLUTION,Restore the Fire from the Embers,You feed the remaining heat with dry tinder until the flames return.,EMBERS_USABLE,FIRE_RESTORED,-
+144,RESPONSE,RESOLUTION,Use Reserved Dry Fuel,You use protected dry fuel from your supplies to rebuild the fire.,FIREWOOD_WET,FIRE_RESTORED,-
+145,RESPONSE,RESOLUTION,Give Up on the Fire,You decide not to waste more fuel and prepare to rest without the campfire.,FIREWOOD_WET,FIRE_ABANDONED,-
+146,RESPONSE,RESOLUTION,Repair the Shelter Rope,You replace the failed rope and pull the shelter back into position.,SHELTER_DAMAGED,SHELTER_REPAIRED,-
+147,RESPONSE,RESOLUTION,Cover the Exposed Cargo,You move quickly to protect the goods from further rain.,CARGO_WET_RISK,CARGO_RAIN_SECURED,-
+148,RESPONSE,RESOLUTION,Move the Camp to Higher Ground,You relocate the essential parts of camp before the water rises farther.,FLOODING_RISK,CAMP_MOVED_HIGHER,-
+149,RESPONSE,RESOLUTION,Break Camp Before Flooding Worsens,You decide the campsite is no longer safe and begin packing immediately.,FLOODING_RISK,CAMP_ABANDONED,-
+150,RESPONSE,RESOLUTION,Wait for the Storm to Ease,You remain under cover and avoid unnecessary movement while the storm weakens.,STORM_ACTIVE,STORM_WAITED_OUT,-
+151,RESPONSE,RESOLUTION,Patch the Torn Cargo Cover,You temporarily patch the tear to keep the rain away from the goods.,CARGO_COVER_TORN,CARGO_COVER_REPAIRED,-
+152,RESPONSE,RESOLUTION,Trust the Reinforced Shelter,You decide the shelter is stable enough and return to rest beneath it.,SHELTER_STABLE,SHELTER_TRUSTED,-
+153,RESPONSE,RESOLUTION,Return to Rest After Finding Nothing,You decide that further searching is unlikely to help and return to the fire.,NO_SOURCE_FOUND,MYSTERY_ABANDONED,-
+154,RESPONSE,RESOLUTION,Wait for the Disturbance to Return,You remain awake for a while longer to see whether anything happens again.,NO_SOURCE_FOUND,MYSTERY_WAITED,-
+155,RESPONSE,RESOLUTION,Follow the Trail of Broken Branches,You follow the rough trail into the darkness for a short distance.,TRAIL_FOUND,UNKNOWN_TRAIL_FOLLOWED,-
+156,RESPONSE,RESOLUTION,Search for the Owner of the Abandoned Pack,You search the nearby area for whoever left the pack behind.,ABANDONED_BELONGINGS,PACK_OWNER_SEARCHED,-
+157,RESOLUTION,END,Traveller Recovers Enough to Leave,Your help is enough for the traveller to recover and continue toward the road.,TRAVELLER_HELPED,EVENT_RESOLVED,-
+158,RESOLUTION,END,Traveller Cannot Continue,The traveller is too weak to continue and remains near the fire until morning.,TRAVELLER_HELPED,EVENT_RESOLVED,-
+159,RESOLUTION,END,Traveller Shares Useful Information,Your questions reveal useful information about danger on the nearby road.,TRAVELLER_QUESTIONED,EVENT_RESOLVED,-
+160,RESOLUTION,END,Traveller Gives a Vague Story,"The traveller answers your questions, but their story leaves you unconvinced.",TRAVELLER_QUESTIONED,EVENT_RESOLVED,-
+161,RESOLUTION,END,Traveller Rests Beside the Fire,The traveller spends a quiet while beside your fire before continuing their journey.,TRAVELLER_INVITED,EVENT_RESOLVED,-
+162,RESOLUTION,END,Traveller Leaves Peacefully,The traveller accepts your refusal and disappears back into the night.,TRAVELLER_SENT_AWAY,EVENT_RESOLVED,-
+163,RESOLUTION,END,Merchant Finds the Road,"With your directions, the merchant returns to the road and continues toward safety.",MERCHANT_DIRECTED,EVENT_RESOLVED,-
+164,RESOLUTION,END,Suspicious Stranger Explains Themselves,"After being questioned, the stranger gives a believable explanation and moves on.",STRANGER_QUESTIONED,EVENT_RESOLVED,-
+165,RESOLUTION,END,Suspicious Stranger Refuses to Answer,The stranger refuses to explain themselves and slowly retreats into the darkness.,STRANGER_QUESTIONED,EVENT_RESOLVED,-
+166,RESOLUTION,END,Stranger Heeds Your Warning,The stranger decides not to approach further and leaves the area.,STRANGER_WARNED,EVENT_RESOLVED,-
+167,RESOLUTION,END,Armed Stranger Backs Away,The armed stranger decides the confrontation is not worth the risk and withdraws.,ARMED_CONFRONTATION,EVENT_RESOLVED,-
+168,RESOLUTION,END,Armed Confrontation Turns Violent,"The stranger attacks, forcing a dangerous struggle before the threat finally ends.",ARMED_CONFRONTATION,EVENT_RESOLVED,-
+169,RESOLUTION,END,The Strangers Reveal Their Intentions,"By watching from concealment, you learn why the strangers were lingering near camp.",STRANGERS_OBSERVED,EVENT_RESOLVED,-
+170,RESOLUTION,END,The Cry Leads to an Injured Traveller,You find the person in distress and bring them back toward the safety of the fire.,DISTRESS_APPROACHED,EVENT_RESOLVED,-
+171,RESOLUTION,END,The Cry Was a Trap,"The call for help leads you toward people waiting in ambush, forcing you to retreat.",DISTRESS_APPROACHED,EVENT_RESOLVED,-
+172,RESOLUTION,END,The Belongings Identify Their Owner,Clues inside the belongings reveal who carried them and where they may have gone.,BELONGINGS_SEARCHED,EVENT_RESOLVED,-
+173,RESOLUTION,END,The Human Tracks Lead to a Traveller,The footprints lead to a lone traveller resting a short distance from your camp.,HUMAN_TRACKS_FOLLOWED,EVENT_RESOLVED,-
+174,RESOLUTION,END,The Human Tracks Lead Away,The footprints continue toward the road until you decide not to follow farther.,HUMAN_TRACKS_FOLLOWED,EVENT_RESOLVED,-
+175,RESOLUTION,END,The Blood Leads to an Injured Traveller,The trail ends at an injured traveller hiding nearby.,BLOOD_TRAIL_FOLLOWED,EVENT_RESOLVED,-
+176,RESOLUTION,END,The Blood Leads to an Injured Animal,The trail ends at a wounded animal resting beneath cover.,BLOOD_TRAIL_FOLLOWED,EVENT_RESOLVED,-
+177,RESOLUTION,END,The Hidden Person Flees,The figure runs before answering and disappears into the darkness.,HIDDEN_PERSON_CONFRONTED,EVENT_RESOLVED,-
+178,RESOLUTION,END,The Hidden Person Steps Forward,The person reveals themselves and finally explains why they were watching the camp.,HIDDEN_PERSON_CONFRONTED,EVENT_RESOLVED,-
+179,RESOLUTION,END,The Stranger Refuses to Explain Your Name,The stranger refuses to explain how they know you and leaves before you can stop them.,NAME_MYSTERY_CHALLENGED,EVENT_RESOLVED,-
+180,RESOLUTION,END,No One Answers the Second Call,"Your second call receives no response. After several quiet minutes, you return to rest.",SECOND_CALL,EVENT_RESOLVED,-
+181,RESOLUTION,END,Someone Finally Reveals Themselves,A nervous stranger steps from hiding after your second call and explains the disturbance.,SECOND_CALL,EVENT_RESOLVED,-
+182,RESOLUTION,END,The Returned Signal Leads to a Traveller,Following the signal brings you to a traveller trying to find the road.,LIGHT_SIGNAL_FOLLOWED,EVENT_RESOLVED,-
+183,RESOLUTION,END,The Lantern Trail Goes Cold,You find no trace of the lantern's owner and eventually return to camp.,LANTERN_TRAIL_SEARCHED,EVENT_RESOLVED,-
+184,RESOLUTION,END,The Vanished Light Is Never Found,You search where the light disappeared but find nothing that explains what you saw.,VANISHED_LIGHT_FOLLOWED,EVENT_RESOLVED,-
+185,RESOLUTION,END,Thief Drops the Goods and Flees,"Blocked from escaping cleanly, the thief drops what they took and runs.",THIEF_BLOCKED,EVENT_RESOLVED,-
+186,RESOLUTION,END,Thief Fights to Escape,The trapped thief lashes out before finally escaping into the darkness.,THIEF_BLOCKED,EVENT_RESOLVED,-
+187,RESOLUTION,END,You Catch Up with the Thief,You catch the thief before they disappear and recover what they were carrying.,THIEF_CHASED,EVENT_RESOLVED,-
+188,RESOLUTION,END,The Thief Escapes the Chase,The thief is faster in the darkness and disappears with the stolen goods.,THIEF_CHASED,EVENT_RESOLVED,-
+189,RESOLUTION,END,Thief Returns the Goods,"Faced directly, the thief gives back what they took and retreats.",THIEF_CONFRONTED,EVENT_RESOLVED,-
+190,RESOLUTION,END,Thief Refuses and Runs,The thief ignores your demand and bolts into the darkness.,THIEF_CONFRONTED,EVENT_RESOLVED,-
+191,RESOLUTION,END,The Thief Escapes Unchallenged,You let the thief go and the footsteps quickly fade into the night.,THIEF_ALLOWED_ESCAPE,EVENT_RESOLVED,-
+192,RESOLUTION,END,Most Missing Goods Are Found,You recover most of the missing items scattered or hidden around the camp.,MISSING_GOODS_SEARCHED,EVENT_RESOLVED,-
+193,RESOLUTION,END,The Missing Goods Are Gone,Your search finds no trace of the lost cargo.,MISSING_GOODS_SEARCHED,EVENT_RESOLVED,-
+194,RESOLUTION,END,The Damaged Cargo Is Secured,Your repair prevents any further loss from the damaged bag.,CARGO_REPAIRED,EVENT_RESOLVED,-
+195,RESOLUTION,END,The Cargo Is Safe Again,All loose goods are secured and the camp becomes quiet again.,CARGO_FULLY_SECURED,EVENT_RESOLVED,-
+196,RESOLUTION,END,The Cargo Intruder Returns,Your patience pays off when the intruder approaches the supplies again and reveals themselves.,CARGO_AMBUSH_WAIT,EVENT_RESOLVED,-
+197,RESOLUTION,END,The Intruder Never Returns,"You wait beside the cargo, but nothing else approaches before morning.",CARGO_AMBUSH_WAIT,EVENT_RESOLVED,-
+198,RESOLUTION,END,The Cargo Watcher Withdraws,"Once confronted, the stranger backs away from your supplies and leaves.",CARGO_WATCHER_CONFRONTED,EVENT_RESOLVED,-
+199,RESOLUTION,END,Animal Flees from the Noise,The animal recoils at the noise and disappears into the darkness.,ANIMAL_SCARED,EVENT_RESOLVED,-
+200,RESOLUTION,END,Large Animal Charges,"Instead of fleeing, the large animal reacts aggressively and charges before eventually retreating.","ANIMAL_SCARED, LARGE_ANIMAL",EVENT_RESOLVED,-
+201,RESOLUTION,END,Animal Loses Interest,"After watching the camp for a while, the animal turns and leaves on its own.",ANIMAL_OBSERVED,EVENT_RESOLVED,-
+202,RESOLUTION,END,Animal Takes the Food and Leaves,The animal takes the offered food and moves away from the camp.,ANIMAL_FED,EVENT_RESOLVED,-
+203,RESOLUTION,END,Animal Keeps Its Distance,"Your retreat gives the animal enough space, and it does not follow you back to camp.",ANIMAL_AVOIDED,EVENT_RESOLVED,-
+204,RESOLUTION,END,Cargo Is Protected from the Animal,The animal gives up on the supplies and eventually leaves.,ANIMAL_CARGO_DEFENDED,EVENT_RESOLVED,-
+205,RESOLUTION,END,The Animal Tracks Lead to a Den,"The trail leads to a shallow den, and you decide not to disturb it.",ANIMAL_TRACKS_FOLLOWED,EVENT_RESOLVED,-
+206,RESOLUTION,END,The Animal Trail Goes Too Far,The tracks continue away from camp until you turn back rather than risk getting lost.,ANIMAL_TRACKS_FOLLOWED,EVENT_RESOLVED,-
+207,RESOLUTION,END,The Injured Animal Allows You Close,The animal remains calm long enough for you to inspect its injury before it moves away.,INJURED_ANIMAL_APPROACHED,EVENT_RESOLVED,-
+208,RESOLUTION,END,The Injured Animal Reacts Aggressively,"The frightened animal lashes out when you approach, forcing you to retreat.",INJURED_ANIMAL_APPROACHED,EVENT_RESOLVED,-
+209,RESOLUTION,END,The Injured Animal Is Left Undisturbed,You leave the wounded animal alone and return safely to camp.,INJURED_ANIMAL_LEFT,EVENT_RESOLVED,-
+210,RESOLUTION,END,The Fire Keeps the Animal Back,The stronger flames keep the large animal outside the camp until it eventually leaves.,ANIMAL_HELD_BY_FIRE,EVENT_RESOLVED,-
+211,RESOLUTION,END,The Animal Leaves the Cargo Area,"Driven away from the supplies, the animal disappears into the darkness.",CARGO_DEFENDED,EVENT_RESOLVED,-
+212,RESOLUTION,END,The Retreating Animal Disappears,You watch until the animal is well beyond the camp and the night becomes quiet again.,ANIMAL_RETREAT_CONFIRMED,EVENT_RESOLVED,-
+213,RESOLUTION,END,The Fire Burns Again,The flames return and the camp becomes warm and visible again.,FIRE_RESTORED,EVENT_RESOLVED,-
+214,RESOLUTION,END,You Spend the Night Without a Fire,"You give up on the soaked fuel and settle in for a colder, darker rest.",FIRE_ABANDONED,EVENT_RESOLVED,-
+215,RESOLUTION,END,The Shelter Holds,Your repair stabilizes the shelter enough to withstand the remaining storm.,SHELTER_REPAIRED,EVENT_RESOLVED,-
+216,RESOLUTION,END,The Cargo Stays Dry,Your quick work protects the goods before the rain can cause serious damage.,CARGO_RAIN_SECURED,EVENT_RESOLVED,-
+217,RESOLUTION,END,The New Campsite Is Safer,Higher ground keeps the rising water away and you resume resting.,CAMP_MOVED_HIGHER,EVENT_RESOLVED,-
+218,RESOLUTION,END,You Leave Before the Flood,You pack quickly and abandon the campsite before the water traps you.,CAMP_ABANDONED,EVENT_RESOLVED,-
+219,RESOLUTION,END,The Storm Finally Weakens,"After a long wait, the worst of the wind and rain passes.",STORM_WAITED_OUT,EVENT_RESOLVED,-
+220,RESOLUTION,END,The Patched Cover Holds,The temporary patch keeps most of the rain away from your cargo.,CARGO_COVER_REPAIRED,EVENT_RESOLVED,-
+221,RESOLUTION,END,The Reinforced Shelter Survives the Night,The shelter remains stable and protects you until the storm eases.,SHELTER_TRUSTED,EVENT_RESOLVED,-
+222,RESOLUTION,END,The Mystery Is Left Unresolved,You find no explanation for the disturbance and eventually return to rest.,MYSTERY_ABANDONED,EVENT_RESOLVED,-
+223,RESOLUTION,END,The Disturbance Never Returns,"You wait, but the strange sound or movement never happens again.",MYSTERY_WAITED,EVENT_RESOLVED,-
+224,RESOLUTION,END,The Broken Trail Ends Suddenly,The trail disappears on harder ground and leaves no clue about what made it.,UNKNOWN_TRAIL_FOLLOWED,EVENT_RESOLVED,-
+225,RESOLUTION,END,The Trail Leads to an Old Campsite,The broken branches lead to the remains of a recently abandoned campsite.,UNKNOWN_TRAIL_FOLLOWED,EVENT_RESOLVED,-
+226,RESOLUTION,END,No Owner Is Found,You search the nearby area but find no one connected to the abandoned pack.,PACK_OWNER_SEARCHED,EVENT_RESOLVED,-
+227,RESOLUTION,END,The Pack's Owner Returns,A nervous traveller appears while you are searching and claims the abandoned pack.,PACK_OWNER_SEARCHED,EVENT_RESOLVED,-
+228,RESPONSE,RESOLUTION,Follow the Fleeing Person,You follow the fleeing person for a short distance to learn why they were near your camp.,PERSON_FLEEING,FLEEING_PERSON_FOLLOWED,-
+229,RESPONSE,RESOLUTION,Call to the Nearby Person,You call toward the nearby footsteps and tell the unseen person to identify themselves.,PERSON_NEARBY,NEARBY_PERSON_CALLED,-
+230,RESPONSE,RESOLUTION,Respect the Warning,You stop advancing and tell the unseen person that you will keep your distance.,HOSTILE_WARNING,WARNING_RESPECTED,-
+231,RESPONSE,RESOLUTION,Challenge the Warning,You refuse to back away and demand that the unseen person explain themselves.,HOSTILE_WARNING,WARNING_CHALLENGED,-
+232,RESOLUTION,END,The Fleeing Person Disappears,"You follow for a short distance, but the person vanishes into the darkness before you can catch them.",FLEEING_PERSON_FOLLOWED,EVENT_RESOLVED,-
+233,RESOLUTION,END,The Fleeing Person Drops a Clue,"The fleeing person escapes, but you find something they dropped while running.",FLEEING_PERSON_FOLLOWED,EVENT_RESOLVED,-
+234,RESOLUTION,END,A Traveller Answers from the Darkness,The nearby person finally answers and reveals themselves as a nervous traveller.,NEARBY_PERSON_CALLED,EVENT_RESOLVED,-
+235,RESOLUTION,END,The Nearby Person Moves Away,"No answer comes, but the footsteps slowly retreat until the camp is quiet again.",NEARBY_PERSON_CALLED,EVENT_RESOLVED,-
+236,RESOLUTION,END,The Warning Is Honored,"You keep your distance, and after several tense minutes the unseen person leaves the area.",WARNING_RESPECTED,EVENT_RESOLVED,-
+237,RESOLUTION,END,The Stranger Reveals Themselves,"After your challenge, the person steps into view and the tense uncertainty finally ends.",WARNING_CHALLENGED,EVENT_RESOLVED,-
+238,RESOLUTION,END,The Challenge Provokes an Attack,Your refusal to back down turns the warning into a violent confrontation before the threat ends.,WARNING_CHALLENGED,EVENT_RESOLVED,-
+239,RESPONSE,RESOLUTION,Inspect the Human Tracks,"You study the depth, direction, and spacing of the footprints before deciding whether to follow them.",HUMAN_TRACKS,VAR_OUTCOME_239,-
+240,RESOLUTION,END,Inspect the Human Tracks Reveals a Useful Clue,Your careful inspection reveals enough information to make sense of the immediate situation before you return to camp.,VAR_OUTCOME_239,EVENT_RESOLVED,-
+241,RESOLUTION,END,Inspect the Human Tracks Remains Inconclusive,"You inspect the situation carefully but find nothing decisive. With no further sign of danger, you eventually return to camp.",VAR_OUTCOME_239,EVENT_RESOLVED,-
+242,RESPONSE,RESOLUTION,Return to Camp and Watch the Trail,You decide not to follow immediately and instead return to camp to see whether whoever made the tracks comes back.,HUMAN_TRACKS,VAR_OUTCOME_242,-
+243,RESOLUTION,END,The Situation Reveals Itself,Your patience pays off when the situation changes enough for you to understand what was happening near the camp.,VAR_OUTCOME_242,EVENT_RESOLVED,-
+244,RESOLUTION,END,Nothing Else Happens,"You wait for several tense minutes, but nothing else happens and the campsite eventually becomes quiet again.",VAR_OUTCOME_242,EVENT_RESOLVED,-
+245,RESPONSE,RESOLUTION,Examine the Blood Before Following,You inspect the blood closely to judge how fresh the trail is and whether following it is worth the risk.,BLOOD_TRAIL,VAR_OUTCOME_245,-
+246,RESOLUTION,END,Examine the Blood Before Following Reveals a Useful Clue,Your careful inspection reveals enough information to make sense of the immediate situation before you return to camp.,VAR_OUTCOME_245,EVENT_RESOLVED,-
+247,RESOLUTION,END,Examine the Blood Before Following Remains Inconclusive,"You inspect the situation carefully but find nothing decisive. With no further sign of danger, you eventually return to camp.",VAR_OUTCOME_245,EVENT_RESOLVED,-
+248,RESPONSE,RESOLUTION,Prepare Before Following the Blood,You return to the fire briefly and prepare yourself before deciding whether to follow the trail farther.,BLOOD_TRAIL,VAR_OUTCOME_248,-
+249,RESOLUTION,END,Your Preparation Pays Off,"Being prepared lets you deal with the situation without being caught off guard, and the immediate danger passes.",VAR_OUTCOME_248,EVENT_RESOLVED,-
+250,RESOLUTION,END,The Threat Never Develops,"You remain prepared for trouble, but the situation never escalates and the night gradually becomes quiet again.",VAR_OUTCOME_248,EVENT_RESOLVED,-
+251,RESPONSE,RESOLUTION,Inspect the Broken Trail,You study the broken branches and disturbed vegetation to determine what may have passed through.,TRAIL_FOUND,VAR_OUTCOME_251,-
+252,RESOLUTION,END,Inspect the Broken Trail Reveals a Useful Clue,Your careful inspection reveals enough information to make sense of the immediate situation before you return to camp.,VAR_OUTCOME_251,EVENT_RESOLVED,-
+253,RESOLUTION,END,Inspect the Broken Trail Remains Inconclusive,"You inspect the situation carefully but find nothing decisive. With no further sign of danger, you eventually return to camp.",VAR_OUTCOME_251,EVENT_RESOLVED,-
+254,RESPONSE,RESOLUTION,Mark the Trail and Return to Camp,You memorize the direction of the trail but decide not to leave the campsite in darkness.,TRAIL_FOUND,VAR_OUTCOME_254,-
+255,RESOLUTION,END,You Return Safely to Camp,You avoid pushing the situation farther and return safely to the fire without another disturbance.,VAR_OUTCOME_254,EVENT_RESOLVED,-
+256,RESOLUTION,END,The Disturbance Follows No Further,"Whatever caused the situation does not follow you back, and the rest of the camp remains undisturbed.",VAR_OUTCOME_254,EVENT_RESOLVED,-
+257,RESPONSE,RESOLUTION,Observe the Hidden Figure,"Instead of confronting the figure immediately, you remain still and watch for another movement.",HIDDEN_PERSON,VAR_OUTCOME_257,-
+258,RESOLUTION,END,The Situation Reveals Itself,Your patience pays off when the situation changes enough for you to understand what was happening near the camp.,VAR_OUTCOME_257,EVENT_RESOLVED,-
+259,RESOLUTION,END,Nothing Else Happens,"You wait for several tense minutes, but nothing else happens and the campsite eventually becomes quiet again.",VAR_OUTCOME_257,EVENT_RESOLVED,-
+260,RESPONSE,RESOLUTION,Return to the Fire and Call Out,You step back toward the fire and tell the hidden figure to reveal themselves from a safer distance.,HIDDEN_PERSON,VAR_OUTCOME_260,-
+261,RESOLUTION,END,The Source Backs Down,Your direct approach forces the other party to reveal enough of their intentions before withdrawing from the area.,VAR_OUTCOME_260,EVENT_RESOLVED,-
+262,RESOLUTION,END,The Confrontation Escalates,The situation becomes tense and dangerous before the other party finally retreats and the encounter ends.,VAR_OUTCOME_260,EVENT_RESOLVED,-
+263,RESPONSE,RESOLUTION,Search One More Time,You make one final careful sweep around the camp before accepting that nothing obvious is nearby.,NO_SOURCE_FOUND,VAR_OUTCOME_263,-
+264,RESOLUTION,END,Search One More Time Reveals a Useful Clue,Your careful inspection reveals enough information to make sense of the immediate situation before you return to camp.,VAR_OUTCOME_263,EVENT_RESOLVED,-
+265,RESOLUTION,END,Search One More Time Remains Inconclusive,"You inspect the situation carefully but find nothing decisive. With no further sign of danger, you eventually return to camp.",VAR_OUTCOME_263,EVENT_RESOLVED,-
+266,RESPONSE,RESOLUTION,Guard the Cargo and Wait,You position yourself beside the supplies and wait for whatever moved near them to return.,CARGO_INTRUSION_POSSIBLE,VAR_OUTCOME_266,-
+267,RESOLUTION,END,The Situation Reveals Itself,Your patience pays off when the situation changes enough for you to understand what was happening near the camp.,VAR_OUTCOME_266,EVENT_RESOLVED,-
+268,RESOLUTION,END,Nothing Else Happens,"You wait for several tense minutes, but nothing else happens and the campsite eventually becomes quiet again.",VAR_OUTCOME_266,EVENT_RESOLVED,-
+269,RESPONSE,RESOLUTION,Check Where the Movement Stopped,You inspect the last place where you heard movement for tracks or anything left behind.,SOURCE_FLED_POSSIBLE,VAR_OUTCOME_269,-
+270,RESOLUTION,END,Check Where the Movement Stopped Reveals a Useful Clue,Your careful inspection reveals enough information to make sense of the immediate situation before you return to camp.,VAR_OUTCOME_269,EVENT_RESOLVED,-
+271,RESOLUTION,END,Check Where the Movement Stopped Remains Inconclusive,"You inspect the situation carefully but find nothing decisive. With no further sign of danger, you eventually return to camp.",VAR_OUTCOME_269,EVENT_RESOLVED,-
+272,RESPONSE,RESOLUTION,Return to Camp Instead of Chasing,You decide not to pursue an unknown person through the darkness and return to secure the camp.,PERSON_FLEEING,VAR_OUTCOME_272,-
+273,RESOLUTION,END,You Return Safely to Camp,You avoid pushing the situation farther and return safely to the fire without another disturbance.,VAR_OUTCOME_272,EVENT_RESOLVED,-
+274,RESOLUTION,END,The Disturbance Follows No Further,"Whatever caused the situation does not follow you back, and the rest of the camp remains undisturbed.",VAR_OUTCOME_272,EVENT_RESOLVED,-
+275,RESPONSE,RESOLUTION,Call After the Fleeing Person,You shout after the fleeing person and demand that they stop or explain why they were near your camp.,PERSON_FLEEING,VAR_OUTCOME_275,-
+276,RESOLUTION,END,The Source Backs Down,Your direct approach forces the other party to reveal enough of their intentions before withdrawing from the area.,VAR_OUTCOME_275,EVENT_RESOLVED,-
+277,RESOLUTION,END,The Confrontation Escalates,The situation becomes tense and dangerous before the other party finally retreats and the encounter ends.,VAR_OUTCOME_275,EVENT_RESOLVED,-
+278,RESPONSE,RESOLUTION,Wait for the Nearby Person to Move,"You stay silent and wait to hear whether the unseen person approaches, retreats, or reveals themselves.",PERSON_NEARBY,VAR_OUTCOME_278,-
+279,RESOLUTION,END,The Situation Reveals Itself,Your patience pays off when the situation changes enough for you to understand what was happening near the camp.,VAR_OUTCOME_278,EVENT_RESOLVED,-
+280,RESOLUTION,END,Nothing Else Happens,"You wait for several tense minutes, but nothing else happens and the campsite eventually becomes quiet again.",VAR_OUTCOME_278,EVENT_RESOLVED,-
+281,RESPONSE,RESOLUTION,Return to the Fire and Prepare,You move back toward the fire and prepare yourself before dealing with the nearby stranger.,PERSON_NEARBY,VAR_OUTCOME_281,-
+282,RESOLUTION,END,Your Preparation Pays Off,"Being prepared lets you deal with the situation without being caught off guard, and the immediate danger passes.",VAR_OUTCOME_281,EVENT_RESOLVED,-
+283,RESOLUTION,END,The Threat Never Develops,"You remain prepared for trouble, but the situation never escalates and the night gradually becomes quiet again.",VAR_OUTCOME_281,EVENT_RESOLVED,-
+284,RESPONSE,RESOLUTION,Call Out to the Group,You reveal that you are awake and tell the people outside the camp to identify themselves.,MULTIPLE_PEOPLE,VAR_OUTCOME_284,-
+285,RESOLUTION,END,The Source Backs Down,Your direct approach forces the other party to reveal enough of their intentions before withdrawing from the area.,VAR_OUTCOME_284,EVENT_RESOLVED,-
+286,RESOLUTION,END,The Confrontation Escalates,The situation becomes tense and dangerous before the other party finally retreats and the encounter ends.,VAR_OUTCOME_284,EVENT_RESOLVED,-
+287,RESPONSE,RESOLUTION,Return to the Fire and Stay Defensive,"You stop listening and move back to the fire, keeping your distance from the group.",MULTIPLE_PEOPLE,VAR_OUTCOME_287,-
+288,RESOLUTION,END,Your Preparation Pays Off,"Being prepared lets you deal with the situation without being caught off guard, and the immediate danger passes.",VAR_OUTCOME_287,EVENT_RESOLVED,-
+289,RESOLUTION,END,The Threat Never Develops,"You remain prepared for trouble, but the situation never escalates and the night gradually becomes quiet again.",VAR_OUTCOME_287,EVENT_RESOLVED,-
+290,RESPONSE,RESOLUTION,Inspect the Cargo Area,You carefully inspect the bags and ground around the cargo for signs of an intruder.,CARGO_INTRUSION_POSSIBLE,VAR_OUTCOME_290,-
+291,RESOLUTION,END,Inspect the Cargo Area Reveals a Useful Clue,Your careful inspection reveals enough information to make sense of the immediate situation before you return to camp.,VAR_OUTCOME_290,EVENT_RESOLVED,-
+292,RESOLUTION,END,Inspect the Cargo Area Remains Inconclusive,"You inspect the situation carefully but find nothing decisive. With no further sign of danger, you eventually return to camp.",VAR_OUTCOME_290,EVENT_RESOLVED,-
+293,RESPONSE,RESOLUTION,Observe from a Distance,You respect the distance for now but keep watching the area to learn who issued the warning.,HOSTILE_WARNING,VAR_OUTCOME_293,-
+294,RESOLUTION,END,The Situation Reveals Itself,Your patience pays off when the situation changes enough for you to understand what was happening near the camp.,VAR_OUTCOME_293,EVENT_RESOLVED,-
+295,RESOLUTION,END,Nothing Else Happens,"You wait for several tense minutes, but nothing else happens and the campsite eventually becomes quiet again.",VAR_OUTCOME_293,EVENT_RESOLVED,-
+296,RESPONSE,RESOLUTION,Stop Calling and Observe,You stop making noise and watch the darkness to see whether the unseen presence reacts.,NO_ANSWER,VAR_OUTCOME_296,-
+297,RESOLUTION,END,The Situation Reveals Itself,Your patience pays off when the situation changes enough for you to understand what was happening near the camp.,VAR_OUTCOME_296,EVENT_RESOLVED,-
+298,RESOLUTION,END,Nothing Else Happens,"You wait for several tense minutes, but nothing else happens and the campsite eventually becomes quiet again.",VAR_OUTCOME_296,EVENT_RESOLVED,-
+299,RESPONSE,RESOLUTION,Return to the Fire,You decide not to pursue an unseen presence that refuses to answer and move back toward the fire.,NO_ANSWER,VAR_OUTCOME_299,-
+300,RESOLUTION,END,You Return Safely to Camp,You avoid pushing the situation farther and return safely to the fire without another disturbance.,VAR_OUTCOME_299,EVENT_RESOLVED,-
+301,RESOLUTION,END,The Disturbance Follows No Further,"Whatever caused the situation does not follow you back, and the rest of the camp remains undisturbed.",VAR_OUTCOME_299,EVENT_RESOLVED,-
+302,RESPONSE,RESOLUTION,Demand an Explanation,You firmly demand that the stranger explain how they know your name before you allow them closer.,STRANGER_KNOWS_NAME,VAR_OUTCOME_302,-
+303,RESOLUTION,END,The Source Backs Down,Your direct approach forces the other party to reveal enough of their intentions before withdrawing from the area.,VAR_OUTCOME_302,EVENT_RESOLVED,-
+304,RESOLUTION,END,The Confrontation Escalates,The situation becomes tense and dangerous before the other party finally retreats and the encounter ends.,VAR_OUTCOME_302,EVENT_RESOLVED,-
+305,RESPONSE,RESOLUTION,Refuse to Engage,You refuse to answer the stranger and retreat toward the safety of the fire.,STRANGER_KNOWS_NAME,VAR_OUTCOME_305,-
+306,RESOLUTION,END,You Return Safely to Camp,You avoid pushing the situation farther and return safely to the fire without another disturbance.,VAR_OUTCOME_305,EVENT_RESOLVED,-
+307,RESOLUTION,END,The Disturbance Follows No Further,"Whatever caused the situation does not follow you back, and the rest of the camp remains undisturbed.",VAR_OUTCOME_305,EVENT_RESOLVED,-
+308,RESPONSE,RESOLUTION,Observe the Stranger Before Speaking,You remain at a distance and watch the stranger's movements before deciding whether to engage.,SUSPICIOUS_STRANGER,VAR_OUTCOME_308,-
+309,RESOLUTION,END,The Situation Reveals Itself,Your patience pays off when the situation changes enough for you to understand what was happening near the camp.,VAR_OUTCOME_308,EVENT_RESOLVED,-
+310,RESOLUTION,END,Nothing Else Happens,"You wait for several tense minutes, but nothing else happens and the campsite eventually becomes quiet again.",VAR_OUTCOME_308,EVENT_RESOLVED,-
+311,RESPONSE,RESOLUTION,Leave the Belongings Untouched,You decide the abandoned items may be bait and leave them where they are.,ABANDONED_BELONGINGS,VAR_OUTCOME_311,-
+312,RESOLUTION,END,You Return Safely to Camp,You avoid pushing the situation farther and return safely to the fire without another disturbance.,VAR_OUTCOME_311,EVENT_RESOLVED,-
+313,RESOLUTION,END,The Disturbance Follows No Further,"Whatever caused the situation does not follow you back, and the rest of the camp remains undisturbed.",VAR_OUTCOME_311,EVENT_RESOLVED,-
+314,RESPONSE,RESOLUTION,Call for the Person to Come to You,"Rather than rushing into the darkness, you tell the injured or frightened person to move toward the fire if they can.",DISTRESS_CONFIRMED,VAR_OUTCOME_314,-
+315,RESOLUTION,END,The Situation Reveals Itself,Your patience pays off when the situation changes enough for you to understand what was happening near the camp.,VAR_OUTCOME_314,EVENT_RESOLVED,-
+316,RESOLUTION,END,Nothing Else Happens,"You wait for several tense minutes, but nothing else happens and the campsite eventually becomes quiet again.",VAR_OUTCOME_314,EVENT_RESOLVED,-
+317,RESPONSE,RESOLUTION,Prepare to Defend Yourself Before Approaching,You prepare for the possibility that the call for help is a trap before moving closer.,DISTRESS_CONFIRMED,VAR_OUTCOME_317,-
+318,RESOLUTION,END,Your Preparation Pays Off,"Being prepared lets you deal with the situation without being caught off guard, and the immediate danger passes.",VAR_OUTCOME_317,EVENT_RESOLVED,-
+319,RESOLUTION,END,The Threat Never Develops,"You remain prepared for trouble, but the situation never escalates and the night gradually becomes quiet again.",VAR_OUTCOME_317,EVENT_RESOLVED,-
+320,RESPONSE,RESOLUTION,Back Away Without Provoking Them,You keep your hands visible and slowly retreat toward the fire rather than challenge the armed stranger.,ARMED_STRANGER,VAR_OUTCOME_320,-
+321,RESOLUTION,END,You Return Safely to Camp,You avoid pushing the situation farther and return safely to the fire without another disturbance.,VAR_OUTCOME_320,EVENT_RESOLVED,-
+322,RESOLUTION,END,The Disturbance Follows No Further,"Whatever caused the situation does not follow you back, and the rest of the camp remains undisturbed.",VAR_OUTCOME_320,EVENT_RESOLVED,-
+323,RESPONSE,RESOLUTION,Observe the Armed Stranger,You hold your ground without advancing and watch for signs of hostile intent.,ARMED_STRANGER,VAR_OUTCOME_323,-
+324,RESOLUTION,END,The Situation Reveals Itself,Your patience pays off when the situation changes enough for you to understand what was happening near the camp.,VAR_OUTCOME_323,EVENT_RESOLVED,-
+325,RESOLUTION,END,Nothing Else Happens,"You wait for several tense minutes, but nothing else happens and the campsite eventually becomes quiet again.",VAR_OUTCOME_323,EVENT_RESOLVED,-
+326,RESPONSE,RESOLUTION,Warn the Group Away,You make it clear that the people watching your camp should keep their distance.,SUSPICIOUS_GROUP,VAR_OUTCOME_326,-
+327,RESOLUTION,END,The Source Backs Down,Your direct approach forces the other party to reveal enough of their intentions before withdrawing from the area.,VAR_OUTCOME_326,EVENT_RESOLVED,-
+328,RESOLUTION,END,The Confrontation Escalates,The situation becomes tense and dangerous before the other party finally retreats and the encounter ends.,VAR_OUTCOME_326,EVENT_RESOLVED,-
+329,RESPONSE,RESOLUTION,Remain Hidden and Listen Longer,You stay concealed and continue listening for clues about why the group is watching the camp.,SUSPICIOUS_GROUP,VAR_OUTCOME_329,-
+330,RESOLUTION,END,The Situation Reveals Itself,Your patience pays off when the situation changes enough for you to understand what was happening near the camp.,VAR_OUTCOME_329,EVENT_RESOLVED,-
+331,RESOLUTION,END,Nothing Else Happens,"You wait for several tense minutes, but nothing else happens and the campsite eventually becomes quiet again.",VAR_OUTCOME_329,EVENT_RESOLVED,-
+332,RESPONSE,RESOLUTION,Inspect the Lantern,You examine the lantern for signs of who carried it and how recently it was used.,LANTERN_FOUND,VAR_OUTCOME_332,-
+333,RESOLUTION,END,Inspect the Lantern Reveals a Useful Clue,Your careful inspection reveals enough information to make sense of the immediate situation before you return to camp.,VAR_OUTCOME_332,EVENT_RESOLVED,-
+334,RESOLUTION,END,Inspect the Lantern Remains Inconclusive,"You inspect the situation carefully but find nothing decisive. With no further sign of danger, you eventually return to camp.",VAR_OUTCOME_332,EVENT_RESOLVED,-
+335,RESPONSE,RESOLUTION,Leave the Lantern and Return to Camp,You decide not to follow an unknown person farther into the darkness and return to your fire.,LANTERN_FOUND,VAR_OUTCOME_335,-
+336,RESOLUTION,END,You Return Safely to Camp,You avoid pushing the situation farther and return safely to the fire without another disturbance.,VAR_OUTCOME_335,EVENT_RESOLVED,-
+337,RESOLUTION,END,The Disturbance Follows No Further,"Whatever caused the situation does not follow you back, and the rest of the camp remains undisturbed.",VAR_OUTCOME_335,EVENT_RESOLVED,-
+338,RESPONSE,RESOLUTION,Signal Again Before Approaching,You answer with another deliberate torch signal and wait for a clearer response.,LIGHT_SIGNAL_RETURNED,VAR_OUTCOME_338,-
+339,RESOLUTION,END,The Situation Reveals Itself,Your patience pays off when the situation changes enough for you to understand what was happening near the camp.,VAR_OUTCOME_338,EVENT_RESOLVED,-
+340,RESOLUTION,END,Nothing Else Happens,"You wait for several tense minutes, but nothing else happens and the campsite eventually becomes quiet again.",VAR_OUTCOME_338,EVENT_RESOLVED,-
+341,RESPONSE,RESOLUTION,Stay at Camp and Watch the Signal,You decide not to follow immediately and instead observe whether the distant light moves closer.,LIGHT_SIGNAL_RETURNED,VAR_OUTCOME_341,-
+342,RESOLUTION,END,The Situation Reveals Itself,Your patience pays off when the situation changes enough for you to understand what was happening near the camp.,VAR_OUTCOME_341,EVENT_RESOLVED,-
+343,RESOLUTION,END,Nothing Else Happens,"You wait for several tense minutes, but nothing else happens and the campsite eventually becomes quiet again.",VAR_OUTCOME_341,EVENT_RESOLVED,-
+344,RESPONSE,RESOLUTION,Inspect What Was Taken,You examine the cut bag and compare its contents with what you remember packing.,CARGO_DAMAGED,VAR_OUTCOME_344,-
+345,RESOLUTION,END,Inspect What Was Taken Reveals a Useful Clue,Your careful inspection reveals enough information to make sense of the immediate situation before you return to camp.,VAR_OUTCOME_344,EVENT_RESOLVED,-
+346,RESOLUTION,END,Inspect What Was Taken Remains Inconclusive,"You inspect the situation carefully but find nothing decisive. With no further sign of danger, you eventually return to camp.",VAR_OUTCOME_344,EVENT_RESOLVED,-
+347,RESPONSE,RESOLUTION,Secure What Remains,You stop searching temporarily and secure the remaining cargo before anything else can disappear.,CARGO_MISSING,VAR_OUTCOME_347,-
+348,RESOLUTION,END,Your Preparation Pays Off,"Being prepared lets you deal with the situation without being caught off guard, and the immediate danger passes.",VAR_OUTCOME_347,EVENT_RESOLVED,-
+349,RESOLUTION,END,The Threat Never Develops,"You remain prepared for trouble, but the situation never escalates and the night gradually becomes quiet again.",VAR_OUTCOME_347,EVENT_RESOLVED,-
+350,RESPONSE,RESOLUTION,Look for Tracks Around the Cargo,You inspect the ground around the missing goods for footprints or drag marks.,CARGO_MISSING,VAR_OUTCOME_350,-
+351,RESOLUTION,END,Look for Tracks Around the Cargo Reveals a Useful Clue,Your careful inspection reveals enough information to make sense of the immediate situation before you return to camp.,VAR_OUTCOME_350,EVENT_RESOLVED,-
+352,RESOLUTION,END,Look for Tracks Around the Cargo Remains Inconclusive,"You inspect the situation carefully but find nothing decisive. With no further sign of danger, you eventually return to camp.",VAR_OUTCOME_350,EVENT_RESOLVED,-
+353,RESPONSE,RESOLUTION,Return to Rest,"With no sign of an intruder, you secure the loose equipment and prepare to rest again.",NO_THREAT_FOUND,VAR_OUTCOME_353,-
+354,RESOLUTION,END,You Return Safely to Camp,You avoid pushing the situation farther and return safely to the fire without another disturbance.,VAR_OUTCOME_353,EVENT_RESOLVED,-
+355,RESOLUTION,END,The Disturbance Follows No Further,"Whatever caused the situation does not follow you back, and the rest of the camp remains undisturbed.",VAR_OUTCOME_353,EVENT_RESOLVED,-
+356,RESPONSE,RESOLUTION,Protect the Embers and Wait,You shield the remaining heat and wait for the wind to weaken before rebuilding the fire.,EMBERS_USABLE,VAR_OUTCOME_356,-
+357,RESOLUTION,END,The Situation Reveals Itself,Your patience pays off when the situation changes enough for you to understand what was happening near the camp.,VAR_OUTCOME_356,EVENT_RESOLVED,-
+358,RESOLUTION,END,Nothing Else Happens,"You wait for several tense minutes, but nothing else happens and the campsite eventually becomes quiet again.",VAR_OUTCOME_356,EVENT_RESOLVED,-
+359,RESPONSE,RESOLUTION,Use the Embers Only for Light,You decide not to rebuild a full fire and keep only enough flame to maintain visibility.,EMBERS_USABLE,VAR_OUTCOME_359,-
+360,RESOLUTION,END,The Repair Holds,Your quick work stabilizes the problem and prevents it from becoming worse during the rest of the night.,VAR_OUTCOME_359,EVENT_RESOLVED,-
+361,RESOLUTION,END,The Repair Is Only Temporary,"You stop the immediate problem, but the damage remains something that will need proper attention later.",VAR_OUTCOME_359,EVENT_RESOLVED,-
+362,RESPONSE,RESOLUTION,Search for Dry Kindling,"You search beneath the cart, shelter, and nearby cover for anything dry enough to burn.",FIREWOOD_WET,VAR_OUTCOME_362,-
+363,RESOLUTION,END,Search for Dry Kindling Reveals a Useful Clue,Your careful inspection reveals enough information to make sense of the immediate situation before you return to camp.,VAR_OUTCOME_362,EVENT_RESOLVED,-
+364,RESOLUTION,END,Search for Dry Kindling Remains Inconclusive,"You inspect the situation carefully but find nothing decisive. With no further sign of danger, you eventually return to camp.",VAR_OUTCOME_362,EVENT_RESOLVED,-
+365,RESPONSE,RESOLUTION,Reinforce the Shelter Instead of Replacing the Rope,You brace the damaged section with available materials rather than relying on the broken rope.,SHELTER_DAMAGED,VAR_OUTCOME_365,-
+366,RESOLUTION,END,The Repair Holds,Your quick work stabilizes the problem and prevents it from becoming worse during the rest of the night.,VAR_OUTCOME_365,EVENT_RESOLVED,-
+367,RESOLUTION,END,The Repair Is Only Temporary,"You stop the immediate problem, but the damage remains something that will need proper attention later.",VAR_OUTCOME_365,EVENT_RESOLVED,-
+368,RESPONSE,RESOLUTION,Move the Most Valuable Goods Under Shelter,You prioritize the most valuable cargo and move it into the driest part of the camp.,CARGO_WET_RISK,VAR_OUTCOME_368,-
+369,RESOLUTION,END,The Repair Holds,Your quick work stabilizes the problem and prevents it from becoming worse during the rest of the night.,VAR_OUTCOME_368,EVENT_RESOLVED,-
+370,RESOLUTION,END,The Repair Is Only Temporary,"You stop the immediate problem, but the damage remains something that will need proper attention later.",VAR_OUTCOME_368,EVENT_RESOLVED,-
+371,RESPONSE,RESOLUTION,Inspect the Shelter One More Time,You check the reinforced shelter carefully before trusting it for the rest of the storm.,SHELTER_STABLE,VAR_OUTCOME_371,-
+372,RESOLUTION,END,Inspect the Shelter One More Time Reveals a Useful Clue,Your careful inspection reveals enough information to make sense of the immediate situation before you return to camp.,VAR_OUTCOME_371,EVENT_RESOLVED,-
+373,RESOLUTION,END,Inspect the Shelter One More Time Remains Inconclusive,"You inspect the situation carefully but find nothing decisive. With no further sign of danger, you eventually return to camp.",VAR_OUTCOME_371,EVENT_RESOLVED,-
+374,RESOLUTION,END,The Person Reacts Unexpectedly,"The person reacts differently than expected, but the encounter still ends without leaving the immediate situation unresolved.",TRAVELLER_INVITED,EVENT_RESOLVED,-
+375,RESOLUTION,END,The Person Reacts Unexpectedly 2,"The person reacts differently than expected, but the encounter still ends without leaving the immediate situation unresolved.",TRAVELLER_SENT_AWAY,EVENT_RESOLVED,-
+376,RESOLUTION,END,The Person Reacts Unexpectedly 3,"The person reacts differently than expected, but the encounter still ends without leaving the immediate situation unresolved.",MERCHANT_DIRECTED,EVENT_RESOLVED,-
+377,RESOLUTION,END,The Person Reacts Unexpectedly 4,"The person reacts differently than expected, but the encounter still ends without leaving the immediate situation unresolved.",STRANGER_WARNED,EVENT_RESOLVED,-
+378,RESOLUTION,END,The Person Reacts Unexpectedly 5,"The person reacts differently than expected, but the encounter still ends without leaving the immediate situation unresolved.",STRANGERS_OBSERVED,EVENT_RESOLVED,-
+379,RESOLUTION,END,Alternative Outcome: Search the Abandoned Belongings,"The situation develops differently than expected, but the immediate encounter still reaches a clear conclusion.",BELONGINGS_SEARCHED,EVENT_RESOLVED,-
+380,RESOLUTION,END,The Person Reacts Unexpectedly 6,"The person reacts differently than expected, but the encounter still ends without leaving the immediate situation unresolved.",NAME_MYSTERY_CHALLENGED,EVENT_RESOLVED,-
+381,RESOLUTION,END,Alternative Outcome: Follow the Returned Light Signal,"The situation develops differently than expected, but the immediate encounter still reaches a clear conclusion.",LIGHT_SIGNAL_FOLLOWED,EVENT_RESOLVED,-
+382,RESOLUTION,END,Alternative Outcome: Search Beyond the Extinguished Lantern,"The situation develops differently than expected, but the immediate encounter still reaches a clear conclusion.",LANTERN_TRAIL_SEARCHED,EVENT_RESOLVED,-
+383,RESOLUTION,END,Alternative Outcome: Follow Where the Light Vanished,"The situation develops differently than expected, but the immediate encounter still reaches a clear conclusion.",VANISHED_LIGHT_FOLLOWED,EVENT_RESOLVED,-
+384,RESOLUTION,END,The Thief Gets Away,"Despite your response, the thief finds an opening and escapes into the darkness before the encounter can develop further.",THIEF_ALLOWED_ESCAPE,EVENT_RESOLVED,-
+385,RESOLUTION,END,Some Cargo Still Needs Attention,"You stop the immediate problem, but not everything can be fully secured or recovered before you return to rest.",CARGO_REPAIRED,EVENT_RESOLVED,-
+386,RESOLUTION,END,Some Cargo Still Needs Attention 2,"You stop the immediate problem, but not everything can be fully secured or recovered before you return to rest.",CARGO_FULLY_SECURED,EVENT_RESOLVED,-
+387,RESOLUTION,END,Some Cargo Still Needs Attention 3,"You stop the immediate problem, but not everything can be fully secured or recovered before you return to rest.",CARGO_WATCHER_CONFRONTED,EVENT_RESOLVED,-
+388,RESOLUTION,END,The Animal Reacts Unexpectedly,"The animal reacts differently than expected, forcing you to adjust before it finally leaves the immediate area.",ANIMAL_OBSERVED,EVENT_RESOLVED,-
+389,RESOLUTION,END,Alternative Outcome: Offer Food Away from Camp,"The situation develops differently than expected, but the immediate encounter still reaches a clear conclusion.",ANIMAL_FED,EVENT_RESOLVED,-
+390,RESOLUTION,END,The Animal Reacts Unexpectedly 2,"The animal reacts differently than expected, forcing you to adjust before it finally leaves the immediate area.",ANIMAL_AVOIDED,EVENT_RESOLVED,-
+391,RESOLUTION,END,The Animal Reacts Unexpectedly 3,"The animal reacts differently than expected, forcing you to adjust before it finally leaves the immediate area.",ANIMAL_CARGO_DEFENDED,EVENT_RESOLVED,-
+392,RESOLUTION,END,The Animal Reacts Unexpectedly 4,"The animal reacts differently than expected, forcing you to adjust before it finally leaves the immediate area.",INJURED_ANIMAL_LEFT,EVENT_RESOLVED,-
+393,RESOLUTION,END,The Animal Reacts Unexpectedly 5,"The animal reacts differently than expected, forcing you to adjust before it finally leaves the immediate area.",ANIMAL_HELD_BY_FIRE,EVENT_RESOLVED,-
+394,RESOLUTION,END,The Animal Reacts Unexpectedly 6,"The animal reacts differently than expected, forcing you to adjust before it finally leaves the immediate area.",ANIMAL_RETREAT_CONFIRMED,EVENT_RESOLVED,-
+395,RESOLUTION,END,The Fire Remains Weak,"Your attempt helps, but the fire never fully recovers and you continue the night with only limited warmth and light.",FIRE_RESTORED,EVENT_RESOLVED,-
+396,RESOLUTION,END,Alternative Outcome: Use Reserved Dry Fuel,"The situation develops differently than expected, but the immediate encounter still reaches a clear conclusion.",FIRE_RESTORED,EVENT_RESOLVED,-
+397,RESOLUTION,END,The Fire Remains Weak 2,"Your attempt helps, but the fire never fully recovers and you continue the night with only limited warmth and light.",FIRE_ABANDONED,EVENT_RESOLVED,-
+398,RESOLUTION,END,The Repair Barely Holds,"The repair survives the immediate problem, but only just, leaving the camp less comfortable for the rest of the night.",SHELTER_REPAIRED,EVENT_RESOLVED,-
+399,RESOLUTION,END,Some Cargo Still Needs Attention 4,"You stop the immediate problem, but not everything can be fully secured or recovered before you return to rest.",CARGO_RAIN_SECURED,EVENT_RESOLVED,-
+400,RESOLUTION,END,Alternative Outcome: Move the Camp to Higher Ground,"The situation develops differently than expected, but the immediate encounter still reaches a clear conclusion.",CAMP_MOVED_HIGHER,EVENT_RESOLVED,-
+401,RESOLUTION,END,The Weather Causes Further Trouble,"Your response prevents the worst outcome, but the weather still causes additional difficulty before the situation settles.",CAMP_ABANDONED,EVENT_RESOLVED,-
+402,RESOLUTION,END,The Weather Causes Further Trouble 2,"Your response prevents the worst outcome, but the weather still causes additional difficulty before the situation settles.",STORM_WAITED_OUT,EVENT_RESOLVED,-
+403,RESOLUTION,END,Some Cargo Still Needs Attention 5,"You stop the immediate problem, but not everything can be fully secured or recovered before you return to rest.",CARGO_COVER_REPAIRED,EVENT_RESOLVED,-
+404,RESOLUTION,END,The Repair Barely Holds 2,"The repair survives the immediate problem, but only just, leaving the camp less comfortable for the rest of the night.",SHELTER_TRUSTED,EVENT_RESOLVED,-
+405,RESOLUTION,END,Alternative Outcome: Return to Rest After Finding Nothing,"The situation develops differently than expected, but the immediate encounter still reaches a clear conclusion.",MYSTERY_ABANDONED,EVENT_RESOLVED,-
+406,RESOLUTION,END,Nothing More Is Revealed,"You wait and observe, but the situation gives you no further answer before the night becomes quiet again.",MYSTERY_WAITED,EVENT_RESOLVED,-
+407,RESOLUTION,END,Alternative Outcome: Respect the Warning,"The situation develops differently than expected, but the immediate encounter still reaches a clear conclusion.",WARNING_RESPECTED,EVENT_RESOLVED,-
+408,REVEAL,RESPONSE,The Whispering Continues,"You remain beside the fire as the quiet voices continue somewhere beyond the light. After a moment, it becomes clear that more than one person is speaking.","WAITING_AT_FIRE, WHISPERS_HEARD","HUMAN_CONFIRMED, MULTIPLE_PEOPLE",UNKNOWN_SOURCE
+409,REVEAL,RESPONSE,The Voices Suddenly Stop,"You wait beside the fire, but the whispering abruptly stops. No one approaches, and the darkness around the camp becomes quiet again.","WAITING_AT_FIRE, WHISPERS_HEARD","NO_SOURCE_FOUND, SILENCE",UNKNOWN_SOURCE
+410,REVEAL,RESPONSE,A Figure Moves Closer to the Firelight,"After several tense moments, a lone figure moves closer to the camp but stops just beyond the edge of the firelight.","WAITING_AT_FIRE, HUMAN_POSSIBLE","HUMAN_CONFIRMED, PERSON_NEARBY",UNKNOWN_SOURCE
