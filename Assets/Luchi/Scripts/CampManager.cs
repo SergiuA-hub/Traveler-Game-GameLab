@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using Random = UnityEngine.Random;
 
 public class CampManager : MonoBehaviour
@@ -80,13 +81,7 @@ public class CampManager : MonoBehaviour
         else
         {
             Debug.Log("No event occurred during rest.");
-        }
-
-        foreach(var item in foodItems)
-            player.invetory.Remove(item.resourceSO, item.amount);
-
-        foreach (var item in drinkItems)
-            player.invetory.Remove(item.resourceSO, item.amount);
+        }            
 
         player.stats.currentHunger += hungerRestoreAmount;
         player.stats.currentThirst += thirstRestoreAmount;
@@ -152,6 +147,85 @@ public class CampManager : MonoBehaviour
     {
         restDuration = Mathf.Max(1, Mathf.RoundToInt(player.stats.maxStamina - player.stats.currentStamina));
         return restDuration;
+    }
+
+    public void resetConsumption()
+    {
+        foodItems.Clear();
+        drinkItems.Clear();
+
+        hungerRestoreAmount = 0f;
+        hpRestoreAmount = 0f;
+        thirstRestoreAmount = 0f;
+    }
+
+    public void addToFood(InventoryItem item)
+    {
+        if ((player.stats.currentHunger + hungerRestoreAmount >= player.stats.maxHunger) && (player.stats.currentHp + hpRestoreAmount >= player.stats.maxHp))
+            return;
+
+        foreach (var food in foodItems)
+        {
+            if (food.resourceSO.itemName == item.resourceSO.itemName)
+            {
+                food.amount++;
+                player.invetory.Remove(item.resourceSO);
+                Debug.Log($"Amount increased for {food.resourceSO.itemName} to {food.amount}");
+                calculateTotalFoodRestore();
+                return;
+            }
+        }
+        
+        ConsumedResource consumeR = new ConsumedResource(item.resourceSO, 1);
+        Debug.Log($"{consumeR.resourceSO.itemName} was added with amount: {consumeR.amount}");
+        foodItems.Add(consumeR);
+        calculateTotalFoodRestore();
+        player.invetory.Remove(item.resourceSO);
+    }
+
+    public void calculateTotalFoodRestore()
+    {
+        hungerRestoreAmount = 0f;
+        hpRestoreAmount = 0f;
+
+        foreach (var consumed in foodItems)
+        {
+            hungerRestoreAmount += consumed.amount * consumed.resourceSO.stat_restore;
+            hpRestoreAmount += consumed.amount * consumed.resourceSO.HP_restore;
+        }
+    }
+
+    public void addToDrink(InventoryItem item)
+    {
+        if (player.stats.currentThirst + thirstRestoreAmount >= player.stats.maxThirst)
+            return;
+
+        foreach (var drink in drinkItems)
+        {
+            if (drink.resourceSO.itemName == item.resourceSO.itemName)
+            {
+                drink.amount++;
+                player.invetory.Remove(item.resourceSO);
+                Debug.Log($"Amount increased for {drink.resourceSO.itemName} to {drink.amount}");
+                calculateTotalDrinkRestore();
+                return;
+            }
+        }
+
+        ConsumedResource consumeR = new ConsumedResource(item.resourceSO, 1);
+        Debug.Log($"{consumeR.resourceSO.itemName} was added with amount: {consumeR.amount}");
+        drinkItems.Add(consumeR);
+        player.invetory.Remove(item.resourceSO);
+        calculateTotalDrinkRestore();
+    }
+
+    public void calculateTotalDrinkRestore()
+    {
+        thirstRestoreAmount = 0f;
+        foreach (var consumed in drinkItems)
+        {
+            thirstRestoreAmount += consumed.amount * consumed.resourceSO.stat_restore;
+        }
     }
 
     public void CalculateFood()
