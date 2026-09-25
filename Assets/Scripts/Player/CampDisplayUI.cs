@@ -38,10 +38,10 @@ public class CampDisplayUI : MonoBehaviour
         cleanSupplies();
         player.rooted = true;
 
-        HP_Text.text = $" {player.stats.currentHp} / {player.stats.maxHp}";
-        stamina_text.text = $" {player.stats.currentStamina} / {player.stats.maxStamina}";
-        hunger_text.text = $" {player.stats.currentHunger} / {player.stats.maxHunger}";
-        thirst_text.text = $" {player.stats.currentThirst} / {player.stats.maxThirst}";
+        HP_Text.text = $" {player.stats.currentHp:0} / {player.stats.maxHp:0}";
+        stamina_text.text = $" {player.stats.currentStamina:0.#} / {player.stats.maxStamina:0.#}";
+        hunger_text.text = $" {player.stats.currentHunger:0.#} / {player.stats.maxHunger:0.#}";
+        thirst_text.text = $" {player.stats.currentThirst:0.#} / {player.stats.maxThirst:0.#}";
 
         foreach (var item in player.invetory.Inventory)
         {
@@ -88,9 +88,9 @@ public class CampDisplayUI : MonoBehaviour
         float finalThirst = Mathf.Min(player.stats.currentThirst + totalThirstRestore, player.stats.maxThirst);
         
         newHP.text = $"New HP: {finalHP}";
-        newStamina.text = $"New Stamina: {finalStamina}";
-        newHunger.text = $"New Hunger: {finalHunger}";
-        newThirst.text = $"New Thirst: {finalThirst}";
+        newStamina.text = $"New Stamina: {finalStamina:0.#}";
+        newHunger.text = $"New Hunger: {finalHunger:0.#}";
+        newThirst.text = $"New Thirst: {finalThirst:0.#}";
     }
     public void cleanSupplies()
     {

@@ -1,7 +1,5 @@
-using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
-using UnityEditor.Rendering.Universal.ShaderGUI;
 using UnityEngine;
 [System.Serializable]
 public class SettlementDeployment
@@ -82,7 +80,7 @@ public class SettlementRuntime
             if(trade.resource.itemName == res.resource.itemName)
             {
                 int tier = trade.getPriceTier(res.amount);
-                Debug.Log($"Price Tier for {res.resource.itemName} is T{tier}");
+                //Debug.Log($"Price Tier for {res.resource.itemName} is T{tier}");
                 if (tier == 1)
                     return res.resource.baseValue * 1.6f;
                 if (tier == 2)
@@ -185,7 +183,7 @@ public class SettlementsManager : MonoBehaviour
             foreach(var res in settlement.settlementStock)
             {                
                 res.price = settlement.getPriceFor(res);
-                Debug.Log($"{res.resource.itemName} with stock {res.amount} have price of {res.price} where base price is {res.resource.baseValue}");
+                //Debug.Log($"{res.resource.itemName} with stock {res.amount} have price of {res.price} where base price is {res.resource.baseValue}");
             }
         }
     }
@@ -195,7 +193,7 @@ public class SettlementsManager : MonoBehaviour
         foreach (var res in currentSettlement.settlementStock)
         {            
             res.price = currentSettlement.getPriceFor(res);
-            Debug.Log($"Res {res.resource.itemName} new pices -> {res.price}");
+            //Debug.Log($"Res {res.resource.itemName} new pices -> {res.price}");
         }
     }
 
@@ -223,7 +221,7 @@ public class SettlementsManager : MonoBehaviour
         {
             if (settlement.settlementGo == playerAtSettlement)
             {
-                Debug.Log($"Player entered in {settlement.settlementName}");
+                //Debug.Log($"Player entered in {settlement.settlementName}");
                 currentSettlement = settlement;
                 SettlementUI.GetComponent<CityUI>().prepareSettlement(settlement);
             }
@@ -239,7 +237,7 @@ public class SettlementsManager : MonoBehaviour
         //BUY
         if (currentItemSelected.tradeSettlementItem != null)
         {
-            Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with proce {currentItemSelected.tradeSettlementItem.price}");
+            //Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with proce {currentItemSelected.tradeSettlementItem.price}");
             //Check player money & space in backpack
             if (player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price
             && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume, currentItemSelected.tradeSettlementItem.resource.weight))
