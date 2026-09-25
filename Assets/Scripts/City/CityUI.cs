@@ -209,6 +209,7 @@ public class CityUI : MonoBehaviour
     //initial setup
     public void prepareSettlement(SettlementRuntime settlement)
     {
+        Debug.Log($"prepareSettlement({settlement.settlementName})");
         currentSettlement = settlement;
         DisplayTrade();
     }

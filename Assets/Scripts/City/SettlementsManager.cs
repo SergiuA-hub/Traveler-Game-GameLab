@@ -131,7 +131,7 @@ public class SettlementsManager : MonoBehaviour
 {
     public GameObject SettlementUI;
     public Player_M player;
-    private GameObject playerAtSettlement;
+    public GameObject playerAtSettlement;
     public List<SettlementDeployment> settlementsList;
 
     public List<SettlementRuntime> settlements;
@@ -219,9 +219,9 @@ public class SettlementsManager : MonoBehaviour
 
         foreach (var settlement in settlements)
         {
-            if (settlement.settlementGo == playerAtSettlement)
+            if (settlement.settlementGo.name == playerAtSettlement.name)
             {
-                //Debug.Log($"Player entered in {settlement.settlementName}");
+                Debug.Log($"Player entered in {settlement.settlementName}");
                 currentSettlement = settlement;
                 SettlementUI.GetComponent<CityUI>().prepareSettlement(settlement);
             }

@@ -10,7 +10,7 @@ public class ReadSign : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        directionPanel.text = $"<b>{directionToShow}</b>";
+        directionPanel.text = $"{directionToShow}";
         //directionPanel.gameObject.SetActive(true);
     }
 
