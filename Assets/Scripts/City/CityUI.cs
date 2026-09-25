@@ -1,7 +1,7 @@
-
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 public enum CityUIPage
 {
     Lobby=0,
@@ -10,11 +10,13 @@ public enum CityUIPage
     TradeGuild=3,
     CartManagment=4,
     Rest =5
-
 }
+
+[System.Serializable]
 public class CityUI : MonoBehaviour
 {
-
+    public SettlementsManager settlementsManager;
+    public SettlementRuntime currentSettlement;
     public CityUIPage currentpage;
     [Header("Lobby Panel")]
     
@@ -44,9 +46,8 @@ public class CityUI : MonoBehaviour
     
     [SerializeField] private Image currentTradeItemImage;
     [SerializeField] private TextMeshProUGUI currentTradeItemName;
-    [SerializeField] private TextMeshProUGUI currentTradeItemPrice;
+    [SerializeField] private TextMeshProUGUI currentTradeItemPrice;   
 
-    
 
     [Header("PAGES")]
     [SerializeField] private GameObject LobbyPanel;
@@ -59,6 +60,7 @@ public class CityUI : MonoBehaviour
     }
     private void OnEnable()
     {
+        setlement = GetComponent<Setlement>();        
         ShowCurrentPage(currentpage);
     }
 
@@ -133,30 +135,37 @@ public class CityUI : MonoBehaviour
     {
         //Populate Player Money
         DisplayPlayerCoins();
-        //Delete List 
-        foreach(Transform child in buyContent)
+
+        foreach (Transform child in buyContent)
         {
             Destroy(child.gameObject);
         }
 
-        foreach(Transform child in SellContent)
+        foreach (Transform child in SellContent)
         {
             Destroy(child.gameObject);
         }
-
+        //setlement = GetComponent<Setlement>();
         //Create list
-        foreach(SettlementItem item in setlement.settlementItems)
+        foreach (var item in currentSettlement.settlementStock)
         {
             TradeItemDisplay row = Instantiate(tradePrfab, buyContent);
+            row.PopulateBuyIcon(item, this);
             
-            row.PopulateBuyIcon(item,this);
+            if (settlementsManager.currentItemSelected != null && settlementsManager.currentItemSelected.tradeSettlementItem != null)
+                if(item.resource.itemName == settlementsManager.currentItemSelected.tradeSettlementItem.resource.itemName)
+                {
+                    Debug.Log($"item.resource.itemName:{item.resource.itemName}");
+                    SetCurrentTradeItem(row);
+                }
+            
         }
 
         foreach (InventoryItem item in playerInventory.Inventory)
         {
             TradeItemDisplay row = Instantiate(tradePlayerPrefab, SellContent);
-            
-            row.PopulateSellIcon(item,this);
+
+            row.PopulateSellIcon(item, this);
         }
 
         
@@ -164,17 +173,18 @@ public class CityUI : MonoBehaviour
 
     public void DisplayPlayerCoins()
     {
-     playerCoinsDisplay.text= ": "+playerInventory.CurrentCoins.ToString();   
+        playerCoinsDisplay.text= ": "+playerInventory.CurrentCoins.ToString();
     }
 
     public void SetCurrentTradeItem(TradeItemDisplay item)
     {
-        
-        setlement.currentItemSelected= item;
+        settlementsManager.currentItemSelected = item;
         currentTradeItemImage.sprite = item.itemIcon.sprite;
         currentTradeItemName.text = item.itemNameText.text;
-        
-        
+
+        if (item.tradeSettlementItem != null)
+            currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeSettlementItem.resource).ToString("0.0");
+        else currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeInventoryItem.resourceSO).ToString("0.0");
     }
 
 
@@ -191,6 +201,15 @@ public class CityUI : MonoBehaviour
     public void LeaveSettlement()
     {
         ChangePage(0);
-        setlement.CityObjectUI.SetActive(false);
+        //setlement.CityObjectUI.SetActive(false);
+        this.gameObject.SetActive(false);
     }
+
+    //initial setup
+    public void prepareSettlement(SettlementRuntime settlement)
+    {
+        currentSettlement = settlement;
+        DisplayTrade();
+    }
+
 }

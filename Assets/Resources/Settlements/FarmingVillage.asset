@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735cc53ed61604a4d99c3db2244daee7, type: 3}
+  m_Name: FarmingVillage
+  m_EditorClassIdentifier: Assembly-CSharp::SettlementSO
+  settlementName: Farming Village
+  production:
+  - resource: {fileID: 11400000, guid: 2b0310fe8c317f74a83bc7cd61330605, type: 2}
+    dailyChange: 12
+    startingStock: 72
+    minStock: 0
+    maxStock: 360
+    tier1_price_stock: 36
+    tier2_price_stock: 60
+    tier3_price_stock: 84
+    tier4_price_stock: 168
+    tier5_price_stock: 360
+    licenseCost: 24
+  - resource: {fileID: 11400000, guid: 1c8f8ca846032ec479d1044edc2c361a, type: 2}
+    dailyChange: 12
+    startingStock: 120
+    minStock: 0
+    maxStock: 360
+    tier1_price_stock: 36
+    tier2_price_stock: 60
+    tier3_price_stock: 84
+    tier4_price_stock: 168
+    tier5_price_stock: 360
+    licenseCost: 0
+  - resource: {fileID: 11400000, guid: 4ba6b85d27f214442a30c33be8df8e87, type: 2}
+    dailyChange: 3
+    startingStock: 30
+    minStock: 0
+    maxStock: 90
+    tier1_price_stock: 9
+    tier2_price_stock: 15
+    tier3_price_stock: 21
+    tier4_price_stock: 42
+    tier5_price_stock: 90
+    licenseCost: 0
+  - resource: {fileID: 11400000, guid: 1e2f3b0e438a9dc4c905a4e8ca2d0c82, type: 2}
+    dailyChange: 8
+    startingStock: 48
+    minStock: 0
+    maxStock: 240
+    tier1_price_stock: 24
+    tier2_price_stock: 40
+    tier3_price_stock: 56
+    tier4_price_stock: 112
+    tier5_price_stock: 240
+    licenseCost: 24
+  - resource: {fileID: 11400000, guid: a005bcc977161a846a7a2e0005bc953a, type: 2}
+    dailyChange: 3
+    startingStock: 18
+    minStock: 0
+    maxStock: 90
+    tier1_price_stock: 9
+    tier2_price_stock: 15
+    tier3_price_stock: 21
+    tier4_price_stock: 42
+    tier5_price_stock: 90
+    licenseCost: 15
+  consumption:
+  - resource: {fileID: 11400000, guid: 379b63d90c0fddd4ba4b5bd154b16d52, type: 2}
+    dailyChange: 1
+    startingStock: 6
+    minStock: 1
+    maxStock: 30
+    tier1_price_stock: 3
+    tier2_price_stock: 5
+    tier3_price_stock: 7
+    tier4_price_stock: 14
+    tier5_price_stock: 30
+    licenseCost: -1
+  - resource: {fileID: 11400000, guid: b3aad3b0b4bbd164a86d75f59d54b84e, type: 2}
+    dailyChange: 2
+    startingStock: 12
+    minStock: 2
+    maxStock: 60
+    tier1_price_stock: 6
+    tier2_price_stock: 10
+    tier3_price_stock: 14
+    tier4_price_stock: 28
+    tier5_price_stock: 60
+    licenseCost: -1
+  - resource: {fileID: 11400000, guid: bd4b42c652ba9c94da6d95e33a465157, type: 2}
+    dailyChange: 4
+    startingStock: 24
+    minStock: 4
+    maxStock: 120
+    tier1_price_stock: 12
+    tier2_price_stock: 20
+    tier3_price_stock: 28
+    tier4_price_stock: 56
+    tier5_price_stock: 120
+    licenseCost: -1
+  - resource: {fileID: 11400000, guid: 1803df224911e9348aa0033f2f65d7ad, type: 2}
+    dailyChange: 1
+    startingStock: 6
+    minStock: 1
+    maxStock: 30
+    tier1_price_stock: 3
+    tier2_price_stock: 5
+    tier3_price_stock: 7
+    tier4_price_stock: 14
+    tier5_price_stock: 30
+    licenseCost: -1
+  - resource: {fileID: 11400000, guid: 74d1cb5eba7ad4543959d2562f0052e9, type: 2}
+    dailyChange: 0.5
+    startingStock: 3
+    minStock: 1
+    maxStock: 30
+    tier1_price_stock: 1.5
+    tier2_price_stock: 2.5
+    tier3_price_stock: 3.5
+    tier4_price_stock: 7
+    tier5_price_stock: 30
+    licenseCost: -1

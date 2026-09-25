@@ -1,8 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using Unity.VisualScripting;
-using System.ComponentModel.Design.Serialization;
 
 public class HUDScript : MonoBehaviour
 {
@@ -32,10 +30,12 @@ public class HUDScript : MonoBehaviour
 
     [Header("DateTime")]
     public TextMeshProUGUI dateText;
+    public TextMeshProUGUI seasonText;
 
-    
+    public string currentSeason = "Summer";
 
-   
+
+
     void Start()
     {
         inventory = player.invetory;
@@ -43,7 +43,6 @@ public class HUDScript : MonoBehaviour
         staminaSlider.maxValue = player.stats.maxStamina;
         thirstSlider.maxValue = player.stats.maxThirst;
         hungerSlider.maxValue = player.stats.maxHunger;
-
     }
 
    
@@ -61,12 +60,10 @@ public class HUDScript : MonoBehaviour
         hungerSlider.value = player.stats.currentHunger;
         thirstSlider.value = player.stats.currentThirst;
 
-        
-
-        staText.text = staminaSlider.value.ToString() + "/" + player.stats.maxStamina.ToString();
-        hpText.text = hpSlider.value.ToString() + "/" + player.stats.maxHp.ToString();
-        hungerText.text = hungerSlider.value.ToString() + "/" + player.stats.maxHunger.ToString();
-        thirstText.text = thirstSlider.value.ToString() + "/" + player.stats.maxThirst.ToString();
+        staText.text = staminaSlider.value.ToString("0") + "/" + player.stats.maxStamina.ToString();
+        hpText.text = hpSlider.value.ToString("0") + "/" + player.stats.maxHp.ToString();
+        hungerText.text = hungerSlider.value.ToString("0") + "/" + player.stats.maxHunger.ToString();
+        thirstText.text = thirstSlider.value.ToString("0") + "/" + player.stats.maxThirst.ToString();
     }
 
     void UpdateTimeDisplay ()
@@ -80,14 +77,15 @@ public class HUDScript : MonoBehaviour
         {
             //Aici playerul intra in oras
             HUD.SetActive(false);
-           
         }
         if (!CityUI.activeSelf)
         {
             HUD.SetActive(true);
         }
     }
-
-
     
+    public void ChangeSeason()
+    {
+        seasonText.text = currentSeason;
+    }
 }
