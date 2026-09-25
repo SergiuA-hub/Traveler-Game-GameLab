@@ -22,6 +22,7 @@ public class CityUI : MonoBehaviour
     
     [SerializeField] private VerticalInvetoryItem itemPrefab;
     [SerializeField] private Transform Content;
+    [SerializeField] private TMP_Text settlementName;
 
     [Header("Buy")]
 
@@ -111,8 +112,9 @@ public class CityUI : MonoBehaviour
 
     private void DisplayInvetory()
     {
+        settlementName.text = currentSettlement.settlementName;
         //Delete List
-        foreach(Transform child in Content)
+        foreach (Transform child in Content)
         {
             Destroy(child.gameObject);
         }
