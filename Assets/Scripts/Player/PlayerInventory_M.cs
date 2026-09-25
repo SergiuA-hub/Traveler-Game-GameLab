@@ -106,7 +106,6 @@ public class PlayerInventory_M : MonoBehaviour
 
         if (existingItem == null) return;
         
-        Debug.Log($"Removing from inv {resource.itemName} - {existingItem.amount} the amount of {amount}");
         if (existingItem.amount > amount)
         {
             existingItem.amount -= amount;
