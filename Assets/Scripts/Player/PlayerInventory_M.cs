@@ -52,7 +52,7 @@ public class PlayerInventory_M : MonoBehaviour
             Inventory.Add(new InventoryItem(resource, amount));
         }
 
-
+        HandleWeightAndVolume();
     }
 
     //player is buying goods
@@ -76,6 +76,7 @@ public class PlayerInventory_M : MonoBehaviour
 
         }
 
+        HandleWeightAndVolume();
         Buy(buyPrice * amount);
     }
 
@@ -114,6 +115,7 @@ public class PlayerInventory_M : MonoBehaviour
         {
             Inventory.Remove(existingItem);
         }
+        HandleWeightAndVolume();
     }
 
     public void HandleWeightAndVolume()

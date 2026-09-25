@@ -82,15 +82,15 @@ public class SettlementRuntime
                 int tier = trade.getPriceTier(res.amount);
                 //Debug.Log($"Price Tier for {res.resource.itemName} is T{tier}");
                 if (tier == 1)
-                    return res.resource.baseValue * 1.6f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER;
                 if (tier == 2)
-                    return res.resource.baseValue * 1.2f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER;
                 if (tier == 3)
-                    return res.resource.baseValue * 1f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER;
                 if (tier == 4)
-                    return res.resource.baseValue * 0.8f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER;
                 if (tier == 5)
-                    return res.resource.baseValue * 0.6f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
             }
         }
 
@@ -101,15 +101,15 @@ public class SettlementRuntime
                 int tier = trade.getPriceTier(res.amount);
                 //Debug.Log($"Price Tier for {res.resource.itemName} is T{tier}");
                 if (tier == 1)
-                    return res.resource.baseValue * 1.6f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER;
                 if (tier == 2)
-                    return res.resource.baseValue * 1.2f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER;
                 if (tier == 3)
-                    return res.resource.baseValue * 1f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER;
                 if (tier == 4)
-                    return res.resource.baseValue * 0.8f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER;
                 if (tier == 5)
-                    return res.resource.baseValue * 0.6f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
             }
         }
 
