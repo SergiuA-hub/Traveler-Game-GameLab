@@ -1,4 +1,3 @@
-using Mono.Cecil.Cil;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -221,11 +220,18 @@ public class SettlementsManager : MonoBehaviour
     {
         foreach (var settlement in settlements)
         {
-            foreach(var good in settlement.defaultSettlementData.consumption)
+            foreach (var good in settlement.defaultSettlementData.production)
+            {
+                settlement.increaseStock(good.resource, (int)good.dailyChange);
+            }
+
+            foreach (var good in settlement.defaultSettlementData.consumption)
             {
                 settlement.decreaseStock(good.resource, (int)good.dailyChange);
             }
         }
+
+        calculateDailyPrices();
     }
 
     public void playerAtSettlementGate(GameObject settlementGo)
