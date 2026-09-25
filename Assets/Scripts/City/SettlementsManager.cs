@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -78,6 +79,25 @@ public class SettlementRuntime
         foreach (var trade in defaultSettlementData.production)
         {
             if(trade.resource.itemName == res.resource.itemName)
+            {
+                int tier = trade.getPriceTier(res.amount);
+                //Debug.Log($"Price Tier for {res.resource.itemName} is T{tier}");
+                if (tier == 1)
+                    return res.resource.baseValue * 1.6f;
+                if (tier == 2)
+                    return res.resource.baseValue * 1.2f;
+                if (tier == 3)
+                    return res.resource.baseValue * 1f;
+                if (tier == 4)
+                    return res.resource.baseValue * 0.8f;
+                if (tier == 5)
+                    return res.resource.baseValue * 0.6f;
+            }
+        }
+
+        foreach (var trade in defaultSettlementData.consumption)
+        {
+            if (trade.resource.itemName == res.resource.itemName)
             {
                 int tier = trade.getPriceTier(res.amount);
                 //Debug.Log($"Price Tier for {res.resource.itemName} is T{tier}");
@@ -183,7 +203,7 @@ public class SettlementsManager : MonoBehaviour
             foreach(var res in settlement.settlementStock)
             {                
                 res.price = settlement.getPriceFor(res);
-                //Debug.Log($"{res.resource.itemName} with stock {res.amount} have price of {res.price} where base price is {res.resource.baseValue}");
+                //Debug.Log($"{settlement.settlementName}: {res.resource.itemName} with stock {res.amount} have price of {res.price} where base price is {res.resource.baseValue}");
             }
         }
     }
@@ -199,7 +219,13 @@ public class SettlementsManager : MonoBehaviour
 
     public void dailyEvents(DateTime t)
     {
-
+        foreach (var settlement in settlements)
+        {
+            foreach(var good in settlement.defaultSettlementData.consumption)
+            {
+                settlement.decreaseStock(good.resource, (int)good.dailyChange);
+            }
+        }
     }
 
     public void playerAtSettlementGate(GameObject settlementGo)
