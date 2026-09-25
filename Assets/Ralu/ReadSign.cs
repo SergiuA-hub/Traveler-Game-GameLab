@@ -10,13 +10,13 @@ public class ReadSign : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        directionPanel.text = directionToShow;
-        directionPanel.gameObject.SetActive(true);
+        directionPanel.text = $"<b>{directionToShow}</b>";
+        //directionPanel.gameObject.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        directionPanel.text = "???";
-        directionPanel.gameObject.SetActive(false);
+        directionPanel.text = "Follow road signs to find your way.";
+        //directionPanel.gameObject.SetActive(false);
     }
 }
