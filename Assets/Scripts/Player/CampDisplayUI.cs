@@ -38,7 +38,7 @@ public class CampDisplayUI : MonoBehaviour
         cleanSupplies();
         
         camp.resetConsumption();
-        player.rooted = true;
+        player.Root();
 
 
         //camp.CalculateFood();
@@ -145,7 +145,7 @@ public class CampDisplayUI : MonoBehaviour
 
     public void unRootPlayer()
     {
-        player.rooted = false;
+        player.UnRoot();
     }
 
     public void OnDisable()

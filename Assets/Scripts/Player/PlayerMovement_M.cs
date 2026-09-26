@@ -39,7 +39,7 @@ public class PlayerMovement_M : MonoBehaviour
         player.stats.moveSpeed = player.stats.baseSpeed * modifierSpeed;
         Vector2 moveInput = player.gameInput.GetMoveVectorNormalized();
         
-        if(player.rooted)
+        if(player.isRooted())
         {
             moveInput = Vector2.zero;
         }

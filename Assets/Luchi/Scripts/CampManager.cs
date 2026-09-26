@@ -113,8 +113,8 @@ public class CampManager : MonoBehaviour
         timeManager.normalTime();
         
         player.isResting = false;
-        
-        player.UnRoot();
+        if(!eventInProgress)
+            player.UnRoot();
     }
 
     private IEnumerator FadeRestScreen(float from, float to, bool disableAtEnd)
@@ -146,6 +146,8 @@ public class CampManager : MonoBehaviour
         resting = false;
         eventOccurred = false;
         eventInProgress = false;
+        
+        player.UnRoot();
         timeManager.resume();
     }
 
@@ -254,9 +256,10 @@ public class CampManager : MonoBehaviour
             eventsPanel.SetActive(true);
             //eventsUIManager.ShowNewEvent();
             eventInProgress = true;
+
             timeManager.pause();
         }
-
+        Debug.Log($"PLAYER IS ROOT:{player.isRooted()}");
         if (restTimeCounter >= restDuration)
         {
             timeManager.onHourChanged.RemoveListener(hourlyUpdate);
