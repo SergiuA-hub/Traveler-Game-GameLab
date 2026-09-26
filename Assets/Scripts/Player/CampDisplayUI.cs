@@ -77,20 +77,20 @@ public class CampDisplayUI : MonoBehaviour
         float totalHungerRestore = 0f;
         float totalThirstRestore = 0f;
 
-        foreach (var item in camp.drinkItems)
-        {
-            totalThirstRestore += item.amount * item.resourceSO.stat_restore;
-            GameObject go = Instantiate(campConsumptionResPrefab, ConsumptionList.transform);
-            go.GetComponent<CampConsumedResourcePrefab>().Setup(item);
-        }
+        //foreach (var item in camp.drinkItems)
+        //{
+        //    totalThirstRestore += item.amount * item.resourceSO.stat_restore;
+        //    GameObject go = Instantiate(campConsumptionResPrefab, ConsumptionList.transform);
+        //    go.GetComponent<CampConsumedResourcePrefab>().Setup(item);
+        //}
 
-        foreach (var item in camp.foodItems)
-        {
-            totalHungerRestore += item.amount * item.resourceSO.stat_restore;
-            totalHPRestore += item.amount * item.resourceSO.HP_restore;
-            GameObject go = Instantiate(campConsumptionResPrefab, ConsumptionList.transform);
-            go.GetComponent<CampConsumedResourcePrefab>().Setup(item);
-        }
+        //foreach (var item in camp.foodItems)
+        //{
+        //    totalHungerRestore += item.amount * item.resourceSO.stat_restore;
+        //    totalHPRestore += item.amount * item.resourceSO.HP_restore;
+        //    GameObject go = Instantiate(campConsumptionResPrefab, ConsumptionList.transform);
+        //    go.GetComponent<CampConsumedResourcePrefab>().Setup(item);
+        //}
 
         hours_to_rest_text.text = $"Hours to Rest: {totalHoursToRest}";
 

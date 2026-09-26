@@ -89,10 +89,6 @@ public class CampManager : MonoBehaviour
 
     public void updatePlayerStats()
     {
-        player.stats.currentHunger += hungerRestoreAmount;
-        player.stats.currentThirst += thirstRestoreAmount;
-        player.stats.currentHp += hpRestoreAmount;
-
         player.stats.currentHunger = Mathf.Min(player.stats.currentHunger, player.stats.maxHunger);
         player.stats.currentThirst = Mathf.Min(player.stats.currentThirst, player.stats.maxThirst);
         player.stats.currentHp = Mathf.Min(player.stats.currentHp, player.stats.maxHp);
@@ -169,7 +165,7 @@ public class CampManager : MonoBehaviour
 
     public void addToFood(InventoryItem item)
     {
-        if ((player.stats.currentHunger + hungerRestoreAmount >= player.stats.maxHunger) && (player.stats.currentHp + hpRestoreAmount >= player.stats.maxHp))
+        if ((player.stats.currentHunger + item.resourceSO.stat_restore >= player.stats.maxHunger) && (player.stats.currentHp + item.resourceSO.HP_restore >= player.stats.maxHp))
             return;
 
         foreach (var food in foodItems)
@@ -180,6 +176,9 @@ public class CampManager : MonoBehaviour
                 player.invetory.Remove(item.resourceSO);
                 Debug.Log($"Amount increased for {food.resourceSO.itemName} to {food.amount}");
                 calculateTotalFoodRestore();
+                
+                player.stats.currentHunger += item.resourceSO.stat_restore;
+                player.stats.currentHp += item.resourceSO.HP_restore;
                 return;
             }
         }
@@ -189,6 +188,9 @@ public class CampManager : MonoBehaviour
         foodItems.Add(consumeR);
         calculateTotalFoodRestore();
         player.invetory.Remove(item.resourceSO);
+
+        player.stats.currentHunger += item.resourceSO.stat_restore;
+        player.stats.currentHp += item.resourceSO.HP_restore;
         updatePlayerStats();
     }
 
@@ -206,7 +208,7 @@ public class CampManager : MonoBehaviour
 
     public void addToDrink(InventoryItem item)
     {
-        if (player.stats.currentThirst + thirstRestoreAmount >= player.stats.maxThirst)
+        if (player.stats.currentThirst + item.resourceSO.stat_restore >= player.stats.maxThirst)
             return;
 
         foreach (var drink in drinkItems)
@@ -217,6 +219,8 @@ public class CampManager : MonoBehaviour
                 player.invetory.Remove(item.resourceSO);
                 Debug.Log($"Amount increased for {drink.resourceSO.itemName} to {drink.amount}");
                 calculateTotalDrinkRestore();
+
+                player.stats.currentThirst += item.resourceSO.stat_restore;
                 return;
             }
         }
@@ -226,6 +230,8 @@ public class CampManager : MonoBehaviour
         drinkItems.Add(consumeR);
         player.invetory.Remove(item.resourceSO);
         calculateTotalDrinkRestore();
+
+        player.stats.currentThirst += item.resourceSO.stat_restore;
         updatePlayerStats();
     }
 
