@@ -1,7 +1,5 @@
-using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
-using UnityEditor.Rendering.Universal.ShaderGUI;
 using UnityEngine;
 [System.Serializable]
 public class SettlementDeployment
@@ -82,17 +80,36 @@ public class SettlementRuntime
             if(trade.resource.itemName == res.resource.itemName)
             {
                 int tier = trade.getPriceTier(res.amount);
-                Debug.Log($"Price Tier for {res.resource.itemName} is T{tier}");
+                //Debug.Log($"Price Tier for {res.resource.itemName} is T{tier}");
                 if (tier == 1)
-                    return res.resource.baseValue * 1.6f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER;
                 if (tier == 2)
-                    return res.resource.baseValue * 1.2f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER;
                 if (tier == 3)
-                    return res.resource.baseValue * 1f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER;
                 if (tier == 4)
-                    return res.resource.baseValue * 0.8f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER;
                 if (tier == 5)
-                    return res.resource.baseValue * 0.6f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
+            }
+        }
+
+        foreach (var trade in defaultSettlementData.consumption)
+        {
+            if (trade.resource.itemName == res.resource.itemName)
+            {
+                int tier = trade.getPriceTier(res.amount);
+                //Debug.Log($"Price Tier for {res.resource.itemName} is T{tier}");
+                if (tier == 1)
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER;
+                if (tier == 2)
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER;
+                if (tier == 3)
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER;
+                if (tier == 4)
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER;
+                if (tier == 5)
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
             }
         }
 
@@ -133,7 +150,7 @@ public class SettlementsManager : MonoBehaviour
 {
     public GameObject SettlementUI;
     public Player_M player;
-    private GameObject playerAtSettlement;
+    public GameObject playerAtSettlement;
     public List<SettlementDeployment> settlementsList;
 
     public List<SettlementRuntime> settlements;
@@ -185,7 +202,7 @@ public class SettlementsManager : MonoBehaviour
             foreach(var res in settlement.settlementStock)
             {                
                 res.price = settlement.getPriceFor(res);
-                Debug.Log($"{res.resource.itemName} with stock {res.amount} have price of {res.price} where base price is {res.resource.baseValue}");
+                //Debug.Log($"{settlement.settlementName}: {res.resource.itemName} with stock {res.amount} have price of {res.price} where base price is {res.resource.baseValue}");
             }
         }
     }
@@ -195,13 +212,26 @@ public class SettlementsManager : MonoBehaviour
         foreach (var res in currentSettlement.settlementStock)
         {            
             res.price = currentSettlement.getPriceFor(res);
-            Debug.Log($"Res {res.resource.itemName} new pices -> {res.price}");
+            //Debug.Log($"Res {res.resource.itemName} new pices -> {res.price}");
         }
     }
 
     public void dailyEvents(DateTime t)
     {
+        foreach (var settlement in settlements)
+        {
+            foreach (var good in settlement.defaultSettlementData.production)
+            {
+                settlement.increaseStock(good.resource, (int)good.dailyChange);
+            }
 
+            foreach (var good in settlement.defaultSettlementData.consumption)
+            {
+                settlement.decreaseStock(good.resource, (int)good.dailyChange);
+            }
+        }
+
+        calculateDailyPrices();
     }
 
     public void playerAtSettlementGate(GameObject settlementGo)
@@ -221,7 +251,7 @@ public class SettlementsManager : MonoBehaviour
 
         foreach (var settlement in settlements)
         {
-            if (settlement.settlementGo == playerAtSettlement)
+            if (settlement.settlementGo.name == playerAtSettlement.name)
             {
                 Debug.Log($"Player entered in {settlement.settlementName}");
                 currentSettlement = settlement;
@@ -239,7 +269,7 @@ public class SettlementsManager : MonoBehaviour
         //BUY
         if (currentItemSelected.tradeSettlementItem != null)
         {
-            Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with proce {currentItemSelected.tradeSettlementItem.price}");
+            //Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with proce {currentItemSelected.tradeSettlementItem.price}");
             //Check player money & space in backpack
             if (player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price
             && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume, currentItemSelected.tradeSettlementItem.resource.weight))

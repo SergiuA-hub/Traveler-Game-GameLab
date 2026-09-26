@@ -24,39 +24,26 @@ public class PlayerMovement_M : MonoBehaviour
 
         if (IsMoving() && HasStamina())
         {
-            player.stats.baseSpeed = Mathf.MoveTowards(player.stats.baseSpeed,player.stats.MaxSpeeed,player.stats.acceleration * Time.deltaTime);
+            player.stats.baseSpeed = Mathf.MoveTowards(player.stats.baseSpeed, player.stats.MaxSpeeed, player.stats.acceleration * Time.deltaTime);
         }
-        else if (!IsMoving() && HasStamina())
+        else if(!IsMoving() && HasStamina())
         {
             player.stats.baseSpeed = player.stats.startSpeed;
-        }
-        else if (!HasStamina())
+        }else if (!HasStamina())
         {
             player.stats.baseSpeed = player.stats.exhaustSpeed;
         }
 
-        float modifierSpeed =player.stats.staminaSpeedModifier * player.stats.consumableSpeedModifier *player.stats.terrainSpeedModifier *player.stats.currentWeightModifier;
-
-        player.stats.moveSpeed = player.stats.baseSpeed * modifierSpeed;
-
-        Vector2 moveInput = player.gameInput.GetMoveVectorNormalized();
-
-        //Gradele
-        //45 = 0.70710678f
-        //const float rotationFactor = 0.70710678f;
-
-        //65
-        float sin = 0.8660254f;
-        float cos = 0.5f;
-
-        Vector2 moveDirection = new Vector2((moveInput.x - moveInput.y) * sin,(moveInput.x + moveInput.y) * cos);
+        float modifierSpeed = player.stats.staminaSpeedModifier * player.stats.consumableSpeedModifier * player.stats.terrainSpeedModifier * player.stats.currentWeightModifier;
         
-        if (player.rooted)
+        player.stats.moveSpeed = player.stats.baseSpeed * modifierSpeed;
+        Vector2 moveInput = player.gameInput.GetMoveVectorNormalized();
+        
+        if(player.isRooted())
         {
-            moveDirection = Vector2.zero;
+            moveInput = Vector2.zero;
         }
-
-        player.rb.MovePosition(player.rb.position +moveDirection * player.stats.moveSpeed * Time.fixedDeltaTime);
+        player.rb.MovePosition(player.rb.position + moveInput * player.stats.moveSpeed * Time.fixedDeltaTime);
 
     }
   

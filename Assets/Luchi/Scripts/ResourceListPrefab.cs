@@ -9,9 +9,12 @@ public class ResourceListPrefab : MonoBehaviour
     public TMP_Text resourceAmount;
     public TMP_Text info;
     private InventoryItem inv_item;
-    public void Setup(InventoryItem item)
+    private CampDisplayUI callback;
+    public void Setup(InventoryItem item, CampDisplayUI cb)
     {
         inv_item = item;
+        callback = cb;
+
         resourceImage.sprite = item.resourceSO.sprite;
         resourceName.text = item.resourceSO.itemName;
         resourceAmount.text = $"{item.amount}";
@@ -21,15 +24,9 @@ public class ResourceListPrefab : MonoBehaviour
             info.text = $"+ {item.resourceSO.stat_restore} Thirst";
         else info.text = "-";
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void addResource()
     {
-        
+        callback.addResourceToConsumption(inv_item);
     }
 }

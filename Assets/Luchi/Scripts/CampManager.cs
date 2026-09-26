@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using Random = UnityEngine.Random;
 
 public class CampManager : MonoBehaviour
@@ -82,20 +83,15 @@ public class CampManager : MonoBehaviour
             Debug.Log("No event occurred during rest.");
         }
 
-        foreach(var item in foodItems)
-            player.invetory.Remove(item.resourceSO, item.amount);
+        updatePlayerStats();
+        timeManager.onHourChanged.AddListener(hourlyUpdate);
+    }
 
-        foreach (var item in drinkItems)
-            player.invetory.Remove(item.resourceSO, item.amount);
-
-        player.stats.currentHunger += hungerRestoreAmount;
-        player.stats.currentThirst += thirstRestoreAmount;
-        player.stats.currentHp += hpRestoreAmount;
-
+    public void updatePlayerStats()
+    {
         player.stats.currentHunger = Mathf.Min(player.stats.currentHunger, player.stats.maxHunger);
         player.stats.currentThirst = Mathf.Min(player.stats.currentThirst, player.stats.maxThirst);
         player.stats.currentHp = Mathf.Min(player.stats.currentHp, player.stats.maxHp);
-        timeManager.onHourChanged.AddListener(hourlyUpdate);
     }
 
     public void StopRest()
@@ -113,7 +109,8 @@ public class CampManager : MonoBehaviour
         timeManager.normalTime();
         
         player.isResting = false;
-        player.UnRoot();
+        if(!eventInProgress)
+            player.UnRoot();
     }
 
     private IEnumerator FadeRestScreen(float from, float to, bool disableAtEnd)
@@ -145,6 +142,8 @@ public class CampManager : MonoBehaviour
         resting = false;
         eventOccurred = false;
         eventInProgress = false;
+        
+        player.UnRoot();
         timeManager.resume();
     }
 
@@ -154,69 +153,49 @@ public class CampManager : MonoBehaviour
         return restDuration;
     }
 
-    public void CalculateFood()
+    public void resetConsumption()
     {
         foodItems.Clear();
+        drinkItems.Clear();
 
-        float statsToRestore =
-            player.stats.maxHunger - player.stats.currentHunger;
+        hungerRestoreAmount = 0f;
+        hpRestoreAmount = 0f;
+        thirstRestoreAmount = 0f;
+    }
 
-        if (statsToRestore <= 0)
+    public void addToFood(InventoryItem item)
+    {
+        if ((player.stats.currentHunger + item.resourceSO.stat_restore >= player.stats.maxHunger) && (player.stats.currentHp + item.resourceSO.HP_restore >= player.stats.maxHp))
             return;
 
-        var tempFoodItems = new List<InventoryItem>();
-
-        foreach (var item in player.invetory.Inventory)
+        foreach (var food in foodItems)
         {
-            if (item.resourceSO.resourceType != ResourceType.Eat)
-                continue;
-
-            if (item.resourceSO.stat_restore <= 0)
-                continue;
-
-            if (item.amount <= 0)
-                continue;
-
-            tempFoodItems.Add(item);
+            if (food.resourceSO.itemName == item.resourceSO.itemName)
+            {
+                food.amount++;
+                player.invetory.Remove(item.resourceSO);
+                Debug.Log($"Amount increased for {food.resourceSO.itemName} to {food.amount}");
+                calculateTotalFoodRestore();
+                
+                player.stats.currentHunger += item.resourceSO.stat_restore;
+                player.stats.currentHp += item.resourceSO.HP_restore;
+                return;
+            }
         }
+        
+        ConsumedResource consumeR = new ConsumedResource(item.resourceSO, 1);
+        Debug.Log($"{consumeR.resourceSO.itemName} was added with amount: {consumeR.amount}");
+        foodItems.Add(consumeR);
+        calculateTotalFoodRestore();
+        player.invetory.Remove(item.resourceSO);
 
-        tempFoodItems.Sort((a, b) =>
-        {
-            float aCostPerPoint =
-                a.averageValue / a.resourceSO.stat_restore;
+        player.stats.currentHunger += item.resourceSO.stat_restore;
+        player.stats.currentHp += item.resourceSO.HP_restore;
+        updatePlayerStats();
+    }
 
-            float bCostPerPoint =
-                b.averageValue / b.resourceSO.stat_restore;
-
-            return aCostPerPoint.CompareTo(bCostPerPoint);
-        });
-
-        foreach (var item in tempFoodItems)
-        {
-            if (statsToRestore <= 0)
-                break;
-
-            float restorePerItem = item.resourceSO.stat_restore;
-
-            int itemsNeeded =
-                Mathf.CeilToInt(statsToRestore / restorePerItem);
-
-            int itemsToConsume =
-                Mathf.Min(itemsNeeded, item.amount);
-
-            float restoredAmount =
-                itemsToConsume * restorePerItem;
-
-            foodItems.Add(new ConsumedResource(item.resourceSO, itemsToConsume, item.averageValue));
-
-            Debug.Log(
-                $"{item.resourceSO.name}: consume {itemsToConsume}, " +
-                $"restore {restoredAmount}"
-            );
-
-            statsToRestore -= restoredAmount;
-        }
-
+    public void calculateTotalFoodRestore()
+    {
         hungerRestoreAmount = 0f;
         hpRestoreAmount = 0f;
 
@@ -227,69 +206,37 @@ public class CampManager : MonoBehaviour
         }
     }
 
-    public void CalculateDrink()
+    public void addToDrink(InventoryItem item)
     {
-        drinkItems.Clear();
-
-        float statsToRestore =
-            player.stats.maxThirst - player.stats.currentThirst;
-
-        if (statsToRestore <= 0)
+        if (player.stats.currentThirst + item.resourceSO.stat_restore >= player.stats.maxThirst)
             return;
 
-        var tempDrinkItems = new List<InventoryItem>();
-
-        foreach (var item in player.invetory.Inventory)
+        foreach (var drink in drinkItems)
         {
-            if (item.resourceSO.resourceType != ResourceType.Drink)
-                continue;
+            if (drink.resourceSO.itemName == item.resourceSO.itemName)
+            {
+                drink.amount++;
+                player.invetory.Remove(item.resourceSO);
+                Debug.Log($"Amount increased for {drink.resourceSO.itemName} to {drink.amount}");
+                calculateTotalDrinkRestore();
 
-            if (item.resourceSO.stat_restore <= 0)
-                continue;
-
-            if (item.amount <= 0)
-                continue;
-
-            tempDrinkItems.Add(item);
+                player.stats.currentThirst += item.resourceSO.stat_restore;
+                return;
+            }
         }
 
-        tempDrinkItems.Sort((a, b) =>
-        {
-            float aCostPerPoint =
-                a.averageValue / a.resourceSO.stat_restore;
+        ConsumedResource consumeR = new ConsumedResource(item.resourceSO, 1);
+        Debug.Log($"{consumeR.resourceSO.itemName} was added with amount: {consumeR.amount}");
+        drinkItems.Add(consumeR);
+        player.invetory.Remove(item.resourceSO);
+        calculateTotalDrinkRestore();
 
-            float bCostPerPoint =
-                b.averageValue / b.resourceSO.stat_restore;
+        player.stats.currentThirst += item.resourceSO.stat_restore;
+        updatePlayerStats();
+    }
 
-            return aCostPerPoint.CompareTo(bCostPerPoint);
-        });
-
-        foreach (var item in tempDrinkItems)
-        {
-            if (statsToRestore <= 0)
-                break;
-
-            float restorePerItem = item.resourceSO.stat_restore;
-
-            int itemsNeeded =
-                Mathf.CeilToInt(statsToRestore / restorePerItem);
-
-            int itemsToConsume =
-                Mathf.Min(itemsNeeded, item.amount);
-
-            float restoredAmount =
-                itemsToConsume * restorePerItem;
-
-            drinkItems.Add(new ConsumedResource(item.resourceSO, itemsToConsume, item.averageValue));
-
-            Debug.Log(
-                $"{item.resourceSO.name}: consume {itemsToConsume}, " +
-                $"restore {restoredAmount}"
-            );
-
-            statsToRestore -= restoredAmount;
-        }
-
+    public void calculateTotalDrinkRestore()
+    {
         thirstRestoreAmount = 0f;
         foreach (var consumed in drinkItems)
         {
@@ -315,9 +262,10 @@ public class CampManager : MonoBehaviour
             eventsPanel.SetActive(true);
             //eventsUIManager.ShowNewEvent();
             eventInProgress = true;
+
             timeManager.pause();
         }
-
+        Debug.Log($"PLAYER IS ROOT:{player.isRooted()}");
         if (restTimeCounter >= restDuration)
         {
             timeManager.onHourChanged.RemoveListener(hourlyUpdate);
