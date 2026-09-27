@@ -52,17 +52,17 @@ public class Player_M : MonoBehaviour
 
         if (move.IsMoving() && !rooted)
         {
-            stats.currentStamina -= (stats.BASE_STAMINA_DROP_PER_H * stats.currentStaminaDrainMultiplier / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;            
-            stats.currentThirst -= (stats.THIRST_DRAIN_PER_H / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;
+            stats.currentStamina -= (stats.BASE_STAMINA_DROP_PER_H * stats.currentStaminaDrainMultiplier / timeManager.getHourDuration()) * Time.deltaTime;            
+            stats.currentThirst -= (stats.THIRST_DRAIN_PER_H / timeManager.getHourDuration()) * Time.deltaTime;
         }
         else
         {
-            stats.currentStamina -= (stats.BASE_STAMINA_IDLE_DRAIN * stats.currentStaminaDrainMultiplier / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;
-            stats.currentThirst -= (stats.BASE_THIRST_IDLE_DRAIN / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;
+            stats.currentStamina -= (stats.BASE_STAMINA_IDLE_DRAIN * stats.currentStaminaDrainMultiplier / timeManager.getHourDuration()) * Time.deltaTime;
+            stats.currentThirst -= (stats.BASE_THIRST_IDLE_DRAIN / timeManager.getHourDuration()) * Time.deltaTime;
         }
 
         //not related to movement, but still needs to be updated
-        stats.currentHunger -= (stats.HUNGER_DRAIN_PER_H / GlobalSettingsManager.HOUR_DURATION) * Time.deltaTime;
+        stats.currentHunger -= (stats.HUNGER_DRAIN_PER_H / timeManager.getHourDuration()) * Time.deltaTime;
 
         //update stamina drain multiplier based on hunger and thirst thresholds
         if (stats.currentThirst < GlobalSettingsManager.PLAYER_THIRST_THRESHOLD || stats.currentHunger < GlobalSettingsManager.PLAYER_HUNGER_THRESHOLD)
