@@ -82,15 +82,34 @@ public class SettlementRuntime
                 int tier = trade.getPriceTier(res.amount);
                 //Debug.Log($"Price Tier for {res.resource.itemName} is T{tier}");
                 if (tier == 1)
-                    return res.resource.baseValue * 1.6f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER;
                 if (tier == 2)
-                    return res.resource.baseValue * 1.2f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER;
                 if (tier == 3)
-                    return res.resource.baseValue * 1f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER;
                 if (tier == 4)
-                    return res.resource.baseValue * 0.8f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER;
                 if (tier == 5)
-                    return res.resource.baseValue * 0.6f;
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
+            }
+        }
+
+        foreach (var trade in defaultSettlementData.consumption)
+        {
+            if (trade.resource.itemName == res.resource.itemName)
+            {
+                int tier = trade.getPriceTier(res.amount);
+                //Debug.Log($"Price Tier for {res.resource.itemName} is T{tier}");
+                if (tier == 1)
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER;
+                if (tier == 2)
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER;
+                if (tier == 3)
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER;
+                if (tier == 4)
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER;
+                if (tier == 5)
+                    return res.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
             }
         }
 
@@ -131,7 +150,7 @@ public class SettlementsManager : MonoBehaviour
 {
     public GameObject SettlementUI;
     public Player_M player;
-    private GameObject playerAtSettlement;
+    public GameObject playerAtSettlement;
     public List<SettlementDeployment> settlementsList;
 
     public List<SettlementRuntime> settlements;
@@ -183,7 +202,7 @@ public class SettlementsManager : MonoBehaviour
             foreach(var res in settlement.settlementStock)
             {                
                 res.price = settlement.getPriceFor(res);
-                //Debug.Log($"{res.resource.itemName} with stock {res.amount} have price of {res.price} where base price is {res.resource.baseValue}");
+                //Debug.Log($"{settlement.settlementName}: {res.resource.itemName} with stock {res.amount} have price of {res.price} where base price is {res.resource.baseValue}");
             }
         }
     }
@@ -199,7 +218,20 @@ public class SettlementsManager : MonoBehaviour
 
     public void dailyEvents(DateTime t)
     {
+        foreach (var settlement in settlements)
+        {
+            foreach (var good in settlement.defaultSettlementData.production)
+            {
+                settlement.increaseStock(good.resource, (int)good.dailyChange);
+            }
 
+            foreach (var good in settlement.defaultSettlementData.consumption)
+            {
+                settlement.decreaseStock(good.resource, (int)good.dailyChange);
+            }
+        }
+
+        calculateDailyPrices();
     }
 
     public void playerAtSettlementGate(GameObject settlementGo)
@@ -219,9 +251,9 @@ public class SettlementsManager : MonoBehaviour
 
         foreach (var settlement in settlements)
         {
-            if (settlement.settlementGo == playerAtSettlement)
+            if (settlement.settlementGo.name == playerAtSettlement.name)
             {
-                //Debug.Log($"Player entered in {settlement.settlementName}");
+                Debug.Log($"Player entered in {settlement.settlementName}");
                 currentSettlement = settlement;
                 SettlementUI.GetComponent<CityUI>().prepareSettlement(settlement);
             }
