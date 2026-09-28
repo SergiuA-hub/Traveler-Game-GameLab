@@ -2,12 +2,20 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
+public enum CampItem
+{
+    CookingPot,
+    SleepingBag,
+    Backpack,
+    Cart,
+    Fire
+}
+
 public class NewCampManager : MonoBehaviour
 {
     public Player_M player;
     public GameObject playerCaravan;
     public GameObject playerCamp;
-
 
     public TMP_Text restScreenText;
     public GameObject restScreenPanel;
@@ -19,6 +27,8 @@ public class NewCampManager : MonoBehaviour
     public Camera playerCam;
     public float caravanCameraSize;
     public float CampCamerSize;
+    public GameObject campingPanelUI;
+    public CookingPotUI cookingPotPanel;
 
     private void Start()
     {
@@ -112,5 +122,27 @@ public class NewCampManager : MonoBehaviour
     public void moveCameraToCamp()
     {
         playerCam.orthographicSize = CampCamerSize;
+    }
+
+    public void campElementSelected(CampItem campElement)
+    {
+        if (campElement == CampItem.CookingPot)
+            ShowCookingPot();
+    }
+
+    public void ShowCookingPot()
+    {
+        campingPanelUI.SetActive(true);
+
+        cookingPotPanel.setup();
+
+        cookingPotPanel.gameObject.SetActive(true);
+    }
+
+    public void dismissCookingPot()
+    {
+        cookingPotPanel.gameObject.SetActive(false);
+
+        campingPanelUI.SetActive(false);
     }
 }

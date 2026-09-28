@@ -2,9 +2,10 @@ using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CampInteract : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CampInteract : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public SpriteRenderer spriteRenderer;
+    public CampItem campItem;
 
     [Header("Hover")]
     public float hoverScale = 1.08f;
@@ -31,5 +32,10 @@ public class CampInteract : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         transform.localScale = originalScale;
         //spriteRenderer.color = originalColor;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        campManager.campElementSelected(campItem);
     }
 }
