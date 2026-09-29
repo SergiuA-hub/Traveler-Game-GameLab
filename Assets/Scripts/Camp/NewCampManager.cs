@@ -4,11 +4,13 @@ using UnityEngine;
 
 public enum CampItem
 {
+    None,
     CookingPot,
     SleepingBag,
     Backpack,
     Cart,
-    Fire
+    Fire,
+    Guest
 }
 
 public class NewCampManager : MonoBehaviour
@@ -29,6 +31,8 @@ public class NewCampManager : MonoBehaviour
     public float CampCamerSize;
     public GameObject campingPanelUI;
     public CookingPotUI cookingPotPanel;
+
+    public SleepingBagUI sleepingBagPanel;
 
     private void Start()
     {
@@ -128,6 +132,11 @@ public class NewCampManager : MonoBehaviour
     {
         if (campElement == CampItem.CookingPot)
             ShowCookingPot();
+
+        if(campElement == CampItem.SleepingBag)
+        {
+            ShowSleepingBag();
+        }
     }
 
     public void ShowCookingPot()
@@ -137,12 +146,55 @@ public class NewCampManager : MonoBehaviour
         cookingPotPanel.setup();
 
         cookingPotPanel.gameObject.SetActive(true);
-    }
+    }    
 
     public void dismissCookingPot()
     {
         cookingPotPanel.gameObject.SetActive(false);
 
         campingPanelUI.SetActive(false);
+    }
+
+    public void ShowSleepingBag()
+    {
+        campingPanelUI.SetActive(true);
+        
+        sleepingBagPanel.setup();
+
+        sleepingBagPanel.gameObject.SetActive(true);
+    }
+
+    public void dismissSleepingBag()
+    {
+        sleepingBagPanel.gameObject.SetActive(false);        
+        campingPanelUI.SetActive(false);
+    }
+    public int getRestForHours(int hours)
+    {
+        int currentStamina = Mathf.FloorToInt(player.stats.currentStamina);
+        int maxStamina = Mathf.FloorToInt(player.stats.maxStamina);
+
+        int staminaNeeded = maxStamina - currentStamina;
+
+        if (staminaNeeded <= 0)
+            return 0;
+
+        //one stamina per hour => hours == stamina restoure
+        return Mathf.Min(hours, staminaNeeded);
+    }
+
+    public int getRestHoursUntillFull()
+    {
+        int currentStamina = Mathf.FloorToInt(player.stats.currentStamina);
+        int maxStamina = Mathf.FloorToInt(player.stats.maxStamina);
+
+        //one stamina per hour => hours == stamina restoure
+        return maxStamina - currentStamina;
+    }
+
+    public void doResting(int staminaIncrease)
+    {
+        //staminaIncrease means hours because the restore is 1/h
+
     }
 }
