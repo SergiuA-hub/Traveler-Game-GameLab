@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum CampItem
 {
@@ -15,7 +17,12 @@ public enum CampItem
 
 public class NewCampManager : MonoBehaviour
 {
+    public Button campButton;
     public Player_M player;
+    private int restTimeCounter = 0;
+    private bool resting = false;
+    private int restDuration = 0;
+    public TimeManager timeManager;
     public GameObject playerCaravan;
     public GameObject playerCamp;
 
@@ -82,13 +89,26 @@ public class NewCampManager : MonoBehaviour
 
     private void setupCamp()
     {
+        campButton.interactable = false;
         playerCaravan.SetActive(false);
         playerCamp.SetActive(true);
+        timeManager.pause();
 
         Debug.Log("Camp setup");
         moveCameraToCamp();
 
         startFadeOut();
+    }
+
+    public void dismissCamp()
+    {
+        playerCaravan.SetActive(true);
+        playerCamp.SetActive(false);
+        timeManager.resume();
+        campButton.interactable = true;
+
+        Debug.Log("Camp dismissed");
+        moveCameraToCaravan();
     }
 
     public void startFadeOut()
@@ -126,6 +146,11 @@ public class NewCampManager : MonoBehaviour
     public void moveCameraToCamp()
     {
         playerCam.orthographicSize = CampCamerSize;
+    }
+
+    public void moveCameraToCaravan()
+    {
+        playerCam.orthographicSize = caravanCameraSize;
     }
 
     public void campElementSelected(CampItem campElement)
@@ -194,7 +219,87 @@ public class NewCampManager : MonoBehaviour
 
     public void doResting(int staminaIncrease)
     {
-        //staminaIncrease means hours because the restore is 1/h
+        campingPanelUI.SetActive(false);
+        sleepingBagPanel.gameObject.SetActive(false);
 
+        //staminaIncrease means hours because the restore is 1/h
+        Debug.Log($"Rest for {staminaIncrease}");
+
+        timeManager.fastForwardTime();
+        restTimeCounter = 0;
+
+        restScreenPanel.SetActive(true);
+        resting = true;
+
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+
+        fadeCoroutine = StartCoroutine(FadeRestScreen(0f, 1f, false));
+        restScreenPanel.GetComponent<RestingUI>().showRestingMessage();
+        restDuration = staminaIncrease;
+
+        timeManager.onHourChanged.AddListener(hourlyUpdate);
+    }
+
+    public void hourlyUpdate(DateTime t)
+    {
+        int remainingHours = restDuration - restTimeCounter;
+        
+        if (remainingHours > 0)
+        {
+            restScreenText.text = $"{remainingHours} hours remaining";
+            player.stats.currentStamina = Mathf.Min(player.stats.currentStamina + 1, player.stats.maxThirst);
+        }
+        else
+        {
+            restScreenText.text = $"Preparing to wake up...";
+        }
+        
+        if (restTimeCounter >= restDuration)
+        {
+            timeManager.onHourChanged.RemoveListener(hourlyUpdate);
+            StopRest();
+        }
+        restTimeCounter++;
+    }
+
+    public void StopRest()
+    {
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);        
+
+        fadeCoroutine = StartCoroutine(FadeRestScreen(1f, 0f, true));
+        restScreenPanel.GetComponent<RestingUI>().hideRestingMessage();        
+        resting = false;
+
+        timeManager.normalTime();
+
+        player.isResting = false;
+        
+        dismissCamp();
+        player.UnRoot();
+    }
+    
+    private IEnumerator FadeRestScreen(float from, float to, bool disableAtEnd)
+    {
+        float elapsed = 0f;
+        restScreenCanvasGroup.alpha = from;
+
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            restScreenCanvasGroup.alpha =
+                Mathf.Lerp(from, to, elapsed / fadeDuration);
+
+            yield return null;
+        }
+
+        restScreenCanvasGroup.alpha = to;
+
+        if (disableAtEnd)
+            restScreenPanel.SetActive(false);
+
+        fadeCoroutine = null;
     }
 }

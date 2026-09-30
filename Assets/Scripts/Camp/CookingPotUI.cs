@@ -1,5 +1,6 @@
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -157,13 +158,40 @@ public class CookingPotUI : MonoBehaviour
 
     public void consume(InventoryItem item)
     {
+        if(item.resourceSO.resourceType == ResourceType.Eat)
+        {
+            int hungerNeedToRestore = Mathf.CeilToInt(player.stats.maxHunger - player.stats.currentHunger);
+            int hpNeedToRestore = Mathf.CeilToInt(player.stats.maxHp - player.stats.currentHp);
+
+            if (hungerNeedToRestore <= 0 && hpNeedToRestore <= 0)
+            {
+                return;
+            }
+        }
+
+        if (item.resourceSO.resourceType == ResourceType.Drink)
+        {
+            int thirstNeedToRestore = Mathf.CeilToInt(player.stats.maxThirst - player.stats.currentThirst);
+            if (thirstNeedToRestore <= 0)
+                return;
+        }
+
         player.invetory.Remove(item.resourceSO);
         Debug.Log($"item.amount:{item.amount} and player: {player.invetory.hasResources(item.resourceSO)}");
         if (player.invetory.hasResources(item.resourceSO))
             updateQTY(item);
         else RemoveResourceFromUI(item);
-        
-        
+
+        if (item.resourceSO.resourceType == ResourceType.Eat)
+        {
+            player.stats.currentHunger = Mathf.Min(player.stats.currentHunger + item.resourceSO.stat_restore, player.stats.maxHunger);
+            player.stats.currentHp = Mathf.Min(player.stats.currentHp + item.resourceSO.HP_restore, player.stats.maxHp);
+        }
+
+        if(item.resourceSO.resourceType == ResourceType.Drink)
+        {
+            player.stats.currentThirst = Mathf.Min(player.stats.currentThirst + item.resourceSO.stat_restore, player.stats.maxThirst);
+        }   
     }
 
     public void updateQTY(InventoryItem item)

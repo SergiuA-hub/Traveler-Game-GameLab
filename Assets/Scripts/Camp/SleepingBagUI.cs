@@ -46,18 +46,9 @@ public class SleepingBagUI : MonoBehaviour
     {
         if(staminaValue != Mathf.FloorToInt(player.stats.currentStamina))
         {
-            staminaSlider.value = player.stats.currentStamina;
-            staminaValueTxt.text = $"{Mathf.FloorToInt(player.stats.currentStamina)}/{Mathf.FloorToInt(player.stats.maxStamina)}";
-
-            int staminaIncease = campManager.getRestHoursUntillFull();
-            tillFull.updateRestTime($"{staminaIncease}h");
-
             updateHours(timeManager.currentTime);
             showOptionOutcome(hoveredOption);
         }
-        
-        
-        
     }
 
     public void updateHours(DateTime time)
@@ -82,17 +73,19 @@ public class SleepingBagUI : MonoBehaviour
 
             tillMorning.updateRestTime($"{hours}h");
         }
+
+        staminaSlider.value = player.stats.currentStamina;
+        staminaValueTxt.text = $"{Mathf.FloorToInt(player.stats.currentStamina)}/{Mathf.FloorToInt(player.stats.maxStamina)}";
+
+        int staminaIncease = campManager.getRestHoursUntillFull();
+        tillFull.updateRestTime($"{staminaIncease}h");
     }
 
     public void restSelected(RestOptions restOption)
     {
         if (restOption == RestOptions.Nap)
         {
-            int maxStamina = Mathf.FloorToInt(player.stats.maxStamina);
-            int currentStamina = Mathf.FloorToInt(player.stats.currentStamina);
-            int staminaIncease = campManager.getRestForHours(2);
-
-            campManager.doResting(staminaIncease);
+            campManager.doResting(2);
             return;
         }
 
@@ -114,13 +107,9 @@ public class SleepingBagUI : MonoBehaviour
                 TimeSpan timeUntilMorning = nextMorning - timeManager.currentTime;
 
                 int hours = (int)Math.Ceiling(timeUntilMorning.TotalHours);
+                
 
-                int maxStamina = Mathf.FloorToInt(player.stats.maxStamina);
-                int currentStamina = Mathf.FloorToInt(player.stats.currentStamina);
-
-                int staminaIncrease = campManager.getRestForHours(hours);
-
-                campManager.doResting(staminaIncrease);
+                campManager.doResting(hours);
                 return;
             }
         }
