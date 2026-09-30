@@ -21,6 +21,9 @@ public class TimeManager : MonoBehaviour
     public UnityEvent<DateTime> onYearChanged;
     public UnityEvent<DateTime> onMorning;
     public UnityEvent<DateTime> onEvening;
+
+    [Header("Player")]
+    public Player_M player;
     private int lastDay;
     private int lastMonth;
     private int lastYear;
@@ -49,12 +52,14 @@ public class TimeManager : MonoBehaviour
     public void fastForwardTime()
     {
         timeLeft = 2;
-        hour_duration = GlobalSettingsManager.REST_HOUR_DURATION;
+        SetTimeSpeed(GlobalSettingsManager.REST_HOUR_DURATION);
+        //hour_duration = GlobalSettingsManager.REST_HOUR_DURATION;
     }
 
     public void normalTime()
     {
-        hour_duration = GlobalSettingsManager.HOUR_DURATION;
+        SetTimeSpeed(GlobalSettingsManager.HOUR_DURATION);
+        //hour_duration = GlobalSettingsManager.HOUR_DURATION;
     }
 
     private void HandleTimeInput()
@@ -74,21 +79,24 @@ public class TimeManager : MonoBehaviour
 
         if (keyboard.digit2Key.wasPressedThisFrame)
         {
-            SetTimeSpeed(2.5f);
+            SetTimeSpeed(GlobalSettingsManager.HOUR_DURATION / 2);
         }
 
         if (keyboard.digit3Key.wasPressedThisFrame)
         {
-            SetTimeSpeed(1.25f);
+            SetTimeSpeed(GlobalSettingsManager.HOUR_DURATION / 3);
         }
 
         if (keyboard.digit4Key.wasPressedThisFrame)
         {
-            SetTimeSpeed(0.3f);
+            SetTimeSpeed(GlobalSettingsManager.HOUR_DURATION / 4);
         }
     }
 
-
+    public float getHourDuration()
+    {
+        return hour_duration;
+    }
 
     void Update()
     {
@@ -159,7 +167,7 @@ public class TimeManager : MonoBehaviour
 
             // Apply new hour duration
             hour_duration = speed;
-
+            player.stats.setMaxSpeed(hour_duration);
             // Recalculate timeLeft to preserve progress
             timeLeft = hour_duration * (1f - progressPercent);
         }
