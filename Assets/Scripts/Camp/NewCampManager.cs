@@ -20,7 +20,6 @@ public class NewCampManager : MonoBehaviour
     public Button campButton;
     public Player_M player;
     private int restTimeCounter = 0;
-    private bool resting = false;
     private int restDuration = 0;
     public TimeManager timeManager;
     public GameObject playerCaravan;
@@ -225,12 +224,13 @@ public class NewCampManager : MonoBehaviour
         //staminaIncrease means hours because the restore is 1/h
         Debug.Log($"Rest for {staminaIncrease}");
 
+        player.isResting = true;
+
         timeManager.fastForwardTime();
         restTimeCounter = 0;
 
         restScreenPanel.SetActive(true);
-        resting = true;
-
+        
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
 
@@ -270,12 +270,10 @@ public class NewCampManager : MonoBehaviour
 
         fadeCoroutine = StartCoroutine(FadeRestScreen(1f, 0f, true));
         restScreenPanel.GetComponent<RestingUI>().hideRestingMessage();        
-        resting = false;
 
         timeManager.normalTime();
 
         player.isResting = false;
-        
         dismissCamp();
         player.UnRoot();
     }

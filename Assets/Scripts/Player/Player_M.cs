@@ -51,8 +51,12 @@ public class Player_M : MonoBehaviour
         if (timeManager.time_stopped)
             return;
 
-        if(isResting)
+        if (isResting)
+        {
+            Debug.Log("PLAYER IS RESTING");
             return;
+        }
+            
 
         if (move.IsMoving() && !rooted)
         {
