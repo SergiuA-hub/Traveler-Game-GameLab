@@ -74193,17 +74193,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Player_M, Assembly-CSharp
-        m_MethodName: UnRoot
-        m_Mode: 1
+      - m_Target: {fileID: 2033805678}
+        m_TargetAssemblyTypeName: PlayerMovement_M, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 301053799}
         m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
@@ -600540,17 +600540,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Player_M, Assembly-CSharp
-        m_MethodName: Root
-        m_Mode: 1
+      - m_Target: {fileID: 2033805678}
+        m_TargetAssemblyTypeName: PlayerMovement_M, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 301053799}
         m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
@@ -608198,6 +608198,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027727823}
   m_CullTransparentMesh: 1
+--- !u!114 &2033805678 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2357648121238709895, guid: 40bfcf000c6fec34297e7f280f1361fd, type: 3}
+  m_PrefabInstance: {fileID: 1244340557}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af53227175e03241baf5af5f245d3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement_M
 --- !u!1001 &2036095025
 PrefabInstance:
   m_ObjectHideFlags: 0
