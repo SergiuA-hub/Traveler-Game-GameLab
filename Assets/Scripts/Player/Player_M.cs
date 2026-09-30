@@ -106,8 +106,14 @@ public class Player_M : MonoBehaviour
         rooted = true;
     }
 
+    public bool isRooted()
+    {
+        return rooted;
+    }
+
     public void UnRoot()
     {
+        Debug.Log("PLYER UNROOTED");
         rooted = false;
     }
 }

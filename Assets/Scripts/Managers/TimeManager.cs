@@ -69,7 +69,7 @@ public class TimeManager : MonoBehaviour
 
         if (keyboard.digit1Key.wasPressedThisFrame)
         {
-            SetTimeSpeed(5f);
+            normalTime();
         }
 
         if (keyboard.digit2Key.wasPressedThisFrame)
