@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4071452e2ad28e49b06affaabb59b4b, type: 3}
+  m_Name: SmallSack_Empty
+  m_EditorClassIdentifier: Assembly-CSharp::LootOutcome
+  outcomeForLoot: 0
+  outcomeStory: 'You turn the sack over and shake out its contents.
+
+    A little
+    dirt and damp straw fall to the ground, but nothing worth carrying remains.'
+  outcomeChance: 20
+  outcomeCoins: 0
+  lootDrop: []
+  hpLoss: 0
+  staminaLoss: 0
+  investigationDuration: 1

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4071452e2ad28e49b06affaabb59b4b, type: 3}
+  m_Name: BigSack_RuinedCargo
+  m_EditorClassIdentifier: Assembly-CSharp::LootOutcome
+  outcomeForLoot: 1
+  outcomeStory: 'The sack has been lying exposed to the weather for some time.
+
+    You
+    drag it free from the mud and sort through the spoiled cargo, salvaging what
+    little you can.'
+  outcomeChance: 20
+  outcomeCoins: 0
+  lootDrop:
+  - resource: {fileID: 11400000, guid: 756e0e972a38b684196571473f7ae534, type: 2}
+    amount: 1
+    dropChance: 50
+  - resource: {fileID: 11400000, guid: dddc04a2a8132ff429a5819264360ad7, type: 2}
+    amount: 1
+    dropChance: 35
+  - resource: {fileID: 11400000, guid: a005bcc977161a846a7a2e0005bc953a, type: 2}
+    amount: 1
+    dropChance: 25
+  hpLoss: 0
+  staminaLoss: 1
+  investigationDuration: 2
