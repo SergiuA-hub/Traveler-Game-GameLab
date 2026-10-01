@@ -31,7 +31,8 @@ public class HUDScript : MonoBehaviour
     public Slider hungerSlider; 
     public TextMeshProUGUI hungerText;
     public TextMeshProUGUI hungerConsumptionText;
-
+    
+    public TextMeshProUGUI speed;
     [Header("DateTime")]
     public TextMeshProUGUI dateText;
     public TextMeshProUGUI seasonText;
@@ -79,6 +80,8 @@ public class HUDScript : MonoBehaviour
 
         string thirstToShow = player.stats.currentThirst == 0 ? "-" : $"- {player.thirstDropPerHour}/h";
         thirstConsumptionText.text = thirstToShow;
+
+        speed.text = $"{player.stats.currentSpeed.ToString("F1")}";
     }
 
     void UpdateTimeDisplay ()

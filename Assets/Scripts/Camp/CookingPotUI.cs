@@ -90,7 +90,7 @@ public class CookingPotUI : MonoBehaviour
 
     public void updateCoutnerList()
     {
-        foodGroupText.text = $"Foor ({foodCoutner})";
+        foodGroupText.text = $"Food ({foodCoutner})";
         drinkGroupText.text = $"Drink ({drinkCoutner})";
     }
 

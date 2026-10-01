@@ -18,8 +18,8 @@ public class CookingResourcePrefab : MonoBehaviour, IPointerEnterHandler, IPoint
     //mouse over properties
     public Image backgroundImage;
 
-    private Color normalColor = new Color32(0xEB, 0xD1, 0xA9, 255); // #EBD1A9
-    private Color hoverColor = new Color32(0xF3, 0xDF, 0xB9, 255); // #F3DFB9
+    private Color normalColor = new Color32(0xEB, 0xD1, 0xA9, 200); // #EBD1A9
+    private Color hoverColor = new Color32(0xF3, 0xDF, 0xB9, 200); // #F3DFB9
     private void Awake()
     {
         if (backgroundImage == null)
