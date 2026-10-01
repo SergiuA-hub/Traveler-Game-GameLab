@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4071452e2ad28e49b06affaabb59b4b, type: 3}
+  m_Name: BigSack_HiddenCoins
+  m_EditorClassIdentifier: Assembly-CSharp::LootOutcome
+  outcomeForLoot: 1
+  outcomeStory: 'Most of the sack holds ordinary supplies, but the bottom feels unusually
+    stiff.
+
+    Hidden beneath a stitched layer of cloth, you discover a small purse.'
+  outcomeImage: {fileID: -3695279733430498817, guid: f77a9a36b25c97b49a21f45c1f3f3e07, type: 3}
+  outcomeChance: 15
+  outcomeCoins: 20
+  lootDrop:
+  - resource: {fileID: 11400000, guid: 1803df224911e9348aa0033f2f65d7ad, type: 2}
+    amount: 1
+    dropChance: 25
+  hpLoss: 0
+  staminaLoss: 0
+  investigationDuration: 2
