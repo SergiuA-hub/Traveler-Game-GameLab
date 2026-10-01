@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class LootManager : MonoBehaviour
 {
     public Player_M player;
+    public AudioSource investigatingAudio;
+    [Range(0f, 1f)]
+    public float investigatingVolume = 0.7f;
     public GameObject springPlaceHoldersList;
     public GameObject summerPlaceHoldersList;
     public GameObject fallPlaceHoldersList;
@@ -24,6 +27,11 @@ public class LootManager : MonoBehaviour
 
     public Slider investigatingProgress;
     public TMP_Text investigateTimer;
+
+    public LootPanelUI lootPanelUI;
+
+    public Button campButton;
+    public GameObject InventoryPanel;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -95,7 +103,24 @@ public class LootManager : MonoBehaviour
         if (lootableItem == null)
             return;
 
+        if (investigatingAudio != null)
+        {
+            investigatingAudio.loop = true;
+
+            // Variații discrete la fiecare investigație.
+            investigatingAudio.pitch = Random.Range(0.97f, 1.03f);
+
+            investigatingAudio.volume = Mathf.Clamp01(
+                investigatingVolume * Random.Range(0.93f, 1f)
+            );
+
+            investigatingAudio.Play();
+        }
+
         player.Root();
+        InventoryPanel.SetActive(false);
+        campButton.interactable = false;
+
         investigeButton.gameObject.SetActive(false);
 
         isInvestigating = true;
@@ -112,7 +137,21 @@ public class LootManager : MonoBehaviour
     public void InvestigationFinished()
     {
         investigatingProgress.gameObject.SetActive(false);
+        if (investigatingAudio != null)
+            investigatingAudio.Stop();
+
         Destroy(lootableItem.gameObject);
+
+        lootPanelUI.setup(currentOutcome);
+        
+        lootPanelUI.gameObject.SetActive(true);
+    }
+
+    public void LootCompleted()
+    {
+        lootPanelUI.gameObject.SetActive(false);
+
+        campButton.interactable = true;
 
         player.UnRoot();
     }

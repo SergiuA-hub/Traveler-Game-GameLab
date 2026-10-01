@@ -8,6 +8,7 @@ public class LootOutcome : ScriptableObject
 
     [TextArea(3, 6)]
     public string outcomeStory;
+    public Sprite outcomeImage;
 
     public float outcomeChance;
     public int outcomeCoins;
