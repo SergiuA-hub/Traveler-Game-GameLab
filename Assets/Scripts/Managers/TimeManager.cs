@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class TimeManager : MonoBehaviour
 {
+    [Header("Player")]
+    public Player_M player;
+
     [Header("Time Settings")]
     private float hour_duration = GlobalSettingsManager.HOUR_DURATION;
     public bool time_stopped = false;
@@ -21,9 +24,6 @@ public class TimeManager : MonoBehaviour
     public UnityEvent<DateTime> onYearChanged;
     public UnityEvent<DateTime> onMorning;
     public UnityEvent<DateTime> onEvening;
-
-    [Header("Player")]
-    public Player_M player;
     private int lastDay;
     private int lastMonth;
     private int lastYear;
