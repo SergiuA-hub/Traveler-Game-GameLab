@@ -9,14 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca015d7e93a953f4bbd13f3a9759cec7, type: 3}
-  m_Name: Water
+  m_Script: {fileID: 11500000, guid: 2cc6f4151cc98a846970a0a2c6db648b, type: 3}
+  m_Name: MasterworkBackpack
   m_EditorClassIdentifier: Assembly-CSharp::ItemsSO
-  itemName: Water
-  sprite: {fileID: 0}
-  CityDisplayPrefab: {fileID: 0}
-  itemType: 1
-  baseValue: 0
-  amount: 0
-  weight: 0
-  volume: 0
+  itemName: Masterwork Backpack
+  type: 1
+  itemMaxWeight: 20
+  itemMaxVolume: 20
+  Prefab: {fileID: 0}

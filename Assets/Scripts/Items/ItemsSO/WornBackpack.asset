@@ -9,14 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca015d7e93a953f4bbd13f3a9759cec7, type: 3}
-  m_Name: Salt
+  m_Script: {fileID: 11500000, guid: 2cc6f4151cc98a846970a0a2c6db648b, type: 3}
+  m_Name: WornBackpack
   m_EditorClassIdentifier: Assembly-CSharp::ItemsSO
-  itemName: Salt
-  sprite: {fileID: 0}
-  CityDisplayPrefab: {fileID: 1773736028784732331, guid: f6197ed91149494478be604e61bb2ea4, type: 3}
-  itemType: 0
-  baseValue: 0
-  amount: 1
-  weight: 2
-  volume: 3
+  itemName: Worn Backpack
+  type: 0
+  itemMaxWeight: 10
+  itemMaxVolume: 10
+  Prefab: {fileID: 0}

@@ -23,30 +23,33 @@ public class CityUI : MonoBehaviour
     [SerializeField] private Transform Content;
     [SerializeField] private TMP_Text settlementName;
 
-    [Header("Buy")]
+    [Header("Trade Panel")]
 
-    //BUY
+    // BUY & SELL
     [SerializeField] private TradeItemDisplay tradePrfab;
     [SerializeField] private Transform buyContent;
 
-    //Sell
-    [Header("Sell")]
     [SerializeField] private TradeItemDisplay tradePlayerPrefab;
     [SerializeField] private Transform SellContent;
 
     //Components
     public Setlement setlement;
     public PlayerInventory_M playerInventory;
-
-    //Player money
     [SerializeField] private TextMeshProUGUI playerCoinsDisplay;
 
 
-    [Header("Current Trade Item Display")]
+    [Header("Current TRADE_ITEM_DISPLAY")]
     
     [SerializeField] private Image currentTradeItemImage;
     [SerializeField] private TextMeshProUGUI currentTradeItemName;
-    [SerializeField] private TextMeshProUGUI currentTradeItemPrice;   
+    [SerializeField] private TextMeshProUGUI currentTradeItemPrice;
+    [SerializeField] private TextMeshProUGUI buySellButtonText;
+    [SerializeField] private TextMeshProUGUI currentItemAmount;
+
+    [Header("Shop page")]
+
+    [SerializeField] private Transform ShopContent;
+    [SerializeField] private ShopItemDisplay ItemShopPrefab;
 
 
     [Header("PAGES")]
@@ -85,7 +88,7 @@ public class CityUI : MonoBehaviour
                
                 break;
             case CityUIPage.Shop:
-               
+               DisplayShop();
                 break;
             case CityUIPage.Trade:
                 DisplayTrade();
@@ -146,7 +149,7 @@ public class CityUI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        //setlement = GetComponent<Setlement>();
+        
         //Create list
         foreach (var item in currentSettlement.settlementStock)
         {
@@ -156,7 +159,7 @@ public class CityUI : MonoBehaviour
             if (settlementsManager.currentItemSelected != null && settlementsManager.currentItemSelected.tradeSettlementItem != null)
                 if(item.resource.itemName == settlementsManager.currentItemSelected.tradeSettlementItem.resource.itemName)
                 {
-                    Debug.Log($"item.resource.itemName:{item.resource.itemName}");
+                    //Debug.Log($"item.resource.itemName:{item.resource.itemName}");
                     SetCurrentTradeItem(row);
                 }
             
@@ -168,6 +171,8 @@ public class CityUI : MonoBehaviour
 
             row.PopulateSellIcon(item, this);
         }
+
+        
 
         
     }
@@ -182,15 +187,34 @@ public class CityUI : MonoBehaviour
         settlementsManager.currentItemSelected = item;
         currentTradeItemImage.sprite = item.itemIcon.sprite;
         currentTradeItemName.text = item.itemNameText.text;
+        
+
 
         if (item.tradeSettlementItem != null)
             currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeSettlementItem.resource).ToString("0.0");
         else currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeInventoryItem.resourceSO).ToString("0.0");
+
+        SetButtonText(item);
     }
 
 
-   
 
+    //############
+    //SHOP AREA
+    //############
+
+    public void DisplayShop()
+    {
+        foreach(Transform child in ShopContent)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (var item in currentSettlement.settlementShopItems)
+        {
+            ShopItemDisplay row = Instantiate(ItemShopPrefab, ShopContent);
+            row.PopulateIcons(item.shopItems, this);
+        }
+    }
 
 
     //BUTTONS FUNCTIONS
@@ -205,7 +229,18 @@ public class CityUI : MonoBehaviour
         //setlement.CityObjectUI.SetActive(false);
         this.gameObject.SetActive(false);
     }
-
+    private void SetButtonText(TradeItemDisplay typeItem)
+    {
+        if(typeItem.tradeInventoryItem != null)
+        {
+            buySellButtonText.text = "SELL";
+        }
+        if(typeItem.tradeSettlementItem != null)
+        {
+            buySellButtonText.text = "BUY";
+        }
+    }
+    
     //initial setup
     public void prepareSettlement(SettlementRuntime settlement)
     {
