@@ -7,6 +7,7 @@ public class Player_M : MonoBehaviour
     [SerializeField] private Backpack currentBackpack;
 
     public bool isResting = false;
+    public bool isCamping = false;
     public bool rooted = false;
 
     //Components

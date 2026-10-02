@@ -21,14 +21,12 @@ public class LootOutcome : ScriptableObject
 [System.Serializable]
 public class ResourceDrop
 {
-    public ResourceSO resource;
-    public int amount;
+    public ResourceAmount resource;
     public float dropChance;
 
     public ResourceDrop(ResourceSO res, int qty, float chance)
     {
-        resource = res;
-        amount = qty;
+        resource = new ResourceAmount(res, qty);
         dropChance = chance;
     }
 }

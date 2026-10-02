@@ -4,9 +4,8 @@ public enum ResourceType
 {
     Trade,
     Eat,
-    Drink
-
-
+    Drink,
+    Fuel
 }
 [CreateAssetMenu( fileName = "ResourceSO",menuName ="ResoursceSO")]
 public class ResourceSO : ScriptableObject

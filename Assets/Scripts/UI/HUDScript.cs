@@ -31,7 +31,10 @@ public class HUDScript : MonoBehaviour
     public Slider hungerSlider; 
     public TextMeshProUGUI hungerText;
     public TextMeshProUGUI hungerConsumptionText;
-    
+
+    [Header("Camp")]
+    public Button campButton;
+
     public TextMeshProUGUI speed;
     [Header("DateTime")]
     public TextMeshProUGUI dateText;
@@ -74,6 +77,11 @@ public class HUDScript : MonoBehaviour
         staminaConsumptionText.text = staminaToShow;
         hpConsumptionText.text = $"";
         
+        if(player.stats.currentStamina < GlobalSettingsManager.CAMP_STAMINA_POSSIBLE && !player.isCamping)
+        {            
+            campButton.interactable = true;
+        }else campButton.interactable = false;
+
         string hungerToShow = player.stats.currentHunger == 0 ? "-" : $"- {player.hungerDropPerHour}/h";
         hungerConsumptionText.text = hungerToShow;
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,14 +12,56 @@ public enum CampItem
     SleepingBag,
     Backpack,
     Cart,
-    Fire,
+    FireCamp,
     Guest
+}
+
+[Serializable]
+public class CampStats
+{
+    [Header("Fire")]
+    [Range(1, 5)]
+    public int fireLevel = 1;
+
+    public const int MIN_FIRE_LEVEL = 1;
+    public const int MAX_FIRE_LEVEL = 5;
+
+    public void IncreaseFire(int amount = 1)
+    {
+        fireLevel = Mathf.Clamp(
+            fireLevel + amount,
+            MIN_FIRE_LEVEL,
+            MAX_FIRE_LEVEL
+        );
+    }
+
+    public void DecreaseFire(int amount = 1)
+    {
+        fireLevel = Mathf.Clamp(
+            fireLevel - amount,
+            MIN_FIRE_LEVEL,
+            MAX_FIRE_LEVEL
+        );
+    }
+}
+
+[System.Serializable]
+public class ResourceAmount
+{
+    public ResourceSO resourceSO;
+    public int amount;
+    public ResourceAmount(ResourceSO resourceSO, int amount)
+    {
+        this.resourceSO = resourceSO;
+        this.amount = amount;
+    }
 }
 
 public class NewCampManager : MonoBehaviour
 {
     public Button campButton;
     public Player_M player;
+    public CampStats campStats = new CampStats();
     private int restTimeCounter = 0;
     private int restDuration = 0;
     public TimeManager timeManager;
@@ -36,10 +79,17 @@ public class NewCampManager : MonoBehaviour
     public float caravanCameraSize;
     public float CampCamerSize;
     public GameObject campingPanelUI;
+    
     public CookingPotUI cookingPotPanel;
+    public SleepingBagUI sleepingBagPanel;    
+    public FireCampUI fireCampPanel;
 
-    public SleepingBagUI sleepingBagPanel;
+    public GameObject campResPanel;
+    public GameObject campResList;
+    public GameObject campResPrefab;
+    public GameObject introText;
 
+    public List<ResourceAmount> campSupplies = new List<ResourceAmount>();
     private void Start()
     {
         caravanCameraSize = playerCam.orthographicSize;
@@ -88,24 +138,34 @@ public class NewCampManager : MonoBehaviour
 
     private void setupCamp()
     {
+        campSupplies.Clear();
+        player.isCamping = true;
+
         campButton.interactable = false;
         playerCaravan.SetActive(false);
         playerCamp.SetActive(true);
         timeManager.pause();
+        campResPanel.SetActive(true);
 
         Debug.Log("Camp setup");
         moveCameraToCamp();
-
+        
         startFadeOut();
     }
 
     public void dismissCamp()
     {
+        campSupplies.Clear();
+        
+        updateTempResList();
+        campResPanel.SetActive(false);
+
         playerCaravan.SetActive(true);
         playerCamp.SetActive(false);
         timeManager.resume();
         campButton.interactable = true;
-
+        
+        player.isCamping = false;
         Debug.Log("Camp dismissed");
         moveCameraToCaravan();
     }
@@ -161,6 +221,11 @@ public class NewCampManager : MonoBehaviour
         {
             ShowSleepingBag();
         }
+
+        if(campElement == CampItem.FireCamp)
+        {
+            ShowFireCamp();
+        }
     }
 
     public void ShowCookingPot()
@@ -191,6 +256,21 @@ public class NewCampManager : MonoBehaviour
     public void dismissSleepingBag()
     {
         sleepingBagPanel.gameObject.SetActive(false);        
+        campingPanelUI.SetActive(false);
+    }
+
+    public void ShowFireCamp()
+    {
+        campingPanelUI.SetActive(true);
+
+        fireCampPanel.setup();
+
+        fireCampPanel.gameObject.SetActive(true);
+    }
+
+    public void dismissFireCamp()
+    {
+        fireCampPanel.gameObject.SetActive(false);
         campingPanelUI.SetActive(false);
     }
     public int getRestForHours(int hours)
@@ -299,5 +379,107 @@ public class NewCampManager : MonoBehaviour
             restScreenPanel.SetActive(false);
 
         fadeCoroutine = null;
+    }
+
+    public void updateTempResList()
+    {
+        foreach (Transform child in campResList.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        if(campSupplies.Count == 0)
+        {
+            introText.SetActive(true);
+            return;
+        }else introText.SetActive(false);
+
+        foreach (var res in campSupplies)
+        {
+            Debug.Log($"Adding {res.resourceSO.itemName} x {res.amount} to camp temp list");
+            GameObject go = Instantiate(campResPrefab, campResList.transform);
+            go.GetComponent<ResourceDropPrefab>().setup(res);
+        }
+    }
+
+    public void addResourceToCampUsage(ResourceSO res)
+    {
+        foreach (ResourceAmount resA in campSupplies)
+        {
+            if (resA.resourceSO == res)
+            {
+                resA.amount++;
+                updateTempResList();
+                return;
+            }
+        }
+
+        campSupplies.Add(new ResourceAmount(res, 1));
+        
+        updateTempResList();
+    }
+
+    public int getTempAmount(ResourceSO res)
+    {
+        foreach (ResourceAmount resA in campSupplies)
+        {
+            if (resA.resourceSO == res)
+            {
+                return resA.amount;
+            }
+        }
+        return 0;
+    }
+
+    public float getFuelAmount()
+    {
+        float totalFuel = 0;
+        foreach (ResourceAmount resA in campSupplies)
+        {
+            if (resA.resourceSO.resourceType == ResourceType.Fuel)
+            {
+                totalFuel += resA.resourceSO.stat_restore * resA.amount;
+            }
+        }
+        return totalFuel;
+    }
+
+    public float getFoodAmount()
+    {
+        float totalFood = 0;
+        foreach (ResourceAmount resA in campSupplies)
+        {
+            if (resA.resourceSO.resourceType == ResourceType.Eat)
+            {
+                totalFood += resA.resourceSO.stat_restore * resA.amount;
+            }
+        }
+        return totalFood;
+    }
+
+    public float getDrinkAmount()
+    {
+        float totalDrink = 0;
+        foreach (ResourceAmount resA in campSupplies)
+        {
+            if (resA.resourceSO.resourceType == ResourceType.Drink)
+            {
+                totalDrink += resA.resourceSO.stat_restore * resA.amount;
+            }
+        }
+        return totalDrink;
+    }
+
+    public float getHPAmount()
+    {
+        float totalHP = 0;
+        foreach (ResourceAmount resA in campSupplies)
+        {
+            if (resA.resourceSO.HP_restore > 0)
+            {
+                totalHP += resA.resourceSO.HP_restore * resA.amount;
+            }
+        }
+        return totalHP;
     }
 }
