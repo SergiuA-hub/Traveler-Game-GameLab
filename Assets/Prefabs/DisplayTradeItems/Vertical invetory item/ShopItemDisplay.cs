@@ -19,17 +19,19 @@ public class ShopItemDisplay : MonoBehaviour, IPointerClickHandler
 
     public void PopulateIcons(ItemsSO item,CityUI ui)
     {
+        cityUI = ui;
         IconImage = item.icon;
         itemName.text = item.itemName;
         //sellPoint.text
         type.text = item.type.ToString();
         //Status
         price.text = item.price.ToString();
+        
 
     }
     
     public void OnPointerClick(PointerEventData eventData)
     {
-       
+        cityUI.SetCurrentShopItem(this);
     }
 }

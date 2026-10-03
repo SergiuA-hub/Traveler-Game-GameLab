@@ -51,6 +51,14 @@ public class CityUI : MonoBehaviour
     [SerializeField] private Transform ShopContent;
     [SerializeField] private ShopItemDisplay ItemShopPrefab;
 
+    [Header("Current SHOP_ITEM_DISPLAY")]
+    [SerializeField] private Image currentShopItemIcon;
+    [SerializeField] private TextMeshProUGUI currentShopItemName;
+    [SerializeField] private TextMeshProUGUI currentShopItemPrice;
+    [SerializeField] private TextMeshProUGUI currentShopItemDescription;
+    
+
+
 
     [Header("PAGES")]
     [SerializeField] private GameObject LobbyPanel;
@@ -209,11 +217,22 @@ public class CityUI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
         foreach (var item in currentSettlement.settlementShopItems)
         {
             ShopItemDisplay row = Instantiate(ItemShopPrefab, ShopContent);
             row.PopulateIcons(item.shopItems, this);
         }
+    }
+    public void SetCurrentShopItem(ShopItemDisplay shopItem)
+    {
+        settlementsManager.currentShopItemSelected = shopItem;
+
+        //Set The display Icons
+        //currentShopItemIcon.sprite = shopItem.IconImage.sprite;
+        currentShopItemName.text = shopItem.itemName.text;
+        
+
     }
 
 

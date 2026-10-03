@@ -4979,8 +4979,12 @@ MonoBehaviour:
   currentTradeItemPrice: {fileID: 1025620848}
   buySellButtonText: {fileID: 1588286955}
   currentItemAmount: {fileID: 0}
-  ShopContent: {fileID: 0}
+  ShopContent: {fileID: 1376148334}
   ItemShopPrefab: {fileID: -1069711792664807353, guid: 7859c14d0a52c3d46b77977913071327, type: 3}
+  currentShopItemIcon: {fileID: 1847935760}
+  currentShopItemName: {fileID: 1774700015}
+  currentShopItemPrice: {fileID: 0}
+  currentShopItemDescription: {fileID: 0}
   LobbyPanel: {fileID: 556559763}
   ShopPanel: {fileID: 1344593854}
   TradePanel: {fileID: 490782771}
@@ -15133,8 +15137,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0, y: -0.00000011920929, z: 0}
-    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -26925,6 +26929,7 @@ GameObject:
   - component: {fileID: 932758300}
   - component: {fileID: 932758302}
   - component: {fileID: 932758303}
+  - component: {fileID: 932758304}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -27007,9 +27012,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HudManager
   player: {fileID: 809128858}
-  isTesting: 1
+  isTesting: 0
   mainHUDUI: {fileID: 1120130141}
   welcomeScreen: {fileID: 28735374}
+--- !u!114 &932758304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932758299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f8f8cbc6111264aa11aa936a1ab6d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlobalLightManager
+  globalLight: {fileID: 570818609}
+  dayColor: {r: 1, g: 1, b: 1, a: 1}
+  dayIntensity: 1
+  nightColor: {r: 0.16078432, g: 0.27058825, b: 0.3764706, a: 1}
+  nightIntensity: 0.25
+  transitionSeconds: 5
+  startsAtNight: 0
+  timeManager: {fileID: 932758302}
 --- !u!1001 &934674040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -633274,6 +633299,7 @@ MonoBehaviour:
     settlmentGo: {fileID: 1874263206}
   settlements: []
   currentItemSelected: {fileID: 0}
+  currentShopItemSelected: {fileID: 0}
   currentSettlement:
     settlementName: 
     defaultSettlementData: {fileID: 0}

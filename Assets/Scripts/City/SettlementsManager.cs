@@ -162,6 +162,7 @@ public class SettlementsManager : MonoBehaviour
     
     //Current Item selected
     public TradeItemDisplay currentItemSelected;
+    public ShopItemDisplay currentShopItemSelected;
     public SettlementRuntime currentSettlement;
 
      
