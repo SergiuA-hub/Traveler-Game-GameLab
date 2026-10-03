@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 public enum CityUIPage
 {
     Lobby=0,
@@ -45,6 +46,10 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentTradeItemPrice;
     [SerializeField] private TextMeshProUGUI buySellButtonText;
     [SerializeField] private TextMeshProUGUI currentItemAmount;
+    //Slider
+    public Slider sliderAmount;
+    [SerializeField] private TextMeshProUGUI currentTextAmount;
+    
 
     [Header("Shop page")]
 
@@ -78,6 +83,7 @@ public class CityUI : MonoBehaviour
     private void Update()
     {
         DisplayPlayerCoins();
+        currentTextAmount.text = sliderAmount.value.ToString();
         
     }
 
@@ -180,9 +186,6 @@ public class CityUI : MonoBehaviour
             row.PopulateSellIcon(item, this);
         }
 
-        
-
-        
     }
 
     public void DisplayPlayerCoins()
@@ -202,7 +205,24 @@ public class CityUI : MonoBehaviour
             currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeSettlementItem.resource).ToString("0.0");
         else currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeInventoryItem.resourceSO).ToString("0.0");
 
+        //Buttons
         SetButtonText(item);
+        SliderMaxValue();
+
+    }
+
+    public void SliderMaxValue()
+    {
+        //Slider
+        if (settlementsManager.currentItemSelected.tradeInventoryItem == null)
+        {
+            sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeSettlementItem.amount;
+        }
+        if (settlementsManager.currentItemSelected.tradeSettlementItem == null)
+        {
+            sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeInventoryItem.amount;
+        }
+        
     }
 
 

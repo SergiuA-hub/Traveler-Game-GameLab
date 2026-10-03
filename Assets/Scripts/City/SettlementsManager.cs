@@ -154,6 +154,7 @@ public class SettlementRuntime
 public class SettlementsManager : MonoBehaviour
 {
     public GameObject SettlementUI;
+    public CityUI cityUI;
     public Player_M player;
     public GameObject playerAtSettlement;
     public List<SettlementDeployment> settlementsList;
@@ -164,10 +165,8 @@ public class SettlementsManager : MonoBehaviour
     public TradeItemDisplay currentItemSelected;
     public ShopItemDisplay currentShopItemSelected;
     public SettlementRuntime currentSettlement;
-
-     
-
-
+    public Slider SliderAmount;
+   
     public TimeManager timeManager;
     
     void Start()
@@ -285,8 +284,10 @@ public class SettlementsManager : MonoBehaviour
         //BUY
         if (currentItemSelected.tradeSettlementItem != null)
         {
+            
             //Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with proce {currentItemSelected.tradeSettlementItem.price}");
             //Check player money & space in backpack
+            
             if (player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price
             && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume, currentItemSelected.tradeSettlementItem.resource.weight))
             {
@@ -305,6 +306,7 @@ public class SettlementsManager : MonoBehaviour
         //Sell
         if (currentItemSelected.tradeInventoryItem != null)
         {
+            
             if (!player.invetory.hasResources(currentItemSelected.tradeInventoryItem.resourceSO))
                 return;
 
@@ -319,10 +321,14 @@ public class SettlementsManager : MonoBehaviour
         }
     }
 
-    //Slider 
-
-    public void ShowSliderAmount()
+    //Shop buy item
+    public void BuyShopItem()
     {
-
+        if(currentShopItemSelected == null)
+        {
+            return;
+        }
     }
+
+    
 }
