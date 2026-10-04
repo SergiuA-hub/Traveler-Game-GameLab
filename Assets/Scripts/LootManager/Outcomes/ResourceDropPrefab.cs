@@ -7,13 +7,13 @@ public class ResourceDropPrefab : MonoBehaviour
     public TMP_Text resName;
     public Image resIcon;
     public TMP_Text resQty;
-    private ResourceDrop drop;
+    private ResourceAmount drop;
 
-    public void setup(ResourceDrop res)
+    public void setup(ResourceAmount resA)
     {
-        drop = res;
-        resName.text = drop.resource.itemName;
-        resIcon.sprite = drop.resource.sprite;
+        drop = resA;
+        resName.text = drop.resourceSO.itemName;
+        resIcon.sprite = drop.resourceSO.sprite;
         resQty.text = drop.amount.ToString();
     }    
 }

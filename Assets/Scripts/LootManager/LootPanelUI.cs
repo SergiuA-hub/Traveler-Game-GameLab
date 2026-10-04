@@ -63,7 +63,7 @@ public class LootPanelUI : MonoBehaviour
             foreach (ResourceDrop drop in resourceDrops)
             {
                 GameObject go = Instantiate(resourcePrefab, resoruceList.transform);
-                go.GetComponent<ResourceDropPrefab>().setup(drop);
+                go.GetComponent<ResourceDropPrefab>().setup(drop.resource);
             }
         }
         else
@@ -116,7 +116,8 @@ public class LootPanelUI : MonoBehaviour
         foreach (ResourceDrop drop in outcome.lootDrop)
         {
             float roll = Random.Range(0f, 1f);
-            ResourceDrop newDrop = new ResourceDrop(drop.resource, Random.Range(1, drop.amount + 1), drop.dropChance);
+
+            ResourceDrop newDrop = new ResourceDrop(drop.resource.resourceSO, Random.Range(1, drop.resource.amount + 1), drop.dropChance);
             if (roll <= drop.dropChance)
             {
                 resourceDrops.Add(newDrop);
@@ -128,7 +129,7 @@ public class LootPanelUI : MonoBehaviour
     {
         foreach(ResourceDrop drop in resourceDrops)
         {
-            player.invetory.AddItem(drop.resource, drop.amount);
+            player.invetory.AddItem(drop.resource.resourceSO, drop.resource.amount);
         }
 
         player.invetory.CurrentCoins += coinsAmountValue;
@@ -144,5 +145,5 @@ public class LootPanelUI : MonoBehaviour
         }
 
         lootManager.LootCompleted();
-    }
+    }    
 }

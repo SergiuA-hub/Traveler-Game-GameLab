@@ -1,12 +1,10 @@
 using TMPro;
-using Unity.VisualScripting;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class CookingPotUI : MonoBehaviour
 {
     public Player_M player;
+    public NewCampManager campManager;
 
     public GameObject foodList;
     public GameObject drinkList;
@@ -15,16 +13,21 @@ public class CookingPotUI : MonoBehaviour
     public TMP_Text drinkGroupText;
     //Hunger
     public Slider hungerSlider;
+    public Slider tempHungerSlider;
     public TextMeshProUGUI hungerText;
     public TextMeshProUGUI additionalHungerText;
 
     //THIRST
     public Slider thirstSlider;
+    public Slider tempThirstSlider;
+
     public TextMeshProUGUI thirstText;
     public TextMeshProUGUI additionalThirstText;
 
     //HP
     public Slider hpSlider;
+    public Slider tempHpSlider;
+
     public TextMeshProUGUI hpText;
     public TextMeshProUGUI additionalHpText;
 
@@ -71,18 +74,26 @@ public class CookingPotUI : MonoBehaviour
 
         foreach (var res in player.invetory.Inventory)
         {
-            if (res.resourceSO.resourceType == ResourceType.Eat)
+            if (res.resourceSO.resourceType.Contains(ResourceType.Eat))
             {
+                int amount = res.amount - campManager.getTempAmount(res.resourceSO);
+                if (amount <= 0)
+                    continue;
+
                 foodCoutner++;
                 GameObject go = Instantiate(CookingResourcePrefab, foodList.transform);
-                go.GetComponent<CookingResourcePrefab>().setup(res, this);
+                go.GetComponent<CookingResourcePrefab>().setup(new ResourceAmount(res.resourceSO, res.amount), this);
             }
 
-            if (res.resourceSO.resourceType == ResourceType.Drink)
+            if (res.resourceSO.resourceType.Contains(ResourceType.Drink))
             {
+                int amount = res.amount - campManager.getTempAmount(res.resourceSO);
+                if (amount <= 0)
+                    continue;
+
                 drinkCoutner++;
                 GameObject go = Instantiate(CookingResourcePrefab, drinkList.transform);
-                go.GetComponent<CookingResourcePrefab>().setup(res, this);
+                go.GetComponent<CookingResourcePrefab>().setup(new ResourceAmount(res.resourceSO, res.amount), this);
             }
         }
         updateCoutnerList();
@@ -90,22 +101,30 @@ public class CookingPotUI : MonoBehaviour
 
     public void updateCoutnerList()
     {
-        foodGroupText.text = $"Foor ({foodCoutner})";
+        foodGroupText.text = $"Food ({foodCoutner})";
         drinkGroupText.text = $"Drink ({drinkCoutner})";
     }
 
     public void updateStatsSliders()
     {
+        float tempHunger = campManager.getFoodAmount();
+        float tempThirst = campManager.getDrinkAmount();
+        float tempHp = campManager.getHPAmount();
+
         hungerSlider.value = player.stats.currentHunger;
         thirstSlider.value = player.stats.currentThirst;
         hpSlider.value = player.stats.currentHp;
+        
+        tempHungerSlider.value = player.stats.currentHunger + tempHunger;
+        tempThirstSlider.value = player.stats.currentThirst + tempThirst;
+        tempHpSlider.value = player.stats.currentHp + tempHp;
 
         hpText.text = $"{Mathf.FloorToInt(player.stats.currentHp)}/{Mathf.FloorToInt(player.stats.maxHp)}";
         hungerText.text = $"{Mathf.FloorToInt(player.stats.currentHunger)}/{Mathf.FloorToInt(player.stats.maxHunger)}";
         thirstText.text = $"{Mathf.FloorToInt(player.stats.currentThirst)}/{Mathf.FloorToInt(player.stats.maxThirst)}";
     }
 
-    public void startStatsRestore(InventoryItem item)
+    public void startStatsRestore(ResourceAmount item)
     {
         int hungerNeedToRestore = Mathf.CeilToInt(player.stats.maxHunger - player.stats.currentHunger);
 
@@ -116,9 +135,7 @@ public class CookingPotUI : MonoBehaviour
         //reset all stats restore
         stopStatsRestore(item);
 
-
-
-        if(item.resourceSO.resourceType == ResourceType.Eat)
+        if(item.resourceSO.resourceType.Contains(ResourceType.Eat))
         {
             string stats_toShow = $"+{hungerNeedToRestore}";
             if (hungerNeedToRestore > item.resourceSO.stat_restore)
@@ -137,7 +154,7 @@ public class CookingPotUI : MonoBehaviour
                 
         }
 
-        if (item.resourceSO.resourceType == ResourceType.Drink)
+        if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
         {
             string stats_toShow = $"+{thirstNeedToRestore}";
             if (thirstNeedToRestore > item.resourceSO.stat_restore)
@@ -149,60 +166,55 @@ public class CookingPotUI : MonoBehaviour
         
     }
 
-    public void stopStatsRestore(InventoryItem item)
+    public void stopStatsRestore(ResourceAmount item)
     {
         additionalHungerText.text = "";
         additionalThirstText.text = "";
         additionalHpText.text = "";
     }
 
-    public void consume(InventoryItem item)
+    public void consume(ResourceAmount item)
     {
-        if(item.resourceSO.resourceType == ResourceType.Eat)
-        {
-            int hungerNeedToRestore = Mathf.CeilToInt(player.stats.maxHunger - player.stats.currentHunger);
-            int hpNeedToRestore = Mathf.CeilToInt(player.stats.maxHp - player.stats.currentHp);
+        float amount = item.amount - campManager.getTempAmount(item.resourceSO);
+        if(amount < 0)
+            return;
 
-            if (hungerNeedToRestore <= 0 && hpNeedToRestore <= 0)
-            {
-                return;
-            }
-        }
-
-        if (item.resourceSO.resourceType == ResourceType.Drink)
+        if (item.resourceSO.resourceType.Contains(ResourceType.Eat))
         {
-            int thirstNeedToRestore = Mathf.CeilToInt(player.stats.maxThirst - player.stats.currentThirst);
-            if (thirstNeedToRestore <= 0)
+            bool hungerFull = player.stats.currentHunger + campManager.getFoodAmount() >= player.stats.maxHunger;
+            bool hpFull = player.stats.currentHp + campManager.getHPAmount() >= player.stats.maxHp;
+
+            if (hungerFull && hpFull)
                 return;
         }
 
-        player.invetory.Remove(item.resourceSO);
-        Debug.Log($"item.amount:{item.amount} and player: {player.invetory.hasResources(item.resourceSO)}");
-        if (player.invetory.hasResources(item.resourceSO))
-            updateQTY(item);
-        else RemoveResourceFromUI(item);
-
-        if (item.resourceSO.resourceType == ResourceType.Eat)
+        if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
         {
-            player.stats.currentHunger = Mathf.Min(player.stats.currentHunger + item.resourceSO.stat_restore, player.stats.maxHunger);
-            player.stats.currentHp = Mathf.Min(player.stats.currentHp + item.resourceSO.HP_restore, player.stats.maxHp);
+            if (player.stats.currentThirst + campManager.getDrinkAmount() >= player.stats.maxThirst)
+                return;
         }
 
-        if(item.resourceSO.resourceType == ResourceType.Drink)
-        {
-            player.stats.currentThirst = Mathf.Min(player.stats.currentThirst + item.resourceSO.stat_restore, player.stats.maxThirst);
-        }   
+        campManager.addResourceToCampUsage(item.resourceSO);
+        item.amount--;
+
+        updateQTY(item);
+        updateStatsSliders();
     }
 
-    public void updateQTY(InventoryItem item)
+    public void updateQTY(ResourceAmount item)
     {
-        if(item.resourceSO.resourceType == ResourceType.Eat)
+        if(item.resourceSO.resourceType.Contains(ResourceType.Eat))
         {
             foreach (Transform UIItem in foodList.transform)
             {
                 CookingResourcePrefab coockingRes = UIItem.GetComponent<CookingResourcePrefab>();
                 if (coockingRes.hasRes(item.resourceSO))
                 {
+                    if(item.amount <= 0)
+                    {
+                        Destroy(UIItem.gameObject);
+                        return;
+                    }
                     coockingRes.updateQTY();
                     return;
                 }
@@ -210,7 +222,7 @@ public class CookingPotUI : MonoBehaviour
             }
         }
 
-        if (item.resourceSO.resourceType == ResourceType.Drink)
+        if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
         {
             foreach (Transform UIItem in drinkList.transform)
             {
@@ -227,7 +239,7 @@ public class CookingPotUI : MonoBehaviour
 
     public void RemoveResourceFromUI(InventoryItem item)
     {
-        if (item.resourceSO.resourceType == ResourceType.Eat)
+        if (item.resourceSO.resourceType.Contains(ResourceType.Eat))
         {
             foreach (Transform UIItem in foodList.transform)
             {
@@ -241,7 +253,7 @@ public class CookingPotUI : MonoBehaviour
             }
         }
 
-        if (item.resourceSO.resourceType == ResourceType.Drink)
+        if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
         {
             foreach (Transform UIItem in drinkList.transform)
             {
