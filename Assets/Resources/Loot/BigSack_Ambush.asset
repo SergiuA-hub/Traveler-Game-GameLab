@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4071452e2ad28e49b06affaabb59b4b, type: 3}
+  m_Name: BigSack_Ambush
+  m_EditorClassIdentifier: Assembly-CSharp::LootOutcome
+  outcomeForLoot: 1
+  outcomeStory: 'The sack looks strangely untouched despite lying beside the road.
+
+    As
+    you begin searching it, footsteps rush toward you from behind.
+
+
+    It was bait.'
+  outcomeImage: {fileID: -3695279733430498817, guid: f77a9a36b25c97b49a21f45c1f3f3e07, type: 3}
+  outcomeChance: 15
+  outcomeCoins: -20
+  lootDrop: []
+  hpLoss: 30
+  staminaLoss: 2
+  investigationDuration: 2

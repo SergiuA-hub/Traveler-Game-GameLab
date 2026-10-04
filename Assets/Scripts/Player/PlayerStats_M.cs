@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerStats_M : MonoBehaviour
 {
@@ -6,12 +7,13 @@ public class PlayerStats_M : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed;
-    public float baseSpeed = 1f; 
+    public float baseSpeed = 1f;
     public float startSpeed;
     public float acceleration;
     public float MaxSpeeed;
     public float exhaustSpeed;
-
+    //maxBaseSpeed used to limit max speed based on time speed
+    private float maxBaseSpeed = 1f;
     [Header("SpeedModifier")]
     public float staminaSpeedModifier;
     public float terrainSpeedModifier;
@@ -66,6 +68,19 @@ public class PlayerStats_M : MonoBehaviour
         currentThirst = maxThirst;
         currentStamina = maxStamina;
 
+        maxBaseSpeed = GlobalSettingsManager.PLAYER_BASE_SPEED;
+
         currentStaminaDrainMultiplier = STAMINA_DRAIN_MULTIPLIER;
+
+        setMaxSpeed(GlobalSettingsManager.HOUR_DURATION);
+    }
+
+    public void setMaxSpeed(float timeModifier)
+    {
+        MaxSpeeed = maxBaseSpeed * (GlobalSettingsManager.HOUR_DURATION / timeModifier);
+    }
+
+    private void Update()
+    {        
     }
 }

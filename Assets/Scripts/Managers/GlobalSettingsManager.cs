@@ -7,6 +7,8 @@ public static class GlobalSettingsManager
     public static float EVENT_HOURLY_CHANCE = 0.06f;
     public static float PLAYER_HUNGER_THRESHOLD = 2f;
     public static float PLAYER_THIRST_THRESHOLD = 4f;
+    
+    public static float PLAYER_BASE_SPEED = 1f;
 
     public static float UNWANTED_GOOD_PRICE_MULTIPLIER = 0.5f;
     public static float TIER_1_PRICE_MULTIPLIER = 2f;

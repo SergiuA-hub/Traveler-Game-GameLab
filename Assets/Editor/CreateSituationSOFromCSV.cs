@@ -8,7 +8,7 @@ using System.IO;
 
 public static class CreateSituationSOFromCSV
 {
-    private const string CSV_PATH = "Assets/Luchi/TraderData/Situations.csv";
+    private const string CSV_PATH = "Assets/_InputData/Situations.csv";
     private const string OUTPUT_FOLDER = "Assets/Resources/Situations";
 
     [MenuItem("Tools/SeasonOfTrade/Create Situations From CSV")]
