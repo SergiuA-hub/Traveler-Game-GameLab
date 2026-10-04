@@ -21,34 +21,37 @@ public class PlayerMovement_M : MonoBehaviour
     }
     private void HandleMovement()
     {
-        if (IsMoving() && HasStamina())
-        {
-            player.stats.baseSpeed = Mathf.MoveTowards(player.stats.baseSpeed, player.stats.MaxSpeeed, player.stats.acceleration * Time.deltaTime);
-        }
-        else if (!IsMoving() && HasStamina())
-        {
-            player.stats.baseSpeed = player.stats.startSpeed;
-        }
-        else if (!HasStamina())
+        Vector2 moveInput = player.gameInput.GetMoveVectorNormalized();
+
+        if (player.isRooted())
+            moveInput = Vector2.zero;
+
+        bool isMoving = moveInput.sqrMagnitude > 0.001f;
+
+        // Base speed calculation
+        if (!HasStamina())
         {
             player.stats.baseSpeed = player.stats.exhaustSpeed;
         }
-
-        float modifierSpeed = player.stats.staminaSpeedModifier * player.stats.consumableSpeedModifier * player.stats.terrainSpeedModifier * player.stats.currentWeightModifier;
-
-        player.stats.moveSpeed = player.stats.baseSpeed * modifierSpeed;
-
-        Vector2 moveInput = player.gameInput.GetMoveVectorNormalized();
-
-        // Rotate the input by 60 degrees (counter-clockwise; use -60f for clockwise)
-        moveInput = Quaternion.Euler(0f, 0f, -60f) * moveInput;
-
-        if (player.isRooted())
+        else if (isMoving)
         {
-            moveInput = Vector2.zero;
+            player.stats.baseSpeed = Mathf.MoveTowards(player.stats.baseSpeed, player.stats.MaxSpeeed, player.stats.acceleration * Time.fixedDeltaTime);
+        }
+        else
+        {
+            player.stats.baseSpeed = player.stats.startSpeed;
         }
 
-        player.rb.MovePosition(player.rb.position + moveInput * player.stats.moveSpeed * Time.fixedDeltaTime);
+        // Apply all modifiers
+        float modifierSpeed = player.stats.staminaSpeedModifier * player.stats.consumableSpeedModifier * player.stats.terrainSpeedModifier * player.stats.currentWeightModifier;
+
+        player.stats.moveSpeed = Mathf.Max(0f, player.stats.baseSpeed * modifierSpeed);
+
+        // Actual current speed (zero when stationary)
+        player.stats.currentSpeed = isMoving ? player.stats.moveSpeed : 0f;        
+        
+        // Apply movement
+        player.rb.MovePosition( player.rb.position + moveInput * player.stats.currentSpeed * Time.fixedDeltaTime);
     }
 
 

@@ -1,12 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum ResourceType
 {
     Trade,
     Eat,
-    Drink
-
-
+    Drink,
+    Fuel,
+    Reinforcement,
+    Security,
 }
 [CreateAssetMenu( fileName = "ResourceSO",menuName ="ResoursceSO")]
 public class ResourceSO : ScriptableObject
@@ -14,7 +16,7 @@ public class ResourceSO : ScriptableObject
     public string itemName;
     public Sprite sprite;
     public GameObject CityDisplayPrefab;
-    public ResourceType resourceType;
+    public List<ResourceType> resourceType;
 
     public float baseValue;
     public int amount;

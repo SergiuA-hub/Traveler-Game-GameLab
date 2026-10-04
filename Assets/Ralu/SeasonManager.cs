@@ -1,11 +1,19 @@
 using UnityEngine;
 
+public enum Season
+{
+    Spring,
+    Summer,
+    Fall,
+    Winter
+}
+
 public class SeasonManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public string season;
+    public Season season;
     public HUDScript HUDScript;
-
+    public EnvironmentManager environmentManager;
     void Start()
     {
         
@@ -20,5 +28,6 @@ public class SeasonManager : MonoBehaviour
     {
         HUDScript.currentSeason = season;
         HUDScript.ChangeSeason();
+        environmentManager.setSeason(season);
     }
 }

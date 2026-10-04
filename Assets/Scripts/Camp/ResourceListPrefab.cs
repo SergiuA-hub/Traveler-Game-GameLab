@@ -18,9 +18,9 @@ public class ResourceListPrefab : MonoBehaviour
         resourceImage.sprite = item.resourceSO.sprite;
         resourceName.text = item.resourceSO.itemName;
         resourceAmount.text = $"{item.amount}";
-        if(item.resourceSO.resourceType == ResourceType.Eat)
+        if(item.resourceSO.resourceType.Contains(ResourceType.Eat))
             info.text = $"+ {item.resourceSO.stat_restore} Hunger";
-        else if (item.resourceSO.resourceType == ResourceType.Drink)
+        else if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
             info.text = $"+ {item.resourceSO.stat_restore} Thirst";
         else info.text = "-";
     }
