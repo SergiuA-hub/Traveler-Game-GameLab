@@ -1,3 +1,4 @@
+using System.Net.Mail;
 using UnityEngine;
 
 
@@ -14,6 +15,7 @@ public class Player_M : MonoBehaviour
     public PlayerStats_M stats;
     public PlayerMovement_M move;
     public PlayerInventory_M invetory;
+    public PlayerAttachments_M attachments;
     public PlayerVisual_M visual;
     public Rigidbody2D rb;
     public GameInput gameInput;
@@ -33,6 +35,7 @@ public class Player_M : MonoBehaviour
         stats = GetComponent<PlayerStats_M>();
         move = GetComponent<PlayerMovement_M>();
         invetory = GetComponent<PlayerInventory_M>();
+        attachments = GetComponent<PlayerAttachments_M>();
         visual = GetComponent<PlayerVisual_M>();
 
         //OtherComponents
