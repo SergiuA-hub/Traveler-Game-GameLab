@@ -47,8 +47,18 @@ public class SettlementGood
 }
 public enum ShopItemType
 {
-    Item,
-    Upgrade
+    Usable,
+    Backpack,
+    HandCart,
+    OxCart,
+    HorseCart
+}
+
+public enum Status
+{
+    Owned,
+    Avalabile,
+    Locked
 }
 
 [System.Serializable]
@@ -57,6 +67,8 @@ public class ShopItem
     public string ItemName;
     public ItemsSO shopItems;
     public ShopItemType itemType;
+    public Status itemStatus;
+    
 
     public ShopItem(string name, ItemsSO itemSO,ShopItemType type)
     {

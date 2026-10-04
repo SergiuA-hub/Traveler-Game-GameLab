@@ -1,4 +1,6 @@
+using JetBrains.Annotations;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
@@ -225,6 +227,10 @@ public class CityUI : MonoBehaviour
         
     }
 
+    public int ReturnCurentSliderValue()
+    {
+        return Mathf.RoundToInt(sliderAmount.value);
+    }
 
 
     //############
