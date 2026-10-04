@@ -22,7 +22,7 @@ public class Light : MonoBehaviour
     void Update()
     {
         if (timeManager.currentTime.Hour >= 18)
-ea        {
+        {
             StartTransition(dayColor, nightColor);
         }
     }
