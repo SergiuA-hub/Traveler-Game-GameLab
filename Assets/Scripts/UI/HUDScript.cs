@@ -39,9 +39,9 @@ public class HUDScript : MonoBehaviour
     [Header("DateTime")]
     public TextMeshProUGUI dateText;
     public TextMeshProUGUI seasonText;
-
-    public string currentSeason = "Summer";
-
+    public TextMeshProUGUI weatherText;
+    public Season currentSeason = Season.Summer;
+    public WeatherType currentWeather = WeatherType.Clear;
 
 
     void Start()
@@ -89,7 +89,8 @@ public class HUDScript : MonoBehaviour
         string thirstToShow = player.stats.currentThirst == 0 ? "-" : $"- {player.thirstDropPerHour}/h";
         thirstConsumptionText.text = thirstToShow;
 
-        speed.text = $"{player.stats.currentSpeed.ToString("F1")}";
+        float speedValue = player.stats.currentSpeed / (GlobalSettingsManager.HOUR_DURATION / timeManager.getHourDuration());
+        speed.text = $"{speedValue.ToString("F1")}";
     }
 
     void UpdateTimeDisplay ()
@@ -112,6 +113,11 @@ public class HUDScript : MonoBehaviour
     
     public void ChangeSeason()
     {
-        seasonText.text = currentSeason;
+        seasonText.text = currentSeason.ToString();
+    }
+    
+    public void ChangeWeather()
+    {
+        weatherText.text = currentWeather.ToString();
     }
 }

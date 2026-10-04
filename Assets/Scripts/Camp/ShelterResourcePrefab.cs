@@ -3,18 +3,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CookingResourcePrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class ShelterResourcePrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public Image resIcon;
     public TMP_Text resName;
     public TMP_Text resAmount;
 
-    public GameObject resStat1Panel;
-    public TMP_Text resStat1;
-    public GameObject resStat2Panel;
-    public TMP_Text resStat2;
+    public TMP_Text resStat;
     private ResourceAmount item;
-    private CookingPotUI callback;
+
+    private ShelterCampUI callback;
     //mouse over properties
     public Image backgroundImage;
 
@@ -29,9 +27,9 @@ public class CookingResourcePrefab : MonoBehaviour, IPointerEnterHandler, IPoint
             backgroundImage.color = normalColor;
     }
 
-    public void setup(ResourceAmount itm, CookingPotUI cb)
+    public void setup(ResourceAmount res, ShelterCampUI cb)
     {
-        item = itm;
+        item = res;
         callback = cb;
 
         resIcon.sprite = item.resourceSO.sprite;
@@ -40,25 +38,7 @@ public class CookingResourcePrefab : MonoBehaviour, IPointerEnterHandler, IPoint
 
         resAmount.text = $"x {item.amount}";
 
-        if (item.resourceSO.stat_restore > 0)
-        {
-            resStat1Panel.SetActive(true);
-            if(item.resourceSO.resourceType.Contains(ResourceType.Eat))
-                resStat1.text = $"+ {item.resourceSO.stat_restore} Hunger";
-            if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
-                resStat1.text = $"+ {item.resourceSO.stat_restore} Thirst";
-        }
-        else resStat1Panel.SetActive(false);
-
-        if (item.resourceSO.HP_restore > 0)
-        {
-            resStat2Panel.SetActive(true);
-            
-            resStat2.text = $"+ {item.resourceSO.HP_restore} HP";
-        }
-        else resStat2Panel.SetActive(false);
-
-
+        resStat.text = $"+ {item.resourceSO.stat_restore} Reinforcement";       
     }
 
     public void updateQTY()
@@ -75,14 +55,14 @@ public class CookingResourcePrefab : MonoBehaviour, IPointerEnterHandler, IPoint
     {
         if (backgroundImage != null)
             backgroundImage.color = hoverColor;
-        callback.startStatsRestore(item);
+        //callback.startStatsRestore(item);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (backgroundImage != null)
             backgroundImage.color = normalColor;
-        callback.stopStatsRestore(item);
+        //callback.stopStatsRestore(item);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -92,6 +72,6 @@ public class CookingResourcePrefab : MonoBehaviour, IPointerEnterHandler, IPoint
 
     public void useItem()
     {
-        callback.consume(item);
+        callback.addReinforcementToCamp(item);
     }
 }

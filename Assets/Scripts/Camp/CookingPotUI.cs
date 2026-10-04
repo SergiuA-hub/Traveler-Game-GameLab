@@ -74,7 +74,7 @@ public class CookingPotUI : MonoBehaviour
 
         foreach (var res in player.invetory.Inventory)
         {
-            if (res.resourceSO.resourceType == ResourceType.Eat)
+            if (res.resourceSO.resourceType.Contains(ResourceType.Eat))
             {
                 int amount = res.amount - campManager.getTempAmount(res.resourceSO);
                 if (amount <= 0)
@@ -85,7 +85,7 @@ public class CookingPotUI : MonoBehaviour
                 go.GetComponent<CookingResourcePrefab>().setup(new ResourceAmount(res.resourceSO, res.amount), this);
             }
 
-            if (res.resourceSO.resourceType == ResourceType.Drink)
+            if (res.resourceSO.resourceType.Contains(ResourceType.Drink))
             {
                 int amount = res.amount - campManager.getTempAmount(res.resourceSO);
                 if (amount <= 0)
@@ -135,7 +135,7 @@ public class CookingPotUI : MonoBehaviour
         //reset all stats restore
         stopStatsRestore(item);
 
-        if(item.resourceSO.resourceType == ResourceType.Eat)
+        if(item.resourceSO.resourceType.Contains(ResourceType.Eat))
         {
             string stats_toShow = $"+{hungerNeedToRestore}";
             if (hungerNeedToRestore > item.resourceSO.stat_restore)
@@ -154,7 +154,7 @@ public class CookingPotUI : MonoBehaviour
                 
         }
 
-        if (item.resourceSO.resourceType == ResourceType.Drink)
+        if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
         {
             string stats_toShow = $"+{thirstNeedToRestore}";
             if (thirstNeedToRestore > item.resourceSO.stat_restore)
@@ -179,7 +179,7 @@ public class CookingPotUI : MonoBehaviour
         if(amount < 0)
             return;
 
-        if (item.resourceSO.resourceType == ResourceType.Eat)
+        if (item.resourceSO.resourceType.Contains(ResourceType.Eat))
         {
             bool hungerFull = player.stats.currentHunger + campManager.getFoodAmount() >= player.stats.maxHunger;
             bool hpFull = player.stats.currentHp + campManager.getHPAmount() >= player.stats.maxHp;
@@ -188,7 +188,7 @@ public class CookingPotUI : MonoBehaviour
                 return;
         }
 
-        if (item.resourceSO.resourceType == ResourceType.Drink)
+        if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
         {
             if (player.stats.currentThirst + campManager.getDrinkAmount() >= player.stats.maxThirst)
                 return;
@@ -203,7 +203,7 @@ public class CookingPotUI : MonoBehaviour
 
     public void updateQTY(ResourceAmount item)
     {
-        if(item.resourceSO.resourceType == ResourceType.Eat)
+        if(item.resourceSO.resourceType.Contains(ResourceType.Eat))
         {
             foreach (Transform UIItem in foodList.transform)
             {
@@ -222,7 +222,7 @@ public class CookingPotUI : MonoBehaviour
             }
         }
 
-        if (item.resourceSO.resourceType == ResourceType.Drink)
+        if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
         {
             foreach (Transform UIItem in drinkList.transform)
             {
@@ -239,7 +239,7 @@ public class CookingPotUI : MonoBehaviour
 
     public void RemoveResourceFromUI(InventoryItem item)
     {
-        if (item.resourceSO.resourceType == ResourceType.Eat)
+        if (item.resourceSO.resourceType.Contains(ResourceType.Eat))
         {
             foreach (Transform UIItem in foodList.transform)
             {
@@ -253,7 +253,7 @@ public class CookingPotUI : MonoBehaviour
             }
         }
 
-        if (item.resourceSO.resourceType == ResourceType.Drink)
+        if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
         {
             foreach (Transform UIItem in drinkList.transform)
             {

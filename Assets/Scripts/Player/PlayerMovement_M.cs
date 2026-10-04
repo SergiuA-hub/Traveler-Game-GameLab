@@ -48,8 +48,8 @@ public class PlayerMovement_M : MonoBehaviour
         player.stats.moveSpeed = Mathf.Max(0f, player.stats.baseSpeed * modifierSpeed);
 
         // Actual current speed (zero when stationary)
-        player.stats.currentSpeed = isMoving ? player.stats.moveSpeed : 0f;
-
+        player.stats.currentSpeed = isMoving ? player.stats.moveSpeed : 0f;        
+        
         // Apply movement
         player.rb.MovePosition( player.rb.position + moveInput * player.stats.currentSpeed * Time.fixedDeltaTime);
     }

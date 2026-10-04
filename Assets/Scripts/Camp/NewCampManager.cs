@@ -13,7 +13,8 @@ public enum CampItem
     Backpack,
     Cart,
     FireCamp,
-    Guest
+    Guest,
+    Shelter
 }
 
 [Serializable]
@@ -23,8 +24,28 @@ public class CampStats
     [Range(1, 5)]
     public int fireLevel = 1;
 
+    [Header("Shelter")]
+    [Range(1, 5)]
+    public int shelterLevel = 1;    
+
+    [Header("Cargo Safety")]
+    [Range(1, 5)]
+    public int cargoSafetyLevel = 1;
+
+    [Range(1, 5)]
+    public int traderWellbeingLevel = 1;
+
     public const int MIN_FIRE_LEVEL = 1;
     public const int MAX_FIRE_LEVEL = 5;
+    
+    public const int MIN_SHELTER_LEVEL = 1;
+    public const int MAX_SHELTER_LEVEL = 5;
+
+    public const int MIN_CARGO_SAFETY_LEVEL = 1;
+    public const int MAX_CARGO_SAFETY_LEVEL = 5;
+
+    public const int MIN_TRADER_WELLBEING_LEVEL = 1;
+    public const int MAX_TRADER_WELLBEING_LEVEL = 5;
 
     public void IncreaseFire(int amount = 1)
     {
@@ -41,6 +62,59 @@ public class CampStats
             fireLevel - amount,
             MIN_FIRE_LEVEL,
             MAX_FIRE_LEVEL
+        );
+    }
+
+    public void IncreaseShelter(int amount = 1)
+    {
+        shelterLevel = Mathf.Clamp(
+            shelterLevel + amount,
+            MIN_SHELTER_LEVEL,
+            MAX_SHELTER_LEVEL
+        );
+    }
+
+    public void DecreaseShelter(int amount = 1)
+    {
+        shelterLevel = Mathf.Clamp(
+            shelterLevel - amount,
+            MIN_SHELTER_LEVEL,
+            MAX_SHELTER_LEVEL
+        );
+    }
+    public void IncreaseCargoSafety(int amount = 1)
+    {
+        cargoSafetyLevel = Mathf.Clamp(
+            cargoSafetyLevel + amount,
+            MIN_CARGO_SAFETY_LEVEL,
+            MAX_CARGO_SAFETY_LEVEL
+        );
+    }
+
+    public void DecreaseCargoSafety(int amount = 1)
+    {
+        cargoSafetyLevel = Mathf.Clamp(
+            cargoSafetyLevel - amount,
+            MIN_CARGO_SAFETY_LEVEL,
+            MAX_CARGO_SAFETY_LEVEL
+        );
+    }
+
+    public void IncreaseTraderWellbeing(int amount = 1)
+    {
+        traderWellbeingLevel = Mathf.Clamp(
+            traderWellbeingLevel + amount,
+            MIN_TRADER_WELLBEING_LEVEL,
+            MAX_TRADER_WELLBEING_LEVEL
+        );
+    }
+
+    public void DecreaseTraderWellbeing(int amount = 1)
+    {
+        traderWellbeingLevel = Mathf.Clamp(
+            traderWellbeingLevel - amount,
+            MIN_TRADER_WELLBEING_LEVEL,
+            MAX_TRADER_WELLBEING_LEVEL
         );
     }
 }
@@ -83,11 +157,17 @@ public class NewCampManager : MonoBehaviour
     public CookingPotUI cookingPotPanel;
     public SleepingBagUI sleepingBagPanel;    
     public FireCampUI fireCampPanel;
+    public ShelterCampUI shelterPanel;
+    public CargoCampUI cargoCampPanel;
 
     public GameObject campResPanel;
     public GameObject campResList;
     public GameObject campResPrefab;
     public GameObject introText;
+
+    public GameObject WorldStatsCampPreconditionScreen;
+    public GameObject roadsObject;
+    public GameObject interactableObjects;
 
     public List<ResourceAmount> campSupplies = new List<ResourceAmount>();
     private void Start()
@@ -144,6 +224,12 @@ public class NewCampManager : MonoBehaviour
         campButton.interactable = false;
         playerCaravan.SetActive(false);
         playerCamp.SetActive(true);
+        WorldStatsCampPreconditionScreen.SetActive(true);
+
+        //map setup
+        interactableObjects.SetActive(false);
+        roadsObject.SetActive(false);
+
         timeManager.pause();
         campResPanel.SetActive(true);
 
@@ -159,12 +245,17 @@ public class NewCampManager : MonoBehaviour
         
         updateTempResList();
         campResPanel.SetActive(false);
+        WorldStatsCampPreconditionScreen.SetActive(false);
 
         playerCaravan.SetActive(true);
         playerCamp.SetActive(false);
         timeManager.resume();
         campButton.interactable = true;
         
+        //map setup back
+        interactableObjects.SetActive(true);
+        roadsObject.SetActive(true);
+
         player.isCamping = false;
         Debug.Log("Camp dismissed");
         moveCameraToCaravan();
@@ -226,6 +317,21 @@ public class NewCampManager : MonoBehaviour
         {
             ShowFireCamp();
         }
+
+        if(campElement == CampItem.Shelter)
+        {
+            ShowShelter();
+        }
+
+        if(campElement == CampItem.Backpack)
+        {
+            Debug.Log("Backpack selected");
+        }
+
+        if(campElement == CampItem.Cart)
+        {
+            ShowCargo();
+        }
     }
 
     public void ShowCookingPot()
@@ -271,6 +377,32 @@ public class NewCampManager : MonoBehaviour
     public void dismissFireCamp()
     {
         fireCampPanel.gameObject.SetActive(false);
+        campingPanelUI.SetActive(false);
+    }
+
+    public void ShowShelter()
+    {
+        campingPanelUI.SetActive(true);
+        shelterPanel.setup();
+        shelterPanel.gameObject.SetActive(true);
+    }
+
+    public void dismissShelter()
+    {
+        shelterPanel.gameObject.SetActive(false);
+        campingPanelUI.SetActive(false);
+    }
+
+    public void ShowCargo()
+    {
+        campingPanelUI.SetActive(true);
+        cargoCampPanel.setup();
+        cargoCampPanel.gameObject.SetActive(true);
+    }
+
+    public void dismissCargo()
+    {
+        cargoCampPanel.gameObject.SetActive(false);
         campingPanelUI.SetActive(false);
     }
     public int getRestForHours(int hours)
@@ -436,7 +568,7 @@ public class NewCampManager : MonoBehaviour
         float totalFuel = 0;
         foreach (ResourceAmount resA in campSupplies)
         {
-            if (resA.resourceSO.resourceType == ResourceType.Fuel)
+            if (resA.resourceSO.resourceType.Contains(ResourceType.Fuel))
             {
                 totalFuel += resA.resourceSO.stat_restore * resA.amount;
             }
@@ -444,12 +576,38 @@ public class NewCampManager : MonoBehaviour
         return totalFuel;
     }
 
+    public float getReinforcementAmount()
+    {
+        float totalReinforcement = 0;
+        foreach (ResourceAmount resA in campSupplies)
+        {
+            if (resA.resourceSO.resourceType.Contains(ResourceType.Reinforcement))
+            {
+                totalReinforcement += resA.resourceSO.stat_restore * resA.amount;
+            }
+        }
+        return totalReinforcement;
+    }
+
+    public float getSecuringAmount()
+    {
+        float totalSecuring = 0;
+        foreach (ResourceAmount resA in campSupplies)
+        {
+            if (resA.resourceSO.resourceType.Contains(ResourceType.Security))
+            {
+                totalSecuring += resA.resourceSO.stat_restore * resA.amount;
+            }
+        }
+        return totalSecuring;
+    }
+
     public float getFoodAmount()
     {
         float totalFood = 0;
         foreach (ResourceAmount resA in campSupplies)
         {
-            if (resA.resourceSO.resourceType == ResourceType.Eat)
+            if (resA.resourceSO.resourceType.Contains(ResourceType.Eat))
             {
                 totalFood += resA.resourceSO.stat_restore * resA.amount;
             }
@@ -462,7 +620,7 @@ public class NewCampManager : MonoBehaviour
         float totalDrink = 0;
         foreach (ResourceAmount resA in campSupplies)
         {
-            if (resA.resourceSO.resourceType == ResourceType.Drink)
+            if (resA.resourceSO.resourceType.Contains(ResourceType.Drink))
             {
                 totalDrink += resA.resourceSO.stat_restore * resA.amount;
             }

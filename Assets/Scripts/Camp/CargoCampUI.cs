@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FireCampUI : MonoBehaviour
+public class CargoCampUI : MonoBehaviour
 {
     public Player_M player;
     public TimeManager timeManager;
@@ -11,21 +11,21 @@ public class FireCampUI : MonoBehaviour
     public Slider tempFireSlider;
     public TMP_Text fireValue;
     public TMP_Text additionalFireValue;
-    public TMP_Text fuelCount;
-    public GameObject fuelList;
-    public GameObject FuelResourcePrefab;
-    int fuelCoutner = 0;
+    public TMP_Text cargoResCount;
+    public GameObject cargoResList;
+    public GameObject cargoResourcePrefab;
+    int cargoCounter = 0;
     public void setup()
     {
-        fireSlider.maxValue = CampStats.MAX_FIRE_LEVEL;
-        tempFireSlider.maxValue = CampStats.MAX_FIRE_LEVEL;
+        fireSlider.maxValue = CampStats.MAX_CARGO_SAFETY_LEVEL;
+        tempFireSlider.maxValue = CampStats.MAX_CARGO_SAFETY_LEVEL;
 
         createSuppliesList();
         updateStats();
     }
     public void updateStats()
     {
-        float tempFire = campManager.getFuelAmount();
+        float tempFire = campManager.getSecuringAmount();
 
         float currentFire = campManager.campStats.fireLevel;
 
@@ -41,37 +41,39 @@ public class FireCampUI : MonoBehaviour
     }
     public void createSuppliesList()
     {
-        fuelCoutner = 0;
+        cargoCounter = 0;
 
-        foreach (Transform child in fuelList.transform)
+        foreach (Transform child in cargoResList.transform)
         {
             Destroy(child.gameObject);
         }
 
         foreach (var res in player.invetory.Inventory)
         {
-            if (res.resourceSO.resourceType.Contains(ResourceType.Fuel))
+            if (res.resourceSO.resourceType.Contains(ResourceType.Security))
             {
                 int amount = res.amount - campManager.getTempAmount(res.resourceSO);
                 if (amount <= 0)
                     continue;
 
-                fuelCoutner++;
-                GameObject go = Instantiate(FuelResourcePrefab, fuelList.transform);
+                cargoCounter++;
+                GameObject go = Instantiate(cargoResourcePrefab, cargoResList.transform);
                 
-                go.GetComponent<FuelResourcePrefab>().setup(new ResourceAmount(res.resourceSO, amount), this);
+                go.GetComponent<CargoResourcePrefab>().setup(new ResourceAmount(res.resourceSO, amount), this);
             }
 
         }
 
-        fuelCount.text = $"Fuel({fuelCoutner})";
+        cargoResCount.text = $"Cargo({cargoCounter})";
     }
 
-    public void addFuelToCamp(ResourceAmount item)
+    public void addSecurityToCamp(ResourceAmount item)
     {
-        if (campManager.campStats.fireLevel + campManager.getFuelAmount() >= CampStats.MAX_FIRE_LEVEL)
+        Debug.Log($"Adding {item.amount} of {item.resourceSO.itemName} to camp cargo safety and {campManager.campStats.cargoSafetyLevel + campManager.getSecuringAmount()}");
+        if (campManager.campStats.cargoSafetyLevel + campManager.getSecuringAmount() >= CampStats.MAX_CARGO_SAFETY_LEVEL)
             return;
 
+        Debug.Log($"Adding {item.amount} of {item.resourceSO.itemName} to camp cargo safety");
         campManager.addResourceToCampUsage(item.resourceSO);
         
         createSuppliesList();
