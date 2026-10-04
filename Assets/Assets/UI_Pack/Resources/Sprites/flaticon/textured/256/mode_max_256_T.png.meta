@@ -1,7 +1,19 @@
 fileFormatVersion: 2
-guid: 05b10b78b22b8df43a5865ee59b8e26d
+guid: 2f03f1141936bde418a53633d4afd932
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5270457324010247929
+    second: mode_max_256_T_0
+  - first:
+      213: 8961711561480623651
+    second: mode_max_256_T_1
+  - first:
+      213: 996848932450804365
+    second: mode_max_256_T_2
+  - first:
+      213: -2225260020460511826
+    second: mode_max_256_T_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +79,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +92,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +107,115 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: mode_max_256_T_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 156
+        width: 89
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7096386ecf29bd6b0800000000000000
+      internalID: -5270457324010247929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mode_max_256_T_1
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 156
+        width: 90
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32650991f256e5c70800000000000000
+      internalID: 8961711561480623651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mode_max_256_T_2
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 12
+        width: 89
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d82257192d485dd00800000000000000
+      internalID: 996848932450804365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mode_max_256_T_3
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 12
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ead92932dc94e11e0800000000000000
+      internalID: -2225260020460511826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      mode_max_256_T_0: -5270457324010247929
+      mode_max_256_T_1: 8961711561480623651
+      mode_max_256_T_2: 996848932450804365
+      mode_max_256_T_3: -2225260020460511826
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/256/mode_max_256_T.png
-  uploadId: 879878

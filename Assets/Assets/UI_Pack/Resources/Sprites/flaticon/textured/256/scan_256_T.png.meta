@@ -1,7 +1,22 @@
 fileFormatVersion: 2
-guid: 4f399f5aa52966743949f446f42e978c
+guid: 3a221a946fbfc6344b7fe0a49e429e6f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7532475630070754152
+    second: scan_256_T_0
+  - first:
+      213: -6886810463871848173
+    second: scan_256_T_1
+  - first:
+      213: 2431741840060307146
+    second: scan_256_T_2
+  - first:
+      213: 7334456078157522436
+    second: scan_256_T_3
+  - first:
+      213: -7505990545416981599
+    second: scan_256_T_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +82,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +95,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +110,138 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: scan_256_T_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 174
+        width: 71
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 894985eb255477790800000000000000
+      internalID: -7532475630070754152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan_256_T_1
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 174
+        width: 72
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 311b979fe522d60a0800000000000000
+      internalID: -6886810463871848173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan_256_T_2
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 118
+        width: 210
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac6df32d1584fb120800000000000000
+      internalID: 2431741840060307146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan_256_T_3
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 12
+        width: 71
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 406a84781f839c560800000000000000
+      internalID: 7334456078157522436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scan_256_T_4
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 12
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a3fafc0e5d55d790800000000000000
+      internalID: -7505990545416981599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      scan_256_T_0: -7532475630070754152
+      scan_256_T_1: -6886810463871848173
+      scan_256_T_2: 2431741840060307146
+      scan_256_T_3: 7334456078157522436
+      scan_256_T_4: -7505990545416981599
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/256/scan_256_T.png
-  uploadId: 879878

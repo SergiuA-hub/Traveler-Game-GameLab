@@ -1,7 +1,25 @@
 fileFormatVersion: 2
-guid: 395ad0635e3292743a0c2f90e0296618
+guid: 532653836beefe644abfdcf4fa01ff91
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6391679586730229045
+    second: hand_print_256_T_0
+  - first:
+      213: -8851839915846466798
+    second: hand_print_256_T_1
+  - first:
+      213: 6388200012805131983
+    second: hand_print_256_T_2
+  - first:
+      213: -6218608097650639703
+    second: hand_print_256_T_3
+  - first:
+      213: 631983871386177128
+    second: hand_print_256_T_4
+  - first:
+      213: 3361782481301496335
+    second: hand_print_256_T_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +85,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +98,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +113,161 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: hand_print_256_T_0
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 149
+        width: 31
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc244dac7413c47a0800000000000000
+      internalID: -6391679586730229045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hand_print_256_T_1
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 152
+        width: 24
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 213095fde72f72580800000000000000
+      internalID: -8851839915846466798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hand_print_256_T_2
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 145
+        width: 30
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fce4565c01277a850800000000000000
+      internalID: 6388200012805131983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hand_print_256_T_3
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 135
+        width: 36
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ac7a2ef1e013b9a0800000000000000
+      internalID: -6218608097650639703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hand_print_256_T_4
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 69
+        width: 53
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86ecfbd8bf145c800800000000000000
+      internalID: 631983871386177128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hand_print_256_T_5
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 11
+        width: 128
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f026b12fa5377ae20800000000000000
+      internalID: 3361782481301496335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      hand_print_256_T_0: -6391679586730229045
+      hand_print_256_T_1: -8851839915846466798
+      hand_print_256_T_2: 6388200012805131983
+      hand_print_256_T_3: -6218608097650639703
+      hand_print_256_T_4: 631983871386177128
+      hand_print_256_T_5: 3361782481301496335
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/256/hand_print_256_T.png
-  uploadId: 879878

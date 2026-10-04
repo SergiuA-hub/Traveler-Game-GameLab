@@ -1,7 +1,31 @@
 fileFormatVersion: 2
-guid: 1d91a5481b53dd34dbd0b2f54e3eb873
+guid: 86c2c95c8c856e944af1eb3e02083515
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5248422667956404232
+    second: library_128_0
+  - first:
+      213: 2334462429095747406
+    second: library_128_1
+  - first:
+      213: -4811011308338241889
+    second: library_128_2
+  - first:
+      213: -433077750265403390
+    second: library_128_3
+  - first:
+      213: 7335360674964964947
+    second: library_128_4
+  - first:
+      213: -3259718652902517476
+    second: library_128_5
+  - first:
+      213: 2980171022119842996
+    second: library_128_6
+  - first:
+      213: -3552678577265573326
+    second: library_128_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +91,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +104,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +119,207 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: library_128_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 97
+        width: 99
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80046a2fb9426d840800000000000000
+      internalID: 5248422667956404232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_128_1
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 85
+        width: 104
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4f5fb3f53da56020800000000000000
+      internalID: 2334462429095747406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_128_2
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 26
+        width: 14
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9e9c1474badb3db0800000000000000
+      internalID: -4811011308338241889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_128_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 26
+        width: 14
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2082e47a4166df9f0800000000000000
+      internalID: -433077750265403390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_128_4
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 26
+        width: 14
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35608a26baf6cc560800000000000000
+      internalID: 7335360674964964947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_128_5
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 26
+        width: 13
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c15d70ae72723c2d0800000000000000
+      internalID: -3259718652902517476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_128_6
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 17
+        width: 87
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b4bd5741c1bb5920800000000000000
+      internalID: 2980171022119842996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_128_7
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 4
+        width: 104
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23202f828a952bec0800000000000000
+      internalID: -3552678577265573326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      library_128_0: 5248422667956404232
+      library_128_1: 2334462429095747406
+      library_128_2: -4811011308338241889
+      library_128_3: -433077750265403390
+      library_128_4: 7335360674964964947
+      library_128_5: -3259718652902517476
+      library_128_6: 2980171022119842996
+      library_128_7: -3552678577265573326
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/white/128/library_128.png
-  uploadId: 879878

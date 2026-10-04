@@ -1,7 +1,43 @@
 fileFormatVersion: 2
-guid: 3300c749d9757d04ab14fe598097460e
+guid: 252a715d2da32cb4d8d3054adcf2256b
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5009847940771001591
+    second: rope_512_T_0
+  - first:
+      213: -501127823959135399
+    second: rope_512_T_1
+  - first:
+      213: -5217432676199507432
+    second: rope_512_T_2
+  - first:
+      213: 1339054757866949436
+    second: rope_512_T_3
+  - first:
+      213: 1862885219733289692
+    second: rope_512_T_4
+  - first:
+      213: -7314336352826293282
+    second: rope_512_T_5
+  - first:
+      213: 9098250077772980769
+    second: rope_512_T_6
+  - first:
+      213: -1462760183402850856
+    second: rope_512_T_7
+  - first:
+      213: -502691602836012346
+    second: rope_512_T_8
+  - first:
+      213: -5480306955276929253
+    second: rope_512_T_9
+  - first:
+      213: 6121212006076010925
+    second: rope_512_T_10
+  - first:
+      213: -6613155064695228357
+    second: rope_512_T_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +79,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +103,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +116,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +131,299 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: rope_512_T_0
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 309
+        width: 155
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f4b068a82e868540800000000000000
+      internalID: 5009847940771001591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rope_512_T_1
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 345
+        width: 150
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95be9d136e2ab09f0800000000000000
+      internalID: -501127823959135399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rope_512_T_2
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 339
+        width: 105
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81adc97cf94f797b0800000000000000
+      internalID: -5217432676199507432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rope_512_T_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 331
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3bc4792537459210800000000000000
+      internalID: 1339054757866949436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rope_512_T_4
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 286
+        width: 155
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cda3783cc3c4ad910800000000000000
+      internalID: 1862885219733289692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rope_512_T_5
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 266
+        width: 155
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed3001217d14e7a90800000000000000
+      internalID: -7314336352826293282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rope_512_T_6
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 244
+        width: 155
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 122245bbd3a734e70800000000000000
+      internalID: 9098250077772980769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rope_512_T_7
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 221
+        width: 155
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d510bcfc5b33bbe0800000000000000
+      internalID: -1462760183402850856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rope_512_T_8
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 199
+        width: 155
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c2436d86a41609f0800000000000000
+      internalID: -502691602836012346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rope_512_T_9
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 73
+        width: 135
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b17bd9e2cd902f3b0800000000000000
+      internalID: -5480306955276929253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rope_512_T_10
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 52
+        width: 150
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da1540153e9e2f450800000000000000
+      internalID: 6121212006076010925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rope_512_T_11
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 24
+        width: 27
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b38f344b18a5934a0800000000000000
+      internalID: -6613155064695228357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      rope_512_T_0: 5009847940771001591
+      rope_512_T_1: -501127823959135399
+      rope_512_T_10: 6121212006076010925
+      rope_512_T_11: -6613155064695228357
+      rope_512_T_2: -5217432676199507432
+      rope_512_T_3: 1339054757866949436
+      rope_512_T_4: 1862885219733289692
+      rope_512_T_5: -7314336352826293282
+      rope_512_T_6: 9098250077772980769
+      rope_512_T_7: -1462760183402850856
+      rope_512_T_8: -502691602836012346
+      rope_512_T_9: -5480306955276929253
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/512/rope_512_T.png
-  uploadId: 879878

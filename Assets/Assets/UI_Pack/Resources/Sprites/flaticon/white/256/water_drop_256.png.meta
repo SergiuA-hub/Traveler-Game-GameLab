@@ -1,7 +1,31 @@
 fileFormatVersion: 2
-guid: 0f4b97fe4b84c31479575948ec7817f9
+guid: fdaef9156908fe245996a0d8924087f1
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3829576537242545865
+    second: water_drop_256_0
+  - first:
+      213: 8091244142699993723
+    second: water_drop_256_1
+  - first:
+      213: 1457664406617337609
+    second: water_drop_256_2
+  - first:
+      213: -7154566607450451501
+    second: water_drop_256_3
+  - first:
+      213: -804251808765204131
+    second: water_drop_256_4
+  - first:
+      213: -2993260525743313771
+    second: water_drop_256_5
+  - first:
+      213: -6261566301859485382
+    second: water_drop_256_6
+  - first:
+      213: -3569208215183825107
+    second: water_drop_256_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +91,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +104,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +119,207 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: water_drop_256_0
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 39
+        width: 135
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ce23861293652530800000000000000
+      internalID: 3829576537242545865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_drop_256_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 92
+        width: 107
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7ad794bdafd94070800000000000000
+      internalID: 8091244142699993723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_drop_256_2
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 86
+        width: 25
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90f28260e0aaa3410800000000000000
+      internalID: 1457664406617337609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_drop_256_3
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 102
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d15b09b39fd5bc90800000000000000
+      internalID: -7154566607450451501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_drop_256_4
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 75
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d59a594bd39b6d4f0800000000000000
+      internalID: -804251808765204131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_drop_256_5
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 22
+        width: 122
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59ceeda296dc576d0800000000000000
+      internalID: -2993260525743313771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_drop_256_6
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 51
+        width: 42
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a39eb18af927a19a0800000000000000
+      internalID: -6261566301859485382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_drop_256_7
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 31
+        width: 60
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d27ef8ce900a77ec0800000000000000
+      internalID: -3569208215183825107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      water_drop_256_0: 3829576537242545865
+      water_drop_256_1: 8091244142699993723
+      water_drop_256_2: 1457664406617337609
+      water_drop_256_3: -7154566607450451501
+      water_drop_256_4: -804251808765204131
+      water_drop_256_5: -2993260525743313771
+      water_drop_256_6: -6261566301859485382
+      water_drop_256_7: -3569208215183825107
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/white/256/water_drop_256.png
-  uploadId: 879878

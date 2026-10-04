@@ -1,7 +1,40 @@
 fileFormatVersion: 2
-guid: 873f8971367e87941894ddad9bb47cb9
+guid: 7437b874563ef3b47853fafb108062ed
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -679850150154094260
+    second: snowflake_512_T_0
+  - first:
+      213: -3465997514519889923
+    second: snowflake_512_T_1
+  - first:
+      213: 3776523281252211028
+    second: snowflake_512_T_2
+  - first:
+      213: -6424089487765087091
+    second: snowflake_512_T_3
+  - first:
+      213: -1121470530922110012
+    second: snowflake_512_T_4
+  - first:
+      213: -8592481262432394866
+    second: snowflake_512_T_5
+  - first:
+      213: -2129110060988267179
+    second: snowflake_512_T_6
+  - first:
+      213: -6418930706383712775
+    second: snowflake_512_T_7
+  - first:
+      213: 6511939966602523382
+    second: snowflake_512_T_8
+  - first:
+      213: 8923049247464210178
+    second: snowflake_512_T_9
+  - first:
+      213: -1209031977583947398
+    second: snowflake_512_T_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +76,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +100,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +113,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +128,276 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: snowflake_512_T_0
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 276
+        width: 148
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c49b193f3efa096f0800000000000000
+      internalID: -679850150154094260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_512_T_1
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 216
+        width: 128
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df7b7aacf9d46efc0800000000000000
+      internalID: -3465997514519889923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_512_T_2
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 260
+        width: 78
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 459d7095ae7e86430800000000000000
+      internalID: 3776523281252211028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_512_T_3
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 260
+        width: 133
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8cd07ca5ac09d6a0800000000000000
+      internalID: -6424089487765087091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_512_T_4
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 217
+        width: 128
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c3a1527e7cbf60f0800000000000000
+      internalID: -1121470530922110012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_512_T_5
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 277
+        width: 149
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e81648511df51c880800000000000000
+      internalID: -8592481262432394866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_512_T_6
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 140
+        width: 149
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55585171ea1e372e0800000000000000
+      internalID: -2129110060988267179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_512_T_7
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 152
+        width: 78
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fdc62018806be6a0800000000000000
+      internalID: -6418930706383712775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_512_T_8
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 25
+        width: 133
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f2330cd5ee0f5a50800000000000000
+      internalID: 6511939966602523382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_512_T_9
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 144
+        width: 87
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20fbb64a30a05db70800000000000000
+      internalID: 8923049247464210178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_512_T_10
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 140
+        width: 109
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a71550672d7a83fe0800000000000000
+      internalID: -1209031977583947398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      snowflake_512_T_0: -679850150154094260
+      snowflake_512_T_1: -3465997514519889923
+      snowflake_512_T_10: -1209031977583947398
+      snowflake_512_T_2: 3776523281252211028
+      snowflake_512_T_3: -6424089487765087091
+      snowflake_512_T_4: -1121470530922110012
+      snowflake_512_T_5: -8592481262432394866
+      snowflake_512_T_6: -2129110060988267179
+      snowflake_512_T_7: -6418930706383712775
+      snowflake_512_T_8: 6511939966602523382
+      snowflake_512_T_9: 8923049247464210178
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/512/snowflake_512_T.png
-  uploadId: 879878

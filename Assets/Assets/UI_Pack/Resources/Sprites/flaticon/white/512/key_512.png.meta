@@ -1,7 +1,28 @@
 fileFormatVersion: 2
-guid: 7205abddcb74faf4e90a78229959e0f1
+guid: 57e2a1b958d29fc4d956cc6dae0519c5
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6266902812772226537
+    second: key_512_0
+  - first:
+      213: -8102116443058119433
+    second: key_512_1
+  - first:
+      213: -1725376062947861452
+    second: key_512_2
+  - first:
+      213: 6299160431244906728
+    second: key_512_3
+  - first:
+      213: -3608009968932061046
+    second: key_512_4
+  - first:
+      213: -736553173581047410
+    second: key_512_5
+  - first:
+      213: -7201108622859114870
+    second: key_512_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +88,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +101,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +116,184 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: key_512_0
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 358
+        width: 133
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71aa0d2681d7709a0800000000000000
+      internalID: -6266902812772226537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: key_512_1
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 328
+        width: 35
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fc5baa95008f8f80800000000000000
+      internalID: -8102116443058119433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: key_512_2
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 302
+        width: 31
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43cd708bc9b3e08e0800000000000000
+      internalID: -1725376062947861452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: key_512_3
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 226
+        width: 57
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e09c8fa90d1b6750800000000000000
+      internalID: 6299160431244906728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: key_512_4
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 66
+        width: 105
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a808cbf9c06cdedc0800000000000000
+      internalID: -3608009968932061046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: key_512_5
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 24
+        width: 35
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e89d3828acc37c5f0800000000000000
+      internalID: -736553173581047410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: key_512_6
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 44
+        width: 84
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a86ea715cd5801c90800000000000000
+      internalID: -7201108622859114870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      key_512_0: -6266902812772226537
+      key_512_1: -8102116443058119433
+      key_512_2: -1725376062947861452
+      key_512_3: 6299160431244906728
+      key_512_4: -3608009968932061046
+      key_512_5: -736553173581047410
+      key_512_6: -7201108622859114870
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/white/512/key_512.png
-  uploadId: 879878

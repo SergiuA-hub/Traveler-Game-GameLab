@@ -1,7 +1,28 @@
 fileFormatVersion: 2
-guid: 08bae4badf0c4a444b9e3fcd398158f7
+guid: 6cf0d091638d22e40a9f843f45a2104a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1016071827819586588
+    second: quiver_128_0
+  - first:
+      213: 1294093090589017869
+    second: quiver_128_1
+  - first:
+      213: -1287738441864668216
+    second: quiver_128_2
+  - first:
+      213: 1242085961605104705
+    second: quiver_128_3
+  - first:
+      213: -7601693114274737616
+    second: quiver_128_4
+  - first:
+      213: -7661249103127416313
+    second: quiver_128_5
+  - first:
+      213: -1835331050678213078
+    second: quiver_128_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +88,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +101,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +116,184 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: quiver_128_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 91
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eb18845e0036e1f0800000000000000
+      internalID: -1016071827819586588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quiver_128_1
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 83
+        width: 52
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0788da3fca85f110800000000000000
+      internalID: 1294093090589017869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quiver_128_2
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 91
+        width: 15
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cb9a09b5b8012ee0800000000000000
+      internalID: -1287738441864668216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quiver_128_3
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 91
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 144c8f9e996cc3110800000000000000
+      internalID: 1242085961605104705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quiver_128_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 33
+        width: 44
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0321f18536c518690800000000000000
+      internalID: -7601693114274737616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quiver_128_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 4
+        width: 44
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7027f402886cda590800000000000000
+      internalID: -7661249103127416313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quiver_128_6
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 20
+        width: 27
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a26a41722289786e0800000000000000
+      internalID: -1835331050678213078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      quiver_128_0: -1016071827819586588
+      quiver_128_1: 1294093090589017869
+      quiver_128_2: -1287738441864668216
+      quiver_128_3: 1242085961605104705
+      quiver_128_4: -7601693114274737616
+      quiver_128_5: -7661249103127416313
+      quiver_128_6: -1835331050678213078
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/white/128/quiver_128.png
-  uploadId: 879878

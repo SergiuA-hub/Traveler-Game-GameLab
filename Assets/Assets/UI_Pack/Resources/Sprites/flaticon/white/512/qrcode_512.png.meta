@@ -1,7 +1,37 @@
 fileFormatVersion: 2
-guid: 692e90f0a5a9ba1499854309ed346803
+guid: ae4334f0b5fe0d54384d3aa553468d2c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6361970010839914647
+    second: qrcode_512_0
+  - first:
+      213: -8989826940721617760
+    second: qrcode_512_1
+  - first:
+      213: -6798324353033373872
+    second: qrcode_512_2
+  - first:
+      213: -974544486732942666
+    second: qrcode_512_3
+  - first:
+      213: -1728853968278719409
+    second: qrcode_512_4
+  - first:
+      213: -8242552123018829159
+    second: qrcode_512_5
+  - first:
+      213: 8967811046285983490
+    second: qrcode_512_6
+  - first:
+      213: -4411334429154414999
+    second: qrcode_512_7
+  - first:
+      213: 2485499962221220979
+    second: qrcode_512_8
+  - first:
+      213: -6043710618170200512
+    second: qrcode_512_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +73,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +97,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +110,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +125,253 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: qrcode_512_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 348
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7981dc784024a4850800000000000000
+      internalID: 6361970010839914647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: qrcode_512_1
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 275
+        width: 109
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a42d0e0708bd3380800000000000000
+      internalID: -8989826940721617760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: qrcode_512_2
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 275
+        width: 109
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 057fe8d150087a1a0800000000000000
+      internalID: -6798324353033373872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: qrcode_512_3
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 348
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b2b772e3f8b972f0800000000000000
+      internalID: -974544486732942666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: qrcode_512_4
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 120
+        width: 109
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f44f838c970e108e0800000000000000
+      internalID: -1728853968278719409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: qrcode_512_5
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 191
+        width: 39
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99222d8d3829c9d80800000000000000
+      internalID: -8242552123018829159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: qrcode_512_6
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 191
+        width: 39
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20f33b212a0147c70800000000000000
+      internalID: 8967811046285983490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: qrcode_512_7
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 24
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96eeccc75bac7c2c0800000000000000
+      internalID: -4411334429154414999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: qrcode_512_8
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 120
+        width: 39
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37451710c054e7220800000000000000
+      internalID: 2485499962221220979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: qrcode_512_9
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 24
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04e65b6b63d602ca0800000000000000
+      internalID: -6043710618170200512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      qrcode_512_0: 6361970010839914647
+      qrcode_512_1: -8989826940721617760
+      qrcode_512_2: -6798324353033373872
+      qrcode_512_3: -974544486732942666
+      qrcode_512_4: -1728853968278719409
+      qrcode_512_5: -8242552123018829159
+      qrcode_512_6: 8967811046285983490
+      qrcode_512_7: -4411334429154414999
+      qrcode_512_8: 2485499962221220979
+      qrcode_512_9: -6043710618170200512
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/white/512/qrcode_512.png
-  uploadId: 879878

@@ -1,7 +1,25 @@
 fileFormatVersion: 2
-guid: f1457d522d5efb348a278459b11dbc28
+guid: 0fe4e81fd0a89ff4a99372ec99962fc7
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6045843257963223071
+    second: castle_2_512_T_0
+  - first:
+      213: -1373420464762624351
+    second: castle_2_512_T_1
+  - first:
+      213: -4480216533462690552
+    second: castle_2_512_T_2
+  - first:
+      213: 4536331065877050894
+    second: castle_2_512_T_3
+  - first:
+      213: -5544676696499390320
+    second: castle_2_512_T_4
+  - first:
+      213: -3001650672046449389
+    second: castle_2_512_T_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +85,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +98,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +113,161 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: castle_2_512_T_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 286
+        width: 108
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e76961d699d81ca0800000000000000
+      internalID: -6045843257963223071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: castle_2_512_T_1
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 82
+        width: 98
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a6629e2d51a0fce0800000000000000
+      internalID: -1373420464762624351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: castle_2_512_T_2
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 250
+        width: 196
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 805df1eccc213d1c0800000000000000
+      internalID: -4480216533462690552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: castle_2_512_T_3
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 286
+        width: 108
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e06bb25e11944fe30800000000000000
+      internalID: 4536331065877050894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: castle_2_512_T_4
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 82
+        width: 98
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09874c6ebe95d03b0800000000000000
+      internalID: -5544676696499390320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: castle_2_512_T_5
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 82
+        width: 265
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31ddbd00e9ef756d0800000000000000
+      internalID: -3001650672046449389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      castle_2_512_T_0: -6045843257963223071
+      castle_2_512_T_1: -1373420464762624351
+      castle_2_512_T_2: -4480216533462690552
+      castle_2_512_T_3: 4536331065877050894
+      castle_2_512_T_4: -5544676696499390320
+      castle_2_512_T_5: -3001650672046449389
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/512/castle_2_512_T.png
-  uploadId: 879878

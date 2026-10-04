@@ -1,7 +1,28 @@
 fileFormatVersion: 2
-guid: 3aa44ad817e24d746803b42e767c1b38
+guid: c4f84a4ae2da798498f431214a3d0a14
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -479051301333975965
+    second: gemstone_512_T_0
+  - first:
+      213: 8576208701136788416
+    second: gemstone_512_T_1
+  - first:
+      213: 8513502013919945870
+    second: gemstone_512_T_2
+  - first:
+      213: 5917763072042684553
+    second: gemstone_512_T_3
+  - first:
+      213: 7900730016516610986
+    second: gemstone_512_T_4
+  - first:
+      213: -7210022789269033231
+    second: gemstone_512_T_5
+  - first:
+      213: 3757659341643160786
+    second: gemstone_512_T_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +88,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +101,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +116,184 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: gemstone_512_T_0
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 371
+        width: 281
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36cbcca21611a59f0800000000000000
+      internalID: -479051301333975965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gemstone_512_T_1
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 175
+        width: 154
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cb5fdeff50d40770800000000000000
+      internalID: 8576208701136788416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gemstone_512_T_2
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 40
+        width: 93
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e846546a9f8062670800000000000000
+      internalID: 8513502013919945870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gemstone_512_T_3
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 163
+        width: 216
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 980570e092e102250800000000000000
+      internalID: 5917763072042684553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gemstone_512_T_4
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 24
+        width: 142
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aab1db4171805ad60800000000000000
+      internalID: 7900730016516610986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gemstone_512_T_5
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 32
+        width: 97
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fee527397ad0fb90800000000000000
+      internalID: -7210022789269033231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gemstone_512_T_6
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 32
+        width: 89
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dc91952343e52430800000000000000
+      internalID: 3757659341643160786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      gemstone_512_T_0: -479051301333975965
+      gemstone_512_T_1: 8576208701136788416
+      gemstone_512_T_2: 8513502013919945870
+      gemstone_512_T_3: 5917763072042684553
+      gemstone_512_T_4: 7900730016516610986
+      gemstone_512_T_5: -7210022789269033231
+      gemstone_512_T_6: 3757659341643160786
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/512/gemstone_512_T.png
-  uploadId: 879878

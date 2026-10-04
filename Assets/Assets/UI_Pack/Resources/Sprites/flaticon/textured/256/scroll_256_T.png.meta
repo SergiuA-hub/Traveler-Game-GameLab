@@ -1,7 +1,40 @@
 fileFormatVersion: 2
-guid: 3d5b0da8872abbf439c18484d78bb334
+guid: 23904b6e09d40094f936054a094164f6
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1669881350366399516
+    second: scroll_256_T_0
+  - first:
+      213: -7124476163375742956
+    second: scroll_256_T_1
+  - first:
+      213: 4202861059952978334
+    second: scroll_256_T_2
+  - first:
+      213: -8048709179705961862
+    second: scroll_256_T_3
+  - first:
+      213: -9058417888900550890
+    second: scroll_256_T_4
+  - first:
+      213: -6020753331624331571
+    second: scroll_256_T_5
+  - first:
+      213: -1173910366033434588
+    second: scroll_256_T_6
+  - first:
+      213: 983941765311907791
+    second: scroll_256_T_7
+  - first:
+      213: 7661296970511178229
+    second: scroll_256_T_8
+  - first:
+      213: -2120909942392359971
+    second: scroll_256_T_9
+  - first:
+      213: 921046505305906176
+    second: scroll_256_T_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +76,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +100,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +113,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +128,276 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: scroll_256_T_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 216
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1c83a1ad3c9c2710800000000000000
+      internalID: 1669881350366399516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scroll_256_T_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 202
+        width: 17
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 410404f2da6c02d90800000000000000
+      internalID: -7124476163375742956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scroll_256_T_2
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 204
+        width: 127
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e99a1d6cddf835a30800000000000000
+      internalID: 4202861059952978334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scroll_256_T_3
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 202
+        width: 18
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a72533b15ad3d4090800000000000000
+      internalID: -8048709179705961862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scroll_256_T_4
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 216
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61fe9017ce80a4280800000000000000
+      internalID: -9058417888900550890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scroll_256_T_5
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 11
+        width: 17
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc638448ebcf17ca0800000000000000
+      internalID: -6020753331624331571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scroll_256_T_6
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 54
+        width: 143
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428ad62edbe65bfe0800000000000000
+      internalID: -1173910366033434588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scroll_256_T_7
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 11
+        width: 18
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc7461982d9a7ad00800000000000000
+      internalID: 983941765311907791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scroll_256_T_8
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 25
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f9581ed005625a60800000000000000
+      internalID: 7661296970511178229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scroll_256_T_9
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 13
+        width: 127
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd3fb1bf4a30192e0800000000000000
+      internalID: -2120909942392359971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scroll_256_T_10
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 25
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00c9f5aaae638cc00800000000000000
+      internalID: 921046505305906176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      scroll_256_T_0: 1669881350366399516
+      scroll_256_T_1: -7124476163375742956
+      scroll_256_T_10: 921046505305906176
+      scroll_256_T_2: 4202861059952978334
+      scroll_256_T_3: -8048709179705961862
+      scroll_256_T_4: -9058417888900550890
+      scroll_256_T_5: -6020753331624331571
+      scroll_256_T_6: -1173910366033434588
+      scroll_256_T_7: 983941765311907791
+      scroll_256_T_8: 7661296970511178229
+      scroll_256_T_9: -2120909942392359971
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/256/scroll_256_T.png
-  uploadId: 879878

@@ -1,7 +1,34 @@
 fileFormatVersion: 2
-guid: ed211f4968688b24eb4bf292140c2db6
+guid: 14d302ec5ee8fee4a8bfd8dcedbe018f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3038544851818900917
+    second: crystal_2_512_T_0
+  - first:
+      213: 6862860990644722474
+    second: crystal_2_512_T_1
+  - first:
+      213: -6849671446287319082
+    second: crystal_2_512_T_2
+  - first:
+      213: 2567326589473677239
+    second: crystal_2_512_T_3
+  - first:
+      213: -3534010223198446948
+    second: crystal_2_512_T_4
+  - first:
+      213: 5402204617969781101
+    second: crystal_2_512_T_5
+  - first:
+      213: 6491875567438242111
+    second: crystal_2_512_T_6
+  - first:
+      213: -1804654840688313784
+    second: crystal_2_512_T_7
+  - first:
+      213: -8010734025836285756
+    second: crystal_2_512_T_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +70,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +94,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +107,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +122,230 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: crystal_2_512_T_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 61
+        width: 135
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bde1ce91741b2a20800000000000000
+      internalID: 3038544851818900917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_2_512_T_1
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 300
+        width: 320
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2b9342c5b7cd3f50800000000000000
+      internalID: 6862860990644722474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_2_512_T_2
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 271
+        width: 32
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6df78e75c1411f0a0800000000000000
+      internalID: -6849671446287319082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_2_512_T_3
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 213
+        width: 250
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bf5efb4ee9f0a320800000000000000
+      internalID: 2567326589473677239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_2_512_T_4
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 151
+        width: 168
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9a58ad0d6ca4fec0800000000000000
+      internalID: -3534010223198446948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_2_512_T_5
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 28
+        width: 225
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d69401a5a7c78fa40800000000000000
+      internalID: 5402204617969781101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_2_512_T_6
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 176
+        width: 110
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f31a133ee66c71a50800000000000000
+      internalID: 6491875567438242111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_2_512_T_7
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 160
+        width: 114
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84a759edbf394f6e0800000000000000
+      internalID: -1804654840688313784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crystal_2_512_T_8
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 24
+        width: 341
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c0b4ef98d724d090800000000000000
+      internalID: -8010734025836285756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      crystal_2_512_T_0: 3038544851818900917
+      crystal_2_512_T_1: 6862860990644722474
+      crystal_2_512_T_2: -6849671446287319082
+      crystal_2_512_T_3: 2567326589473677239
+      crystal_2_512_T_4: -3534010223198446948
+      crystal_2_512_T_5: 5402204617969781101
+      crystal_2_512_T_6: 6491875567438242111
+      crystal_2_512_T_7: -1804654840688313784
+      crystal_2_512_T_8: -8010734025836285756
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/512/crystal_2_512_T.png
-  uploadId: 879878

@@ -1,7 +1,37 @@
 fileFormatVersion: 2
-guid: 992957485a226904c90dbb477a8fb4d3
+guid: bf047f741c9fafd4998b7cae3f42daa8
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7825213372817075627
+    second: danger_256_0
+  - first:
+      213: 8947205548723591455
+    second: danger_256_1
+  - first:
+      213: -30538367582579992
+    second: danger_256_2
+  - first:
+      213: 6839973905482203043
+    second: danger_256_3
+  - first:
+      213: 7674351475561440695
+    second: danger_256_4
+  - first:
+      213: 5849526431085192423
+    second: danger_256_5
+  - first:
+      213: 2653493922176739359
+    second: danger_256_6
+  - first:
+      213: -2835981200434133178
+    second: danger_256_7
+  - first:
+      213: 327332133027163346
+    second: danger_256_8
+  - first:
+      213: -690853288007034053
+    second: danger_256_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +73,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +97,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +110,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +125,253 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: danger_256_0
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 156
+        width: 19
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5521a9da5e1476390800000000000000
+      internalID: -7825213372817075627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danger_256_1
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 178
+        width: 12
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f19d210da0cda2c70800000000000000
+      internalID: 8947205548723591455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danger_256_2
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 150
+        width: 12
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e258383481839ff0800000000000000
+      internalID: -30538367582579992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danger_256_3
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 134
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3af353df6087cee50800000000000000
+      internalID: 6839973905482203043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danger_256_4
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 93
+        width: 151
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b5a55ea106c08a60800000000000000
+      internalID: 7674351475561440695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danger_256_5
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 107
+        width: 28
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e467150c41bd2150800000000000000
+      internalID: 5849526431085192423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danger_256_6
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 60
+        width: 22
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f18a005d9aa13d420800000000000000
+      internalID: 2653493922176739359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danger_256_7
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 55
+        width: 37
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6470076bf1294a8d0800000000000000
+      internalID: -2835981200434133178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danger_256_8
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 57
+        width: 40
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dca7a837daea8400800000000000000
+      internalID: 327332133027163346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danger_256_9
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 67
+        width: 21
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3b1e6848989966f0800000000000000
+      internalID: -690853288007034053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      danger_256_0: -7825213372817075627
+      danger_256_1: 8947205548723591455
+      danger_256_2: -30538367582579992
+      danger_256_3: 6839973905482203043
+      danger_256_4: 7674351475561440695
+      danger_256_5: 5849526431085192423
+      danger_256_6: 2653493922176739359
+      danger_256_7: -2835981200434133178
+      danger_256_8: 327332133027163346
+      danger_256_9: -690853288007034053
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/white/256/danger_256.png
-  uploadId: 879878

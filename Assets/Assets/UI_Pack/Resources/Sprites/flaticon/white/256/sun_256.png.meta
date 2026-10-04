@@ -1,7 +1,82 @@
 fileFormatVersion: 2
-guid: 81fb551a060ffc3468eefc9fae0efaf2
+guid: 566c92ab5dacb8e4aadb21c38d7a5fd7
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3695107760095239933
+    second: sun_256_0
+  - first:
+      213: 3077641555246901381
+    second: sun_256_1
+  - first:
+      213: -2536872244416578802
+    second: sun_256_2
+  - first:
+      213: 3251396080055617149
+    second: sun_256_3
+  - first:
+      213: 8821667410532254442
+    second: sun_256_4
+  - first:
+      213: 920964491088488182
+    second: sun_256_5
+  - first:
+      213: -6869062613290203813
+    second: sun_256_6
+  - first:
+      213: -8493290972539911710
+    second: sun_256_7
+  - first:
+      213: 1159308700165983505
+    second: sun_256_8
+  - first:
+      213: -2991043830471890497
+    second: sun_256_9
+  - first:
+      213: -8081926101845326052
+    second: sun_256_10
+  - first:
+      213: 682847990667958435
+    second: sun_256_11
+  - first:
+      213: -4544085313633226534
+    second: sun_256_12
+  - first:
+      213: -2270866038531190830
+    second: sun_256_13
+  - first:
+      213: -2971840152298566676
+    second: sun_256_14
+  - first:
+      213: 1919557018879917555
+    second: sun_256_15
+  - first:
+      213: 8429874495568107804
+    second: sun_256_16
+  - first:
+      213: 6410831753125682451
+    second: sun_256_17
+  - first:
+      213: -5292057525766817501
+    second: sun_256_18
+  - first:
+      213: -1106931307043784665
+    second: sun_256_19
+  - first:
+      213: -3788136701144384260
+    second: sun_256_20
+  - first:
+      213: -1443983897566349325
+    second: sun_256_21
+  - first:
+      213: 428262776629156639
+    second: sun_256_22
+  - first:
+      213: 896285577256971075
+    second: sun_256_23
+  - first:
+      213: 5644352167554329373
+    second: sun_256_24
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +118,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +142,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +155,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +170,598 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sun_256_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 156
+        width: 48
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfe14472ee8a74330800000000000000
+      internalID: 3695107760095239933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 170
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 588e87e30baf5ba20800000000000000
+      internalID: 3077641555246901381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_2
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 182
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b700772283bccd0800000000000000
+      internalID: -2536872244416578802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_3
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 189
+        width: 14
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7600d712874f1d20800000000000000
+      internalID: 3251396080055617149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_4
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 193
+        width: 19
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae24a6b45cbdc6a70800000000000000
+      internalID: 8821667410532254442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_5
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 190
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f6e31e335ce7cc00800000000000000
+      internalID: 920964491088488182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_6
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 182
+        width: 39
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b55cbe272ff2ca0a0800000000000000
+      internalID: -6869062613290203813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_7
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 172
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e10abf1cd4c12a80800000000000000
+      internalID: -8493290972539911710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_8
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 73
+        width: 118
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11dc96ade11b61010800000000000000
+      internalID: 1159308700165983505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_9
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 157
+        width: 52
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb96911cb7dad76d0800000000000000
+      internalID: -2991043830471890497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_10
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 139
+        width: 30
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c174d8eb70b37df80800000000000000
+      internalID: -8081926101845326052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_11
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 142
+        width: 32
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a85a5f21a6f97900800000000000000
+      internalID: 682847990667958435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_12
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 122
+        width: 55
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad072db9b7a20f0c0800000000000000
+      internalID: -4544085313633226534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_13
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 117
+        width: 55
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2df89d89e534c70e0800000000000000
+      internalID: -2270866038531190830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_14
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 103
+        width: 32
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceb40018027e1c6d0800000000000000
+      internalID: -2971840152298566676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_15
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 105
+        width: 29
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fdf17c30f2a3aa10800000000000000
+      internalID: 1919557018879917555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_16
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 74
+        width: 53
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c195679b03eecf470800000000000000
+      internalID: 8429874495568107804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_17
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 62
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31dd9df6389d7f850800000000000000
+      internalID: 6410831753125682451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_18
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 29
+        width: 40
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3297cb508b5de86b0800000000000000
+      internalID: -5292057525766817501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_19
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 24
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72875ec47d363a0f0800000000000000
+      internalID: -1106931307043784665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_20
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 64
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfc3baf9db5dd6bc0800000000000000
+      internalID: -3788136701144384260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_21
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 64
+        width: 48
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f77c24bb40f5fbe0800000000000000
+      internalID: -1443983897566349325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_22
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 39
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1bd08fe9be71f500800000000000000
+      internalID: 428262776629156639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_23
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 11
+        width: 19
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34b25b9dbfe307c00800000000000000
+      internalID: 896285577256971075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_256_24
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 38
+        width: 14
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1b284e2464c45e40800000000000000
+      internalID: 5644352167554329373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sun_256_0: 3695107760095239933
+      sun_256_1: 3077641555246901381
+      sun_256_10: -8081926101845326052
+      sun_256_11: 682847990667958435
+      sun_256_12: -4544085313633226534
+      sun_256_13: -2270866038531190830
+      sun_256_14: -2971840152298566676
+      sun_256_15: 1919557018879917555
+      sun_256_16: 8429874495568107804
+      sun_256_17: 6410831753125682451
+      sun_256_18: -5292057525766817501
+      sun_256_19: -1106931307043784665
+      sun_256_2: -2536872244416578802
+      sun_256_20: -3788136701144384260
+      sun_256_21: -1443983897566349325
+      sun_256_22: 428262776629156639
+      sun_256_23: 896285577256971075
+      sun_256_24: 5644352167554329373
+      sun_256_3: 3251396080055617149
+      sun_256_4: 8821667410532254442
+      sun_256_5: 920964491088488182
+      sun_256_6: -6869062613290203813
+      sun_256_7: -8493290972539911710
+      sun_256_8: 1159308700165983505
+      sun_256_9: -2991043830471890497
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/white/256/sun_256.png
-  uploadId: 879878

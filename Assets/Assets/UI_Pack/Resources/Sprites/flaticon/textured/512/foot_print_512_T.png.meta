@@ -1,7 +1,37 @@
 fileFormatVersion: 2
-guid: 5d3130e512fb4db41bb42b99f474a33b
+guid: 18199755498f1ff40870d6faecbc06a1
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -774374061652954308
+    second: foot_print_512_T_0
+  - first:
+      213: 7025661699122404431
+    second: foot_print_512_T_1
+  - first:
+      213: -2719176071672248189
+    second: foot_print_512_T_2
+  - first:
+      213: 5118807155842905305
+    second: foot_print_512_T_3
+  - first:
+      213: 8919081967255100017
+    second: foot_print_512_T_4
+  - first:
+      213: -8139280480402989323
+    second: foot_print_512_T_5
+  - first:
+      213: 8351789792359652781
+    second: foot_print_512_T_6
+  - first:
+      213: 4152849208017941979
+    second: foot_print_512_T_7
+  - first:
+      213: -3376758307163832268
+    second: foot_print_512_T_8
+  - first:
+      213: 4169841007675450946
+    second: foot_print_512_T_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +73,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +97,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +110,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +125,253 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: foot_print_512_T_0
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 406
+        width: 39
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3336ebc4eed045f0800000000000000
+      internalID: -774374061652954308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foot_print_512_T_1
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 427
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4c1240871a208160800000000000000
+      internalID: 7025661699122404431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foot_print_512_T_2
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 424
+        width: 58
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 388cb3605cb834ad0800000000000000
+      internalID: -2719176071672248189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foot_print_512_T_3
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 423
+        width: 58
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d47eb5dcf7a90740800000000000000
+      internalID: 5118807155842905305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foot_print_512_T_4
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 426
+        width: 37
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17a15dc3bc1f6cb70800000000000000
+      internalID: 8919081967255100017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foot_print_512_T_5
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 406
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fe1f4ed6877b0f80800000000000000
+      internalID: -8139280480402989323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foot_print_512_T_6
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 24
+        width: 195
+        height: 392
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dad9454019487e370800000000000000
+      internalID: 8351789792359652781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foot_print_512_T_7
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 386
+        width: 34
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd5fba91a52e1a930800000000000000
+      internalID: 4152849208017941979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foot_print_512_T_8
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 24
+        width: 196
+        height: 392
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4308621e5385321d0800000000000000
+      internalID: -3376758307163832268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: foot_print_512_T_9
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 385
+        width: 34
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2462a50cd404ed930800000000000000
+      internalID: 4169841007675450946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      foot_print_512_T_0: -774374061652954308
+      foot_print_512_T_1: 7025661699122404431
+      foot_print_512_T_2: -2719176071672248189
+      foot_print_512_T_3: 5118807155842905305
+      foot_print_512_T_4: 8919081967255100017
+      foot_print_512_T_5: -8139280480402989323
+      foot_print_512_T_6: 8351789792359652781
+      foot_print_512_T_7: 4152849208017941979
+      foot_print_512_T_8: -3376758307163832268
+      foot_print_512_T_9: 4169841007675450946
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/512/foot_print_512_T.png
-  uploadId: 879878

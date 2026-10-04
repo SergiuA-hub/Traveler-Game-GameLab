@@ -1,7 +1,82 @@
 fileFormatVersion: 2
-guid: 6520a9e5cdcce6c44b185e0358cf59a9
+guid: 853e04642573bbf428a6afbcba446402
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6565129156777738253
+    second: sun_128_T_0
+  - first:
+      213: -3338186340025890551
+    second: sun_128_T_1
+  - first:
+      213: -6553354122034201429
+    second: sun_128_T_2
+  - first:
+      213: -6089546767257298281
+    second: sun_128_T_3
+  - first:
+      213: -1525069021051288171
+    second: sun_128_T_4
+  - first:
+      213: 1160032559968740443
+    second: sun_128_T_5
+  - first:
+      213: 5128333805420451528
+    second: sun_128_T_6
+  - first:
+      213: 4865454004194380715
+    second: sun_128_T_7
+  - first:
+      213: -7761997121938865528
+    second: sun_128_T_8
+  - first:
+      213: 8647776106158663473
+    second: sun_128_T_9
+  - first:
+      213: 3799657131742769257
+    second: sun_128_T_10
+  - first:
+      213: -3589268315749395378
+    second: sun_128_T_11
+  - first:
+      213: 3050188835588272228
+    second: sun_128_T_12
+  - first:
+      213: 5677289033470466323
+    second: sun_128_T_13
+  - first:
+      213: -616560330343936254
+    second: sun_128_T_14
+  - first:
+      213: 11293834387294978
+    second: sun_128_T_15
+  - first:
+      213: -649566779891808860
+    second: sun_128_T_16
+  - first:
+      213: -8392031429629801215
+    second: sun_128_T_17
+  - first:
+      213: 1917576442394323279
+    second: sun_128_T_18
+  - first:
+      213: -3320577259292355295
+    second: sun_128_T_19
+  - first:
+      213: -5292339745040983377
+    second: sun_128_T_20
+  - first:
+      213: -284914754376398557
+    second: sun_128_T_21
+  - first:
+      213: 7459196270130936144
+    second: sun_128_T_22
+  - first:
+      213: 8159311085600304792
+    second: sun_128_T_23
+  - first:
+      213: -8661854904837654390
+    second: sun_128_T_24
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +118,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +142,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +155,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +170,598 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sun_128_T_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 76
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fff3b1c0d9f3e4a0800000000000000
+      internalID: -6565129156777738253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 84
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90902b0d5316ca1d0800000000000000
+      internalID: -3338186340025890551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 89
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bac3fcca52fcd05a0800000000000000
+      internalID: -6553354122034201429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_3
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 92
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79a108e9a759d7ba0800000000000000
+      internalID: -6089546767257298281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_4
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 94
+        width: 11
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59509463ecdd5dae0800000000000000
+      internalID: -1525069021051288171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_5
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 93
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b54e2d89773491010800000000000000
+      internalID: 1160032559968740443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_6
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 89
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c696b9cc608b2740800000000000000
+      internalID: 5128333805420451528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_7
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 84
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bab020773a0958340800000000000000
+      internalID: 4865454004194380715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_8
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 68
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 882ca3f0eb8d74490800000000000000
+      internalID: -7761997121938865528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_9
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 36
+        width: 60
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 137a2b8fc82130870800000000000000
+      internalID: 8647776106158663473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_10
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 77
+        width: 28
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 960bec5a7081bb430800000000000000
+      internalID: 3799657131742769257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_11
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 70
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e44513ccb7b503ec0800000000000000
+      internalID: -3589268315749395378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_12
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 60
+        width: 28
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 460f91bd592745a20800000000000000
+      internalID: 3050188835588272228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_13
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 51
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3195a3fdb48c9ce40800000000000000
+      internalID: 5677289033470466323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_14
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 57
+        width: 28
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20f804f65a98177f0800000000000000
+      internalID: -616560330343936254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_15
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 36
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20b8ecabeaf182000800000000000000
+      internalID: 11293834387294978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_16
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 50
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a587aa84764cf6f0800000000000000
+      internalID: -649566779891808860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_17
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 31
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10d800da0e3898b80800000000000000
+      internalID: -8392031429629801215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_18
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 30
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4922965d999c9a10800000000000000
+      internalID: 1917576442394323279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_19
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 14
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12593aa6390fae1d0800000000000000
+      internalID: -3320577259292355295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_20
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 19
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faa962aba05dd86b0800000000000000
+      internalID: -5292339745040983377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_21
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 7
+        width: 11
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 329802a5a87cb0cf0800000000000000
+      internalID: -284914754376398557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_22
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 18
+        width: 8
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 059b217bc73648760800000000000000
+      internalID: 7459196270130936144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_23
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 12
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89eec15d332bb3170800000000000000
+      internalID: 8159311085600304792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_128_T_24
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 31
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a883d254bd8eac780800000000000000
+      internalID: -8661854904837654390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sun_128_T_0: -6565129156777738253
+      sun_128_T_1: -3338186340025890551
+      sun_128_T_10: 3799657131742769257
+      sun_128_T_11: -3589268315749395378
+      sun_128_T_12: 3050188835588272228
+      sun_128_T_13: 5677289033470466323
+      sun_128_T_14: -616560330343936254
+      sun_128_T_15: 11293834387294978
+      sun_128_T_16: -649566779891808860
+      sun_128_T_17: -8392031429629801215
+      sun_128_T_18: 1917576442394323279
+      sun_128_T_19: -3320577259292355295
+      sun_128_T_2: -6553354122034201429
+      sun_128_T_20: -5292339745040983377
+      sun_128_T_21: -284914754376398557
+      sun_128_T_22: 7459196270130936144
+      sun_128_T_23: 8159311085600304792
+      sun_128_T_24: -8661854904837654390
+      sun_128_T_3: -6089546767257298281
+      sun_128_T_4: -1525069021051288171
+      sun_128_T_5: 1160032559968740443
+      sun_128_T_6: 5128333805420451528
+      sun_128_T_7: 4865454004194380715
+      sun_128_T_8: -7761997121938865528
+      sun_128_T_9: 8647776106158663473
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/128/sun_128_T.png
-  uploadId: 879878

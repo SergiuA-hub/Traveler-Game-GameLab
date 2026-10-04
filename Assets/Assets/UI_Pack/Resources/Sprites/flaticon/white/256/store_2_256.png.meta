@@ -1,7 +1,34 @@
 fileFormatVersion: 2
-guid: 00b6af85ab988094c9fea36a29a2efcf
+guid: b762ead31e6ab3c40a3d75bd79d92602
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2844174447373875980
+    second: store_2_256_0
+  - first:
+      213: 6994059825914888153
+    second: store_2_256_1
+  - first:
+      213: -6038270601063081753
+    second: store_2_256_2
+  - first:
+      213: 6183476395573494790
+    second: store_2_256_3
+  - first:
+      213: 1961431225640078070
+    second: store_2_256_4
+  - first:
+      213: -1692865328182852657
+    second: store_2_256_5
+  - first:
+      213: 2003725361281920712
+    second: store_2_256_6
+  - first:
+      213: -3450822703170478211
+    second: store_2_256_7
+  - first:
+      213: -6406454807545225099
+    second: store_2_256_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +70,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +94,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +107,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +122,230 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: store_2_256_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 147
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0b76fe3799887720800000000000000
+      internalID: 2844174447373875980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: store_2_256_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 195
+        width: 193
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dfbc750b54ef0160800000000000000
+      internalID: 6994059825914888153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: store_2_256_2
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 148
+        width: 33
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e853f561e0c33ca0800000000000000
+      internalID: -6038270601063081753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: store_2_256_3
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 149
+        width: 27
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 604cb23350f10d550800000000000000
+      internalID: 6183476395573494790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: store_2_256_4
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 149
+        width: 27
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fac2afbe47683b10800000000000000
+      internalID: 1961431225640078070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: store_2_256_5
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 148
+        width: 33
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc3061504fbb188e0800000000000000
+      internalID: -1692865328182852657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: store_2_256_6
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 147
+        width: 40
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ce66a29999aecb10800000000000000
+      internalID: 2003725361281920712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: store_2_256_7
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 25
+        width: 232
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7f9ba2e8073c10d0800000000000000
+      internalID: -3450822703170478211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: store_2_256_8
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 8
+        width: 234
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5706cae9b43b717a0800000000000000
+      internalID: -6406454807545225099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      store_2_256_0: 2844174447373875980
+      store_2_256_1: 6994059825914888153
+      store_2_256_2: -6038270601063081753
+      store_2_256_3: 6183476395573494790
+      store_2_256_4: 1961431225640078070
+      store_2_256_5: -1692865328182852657
+      store_2_256_6: 2003725361281920712
+      store_2_256_7: -3450822703170478211
+      store_2_256_8: -6406454807545225099
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/white/256/store_2_256.png
-  uploadId: 879878

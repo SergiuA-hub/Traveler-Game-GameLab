@@ -1,7 +1,34 @@
 fileFormatVersion: 2
-guid: 216208a154df07445afb1294d132bfc7
+guid: 6a08e33cc8b02b240a1bc8518d3cf02f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5612596920560475563
+    second: vial_512_T_0
+  - first:
+      213: -5934659577285881559
+    second: vial_512_T_1
+  - first:
+      213: -6965426516091005666
+    second: vial_512_T_2
+  - first:
+      213: -5389602964271717435
+    second: vial_512_T_3
+  - first:
+      213: 787978045617198397
+    second: vial_512_T_4
+  - first:
+      213: 8875055633074002419
+    second: vial_512_T_5
+  - first:
+      213: -974204395340869167
+    second: vial_512_T_6
+  - first:
+      213: 7211226395356986600
+    second: vial_512_T_7
+  - first:
+      213: 826676018647478093
+    second: vial_512_T_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +70,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +94,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +107,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +122,230 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: vial_512_T_0
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 341
+        width: 164
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 552aa8a66dc0c12b0800000000000000
+      internalID: -5612596920560475563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vial_512_T_1
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 384
+        width: 156
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9215101ce8ad3ada0800000000000000
+      internalID: -5934659577285881559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vial_512_T_2
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 159
+        width: 62
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e151f4fec75d55f90800000000000000
+      internalID: -6965426516091005666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vial_512_T_3
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 31
+        width: 351
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c3213ac8a84435b0800000000000000
+      internalID: -5389602964271717435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vial_512_T_4
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 184
+        width: 60
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d35d1db8bd57fea00800000000000000
+      internalID: 787978045617198397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vial_512_T_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 133
+        width: 137
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f9943383188a2b70800000000000000
+      internalID: 8875055633074002419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vial_512_T_6
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 123
+        width: 31
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d15515934eea72f0800000000000000
+      internalID: -974204395340869167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vial_512_T_7
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 24
+        width: 77
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ec7c2a233c631460800000000000000
+      internalID: 7211226395356986600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vial_512_T_8
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 24
+        width: 24
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4f21d38571f87b00800000000000000
+      internalID: 826676018647478093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vial_512_T_0: -5612596920560475563
+      vial_512_T_1: -5934659577285881559
+      vial_512_T_2: -6965426516091005666
+      vial_512_T_3: -5389602964271717435
+      vial_512_T_4: 787978045617198397
+      vial_512_T_5: 8875055633074002419
+      vial_512_T_6: -974204395340869167
+      vial_512_T_7: 7211226395356986600
+      vial_512_T_8: 826676018647478093
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/512/vial_512_T.png
-  uploadId: 879878

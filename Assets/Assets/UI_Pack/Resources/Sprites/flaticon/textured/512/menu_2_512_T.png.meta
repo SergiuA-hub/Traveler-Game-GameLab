@@ -1,7 +1,34 @@
 fileFormatVersion: 2
-guid: 057ed9639008feb469a5c6132e6fab17
+guid: d5b6916f3fd6b444080bde312cc92a97
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7844497534902493994
+    second: menu_2_512_T_0
+  - first:
+      213: 8214377517891838137
+    second: menu_2_512_T_1
+  - first:
+      213: -5176066408621928665
+    second: menu_2_512_T_2
+  - first:
+      213: 7083927710213127245
+    second: menu_2_512_T_3
+  - first:
+      213: -2087316800998433237
+    second: menu_2_512_T_4
+  - first:
+      213: 5938857082528329382
+    second: menu_2_512_T_5
+  - first:
+      213: -2432207850606571349
+    second: menu_2_512_T_6
+  - first:
+      213: -1043907462220438265
+    second: menu_2_512_T_7
+  - first:
+      213: -6576470556465398376
+    second: menu_2_512_T_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +70,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +94,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +107,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +122,230 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: menu_2_512_T_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 363
+        width: 125
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dc95becd0fb22390800000000000000
+      internalID: -7844497534902493994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_2_512_T_1
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 363
+        width: 126
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b0e5e4b4d45ff170800000000000000
+      internalID: 8214377517891838137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_2_512_T_2
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 363
+        width: 125
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72f024c760bea28b0800000000000000
+      internalID: -5176066408621928665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_2_512_T_3
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 193
+        width: 125
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4cbccd58ba2f4260800000000000000
+      internalID: 7083927710213127245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_2_512_T_4
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 193
+        width: 126
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2e98c6bd6c5803e0800000000000000
+      internalID: -2087316800998433237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_2_512_T_5
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 193
+        width: 125
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aee9e71d0f0b6250800000000000000
+      internalID: 5938857082528329382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_2_512_T_6
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 24
+        width: 125
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba0dda4a8df0f3ed0800000000000000
+      internalID: -2432207850606571349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_2_512_T_7
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 24
+        width: 126
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 705a8f7a1bb4381f0800000000000000
+      internalID: -1043907462220438265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_2_512_T_8
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 24
+        width: 125
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89d701e5fdeabb4a0800000000000000
+      internalID: -6576470556465398376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      menu_2_512_T_0: -7844497534902493994
+      menu_2_512_T_1: 8214377517891838137
+      menu_2_512_T_2: -5176066408621928665
+      menu_2_512_T_3: 7083927710213127245
+      menu_2_512_T_4: -2087316800998433237
+      menu_2_512_T_5: 5938857082528329382
+      menu_2_512_T_6: -2432207850606571349
+      menu_2_512_T_7: -1043907462220438265
+      menu_2_512_T_8: -6576470556465398376
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/512/menu_2_512_T.png
-  uploadId: 879878

@@ -1,7 +1,28 @@
 fileFormatVersion: 2
-guid: d240d65bda73a5d449e790ec1791e957
+guid: 0e549a6cb06cbbb4aa0b45d7133e0816
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6286834691108483670
+    second: brifcase_512_0
+  - first:
+      213: -7068811839703668163
+    second: brifcase_512_1
+  - first:
+      213: -4677675082327379195
+    second: brifcase_512_2
+  - first:
+      213: -8341869122663987785
+    second: brifcase_512_3
+  - first:
+      213: 4727106274866544817
+    second: brifcase_512_4
+  - first:
+      213: -3731818825775997098
+    second: brifcase_512_5
+  - first:
+      213: 6842100613312371677
+    second: brifcase_512_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +88,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +101,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +116,184 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: brifcase_512_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 244
+        width: 86
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aad40e2582da0c8a0800000000000000
+      internalID: -6286834691108483670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brifcase_512_1
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 27
+        width: 86
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3a236e751986ed90800000000000000
+      internalID: -7068811839703668163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brifcase_512_2
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 244
+        width: 245
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5033e27cb4f851fb0800000000000000
+      internalID: -4677675082327379195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brifcase_512_3
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 219
+        width: 70
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b540d4ea3abb3c80800000000000000
+      internalID: -8341869122663987785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brifcase_512_4
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 244
+        width: 96
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b0c0f89c1e0a9140800000000000000
+      internalID: 4727106274866544817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brifcase_512_5
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 27
+        width: 245
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65f918bcc8ae53cc0800000000000000
+      internalID: -3731818825775997098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brifcase_512_6
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 27
+        width: 96
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddb57fdb14604fe50800000000000000
+      internalID: 6842100613312371677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      brifcase_512_0: -6286834691108483670
+      brifcase_512_1: -7068811839703668163
+      brifcase_512_2: -4677675082327379195
+      brifcase_512_3: -8341869122663987785
+      brifcase_512_4: 4727106274866544817
+      brifcase_512_5: -3731818825775997098
+      brifcase_512_6: 6842100613312371677
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/white/512/brifcase_512.png
-  uploadId: 879878

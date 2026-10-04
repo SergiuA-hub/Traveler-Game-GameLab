@@ -1,7 +1,22 @@
 fileFormatVersion: 2
-guid: cc912d5ea2ee8d94fa9dd6007d73ab72
+guid: 0b9c8ec2259a8e34c89b603d4d9ebe1b
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1099919023671625972
+    second: Dust_Bin_512_T_0
+  - first:
+      213: 6943639653381655091
+    second: Dust_Bin_512_T_1
+  - first:
+      213: -2414873970780354957
+    second: Dust_Bin_512_T_2
+  - first:
+      213: -7350506417560330348
+    second: Dust_Bin_512_T_3
+  - first:
+      213: 241650428225260474
+    second: Dust_Bin_512_T_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +82,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +95,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +110,138 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Dust_Bin_512_T_0
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 385
+        width: 376
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c07bb50c97d4cb0f0800000000000000
+      internalID: -1099919023671625972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dust_Bin_512_T_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 302
+        width: 376
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33a412cc973cc5060800000000000000
+      internalID: 6943639653381655091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dust_Bin_512_T_2
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 366
+        width: 309
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 376cc4a0be4ac7ed0800000000000000
+      internalID: -2414873970780354957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dust_Bin_512_T_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 210
+        width: 304
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49f561e9b51cdf990800000000000000
+      internalID: -7350506417560330348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dust_Bin_512_T_4
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 24
+        width: 277
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abb003eb8c38a5300800000000000000
+      internalID: 241650428225260474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Dust_Bin_512_T_0: -1099919023671625972
+      Dust_Bin_512_T_1: 6943639653381655091
+      Dust_Bin_512_T_2: -2414873970780354957
+      Dust_Bin_512_T_3: -7350506417560330348
+      Dust_Bin_512_T_4: 241650428225260474
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/512/Dust_Bin_512_T.png
-  uploadId: 879878

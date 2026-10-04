@@ -1,7 +1,31 @@
 fileFormatVersion: 2
-guid: 6cc646445b6bdfc4a8d4ef3756b81024
+guid: d456a3ecf326c484cb3016d9e600f869
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8131771211237328570
+    second: quiver_512_T_0
+  - first:
+      213: -7796897451192754874
+    second: quiver_512_T_1
+  - first:
+      213: 2131974820263466218
+    second: quiver_512_T_2
+  - first:
+      213: 525057072914290398
+    second: quiver_512_T_3
+  - first:
+      213: 6357210687540335713
+    second: quiver_512_T_4
+  - first:
+      213: 7498198193906540869
+    second: quiver_512_T_5
+  - first:
+      213: 2607068022578428639
+    second: quiver_512_T_6
+  - first:
+      213: -8670338364229245855
+    second: quiver_512_T_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +91,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +104,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +119,207 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: quiver_512_T_0
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 365
+        width: 76
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab68c8825dad9d070800000000000000
+      internalID: 8131771211237328570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quiver_512_T_1
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 365
+        width: 51
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64dd18fe31bdbc390800000000000000
+      internalID: -7796897451192754874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quiver_512_T_2
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 365
+        width: 76
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae491e7adcb469d10800000000000000
+      internalID: 2131974820263466218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quiver_512_T_3
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 337
+        width: 198
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed6dcdd30a0694700800000000000000
+      internalID: 525057072914290398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quiver_512_T_4
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 155
+        width: 165
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16498293079593850800000000000000
+      internalID: 6357210687540335713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quiver_512_T_5
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 87
+        width: 97
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 541664bb783fe0860800000000000000
+      internalID: 7498198193906540869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quiver_512_T_6
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 136
+        width: 164
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fda311fbd8a2e2420800000000000000
+      internalID: 2607068022578428639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quiver_512_T_7
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 24
+        width: 165
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 164aca5f135cca780800000000000000
+      internalID: -8670338364229245855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      quiver_512_T_0: 8131771211237328570
+      quiver_512_T_1: -7796897451192754874
+      quiver_512_T_2: 2131974820263466218
+      quiver_512_T_3: 525057072914290398
+      quiver_512_T_4: 6357210687540335713
+      quiver_512_T_5: 7498198193906540869
+      quiver_512_T_6: 2607068022578428639
+      quiver_512_T_7: -8670338364229245855
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/512/quiver_512_T.png
-  uploadId: 879878

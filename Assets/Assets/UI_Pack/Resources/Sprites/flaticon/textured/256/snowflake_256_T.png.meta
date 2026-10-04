@@ -1,7 +1,28 @@
 fileFormatVersion: 2
-guid: 32fc5f4eb418f7c4abc70cd13e35cc25
+guid: eaa17f898fca43f419344bb2ce24cd9f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -4546651875226255762
+    second: snowflake_256_T_0
+  - first:
+      213: 7621391012108050207
+    second: snowflake_256_T_1
+  - first:
+      213: -5799549831613502342
+    second: snowflake_256_T_2
+  - first:
+      213: -9090906149037512991
+    second: snowflake_256_T_3
+  - first:
+      213: -191804029776650712
+    second: snowflake_256_T_4
+  - first:
+      213: 4596934984013314417
+    second: snowflake_256_T_5
+  - first:
+      213: -2738408861595108345
+    second: snowflake_256_T_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +88,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +101,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +116,184 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: snowflake_256_T_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 137
+        width: 76
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6e76cb653c07e0c0800000000000000
+      internalID: -4546651875226255762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_256_T_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 108
+        width: 65
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1f1e03eebe94c960800000000000000
+      internalID: 7621391012108050207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_256_T_2
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 129
+        width: 40
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7c208dc72cd38fa0800000000000000
+      internalID: -5799549831613502342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_256_T_3
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 129
+        width: 68
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e6643ce50d96d180800000000000000
+      internalID: -9090906149037512991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_256_T_4
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 69
+        width: 110
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82e9caa4043965df0800000000000000
+      internalID: -191804029776650712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_256_T_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 69
+        width: 76
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 179fda923089bcf30800000000000000
+      internalID: 4596934984013314417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflake_256_T_6
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 12
+        width: 79
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70c77da26a73ff9d0800000000000000
+      internalID: -2738408861595108345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      snowflake_256_T_0: -4546651875226255762
+      snowflake_256_T_1: 7621391012108050207
+      snowflake_256_T_2: -5799549831613502342
+      snowflake_256_T_3: -9090906149037512991
+      snowflake_256_T_4: -191804029776650712
+      snowflake_256_T_5: 4596934984013314417
+      snowflake_256_T_6: -2738408861595108345
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/256/snowflake_256_T.png
-  uploadId: 879878

@@ -1,7 +1,31 @@
 fileFormatVersion: 2
-guid: c3d6e44e633f1134f967a39efa0eb845
+guid: a4be5d5ec372aea49b7369a12cbc7041
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4195547486064846142
+    second: travel_bag_512_T_0
+  - first:
+      213: -788134080189700175
+    second: travel_bag_512_T_1
+  - first:
+      213: 5584659944396295300
+    second: travel_bag_512_T_2
+  - first:
+      213: 15610949067573166
+    second: travel_bag_512_T_3
+  - first:
+      213: 1030893027212401418
+    second: travel_bag_512_T_4
+  - first:
+      213: -3461465181709960277
+    second: travel_bag_512_T_5
+  - first:
+      213: 161552940277860131
+    second: travel_bag_512_T_6
+  - first:
+      213: -8339950944252379425
+    second: travel_bag_512_T_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +91,7 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -80,7 +104,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,27 +119,207 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: travel_bag_512_T_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 121
+        width: 144
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e35ad29a534993a30800000000000000
+      internalID: 4195547486064846142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: travel_bag_512_T_1
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 415
+        width: 101
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b7e9e2da3cff05f0800000000000000
+      internalID: -788134080189700175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: travel_bag_512_T_2
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 121
+        width: 144
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48c081171a2b08d40800000000000000
+      internalID: 5584659944396295300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: travel_bag_512_T_3
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 253
+        width: 143
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea787c15316773000800000000000000
+      internalID: 15610949067573166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: travel_bag_512_T_4
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 275
+        width: 283
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0b1c601fb77e4e00800000000000000
+      internalID: 1030893027212401418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: travel_bag_512_T_5
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 196
+        width: 37
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bab7bc1c1c766ffc0800000000000000
+      internalID: -3461465181709960277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: travel_bag_512_T_6
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 253
+        width: 141
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3278ea11b83fd3200800000000000000
+      internalID: 161552940277860131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: travel_bag_512_T_7
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 31
+        width: 299
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fde37ab9dca824c80800000000000000
+      internalID: -8339950944252379425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      travel_bag_512_T_0: 4195547486064846142
+      travel_bag_512_T_1: -788134080189700175
+      travel_bag_512_T_2: 5584659944396295300
+      travel_bag_512_T_3: 15610949067573166
+      travel_bag_512_T_4: 1030893027212401418
+      travel_bag_512_T_5: -3461465181709960277
+      travel_bag_512_T_6: 161552940277860131
+      travel_bag_512_T_7: -8339950944252379425
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 285285
-  packageName: Fantasy RPG GUI
-  packageVersion: 2.1
-  assetPath: Assets/Artsystack - Fantasy RPG GUI/Resources/Sprites/flaticon/textured/512/travel_bag_512_T.png
-  uploadId: 879878
