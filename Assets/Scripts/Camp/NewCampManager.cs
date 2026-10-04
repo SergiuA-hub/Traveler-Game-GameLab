@@ -432,7 +432,13 @@ public class NewCampManager : MonoBehaviour
     {
         campingPanelUI.SetActive(false);
         sleepingBagPanel.gameObject.SetActive(false);
+        float sleepQuality = campStats.fireLevel * 0.35f + campStats.shelterLevel* 0.25f + campStats.traderWellbeingLevel * 0.30f + campStats.cargoSafetyLevel * 0.10f;
+        sleepQuality = Mathf.Clamp01(sleepQuality);
+        
+        float estimatedStamina = Mathf.Min(staminaIncrease * sleepQuality, player.stats.maxStamina - player.stats.currentStamina);
+        Debug.Log($"Estimated stamina increase: {estimatedStamina} (staminaIncrease: {staminaIncrease}, sleepQuality: {sleepQuality})");
 
+        sleepQuality = Mathf.Clamp01(sleepQuality);
         //staminaIncrease means hours because the restore is 1/h
         Debug.Log($"Rest for {staminaIncrease}");
 

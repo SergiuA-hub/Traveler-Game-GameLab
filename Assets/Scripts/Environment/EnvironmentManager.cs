@@ -20,7 +20,8 @@ public enum SafetyLevel
 {
     SAFE,
     MODERATE,
-    UNSAFE
+    UNSAFE,
+    DANGEROUS
 }
 
 public enum WeatherCondition
@@ -91,12 +92,13 @@ public class EnvironmentManager : MonoBehaviour
         switch (time)
         {
             case TimeOfDay.Day:
-                Debug.Log("It's daytime!");
                 break;
 
             case TimeOfDay.Night:
-                Debug.Log("It's nighttime!");
-                temperatureCondition += 1;
+                if(temperatureCondition != TemperatureLevel.FREEZING)
+                    temperatureCondition += 1;
+                if(safetyCondition != SafetyLevel.UNSAFE)
+                    safetyCondition += 1;
                 break;
 
             default:

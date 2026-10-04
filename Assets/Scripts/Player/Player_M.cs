@@ -54,7 +54,6 @@ public class Player_M : MonoBehaviour
 
         if (isResting)
         {
-            Debug.Log("PLAYER IS RESTING");
             return;
         }
             
