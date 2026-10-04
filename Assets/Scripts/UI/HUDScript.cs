@@ -32,12 +32,16 @@ public class HUDScript : MonoBehaviour
     public TextMeshProUGUI hungerText;
     public TextMeshProUGUI hungerConsumptionText;
 
+    [Header("Camp")]
+    public Button campButton;
+
+    public TextMeshProUGUI speed;
     [Header("DateTime")]
     public TextMeshProUGUI dateText;
     public TextMeshProUGUI seasonText;
-
-    public string currentSeason = "Summer";
-
+    public TextMeshProUGUI weatherText;
+    public Season currentSeason = Season.Summer;
+    public WeatherType currentWeather = WeatherType.Clear;
 
 
     void Start()
@@ -73,12 +77,20 @@ public class HUDScript : MonoBehaviour
         staminaConsumptionText.text = staminaToShow;
         hpConsumptionText.text = $"";
         
+        if(player.stats.currentStamina < GlobalSettingsManager.CAMP_STAMINA_POSSIBLE && !player.isCamping)
+        {            
+            campButton.interactable = true;
+        }else campButton.interactable = false;
+
         string hungerToShow = player.stats.currentHunger == 0 ? "-" : $"- {player.hungerDropPerHour}/h";
         hungerConsumptionText.text = hungerToShow;
 
 
         string thirstToShow = player.stats.currentThirst == 0 ? "-" : $"- {player.thirstDropPerHour}/h";
         thirstConsumptionText.text = thirstToShow;
+
+        float speedValue = player.stats.currentSpeed / (GlobalSettingsManager.HOUR_DURATION / timeManager.getHourDuration());
+        speed.text = $"{speedValue.ToString("F1")}";
     }
 
     void UpdateTimeDisplay ()
@@ -101,6 +113,11 @@ public class HUDScript : MonoBehaviour
     
     public void ChangeSeason()
     {
-        seasonText.text = currentSeason;
+        seasonText.text = currentSeason.ToString();
+    }
+    
+    public void ChangeWeather()
+    {
+        weatherText.text = currentWeather.ToString();
     }
 }

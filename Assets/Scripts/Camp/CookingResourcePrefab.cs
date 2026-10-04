@@ -13,13 +13,13 @@ public class CookingResourcePrefab : MonoBehaviour, IPointerEnterHandler, IPoint
     public TMP_Text resStat1;
     public GameObject resStat2Panel;
     public TMP_Text resStat2;
-    private InventoryItem item;
+    private ResourceAmount item;
     private CookingPotUI callback;
     //mouse over properties
     public Image backgroundImage;
 
-    private Color normalColor = new Color32(0xEB, 0xD1, 0xA9, 255); // #EBD1A9
-    private Color hoverColor = new Color32(0xF3, 0xDF, 0xB9, 255); // #F3DFB9
+    private Color normalColor = new Color32(0xEB, 0xD1, 0xA9, 200); // #EBD1A9
+    private Color hoverColor = new Color32(0xF3, 0xDF, 0xB9, 200); // #F3DFB9
     private void Awake()
     {
         if (backgroundImage == null)
@@ -29,7 +29,7 @@ public class CookingResourcePrefab : MonoBehaviour, IPointerEnterHandler, IPoint
             backgroundImage.color = normalColor;
     }
 
-    public void setup(InventoryItem itm, CookingPotUI cb)
+    public void setup(ResourceAmount itm, CookingPotUI cb)
     {
         item = itm;
         callback = cb;
@@ -43,9 +43,9 @@ public class CookingResourcePrefab : MonoBehaviour, IPointerEnterHandler, IPoint
         if (item.resourceSO.stat_restore > 0)
         {
             resStat1Panel.SetActive(true);
-            if(item.resourceSO.resourceType == ResourceType.Eat)
+            if(item.resourceSO.resourceType.Contains(ResourceType.Eat))
                 resStat1.text = $"+ {item.resourceSO.stat_restore} Hunger";
-            if (item.resourceSO.resourceType == ResourceType.Drink)
+            if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
                 resStat1.text = $"+ {item.resourceSO.stat_restore} Thirst";
         }
         else resStat1Panel.SetActive(false);

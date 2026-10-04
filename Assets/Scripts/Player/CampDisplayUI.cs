@@ -56,12 +56,12 @@ public class CampDisplayUI : MonoBehaviour
 
         foreach (var item in player.invetory.Inventory)
         {
-            if (item.resourceSO.resourceType == ResourceType.Eat)
+            if (item.resourceSO.resourceType.Contains(ResourceType.Eat))
             {
                 GameObject go = Instantiate(supplyPrefab, foodSuppliesList.transform);
                 go.GetComponent<ResourceListPrefab>().Setup(item, this);
             }
-            else if (item.resourceSO.resourceType == ResourceType.Drink)
+            else if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
             {
                 GameObject go = Instantiate(supplyPrefab, drinkSuppliesList.transform);
                 go.GetComponent<ResourceListPrefab>().Setup(item, this);
@@ -108,9 +108,9 @@ public class CampDisplayUI : MonoBehaviour
     public void addResourceToConsumption(InventoryItem item)
     {
         cleanSupplies();
-        if(item.resourceSO.resourceType == ResourceType.Eat)
+        if(item.resourceSO.resourceType.Contains(ResourceType.Eat))
             camp.addToFood(item);
-        if (item.resourceSO.resourceType == ResourceType.Drink)
+        if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
             camp.addToDrink(item);
 
         updateInventory();

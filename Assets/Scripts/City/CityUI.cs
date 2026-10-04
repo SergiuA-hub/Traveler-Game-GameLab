@@ -1,6 +1,9 @@
+using JetBrains.Annotations;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 public enum CityUIPage
 {
     Lobby=0,
@@ -23,30 +26,45 @@ public class CityUI : MonoBehaviour
     [SerializeField] private Transform Content;
     [SerializeField] private TMP_Text settlementName;
 
-    [Header("Buy")]
+    [Header("Trade Panel")]
 
-    //BUY
+    // BUY & SELL
     [SerializeField] private TradeItemDisplay tradePrfab;
     [SerializeField] private Transform buyContent;
 
-    //Sell
-    [Header("Sell")]
     [SerializeField] private TradeItemDisplay tradePlayerPrefab;
     [SerializeField] private Transform SellContent;
 
     //Components
     public Setlement setlement;
     public PlayerInventory_M playerInventory;
-
-    //Player money
     [SerializeField] private TextMeshProUGUI playerCoinsDisplay;
 
 
-    [Header("Current Trade Item Display")]
+    [Header("Current TRADE_ITEM_DISPLAY")]
     
     [SerializeField] private Image currentTradeItemImage;
     [SerializeField] private TextMeshProUGUI currentTradeItemName;
-    [SerializeField] private TextMeshProUGUI currentTradeItemPrice;   
+    [SerializeField] private TextMeshProUGUI currentTradeItemPrice;
+    [SerializeField] private TextMeshProUGUI buySellButtonText;
+    [SerializeField] private TextMeshProUGUI currentItemAmount;
+    //Slider
+    public Slider sliderAmount;
+    [SerializeField] private TextMeshProUGUI currentTextAmount;
+    
+
+    [Header("Shop page")]
+
+    [SerializeField] private Transform ShopContent;
+    [SerializeField] private ShopItemDisplay ItemShopPrefab;
+
+    [Header("Current SHOP_ITEM_DISPLAY")]
+    [SerializeField] private Image currentShopItemIcon;
+    [SerializeField] private TextMeshProUGUI currentShopItemName;
+    [SerializeField] private TextMeshProUGUI currentShopItemPrice;
+    [SerializeField] private TextMeshProUGUI currentShopItemDescription;
+    
+
 
 
     [Header("PAGES")]
@@ -67,6 +85,7 @@ public class CityUI : MonoBehaviour
     private void Update()
     {
         DisplayPlayerCoins();
+        currentTextAmount.text = sliderAmount.value.ToString();
         
     }
 
@@ -85,7 +104,7 @@ public class CityUI : MonoBehaviour
                
                 break;
             case CityUIPage.Shop:
-               
+               DisplayShop();
                 break;
             case CityUIPage.Trade:
                 DisplayTrade();
@@ -146,17 +165,18 @@ public class CityUI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        //setlement = GetComponent<Setlement>();
+        
         //Create list
         foreach (var item in currentSettlement.settlementStock)
         {
             TradeItemDisplay row = Instantiate(tradePrfab, buyContent);
             row.PopulateBuyIcon(item, this);
             
+
             if (settlementsManager.currentItemSelected != null && settlementsManager.currentItemSelected.tradeSettlementItem != null)
                 if(item.resource.itemName == settlementsManager.currentItemSelected.tradeSettlementItem.resource.itemName)
                 {
-                    Debug.Log($"item.resource.itemName:{item.resource.itemName}");
+                    //Debug.Log($"item.resource.itemName:{item.resource.itemName}");
                     SetCurrentTradeItem(row);
                 }
             
@@ -169,7 +189,6 @@ public class CityUI : MonoBehaviour
             row.PopulateSellIcon(item, this);
         }
 
-        
     }
 
     public void DisplayPlayerCoins()
@@ -182,15 +201,66 @@ public class CityUI : MonoBehaviour
         settlementsManager.currentItemSelected = item;
         currentTradeItemImage.sprite = item.itemIcon.sprite;
         currentTradeItemName.text = item.itemNameText.text;
+        
+
 
         if (item.tradeSettlementItem != null)
             currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeSettlementItem.resource).ToString("0.0");
         else currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeInventoryItem.resourceSO).ToString("0.0");
+
+        //Buttons
+        SetButtonText(item);
+        SliderMaxValue();
+
+    }
+
+    public void SliderMaxValue()
+    {
+        //Slider
+        if (settlementsManager.currentItemSelected.tradeInventoryItem == null)
+        {
+            sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeSettlementItem.amount;
+        }
+        if (settlementsManager.currentItemSelected.tradeSettlementItem == null)
+        {
+            sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeInventoryItem.amount;
+        }
+        
+    }
+
+    public int ReturnCurentSliderValue()
+    {
+        return Mathf.RoundToInt(sliderAmount.value);
     }
 
 
-   
+    //############
+    //SHOP AREA
+    //############
 
+    public void DisplayShop()
+    {
+        foreach(Transform child in ShopContent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (var item in currentSettlement.settlementShopItems)
+        {
+            ShopItemDisplay row = Instantiate(ItemShopPrefab, ShopContent);
+            row.PopulateIcons(item.shopItems, this);
+        }
+    }
+    public void SetCurrentShopItem(ShopItemDisplay shopItem)
+    {
+        settlementsManager.currentShopItemSelected = shopItem;
+
+        //Set The display Icons
+        //currentShopItemIcon.sprite = shopItem.IconImage.sprite;
+        currentShopItemName.text = shopItem.itemName.text;
+        
+
+    }
 
 
     //BUTTONS FUNCTIONS
@@ -205,7 +275,18 @@ public class CityUI : MonoBehaviour
         //setlement.CityObjectUI.SetActive(false);
         this.gameObject.SetActive(false);
     }
-
+    private void SetButtonText(TradeItemDisplay typeItem)
+    {
+        if(typeItem.tradeInventoryItem != null)
+        {
+            buySellButtonText.text = "SELL";
+        }
+        if(typeItem.tradeSettlementItem != null)
+        {
+            buySellButtonText.text = "BUY";
+        }
+    }
+    
     //initial setup
     public void prepareSettlement(SettlementRuntime settlement)
     {
