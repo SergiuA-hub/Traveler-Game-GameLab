@@ -627,6 +627,7 @@ public class NewCampManager : MonoBehaviour
 
     public void hourlyUpdate(DateTime t)
     {
+        Debug.Log("HOURLY");
         int remainingHours = restDuration - restTimeCounter;
         
         if (remainingHours > 0)
