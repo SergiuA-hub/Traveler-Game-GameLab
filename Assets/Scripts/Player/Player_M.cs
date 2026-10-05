@@ -1,3 +1,5 @@
+using System.Net.Mail;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 
@@ -14,6 +16,7 @@ public class Player_M : MonoBehaviour
     public PlayerStats_M stats;
     public PlayerMovement_M move;
     public PlayerInventory_M invetory;
+    public PlayerAttachments_M attachments;
     public PlayerVisual_M visual;
     public Rigidbody2D rb;
     public GameInput gameInput;
@@ -33,6 +36,7 @@ public class Player_M : MonoBehaviour
         stats = GetComponent<PlayerStats_M>();
         move = GetComponent<PlayerMovement_M>();
         invetory = GetComponent<PlayerInventory_M>();
+        attachments = GetComponent<PlayerAttachments_M>();
         visual = GetComponent<PlayerVisual_M>();
 
         //OtherComponents
@@ -110,6 +114,26 @@ public class Player_M : MonoBehaviour
         stats.currentHp -= damage;
     }
 
+    public void Eat(ResourceSO res, int amount = 1)
+    {
+        if (!res.resourceType.Contains(ResourceType.Eat))
+            return;
+
+        stats.currentHunger += res.stat_restore * amount;
+        stats.currentHunger = Mathf.Min(stats.currentHunger, stats.maxHunger);
+
+        stats.currentHp += res.HP_restore * amount;
+        stats.currentHp = Mathf.Min(stats.currentHp, stats.maxHp);
+    }
+
+    public void Drink(ResourceSO res, int amount = 1)
+    {
+        if (!res.resourceType.Contains(ResourceType.Drink))
+            return;
+        
+        stats.currentThirst += res.stat_restore * amount;
+        stats.currentThirst = Mathf.Min(stats.currentThirst, stats.maxThirst);
+    }
 
     public void Heal(float amount)
     {

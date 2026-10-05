@@ -171,6 +171,7 @@ public class CityUI : MonoBehaviour
             TradeItemDisplay row = Instantiate(tradePrfab, buyContent);
             row.PopulateBuyIcon(item, this);
             
+
             if (settlementsManager.currentItemSelected != null && settlementsManager.currentItemSelected.tradeSettlementItem != null)
                 if(item.resource.itemName == settlementsManager.currentItemSelected.tradeSettlementItem.resource.itemName)
                 {
