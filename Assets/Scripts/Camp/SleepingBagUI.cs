@@ -32,15 +32,7 @@ public class SleepingBagUI : MonoBehaviour
         staminaValueTxt.text = $"{Mathf.FloorToInt(player.stats.currentStamina)}/{Mathf.FloorToInt(player.stats.maxStamina)}";        
         staminaIncreaseTxt.text = "";
         updateHours(timeManager.currentTime);
-        
-        //timeManager.onHourChanged.AddListener(updateHours);
     }
-
-    public void OnDisable()
-    {
-        //timeManager.onHourChanged.RemoveListener(updateHours);
-    }
-
     
     private void Update()
     {
