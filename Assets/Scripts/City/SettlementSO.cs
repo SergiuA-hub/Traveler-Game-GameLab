@@ -10,6 +10,7 @@ public class SettlementSO : ScriptableObject
     public List<SettlementGood> production;
     public List<SettlementGood> consumption;
     public List<Item> itemsShop;
+    public List<Item> upgradeShop;
 
 
     

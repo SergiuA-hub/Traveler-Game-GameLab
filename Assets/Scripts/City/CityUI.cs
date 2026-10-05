@@ -1,9 +1,8 @@
-using JetBrains.Annotations;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+
 public enum CityUIPage
 {
     Lobby=0,
