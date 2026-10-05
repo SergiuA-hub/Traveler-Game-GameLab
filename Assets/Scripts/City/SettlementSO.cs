@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Settlement", menuName = "SettlementSO")]
@@ -8,6 +9,8 @@ public class SettlementSO : ScriptableObject
     public string settlementName;
     public List<SettlementGood> production;
     public List<SettlementGood> consumption;
+    public List<ShopItem> itemsShop;
+    
 }
 
 [System.Serializable]
@@ -41,4 +44,37 @@ public class SettlementGood
 
         return 0;
     }
+}
+public enum ShopItemType
+{
+    Usable,
+    Backpack,
+    HandCart,
+    OxCart,
+    HorseCart
+}
+
+public enum Status
+{
+    Owned,
+    Avalabile,
+    Locked
+}
+
+[System.Serializable]
+public class ShopItem
+{
+    public string ItemName;
+    public ItemsSO shopItems;
+    public ShopItemType itemType;
+    public Status itemStatus;
+    
+
+    public ShopItem(string name, ItemsSO itemSO,ShopItemType type)
+    {
+        this.ItemName = name;
+        this.shopItems = itemSO;
+        this.itemType = type;
+    }
+    
 }

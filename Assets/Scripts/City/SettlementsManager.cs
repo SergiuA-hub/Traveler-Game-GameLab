@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 [System.Serializable]
 public class SettlementDeployment
 {
@@ -23,18 +24,22 @@ public class TradeGood
     }
 }
 
+
+
 [System.Serializable]
 public class SettlementRuntime
 {
     public string settlementName;
     public SettlementSO defaultSettlementData;
     public List<TradeGood> settlementStock;
+    public List<ShopItem> settlementShopItems;
     public GameObject settlementGo;
 
     public SettlementRuntime(SettlementSO so)
     {
         defaultSettlementData = so;
         this.settlementName = defaultSettlementData.settlementName;
+        settlementShopItems = new List<ShopItem>();
         settlementStock = new List<TradeGood>();
 
     }
@@ -149,15 +154,21 @@ public class SettlementRuntime
 public class SettlementsManager : MonoBehaviour
 {
     public GameObject SettlementUI;
+    public CityUI cityUI;
     public Player_M player;
     public GameObject playerAtSettlement;
     public List<SettlementDeployment> settlementsList;
 
     public List<SettlementRuntime> settlements;
+    
+    //Current Item selected
     public TradeItemDisplay currentItemSelected;
+    public ShopItemDisplay currentShopItemSelected;
     public SettlementRuntime currentSettlement;
+    public Slider SliderAmount;
+   
     public TimeManager timeManager;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         if(timeManager!=null)
@@ -181,6 +192,10 @@ public class SettlementsManager : MonoBehaviour
             foreach (var res in settl.settlementSo.consumption)
             {
                 currentSettlement.settlementStock.Add(new TradeGood(res.resource, res.startingStock, res.resource.baseValue));
+            }
+            foreach(var item in settl.settlementSo.itemsShop)
+            {
+                currentSettlement.settlementShopItems.Add(new ShopItem(item.ItemName,item.shopItems,item.itemType));
             }
             currentSettlement.calculatePriceTiers();
 
@@ -264,13 +279,15 @@ public class SettlementsManager : MonoBehaviour
 
     public void BuyOrSell()
     {
-        Debug.Log("BUY SELL");
+        //Debug.Log("BUY SELL");
         
         //BUY
         if (currentItemSelected.tradeSettlementItem != null)
         {
+            
             //Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with proce {currentItemSelected.tradeSettlementItem.price}");
             //Check player money & space in backpack
+            
             if (player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price
             && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume, currentItemSelected.tradeSettlementItem.resource.weight))
             {
@@ -279,6 +296,7 @@ public class SettlementsManager : MonoBehaviour
                 updateCurrentSettlementPrices();
                 
                 //Display
+                
                 SettlementUI.GetComponent<CityUI>().DisplayTrade();
                 SettlementUI.GetComponent<CityUI>().DisplayPlayerCoins();
                 return;
@@ -288,6 +306,7 @@ public class SettlementsManager : MonoBehaviour
         //Sell
         if (currentItemSelected.tradeInventoryItem != null)
         {
+            
             if (!player.invetory.hasResources(currentItemSelected.tradeInventoryItem.resourceSO))
                 return;
 
@@ -301,4 +320,15 @@ public class SettlementsManager : MonoBehaviour
             return;
         }
     }
+
+    //Shop buy item
+    public void BuyShopItem()
+    {
+        if(currentShopItemSelected == null)
+        {
+            return;
+        }
+    }
+
+    
 }

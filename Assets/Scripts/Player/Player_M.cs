@@ -7,6 +7,7 @@ public class Player_M : MonoBehaviour
     [SerializeField] private Backpack currentBackpack;
 
     public bool isResting = false;
+    public bool isCamping = false;
     public bool rooted = false;
 
     //Components
@@ -20,7 +21,11 @@ public class Player_M : MonoBehaviour
     
     public float moveCounter = 0;
     public float stationaryCounter = 0;
-    
+
+    //for UI only
+    public float staminDropPerHour = 0f;
+    public float hungerDropPerHour = 0f;
+    public float thirstDropPerHour = 0f;
 
     private void Awake()
     {
@@ -47,22 +52,32 @@ public class Player_M : MonoBehaviour
         if (timeManager.time_stopped)
             return;
 
-        if(isResting)
+        if (isResting)
+        {
             return;
+        }
+            
 
         if (move.IsMoving() && !rooted)
         {
             stats.currentStamina -= (stats.BASE_STAMINA_DROP_PER_H * stats.currentStaminaDrainMultiplier / timeManager.getHourDuration()) * Time.deltaTime;            
             stats.currentThirst -= (stats.THIRST_DRAIN_PER_H / timeManager.getHourDuration()) * Time.deltaTime;
+            
+            staminDropPerHour = stats.BASE_STAMINA_DROP_PER_H * stats.currentStaminaDrainMultiplier;
+            thirstDropPerHour = stats.THIRST_DRAIN_PER_H;
         }
         else
         {
             stats.currentStamina -= (stats.BASE_STAMINA_IDLE_DRAIN * stats.currentStaminaDrainMultiplier / timeManager.getHourDuration()) * Time.deltaTime;
             stats.currentThirst -= (stats.BASE_THIRST_IDLE_DRAIN / timeManager.getHourDuration()) * Time.deltaTime;
+
+            staminDropPerHour = stats.BASE_STAMINA_IDLE_DRAIN * stats.currentStaminaDrainMultiplier;
+            thirstDropPerHour = stats.BASE_THIRST_IDLE_DRAIN;
         }
 
         //not related to movement, but still needs to be updated
         stats.currentHunger -= (stats.HUNGER_DRAIN_PER_H / timeManager.getHourDuration()) * Time.deltaTime;
+        hungerDropPerHour = stats.HUNGER_DRAIN_PER_H;
 
         //update stamina drain multiplier based on hunger and thirst thresholds
         if (stats.currentThirst < GlobalSettingsManager.PLAYER_THIRST_THRESHOLD || stats.currentHunger < GlobalSettingsManager.PLAYER_HUNGER_THRESHOLD)
