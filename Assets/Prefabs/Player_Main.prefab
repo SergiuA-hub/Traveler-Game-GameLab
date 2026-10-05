@@ -81,16 +81,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player_M
   currentBackpack: {fileID: 1899591643835232334, guid: 1a7625fc71bd2d54bb05b24c11fd3bd3, type: 3}
   isResting: 0
+  isCamping: 0
   rooted: 0
   stats: {fileID: 0}
   move: {fileID: 0}
   invetory: {fileID: 0}
+  attachments: {fileID: 0}
   visual: {fileID: 0}
   rb: {fileID: 0}
   gameInput: {fileID: 0}
   timeManager: {fileID: 0}
   moveCounter: 0
   stationaryCounter: 0
+  staminDropPerHour: 0
+  hungerDropPerHour: 0
+  thirstDropPerHour: 0
 --- !u!114 &879741902398196802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats_M
   moveSpeed: 1
+  currentSpeed: 0
   baseSpeed: 1
   startSpeed: 1
   acceleration: 1
