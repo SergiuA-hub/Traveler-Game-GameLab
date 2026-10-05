@@ -103,7 +103,7 @@ public class CampResolutionScreen : MonoBehaviour
         rect.anchorMax = Vector2.one;
         rect.offsetMin = Vector2.zero;
         rect.offsetMax = Vector2.zero;
-        cargoPanelContainer.GetComponent<StatResolution>().setup("Cargo", campManager.campStats.cargoSafetyLevel, "Cargo", (int)envManager.temperatureCondition + 1, "Cargo Safety", envManager.safetyCondition.ToString());
+        cargoPanelContainer.GetComponent<StatResolution>().setup("Cargo", campManager.campStats.cargoSafetyLevel, "Cargo", (int)envManager.safetyCondition + 1, "Cargo Safety", envManager.safetyCondition.ToString());
         yield return new WaitForSeconds(0.5f);
 
         // 3. Trader wellbeing
