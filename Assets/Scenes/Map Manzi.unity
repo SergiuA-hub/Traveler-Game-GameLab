@@ -6734,6 +6734,7 @@ MonoBehaviour:
   onEvening:
     m_PersistentCalls:
       m_Calls: []
+  player: {fileID: 0}
 --- !u!4 &301053801
 Transform:
   m_ObjectHideFlags: 0
@@ -70296,11 +70297,11 @@ PrefabInstance:
       objectReference: {fileID: 301053799}
     - target: {fileID: 6101656753173500084, guid: 40bfcf000c6fec34297e7f280f1361fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.08974
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 6101656753173500084, guid: 40bfcf000c6fec34297e7f280f1361fd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.26794
+      value: 1.67
       objectReference: {fileID: 0}
     - target: {fileID: 6101656753173500084, guid: 40bfcf000c6fec34297e7f280f1361fd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -599547,6 +599548,7 @@ MonoBehaviour:
   currentpage: 0
   itemPrefab: {fileID: 7698181275806001906, guid: 8eb821cee3573cc41bea9cac25c9e540, type: 3}
   Content: {fileID: 1088507933}
+  settlementName: {fileID: 0}
   tradePrfab: {fileID: 6307333992456499657, guid: 1736463a4b3435c42ba05194d6e8ff62, type: 3}
   buyContent: {fileID: 76642021}
   tradePlayerPrefab: {fileID: 6307333992456499657, guid: 1736463a4b3435c42ba05194d6e8ff62, type: 3}
@@ -610529,6 +610531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SettlementsManager
   SettlementUI: {fileID: 1698649426}
   player: {fileID: 2002823717}
+  playerAtSettlement: {fileID: 0}
   settlementsList:
   - settlementSo: {fileID: 11400000, guid: 5c45bdb57a6c67441ad678f1fe3b4597, type: 2}
     settlmentGo: {fileID: 2129102338}
