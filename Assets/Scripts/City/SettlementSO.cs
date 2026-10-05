@@ -9,7 +9,9 @@ public class SettlementSO : ScriptableObject
     public string settlementName;
     public List<SettlementGood> production;
     public List<SettlementGood> consumption;
-    public List<ShopItem> itemsShop;
+    public List<Item> itemsShop;
+
+
     
 }
 
@@ -62,7 +64,7 @@ public enum Status
 }
 
 [System.Serializable]
-public class ShopItem
+public class Item
 {
     public string ItemName;
     public ItemsSO shopItems;
@@ -70,7 +72,7 @@ public class ShopItem
     public Status itemStatus;
     
 
-    public ShopItem(string name, ItemsSO itemSO,ShopItemType type)
+    public Item(string name, ItemsSO itemSO,ShopItemType type)
     {
         this.ItemName = name;
         this.shopItems = itemSO;

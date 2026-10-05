@@ -32,14 +32,14 @@ public class SettlementRuntime
     public string settlementName;
     public SettlementSO defaultSettlementData;
     public List<TradeGood> settlementStock;
-    public List<ShopItem> settlementShopItems;
+    public List<Item> settlementShopItems;
     public GameObject settlementGo;
 
     public SettlementRuntime(SettlementSO so)
     {
         defaultSettlementData = so;
         this.settlementName = defaultSettlementData.settlementName;
-        settlementShopItems = new List<ShopItem>();
+        settlementShopItems = new List<Item>();
         settlementStock = new List<TradeGood>();
 
     }
@@ -195,7 +195,7 @@ public class SettlementsManager : MonoBehaviour
             }
             foreach(var item in settl.settlementSo.itemsShop)
             {
-                currentSettlement.settlementShopItems.Add(new ShopItem(item.ItemName,item.shopItems,item.itemType));
+                currentSettlement.settlementShopItems.Add(new Item(item.ItemName,item.shopItems,item.itemType));
             }
             currentSettlement.calculatePriceTiers();
 
