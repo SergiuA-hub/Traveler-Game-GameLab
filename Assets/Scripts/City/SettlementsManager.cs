@@ -165,8 +165,7 @@ public class SettlementsManager : MonoBehaviour
     public TradeItemDisplay currentItemSelected;
     public ShopItemDisplay currentShopItemSelected;
     public SettlementRuntime currentSettlement;
-    public Slider SliderAmount;
-   
+      
     public TimeManager timeManager;
     
     void Start()

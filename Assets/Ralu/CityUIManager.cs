@@ -9,7 +9,6 @@ public class CityUIManager : MonoBehaviour
     public GameObject cityUI;
     bool playerInCity = false;
     bool UIup = false;
-    public TextMeshProUGUI prompt;
     public Button tradeButton; 
 
     public Vector2 input;
@@ -46,7 +45,7 @@ public class CityUIManager : MonoBehaviour
             playerInCity = true;
             tradeButton.gameObject.SetActive(true);
             settlementManager.playerAtSettlementGate(gameObject);
-            //prompt.gameObject.SetActive(true);
+           
             gameInput.OnInteract += GameInput_OnInteract;
         }
     }
@@ -59,7 +58,7 @@ public class CityUIManager : MonoBehaviour
             playerInCity = false;
             tradeButton.gameObject.SetActive(false) ;
             settlementManager.playerLeftSettlement();
-            //prompt.gameObject.SetActive(false);
+            
             gameInput.OnInteract -= GameInput_OnInteract;
         }
     }
