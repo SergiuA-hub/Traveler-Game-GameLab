@@ -11,7 +11,7 @@ public class NavigationUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public NavigationArrow navigationArrow;
     public GameObject navigationArrowPanel;
     public GameObject noNavigationPanel;
-
+    public NavigationListPanel navigationDestionationsPanel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,11 +37,12 @@ public class NavigationUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerEnter(PointerEventData eventData)
     {
         destinationList.SetActive(true);
+        navigationDestionationsPanel.stopClosing();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        
+        navigationDestionationsPanel.startClosing();
     }
 
     public void OnPointerClick(PointerEventData eventData)

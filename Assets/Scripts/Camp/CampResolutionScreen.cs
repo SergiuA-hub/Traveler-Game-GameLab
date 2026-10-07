@@ -10,7 +10,6 @@ public class CampResolutionScreen : MonoBehaviour
     public Player_M player;
 
     public GameObject resourcesPanelContent;
-    public GameObject assignedResourcesList;
     public GameObject resPrefab;
 
     public GameObject firePanelContainer;
@@ -48,11 +47,6 @@ public class CampResolutionScreen : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (Transform child in assignedResourcesList.transform)
-        {
-            Destroy(child.gameObject);
-        }
-
         firePanelContainer.SetActive(false);
         shelterPanelContainer.SetActive(false);
         cargoPanelContainer.SetActive(false);
@@ -60,17 +54,17 @@ public class CampResolutionScreen : MonoBehaviour
     }
     private IEnumerator ShowResourcesSequentially()
     {
-        // 1. Show assigned resources
-        foreach (var res in campManager.campSupplies)
-        {
-            GameObject go = Instantiate(resPrefab, assignedResourcesList.transform);
-            go.GetComponent<ResourceDropPrefab>().setup(res);
-            go.GetComponent<ResourceDropPrefab>().SetTextColor(Color.white);
+        //// 1. Show assigned resources - hiden from UI
+        //foreach (var res in campManager.welnessSupplies)
+        //{
+        //    GameObject go = Instantiate(resPrefab, assignedResourcesList.transform);
+        //    go.GetComponent<ResourceDropPrefab>().setup(res);
+        //    go.GetComponent<ResourceDropPrefab>().SetTextColor(Color.white);
 
-            yield return new WaitForSeconds(0.2f);
-        }
+        //    yield return new WaitForSeconds(0.2f);
+        //}
 
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
 
         // 2. Camp resolution
         firePanelContainer.SetActive(true);
