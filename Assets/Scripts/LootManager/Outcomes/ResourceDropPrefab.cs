@@ -15,5 +15,11 @@ public class ResourceDropPrefab : MonoBehaviour
         resName.text = drop.resourceSO.itemName;
         resIcon.sprite = drop.resourceSO.sprite;
         resQty.text = drop.amount.ToString();
-    }    
+    }
+
+    public void SetTextColor(Color color)
+    {
+        resName.color = color;
+        resQty.color = color;
+    }
 }

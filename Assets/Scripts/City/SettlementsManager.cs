@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 [System.Serializable]
@@ -233,6 +234,8 @@ public class SettlementsManager : MonoBehaviour
 
     public void dailyEvents(DateTime t)
     {
+        Stopwatch sw = Stopwatch.StartNew();
+
         foreach (var settlement in settlements)
         {
             foreach (var good in settlement.defaultSettlementData.production)
@@ -247,6 +250,10 @@ public class SettlementsManager : MonoBehaviour
         }
 
         calculateDailyPrices();
+
+        sw.Stop();
+
+        UnityEngine.Debug.Log($"dailyEvents took {sw.Elapsed.TotalMilliseconds:F3} ms");
     }
 
     public void playerAtSettlementGate(GameObject settlementGo)
@@ -262,13 +269,13 @@ public class SettlementsManager : MonoBehaviour
 
     public void EnterCity()
     {
-        Debug.Log($"Player enering {playerAtSettlement}");
+        UnityEngine.Debug.Log($"Player enering {playerAtSettlement}");
 
         foreach (var settlement in settlements)
         {
             if (settlement.settlementGo.name == playerAtSettlement.name)
             {
-                Debug.Log($"Player entered in {settlement.settlementName}");
+                UnityEngine.Debug.Log($"Player entered in {settlement.settlementName}");
                 currentSettlement = settlement;
                 SettlementUI.GetComponent<CityUI>().prepareSettlement(settlement);
             }

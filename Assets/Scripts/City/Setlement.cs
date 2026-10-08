@@ -35,12 +35,7 @@ public class Setlement : MonoBehaviour
 
 
     private const string playerLayer = "Player";
-    private void OnEnable()
-    {
-        //TEST ON HOUR CHANGE
-        timeManager.onHourChanged.AddListener(Consume);
-        timeManager.onHourChanged.AddListener(Produce);
-    }
+
     private void Start()
     {
         cityUI = GetComponent<CityUI>();
@@ -58,24 +53,6 @@ public class Setlement : MonoBehaviour
             //CityObjectUI.SetActive(true);
         }
     }
-
-
-    private void Consume(DateTime dateTime) 
-    {
-        foreach (var item in settlementItems) 
-        {
-            
-        }
-    }
-
-    private void Produce(DateTime dateTime)
-    {
-        foreach (var item in settlementItems)
-        {
-
-        }
-    }
-
     public void BuyOrSell()
     {
         //BUY

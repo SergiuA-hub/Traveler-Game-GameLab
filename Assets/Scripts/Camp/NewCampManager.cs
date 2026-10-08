@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,6 +36,8 @@ public class CampStats
     [Range(1, 5)]
     public int traderWellbeingLevel = 1;
 
+    public float sleepQuality;
+    public float staminaRestoreRatio;
     public const int MIN_FIRE_LEVEL = 1;
     public const int MAX_FIRE_LEVEL = 5;
     
@@ -46,6 +49,16 @@ public class CampStats
 
     public const int MIN_TRADER_WELLBEING_LEVEL = 1;
     public const int MAX_TRADER_WELLBEING_LEVEL = 5;
+
+    public void resetStats()
+    {
+        fireLevel = MIN_FIRE_LEVEL;
+        shelterLevel = MIN_SHELTER_LEVEL;
+        cargoSafetyLevel = MIN_CARGO_SAFETY_LEVEL;
+        traderWellbeingLevel = MIN_TRADER_WELLBEING_LEVEL;
+        sleepQuality = 0;
+        staminaRestoreRatio = 1;
+    }
 
     public void IncreaseFire(int amount = 1)
     {
@@ -135,6 +148,7 @@ public class NewCampManager : MonoBehaviour
 {
     public Button campButton;
     public Player_M player;
+    public EnvironmentManager envManager;
     public CampStats campStats = new CampStats();
     private int restTimeCounter = 0;
     private int restDuration = 0;
@@ -169,7 +183,12 @@ public class NewCampManager : MonoBehaviour
     public GameObject roadsObject;
     public GameObject interactableObjects;
 
-    public List<ResourceAmount> campSupplies = new List<ResourceAmount>();
+    //public List<ResourceAmount> campSupplies = new List<ResourceAmount>();
+    public List<ResourceAmount> welnessSupplies = new List<ResourceAmount>();
+    public List<ResourceAmount> fuelSpplies = new List<ResourceAmount>();
+    public List<ResourceAmount> cargoSupplies = new List<ResourceAmount>();
+    public List<ResourceAmount> shelterSupplies = new List<ResourceAmount>();
+    public CampResolutionScreen campResloution;
     private void Start()
     {
         caravanCameraSize = playerCam.orthographicSize;
@@ -218,7 +237,15 @@ public class NewCampManager : MonoBehaviour
 
     private void setupCamp()
     {
-        campSupplies.Clear();
+        //campSupplies.Clear();
+        welnessSupplies.Clear();
+        fuelSpplies.Clear();
+        shelterSupplies.Clear();
+        cargoSupplies.Clear();
+        welnessSupplies.Clear();
+
+        campStats.resetStats();
+
         player.isCamping = true;
 
         campButton.interactable = false;
@@ -241,8 +268,13 @@ public class NewCampManager : MonoBehaviour
 
     public void dismissCamp()
     {
-        campSupplies.Clear();
-        
+        //campSupplies.Clear();
+        welnessSupplies.Clear();
+        fuelSpplies.Clear();
+        shelterSupplies.Clear();
+        cargoSupplies.Clear();
+        welnessSupplies.Clear();
+
         updateTempResList();
         campResPanel.SetActive(false);
         WorldStatsCampPreconditionScreen.SetActive(false);
@@ -432,41 +464,192 @@ public class NewCampManager : MonoBehaviour
     {
         campingPanelUI.SetActive(false);
         sleepingBagPanel.gameObject.SetActive(false);
-        float sleepQuality = campStats.fireLevel * 0.35f + campStats.shelterLevel* 0.25f + campStats.traderWellbeingLevel * 0.30f + campStats.cargoSafetyLevel * 0.10f;
-        sleepQuality = Mathf.Clamp01(sleepQuality);
-        
-        float estimatedStamina = Mathf.Min(staminaIncrease * sleepQuality, player.stats.maxStamina - player.stats.currentStamina);
-        Debug.Log($"Estimated stamina increase: {estimatedStamina} (staminaIncrease: {staminaIncrease}, sleepQuality: {sleepQuality})");
 
-        sleepQuality = Mathf.Clamp01(sleepQuality);
+        calculateCampStats();
+
+        
         //staminaIncrease means hours because the restore is 1/h
         Debug.Log($"Rest for {staminaIncrease}");
 
         player.isResting = true;
+        restDuration = staminaIncrease;
+
+        campResloution.gameObject.SetActive(true);        
+        campResloution.launchCampResolution();
+    }
+
+    public void calculateCampStats()
+    {
+        consumeFood();
+        consumeDrink();
+        consumeFuel();
+        consumeShelter();
+        consumeCargo();
+        
+        campStats.traderWellbeingLevel = Mathf.Clamp(Mathf.CeilToInt(((player.stats.currentHunger / player.stats.maxHunger) +(player.stats.currentThirst / player.stats.maxThirst)) / 2f * 5f),1,5);
+
+        int resultingFire = CalculateProtection(campStats.fireLevel,(int)envManager.temperatureCondition);
+
+        int resultingShelter = CalculateProtection(campStats.shelterLevel,(int)envManager.weatherCondition);
+
+        int resultingCargo = CalculateProtection(campStats.cargoSafetyLevel,(int)envManager.safetyCondition);
+
+        int resultingWellbeing = Mathf.Clamp(campStats.traderWellbeingLevel, 1, 5) * 20;
+
+        // Final weighted average (0–100%)
+        float sleepQuality = resultingFire * 0.35f + resultingShelter * 0.25f + resultingCargo * 0.30f + resultingWellbeing * 0.10f;
+
+        campStats.sleepQuality = sleepQuality;
+        campStats.staminaRestoreRatio = campStats.staminaRestoreRatio = Mathf.Clamp01(sleepQuality / 100f);
+    }
+    private int CalculateProtection(int campLevel, int worldCondition)
+    {
+        int worldLevel = worldCondition + 1;
+
+        int effectiveLevel = Mathf.Clamp(
+            5 + campLevel - worldLevel,
+            1,
+            5
+        );
+
+        return effectiveLevel * 20;
+    }
+    public void consumeFood()
+    {
+        foreach(var res in welnessSupplies)
+        {
+            if (res.resourceSO.resourceType.Contains(ResourceType.Eat))
+            {
+                player.Eat(res.resourceSO, res.amount);
+                player.invetory.Remove(res.resourceSO, res.amount);
+            }
+
+            if (player.stats.currentHunger >= player.stats.maxHunger && player.stats.currentHp >= player.stats.maxHp)
+                return;
+        }
+    }
+
+    public void consumeDrink()
+    {
+        foreach (var res in welnessSupplies)
+        {
+            if (res.resourceSO.resourceType.Contains(ResourceType.Drink))
+            {
+                player.Drink(res.resourceSO, res.amount);
+                player.invetory.Remove(res.resourceSO, res.amount);
+            }
+
+            if (player.stats.currentThirst >= player.stats.maxThirst)
+                return;
+        }
+    }
+
+    public void consumeFuel()
+    {
+        foreach (var res in fuelSpplies)
+        {
+            if (!res.resourceSO.resourceType.Contains(ResourceType.Fuel))
+                continue;
+
+            while (campStats.fireLevel < CampStats.MAX_FIRE_LEVEL && res.amount > 0)
+            {
+                int restore = Mathf.CeilToInt(res.resourceSO.stat_restore);
+
+                if (restore <= 0)
+                    break;
+
+                campStats.IncreaseFire(restore);
+
+                res.amount--;
+                player.invetory.Remove(res.resourceSO);
+            }
+
+            // Fire is full, no need to check other resources
+            if (campStats.fireLevel >= CampStats.MAX_FIRE_LEVEL)
+                break;
+        }
+    }
+
+    public void consumeShelter()
+    {
+        foreach (var res in shelterSupplies)
+        {
+            if (!res.resourceSO.resourceType.Contains(ResourceType.Reinforcement))
+                continue;
+
+            while (campStats.shelterLevel < CampStats.MAX_SHELTER_LEVEL && res.amount > 0)
+            {
+                int restore = Mathf.CeilToInt(res.resourceSO.stat_restore);
+
+                if (restore <= 0)
+                    break;
+
+                campStats.IncreaseShelter(restore);
+
+                res.amount--;
+                player.invetory.Remove(res.resourceSO);
+            }
+
+            // Fire is full, no need to check other resources
+            if (campStats.shelterLevel >= CampStats.MAX_SHELTER_LEVEL)
+                break;
+        }
+    }
+
+    public void consumeCargo()
+    {
+        foreach (var res in cargoSupplies)
+        {
+            if (!res.resourceSO.resourceType.Contains(ResourceType.Security))
+                continue;
+
+            while (campStats.cargoSafetyLevel < CampStats.MAX_CARGO_SAFETY_LEVEL && res.amount > 0)
+            {
+                int restore = Mathf.CeilToInt(res.resourceSO.stat_restore);
+
+                if (restore <= 0)
+                    break;
+
+                campStats.IncreaseCargoSafety(restore);
+
+                res.amount--;
+                player.invetory.Remove(res.resourceSO);
+            }
+
+            // Fire is full, no need to check other resources
+            if (campStats.cargoSafetyLevel >= CampStats.MAX_CARGO_SAFETY_LEVEL)
+                break;
+        }
+    }
+
+    public void resumeRestingAfterResolution()
+    {
+        campResloution.gameObject.SetActive(false);
 
         timeManager.fastForwardTime();
         restTimeCounter = 0;
 
         restScreenPanel.SetActive(true);
-        
+
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
 
         fadeCoroutine = StartCoroutine(FadeRestScreen(0f, 1f, false));
         restScreenPanel.GetComponent<RestingUI>().showRestingMessage();
-        restDuration = staminaIncrease;
+        
 
         timeManager.onHourChanged.AddListener(hourlyUpdate);
     }
 
     public void hourlyUpdate(DateTime t)
     {
+        Debug.Log("HOURLY");
         int remainingHours = restDuration - restTimeCounter;
         
         if (remainingHours > 0)
-        {
+        {            
+            player.stats.currentStamina = Mathf.Min(player.stats.currentStamina + campStats.staminaRestoreRatio, player.stats.maxStamina);
             restScreenText.text = $"{remainingHours} hours remaining";
-            player.stats.currentStamina = Mathf.Min(player.stats.currentStamina + 1, player.stats.maxThirst);
         }
         else
         {
@@ -525,13 +708,21 @@ public class NewCampManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-
-        if(campSupplies.Count == 0)
+        
+        if (fuelSpplies.Count == 0 && shelterSupplies.Count == 0 && cargoSupplies.Count == 0 && welnessSupplies.Count == 0)
         {
             introText.SetActive(true);
             return;
         }else introText.SetActive(false);
 
+        addSupliesToTempListUI(fuelSpplies);
+        addSupliesToTempListUI(shelterSupplies);
+        addSupliesToTempListUI(cargoSupplies);
+        addSupliesToTempListUI(welnessSupplies);
+    }
+
+    private void addSupliesToTempListUI(List<ResourceAmount> campSupplies)
+    {
         foreach (var res in campSupplies)
         {
             Debug.Log($"Adding {res.resourceSO.itemName} x {res.amount} to camp temp list");
@@ -541,6 +732,23 @@ public class NewCampManager : MonoBehaviour
     }
 
     public void addResourceToCampUsage(ResourceSO res)
+    {
+        if(res.resourceType.Contains(ResourceType.Eat) || res.resourceType.Contains(ResourceType.Drink))
+            addToList(res, welnessSupplies);
+
+        if (res.resourceType.Contains(ResourceType.Fuel))
+            addToList(res, fuelSpplies);
+        
+        if (res.resourceType.Contains(ResourceType.Reinforcement))
+            addToList(res, shelterSupplies);
+
+        if (res.resourceType.Contains(ResourceType.Security))
+            addToList(res, cargoSupplies);
+
+        updateTempResList();
+    }
+
+    private void addToList(ResourceSO res, List<ResourceAmount> campSupplies)
     {
         foreach (ResourceAmount resA in campSupplies)
         {
@@ -553,11 +761,34 @@ public class NewCampManager : MonoBehaviour
         }
 
         campSupplies.Add(new ResourceAmount(res, 1));
-        
-        updateTempResList();
     }
 
     public int getTempAmount(ResourceSO res)
+    {
+        if(res.resourceType.Contains(ResourceType.Eat) || res.resourceType.Contains(ResourceType.Drink))
+        {
+            return getTempCampSupplies(res, welnessSupplies);
+        }
+
+        if (res.resourceType.Contains(ResourceType.Fuel))
+        {
+            return getTempCampSupplies(res, fuelSpplies);
+        }
+
+        if (res.resourceType.Contains(ResourceType.Reinforcement))
+        {
+            return getTempCampSupplies(res, shelterSupplies);
+        }
+
+        if (res.resourceType.Contains(ResourceType.Security))
+        {
+            return getTempCampSupplies(res, cargoSupplies);
+        }
+
+        return 0;
+    }
+
+    private int getTempCampSupplies(ResourceSO res, List<ResourceAmount> campSupplies)
     {
         foreach (ResourceAmount resA in campSupplies)
         {
@@ -572,7 +803,7 @@ public class NewCampManager : MonoBehaviour
     public float getFuelAmount()
     {
         float totalFuel = 0;
-        foreach (ResourceAmount resA in campSupplies)
+        foreach (ResourceAmount resA in fuelSpplies)
         {
             if (resA.resourceSO.resourceType.Contains(ResourceType.Fuel))
             {
@@ -585,7 +816,7 @@ public class NewCampManager : MonoBehaviour
     public float getReinforcementAmount()
     {
         float totalReinforcement = 0;
-        foreach (ResourceAmount resA in campSupplies)
+        foreach (ResourceAmount resA in shelterSupplies)
         {
             if (resA.resourceSO.resourceType.Contains(ResourceType.Reinforcement))
             {
@@ -598,7 +829,7 @@ public class NewCampManager : MonoBehaviour
     public float getSecuringAmount()
     {
         float totalSecuring = 0;
-        foreach (ResourceAmount resA in campSupplies)
+        foreach (ResourceAmount resA in cargoSupplies)
         {
             if (resA.resourceSO.resourceType.Contains(ResourceType.Security))
             {
@@ -611,7 +842,7 @@ public class NewCampManager : MonoBehaviour
     public float getFoodAmount()
     {
         float totalFood = 0;
-        foreach (ResourceAmount resA in campSupplies)
+        foreach (ResourceAmount resA in welnessSupplies)
         {
             if (resA.resourceSO.resourceType.Contains(ResourceType.Eat))
             {
@@ -624,7 +855,7 @@ public class NewCampManager : MonoBehaviour
     public float getDrinkAmount()
     {
         float totalDrink = 0;
-        foreach (ResourceAmount resA in campSupplies)
+        foreach (ResourceAmount resA in welnessSupplies)
         {
             if (resA.resourceSO.resourceType.Contains(ResourceType.Drink))
             {
@@ -637,7 +868,7 @@ public class NewCampManager : MonoBehaviour
     public float getHPAmount()
     {
         float totalHP = 0;
-        foreach (ResourceAmount resA in campSupplies)
+        foreach (ResourceAmount resA in welnessSupplies)
         {
             if (resA.resourceSO.HP_restore > 0)
             {
