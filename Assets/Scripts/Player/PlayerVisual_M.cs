@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 public class PlayerVisual_M : MonoBehaviour
 {
-    private Player_M player;
+    public Player_M player;
     private PlayerMovement_M playerMovement;
     Animator anim;
     int currentState; // 0: idle, 1: moving
     private void Start()
     {
-        player = GetComponent<Player_M>();
-        playerMovement = GetComponent<PlayerMovement_M>();
+      //  player = GetComponent<Player_M>();
+        playerMovement = player.gameObject.GetComponent<PlayerMovement_M>();
         currentState = 0;
         anim = GetComponent<Animator>();
     }

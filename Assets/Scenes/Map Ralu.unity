@@ -6235,6 +6235,97 @@ PolygonCollider2D:
       - {x: 115.74786, y: 61.314346}
       - {x: 108.99512, y: 72.07118}
   m_UseDelaunayMesh: 1
+--- !u!1 &123987482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 123987483}
+  - component: {fileID: 123987484}
+  m_Layer: 0
+  m_Name: HorseCart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &123987483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123987482}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 525086985}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &123987484
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123987482}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: -1151573983
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 4452028634268911485, guid: 2af199f2cc29aad408fd7265c6b1c223, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.920635, y: 2.2698412}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
 --- !u!1001 &129310453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12896,7 +12987,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1493558449}
   m_FillRect: {fileID: 423621367}
   m_HandleRect: {fileID: 1493558448}
@@ -14225,7 +14316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WorldContitionsUI
   environmentManager: {fileID: 879770968}
-  player: {fileID: 0}
+  player: {fileID: 525086983}
   temperatureValue: {fileID: 832736343}
   temperatureBackground: {fileID: 1962286515}
   safetyValue: {fileID: 164677294}
@@ -24408,7 +24499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfd9f926f8a086478cd185cfe35c6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CargoCampUI
-  player: {fileID: 0}
+  player: {fileID: 525086983}
   timeManager: {fileID: 932758302}
   campManager: {fileID: 1622856382}
   fireSlider: {fileID: 1396238766}
@@ -27084,6 +27175,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 60880057156043123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
   m_PrefabInstance: {fileID: 1644766742}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &525086988 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4539409219275482829, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+  m_PrefabInstance: {fileID: 1644766742}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525086973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e7bb69f1267dc46bc5ff589ac69ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInvetory_M
 --- !u!1 &525922994
 GameObject:
   m_ObjectHideFlags: 0
@@ -51111,7 +51213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f0ab8d2e996474e95d7ee153ed60e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
-  player: {fileID: 0}
+  player: {fileID: 525086983}
   time_stopped: 0
   onHourChanged:
     m_PersistentCalls:
@@ -58542,7 +58644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ca429dd1efb784abea8ea7576041bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CookingPotUI
-  player: {fileID: 0}
+  player: {fileID: 525086983}
   campManager: {fileID: 1622856382}
   foodList: {fileID: 51242471}
   drinkList: {fileID: 937681031}
@@ -61008,7 +61110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CampResolutionScreen
   envManager: {fileID: 879770968}
   campManager: {fileID: 1622856382}
-  player: {fileID: 0}
+  player: {fileID: 525086983}
   resourcesPanelContent: {fileID: 736048454}
   resPrefab: {fileID: 2361054023113306747, guid: e4c3e79b9aa44574da80fe59106a04ae, type: 3}
   firePanelContainer: {fileID: 422205953}
@@ -64966,7 +65068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54d73feb13ddf64caa66b0accd224d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SleepingBagUI
-  player: {fileID: 0}
+  player: {fileID: 525086983}
   timeManager: {fileID: 932758302}
   campManager: {fileID: 1622856382}
   staminaSlider: {fileID: 566442896}
@@ -66390,7 +66492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad98c700dfab11e44b5089c093ecad58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShelterCampUI
-  player: {fileID: 0}
+  player: {fileID: 525086983}
   timeManager: {fileID: 932758302}
   campManager: {fileID: 1622856382}
   shelterSlider: {fileID: 552021936}
@@ -584986,7 +585088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1284095262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585003,7 +585105,7 @@ MonoBehaviour:
   m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.16197936, g: 0.27243015, b: 0.3773585, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
@@ -595286,6 +595388,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491461880}
   m_CullTransparentMesh: 1
+--- !u!1 &1493347146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5833680382982775258, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+  m_PrefabInstance: {fileID: 1644766742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1493347147
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493347146}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 41969bbf0ffb5ef489e0b8a16347aa91, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1493347150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493347146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1f98a7492235c4bbd089061f2bfa6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerVisual_M
+  player: {fileID: 525086983}
 --- !u!1 &1493558447
 GameObject:
   m_ObjectHideFlags: 0
@@ -601249,7 +601391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cf79cf2f725c84cb8cce46cbbc2132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDisplayUI
-  player: {fileID: 0}
+  player: {fileID: 525086983}
   ItemPrefab: {fileID: 4876554756627009130, guid: dd232ee2a35f9e547bd83092d98586e3, type: 3}
   ItemList: {fileID: 731914931}
   weightSlider: {fileID: 1799559096}
@@ -643795,7 +643937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewCampManager
   campButton: {fileID: 1209690418}
-  player: {fileID: 0}
+  player: {fileID: 525086983}
   envManager: {fileID: 879770968}
   campStats:
     fireLevel: 1
@@ -645560,9 +645702,17 @@ PrefabInstance:
       propertyPath: timeManager
       value: 
       objectReference: {fileID: 932758302}
-    - target: {fileID: 8237907185008357871, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+    - target: {fileID: 2247229955733826335, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224633057577877537, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8237907185008357871, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8418257102270338943, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_Name
@@ -645570,8 +645720,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 60880057156043123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 123987483}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5833680382982775258, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1493347147}
+    - targetCorrespondingSourceObject: {fileID: 5833680382982775258, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1493347150}
   m_SourcePrefab: {fileID: 100100000, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
 --- !u!1001 &1646085361
 PrefabInstance:
@@ -650176,7 +650335,7 @@ MonoBehaviour:
   tradePlayerPrefab: {fileID: 6307333992456499657, guid: 1736463a4b3435c42ba05194d6e8ff62, type: 3}
   SellContent: {fileID: 1209724414}
   setlement: {fileID: 0}
-  playerInventory: {fileID: 0}
+  playerInventory: {fileID: 525086988}
   playerCoinsDisplay: {fileID: 410380170}
   currentTradeItemImage: {fileID: 813767188}
   currentTradeItemName: {fileID: 813767187}
@@ -653077,7 +653236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce7432e5945ab54d990fa9eef51dc6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootPanelUI
-  player: {fileID: 0}
+  player: {fileID: 525086983}
   lootManager: {fileID: 2036221410}
   lootOutcomeIcon: {fileID: 480249257}
   outcomeStory: {fileID: 336238178}
@@ -670991,7 +671150,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1602376899}
   m_FillRect: {fileID: 2027253698}
   m_HandleRect: {fileID: 1602376898}
@@ -682382,7 +682541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70780d613a5c48343af8a841521ee172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootManager
-  player: {fileID: 0}
+  player: {fileID: 525086983}
   investigatingAudio: {fileID: 2036221412}
   investigatingVolume: 0.7
   springPlaceHoldersList: {fileID: 103840708}
@@ -683218,7 +683377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167f069db5ef5b949af0974f92cb5dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FireCampUI
-  player: {fileID: 0}
+  player: {fileID: 525086983}
   timeManager: {fileID: 932758302}
   campManager: {fileID: 1622856382}
   fireSlider: {fileID: 1641519399}
