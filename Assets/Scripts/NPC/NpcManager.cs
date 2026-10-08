@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NpcManager : MonoBehaviour
 {
     public Transform player;
+    public TimeManager timeManager;
+
     public float npcVisibleDistance = 30f;
     public bool optimizeNpcVizibility;
     public int maxAliveNPC;
@@ -24,12 +27,28 @@ public class NpcManager : MonoBehaviour
             road.Initialize();
         }
 
-        for (int i = 0; i < maxAliveNPC; i++)
+        for (int i = 0; i < 5; i++)
         {
-            bool direction = Random.Range(0, 2) == 1;
-            RoadPath randomRoad = roads[Random.Range(0, roads.Count)];
-            SpawnNPC(randomRoad, direction);
+            spawnRandomNPC();
         }
+
+        timeManager.onHourChanged.AddListener(hourlNpcSpawnerCheck);
+    }
+
+    public void hourlNpcSpawnerCheck(DateTime time)
+    {
+        if(aliveNPCs.Count < maxAliveNPC)
+        {
+            spawnRandomNPC();
+        }
+    }
+
+    public void spawnRandomNPC()
+    {
+        bool direction = UnityEngine.Random.Range(0, 2) == 1;
+        RoadPath randomRoad = roads[UnityEngine.Random.Range(0, roads.Count)];
+        SpawnNPC(randomRoad, direction);
+        Debug.Log("NPC SPAWN");
     }
 
     private void Update()

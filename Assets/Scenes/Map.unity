@@ -3904,6 +3904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcManager
   player: {fileID: 1153219633}
+  timeManager: {fileID: 932758302}
   npcVisibleDistance: 15
   optimizeNpcVizibility: 0
   maxAliveNPC: 50
@@ -48570,6 +48571,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 307599889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &804999743 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7401840050674390317, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+  m_PrefabInstance: {fileID: 814492382}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &805023090
 GameObject:
   m_ObjectHideFlags: 0
@@ -49595,6 +49601,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 23460019940096960, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: travelLamp
+      value: 
+      objectReference: {fileID: 1862509559}
+    - target: {fileID: 23460019940096960, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: timeManager
+      value: 
+      objectReference: {fileID: 932758302}
     - target: {fileID: 60880057156043123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.96
@@ -49671,6 +49685,10 @@ PrefabInstance:
       propertyPath: campManager
       value: 
       objectReference: {fileID: 1622856382}
+    - target: {fileID: 7014872139820401620, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7637470129126902049, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: campManager
       value: 
@@ -49689,7 +49707,10 @@ PrefabInstance:
       objectReference: {fileID: 1622856382}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7401840050674390317, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1920227456}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
 --- !u!1 &814730670
@@ -58138,6 +58159,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   player: {fileID: 1153219631}
+  globalLight: {fileID: 1284095262}
+  nightIntensity: 0.2
+  dayIntensity: 1
+  sunriseStart: 5
+  sunriseEnd: 7
+  sunsetStart: 20
+  sunsetEnd: 23
+  dayColor: {r: 1, g: 0.96, b: 0.9, a: 1}
+  nightColor: {r: 0.57, g: 0.65, b: 0.84, a: 1}
   time_stopped: 0
   onHourChanged:
     m_PersistentCalls:
@@ -66511,7 +66541,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2027388441}
         m_TargetAssemblyTypeName: SettlementsManager, Assembly-CSharp
         m_MethodName: BuyOrSell
         m_Mode: 1
@@ -593957,7 +593987,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284095261}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
@@ -597090,6 +597120,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7911696099715616174, guid: 1e4511342a027034c83b8c41f5028aa8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8647361020304670674, guid: 1e4511342a027034c83b8c41f5028aa8, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9040159744068923441, guid: 1e4511342a027034c83b8c41f5028aa8, type: 3}
@@ -687952,6 +687986,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!1 &1862509559 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3683512654714695150, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+  m_PrefabInstance: {fileID: 814492382}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1862612813
 GameObject:
   m_ObjectHideFlags: 0
@@ -691007,6 +691046,107 @@ Transform:
   m_Children: []
   m_Father: {fileID: 307599889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1920227455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1920227456}
+  - component: {fileID: 1920227458}
+  - component: {fileID: 1920227457}
+  m_Layer: 6
+  m_Name: Spot Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1920227456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920227455}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.04, y: -0.263, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 804999743}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1920227457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920227455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6c0a2b0318a66459beed297de782ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TorchFlicker
+  torchLight: {fileID: 1920227458}
+  baseIntensity: 1
+  flickerAmount: 0.2
+  flickerSpeed: 5
+--- !u!114 &1920227458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920227455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.Light2D
+  m_ComponentVersion: 2
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.6
+  m_Color: {r: 1, g: 0.7294118, b: 0.40392157, a: 1}
+  m_Intensity: 1
+  m_LightVolumeIntensity: 1
+  m_LightVolumeEnabled: 0
+  m_ApplyToSortingLayers: 0000000021605cbb53df4cf2
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowsEnabled: 1
+  m_ShadowIntensity: 0.75
+  m_ShadowSoftness: 0.3
+  m_ShadowSoftnessFalloffIntensity: 0.5
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 1
+  m_PointLightOuterRadius: 5
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &1920450722
 GameObject:
   m_ObjectHideFlags: 0

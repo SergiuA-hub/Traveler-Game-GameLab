@@ -52,6 +52,23 @@ public class PlayerMovement_M : MonoBehaviour
         
         // Apply movement
         player.rb.MovePosition( player.rb.position + moveInput * player.stats.currentSpeed * Time.fixedDeltaTime);
+        
+        if (moveInput.x < -0.01f) 
+        {
+            player.transform.localScale = new Vector3(
+                Mathf.Abs(player.transform.localScale.x),
+                player.transform.localScale.y,
+                player.transform.localScale.z
+            );
+        }
+        else if (moveInput.x > 0.01f)
+        {
+            player.transform.localScale = new Vector3(
+                -Mathf.Abs(player.transform.localScale.x),
+                player.transform.localScale.y,
+                player.transform.localScale.z
+            );
+        }
     }
 
 

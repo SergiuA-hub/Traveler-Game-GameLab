@@ -79,7 +79,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1151573983
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2282007040551573218, guid: f77a9a36b25c97b49a21f45c1f3f3e07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootPrefab
   type: 0
+  lootLocation: 0
 --- !u!58 &2095409099773294713
 CircleCollider2D:
   m_ObjectHideFlags: 0
