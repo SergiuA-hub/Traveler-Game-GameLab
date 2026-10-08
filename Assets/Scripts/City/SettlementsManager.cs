@@ -33,6 +33,7 @@ public class SettlementRuntime
     public SettlementSO defaultSettlementData;
     public List<TradeGood> settlementStock;
     public List<Item> settlementShopItems;
+    public List<Item> settlmentUpgradeItems;
     public GameObject settlementGo;
 
     public SettlementRuntime(SettlementSO so)
@@ -40,6 +41,7 @@ public class SettlementRuntime
         defaultSettlementData = so;
         this.settlementName = defaultSettlementData.settlementName;
         settlementShopItems = new List<Item>();
+        settlmentUpgradeItems = new List<Item>();
         settlementStock = new List<TradeGood>();
 
     }
@@ -196,6 +198,10 @@ public class SettlementsManager : MonoBehaviour
             {
                 currentSettlement.settlementShopItems.Add(new Item(item.ItemName,item.shopItems,item.itemType));
             }
+            foreach(var upgradeItem in settl.settlementSo.upgradeShop)
+            {
+                currentSettlement.settlmentUpgradeItems.Add(new Item(upgradeItem.ItemName,upgradeItem.shopItems,upgradeItem.itemType));
+            }
             currentSettlement.calculatePriceTiers();
 
             currentSettlement.settlementGo = settl.settlmentGo;
@@ -276,7 +282,7 @@ public class SettlementsManager : MonoBehaviour
         SettlementUI.SetActive(true);
     }
 
-    public void BuyOrSell()
+    public void BuyOrSell(float amount)
     {
         //Debug.Log("BUY SELL");
         

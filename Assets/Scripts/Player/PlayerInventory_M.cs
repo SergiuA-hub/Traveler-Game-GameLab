@@ -81,7 +81,7 @@ public class PlayerInventory_M : MonoBehaviour
     }
 
     //player is sellign goods
-    public void tradeOut(ResourceSO resource, float sellPrice, int amount = 1)
+    public void tradeOut(ResourceSO resource, float sellPrice, int amount)
     {
         Remove(resource,amount);
         

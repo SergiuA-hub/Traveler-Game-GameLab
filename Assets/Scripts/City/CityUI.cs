@@ -1,5 +1,7 @@
+using Mono.Cecil;
 using TMPro;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,9 +10,10 @@ public enum CityUIPage
     Lobby=0,
     Shop=1,
     Trade=2,
-    TradeGuild=3,
-    CartManagment=4,
-    Rest =5
+    UpgradeShop = 3,
+    TradeGuild=4,
+    CartManagment=5,
+    Rest =6
 }
 
 [System.Serializable]
@@ -26,8 +29,6 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TMP_Text settlementName;
 
     [Header("Trade Panel")]
-
-    // BUY & SELL
     [SerializeField] private TradeItemDisplay tradePrfab;
     [SerializeField] private Transform buyContent;
 
@@ -47,12 +48,14 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentTradeItemPrice;
     [SerializeField] private TextMeshProUGUI buySellButtonText;
     [SerializeField] private TextMeshProUGUI currentItemAmount;
+    
+    
     //Slider
     public Slider sliderAmount;
     [SerializeField] private TextMeshProUGUI currentTextAmount;
     
 
-    [Header("Shop page")]
+    [Header("SHOP PAGE")]
 
     [SerializeField] private Transform ShopContent;
     [SerializeField] private ShopItemDisplay ItemShopPrefab;
@@ -62,15 +65,23 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentShopItemName;
     [SerializeField] private TextMeshProUGUI currentShopItemPrice;
     [SerializeField] private TextMeshProUGUI currentShopItemDescription;
-    
 
+    [Header("UPGRADE PAGE")]
+    [SerializeField] private Transform UpgradeContent;
+    [SerializeField] ShopItemDisplay upgradeItemShopPrefab;
 
+    [Header("Current UPGRADE_SHOP_ITEM_DISPLAY")]
+    [SerializeField] private Image currentUpgradeItemIcon;
+    [SerializeField] private TextMeshProUGUI upgradeItemName;
+    [SerializeField] private TextMeshProUGUI upgradeItemPrice;
+    [SerializeField] private TextMeshProUGUI upgradeItemDescription;
 
     [Header("PAGES")]
     [SerializeField] private GameObject LobbyPanel;
     [SerializeField] private GameObject ShopPanel;
     [SerializeField] private GameObject TradePanel;
-
+    [SerializeField] private GameObject UpgradePanel;
+    
     private void Awake()
     {
         setlement = GetComponent<Setlement>();
@@ -95,6 +106,7 @@ public class CityUI : MonoBehaviour
         LobbyPanel.SetActive(page == CityUIPage.Lobby);
         ShopPanel.SetActive(page == CityUIPage.Shop);
         TradePanel.SetActive(page == CityUIPage.Trade);
+        UpgradePanel.SetActive(page == CityUIPage.UpgradeShop);
 
         switch (currentpage)
         {
@@ -107,6 +119,9 @@ public class CityUI : MonoBehaviour
                 break;
             case CityUIPage.Trade:
                 DisplayTrade();
+                break;
+            case CityUIPage.UpgradeShop:
+                DisplayUpgradePanel();
                 break;
             case CityUIPage.TradeGuild:
 
@@ -259,6 +274,25 @@ public class CityUI : MonoBehaviour
         currentShopItemName.text = shopItem.itemName.text;
         
 
+    }
+
+
+    //############
+    //UPGRADE AREA
+    //############
+
+    public void DisplayUpgradePanel()
+    {
+        foreach(Transform child in UpgradeContent)
+        {
+            Destroy (child.gameObject);
+        }
+
+        foreach (var item in currentSettlement.settlmentUpgradeItems)
+        {
+            ShopItemDisplay row = Instantiate(upgradeItemShopPrefab, UpgradeContent);
+            row.PopulateIcons(item.shopItems, this);
+        }
     }
 
 
