@@ -13981,7 +13981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WorldContitionsUI
   environmentManager: {fileID: 879770968}
-  player: {fileID: 0}
+  player: {fileID: 1472870353}
   temperatureValue: {fileID: 832736343}
   temperatureBackground: {fileID: 1962286515}
   safetyValue: {fileID: 164677294}
@@ -22815,7 +22815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfd9f926f8a086478cd185cfe35c6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CargoCampUI
-  player: {fileID: 0}
+  player: {fileID: 1472870353}
   timeManager: {fileID: 932758302}
   campManager: {fileID: 1622856382}
   fireSlider: {fileID: 1396238766}
@@ -51981,6 +51981,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3924219922667250541, guid: eaea7141996c2b6478742b665dca803b, type: 3}
   m_PrefabInstance: {fileID: 1083547444}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1088025220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8365081510702880879, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+  m_PrefabInstance: {fileID: 1759362366}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1090551115
 GameObject:
   m_ObjectHideFlags: 0
@@ -52388,8 +52393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ca429dd1efb784abea8ea7576041bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CookingPotUI
-  player: {fileID: 0}
-  campManager: {fileID: 0}
+  player: {fileID: 1472870353}
+  campManager: {fileID: 1622856382}
   foodList: {fileID: 51242471}
   drinkList: {fileID: 937681031}
   CookingResourcePrefab: {fileID: 7675503770795033744, guid: c45ed003e0549c64489d5898794fdb3a, type: 3}
@@ -58333,7 +58338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54d73feb13ddf64caa66b0accd224d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SleepingBagUI
-  player: {fileID: 0}
+  player: {fileID: 1472870353}
   timeManager: {fileID: 932758302}
   campManager: {fileID: 1622856382}
   staminaSlider: {fileID: 566442896}
@@ -59632,7 +59637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad98c700dfab11e44b5089c093ecad58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShelterCampUI
-  player: {fileID: 0}
+  player: {fileID: 1472870353}
   timeManager: {fileID: 932758302}
   campManager: {fileID: 1622856382}
   shelterSlider: {fileID: 552021936}
@@ -578737,6 +578742,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305789567}
   m_CullTransparentMesh: 1
+--- !u!1 &1306819153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5833680382982775258, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+  m_PrefabInstance: {fileID: 1759362366}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1309356280
 GameObject:
   m_ObjectHideFlags: 0
@@ -597142,12 +597152,12 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -640000,8 +640010,8 @@ MonoBehaviour:
     sleepQuality: 0
     staminaRestoreRatio: 0
   timeManager: {fileID: 932758302}
-  playerCaravan: {fileID: 0}
-  playerCamp: {fileID: 0}
+  playerCaravan: {fileID: 1306819153}
+  playerCamp: {fileID: 1088025220}
   restScreenText: {fileID: 1582435954}
   restScreenPanel: {fileID: 397402720}
   restScreenCanvasGroup: {fileID: 397402721}
@@ -640012,16 +640022,16 @@ MonoBehaviour:
   campingPanelUI: {fileID: 1322069118}
   cookingPotPanel: {fileID: 1098343761}
   sleepingBagPanel: {fileID: 1217403246}
-  fireCampPanel: {fileID: 0}
-  shelterPanel: {fileID: 0}
-  cargoCampPanel: {fileID: 0}
-  campResPanel: {fileID: 0}
-  campResList: {fileID: 0}
+  fireCampPanel: {fileID: 2048604190}
+  shelterPanel: {fileID: 1246693857}
+  cargoCampPanel: {fileID: 466613140}
+  campResPanel: {fileID: 2001689769}
+  campResList: {fileID: 2108322299}
   campResPrefab: {fileID: 0}
-  introText: {fileID: 0}
-  WorldStatsCampPreconditionScreen: {fileID: 0}
-  roadsObject: {fileID: 0}
-  interactableObjects: {fileID: 0}
+  introText: {fileID: 1825540913}
+  WorldStatsCampPreconditionScreen: {fileID: 253540500}
+  roadsObject: {fileID: 1608357174}
+  interactableObjects: {fileID: 1965265400}
   welnessSupplies: []
   fuelSpplies: []
   cargoSupplies: []
@@ -647797,6 +647807,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 496776836861295045, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: campManager
+      value: 
+      objectReference: {fileID: 1622856382}
+    - target: {fileID: 702546142013527505, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: campManager
+      value: 
+      objectReference: {fileID: 1622856382}
     - target: {fileID: 1928349594743092773, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: rooted
       value: 0
@@ -647809,10 +647827,34 @@ PrefabInstance:
       propertyPath: timeManager
       value: 
       objectReference: {fileID: 932758302}
+    - target: {fileID: 4041598309343039496, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: campManager
+      value: 
+      objectReference: {fileID: 1622856382}
+    - target: {fileID: 5329764357656770507, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: campManager
+      value: 
+      objectReference: {fileID: 1622856382}
+    - target: {fileID: 6398753607869012972, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: campManager
+      value: 
+      objectReference: {fileID: 1622856382}
+    - target: {fileID: 6426973710071676673, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: campManager
+      value: 
+      objectReference: {fileID: 1622856382}
+    - target: {fileID: 7637470129126902049, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: campManager
+      value: 
+      objectReference: {fileID: 1622856382}
     - target: {fileID: 8418257102270338943, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_Name
       value: Player_Main_with_Camp_Animated
       objectReference: {fileID: 0}
+    - target: {fileID: 8705366264990510867, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: campManager
+      value: 
+      objectReference: {fileID: 1622856382}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -667563,7 +667605,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17.7
+  m_fontSize: 13.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -677868,7 +677910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167f069db5ef5b949af0974f92cb5dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FireCampUI
-  player: {fileID: 0}
+  player: {fileID: 1472870353}
   timeManager: {fileID: 932758302}
   campManager: {fileID: 1622856382}
   fireSlider: {fileID: 1641519399}
