@@ -13,7 +13,6 @@ public class Light : MonoBehaviour
     public int duration;
     void Start()
     {
-        float t = 0f;
         globalLight = GetComponent<Light>();
         
     }

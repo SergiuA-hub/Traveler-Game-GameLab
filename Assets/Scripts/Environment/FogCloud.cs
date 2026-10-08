@@ -14,7 +14,8 @@ public class FogCloud : MonoBehaviour
 
     public Player_M player;
     private static List<FogCloud> activeClouds = new List<FogCloud>();
-
+    
+    
 
     void Start()
     {

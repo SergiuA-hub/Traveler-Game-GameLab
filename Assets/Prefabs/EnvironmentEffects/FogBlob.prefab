@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2121564739911074254
+--- !u!1 &596713975694401347
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 74542667054200609}
-  - component: {fileID: 3601026309243250457}
-  m_Layer: 0
-  m_Name: FogClouds_1
+  - component: {fileID: 4174808564888680112}
+  - component: {fileID: 8945052116295258561}
+  - component: {fileID: 520617032817863439}
+  m_Layer: 10
+  m_Name: FogBlobs 1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &74542667054200609
+--- !u!4 &4174808564888680112
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121564739911074254}
+  m_GameObject: {fileID: 596713975694401347}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.33, y: 0.12, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7968101782198918926}
+  m_Father: {fileID: 1093744530295403747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3601026309243250457
+--- !u!212 &8945052116295258561
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121564739911074254}
+  m_GameObject: {fileID: 596713975694401347}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -81,17 +82,31 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -3531349553617426982, guid: 4efa00eb7ea9c564b8038feeac76606b, type: 3}
-  m_Color: {r: 0.17835028, g: 0.09733712, b: 0.3509434, a: 0.45490196}
+  m_Sprite: {fileID: -5196413869697926493, guid: edf01c33708b0034789ad22db73e1c89, type: 3}
+  m_Color: {r: 0.79622644, g: 0.79622644, b: 0.79622644, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.4761906, y: 2.047619}
+  m_Size: {x: 5.953515, y: 4.190476}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &3271250585358903567
+--- !u!114 &520617032817863439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596713975694401347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eeaf82dcaebba84dbf9d58961fb16f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FogScaling
+  scaleAmount: 0.03
+  scaleSpeed: 0.4
+--- !u!1 &1185899587291055306
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,38 +114,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7176762790833636977}
-  - component: {fileID: 8327151553443164184}
-  m_Layer: 0
-  m_Name: FogClouds_4
+  - component: {fileID: 6609655780362878145}
+  - component: {fileID: 1559897109372627458}
+  - component: {fileID: 600977523851405536}
+  m_Layer: 10
+  m_Name: FogBlobs 1_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7176762790833636977
+--- !u!4 &6609655780362878145
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3271250585358903567}
+  m_GameObject: {fileID: 1185899587291055306}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.69, y: -0.16, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7968101782198918926}
+  m_Father: {fileID: 1093744530295403747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8327151553443164184
+--- !u!212 &1559897109372627458
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3271250585358903567}
+  m_GameObject: {fileID: 1185899587291055306}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -170,19 +186,33 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -229843117
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1265341592124171058, guid: 4efa00eb7ea9c564b8038feeac76606b, type: 3}
-  m_Color: {r: 0.043980043, g: 0.21411188, b: 0.2679245, a: 0.69803923}
+  m_Sprite: {fileID: 595825157956435966, guid: edf01c33708b0034789ad22db73e1c89, type: 3}
+  m_Color: {r: 0.5245282, g: 0.5245282, b: 0.5245282, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.7698413, y: 0.96825397}
+  m_Size: {x: 4.500858, y: 3.2142859}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &4960126172479659955
+--- !u!114 &600977523851405536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185899587291055306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eeaf82dcaebba84dbf9d58961fb16f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FogScaling
+  scaleAmount: 0.03
+  scaleSpeed: 0.4
+--- !u!1 &5284982092418944248
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,41 +220,58 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7968101782198918926}
-  - component: {fileID: 5576086995545361036}
-  m_Layer: 0
+  - component: {fileID: 1093744530295403747}
+  - component: {fileID: 8223710409008064251}
+  - component: {fileID: 2396362643101241415}
+  m_Layer: 10
   m_Name: FogBlob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7968101782198918926
+--- !u!4 &1093744530295403747
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4960126172479659955}
+  m_GameObject: {fileID: 5284982092418944248}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.25, y: -0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8434161413316813145}
-  - {fileID: 7176762790833636977}
-  - {fileID: 3420801348378417140}
-  - {fileID: 74542667054200609}
+  - {fileID: 6795245808075071849}
+  - {fileID: 6609655780362878145}
+  - {fileID: 4174808564888680112}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &5576086995545361036
+--- !u!114 &8223710409008064251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5284982092418944248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d7faa384785454d89d2b90a0a1e6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FogBlob
+  maxMoveX: 0.15
+  maxMoveY: 0.15
+  moveSpeed: 0.5
+  scaleAmount: 0.03
+  scaleSpeed: 0.4
+--- !u!60 &2396362643101241415
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4960126172479659955}
+  m_GameObject: {fileID: 5284982092418944248}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -250,7 +297,7 @@ PolygonCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_CompositeOperation: 1
+  m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -264,15 +311,20 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.17572784, y: 0.83523464}
-      - {x: -2.2653685, y: 0.65013695}
-      - {x: -3.5225549, y: -0.24201795}
-      - {x: -2.8793926, y: -0.8964833}
-      - {x: -0.21690083, y: -1.1676273}
-      - {x: 0.99012816, y: -0.9752023}
-      - {x: 1.615797, y: -0.040846884}
+    - - {x: 0.6840482, y: 2.1357603}
+      - {x: -1.4905875, y: 1.9172845}
+      - {x: -2.4380167, y: 1.5425847}
+      - {x: -2.8658886, y: 0.49247387}
+      - {x: -2.7118113, y: -0.30728522}
+      - {x: -3.0546393, y: -0.9901602}
+      - {x: -2.0554407, y: -1.6804376}
+      - {x: -0.62580967, y: -1.5642229}
+      - {x: 0.8341236, y: -2.146773}
+      - {x: 2.6172771, y: -1.3364552}
+      - {x: 3.0264006, y: 0.18265536}
+      - {x: 1.9830012, y: 1.5817492}
   m_UseDelaunayMesh: 1
---- !u!1 &6427491240637046435
+--- !u!1 &7937926994691944907
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,38 +332,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3420801348378417140}
-  - component: {fileID: 71613663993889925}
-  m_Layer: 0
-  m_Name: FogClouds_3
+  - component: {fileID: 6795245808075071849}
+  - component: {fileID: 6970660095933706521}
+  - component: {fileID: 7413292762929051233}
+  m_Layer: 10
+  m_Name: FogBlobs 1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3420801348378417140
+--- !u!4 &6795245808075071849
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6427491240637046435}
+  m_GameObject: {fileID: 7937926994691944907}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.535, y: -0.645, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7968101782198918926}
+  m_Father: {fileID: 1093744530295403747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &71613663993889925
+--- !u!212 &6970660095933706521
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6427491240637046435}
+  m_GameObject: {fileID: 7937926994691944907}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -351,106 +404,29 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -229843117
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1865202774269025949, guid: 4efa00eb7ea9c564b8038feeac76606b, type: 3}
-  m_Color: {r: 0.19452623, g: 0.10262011, b: 0.2679245, a: 0.5686275}
+  m_Sprite: {fileID: -4782044289128036527, guid: edf01c33708b0034789ad22db73e1c89, type: 3}
+  m_Color: {r: 0.21509439, g: 0.21509439, b: 0.21509439, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.8174603, y: 2.047619}
+  m_Size: {x: 4.1912746, y: 2.7063491}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &8314552703558496044
-GameObject:
+--- !u!114 &7413292762929051233
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8434161413316813145}
-  - component: {fileID: 7010608907013147618}
-  m_Layer: 0
-  m_Name: FogClouds_0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8434161413316813145
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8314552703558496044}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.83, y: -0.06, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7968101782198918926}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7010608907013147618
-SpriteRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8314552703558496044}
+  m_GameObject: {fileID: 7937926994691944907}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -229843117
-  m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_Sprite: {fileID: 1168983199409394040, guid: 4efa00eb7ea9c564b8038feeac76606b, type: 3}
-  m_Color: {r: 0.041587718, g: 0.09096599, b: 0.22264141, a: 0.54509807}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 3.0714285, y: 2.047619}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eeaf82dcaebba84dbf9d58961fb16f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FogScaling
+  scaleAmount: 0.03
+  scaleSpeed: 0.4
