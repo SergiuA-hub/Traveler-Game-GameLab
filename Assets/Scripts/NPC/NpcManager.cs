@@ -14,7 +14,7 @@ public class NpcManager : MonoBehaviour
 
     public List<RoadPath> roads = new();
 
-    public GameObject NPC;
+    public List<GameObject> NPCs;
     public Transform npcSpawner;
 
     public List<Npc> aliveNPCs = new();
@@ -103,6 +103,7 @@ public class NpcManager : MonoBehaviour
 
         int startIndex = forward ? 0 : road.waypoints.Count - 1;
 
+        GameObject NPC = NPCs[UnityEngine.Random.Range(0, NPCs.Count)];
         GameObject npcObject = Instantiate(
             NPC,
             road.waypoints[startIndex].position,
