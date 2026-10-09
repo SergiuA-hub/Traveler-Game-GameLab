@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735cc53ed61604a4d99c3db2244daee7, type: 3}
   m_Name: SummerSettlement
   m_EditorClassIdentifier: Assembly-CSharp::SettlementSO
-  settlementName: Farming Village
+  settlementName: Summer Village
   production:
   - resource: {fileID: 11400000, guid: 2b0310fe8c317f74a83bc7cd61330605, type: 2}
     dailyChange: 12
@@ -129,15 +129,20 @@ MonoBehaviour:
   - ItemName: Worn Backpack
     shopItems: {fileID: 11400000, guid: 430f33826f9ed7140bf686cffa1873c4, type: 2}
     itemType: 0
+    itemStatus: 0
   - ItemName: Masterwork Backpack
     shopItems: {fileID: 11400000, guid: c845cb139223a51418173076ea638dfd, type: 2}
     itemType: 1
+    itemStatus: 0
   - ItemName: Heavy-Duty Ox Cart
     shopItems: {fileID: 11400000, guid: e7037a5967b031547afea9e1178267fa, type: 2}
     itemType: 1
+    itemStatus: 0
   - ItemName: Sturdy Hand Cart
     shopItems: {fileID: 11400000, guid: ee74e63db67958a45886689fba9bccec, type: 2}
     itemType: 1
+    itemStatus: 0
   - ItemName: Reinforced Horse Cart
     shopItems: {fileID: 11400000, guid: 68b048a0f527f5a49bcebedd09b84543, type: 2}
     itemType: 1
+    itemStatus: 0

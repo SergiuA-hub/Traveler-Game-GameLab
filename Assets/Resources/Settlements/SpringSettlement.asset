@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735cc53ed61604a4d99c3db2244daee7, type: 3}
   m_Name: SpringSettlement
   m_EditorClassIdentifier: Assembly-CSharp::SettlementSO
-  settlementName: Forest Village
+  settlementName: Spring Village
   production:
   - resource: {fileID: 11400000, guid: bd4b42c652ba9c94da6d95e33a465157, type: 2}
     dailyChange: 10
@@ -136,3 +136,4 @@ MonoBehaviour:
     tier4_price_stock: 7
     tier5_price_stock: 15
     licenseCost: -1
+  itemsShop: []

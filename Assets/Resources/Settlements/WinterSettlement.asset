@@ -12,62 +12,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735cc53ed61604a4d99c3db2244daee7, type: 3}
   m_Name: WinterSettlement
   m_EditorClassIdentifier: Assembly-CSharp::SettlementSO
-  settlementName: Capital Town
+  settlementName: Winter Village
   production:
   - resource: {fileID: 11400000, guid: 977e07f63e21de04eab6d24732cd7a04, type: 2}
     dailyChange: 10
     startingStock: 100
     minStock: 0
     maxStock: 300
-    tier1_price_stock: 0
-    tier2_price_stock: 0
-    tier3_price_stock: 0
-    tier4_price_stock: 0
-    tier5_price_stock: 0
+    tier1_price_stock: 30
+    tier2_price_stock: 50
+    tier3_price_stock: 70
+    tier4_price_stock: 140
+    tier5_price_stock: 300
     licenseCost: 0
   - resource: {fileID: 11400000, guid: 1c8f8ca846032ec479d1044edc2c361a, type: 2}
     dailyChange: 25
     startingStock: 250
     minStock: 0
     maxStock: 750
-    tier1_price_stock: 0
-    tier2_price_stock: 0
-    tier3_price_stock: 0
-    tier4_price_stock: 0
-    tier5_price_stock: 0
+    tier1_price_stock: 75
+    tier2_price_stock: 125
+    tier3_price_stock: 175
+    tier4_price_stock: 350
+    tier5_price_stock: 750
     licenseCost: 0
   - resource: {fileID: 11400000, guid: 74d1cb5eba7ad4543959d2562f0052e9, type: 2}
     dailyChange: 3
     startingStock: 18
     minStock: 0
     maxStock: 90
-    tier1_price_stock: 0
-    tier2_price_stock: 0
-    tier3_price_stock: 0
-    tier4_price_stock: 0
-    tier5_price_stock: 0
+    tier1_price_stock: 9
+    tier2_price_stock: 15
+    tier3_price_stock: 21
+    tier4_price_stock: 42
+    tier5_price_stock: 90
     licenseCost: 36
   - resource: {fileID: 11400000, guid: 628aed43c937cdc4d896bf7681c9bf07, type: 2}
     dailyChange: 2
     startingStock: 12
     minStock: 0
     maxStock: 60
-    tier1_price_stock: 0
-    tier2_price_stock: 0
-    tier3_price_stock: 0
-    tier4_price_stock: 0
-    tier5_price_stock: 0
+    tier1_price_stock: 6
+    tier2_price_stock: 10
+    tier3_price_stock: 14
+    tier4_price_stock: 28
+    tier5_price_stock: 60
     licenseCost: 36
   - resource: {fileID: 11400000, guid: 379b63d90c0fddd4ba4b5bd154b16d52, type: 2}
     dailyChange: 4
     startingStock: 24
     minStock: 0
     maxStock: 120
-    tier1_price_stock: 0
-    tier2_price_stock: 0
-    tier3_price_stock: 0
-    tier4_price_stock: 0
-    tier5_price_stock: 0
+    tier1_price_stock: 12
+    tier2_price_stock: 20
+    tier3_price_stock: 28
+    tier4_price_stock: 56
+    tier5_price_stock: 120
     licenseCost: 60
   consumption:
   - resource: {fileID: 11400000, guid: 2b0310fe8c317f74a83bc7cd61330605, type: 2}
@@ -75,68 +75,69 @@ MonoBehaviour:
     startingStock: 48
     minStock: 8
     maxStock: 240
-    tier1_price_stock: 0
-    tier2_price_stock: 0
-    tier3_price_stock: 0
-    tier4_price_stock: 0
-    tier5_price_stock: 0
+    tier1_price_stock: 24
+    tier2_price_stock: 40
+    tier3_price_stock: 56
+    tier4_price_stock: 112
+    tier5_price_stock: 240
     licenseCost: -1
   - resource: {fileID: 11400000, guid: 4ba6b85d27f214442a30c33be8df8e87, type: 2}
     dailyChange: 4
     startingStock: 24
     minStock: 4
     maxStock: 120
-    tier1_price_stock: 0
-    tier2_price_stock: 0
-    tier3_price_stock: 0
-    tier4_price_stock: 0
-    tier5_price_stock: 0
+    tier1_price_stock: 12
+    tier2_price_stock: 20
+    tier3_price_stock: 28
+    tier4_price_stock: 56
+    tier5_price_stock: 120
     licenseCost: -1
   - resource: {fileID: 11400000, guid: a005bcc977161a846a7a2e0005bc953a, type: 2}
     dailyChange: 3
     startingStock: 18
     minStock: 3
     maxStock: 90
-    tier1_price_stock: 0
-    tier2_price_stock: 0
-    tier3_price_stock: 0
-    tier4_price_stock: 0
-    tier5_price_stock: 0
+    tier1_price_stock: 9
+    tier2_price_stock: 15
+    tier3_price_stock: 21
+    tier4_price_stock: 42
+    tier5_price_stock: 90
     licenseCost: -1
   - resource: {fileID: 11400000, guid: b21a88f18b68d5247b2885e25831e83f, type: 2}
     dailyChange: 4
     startingStock: 24
     minStock: 4
     maxStock: 120
-    tier1_price_stock: 0
-    tier2_price_stock: 0
-    tier3_price_stock: 0
-    tier4_price_stock: 0
-    tier5_price_stock: 0
+    tier1_price_stock: 12
+    tier2_price_stock: 20
+    tier3_price_stock: 28
+    tier4_price_stock: 56
+    tier5_price_stock: 120
     licenseCost: -1
   - resource: {fileID: 11400000, guid: 756e0e972a38b684196571473f7ae534, type: 2}
     dailyChange: 6
     startingStock: 36
     minStock: 6
     maxStock: 180
-    tier1_price_stock: 0
-    tier2_price_stock: 0
-    tier3_price_stock: 0
-    tier4_price_stock: 0
-    tier5_price_stock: 0
+    tier1_price_stock: 18
+    tier2_price_stock: 30
+    tier3_price_stock: 42
+    tier4_price_stock: 84
+    tier5_price_stock: 180
     licenseCost: -1
   - resource: {fileID: 11400000, guid: 7e08b41a2d12ce443bcb2e67975f287a, type: 2}
     dailyChange: 3
     startingStock: 18
     minStock: 3
     maxStock: 90
-    tier1_price_stock: 0
-    tier2_price_stock: 0
-    tier3_price_stock: 0
-    tier4_price_stock: 0
-    tier5_price_stock: 0
+    tier1_price_stock: 9
+    tier2_price_stock: 15
+    tier3_price_stock: 21
+    tier4_price_stock: 42
+    tier5_price_stock: 90
     licenseCost: -1
   itemsShop:
   - ItemName: 
     shopItems: {fileID: 0}
     itemType: 0
+    itemStatus: 0
