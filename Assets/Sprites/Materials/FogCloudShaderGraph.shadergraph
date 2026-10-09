@@ -107,9 +107,9 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "8d71ffa7cc5248ad9f91771d1e15f5ac"
+                    "m_Id": "d21523117732438d890a4f44e1d3c94b"
                 },
-                "m_SlotId": 0
+                "m_SlotId": 1
             }
         },
         {
@@ -117,13 +117,13 @@
                 "m_Node": {
                     "m_Id": "51dcfce7ac4d43ff8ad123683bb963fb"
                 },
-                "m_SlotId": 0
+                "m_SlotId": 4
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "d21523117732438d890a4f44e1d3c94b"
+                    "m_Id": "8d71ffa7cc5248ad9f91771d1e15f5ac"
                 },
-                "m_SlotId": 1
+                "m_SlotId": 0
             }
         },
         {
@@ -236,7 +236,7 @@
         "preventRotation": false
     },
     "m_Path": "Shader Graphs",
-    "m_GraphPrecision": 1,
+    "m_GraphPrecision": 0,
     "m_PreviewMode": 2,
     "m_OutputNode": {
         "m_Id": ""
@@ -404,6 +404,12 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalSpriteUnlitSubTarget",
+    "m_ObjectId": "2193d0d59d7746098fb172b01690d43b"
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "232922dfbd4444e78fda07beb26967ce",
     "m_Id": 5,
@@ -470,7 +476,7 @@
     "m_ObjectId": "2a967408450c49e69928dee9e1d06430",
     "m_Datas": [],
     "m_ActiveSubTarget": {
-        "m_Id": "c15054e447e6429bb4a956c6abbc0469"
+        "m_Id": "2193d0d59d7746098fb172b01690d43b"
     },
     "m_AllowMaterialOverride": false,
     "m_SurfaceType": 0,
@@ -1347,12 +1353,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalSpriteUnlitSubTarget",
-    "m_ObjectId": "c15054e447e6429bb4a956c6abbc0469"
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "c2783cf1ffbb406388ce288904b5b9ff",
     "m_Id": 6,
@@ -1591,7 +1591,7 @@
     "m_Hidden": false,
     "m_PerRendererData": false,
     "m_customAttributes": [],
-    "m_Value": 1.0,
+    "m_Value": 0.5,
     "m_FloatType": 1,
     "m_LiteralFloatMode": false,
     "m_RangeValues": {
@@ -1674,9 +1674,9 @@
     "m_PerRendererData": false,
     "m_customAttributes": [],
     "m_Value": {
-        "r": 1.0,
-        "g": 1.0,
-        "b": 1.0,
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
         "a": 1.0
     },
     "isMainColor": false,
