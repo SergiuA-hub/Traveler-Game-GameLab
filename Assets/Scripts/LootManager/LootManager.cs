@@ -91,26 +91,21 @@ public class LootManager : MonoBehaviour
             else noLootList.Add(spawnPoint);
         }
 
-        Debug.Log($"Current spawn({currentCount}) vs total({totalCount})");
         if (currentCount >= totalCount)
             return;
 
-        Debug.Log($"noLootCount before Avoid locatio {noLootList.Count}");
         if (avoidLocation != null)
         {
-            Debug.Log($"AVOINDING {avoidLocation}");
             foreach(Transform loc in noLootList)
             {
                 if(loc.gameObject.name == avoidLocation)
                 {
-                    Debug.Log($"Removed {loc.gameObject.name}");
                     noLootList.Remove(loc);
                     break;
                 }
             }
             
         }
-        Debug.Log($"noLootCount After Avoid locatio {noLootList.Count}");
 
         for (int i=0; i< totalCount - currentCount; i++)
         {

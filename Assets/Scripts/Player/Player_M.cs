@@ -152,7 +152,6 @@ public class Player_M : MonoBehaviour
 
     public void UnRoot()
     {
-        Debug.Log("PLYER UNROOTED");
         rooted = false;
     }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 735cc53ed61604a4d99c3db2244daee7, type: 3}
-  m_Name: MountainVillageTEST
+  m_Name: FallSettlement
   m_EditorClassIdentifier: Assembly-CSharp::SettlementSO
-  settlementName: Mountain Village
+  settlementName: Fall Village
   production:
   - resource: {fileID: 11400000, guid: b21a88f18b68d5247b2885e25831e83f, type: 2}
     dailyChange: 8
@@ -114,17 +114,6 @@ MonoBehaviour:
     tier4_price_stock: 14
     tier5_price_stock: 30
     licenseCost: -1
-  - resource: {fileID: 11400000, guid: 4ba6b85d27f214442a30c33be8df8e87, type: 2}
-    dailyChange: 5
-    startingStock: 10
-    minStock: 1
-    maxStock: 90
-    tier1_price_stock: 15
-    tier2_price_stock: 25
-    tier3_price_stock: 35
-    tier4_price_stock: 70
-    tier5_price_stock: 90
-    licenseCost: -1
   - resource: {fileID: 11400000, guid: 977e07f63e21de04eab6d24732cd7a04, type: 2}
     dailyChange: 3
     startingStock: 18
@@ -136,3 +125,4 @@ MonoBehaviour:
     tier4_price_stock: 42
     tier5_price_stock: 90
     licenseCost: -1
+  itemsShop: []
