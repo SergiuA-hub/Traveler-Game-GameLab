@@ -11,6 +11,7 @@ public class SettlementSO : ScriptableObject
     public List<SettlementGood> consumption;
     public List<Item> itemsShop;
     public List<Item> upgradeShop;
+    public List<LicensesSO> Licenses_Shop;
 
 
     
@@ -68,12 +69,12 @@ public enum Status
 public class Item
 {
     public string ItemName;
-    public ItemsSO shopItems;
+    public ItemSO shopItems;
     public ShopItemType itemType;
     public Status itemStatus;
     
 
-    public Item(string name, ItemsSO itemSO,ShopItemType type)
+    public Item(string name, ItemSO itemSO,ShopItemType type)
     {
         this.ItemName = name;
         this.shopItems = itemSO;

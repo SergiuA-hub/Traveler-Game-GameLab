@@ -56,7 +56,7 @@ public class PlayerInventory_M : MonoBehaviour
     }
 
     //player is buying goods
-    public void tradeIn(ResourceSO resource, float buyPrice, int amount = 1)
+    public void tradeIn(ResourceSO resource, float buyPrice, int amount)
     {
         InventoryItem existingItem = Inventory.Find(x => x.resourceSO.itemName == resource.itemName);
 

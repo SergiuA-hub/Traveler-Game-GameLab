@@ -34,6 +34,7 @@ public class SettlementRuntime
     public List<TradeGood> settlementStock;
     public List<Item> settlementShopItems;
     public List<Item> settlmentUpgradeItems;
+    public LicensesSO[] settlmentLicenses;
     public GameObject settlementGo;
 
     public SettlementRuntime(SettlementSO so)
@@ -134,7 +135,7 @@ public class SettlementRuntime
         return res.baseValue * GlobalSettingsManager.UNWANTED_GOOD_PRICE_MULTIPLIER;
     }
 
-    public void increaseStock(ResourceSO res, int amount =1)
+    public void increaseStock(ResourceSO res, int amount)
     {
         foreach (var r in settlementStock)
         {
@@ -143,7 +144,7 @@ public class SettlementRuntime
         }
     }
 
-    public void decreaseStock(ResourceSO res, int amount = 1)
+    public void decreaseStock(ResourceSO res, int amount )
     {
         foreach (var r in settlementStock)
         {
@@ -166,6 +167,7 @@ public class SettlementsManager : MonoBehaviour
     //Current Item selected
     public TradeItemDisplay currentItemSelected;
     public ShopItemDisplay currentShopItemSelected;
+   
     public SettlementRuntime currentSettlement;
       
     public TimeManager timeManager;
@@ -282,7 +284,7 @@ public class SettlementsManager : MonoBehaviour
         SettlementUI.SetActive(true);
     }
 
-    public void BuyOrSell(float amount)
+    public void BuyOrSell()
     {
         //Debug.Log("BUY SELL");
         
@@ -293,15 +295,16 @@ public class SettlementsManager : MonoBehaviour
             //Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with proce {currentItemSelected.tradeSettlementItem.price}");
             //Check player money & space in backpack
             
-            if (player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price
+            if (player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price * cityUI.ReturnCurentSliderValue()
             && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume, currentItemSelected.tradeSettlementItem.resource.weight))
             {
-                player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, currentItemSelected.tradeSettlementItem.price);                
-                currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource);
+                player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, currentItemSelected.tradeSettlementItem.price,cityUI.ReturnCurentSliderValue());                
+                currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource,cityUI.ReturnCurentSliderValue());
                 updateCurrentSettlementPrices();
-                
+
+                //Slider
+                cityUI.SliderMaxValue();
                 //Display
-                
                 SettlementUI.GetComponent<CityUI>().DisplayTrade();
                 SettlementUI.GetComponent<CityUI>().DisplayPlayerCoins();
                 return;
@@ -315,10 +318,12 @@ public class SettlementsManager : MonoBehaviour
             if (!player.invetory.hasResources(currentItemSelected.tradeInventoryItem.resourceSO))
                 return;
 
-            player.invetory.tradeOut(currentItemSelected.tradeInventoryItem.resourceSO, currentSettlement.getStockPrice(currentItemSelected.tradeInventoryItem.resourceSO));            
-            currentSettlement.increaseStock(currentItemSelected.tradeInventoryItem.resourceSO);
+            player.invetory.tradeOut(currentItemSelected.tradeInventoryItem.resourceSO, currentSettlement.getStockPrice(currentItemSelected.tradeInventoryItem.resourceSO),cityUI.ReturnCurentSliderValue());            
+            currentSettlement.increaseStock(currentItemSelected.tradeInventoryItem.resourceSO,cityUI.ReturnCurentSliderValue());
             updateCurrentSettlementPrices();
-            
+
+            //Slider
+            cityUI.SliderMaxValue();
             //Display
             SettlementUI.GetComponent<CityUI>().DisplayTrade();
             SettlementUI.GetComponent<CityUI>().DisplayPlayerCoins();

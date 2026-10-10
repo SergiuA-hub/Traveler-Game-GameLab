@@ -1,4 +1,5 @@
 using Mono.Cecil;
+using System;
 using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
@@ -48,9 +49,9 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentTradeItemPrice;
     [SerializeField] private TextMeshProUGUI buySellButtonText;
     [SerializeField] private TextMeshProUGUI currentItemAmount;
-    
-    
-    //Slider
+
+
+    [Header("SLIDER_TRADE")]
     public Slider sliderAmount;
     [SerializeField] private TextMeshProUGUI currentTextAmount;
     
@@ -76,12 +77,28 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI upgradeItemPrice;
     [SerializeField] private TextMeshProUGUI upgradeItemDescription;
 
+    [Header("TRADE GUILD PAGE")]
+    [SerializeField] private Transform TradeGuildContent;
+    //Aici se poate sa am nevoie de alt prefab ,acm e destul de bun
+    [SerializeField] private ShopItemDisplay LicensesDisplayPrefab;
+
+    [Header("Current LICENSE DISPLAY")]
+    [SerializeField] private Image LicenseIcon;
+    [SerializeField] private TextMeshProUGUI LicenseName;
+    [SerializeField] private TextMeshProUGUI LicensePrice;
+    [SerializeField] private TextMeshProUGUI LicenseUnlock;
+
+    //Cart Managment
+
     [Header("PAGES")]
     [SerializeField] private GameObject LobbyPanel;
     [SerializeField] private GameObject ShopPanel;
     [SerializeField] private GameObject TradePanel;
     [SerializeField] private GameObject UpgradePanel;
-    
+
+    [SerializeField] private GameObject GuildPanel;
+    [SerializeField] private GameObject CartManagmentPanel;
+
     private void Awake()
     {
         setlement = GetComponent<Setlement>();
@@ -124,10 +141,10 @@ public class CityUI : MonoBehaviour
                 DisplayUpgradePanel();
                 break;
             case CityUIPage.TradeGuild:
-
+                DisplayTradeGuildPanel();
                 break;
             case CityUIPage.CartManagment:
-
+                DisplayCartManagmentPanel();
                 break;
             case CityUIPage.Rest:
 
@@ -295,6 +312,36 @@ public class CityUI : MonoBehaviour
         }
     }
 
+
+    //############
+    //TRADE GUILD
+    //############
+
+    public void DisplayTradeGuildPanel()
+    {
+        foreach (Transform child in TradeGuildContent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (var license in currentSettlement.settlmentLicenses)
+        {
+            ShopItemDisplay row = Instantiate(LicensesDisplayPrefab, TradeGuildContent);
+            row.PopulateLicense(license, this);
+        }
+        //current  license selected
+    }
+
+    //############
+    //CART MANAGMENT
+    //############
+    public void DisplayCartManagmentPanel()
+    {
+
+    }
+    //############
+    //REST 
+    //############
 
     //BUTTONS FUNCTIONS
     public void ChangePage(int pageIndex)

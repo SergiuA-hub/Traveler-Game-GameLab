@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 
 [CreateAssetMenu(fileName = "Item",menuName ="ItemSO")]
-public class ItemsSO : ScriptableObject
+public class ItemSO : ScriptableObject
 {
     public string itemName;
     public Image icon;

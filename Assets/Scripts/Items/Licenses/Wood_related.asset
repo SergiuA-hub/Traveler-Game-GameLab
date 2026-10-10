@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46ce27db215351419496b815f328999, type: 3}
+  m_Name: Wood_related
+  m_EditorClassIdentifier: Assembly-CSharp::LicensesSO
+  LicenseName: Wood Starter
+  icon: {fileID: -5744246660371377278, guid: 47622dc3d42998640b9e1031f84eddc3, type: 3}
+  cost: 300
+  resourse_unlock:
+  - {fileID: 11400000, guid: 756e0e972a38b684196571473f7ae534, type: 2}
+  - {fileID: 11400000, guid: bd4b42c652ba9c94da6d95e33a465157, type: 2}
+  canBuy: 1
+  canSell: 1
