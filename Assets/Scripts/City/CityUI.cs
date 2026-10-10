@@ -202,15 +202,21 @@ public class CityUI : MonoBehaviour
         //Create list
         foreach (var item in currentSettlement.settlementStock)
         {
-            TradeItemDisplay row = Instantiate(tradePrfab, buyContent);
-            row.PopulateBuyIcon(item, this);
+            TradeItemDisplay row;
+
+            if (LicenseManager.instance.CanTrade(item.resource))
+            {
+                 row = Instantiate(tradePrfab, buyContent);
+                row.PopulateBuyIcon(item, this);
+            }
+            
             
 
             if (settlementsManager.currentItemSelected != null && settlementsManager.currentItemSelected.tradeSettlementItem != null)
                 if(item.resource.itemName == settlementsManager.currentItemSelected.tradeSettlementItem.resource.itemName)
                 {
                     //Debug.Log($"item.resource.itemName:{item.resource.itemName}");
-                    SetCurrentTradeItem(row);
+                    //SetCurrentTradeItem(row);
                 }
             
         }
