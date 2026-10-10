@@ -152,20 +152,25 @@ MonoBehaviour:
     itemType: 1
     itemStatus: 0
   upgradeShop:
-  - ItemName: Worn
-    cargoSO: {fileID: 0}
-    level: 0
+  - ItemName: Masterwork Backpack
+    cargoSO: {fileID: 11400000, guid: c845cb139223a51418173076ea638dfd, type: 2}
+    level: 5
+    itemType: 0
+    itemStatus: 0
+  - ItemName: Sturdy Hand Cart
+    cargoSO: {fileID: 11400000, guid: 8ecc387c91b0fc64088576c352caa39b, type: 2}
+    level: 2
     itemType: 1
     itemStatus: 0
-  - ItemName: Worn Backpack
-    cargoSO: {fileID: 0}
-    level: 0
-    itemType: 1
+  - ItemName: Heavy-Duty Ox Cart
+    cargoSO: {fileID: 11400000, guid: e7037a5967b031547afea9e1178267fa, type: 2}
+    level: 4
+    itemType: 2
     itemStatus: 0
-  - ItemName: Worn Backpack
-    cargoSO: {fileID: 0}
-    level: 0
-    itemType: 1
+  - ItemName: Reinforced Horse Cart
+    cargoSO: {fileID: 11400000, guid: 68b048a0f527f5a49bcebedd09b84543, type: 2}
+    level: 3
+    itemType: 3
     itemStatus: 0
   Licenses_Shop:
   - {fileID: 11400000, guid: e3ab1229ff9bb3741bbb00e39f39158c, type: 2}

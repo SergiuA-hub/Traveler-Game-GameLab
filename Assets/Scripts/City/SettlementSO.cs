@@ -83,5 +83,7 @@ public class Cargo
         this.cargoSO = cargoSO;
         this.itemType = type;
     }
+
+    
     
 }

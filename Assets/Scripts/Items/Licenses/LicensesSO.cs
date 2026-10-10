@@ -7,6 +7,7 @@ public class LicensesSO : ScriptableObject
     public Image icon;
     public float cost;
     public ResourceSO[] resourse_unlock;
+    public SettlementSO settlementSO;
 
     public bool canBuy;
        
