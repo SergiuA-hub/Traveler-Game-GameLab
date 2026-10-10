@@ -14,12 +14,13 @@ public class NpcManager : MonoBehaviour
 
     public List<RoadPath> roads = new();
 
-    public GameObject NPC;
+    public List<GameObject> NPCs;
     public Transform npcSpawner;
 
     public List<Npc> aliveNPCs = new();
 
     public List<Npc> npcPlayerCanInteract;
+    private string lastSettlement;
     private void Start()
     {
         foreach (RoadPath road in roads)
@@ -33,7 +34,7 @@ public class NpcManager : MonoBehaviour
         }
 
         timeManager.onHourChanged.AddListener(hourlNpcSpawnerCheck);
-    }
+    }    
 
     public void hourlNpcSpawnerCheck(DateTime time)
     {
@@ -42,11 +43,16 @@ public class NpcManager : MonoBehaviour
             spawnRandomNPC();
         }
     }
-
+    
     public void spawnRandomNPC()
     {
         bool direction = UnityEngine.Random.Range(0, 2) == 1;
         RoadPath randomRoad = roads[UnityEngine.Random.Range(0, roads.Count)];
+        string startLocation = direction ? randomRoad.startSettlement.settlementName : randomRoad.endSettlement.settlementName;
+
+        if (lastSettlement == startLocation)
+            return;
+        
         SpawnNPC(randomRoad, direction);
         Debug.Log("NPC SPAWN");
     }
@@ -97,6 +103,7 @@ public class NpcManager : MonoBehaviour
 
         int startIndex = forward ? 0 : road.waypoints.Count - 1;
 
+        GameObject NPC = NPCs[UnityEngine.Random.Range(0, NPCs.Count)];
         GameObject npcObject = Instantiate(
             NPC,
             road.waypoints[startIndex].position,
@@ -122,6 +129,7 @@ public class NpcManager : MonoBehaviour
         npc.transform.position =
             road.waypoints[startIndex].position + npc.pathOffset;
 
+        lastSettlement = forward ? road.startSettlement.settlementName : road.endSettlement.settlementName;
         aliveNPCs.Add(npc);
     }
 
