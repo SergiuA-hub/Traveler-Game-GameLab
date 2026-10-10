@@ -20,7 +20,7 @@ public class ShopItemDisplay : MonoBehaviour, IPointerClickHandler
     //For testing
 
 
-    public void PopulateIcons(ItemSO item,CityUI ui)
+    public void PopulateIcons(CargoSO item,CityUI ui)
     {
         cityUI = ui;
         IconImage = item.icon;
@@ -44,6 +44,7 @@ public class ShopItemDisplay : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         cityUI.SetCurrentShopItem(this);
+        
         
     }
 }

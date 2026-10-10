@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerAttachments_M : MonoBehaviour
 {
-    public Item currentItemSelected;
-    public Item[] playerItems;
+    public Cargo currentItemSelected;
+    public Cargo[] playerItems;
 
 }

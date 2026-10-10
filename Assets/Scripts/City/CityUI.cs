@@ -124,6 +124,8 @@ public class CityUI : MonoBehaviour
         ShopPanel.SetActive(page == CityUIPage.Shop);
         TradePanel.SetActive(page == CityUIPage.Trade);
         UpgradePanel.SetActive(page == CityUIPage.UpgradeShop);
+        GuildPanel.SetActive(page == CityUIPage.TradeGuild);
+        CartManagmentPanel.SetActive(page == CityUIPage.CartManagment);
 
         switch (currentpage)
         {
@@ -279,7 +281,7 @@ public class CityUI : MonoBehaviour
         foreach (var item in currentSettlement.settlementShopItems)
         {
             ShopItemDisplay row = Instantiate(ItemShopPrefab, ShopContent);
-            row.PopulateIcons(item.shopItems, this);
+            row.PopulateIcons(item.cargoSO, this);
         }
     }
     public void SetCurrentShopItem(ShopItemDisplay shopItem)
@@ -308,7 +310,7 @@ public class CityUI : MonoBehaviour
         foreach (var item in currentSettlement.settlmentUpgradeItems)
         {
             ShopItemDisplay row = Instantiate(upgradeItemShopPrefab, UpgradeContent);
-            row.PopulateIcons(item.shopItems, this);
+            row.PopulateIcons(item.cargoSO, this);
         }
     }
 

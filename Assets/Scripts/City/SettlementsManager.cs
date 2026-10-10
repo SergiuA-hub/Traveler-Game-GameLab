@@ -32,8 +32,8 @@ public class SettlementRuntime
     public string settlementName;
     public SettlementSO defaultSettlementData;
     public List<TradeGood> settlementStock;
-    public List<Item> settlementShopItems;
-    public List<Item> settlmentUpgradeItems;
+    public List<Cargo> settlementShopItems;
+    public List<Cargo> settlmentUpgradeItems;
     public LicensesSO[] settlmentLicenses;
     public GameObject settlementGo;
 
@@ -41,8 +41,8 @@ public class SettlementRuntime
     {
         defaultSettlementData = so;
         this.settlementName = defaultSettlementData.settlementName;
-        settlementShopItems = new List<Item>();
-        settlmentUpgradeItems = new List<Item>();
+        settlementShopItems = new List<Cargo>();
+        settlmentUpgradeItems = new List<Cargo>();
         settlementStock = new List<TradeGood>();
 
     }
@@ -164,14 +164,14 @@ public class SettlementsManager : MonoBehaviour
 
     public List<SettlementRuntime> settlements;
     
-    //Current Item selected
+    //Current Cargo selected
     public TradeItemDisplay currentItemSelected;
     public ShopItemDisplay currentShopItemSelected;
    
     public SettlementRuntime currentSettlement;
-      
+    //Managers
     public TimeManager timeManager;
-    
+    public LicenseManager licenseManager;   
     void Start()
     {
         if(timeManager!=null)
@@ -198,11 +198,11 @@ public class SettlementsManager : MonoBehaviour
             }
             foreach(var item in settl.settlementSo.itemsShop)
             {
-                currentSettlement.settlementShopItems.Add(new Item(item.ItemName,item.shopItems,item.itemType));
+                currentSettlement.settlementShopItems.Add(new Cargo(item.ItemName,item.cargoSO,item.itemType));
             }
             foreach(var upgradeItem in settl.settlementSo.upgradeShop)
             {
-                currentSettlement.settlmentUpgradeItems.Add(new Item(upgradeItem.ItemName,upgradeItem.shopItems,upgradeItem.itemType));
+                currentSettlement.settlmentUpgradeItems.Add(new Cargo(upgradeItem.ItemName,upgradeItem.cargoSO,upgradeItem.itemType));
             }
             currentSettlement.calculatePriceTiers();
 

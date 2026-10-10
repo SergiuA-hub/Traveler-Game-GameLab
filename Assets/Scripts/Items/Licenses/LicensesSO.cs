@@ -9,5 +9,5 @@ public class LicensesSO : ScriptableObject
     public ResourceSO[] resourse_unlock;
 
     public bool canBuy;
-    public bool canSell;    
+       
 }

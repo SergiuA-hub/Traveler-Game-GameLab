@@ -9,8 +9,8 @@ public class SettlementSO : ScriptableObject
     public string settlementName;
     public List<SettlementGood> production;
     public List<SettlementGood> consumption;
-    public List<Item> itemsShop;
-    public List<Item> upgradeShop;
+    public List<Cargo> itemsShop;
+    public List<Cargo> upgradeShop;
     public List<LicensesSO> Licenses_Shop;
 
 
@@ -49,9 +49,9 @@ public class SettlementGood
         return 0;
     }
 }
-public enum ShopItemType
+public enum CargoCategory
 {
-    Usable,
+    
     Backpack,
     HandCart,
     OxCart,
@@ -66,18 +66,21 @@ public enum Status
 }
 
 [System.Serializable]
-public class Item
+public class Cargo
 {
     public string ItemName;
-    public ItemSO shopItems;
-    public ShopItemType itemType;
+    public CargoSO cargoSO;
+    public int level;
+
+    //enums
+    public CargoCategory itemType;
     public Status itemStatus;
     
 
-    public Item(string name, ItemSO itemSO,ShopItemType type)
+    public Cargo(string name, CargoSO cargoSO,CargoCategory type)
     {
         this.ItemName = name;
-        this.shopItems = itemSO;
+        this.cargoSO = cargoSO;
         this.itemType = type;
     }
     
