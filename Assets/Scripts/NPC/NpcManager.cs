@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NpcManager : MonoBehaviour
 {
-    public Transform player;
+    public Player_M player;
     public TimeManager timeManager;
 
     public float npcVisibleDistance = 30f;
@@ -18,9 +18,11 @@ public class NpcManager : MonoBehaviour
     public Transform npcSpawner;
 
     public List<Npc> aliveNPCs = new();
+    public float spawnChange;
 
     public List<Npc> npcPlayerCanInteract;
     private string lastSettlement;
+    private float speedModifier = 1;
     private void Start()
     {
         foreach (RoadPath road in roads)
@@ -30,7 +32,7 @@ public class NpcManager : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
-            spawnRandomNPC();
+            spawnRandomNPC(100);
         }
 
         timeManager.onHourChanged.AddListener(hourlNpcSpawnerCheck);
@@ -40,12 +42,15 @@ public class NpcManager : MonoBehaviour
     {
         if(aliveNPCs.Count < maxAliveNPC)
         {
-            spawnRandomNPC();
+            spawnRandomNPC(spawnChange);
         }
     }
     
-    public void spawnRandomNPC()
+    public void spawnRandomNPC(float chance)
     {
+        if (UnityEngine.Random.Range(0, 100) > chance)
+            return;
+
         bool direction = UnityEngine.Random.Range(0, 2) == 1;
         RoadPath randomRoad = roads[UnityEngine.Random.Range(0, roads.Count)];
         string startLocation = direction ? randomRoad.startSettlement.settlementName : randomRoad.endSettlement.settlementName;
@@ -55,7 +60,7 @@ public class NpcManager : MonoBehaviour
         
         SpawnNPC(randomRoad, direction);
         Debug.Log("NPC SPAWN");
-    }
+    }    
 
     private void Update()
     {
@@ -63,6 +68,9 @@ public class NpcManager : MonoBehaviour
         {
             MoveNPC(aliveNPCs[i]);
         }
+
+        if (player.isCamping)
+            return;
 
         if (!optimizeNpcVizibility)
             return;
@@ -79,10 +87,16 @@ public class NpcManager : MonoBehaviour
             }
         }
     }
+
+    public void adjustSpeed(float timeModifier)
+    {
+        speedModifier = (GlobalSettingsManager.HOUR_DURATION / timeModifier);
+    }
+
     private void UpdateNPCVisibility(Npc npc)
     {
         float sqrDistance =
-            (npc.transform.position - player.position).sqrMagnitude;
+            (npc.transform.position - player.transform.position).sqrMagnitude;
 
         float maxDistanceSqr =
             npcVisibleDistance * npcVisibleDistance;
@@ -93,9 +107,34 @@ public class NpcManager : MonoBehaviour
         if (npc.visuals.activeSelf != shouldBeVisible)
         {
             npc.visuals.SetActive(shouldBeVisible);
+        }        
+    }
+
+    public void hideAllNPC()
+    {
+        foreach (Npc npc in aliveNPCs)
+        {
+            npc.visuals.SetActive(false);
         }
     }
 
+    public void restoreNPCVizibility()
+    {
+        if (!optimizeNpcVizibility)
+        {
+            foreach (Npc npc in aliveNPCs)
+            {
+                npc.visuals.SetActive(true);
+            }
+
+            return;
+        }
+        
+        foreach (Npc npc in aliveNPCs)
+        {
+            UpdateNPCVisibility(npc);
+        }
+    }
     public void SpawnNPC(RoadPath road, bool forward)
     {
         if (road == null || road.waypoints.Count == 0)
@@ -112,6 +151,7 @@ public class NpcManager : MonoBehaviour
         );
 
         Npc npc = npcObject.GetComponent<Npc>();
+        npc.setNpcManager(this, timeManager);
 
         if (npc == null)
         {
@@ -128,7 +168,8 @@ public class NpcManager : MonoBehaviour
 
         npc.transform.position =
             road.waypoints[startIndex].position + npc.pathOffset;
-
+        
+        npc.animateMove();
         lastSettlement = forward ? road.startSettlement.settlementName : road.endSettlement.settlementName;
         aliveNPCs.Add(npc);
     }
@@ -156,8 +197,17 @@ public class NpcManager : MonoBehaviour
         npc.transform.position = Vector3.MoveTowards(
             npc.transform.position,
             target,
-            npc.speed * Time.deltaTime
+            npc.speed * Time.deltaTime * speedModifier
         );
+
+        // Direction towards target
+        Vector3 direction = target - npc.transform.position;
+
+        // Flip sprite based on horizontal movement
+        if (direction.x < -0.01f)
+            npc.spriteRenderer.flipX = false;
+        else if (direction.x > 0.01f)
+            npc.spriteRenderer.flipX = true;
 
         if (Vector3.Distance(npc.transform.position, target) < 0.01f)
         {
