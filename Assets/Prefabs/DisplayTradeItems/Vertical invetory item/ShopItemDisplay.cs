@@ -26,6 +26,8 @@ public class ShopItemDisplay : MonoBehaviour, IPointerClickHandler
         IconImage = item.icon;
         itemName.text = item.itemName;
         price.text = item.price.ToString();
+        //check ownerShip
+        //
         
 
     }

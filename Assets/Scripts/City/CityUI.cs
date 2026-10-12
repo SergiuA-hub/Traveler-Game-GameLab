@@ -204,7 +204,7 @@ public class CityUI : MonoBehaviour
         {
             TradeItemDisplay row;
 
-            if (LicenseManager.instance.CanTrade(item.resource))
+            if (LicenseManager.instance.CanTrade(item.resource,currentSettlement.defaultSettlementData))
             {
                  row = Instantiate(tradePrfab, buyContent);
                 row.PopulateBuyIcon(item, this);

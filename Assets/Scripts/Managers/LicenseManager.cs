@@ -26,11 +26,11 @@ public class LicenseManager : MonoBehaviour
 
     }
 
-    public bool CanTrade(ResourceSO resource)
+    public bool CanTrade(ResourceSO resource,SettlementSO settlementSO)
     {
         foreach(var license in ownedLicenses)
         {
-            if(license.resourse_unlock.Contains(resource)) 
+            if(license.resourse_unlock.Contains(resource) & license.settlementSO == settlementSO) 
                 return true;
             
         }
