@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: 8d4b12a0c486e0e40907d8fd207450b1
+guid: 9183bcfabb3f2a04ab66f9942298580b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5496244894970862137
-    second: Farmland_0
+      213: 3048937005348815756
+    second: Crops_0
+  - first:
+      213: -7474529693045490863
+    second: Crops_1
+  - first:
+      213: -5774877164156790999
+    second: Crops_2
+  - first:
+      213: 1640555460866966840
+    second: Crops_3
+  - first:
+      213: 2683288208970150335
+    second: Crops_4
+  - first:
+      213: 8954413170907878631
+    second: Crops_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,199 +115,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Farmland_0
+      name: Crops_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
-        width: 126
-        height: 64
+        x: 16
+        y: 143
+        width: 91
+        height: 102
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c525bc636a69b3b0800000000000000
-      internalID: -5496244894970862137
+      spriteID: c830c5a6d00005a20800000000000000
+      internalID: 3048937005348815756
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmland_1
+      name: Crops_1
       rect:
         serializedVersion: 2
-        x: 126
-        y: 128
-        width: 126
-        height: 64
+        x: 142
+        y: 143
+        width: 91
+        height: 102
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6874527eb0d0f7641bb4b8599cda76fd
-      internalID: -1794152263
+      spriteID: 15bf9ee88d2254890800000000000000
+      internalID: -7474529693045490863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmland_2
+      name: Crops_2
       rect:
         serializedVersion: 2
-        x: 252
-        y: 128
-        width: 126
-        height: 64
+        x: 287
+        y: 89
+        width: 48
+        height: 134
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: aada1330d3e8e6d4cac38c3cb0b2a76b
-      internalID: -275035464
+      spriteID: 9275be8d0d38bdfa0800000000000000
+      internalID: -5774877164156790999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmland_3
+      name: Crops_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 126
-        height: 64
+        x: 6
+        y: 4
+        width: 112
+        height: 111
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1dee29e0d06c6744aadd7985b28e51ef
-      internalID: -1259492839
+      spriteID: 8358d47ef7c64c610800000000000000
+      internalID: 1640555460866966840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmland_4
+      name: Crops_4
       rect:
         serializedVersion: 2
-        x: 126
-        y: 64
-        width: 126
-        height: 64
+        x: 149
+        y: 12
+        width: 80
+        height: 43
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: df10fd7f1a6b4c14f81e4395dccd0088
-      internalID: -1574089370
+      spriteID: fb1f8adc864fc3520800000000000000
+      internalID: 2683288208970150335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmland_5
+      name: Crops_5
       rect:
         serializedVersion: 2
-        x: 252
-        y: 64
-        width: 126
-        height: 64
+        x: 275
+        y: 12
+        width: 80
+        height: 43
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: fe997cddc63ae6a4ebc6ddc526e1c085
-      internalID: 637707387
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Farmland_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 126
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e37a3e459365014c9db3ac730d16533
-      internalID: 2051795631
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Farmland_7
-      rect:
-        serializedVersion: 2
-        x: 126
-        y: 0
-        width: 126
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9125391f96119cc4bab158509414e8f4
-      internalID: 498810594
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Farmland_8
-      rect:
-        serializedVersion: 2
-        x: 252
-        y: 0
-        width: 126
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 28ee40585d178064fb1af46846220de4
-      internalID: 1769879656
+      spriteID: 7e41b002657744c70800000000000000
+      internalID: 8954413170907878631
       vertices: []
       indices: 
       edges: []
@@ -301,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1ab78b91946ae6043a768649c2300d05
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -309,19 +258,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":3.0},"gridSpriteSize":{"x":126.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Farmland_0: -5496244894970862137
-      Farmland_1: -1794152263
-      Farmland_2: -275035464
-      Farmland_3: -1259492839
-      Farmland_4: -1574089370
-      Farmland_5: 637707387
-      Farmland_6: 2051795631
-      Farmland_7: 498810594
-      Farmland_8: 1769879656
+      Crops_0: 3048937005348815756
+      Crops_1: -7474529693045490863
+      Crops_2: -5774877164156790999
+      Crops_3: 1640555460866966840
+      Crops_4: 2683288208970150335
+      Crops_5: 8954413170907878631
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

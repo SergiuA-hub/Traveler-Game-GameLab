@@ -103,10 +103,7 @@ public class HUDScript : MonoBehaviour
         dateText.text = "Day " + timeManager.currentTime.Day.ToString() + "\n" + timeManager.currentTime.Hour.ToString() + ":00";
         timerText.text = timeManager.timerCurrent.ToString();
         timerSlider.value = timeManager.timerCurrent;
-        if (timeManager.timerCurrent <= timeManager.timerCritical)
-        {
-            timerSlider.image.GetComponent<Image>().color = timerCritColor;
-        }
+
     }
 
     private void EnablePlayerHUD()
