@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Data;
 
 public class HUDScript : MonoBehaviour
 {
@@ -42,6 +43,9 @@ public class HUDScript : MonoBehaviour
     public TextMeshProUGUI weatherText;
     public Season currentSeason = Season.Summer;
     public WeatherType currentWeather = WeatherType.Clear;
+    public Slider timerSlider;
+    public TextMeshProUGUI timerText;
+    public Color timerCritColor;
 
 
     void Start()
@@ -51,6 +55,7 @@ public class HUDScript : MonoBehaviour
         staminaSlider.maxValue = player.stats.maxStamina;
         thirstSlider.maxValue = player.stats.maxThirst;
         hungerSlider.maxValue = player.stats.maxHunger;
+        timerSlider.maxValue = timeManager.timerMax;
     }
 
    
@@ -96,6 +101,12 @@ public class HUDScript : MonoBehaviour
     void UpdateTimeDisplay ()
     {
         dateText.text = "Day " + timeManager.currentTime.Day.ToString() + "\n" + timeManager.currentTime.Hour.ToString() + ":00";
+        timerText.text = timeManager.timerCurrent.ToString();
+        timerSlider.value = timeManager.timerCurrent;
+        if (timeManager.timerCurrent <= timeManager.timerCritical)
+        {
+            timerSlider.image.GetComponent<Image>().color = timerCritColor;
+        }
     }
 
     private void EnablePlayerHUD()

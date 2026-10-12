@@ -11,6 +11,7 @@ public class Player_M : MonoBehaviour
     public bool isResting = false;
     public bool isCamping = false;
     public bool rooted = false;
+    public bool isDead = false;
 
     //Components
     public PlayerStats_M stats;
@@ -46,6 +47,7 @@ public class Player_M : MonoBehaviour
     private void Start()
     {
         GetBackpackMax();
+        isDead = false;
         
     }
     
@@ -111,7 +113,14 @@ public class Player_M : MonoBehaviour
     // ------HP------ 
     public void TakeDamage(float damage)
     {
+        if (isDead) 
+            return;
         stats.currentHp -= damage;
+        if (stats.currentHp <= 0)
+        {
+            stats.currentHp = 0;
+            isDead = true;
+        }
     }
 
     public void Eat(ResourceSO res, int amount = 1)
