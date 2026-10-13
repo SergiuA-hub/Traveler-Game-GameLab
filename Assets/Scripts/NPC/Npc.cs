@@ -37,6 +37,10 @@ public class Npc : MonoBehaviour
         timeManager.onMorning.AddListener(turnOffLight);
     }
 
+    private void OnEnable()
+    {
+        animateMove();
+    }
 
     private void OnDestroy()
     {
