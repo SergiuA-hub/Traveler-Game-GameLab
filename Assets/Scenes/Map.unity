@@ -799796,11 +799796,11 @@ PrefabInstance:
       objectReference: {fileID: 932758302}
     - target: {fileID: 60880057156043123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 60880057156043123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.53
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 60880057156043123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -799858,6 +799858,14 @@ PrefabInstance:
       propertyPath: m_PointLightInnerRadius
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1639975573155533776, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1639975573155533776, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1928349594743092773, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: rooted
       value: 0
@@ -799870,6 +799878,18 @@ PrefabInstance:
       propertyPath: timeManager
       value: 
       objectReference: {fileID: 932758302}
+    - target: {fileID: 3230410155822635123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: timeManager
+      value: 
+      objectReference: {fileID: 932758302}
+    - target: {fileID: 3230410155822635123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: vignetteVol
+      value: 
+      objectReference: {fileID: 1379976940}
+    - target: {fileID: 3230410155822635123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: timerCriticalValue
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3683512654714695150, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -819638,7 +819658,7 @@ MonoBehaviour:
   sunsetStart: 20
   sunsetEnd: 23
   dayColor: {r: 1, g: 0.96, b: 0.9, a: 1}
-  nightColor: {r: 0.57, g: 0.65, b: 0.84, a: 1}
+  nightColor: {r: 0.8660377, g: 0.90680885, b: 1, a: 1}
   time_stopped: 0
   onHourChanged:
     m_PersistentCalls:
@@ -1086638,6 +1086658,7 @@ MonoBehaviour:
   - {fileID: 2891404436547364254, guid: fa0397c1c3b6cc24e89054fd74b222eb, type: 3}
   - {fileID: 2891404436547364254, guid: ff8771d45bc15874a8c6c7368fbeb9fc, type: 3}
   - {fileID: 2891404436547364254, guid: cc7e6e8f063757947a7f263c4b427204, type: 3}
+  - {fileID: 2577640390907146164, guid: 0baf9bd8241262541b2f8bda1eb59056, type: 3}
   springLootPlaceHolders: []
   summerLootPlaceHolders: []
   fallLootPlaceHolders: []
