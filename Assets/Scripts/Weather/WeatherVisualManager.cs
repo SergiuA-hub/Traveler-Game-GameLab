@@ -214,9 +214,7 @@ public class WeatherVisualManager : MonoBehaviour
     #endregion
 
     public void changeWeather(Season season, WeatherType weather)
-    {
-        Debug.Log($"Weahter change with season:{season.ToString()} and weather:{weather.ToString()} and will not change return:{(weatherInitialized && currentSeason == season &&currentWeather == weather)}");
-        
+    {   
         if (weatherInitialized &&
             currentSeason == season &&
             currentWeather == weather)
