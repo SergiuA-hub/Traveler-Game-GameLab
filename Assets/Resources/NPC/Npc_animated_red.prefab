@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3234778363099950192}
   - component: {fileID: 1159322756133225199}
+  - component: {fileID: -4167603528266038527}
   - component: {fileID: 4955497502493854374}
   - component: {fileID: 6555800552813414830}
   m_Layer: 6
@@ -62,6 +63,39 @@ MonoBehaviour:
   visuals: {fileID: 297676040438961626}
   animator: {fileID: 3448883331583363497}
   tourch: {fileID: 6895198135251609589}
+--- !u!114 &-4167603528266038527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297676040438961626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1943f0f52010f854a94c03e1d7e8127a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Trader
+  possibleTradingGoodsList:
+  - resource: {fileID: 11400000, guid: 977e07f63e21de04eab6d24732cd7a04, type: 2}
+    maxAmount: 10
+    spawnChance: 20
+  - resource: {fileID: 11400000, guid: 4ba6b85d27f214442a30c33be8df8e87, type: 2}
+    maxAmount: 5
+    spawnChance: 1
+  - resource: {fileID: 11400000, guid: bd4b42c652ba9c94da6d95e33a465157, type: 2}
+    maxAmount: 5
+    spawnChance: 17
+  - resource: {fileID: 11400000, guid: 1e2f3b0e438a9dc4c905a4e8ca2d0c82, type: 2}
+    maxAmount: 15
+    spawnChance: 15
+  - resource: {fileID: 11400000, guid: b3aad3b0b4bbd164a86d75f59d54b84e, type: 2}
+    maxAmount: 5
+    spawnChance: 5
+  - resource: {fileID: 11400000, guid: 1c8f8ca846032ec479d1044edc2c361a, type: 2}
+    maxAmount: 10
+    spawnChance: 30
+  maxTradeCount: 3
+  tradeGoods: []
 --- !u!114 &4955497502493854374
 MonoBehaviour:
   m_ObjectHideFlags: 0
