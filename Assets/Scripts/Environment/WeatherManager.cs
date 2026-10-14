@@ -44,6 +44,16 @@ public class WeatherManager : MonoBehaviour
         environmentManager.setWeather(currentWeather);
         updateUI();
         timeManager.onHourChanged.AddListener(hourlyWeatherCheck);
+        
+        timeManager.onMorning.AddListener(morning);
+        timeManager.onEvening.AddListener(evening);
+    }
+
+    private void OnDestroy()
+    {
+        timeManager.onHourChanged.RemoveListener(hourlyWeatherCheck);
+        timeManager.onMorning.RemoveListener(morning);
+        timeManager.onEvening.RemoveListener(evening);
     }
 
     public void updateUI()
@@ -161,6 +171,22 @@ public class WeatherManager : MonoBehaviour
 
     }   
 
+    public void morning(DateTime t)
+    {
+        if(currentSeason == Season.Winter)
+        {
+            weatherVisual.deFrost();
+        }
+    }
+
+    public void evening(DateTime t)
+    {
+        if (currentSeason == Season.Winter)
+        {
+            weatherVisual.frost();
+        }
+    }
+
     public void setCurrentSeason(Season season)
     {
         currentSeason = season;
@@ -184,7 +210,16 @@ public class WeatherManager : MonoBehaviour
 
         if (currentSeason == Season.Winter)
         {
-            //weatherVisual.SetWeather(winterWeather);
+            int hour = timeManager.currentTime.Hour;
+
+            if (hour >= 20 || hour < 6)
+            {
+                weatherVisual.frost();
+            }
+            else
+            {
+                weatherVisual.deFrost();
+            }
         }
     }
 }

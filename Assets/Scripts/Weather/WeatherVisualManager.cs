@@ -328,6 +328,7 @@ public class WeatherVisualManager : MonoBehaviour
                         rainEffect.FadeIn(6f);
 
                         // Lightning - triggered by your existing doLighting()
+                        lightningEffect.Set("color", Color.white);
                         lightningEffect.Set("frequency", 0f);
                         lightningEffect.FadeIn(3f);
                         lightningTimer = 1f;
@@ -385,6 +386,21 @@ public class WeatherVisualManager : MonoBehaviour
         StopFrost();
         StopPollen();
     }
+
+    public void frost()
+    {
+        InitializeFrost();
+
+        frostEffect.Set("frequency", 0.2f);
+        frostEffect.Set("intensity", 0.35f);
+        frostEffect.FadeIn(4f);
+    }    
+
+    public void deFrost()
+    {
+        StopFrost();
+    }
+
     private void OnDestroy()
     {
         if (activeEffect != null)
