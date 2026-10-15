@@ -16,7 +16,7 @@ public class LicenseManager : MonoBehaviour
 
     public bool PuchaseLicenses(LicensesSO licensesSO,ref float playerGold)
     {
-        //have license or no money
+        //already have license or no money
         if (AlreadyOwnsLicense(licensesSO) || playerGold < licensesSO.cost) return false;
         
         //Else
@@ -30,7 +30,7 @@ public class LicenseManager : MonoBehaviour
     {
         foreach(var license in ownedLicenses)
         {
-            if(license.resourse_unlock.Contains(resource) & license.settlementSO == settlementSO) 
+            if(license.resourse_unlock.Contains(resource) && license.settlementSO == settlementSO) 
                 return true;
             
         }

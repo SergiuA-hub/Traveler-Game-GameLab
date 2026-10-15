@@ -37,9 +37,9 @@ public class PlayerInventory_M : MonoBehaviour
         player= GetComponent<Player_M>();
     }
 
-    public void AddItem(ResourceSO resource, int amount = 1)
+    public void AddItem(ResourceSO resource, int amount )
     {
-        Debug.Log($"Add to inventory{resource.itemName} - {amount}");
+        //Debug.Log($"Add to inventory{resource.itemName} - {amount}");
         InventoryItem existingItem = Inventory.Find(x => x.resourceSO.itemName == resource.itemName);
 
 
@@ -161,7 +161,7 @@ public class PlayerInventory_M : MonoBehaviour
     
     public bool CanCarry(float volume,float weight)
     {
-        if (currentVolume + volume <= player.stats.maxVolume || currentWeight + weight<= player.stats.maxWeight)
+        if (currentVolume + volume <= player.stats.maxVolume && currentWeight + weight<= player.stats.maxWeight)
         {
             return true;
         }

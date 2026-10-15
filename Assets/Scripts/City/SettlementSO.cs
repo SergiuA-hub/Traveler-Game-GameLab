@@ -70,7 +70,7 @@ public class Cargo
 {
     public string ItemName;
     public CargoSO cargoSO;
-    public int level;
+    
 
     //enums
     public CargoCategory itemType;
@@ -84,6 +84,10 @@ public class Cargo
         this.itemType = type;
     }
 
-    
+    public void SetStatus(Status status)
+    {
+        itemStatus = status;
+    }
     
 }
+

@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor.Rendering.Universal.ShaderGUI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,39 +8,36 @@ public class ShopItemDisplay : MonoBehaviour, IPointerClickHandler
     public Image IconImage;
     
     public TextMeshProUGUI itemName;
-    public TextMeshProUGUI sellPoint;
     public TextMeshProUGUI type;
     public TextMeshProUGUI status;
     public TextMeshProUGUI price;
 
     //Components
     public CityUI cityUI;
+    public Cargo cargo;
+    
 
-    //For testing
-
-
-    public void PopulateIcons(CargoSO item,CityUI ui)
+    public void PopulateIcons(Cargo item,CityUI ui)
     {
         cityUI = ui;
-        IconImage = item.icon;
-        itemName.text = item.itemName;
-        price.text = item.price.ToString();
-        //check ownerShip
-        //
-        
+        cargo = item;
+
+        IconImage.sprite = item.cargoSO.icon;
+        itemName.text = item.cargoSO.itemName;
+        type.text = item.cargoSO.type.ToString();
+        price.text = item.cargoSO.price.ToString();
+
+
+        Cargo owned = null;
+        owned = CargoManager.instance.PlayerOwnedCargo.Find(x => x != null && x.cargoSO == item.cargoSO);
+
+        if (status == null)
+            Debug.LogError($"'status' nu e asignat pe prefab-ul {name}", this);
+        else
+            status.text = owned != null ? owned.itemStatus.ToString() : "Disponibil";
+       
 
     }
-
-    public void PopulateLicense(LicensesSO license, CityUI ui)
-    {
-        cityUI = ui;
-        IconImage = license.icon;
-        itemName.text = license.name;
-        price.text = license.cost.ToString();
-    }
-
-
-
 
     public void OnPointerClick(PointerEventData eventData)
     {

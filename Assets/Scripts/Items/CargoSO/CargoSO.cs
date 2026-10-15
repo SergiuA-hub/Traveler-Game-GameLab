@@ -12,8 +12,9 @@ public class CargoSO : ScriptableObject
 {
     [Header("Cargo info")]
     public string itemName;
-    public Image icon;
+    public Sprite icon;
     public int price;
+    public int level;
     public CargoSOType type;
 
     [Header("Stats")]

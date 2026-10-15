@@ -1,7 +1,11 @@
+using JetBrains.Annotations;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 [System.Serializable]
 public class SettlementDeployment
 {
@@ -34,7 +38,7 @@ public class SettlementRuntime
     public List<TradeGood> settlementStock;
     public List<Cargo> settlementShopItems;
     public List<Cargo> settlmentUpgradeItems;
-    public LicensesSO[] settlmentLicenses;
+    public List<LicensesSO> settlmentLicenses;
     public GameObject settlementGo;
 
     public SettlementRuntime(SettlementSO so)
@@ -44,6 +48,7 @@ public class SettlementRuntime
         settlementShopItems = new List<Cargo>();
         settlmentUpgradeItems = new List<Cargo>();
         settlementStock = new List<TradeGood>();
+        settlmentLicenses = new List<LicensesSO>();
 
     }
     public void calculatePriceTiers()
@@ -167,8 +172,11 @@ public class SettlementsManager : MonoBehaviour
     //Current Cargo selected
     public TradeItemDisplay currentItemSelected;
     public ShopItemDisplay currentShopItemSelected;
+    public UpgradeItemDisplay currentUpgradeItem;
+    public LicenceItemDisplay currentLicenceSelected;
    
     public SettlementRuntime currentSettlement;
+
     //Managers
     public TimeManager timeManager;
     public LicenseManager licenseManager;   
@@ -203,6 +211,10 @@ public class SettlementsManager : MonoBehaviour
             foreach(var upgradeItem in settl.settlementSo.upgradeShop)
             {
                 currentSettlement.settlmentUpgradeItems.Add(new Cargo(upgradeItem.ItemName,upgradeItem.cargoSO,upgradeItem.itemType));
+            }
+            foreach(var l in settl.settlementSo.Licenses_Shop)
+            {
+                currentSettlement.settlmentLicenses.Add(l);
             }
             currentSettlement.calculatePriceTiers();
 
@@ -292,11 +304,14 @@ public class SettlementsManager : MonoBehaviour
         if (currentItemSelected.tradeSettlementItem != null)
         {
             
-            //Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with proce {currentItemSelected.tradeSettlementItem.price}");
+            //Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with prce {currentItemSelected.tradeSettlementItem.price}");
+            
             //Check player money & space in backpack
             
             if (player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price * cityUI.ReturnCurentSliderValue()
-            && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume, currentItemSelected.tradeSettlementItem.resource.weight))
+            && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume * cityUI.ReturnCurentSliderValue(), 
+            currentItemSelected.tradeSettlementItem.resource.weight * cityUI.ReturnCurentSliderValue()))
+            
             {
                 player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, currentItemSelected.tradeSettlementItem.price,cityUI.ReturnCurentSliderValue());                
                 currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource,cityUI.ReturnCurentSliderValue());
@@ -331,6 +346,8 @@ public class SettlementsManager : MonoBehaviour
         }
     }
 
+  
+
     //Shop buy item
     public void BuyShopItem()
     {
@@ -338,6 +355,49 @@ public class SettlementsManager : MonoBehaviour
         {
             return;
         }
+
+        if(currentShopItemSelected.cargo.itemStatus != Status.Owned || currentShopItemSelected.cargo.itemStatus != Status.Locked  )
+        {
+            CargoManager.instance.AddItem(currentShopItemSelected.cargo, ref player.invetory.CurrentCoins);
+        }
+
+        //Refresh Page After buy
+        cityUI.DisplayShop();
+        cityUI.SetButtonTextShop(currentShopItemSelected);
+        
+    }
+
+    //Upgrade buy item
+
+    public void BuyUpgradeItem()
+    {
+        if(currentUpgradeItem == null )
+        {
+            return;
+        }
+
+        if (!CargoManager.instance.CanBuy(currentUpgradeItem.upgrade))
+        {
+            CargoManager.instance.AddItem(currentUpgradeItem.upgrade,ref player.invetory.CurrentCoins);
+        }
+
+        //RefreshPage
+        cityUI.DisplayUpgradePanel();
+        
+    }
+
+    public void BuyLicence()
+    {
+        if(currentLicenceSelected == null)
+        {
+            return;
+        }
+
+        licenseManager.PuchaseLicenses(currentLicenceSelected.licenseSO, ref player.invetory.CurrentCoins);
+
+        //Reset Panel
+        cityUI.DisplayTradeGuildPanel();       
+          
     }
 
     

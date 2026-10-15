@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Player_M : MonoBehaviour
 {
-    //Backpack
-    [SerializeField] private Backpack currentBackpack;
 
     public bool isResting = false;
     public bool isCamping = false;
@@ -43,11 +41,7 @@ public class Player_M : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
     
-    private void Start()
-    {
-        GetBackpackMax();
-        
-    }
+ 
     
 
     private void Update()
@@ -102,11 +96,7 @@ public class Player_M : MonoBehaviour
         invetory.HandleWeightAndVolume();
     }
     //Publics 
-    public void GetBackpackMax()
-    {
-        stats.maxVolume = currentBackpack.GetVolume();
-        stats.maxWeight = currentBackpack.GetVolume();
-    }
+ 
 
     // ------HP------ 
     public void TakeDamage(float damage)

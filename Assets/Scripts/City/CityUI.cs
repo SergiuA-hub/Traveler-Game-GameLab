@@ -36,8 +36,8 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TradeItemDisplay tradePlayerPrefab;
     [SerializeField] private Transform SellContent;
 
-    //Components
-    public Setlement setlement;
+    [Header("Player Components")]
+    
     public PlayerInventory_M playerInventory;
     [SerializeField] private TextMeshProUGUI playerCoinsDisplay;
 
@@ -49,6 +49,15 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentTradeItemPrice;
     [SerializeField] private TextMeshProUGUI buySellButtonText;
     [SerializeField] private TextMeshProUGUI currentItemAmount;
+
+    //Price Tier Display
+    /*
+    [SerializeField] private TextMeshProUGUI TierIPrice;
+    [SerializeField] private TextMeshProUGUI TierIIPrice;
+    [SerializeField] private TextMeshProUGUI TierIIIPrice;
+    [SerializeField] private TextMeshProUGUI TierIVPrice;
+    [SerializeField] private TextMeshProUGUI TierVPrice;
+    */
 
 
     [Header("SLIDER_TRADE")]
@@ -65,11 +74,12 @@ public class CityUI : MonoBehaviour
     [SerializeField] private Image currentShopItemIcon;
     [SerializeField] private TextMeshProUGUI currentShopItemName;
     [SerializeField] private TextMeshProUGUI currentShopItemPrice;
-    [SerializeField] private TextMeshProUGUI currentShopItemDescription;
+    [SerializeField] private TextMeshProUGUI buyButtonText;
+    
 
     [Header("UPGRADE PAGE")]
     [SerializeField] private Transform UpgradeContent;
-    [SerializeField] ShopItemDisplay upgradeItemShopPrefab;
+    [SerializeField] UpgradeItemDisplay upgradeItemDisplayPrefab;
 
     [Header("Current UPGRADE_SHOP_ITEM_DISPLAY")]
     [SerializeField] private Image currentUpgradeItemIcon;
@@ -79,14 +89,14 @@ public class CityUI : MonoBehaviour
 
     [Header("TRADE GUILD PAGE")]
     [SerializeField] private Transform TradeGuildContent;
-    //Aici se poate sa am nevoie de alt prefab ,acm e destul de bun
-    [SerializeField] private ShopItemDisplay LicensesDisplayPrefab;
+    [SerializeField] private LicenceItemDisplay LicensesDisplayPrefab;
 
     [Header("Current LICENSE DISPLAY")]
     [SerializeField] private Image LicenseIcon;
     [SerializeField] private TextMeshProUGUI LicenseName;
     [SerializeField] private TextMeshProUGUI LicensePrice;
-    [SerializeField] private TextMeshProUGUI LicenseUnlock;
+    [SerializeField] private Transform LicenseUnlockList;
+    [SerializeField] private LicenceUnlock unlockItem;
 
     //Cart Managment
 
@@ -99,19 +109,18 @@ public class CityUI : MonoBehaviour
     [SerializeField] private GameObject GuildPanel;
     [SerializeField] private GameObject CartManagmentPanel;
 
-    private void Awake()
-    {
-        setlement = GetComponent<Setlement>();
-    }
+    
     private void OnEnable()
     {
-        setlement = GetComponent<Setlement>();        
+        
         ShowCurrentPage(currentpage);
     }
 
     private void Update()
     {
         DisplayPlayerCoins();
+        //Curent Price only on trade panel
+        //ShowTotalPrice();
         currentTextAmount.text = sliderAmount.value.ToString();
         
     }
@@ -134,7 +143,7 @@ public class CityUI : MonoBehaviour
                
                 break;
             case CityUIPage.Shop:
-               DisplayShop();
+                DisplayShop();
                 break;
             case CityUIPage.Trade:
                 DisplayTrade();
@@ -241,21 +250,17 @@ public class CityUI : MonoBehaviour
         currentTradeItemImage.sprite = item.itemIcon.sprite;
         currentTradeItemName.text = item.itemNameText.text;
         
-
-
-        if (item.tradeSettlementItem != null)
-            currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeSettlementItem.resource).ToString("0.0");
-        else currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeInventoryItem.resourceSO).ToString("0.0");
-
+     
         //Buttons
         SetButtonText(item);
         SliderMaxValue();
 
     }
 
+    //Slider
     public void SliderMaxValue()
     {
-        //Slider
+       
         if (settlementsManager.currentItemSelected.tradeInventoryItem == null)
         {
             sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeSettlementItem.amount;
@@ -271,8 +276,25 @@ public class CityUI : MonoBehaviour
     {
         return Mathf.RoundToInt(sliderAmount.value);
     }
+    //Total Price
 
+    public void ShowTotalPrice()
+    {
+        if(settlementsManager.currentItemSelected.tradeSettlementItem != null)
+        {
+            currentTradeItemPrice.text = (settlementsManager.currentItemSelected.tradeSettlementItem.price * ReturnCurentSliderValue()).ToString();
+        }else if (settlementsManager.currentItemSelected.tradeInventoryItem != null)
+        {
+            currentTradeItemPrice.text = (settlementsManager.currentItemSelected.tradeSettlementItem.price * ReturnCurentSliderValue()).ToString();
+        }
+        else
+        {
+            currentTradeItemPrice.text = "No item selected";
+        }
 
+        
+    }
+  
     //############
     //SHOP AREA
     //############
@@ -287,18 +309,19 @@ public class CityUI : MonoBehaviour
         foreach (var item in currentSettlement.settlementShopItems)
         {
             ShopItemDisplay row = Instantiate(ItemShopPrefab, ShopContent);
-            row.PopulateIcons(item.cargoSO, this);
+            row.PopulateIcons(item, this);
         }
     }
     public void SetCurrentShopItem(ShopItemDisplay shopItem)
     {
         settlementsManager.currentShopItemSelected = shopItem;
-
-        //Set The display Icons
-        //currentShopItemIcon.sprite = shopItem.IconImage.sprite;
+        //Visual
+        currentShopItemIcon.sprite = shopItem.IconImage.sprite;
         currentShopItemName.text = shopItem.itemName.text;
-        
+        currentShopItemPrice.text =shopItem.price.text;
 
+        //Button
+        SetButtonTextShop(settlementsManager.currentShopItemSelected);
     }
 
 
@@ -315,9 +338,18 @@ public class CityUI : MonoBehaviour
 
         foreach (var item in currentSettlement.settlmentUpgradeItems)
         {
-            ShopItemDisplay row = Instantiate(upgradeItemShopPrefab, UpgradeContent);
-            row.PopulateIcons(item.cargoSO, this);
+            UpgradeItemDisplay row = Instantiate(upgradeItemDisplayPrefab, UpgradeContent);
+            row.PopulateUpgrade(item, this);
         }
+    }
+
+    public void SetCurrentUpgradeItem(UpgradeItemDisplay item)
+    {
+        settlementsManager.currentUpgradeItem= item;
+
+        currentUpgradeItemIcon = item.iconImage;
+        upgradeItemPrice.text = item.price.text;
+        upgradeItemName.text= item.itemName.text;
     }
 
 
@@ -331,14 +363,39 @@ public class CityUI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-
         foreach (var license in currentSettlement.settlmentLicenses)
         {
-            ShopItemDisplay row = Instantiate(LicensesDisplayPrefab, TradeGuildContent);
-            row.PopulateLicense(license, this);
+
+            if (!LicenseManager.instance.AlreadyOwnsLicense(license))
+            {
+                LicenceItemDisplay row = Instantiate(LicensesDisplayPrefab, TradeGuildContent);
+                row.PopulateLicense(license, this);
+            }
+                
         }
-        //current  license selected
+       
     }
+
+    public void SetCurrentLicence(LicenceItemDisplay licenceItemDisplay)
+    {
+        settlementsManager.currentLicenceSelected= licenceItemDisplay;
+
+        LicenseIcon = licenceItemDisplay.icon;
+        LicenseName.text = licenceItemDisplay.licencename.text;
+        LicensePrice.text = licenceItemDisplay.price.text;
+
+        foreach(Transform child in LicenseUnlockList)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach(var item in licenceItemDisplay.licenseSO.resourse_unlock)
+        {
+            LicenceUnlock row = Instantiate(unlockItem, LicenseUnlockList);
+            row.Create(item);
+        }
+    }
+    
 
     //############
     //CART MANAGMENT
@@ -363,6 +420,8 @@ public class CityUI : MonoBehaviour
         //setlement.CityObjectUI.SetActive(false);
         this.gameObject.SetActive(false);
     }
+
+    //BUY || SELL BUTTON  -> TRADE PANEL
     private void SetButtonText(TradeItemDisplay typeItem)
     {
         if(typeItem.tradeInventoryItem != null)
@@ -374,6 +433,20 @@ public class CityUI : MonoBehaviour
             buySellButtonText.text = "BUY";
         }
     }
+
+    //BUY BUTTON -> SHOP PANEL
+    public void SetButtonTextShop (ShopItemDisplay item)
+    {
+        if(item.cargo.itemStatus == Status.Owned || item.cargo.itemStatus == Status.Locked)
+        {
+            
+            buyButtonText.text = "LOCKED";
+        }
+        else
+        {
+            buyButtonText.text = "BUY";
+        }
+    } 
     
     //initial setup
     public void prepareSettlement(SettlementRuntime settlement)

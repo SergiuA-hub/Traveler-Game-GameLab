@@ -4,11 +4,11 @@ using UnityEngine.UI;
 public class LicensesSO : ScriptableObject
 {
     public string LicenseName;
-    public Image icon;
+    public Sprite icon;
     public float cost;
     public ResourceSO[] resourse_unlock;
     public SettlementSO settlementSO;
 
-    public bool canBuy;
+    
        
 }

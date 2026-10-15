@@ -16,7 +16,22 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
     public InventoryItem tradeInventoryItem;
     public CityUI cityUI;
 
+    public float ReturnAmount()
+    {
+        if(tradeInventoryItem.amount != 0)
+        {
+            return tradeInventoryItem.amount;
+        }
+        else if(tradeSettlementItem.amount != 0)
+        {
+            return tradeSettlementItem.amount;
+        }
+        else
+        {
+            return 0;
+        }
 
+    }
     
     public void PopulateBuyIcon(TradeGood settlementItem,CityUI UI)
     {
