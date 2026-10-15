@@ -59,7 +59,6 @@ public class NpcManager : MonoBehaviour
             return;
         
         SpawnNPC(randomRoad, direction);
-        Debug.Log("NPC SPAWN");
     }    
 
     private void Update()
@@ -169,7 +168,6 @@ public class NpcManager : MonoBehaviour
         npc.transform.position =
             road.waypoints[startIndex].position + npc.pathOffset;
         
-        npc.animateMove();
         lastSettlement = forward ? road.startSettlement.settlementName : road.endSettlement.settlementName;
         aliveNPCs.Add(npc);
     }
