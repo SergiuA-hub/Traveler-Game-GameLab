@@ -14,6 +14,7 @@ public class SeasonManager : MonoBehaviour
     public Season season;
     public HUDScript HUDScript;
     public EnvironmentManager environmentManager;
+    public WeatherManager weatherManager;
     void Start()
     {
         
@@ -29,5 +30,6 @@ public class SeasonManager : MonoBehaviour
         HUDScript.currentSeason = season;
         HUDScript.ChangeSeason();
         environmentManager.setSeason(season);
+        weatherManager.setCurrentSeason(season);
     }
 }
