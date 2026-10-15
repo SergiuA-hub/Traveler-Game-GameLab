@@ -226,6 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4543704975535545191}
   - component: {fileID: 194185328496044890}
+  - component: {fileID: 8647969161237418422}
   - component: {fileID: 5262195410875095868}
   - component: {fileID: 490598917701078309}
   m_Layer: 6
@@ -278,6 +279,18 @@ MonoBehaviour:
   visuals: {fileID: 8011178110711942701}
   animator: {fileID: 5689188220416124141}
   tourch: {fileID: 470852501496533568}
+--- !u!114 &8647969161237418422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8011178110711942701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa8b4c157c999c4da1ff89c62c3834b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BarterNpc
 --- !u!114 &5262195410875095868
 MonoBehaviour:
   m_ObjectHideFlags: 0

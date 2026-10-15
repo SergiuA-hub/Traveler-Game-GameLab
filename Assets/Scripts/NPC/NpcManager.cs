@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NpcManager : MonoBehaviour
 {
+    public GameObject npcInteractButton;
     public Player_M player;
     public TimeManager timeManager;
 
@@ -85,6 +86,11 @@ public class NpcManager : MonoBehaviour
                 UpdateNPCVisibility(npc);
             }
         }
+
+        if(npcPlayerCanInteract.Count > 0)
+        {
+            npcInteractButton.SetActive(true);
+        }else npcInteractButton.SetActive(false);
     }
 
     public void adjustSpeed(float timeModifier)
@@ -180,6 +186,9 @@ public class NpcManager : MonoBehaviour
         if (npc.currentRoad == null)
             return;
 
+        if (npc.rooted)
+            return;
+
         if (npc.currentWaypointIndex < 0 ||
             npc.currentWaypointIndex >= npc.currentRoad.waypoints.Count)
         {
@@ -230,5 +239,11 @@ public class NpcManager : MonoBehaviour
         {
             npcPlayerCanInteract.Remove(npc);
         }
+    }
+
+    public void InteractWithClosestNPC()
+    {
+        if (npcPlayerCanInteract.Count > 0)
+            npcPlayerCanInteract[0].Interact();
     }
 }

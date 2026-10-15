@@ -226,6 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 982462261938055883}
   - component: {fileID: 69827278817561664}
+  - component: {fileID: 2546863787795794770}
   - component: {fileID: 6588994273862396918}
   - component: {fileID: 1189678366115293175}
   m_Layer: 6
@@ -278,6 +279,18 @@ MonoBehaviour:
   visuals: {fileID: 7973553324472365034}
   animator: {fileID: 6177257875560463574}
   tourch: {fileID: 313033093249957923}
+--- !u!114 &2546863787795794770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7973553324472365034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fa92e8f507d07645aef290a87ea38ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InformerNpc
 --- !u!114 &6588994273862396918
 MonoBehaviour:
   m_ObjectHideFlags: 0

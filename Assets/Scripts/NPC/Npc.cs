@@ -14,15 +14,20 @@ public class Npc : MonoBehaviour
     public float speed = 1f;
     public bool forward = true;
 
-
     [HideInInspector] public RoadPath currentRoad;
     [HideInInspector] public int currentWaypointIndex;
     public GameObject visuals;
     public Animator animator;
     private NpcManager npcManager;
     private TimeManager timeManager;
+    private INpcInteraction interaction;
 
     public GameObject tourch;
+    public bool rooted = false;
+    private void Awake()
+    {
+        interaction = GetComponent<INpcInteraction>();
+    }
     public void setNpcManager(NpcManager npcM, TimeManager tm)
     {
         npcManager = npcM;
@@ -40,6 +45,11 @@ public class Npc : MonoBehaviour
     private void OnEnable()
     {
         animateMove();
+    }
+
+    public void Interact()
+    {
+        interaction?.Interact();
     }
 
     private void OnDestroy()
@@ -62,6 +72,11 @@ public class Npc : MonoBehaviour
         animator.SetTrigger("IsWalking");
     }
 
+    public void animateIdle()
+    {
+        animator.SetTrigger("IsIdle");
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (npcManager == null)
@@ -69,7 +84,6 @@ public class Npc : MonoBehaviour
 
         if (other.name.Contains("Player"))
         {
-            Debug.Log($"{other.name} is close");
             npcManager.playerInRange(this);
         }
         
@@ -81,9 +95,21 @@ public class Npc : MonoBehaviour
             return;
         if (other.name.Contains("Player"))
         {
-            Debug.Log($"{other.name} is close");
             npcManager.playerOutOfRange(this);
+            UnRoot();
         }
 
+    }
+
+    public void Root()
+    {
+        rooted = true;
+        animateIdle();
+    }
+
+    public void UnRoot()
+    {
+        rooted = false;
+        animateMove();
     }
 }

@@ -1,15 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TraderNpc : MonoBehaviour
+public class TraderNpc : MonoBehaviour, INpcInteraction
 {
+    public Npc npc;
     public List<TradeGoodChance> possibleTradingGoodsList;
     public int maxTradeCount;
 
     public List<TradeGood> tradeGoods = new List<TradeGood>();
 
+    public void Interact()
+    {
+        Debug.Log("Open Trader UI");
+        GameServices.Instance.traderNpcUI.Open(this,GameServices.Instance.player);
+        // Open trader screen
+    }
+
     private void Start()
     {
+        npc = GetComponent<Npc>();
+
         tradeGoods.Clear();
 
         foreach (var good in possibleTradingGoodsList)
