@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class TraderNpcUI : MonoBehaviour
 {
-    public TraderNpc trader;
-    public Player_M player;
+    private TraderNpc trader;
+    private Player_M player;
 
     public GameObject tradeGoodList;
     public GameObject tradeGoodPrefab;
@@ -18,6 +18,11 @@ public class TraderNpcUI : MonoBehaviour
     public TMP_Text selectedGoodTraderPrice;
     public TMP_Text selectedGoodWeight;
     public TMP_Text selectedGoodSize;
+    public Slider weightSlider;
+    public TMP_Text weightValue;
+    public Slider sizeSlider;
+    public TMP_Text volumeValue;
+    public TMP_Text traderCoins;
     public void Open(TraderNpc trader, Player_M player)
     {
         this.trader = trader;
@@ -25,16 +30,32 @@ public class TraderNpcUI : MonoBehaviour
 
         trader.npc.Root();
 
+        refreshTradeGoods();
+
+        selectedItemPanel.SetActive(false);
+        updateInventoryData();
+
+        gameObject.SetActive(true);
+    }
+
+    public void OnDisable()
+    {
+        if(trader != null)
+            trader.npc.UnRoot();
+    }
+
+    public void refreshTradeGoods()
+    {
         clearGoodsList();
 
         foreach (var res in trader.tradeGoods)
         {
-            Debug.LogWarning($"Setting up {res.resource.name}");
+            if (res.amount <= 0)
+                continue;
+
             GameObject go = Instantiate(tradeGoodPrefab, tradeGoodList.transform);
             go.GetComponent<TradeGoodPrefab>().setup(res, this);
         }
-        selectedItemPanel.SetActive(false);
-        gameObject.SetActive(true);
     }
 
     public void clearGoodsList()
@@ -55,6 +76,46 @@ public class TraderNpcUI : MonoBehaviour
         selectedGoodWeight.text = $"{selectedTrageGood.tradeGood.resource.weight}";
         selectedGoodSize.text = $"{selectedTrageGood.tradeGood.resource.volume}";
         selectedItemPanel.SetActive(true);
+    }
+
+    public void updateInventoryData()
+    {
+        if (player == null)
+            return;
+
+        weightSlider.maxValue = player.stats.maxWeight;
+        sizeSlider.maxValue = player.stats.maxVolume;
+
+        weightSlider.value = player.invetory.currentWeight;
+        weightValue.text = $"{player.invetory.currentWeight} / {player.stats.maxWeight}";
+
+        sizeSlider.value = player.invetory.currentVolume;
+        volumeValue.text = $"{player.invetory.currentVolume} / {player.stats.maxVolume}";
+        traderCoins.text = $"{player.invetory.CurrentCoins:F1}";
+    }
+
+    public void tradeSelectedItem()
+    {
+        if (selectedTrageGood.tradeGood.amount <= 0)
+            return;
+
+        if (player.invetory.CurrentCoins < selectedTrageGood.tradeGood.price)
+            return;
+
+        if(player.invetory.CanCarry(selectedTrageGood.tradeGood.resource.volume, selectedTrageGood.tradeGood.resource.weight))
+        {
+            player.invetory.tradeIn(selectedTrageGood.tradeGood.resource, selectedTrageGood.tradeGood.price);
+            selectedTrageGood.tradeGood.amount--;
+            if(selectedTrageGood.tradeGood.amount <= 0)
+            {
+                selectedItemPanel.SetActive(false);                
+                selectedTrageGood = null;
+
+                refreshTradeGoods();
+            }
+            else selectedTrageGood.updateQty();
+        }
+        updateInventoryData();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
