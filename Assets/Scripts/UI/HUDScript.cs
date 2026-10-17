@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Data;
+using System;
 
 public class HUDScript : MonoBehaviour
 {
@@ -101,7 +102,11 @@ public class HUDScript : MonoBehaviour
     void UpdateTimeDisplay ()
     {
         dateText.text = "Day " + timeManager.currentTime.Day.ToString() + "\n" + timeManager.currentTime.Hour.ToString() + ":00";
-        timerText.text = timeManager.timerCurrent.ToString();
+        //var timesp = new TimeSpan((long)timeManager.timerCurrent * 10000000);
+        var timesp = new TimeSpan(0, 0, (int)timeManager.timerCurrent);
+
+        timerText.text = timesp.ToString("mm\\:ss");
+        //timeManager.timerCurrent.ToString();
         timerSlider.value = timeManager.timerCurrent;
 
     }
