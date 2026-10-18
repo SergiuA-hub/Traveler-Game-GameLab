@@ -130,8 +130,7 @@ public class Npc : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         else
         {
             chatBubble.Show(notInterestedReplicas[UnityEngine.Random.Range(0, interestedReplicas.Count)]);
-        }
-        
+        }   
     }
 
     public void OnPointerExit(PointerEventData eventData)

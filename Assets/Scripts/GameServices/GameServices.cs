@@ -8,6 +8,7 @@ public class GameServices : MonoBehaviour
     public TimeManager timeManager;
     public NpcManager npcManager;
     public WeatherManager weatherManager;
+    public NewCampManager campManager;
 
     [Header("UI")]
     public TraderNpcUI traderNpcUI;
