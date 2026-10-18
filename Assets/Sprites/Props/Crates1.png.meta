@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 5340b553eadb8cf4ca2c374cecf3d7ee
+guid: c688c42170794bc4abe0b074c6893a75
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1584578246976620049
-    second: FallGrass_0
+      213: -9171493618944685392
+    second: Crates1_0
+  - first:
+      213: 5548705044063389250
+    second: Crates1_1
+  - first:
+      213: 7350785344340067989
+    second: Crates1_2
+  - first:
+      213: -8085273503759675282
+    second: Crates1_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 126
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,89 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FallGrass_0
+      name: Crates1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 126
-        height: 64
+        x: 16
+        y: 129
+        width: 141
+        height: 110
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1164ad9258d8df510800000000000000
-      internalID: 1584578246976620049
+      spriteID: 0ba4a0f652f48b080800000000000000
+      internalID: -9171493618944685392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FallGrass_1
+      name: Crates1_1
       rect:
         serializedVersion: 2
-        x: 126
-        y: 64
-        width: 126
-        height: 64
+        x: 166
+        y: 127
+        width: 140
+        height: 110
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 00d6151b09e19924495ae702e3b7cc60
-      internalID: 1551067594
+      spriteID: 24601dad6d5f00d40800000000000000
+      internalID: 5548705044063389250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FallGrass_2
+      name: Crates1_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 126
-        height: 64
+        x: 15
+        y: 8
+        width: 140
+        height: 110
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 27365d0391688654cabf0920e8fcc4b8
-      internalID: 709389521
+      spriteID: 5968985135c330660800000000000000
+      internalID: 7350785344340067989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FallGrass_3
+      name: Crates1_3
       rect:
         serializedVersion: 2
-        x: 126
-        y: 0
-        width: 126
-        height: 64
+        x: 168
+        y: 7
+        width: 140
+        height: 110
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0bbee656775f1cf4db25af45471d430b
-      internalID: 1522507994
+      spriteID: e60d68006965bcf80800000000000000
+      internalID: -8085273503759675282
       vertices: []
       indices: 
       edges: []
@@ -191,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e403f6472409f394e8a91f8943857e2a
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -199,14 +208,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":126.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      FallGrass_0: 1584578246976620049
-      FallGrass_1: 1551067594
-      FallGrass_2: 709389521
-      FallGrass_3: 1522507994
+      Crates1_0: -9171493618944685392
+      Crates1_1: 5548705044063389250
+      Crates1_2: 7350785344340067989
+      Crates1_3: -8085273503759675282
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

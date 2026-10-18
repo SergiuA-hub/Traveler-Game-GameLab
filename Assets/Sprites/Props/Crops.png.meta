@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: 15bd3da05b253904c98ebb778998753a
+guid: 9183bcfabb3f2a04ab66f9942298580b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6701596439569825802
-    second: GrassTiles_0
+      213: 3048937005348815756
+    second: Crops_0
+  - first:
+      213: -7474529693045490863
+    second: Crops_1
+  - first:
+      213: -5774877164156790999
+    second: Crops_2
+  - first:
+      213: 1640555460866966840
+    second: Crops_3
+  - first:
+      213: 2683288208970150335
+    second: Crops_4
+  - first:
+      213: 8954413170907878631
+    second: Crops_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,89 +115,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GrassTiles_0
+      name: Crops_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 126
-        height: 64
+        x: 16
+        y: 143
+        width: 91
+        height: 102
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6fffa677b852ff2a0800000000000000
-      internalID: -6701596439569825802
+      spriteID: c830c5a6d00005a20800000000000000
+      internalID: 3048937005348815756
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GrassTiles_1
+      name: Crops_1
       rect:
         serializedVersion: 2
-        x: 126
-        y: 64
-        width: 126
-        height: 64
+        x: 142
+        y: 143
+        width: 91
+        height: 102
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e3bbb6045d960f04697ae0f496bf6dc7
-      internalID: 1567341220
+      spriteID: 15bf9ee88d2254890800000000000000
+      internalID: -7474529693045490863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GrassTiles_2
+      name: Crops_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 126
-        height: 64
+        x: 287
+        y: 89
+        width: 48
+        height: 134
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: fd63d311a887d344b86578da88dc4371
-      internalID: 1353635518
+      spriteID: 9275be8d0d38bdfa0800000000000000
+      internalID: -5774877164156790999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GrassTiles_3
+      name: Crops_3
       rect:
         serializedVersion: 2
-        x: 126
-        y: 0
-        width: 126
-        height: 64
+        x: 6
+        y: 4
+        width: 112
+        height: 111
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e6a355e27439ab64a8501a6f9f474d36
-      internalID: 383447250
+      spriteID: 8358d47ef7c64c610800000000000000
+      internalID: 1640555460866966840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crops_4
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 12
+        width: 80
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb1f8adc864fc3520800000000000000
+      internalID: 2683288208970150335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crops_5
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 12
+        width: 80
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e41b002657744c70800000000000000
+      internalID: 8954413170907878631
       vertices: []
       indices: 
       edges: []
@@ -191,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a90565f5d815de54b9625fc4fbe42f6e
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -199,16 +258,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceOnImport
-        value: False
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":126.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      GrassTiles_0: -6701596439569825802
-      GrassTiles_1: 1567341220
-      GrassTiles_2: 1353635518
-      GrassTiles_3: 383447250
+      Crops_0: 3048937005348815756
+      Crops_1: -7474529693045490863
+      Crops_2: -5774877164156790999
+      Crops_3: 1640555460866966840
+      Crops_4: 2683288208970150335
+      Crops_5: 8954413170907878631
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

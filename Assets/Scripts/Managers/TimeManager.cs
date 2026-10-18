@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 public class TimeManager : MonoBehaviour
@@ -44,6 +45,15 @@ public class TimeManager : MonoBehaviour
     private int lastDay;
     private int lastMonth;
     private int lastYear;
+
+    [Header("Timer")]
+    public float timerMax;
+    public float timerCurrent;
+    public float timerCritical;
+    public float timerDamage;
+    public float dmgFreq;
+    private float t = 0;
+
     void Start()
     {
         hour_duration = GlobalSettingsManager.HOUR_DURATION;
@@ -54,6 +64,8 @@ public class TimeManager : MonoBehaviour
         lastMonth = currentTime.Month;
         lastYear = currentTime.Year;
         onHourChanged?.Invoke(currentTime);
+
+        timerCurrent = timerMax;
     }
 
     public void pause()
@@ -108,6 +120,23 @@ public class TimeManager : MonoBehaviour
         {
             SetTimeSpeed(GlobalSettingsManager.HOUR_DURATION / 4);
         }
+    }
+
+    void HandleTimer(float dec)
+    {
+        timerCurrent -= dec;
+        if (timerCurrent <= 0)
+        {
+            timerCurrent = 0;
+            t += Time.deltaTime;
+            if (t >= dmgFreq)
+            {
+                player.TakeDamage(timerDamage);
+                t = 0;
+            }
+        }
+        else if (timerCurrent > timerMax)
+            timerCurrent = timerMax;
     }
 
     private void UpdateDayNightLight()
@@ -196,6 +225,8 @@ public class TimeManager : MonoBehaviour
         UpdateDayNightLight();
 
         if (time_stopped) return;
+
+        HandleTimer(Time.deltaTime);
 
         timeLeft -= Time.deltaTime;
         if (timeLeft <= 0f)
