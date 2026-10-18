@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 6588994273862396918}
   - component: {fileID: 1189678366115293175}
   m_Layer: 6
-  m_Name: Npc_animated_blue
+  m_Name: Npc_Informer_animated_blue
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -279,6 +279,20 @@ MonoBehaviour:
   visuals: {fileID: 7973553324472365034}
   animator: {fileID: 6177257875560463574}
   tourch: {fileID: 313033093249957923}
+  rooted: 0
+  interestedReplicas:
+  - A fellow trader? You might want to hear this.
+  - Word travels fast on these roads.
+  - Looking for a good deal? I've heard a few things.
+  - A moment, trader. Some news may interest you.
+  notInterestedReplicas:
+  - Until our paths cross again.
+  - Safe travels, trader.
+  - I'd best be on my way.
+  - Nothing more for now, friend.
+  - The road won't walk itself.
+  - May your next stop bring a profit.
+  chatBubble: {fileID: 0}
 --- !u!114 &2546863787795794770
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows.WebCam;
 
 public class TraderNpc : MonoBehaviour, INpcInteraction
 {
@@ -12,6 +13,11 @@ public class TraderNpc : MonoBehaviour, INpcInteraction
     public void Interact()
     {
         Debug.Log("Open Trader UI");
+        if (!npc.interested)
+        {
+            npc.showNotCurious();
+            return;
+        }
         GameServices.Instance.traderNpcUI.Open(this,GameServices.Instance.player);
         // Open trader screen
     }

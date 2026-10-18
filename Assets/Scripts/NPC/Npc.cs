@@ -1,13 +1,10 @@
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
-public enum NpcType
-{
-    Commoner,
-    Trader,
-    Knight
-}
+using UnityEngine.EventSystems;
 
-public class Npc : MonoBehaviour
+public class Npc : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public SpriteRenderer spriteRenderer;
     public Vector3 pathOffset = new Vector3(0f, 0.5f, 0f);
@@ -24,9 +21,16 @@ public class Npc : MonoBehaviour
 
     public GameObject tourch;
     public bool rooted = false;
+    public bool interested = true;
+    public List<string> interestedReplicas;
+    public List<string> notInterestedReplicas;
+    public NpcChatBubble chatBubble;
+
+    
     private void Awake()
     {
         interaction = GetComponent<INpcInteraction>();
+        interested = true;
     }
     public void setNpcManager(NpcManager npcM, TimeManager tm)
     {
@@ -54,6 +58,9 @@ public class Npc : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (timeManager == null)
+            return;
+
         timeManager.onEvening.RemoveListener(turnOnLight);
         timeManager.onMonthChanged.RemoveListener(turnOffLight);
     }
@@ -111,5 +118,30 @@ public class Npc : MonoBehaviour
     {
         rooted = false;
         animateMove();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (interested)
+        {
+            chatBubble.Show(interestedReplicas[UnityEngine.Random.Range(0, interestedReplicas.Count)]);
+            speed = 0.5f;
+        }
+        else
+        {
+            chatBubble.Show(notInterestedReplicas[UnityEngine.Random.Range(0, interestedReplicas.Count)]);
+        }
+        
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        speed = 1f;
+        chatBubble.Hide();
+    }
+
+    public void showNotCurious()
+    {
+        chatBubble.Show("Not interested!", 1.5f);
     }
 }

@@ -114,6 +114,7 @@ public class TraderNpcUI : MonoBehaviour
                 refreshTradeGoods();
             }
             else selectedTrageGood.updateQty();
+            trader.npc.interested = false;
         }
         updateInventoryData();
     }

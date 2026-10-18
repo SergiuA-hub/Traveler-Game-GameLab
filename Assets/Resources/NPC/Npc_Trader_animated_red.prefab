@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4955497502493854374}
   - component: {fileID: 6555800552813414830}
   m_Layer: 6
-  m_Name: Npc_animated_red
+  m_Name: Npc_Trader_animated_red
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,6 +63,20 @@ MonoBehaviour:
   visuals: {fileID: 297676040438961626}
   animator: {fileID: 3448883331583363497}
   tourch: {fileID: 6895198135251609589}
+  rooted: 0
+  interestedReplicas:
+  - Need supplies for the road?
+  - Looking to buy? I've a few things left.
+  - Come take a look at my wares.
+  - Food for the journey, perhaps?
+  notInterestedReplicas:
+  - Until our paths cross again.
+  - Safe travels, trader.
+  - I'd best be on my way.
+  - Nothing more for now, friend.
+  - The road won't walk itself.
+  - May your next stop bring a profit.
+  chatBubble: {fileID: 0}
 --- !u!114 &-4167603528266038527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1943f0f52010f854a94c03e1d7e8127a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trader
+  npc: {fileID: 0}
   possibleTradingGoodsList:
   - resource: {fileID: 11400000, guid: 977e07f63e21de04eab6d24732cd7a04, type: 2}
     maxAmount: 10
