@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,8 @@ public class NpcManager : MonoBehaviour
     public List<Npc> npcPlayerCanInteract;
     private string lastSettlement;
     private float speedModifier = 1;
+    [SerializeField] private float initialSpawnDelay = 5f;
+
     private void Start()
     {
         foreach (RoadPath road in roads)
@@ -31,13 +34,21 @@ public class NpcManager : MonoBehaviour
             road.Initialize();
         }
 
-        for (int i = 0; i < 5; i++)
+        StartCoroutine(InitialNpcSpawn());
+    }
+
+    private IEnumerator InitialNpcSpawn()
+    {
+        for (int i = 0; i < maxAliveNPC; i++)
         {
             spawnRandomNPC(100);
+
+            if (i < maxAliveNPC - 1)
+                yield return new WaitForSeconds(initialSpawnDelay);
         }
 
         timeManager.onHourChanged.AddListener(hourlNpcSpawnerCheck);
-    }    
+    }
 
     public void hourlNpcSpawnerCheck(DateTime time)
     {

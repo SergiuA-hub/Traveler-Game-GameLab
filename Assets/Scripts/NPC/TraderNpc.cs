@@ -49,6 +49,22 @@ public class TraderNpc : MonoBehaviour, INpcInteraction
             if (tradeGoods.Count >= maxTradeCount)
                 break;
         }
+
+
+        if(tradeGoods.Count == 0)
+        {
+            TradeGoodChance good = possibleTradingGoodsList[UnityEngine.Random.Range(0, possibleTradingGoodsList.Count)];
+            int amount = Random.Range(1, good.maxAmount + 1);
+            float priceMultiplier = Random.Range(0.8f, 1.2f);
+
+            TradeGood tradegood = new TradeGood(
+                good.resource,
+                amount,
+                good.resource.baseValue * priceMultiplier
+            );
+
+            tradeGoods.Add(tradegood);
+        }
     }
 }
 

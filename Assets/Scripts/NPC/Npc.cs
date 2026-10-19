@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -26,7 +27,8 @@ public class Npc : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public List<string> notInterestedReplicas;
     public NpcChatBubble chatBubble;
 
-    
+    private Coroutine restoreSpeedCoroutine;
+    private const float RESTORE_DELAY = 3f;
     private void Awake()
     {
         interaction = GetComponent<INpcInteraction>();
@@ -119,24 +121,53 @@ public class Npc : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         rooted = false;
         animateMove();
     }
-
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (interested)
         {
+            // Daca exista deja timerul de revenire, il anulam
+            if (restoreSpeedCoroutine != null)
+            {
+                StopCoroutine(restoreSpeedCoroutine);
+                restoreSpeedCoroutine = null;
+            }
+
             chatBubble.Show(interestedReplicas[UnityEngine.Random.Range(0, interestedReplicas.Count)]);
+
             speed = 0.5f;
         }
         else
         {
-            chatBubble.Show(notInterestedReplicas[UnityEngine.Random.Range(0, interestedReplicas.Count)]);
-        }   
+            chatBubble.Show(notInterestedReplicas[UnityEngine.Random.Range(0, notInterestedReplicas.Count)]);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        speed = 1f;
+        if (interested)
+        {
+            //chatBubble.Hide();
+
+            // Pornim timerul de 3 secunde
+            restoreSpeedCoroutine = StartCoroutine(RestoreSpeedAfterDelay());
+        }
+        else
+        {
+            // Pentru NPC-urile neinteresate ramane comportamentul vechi
+            speed = 1f;
+            chatBubble.Hide();
+        }
+    }
+
+    private IEnumerator RestoreSpeedAfterDelay()
+    {
+        yield return new WaitForSeconds(RESTORE_DELAY);
+
         chatBubble.Hide();
+        speed = 1f;
+        restoreSpeedCoroutine = null;
+        
     }
 
     public void showNotCurious()

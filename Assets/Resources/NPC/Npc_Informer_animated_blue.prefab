@@ -778,11 +778,180 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa92e8f507d07645aef290a87ea38ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InformerNpc
+  npc: {fileID: 0}
+  replicas:
+  - Greetings, traveler! I've got some valuable information for you...
+  - Ah, a curious traveler! What would you like to know?
+  - Knowledge is worth more than gold, my friend...
+  - I've heard a thing or two along these roads. Interested?
+  - The roads carry more than merchants. They carry secrets too...
+  - Looking for answers, traveler? You've come to the right person!
+  - 'A wise merchant knows that information is just as valuable as goods...  '
+  - News travels fast in these lands. Care to hear the latest?
+  - I've got a few tales worth sharing, if you've got the coin...
+  - Fortune favors the well-informed, traveler. What interests you?
+  - These lands are full of surprises. Best to know what's ahead!
+  - A little knowledge can save you a lot of trouble on the road...
   weatherBasePrice: 1
   springWeatherPrice: 0
   summerWeahterPrice: 0
   fallWeatherPrice: 0
   witnerWheaterPrice: 0
+  weatherForecastText:
+  - Ah, the {season} lands! Word is, {weather} will last for another {hours} hours.
+  - I've traveled these roads long enough to know. Expect {weather} in {season} for
+    the next {hours} hours.
+  - Whispers from {season} speak of {weather}. The skies should remain this way for
+    another {hours} hours.
+  - 'Latest news from {season}: {weather}. These conditions are expected to last
+    another {hours} hours.'
+  - A merchant fresh from {season} brought word of {weather}. Seems the skies won't
+    change for another {hours} hours.
+  - Heading toward {season}, are you? Better prepare for {weather}. It'll be another
+    {hours} hours before things change.
+  tradeDealsText:
+  - 'A traveler fresh from {season} brought interesting news.
+
+    <b>{highSettlement}</b>:
+    <b>{highResource}</b> is worth {highPrice} coins.
+
+    <b>{lowSettlement}</b>:
+    <b>{lowResource}</b> can be bought for just {lowPrice} coins.'
+  - 'I''ve heard some promising trade rumors from the {season} lands.
+
+    <b>{highSettlement}</b>:
+    Merchants are paying {highPrice} coins for <b>{highResource}</b>.
+
+    <b>{lowSettlement}</b>:
+    You can find <b>{lowResource}</b> for only {lowPrice} coins.'
+  - 'Ah, {season}! There are a few opportunities worth knowing about.
+
+    <b>{highSettlement}</b>:
+    <b>{highResource}</b> fetches a fine price of {highPrice} coins.
+
+    <b>{lowSettlement}</b>:
+    <b>{lowResource}</b> is selling for just {lowPrice} coins.'
+  - 'Word travels fast along the roads of {season}. Here''s what I''ve heard.
+
+    <b>{highSettlement}</b>:
+    <b>{highResource}</b> is in high demand, fetching {highPrice} coins.
+
+    <b>{lowSettlement}</b>:
+    <b>{lowResource}</b> is plentiful, costing only {lowPrice} coins.'
+  - 'Fortune favors those who know where to trade. Here''s the latest from {season}.
+
+    <b>{highSettlement}</b>:
+    <b>{highResource}</b> commands a price of {highPrice} coins.
+
+    <b>{lowSettlement}</b>:
+    <b>{lowResource}</b> can be found for a mere {lowPrice} coins.'
+  - 'Looking to make some coin? I''ve picked up a few tips from {season}.
+
+    <b>{highSettlement}</b>:
+    Traders offer {highPrice} coins for <b>{highResource}</b>.
+
+    <b>{lowSettlement}</b>:
+    Merchants sell <b>{lowResource}</b> for just {lowPrice} coins.'
+  springHighResource:
+    settlement:
+      settlementName: 
+      defaultSettlementData: {fileID: 0}
+      settlementStock: []
+      settlementShopItems: []
+      settlementGo: {fileID: 0}
+    tradeGood:
+      resource: {fileID: 0}
+      amount: 0
+      price: 0
+    tier: 0
+  springLowResource:
+    settlement:
+      settlementName: 
+      defaultSettlementData: {fileID: 0}
+      settlementStock: []
+      settlementShopItems: []
+      settlementGo: {fileID: 0}
+    tradeGood:
+      resource: {fileID: 0}
+      amount: 0
+      price: 0
+    tier: 0
+  springTradePrice: 0
+  summerHighResource:
+    settlement:
+      settlementName: 
+      defaultSettlementData: {fileID: 0}
+      settlementStock: []
+      settlementShopItems: []
+      settlementGo: {fileID: 0}
+    tradeGood:
+      resource: {fileID: 0}
+      amount: 0
+      price: 0
+    tier: 0
+  summerLowResource:
+    settlement:
+      settlementName: 
+      defaultSettlementData: {fileID: 0}
+      settlementStock: []
+      settlementShopItems: []
+      settlementGo: {fileID: 0}
+    tradeGood:
+      resource: {fileID: 0}
+      amount: 0
+      price: 0
+    tier: 0
+  summerTradePrice: 0
+  fallHighResource:
+    settlement:
+      settlementName: 
+      defaultSettlementData: {fileID: 0}
+      settlementStock: []
+      settlementShopItems: []
+      settlementGo: {fileID: 0}
+    tradeGood:
+      resource: {fileID: 0}
+      amount: 0
+      price: 0
+    tier: 0
+  fallLowResource:
+    settlement:
+      settlementName: 
+      defaultSettlementData: {fileID: 0}
+      settlementStock: []
+      settlementShopItems: []
+      settlementGo: {fileID: 0}
+    tradeGood:
+      resource: {fileID: 0}
+      amount: 0
+      price: 0
+    tier: 0
+  fallTradePrice: 0
+  winterHighResource:
+    settlement:
+      settlementName: 
+      defaultSettlementData: {fileID: 0}
+      settlementStock: []
+      settlementShopItems: []
+      settlementGo: {fileID: 0}
+    tradeGood:
+      resource: {fileID: 0}
+      amount: 0
+      price: 0
+    tier: 0
+  winterLowResource:
+    settlement:
+      settlementName: 
+      defaultSettlementData: {fileID: 0}
+      settlementStock: []
+      settlementShopItems: []
+      settlementGo: {fileID: 0}
+    tradeGood:
+      resource: {fileID: 0}
+      amount: 0
+      price: 0
+    tier: 0
+  winterTradePrice: 0
 --- !u!114 &6588994273862396918
 MonoBehaviour:
   m_ObjectHideFlags: 0

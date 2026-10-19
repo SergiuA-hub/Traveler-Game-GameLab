@@ -5,6 +5,7 @@ using UnityEngine;
 public class BarterNpc : MonoBehaviour, INpcInteraction
 {
     public Npc npc;
+    public List<ResourceSO> posibleRequestedTradeGoods;
     public List<ResourceSO> posibleBarterTradeGoods;
     public List<string> replicas;
 
@@ -14,6 +15,7 @@ public class BarterNpc : MonoBehaviour, INpcInteraction
     public void Interact()
     {
         Debug.Log("Open Barter UI");
+
         if (!npc.interested)
         {
             npc.showNotCurious();
@@ -28,10 +30,12 @@ public class BarterNpc : MonoBehaviour, INpcInteraction
         tradeCompleted = false;
 
         ResourceSO tmp;
-        tmp = posibleBarterTradeGoods[UnityEngine.Random.Range(0, posibleBarterTradeGoods.Count)];        
+        tmp = posibleRequestedTradeGoods[UnityEngine.Random.Range(0, posibleRequestedTradeGoods.Count)];        
         requestedGood = new TradeGood(tmp, UnityEngine.Random.Range(1, 5), tmp.baseValue);
-        List<ResourceSO> randomGoods = posibleBarterTradeGoods.
-            Distinct()
+
+        List<ResourceSO> randomGoods = posibleBarterTradeGoods
+            .Where(x => x.itemName != requestedGood.resource.itemName)
+            .Distinct()
             .OrderBy(x => UnityEngine.Random.value)
             .Take(3)
             .ToList();
