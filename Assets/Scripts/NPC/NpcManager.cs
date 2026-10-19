@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NpcManager : MonoBehaviour
 {
+    public GameObject npcInteractButton;
     public Player_M player;
     public TimeManager timeManager;
 
@@ -23,6 +25,8 @@ public class NpcManager : MonoBehaviour
     public List<Npc> npcPlayerCanInteract;
     private string lastSettlement;
     private float speedModifier = 1;
+    [SerializeField] private float initialSpawnDelay = 5f;
+
     private void Start()
     {
         foreach (RoadPath road in roads)
@@ -30,13 +34,21 @@ public class NpcManager : MonoBehaviour
             road.Initialize();
         }
 
-        for (int i = 0; i < 5; i++)
+        StartCoroutine(InitialNpcSpawn());
+    }
+
+    private IEnumerator InitialNpcSpawn()
+    {
+        for (int i = 0; i < maxAliveNPC; i++)
         {
             spawnRandomNPC(100);
+
+            if (i < maxAliveNPC - 1)
+                yield return new WaitForSeconds(initialSpawnDelay);
         }
 
         timeManager.onHourChanged.AddListener(hourlNpcSpawnerCheck);
-    }    
+    }
 
     public void hourlNpcSpawnerCheck(DateTime time)
     {
@@ -85,6 +97,11 @@ public class NpcManager : MonoBehaviour
                 UpdateNPCVisibility(npc);
             }
         }
+
+        if(npcPlayerCanInteract.Count > 0)
+        {
+            npcInteractButton.SetActive(true);
+        }else npcInteractButton.SetActive(false);
     }
 
     public void adjustSpeed(float timeModifier)
@@ -180,6 +197,9 @@ public class NpcManager : MonoBehaviour
         if (npc.currentRoad == null)
             return;
 
+        if (npc.rooted)
+            return;
+
         if (npc.currentWaypointIndex < 0 ||
             npc.currentWaypointIndex >= npc.currentRoad.waypoints.Count)
         {
@@ -230,5 +250,11 @@ public class NpcManager : MonoBehaviour
         {
             npcPlayerCanInteract.Remove(npc);
         }
+    }
+
+    public void InteractWithClosestNPC()
+    {
+        if (npcPlayerCanInteract.Count > 0)
+            npcPlayerCanInteract[0].Interact();
     }
 }

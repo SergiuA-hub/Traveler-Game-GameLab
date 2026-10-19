@@ -7,6 +7,7 @@ using UnityEngine;
 public class SettlementSO : ScriptableObject
 {
     public string settlementName;
+    public Season region;
     public List<SettlementGood> production;
     public List<SettlementGood> consumption;
     public List<ShopItem> itemsShop;

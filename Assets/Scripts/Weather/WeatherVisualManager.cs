@@ -30,7 +30,7 @@ public class WeatherVisualManager : MonoBehaviour
     private WeatherType currentWeather = WeatherType.Clear;
     private Season currentSeason = Season.Summer;
     private bool weatherInitialized = false;
-
+    private bool isFrost = false;
     #region WEATHER EFFECTS
 
     private WeatherFX rainEffect;
@@ -220,11 +220,11 @@ public class WeatherVisualManager : MonoBehaviour
             currentWeather == weather)
             return;
 
-        StopAllWeatherEffects();
-
         currentSeason = season;
         currentWeather = weather;
         weatherInitialized = true;
+
+        StopAllWeatherEffects();
 
         switch (season)
         {
@@ -383,13 +383,16 @@ public class WeatherVisualManager : MonoBehaviour
         StopLeaves();
         StopWind();
         StopBlizzard();
-        StopFrost();
         StopPollen();
+
+        if (!isFrost || currentSeason != Season.Winter)
+            StopFrost();
     }
 
     public void frost()
     {
         InitializeFrost();
+        isFrost = true;
 
         frostEffect.Set("frequency", 0.2f);
         frostEffect.Set("intensity", 0.35f);
@@ -398,6 +401,7 @@ public class WeatherVisualManager : MonoBehaviour
 
     public void deFrost()
     {
+        isFrost = false;
         StopFrost();
     }
 
