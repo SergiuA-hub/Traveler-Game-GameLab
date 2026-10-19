@@ -72,6 +72,7 @@ public class InformerNpcUI : MonoBehaviour
 
         informer.npc.Root();
         player.Root();
+
         headerReplicas.text = informer.replicas[UnityEngine.Random.Range(0, informer.replicas.Count)];
 
         optionsPanel.SetActive(true);

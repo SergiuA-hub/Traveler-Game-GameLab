@@ -147,9 +147,9 @@ public class ResourceAmount
 public class NewCampManager : MonoBehaviour
 {
     public Button campButton;
-    public Player_M player;
-    public NpcManager npcManager;
-    public EnvironmentManager envManager;
+    private Player_M player;
+    private NpcManager npcManager;
+    private EnvironmentManager envManager;
     public CampStats campStats = new CampStats();
     private int restTimeCounter = 0;
     private int restDuration = 0;
@@ -190,6 +190,10 @@ public class NewCampManager : MonoBehaviour
     public CampResolutionScreen campResloution;
     private void Start()
     {
+        player = GameServices.Instance.player;
+        npcManager = GameServices.Instance.npcManager;
+        envManager = GameServices.Instance.environmentManager;
+
         caravanCameraSize = playerCam.orthographicSize;
     }
 

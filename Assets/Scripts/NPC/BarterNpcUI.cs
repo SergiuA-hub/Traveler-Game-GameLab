@@ -35,6 +35,8 @@ public class BarterNpcUI : MonoBehaviour
             return;
 
         barter.npc.Root();
+        player.Root();
+
         barterReplica.text = barter.replicas[UnityEngine.Random.Range(0,barter.replicas.Count)];
         showOfferIndex = 0;
 
@@ -70,6 +72,11 @@ public class BarterNpcUI : MonoBehaviour
     {
         if (barter != null)
             barter.npc.UnRoot();
+        
+        if (player == null)
+            return;
+
+        player.UnRoot();
     }
 
     public void clearRequestList()

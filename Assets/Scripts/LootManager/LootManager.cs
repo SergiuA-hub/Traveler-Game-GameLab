@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LootManager : MonoBehaviour
 {
-    public Player_M player;
+    private Player_M player;
     public AudioSource investigatingAudio;
     [Range(0f, 1f)]
     public float investigatingVolume = 0.7f;
@@ -42,6 +42,8 @@ public class LootManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        player = GameServices.Instance.player;
+
         lootOutcomeList = new List<LootOutcome>(
             Resources.LoadAll<LootOutcome>("Loot")
         );

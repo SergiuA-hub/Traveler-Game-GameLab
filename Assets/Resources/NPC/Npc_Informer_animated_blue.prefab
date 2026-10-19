@@ -111,7 +111,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7580604093873144320}
   - component: {fileID: 7556479069410153507}
-  - component: {fileID: 621766530716833803}
   m_Layer: 11
   m_Name: MouseOver
   m_TagString: Untagged
@@ -170,19 +169,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1
---- !u!114 &621766530716833803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4446314297880547274}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af545faaea5650c418b0e0b05c35f060, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NpcMouseHover
-  chatBubble: {fileID: 0}
 --- !u!1 &4520705859405899421
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa92e8f507d07645aef290a87ea38ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InformerNpc
-  npc: {fileID: 0}
+  npc: {fileID: 69827278817561664}
   replicas:
   - Greetings, traveler! I've got some valuable information for you...
   - Ah, a curious traveler! What would you like to know?

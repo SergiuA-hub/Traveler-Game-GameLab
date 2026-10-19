@@ -10,8 +10,11 @@ public class GameServices : MonoBehaviour
     public WeatherManager weatherManager;
     public NewCampManager campManager;
     public SettlementsManager settlementManager;
+    public EnvironmentManager environmentManager;
+    public WeatherVisualManager weatherVisual;
 
     [Header("UI")]
+    public HUDScript HUD;
     public TraderNpcUI traderNpcUI;
     public BarterNpcUI barterNpcUI;
     public InformerNpcUI informerNpcUI;

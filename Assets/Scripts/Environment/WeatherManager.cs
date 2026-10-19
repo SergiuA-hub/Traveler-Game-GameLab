@@ -11,13 +11,13 @@ public enum WeatherType
 }
 public class WeatherManager : MonoBehaviour
 {
-    public TimeManager timeManager;
-    public HUDScript HUD;
-    public EnvironmentManager environmentManager;
+    private TimeManager timeManager;
+    private HUDScript HUD;
+    private EnvironmentManager environmentManager;
     public WeatherType currentWeather;
     public Season currentSeason;
 
-    public WeatherVisualManager weatherVisual;
+    private WeatherVisualManager weatherVisual;
     public WeatherType springWeather = WeatherType.Clear;
     public int springWeatherDuration;
     public float springWeatherChangeChance = 20;
@@ -38,6 +38,11 @@ public class WeatherManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        timeManager = GameServices.Instance.timeManager;
+        environmentManager = GameServices.Instance.environmentManager;
+        weatherVisual = GameServices.Instance.weatherVisual;
+        HUD = GameServices.Instance.HUD;
+
         currentWeather = WeatherType.Clear;
         currentSeason = Season.Summer;
 

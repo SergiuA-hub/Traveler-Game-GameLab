@@ -8,10 +8,10 @@ using UnityEngine.Rendering.Universal;
 public class TimeManager : MonoBehaviour
 {
     [Header("Player")]
-    public Player_M player;
+    private Player_M player;
 
     [Header("NPC")]
-    public NpcManager npcManager;
+    private NpcManager npcManager;
 
     [Header("Day / Night")]
     [SerializeField] private Light2D globalLight;
@@ -56,6 +56,9 @@ public class TimeManager : MonoBehaviour
 
     void Start()
     {
+        player = GameServices.Instance.player;
+        npcManager = GameServices.Instance.npcManager;
+
         hour_duration = GlobalSettingsManager.HOUR_DURATION;
         currentTime = new DateTime(1251, 3, 25, 0, 0, 0);
         timeLeft = hour_duration;

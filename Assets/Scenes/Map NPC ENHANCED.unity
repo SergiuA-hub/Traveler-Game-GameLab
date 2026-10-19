@@ -7826,102 +7826,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69280443}
   m_CullTransparentMesh: 1
---- !u!1 &69659304
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 69659305}
-  - component: {fileID: 69659306}
-  m_Layer: 0
-  m_Name: NPC Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &69659305
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69659304}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.25, y: -8.09, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 820223903}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &69659306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69659304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d9d68be492154a4487831481840c001, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NpcManager
-  npcInteractButton: {fileID: 1980218665}
-  player: {fileID: 1153219631}
-  timeManager: {fileID: 932758302}
-  npcVisibleDistance: 15
-  optimizeNpcVizibility: 1
-  maxAliveNPC: 30
-  roads:
-  - roadName: Summer to Fall
-    physicalPath: {fileID: 1178596935}
-    startSettlement: {fileID: 11400000, guid: 5c45bdb57a6c67441ad678f1fe3b4597, type: 2}
-    endSettlement: {fileID: 11400000, guid: 3865eccc54f10a4468cd7fb4b17dc00f, type: 2}
-    waypoints: []
-    totalLength: 0
-  - roadName: Summer to Spring
-    physicalPath: {fileID: 1074374973}
-    startSettlement: {fileID: 11400000, guid: 5c45bdb57a6c67441ad678f1fe3b4597, type: 2}
-    endSettlement: {fileID: 11400000, guid: 057c3065bb798934d94d9234049cfdd4, type: 2}
-    waypoints: []
-    totalLength: 0
-  - roadName: Fall to Winter
-    physicalPath: {fileID: 1530713710}
-    startSettlement: {fileID: 11400000, guid: 3865eccc54f10a4468cd7fb4b17dc00f, type: 2}
-    endSettlement: {fileID: 11400000, guid: 2d2b2a289677d5347ad2eb7b2b6e8f38, type: 2}
-    waypoints: []
-    totalLength: 0
-  - roadName: Spring to Winter
-    physicalPath: {fileID: 1108518639}
-    startSettlement: {fileID: 11400000, guid: 057c3065bb798934d94d9234049cfdd4, type: 2}
-    endSettlement: {fileID: 11400000, guid: 2d2b2a289677d5347ad2eb7b2b6e8f38, type: 2}
-    waypoints: []
-    totalLength: 0
-  NPCs:
-  - {fileID: 7973553324472365034, guid: a194d1f4ca659044998eee1b34a02f3d, type: 3}
-  - {fileID: 7973553324472365034, guid: a194d1f4ca659044998eee1b34a02f3d, type: 3}
-  - {fileID: 7973553324472365034, guid: a194d1f4ca659044998eee1b34a02f3d, type: 3}
-  - {fileID: 7973553324472365034, guid: a194d1f4ca659044998eee1b34a02f3d, type: 3}
-  - {fileID: 7973553324472365034, guid: a194d1f4ca659044998eee1b34a02f3d, type: 3}
-  - {fileID: 8011178110711942701, guid: f6a2985b4e59af9468474948cdf326da, type: 3}
-  - {fileID: 8011178110711942701, guid: 786a4c0512fd4514eb668fc870e72551, type: 3}
-  - {fileID: 8011178110711942701, guid: a499ecd40f434934d8c51415d73931aa, type: 3}
-  - {fileID: 8011178110711942701, guid: ccc69940631af134b99acda1129fed3c, type: 3}
-  - {fileID: 8011178110711942701, guid: 9a98a9410c56ed1478b157576691af76, type: 3}
-  - {fileID: 297676040438961626, guid: 5bb0110a535f0e944bb40bb70c6da834, type: 3}
-  - {fileID: 297676040438961626, guid: 5bb0110a535f0e944bb40bb70c6da834, type: 3}
-  - {fileID: 297676040438961626, guid: 5bb0110a535f0e944bb40bb70c6da834, type: 3}
-  - {fileID: 297676040438961626, guid: 5bb0110a535f0e944bb40bb70c6da834, type: 3}
-  - {fileID: 297676040438961626, guid: 5bb0110a535f0e944bb40bb70c6da834, type: 3}
-  npcSpawner: {fileID: 165215432}
-  aliveNPCs: []
-  spawnChange: 100
-  npcPlayerCanInteract: []
-  initialSpawnDelay: 4
 --- !u!1001 &70572823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13196,7 +13100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c0f669218714e4086bcd942977272a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CityUIManager
-  settlementManager: {fileID: 2027388441}
+  settlementManager: {fileID: 2027388444}
   cityUI: {fileID: 1377935542}
   prompt: {fileID: 245054118}
   tradeButton: {fileID: 700676057}
@@ -614277,7 +614181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HelpText
   helpProduceDisplay: {fileID: 1953587040}
   helpNeedTextDisplay: {fileID: 241155219}
-  settlementManager: {fileID: 2027388441}
+  settlementManager: {fileID: 2027388444}
 --- !u!1001 &267576861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -641959,59 +641863,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 46531340112568411, guid: 38d3118db8451b040a7a94043b7fe7f5, type: 3}
   m_PrefabInstance: {fileID: 485015936}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &487738703
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 487738705}
-  - component: {fileID: 487738704}
-  m_Layer: 0
-  m_Name: _GameServices
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &487738704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 487738703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 364cb4b06c35a3548ba3fb4ad897f7a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameServices
-  timeManager: {fileID: 932758302}
-  npcManager: {fileID: 69659306}
-  weatherManager: {fileID: 665919135}
-  campManager: {fileID: 1622856382}
-  settlementManager: {fileID: 2027388441}
-  traderNpcUI: {fileID: 1878805765}
-  barterNpcUI: {fileID: 1001500085}
-  informerNpcUI: {fileID: 222828473}
-  player: {fileID: 1153219631}
---- !u!4 &487738705
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 487738703}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.65165, y: 0.4747, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &487988892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -655995,7 +655846,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2027388442}
+  - {fileID: 2027388443}
   - {fileID: 1781247030}
   - {fileID: 1027312738}
   - {fileID: 81587472}
@@ -666591,7 +666442,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2027388441}
+      - m_Target: {fileID: 2027388444}
         m_TargetAssemblyTypeName: SettlementsManager, Assembly-CSharp
         m_MethodName: EnterCity
         m_Mode: 1
@@ -681375,7 +681226,6 @@ Transform:
   - {fileID: 879770969}
   - {fileID: 665919134}
   - {fileID: 932758301}
-  - {fileID: 69659305}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &820901468
@@ -681843,7 +681693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c0f669218714e4086bcd942977272a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CityUIManager
-  settlementManager: {fileID: 2027388441}
+  settlementManager: {fileID: 2027388444}
   cityUI: {fileID: 1377935542}
   prompt: {fileID: 245054118}
   tradeButton: {fileID: 700676057}
@@ -695565,7 +695415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   player: {fileID: 1153219631}
-  npcManager: {fileID: 69659306}
+  npcManager: {fileID: 0}
   globalLight: {fileID: 1284095262}
   nightIntensity: 0.2
   dayIntensity: 1
@@ -695597,6 +695447,11 @@ MonoBehaviour:
   onEvening:
     m_PersistentCalls:
       m_Calls: []
+  timerMax: 0
+  timerCurrent: 0
+  timerCritical: 0
+  timerDamage: 0
+  dmgFreq: 0
 --- !u!114 &932758303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715172,7 +715027,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2027388441}
+      - m_Target: {fileID: 2027388444}
         m_TargetAssemblyTypeName: SettlementsManager, Assembly-CSharp
         m_MethodName: BuyOrSell
         m_Mode: 1
@@ -716957,6 +716812,9 @@ MonoBehaviour:
   weatherText: {fileID: 686156602}
   currentSeason: 1
   currentWeather: 0
+  timerSlider: {fileID: 0}
+  timerText: {fileID: 0}
+  timerCritColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &1120174760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -750753,7 +750611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 740a7a39abc2cb34aa7fb425717cc1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CityUI
-  settlementsManager: {fileID: 2027388441}
+  settlementsManager: {fileID: 2027388444}
   currentSettlement:
     settlementName: 
     defaultSettlementData: {fileID: 0}
@@ -793668,7 +793526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04243dcbe4958f45956a1a00a4cba45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NavigationUI
-  settlementManager: {fileID: 2027388441}
+  settlementManager: {fileID: 2027388444}
   destinationList: {fileID: 1576133312}
   destinationPrefab: {fileID: 589002194149130632, guid: 2d7aa35486a285c49aba9043ea756956, type: 3}
   navigationArrow: {fileID: 1495155297}
@@ -797764,7 +797622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NewCampManager
   campButton: {fileID: 1209690418}
   player: {fileID: 1153219631}
-  npcManager: {fileID: 69659306}
+  npcManager: {fileID: 0}
   envManager: {fileID: 879770968}
   campStats:
     fireLevel: 1
@@ -805140,7 +804998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c0f669218714e4086bcd942977272a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CityUIManager
-  settlementManager: {fileID: 2027388441}
+  settlementManager: {fileID: 2027388444}
   cityUI: {fileID: 1377935542}
   prompt: {fileID: 245054118}
   tradeButton: {fileID: 700676057}
@@ -895976,7 +895834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c0f669218714e4086bcd942977272a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CityUIManager
-  settlementManager: {fileID: 2027388441}
+  settlementManager: {fileID: 2027388444}
   cityUI: {fileID: 1377935542}
   prompt: {fileID: 245054118}
   tradeButton: {fileID: 700676057}
@@ -909688,7 +909546,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 69659306}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NpcManager, Assembly-CSharp
         m_MethodName: InteractWithClosestNPC
         m_Mode: 1
@@ -914860,8 +914718,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2027388442}
-  - component: {fileID: 2027388441}
+  - component: {fileID: 2027388443}
+  - component: {fileID: 2027388444}
   m_Layer: 0
   m_Name: SettlementsManager
   m_TagString: Untagged
@@ -914869,7 +914727,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2027388441
+--- !u!4 &2027388443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027388440}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1442.6005, y: 1197.0623, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 609384115}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2027388444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -914905,21 +914778,6 @@ MonoBehaviour:
     settlementGo: {fileID: 0}
   SliderAmount: {fileID: 0}
   timeManager: {fileID: 932758302}
---- !u!4 &2027388442
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027388440}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1442.6005, y: 1197.0623, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 609384115}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2027703811
 GameObject:
   m_ObjectHideFlags: 0
@@ -939300,7 +939158,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 487738705}
   - {fileID: 1502110928}
   - {fileID: 814492382}
   - {fileID: 1986996514}

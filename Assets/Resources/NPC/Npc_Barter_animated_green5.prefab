@@ -701,7 +701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa8b4c157c999c4da1ff89c62c3834b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BarterNpc
-  npc: {fileID: 0}
+  npc: {fileID: 194185328496044890}
   posibleRequestedTradeGoods:
   - {fileID: 11400000, guid: 977e07f63e21de04eab6d24732cd7a04, type: 2}
   - {fileID: 11400000, guid: cf23858f5ed539f43b85fdd88d1b293c, type: 2}
@@ -801,7 +801,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3854574255036357979}
   - component: {fileID: 8898265438342703049}
-  - component: {fileID: 3287998220788851740}
   m_Layer: 11
   m_Name: MouseOver
   m_TagString: Untagged
@@ -860,16 +859,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1
---- !u!114 &3287998220788851740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8356710414651219605}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af545faaea5650c418b0e0b05c35f060, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NpcMouseHover
-  chatBubble: {fileID: 0}

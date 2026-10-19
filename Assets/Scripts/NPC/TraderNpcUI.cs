@@ -29,6 +29,7 @@ public class TraderNpcUI : MonoBehaviour
         this.player = player;
 
         trader.npc.Root();
+        player.Root();
 
         refreshTradeGoods();
 
@@ -42,6 +43,11 @@ public class TraderNpcUI : MonoBehaviour
     {
         if(trader != null)
             trader.npc.UnRoot();
+        
+        if (player == null)
+            return;
+
+        player.UnRoot();
     }
 
     public void refreshTradeGoods()

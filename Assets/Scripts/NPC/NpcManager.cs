@@ -6,8 +6,8 @@ using UnityEngine;
 public class NpcManager : MonoBehaviour
 {
     public GameObject npcInteractButton;
-    public Player_M player;
-    public TimeManager timeManager;
+    private Player_M player;
+    private TimeManager timeManager;
 
     public float npcVisibleDistance = 30f;
     public bool optimizeNpcVizibility;
@@ -29,6 +29,9 @@ public class NpcManager : MonoBehaviour
 
     private void Start()
     {
+        player = GameServices.Instance.player;
+        timeManager = GameServices.Instance.timeManager;
+
         foreach (RoadPath road in roads)
         {
             road.Initialize();
@@ -185,6 +188,7 @@ public class NpcManager : MonoBehaviour
         npc.transform.position =
             road.waypoints[startIndex].position + npc.pathOffset;
         
+        npc.gameObject.SetActive(false);
         lastSettlement = forward ? road.startSettlement.settlementName : road.endSettlement.settlementName;
         aliveNPCs.Add(npc);
     }
