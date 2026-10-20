@@ -4,7 +4,8 @@ using static UnityEditor.Progress;
 public enum LootType
 {
     SmallSack,
-    BigSack
+    BigSack,
+    Crate
 }
 
 public class LootPrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
