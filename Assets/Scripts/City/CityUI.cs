@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Mono.Cecil;
 using System;
 using TMPro;
@@ -219,14 +220,7 @@ public class CityUI : MonoBehaviour
                 row.PopulateBuyIcon(item, this);
             }
             
-            
-
-            if (settlementsManager.currentItemSelected != null && settlementsManager.currentItemSelected.tradeSettlementItem != null)
-                if(item.resource.itemName == settlementsManager.currentItemSelected.tradeSettlementItem.resource.itemName)
-                {
-                    //Debug.Log($"item.resource.itemName:{item.resource.itemName}");
-                    //SetCurrentTradeItem(row);
-                }
+           
             
         }
 
@@ -255,6 +249,11 @@ public class CityUI : MonoBehaviour
         SetButtonText(item);
         SliderMaxValue();
 
+    }
+
+    public void SetTradeItemTier(TradeItemDisplay item)
+    {
+        
     }
 
     //Slider
