@@ -217,7 +217,12 @@ public class CityUI : MonoBehaviour
             if (LicenseManager.instance.CanTrade(item.resource,currentSettlement.defaultSettlementData))
             {
                  row = Instantiate(tradePrfab, buyContent);
-                row.PopulateBuyIcon(item, this);
+                row.PopulateBuyIcon(item, this,false);
+            }
+            else
+            {
+                row = Instantiate(tradePrfab, buyContent);
+                row.PopulateBuyIcon(item, this, true);
             }
             
            
