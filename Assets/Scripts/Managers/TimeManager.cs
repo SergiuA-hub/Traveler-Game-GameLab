@@ -127,7 +127,7 @@ public class TimeManager : MonoBehaviour
 
     void HandleTimer(float dec)
     {
-        timerCurrent -= dec;
+        timerCurrent -= dec / (hour_duration / GlobalSettingsManager.HOUR_DURATION);
         if (timerCurrent <= 0)
         {
             timerCurrent = 0;
