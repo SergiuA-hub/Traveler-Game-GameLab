@@ -299,22 +299,43 @@ public class SettlementsManager : MonoBehaviour
     public void BuyOrSell()
     {
         //Debug.Log("BUY SELL");
-        
-        //BUY
-        if (currentItemSelected.tradeSettlementItem != null)
+        if(currentItemSelected.isLocked == false)
         {
-            
-            //Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with prce {currentItemSelected.tradeSettlementItem.price}");
-            
-            //Check player money & space in backpack
-            
-            if (player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price * cityUI.ReturnCurentSliderValue()
-            && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume * cityUI.ReturnCurentSliderValue(), 
-            currentItemSelected.tradeSettlementItem.resource.weight * cityUI.ReturnCurentSliderValue()))
-            
+            //BUY
+            if (currentItemSelected.tradeSettlementItem != null)
             {
-                player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, currentItemSelected.tradeSettlementItem.price,cityUI.ReturnCurentSliderValue());                
-                currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource,cityUI.ReturnCurentSliderValue());
+
+                //Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with prce {currentItemSelected.tradeSettlementItem.price}");
+
+                //Check player money & space in backpack
+
+                if (player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price * cityUI.ReturnCurentSliderValue()
+                && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume * cityUI.ReturnCurentSliderValue(),
+                currentItemSelected.tradeSettlementItem.resource.weight * cityUI.ReturnCurentSliderValue()))
+
+                {
+                    player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, currentItemSelected.tradeSettlementItem.price, cityUI.ReturnCurentSliderValue());
+                    currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource, cityUI.ReturnCurentSliderValue());
+                    updateCurrentSettlementPrices();
+
+                    //Slider
+                    cityUI.SliderMaxValue();
+                    //Display
+                    SettlementUI.GetComponent<CityUI>().DisplayTrade();
+                    SettlementUI.GetComponent<CityUI>().DisplayPlayerCoins();
+                    return;
+                }
+            }
+
+            //Sell
+            if (currentItemSelected.tradeInventoryItem != null)
+            {
+
+                if (!player.invetory.hasResources(currentItemSelected.tradeInventoryItem.resourceSO))
+                    return;
+
+                player.invetory.tradeOut(currentItemSelected.tradeInventoryItem.resourceSO, currentSettlement.getStockPrice(currentItemSelected.tradeInventoryItem.resourceSO), cityUI.ReturnCurentSliderValue());
+                currentSettlement.increaseStock(currentItemSelected.tradeInventoryItem.resourceSO, cityUI.ReturnCurentSliderValue());
                 updateCurrentSettlementPrices();
 
                 //Slider
@@ -325,25 +346,7 @@ public class SettlementsManager : MonoBehaviour
                 return;
             }
         }
-
-        //Sell
-        if (currentItemSelected.tradeInventoryItem != null)
-        {
-            
-            if (!player.invetory.hasResources(currentItemSelected.tradeInventoryItem.resourceSO))
-                return;
-
-            player.invetory.tradeOut(currentItemSelected.tradeInventoryItem.resourceSO, currentSettlement.getStockPrice(currentItemSelected.tradeInventoryItem.resourceSO),cityUI.ReturnCurentSliderValue());            
-            currentSettlement.increaseStock(currentItemSelected.tradeInventoryItem.resourceSO,cityUI.ReturnCurentSliderValue());
-            updateCurrentSettlementPrices();
-
-            //Slider
-            cityUI.SliderMaxValue();
-            //Display
-            SettlementUI.GetComponent<CityUI>().DisplayTrade();
-            SettlementUI.GetComponent<CityUI>().DisplayPlayerCoins();
-            return;
-        }
+        
     }
 
   

@@ -120,9 +120,15 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        cityUI.SetCurrentTradeItem(this);
+       
         if (!isLocked || tradeInventoryItem != null)
         {
-            cityUI.SetCurrentTradeItem(this);
+            cityUI.CurrentLockedPanel.SetActive(false);
+        }
+        else
+        {
+            cityUI.CurrentLockedPanel.SetActive(true);
         }
         
     }

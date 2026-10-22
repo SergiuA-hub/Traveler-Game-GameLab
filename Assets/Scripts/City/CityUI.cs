@@ -40,6 +40,7 @@ public class CityUI : MonoBehaviour
     [Header("Player Components")]
     
     public PlayerInventory_M playerInventory;
+    public Player_M player;
     [SerializeField] private TextMeshProUGUI playerCoinsDisplay;
 
 
@@ -50,6 +51,7 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentTradeItemPrice;
     [SerializeField] private TextMeshProUGUI buySellButtonText;
     [SerializeField] private TextMeshProUGUI currentItemAmount;
+    public GameObject CurrentLockedPanel;
 
     //Price Tier Display
     /*
@@ -64,7 +66,12 @@ public class CityUI : MonoBehaviour
     [Header("SLIDER_TRADE")]
     public Slider sliderAmount;
     [SerializeField] private TextMeshProUGUI currentTextAmount;
-    
+    //weight display
+    public Image weight_Invetory_Slider;
+    public Image weight_Trade_Slider;
+    //volume Display
+    public Image volume_Invetory_Slider;
+    public Image volume_Trade_Slider;
 
     [Header("SHOP PAGE")]
 
@@ -123,6 +130,8 @@ public class CityUI : MonoBehaviour
         //Curent Price only on trade panel
         //ShowTotalPrice();
         currentTextAmount.text = sliderAmount.value.ToString();
+
+        SetPlayerWeightVolumeTrade();
         
     }
 
@@ -274,6 +283,19 @@ public class CityUI : MonoBehaviour
             sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeInventoryItem.amount;
         }
         
+    }
+
+    //Weight & Volume
+
+    private void SetPlayerWeightVolumeTrade() 
+    {
+        //already in invetory
+        weight_Invetory_Slider.fillAmount = playerInventory.currentWeight / player.stats.maxWeight;
+        volume_Invetory_Slider.fillAmount = playerInventory.currentVolume / player.stats.maxVolume;
+
+        //Adding from shop
+        weight_Trade_Slider.fillAmount = settlementsManager.currentItemSelected.tradeSettlementItem.resource.weight * ReturnCurentSliderValue() / player.stats.maxWeight;
+        volume_Trade_Slider.fillAmount = settlementsManager.currentItemSelected.tradeSettlementItem.resource.volume * ReturnCurentSliderValue()/player.stats.maxVolume;
     }
 
     public int ReturnCurentSliderValue()
