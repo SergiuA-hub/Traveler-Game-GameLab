@@ -1,28 +1,10 @@
 fileFormatVersion: 2
-guid: 7ee4501217e6ae948b87112035529059
+guid: cc06023c90c1e80428c666bbe1a9a7f0
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: -3638742236531471599
     second: AI_GENERATE_FallIcon_0
-  - first:
-      213: -7031024338697467546
-    second: AI_GENERATE_FallIcon_1
-  - first:
-      213: 798338732646232762
-    second: AI_GENERATE_FallIcon_2
-  - first:
-      213: -6401128701629460255
-    second: AI_GENERATE_FallIcon_3
-  - first:
-      213: 1138965293468909030
-    second: AI_GENERATE_FallIcon_4
-  - first:
-      213: -4754313878999751772
-    second: AI_GENERATE_FallIcon_5
-  - first:
-      213: 4516253006563889172
-    second: AI_GENERATE_FallIcon_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -122,9 +104,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 726
-        width: 31
-        height: 56
+        y: 0
+        width: 920
+        height: 920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,143 +121,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_FallIcon_1
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 134
-        width: 1145
-        height: 1029
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 669cfccad98cc6e90800000000000000
-      internalID: -7031024338697467546
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_FallIcon_2
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 771
-        width: 27
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ab270d9f8d4441b00800000000000000
-      internalID: 798338732646232762
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_FallIcon_3
-      rect:
-        serializedVersion: 2
-        x: 1133
-        y: 741
-        width: 6
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1e091d94c5f9a27a0800000000000000
-      internalID: -6401128701629460255
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_FallIcon_4
-      rect:
-        serializedVersion: 2
-        x: 1190
-        y: 741
-        width: 53
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6ed76b066ea6ecf00800000000000000
-      internalID: 1138965293468909030
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_FallIcon_5
-      rect:
-        serializedVersion: 2
-        x: 87
-        y: 666
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4a3a28b67b8450eb0800000000000000
-      internalID: -4754313878999751772
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_FallIcon_6
-      rect:
-        serializedVersion: 2
-        x: 1107
-        y: 546
-        width: 9
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 410d70c6e24fcae30800000000000000
-      internalID: 4516253006563889172
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -286,12 +136,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       AI_GENERATE_FallIcon_0: -3638742236531471599
-      AI_GENERATE_FallIcon_1: -7031024338697467546
-      AI_GENERATE_FallIcon_2: 798338732646232762
-      AI_GENERATE_FallIcon_3: -6401128701629460255
-      AI_GENERATE_FallIcon_4: 1138965293468909030
-      AI_GENERATE_FallIcon_5: -4754313878999751772
-      AI_GENERATE_FallIcon_6: 4516253006563889172
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

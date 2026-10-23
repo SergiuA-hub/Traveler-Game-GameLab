@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f05579c3a1ad5f342ad0e1c6d1a5884e
+guid: dbfdc44f68185564fac5dd095b14d2f9
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -11,9 +11,6 @@ TextureImporter:
   - first:
       213: 2825667053432233447
     second: AI_GENERATE_Stamina_Icon_2
-  - first:
-      213: -6803071149632582735
-    second: AI_GENERATE_Stamina_Icon_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -112,10 +109,10 @@ TextureImporter:
       name: AI_GENERATE_Stamina_Icon_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 39
-        width: 1153
-        height: 1017
+        x: 363
+        y: 752
+        width: 101
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +131,10 @@ TextureImporter:
       name: AI_GENERATE_Stamina_Icon_1
       rect:
         serializedVersion: 2
-        x: 641
-        y: 1004
-        width: 9
-        height: 9
+        x: 549
+        y: 621
+        width: 221
+        height: 217
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +153,10 @@ TextureImporter:
       name: AI_GENERATE_Stamina_Icon_2
       rect:
         serializedVersion: 2
-        x: 743
-        y: 794
-        width: 249
-        height: 374
+        x: 17
+        y: 44
+        width: 833
+        height: 669
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,33 +171,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_Stamina_Icon_3
-      rect:
-        serializedVersion: 2
-        x: 563
-        y: 985
-        width: 7
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1bb017865d2a691a0800000000000000
-      internalID: -6803071149632582735
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -213,7 +188,6 @@ TextureImporter:
       AI_GENERATE_Stamina_Icon_0: -4027925015096478685
       AI_GENERATE_Stamina_Icon_1: -2929356913011893936
       AI_GENERATE_Stamina_Icon_2: 2825667053432233447
-      AI_GENERATE_Stamina_Icon_3: -6803071149632582735
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

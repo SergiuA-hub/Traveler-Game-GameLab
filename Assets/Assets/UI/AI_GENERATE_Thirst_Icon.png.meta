@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7753fa3667bdc7248854dc0deb51cab6
+guid: 496f92b40820e41498a117cbe957071b
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -8,9 +8,6 @@ TextureImporter:
   - first:
       213: -9187522899755625665
     second: AI_GENERATE_Thirst_Icon_1
-  - first:
-      213: -4660700390954694206
-    second: AI_GENERATE_Thirst_Icon_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -109,10 +106,10 @@ TextureImporter:
       name: AI_GENERATE_Thirst_Icon_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 19
-        width: 1289
-        height: 1066
+        x: 122
+        y: 41
+        width: 20
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,10 +128,10 @@ TextureImporter:
       name: AI_GENERATE_Thirst_Icon_1
       rect:
         serializedVersion: 2
-        x: 497
-        y: 1026
-        width: 136
-        height: 91
+        x: 230
+        y: 33
+        width: 763
+        height: 812
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,33 +146,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_Thirst_Icon_2
-      rect:
-        serializedVersion: 2
-        x: 311
-        y: 151
-        width: 21
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2c90f9810bdd15fb0800000000000000
-      internalID: -4660700390954694206
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -187,7 +162,6 @@ TextureImporter:
     nameFileIdTable:
       AI_GENERATE_Thirst_Icon_0: 8343968617870267894
       AI_GENERATE_Thirst_Icon_1: -9187522899755625665
-      AI_GENERATE_Thirst_Icon_2: -4660700390954694206
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

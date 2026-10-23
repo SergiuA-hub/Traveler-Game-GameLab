@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: d44202b20a2bff2499f39c8302c52091
+guid: c05b4cd3bc5d93741896a40b5cd7ff65
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 6796134924044702931
     second: AI_GENERATE_PaperButton_0
-  - first:
-      213: 8739166608620026431
-    second: AI_GENERATE_PaperButton_1
-  - first:
-      213: -6432847551631945338
-    second: AI_GENERATE_PaperButton_2
-  - first:
-      213: 695003947492930830
-    second: AI_GENERATE_PaperButton_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,9 +104,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 29
-        width: 2061
-        height: 655
+        y: 0
+        width: 1948
+        height: 486
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,77 +121,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_PaperButton_1
-      rect:
-        serializedVersion: 2
-        x: 1351
-        y: 667
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f3a70cb7ab1c74970800000000000000
-      internalID: 8739166608620026431
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_PaperButton_2
-      rect:
-        serializedVersion: 2
-        x: 1297
-        y: 617
-        width: 9
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6819cb60c3fe9b6a0800000000000000
-      internalID: -6432847551631945338
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_PaperButton_3
-      rect:
-        serializedVersion: 2
-        x: 981
-        y: 95
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e057fcf686625a900800000000000000
-      internalID: 695003947492930830
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -211,9 +136,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       AI_GENERATE_PaperButton_0: 6796134924044702931
-      AI_GENERATE_PaperButton_1: 8739166608620026431
-      AI_GENERATE_PaperButton_2: -6432847551631945338
-      AI_GENERATE_PaperButton_3: 695003947492930830
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
