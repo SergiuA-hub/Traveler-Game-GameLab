@@ -289,13 +289,37 @@ public class CityUI : MonoBehaviour
 
     private void SetPlayerWeightVolumeTrade() 
     {
+        
         //already in invetory
         weight_Invetory_Slider.fillAmount = playerInventory.currentWeight / player.stats.maxWeight;
         volume_Invetory_Slider.fillAmount = playerInventory.currentVolume / player.stats.maxVolume;
 
+        if(settlementsManager.currentItemSelected == null)
+        {
+         
+            return;
+        }
         //Adding from shop
-        weight_Trade_Slider.fillAmount = settlementsManager.currentItemSelected.tradeSettlementItem.resource.weight * ReturnCurentSliderValue() / player.stats.maxWeight;
-        volume_Trade_Slider.fillAmount = settlementsManager.currentItemSelected.tradeSettlementItem.resource.volume * ReturnCurentSliderValue()/player.stats.maxVolume;
+        //shop item
+        if(settlementsManager.currentItemSelected.tradeSettlementItem != null)
+        {
+            //Trade Slider
+            weight_Trade_Slider.fillAmount = settlementsManager.currentItemSelected.tradeSettlementItem.resource.weight * ReturnCurentSliderValue() / player.stats.maxWeight;
+            volume_Trade_Slider.fillAmount = settlementsManager.currentItemSelected.tradeSettlementItem.resource.volume * ReturnCurentSliderValue() / player.stats.maxVolume;
+
+            
+        }
+        if(settlementsManager.currentItemSelected.tradeInventoryItem != null)
+        {
+            TradeItemDisplay currentItem= settlementsManager.currentItemSelected;
+            float weightAfterSale = playerInventory.currentWeight - currentItem.tradeInventoryItem.resourceSO.weight* ReturnCurentSliderValue();
+            float volumeAfterSale = playerInventory.currentVolume - currentItem.tradeInventoryItem.resourceSO.volume * ReturnCurentSliderValue();
+
+            //Sell Slider
+            weight_Invetory_Slider.fillAmount = weightAfterSale / player.stats.maxWeight ;
+            volume_Invetory_Slider.fillAmount = volumeAfterSale / player.stats.maxVolume ;
+        
+        }
     }
 
     public int ReturnCurentSliderValue()
