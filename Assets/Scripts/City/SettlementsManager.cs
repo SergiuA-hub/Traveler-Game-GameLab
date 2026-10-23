@@ -8,6 +8,7 @@ public class SettlementDeployment
 {
     public SettlementSO settlementSo;
     public GameObject settlmentGo;
+    public RoadNode nodeLocation;
 }
 
 [System.Serializable]

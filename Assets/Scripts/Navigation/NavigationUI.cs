@@ -12,7 +12,7 @@ public class NavigationUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public GameObject navigationArrowPanel;
     public GameObject noNavigationPanel;
     public NavigationListPanel navigationDestionationsPanel;
-
+    public PlayerAutoNavigation autoNavigation;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,15 +49,25 @@ public class NavigationUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         destinationList.SetActive(false);
         navigationArrow.SetDestination(null);
+
         noNavigationPanel.SetActive(true);
         navigationArrowPanel.SetActive(false);
+
+        autoNavigation.StopNavigation();
     }
+
 
     public void selectedDestionation(Transform destination)
     {
+        Debug.Log($"[NAV] Destination selected: {destination?.name}");
+
         destinationList.SetActive(false);
         navigationArrow.SetDestination(destination);
         noNavigationPanel.SetActive(false);
         navigationArrowPanel.SetActive(true);
+
+        Debug.Log($"[NAV] AutoNavigation reference: {autoNavigation}");
+
+        autoNavigation.StartNavigation(destination);
     }
 }
