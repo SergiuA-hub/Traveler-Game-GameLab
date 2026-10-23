@@ -127,8 +127,7 @@ public class CityUI : MonoBehaviour
     private void Update()
     {
         DisplayPlayerCoins();
-        //Curent Price only on trade panel
-        //ShowTotalPrice();
+        ShowTotalPrice();
         currentTextAmount.text = sliderAmount.value.ToString();
 
         SetPlayerWeightVolumeTrade();
@@ -265,9 +264,17 @@ public class CityUI : MonoBehaviour
 
     }
 
-    public void SetTradeItemTier(TradeItemDisplay item)
+    public void SetTradeItemTier()
     {
-        
+        TradeItemDisplay currentItem = settlementsManager.currentItemSelected;
+        SettlementSO currentSettlement = settlementsManager.currentSettlement.defaultSettlementData;
+        if(currentItem == null)
+        {
+            return;
+        }
+
+
+
     }
 
     //Slider
@@ -289,7 +296,7 @@ public class CityUI : MonoBehaviour
 
     private void SetPlayerWeightVolumeTrade() 
     {
-        
+        TradeItemDisplay currentItem = settlementsManager.currentItemSelected;
         //already in invetory
         weight_Invetory_Slider.fillAmount = playerInventory.currentWeight / player.stats.maxWeight;
         volume_Invetory_Slider.fillAmount = playerInventory.currentVolume / player.stats.maxVolume;
@@ -304,14 +311,17 @@ public class CityUI : MonoBehaviour
         if(settlementsManager.currentItemSelected.tradeSettlementItem != null)
         {
             //Trade Slider
-            weight_Trade_Slider.fillAmount = settlementsManager.currentItemSelected.tradeSettlementItem.resource.weight * ReturnCurentSliderValue() / player.stats.maxWeight;
-            volume_Trade_Slider.fillAmount = settlementsManager.currentItemSelected.tradeSettlementItem.resource.volume * ReturnCurentSliderValue() / player.stats.maxVolume;
+            float weightBuy = playerInventory.currentWeight + currentItem.tradeSettlementItem.resource.weight * ReturnCurentSliderValue();
+            float volumeBuy = playerInventory.currentVolume + currentItem.tradeSettlementItem.resource.volume * ReturnCurentSliderValue();
+
+            weight_Trade_Slider.fillAmount = weightBuy / player.stats.maxWeight;
+            volume_Trade_Slider.fillAmount = volumeBuy / player.stats.maxVolume;
 
             
         }
         if(settlementsManager.currentItemSelected.tradeInventoryItem != null)
         {
-            TradeItemDisplay currentItem= settlementsManager.currentItemSelected;
+            
             float weightAfterSale = playerInventory.currentWeight - currentItem.tradeInventoryItem.resourceSO.weight* ReturnCurentSliderValue();
             float volumeAfterSale = playerInventory.currentVolume - currentItem.tradeInventoryItem.resourceSO.volume * ReturnCurentSliderValue();
 
@@ -330,17 +340,22 @@ public class CityUI : MonoBehaviour
 
     public void ShowTotalPrice()
     {
+        if(settlementsManager.currentItemSelected == null)
+        {
+            currentTradeItemPrice.text = "0";
+            return ;
+        }
+        //BUY
         if(settlementsManager.currentItemSelected.tradeSettlementItem != null)
         {
             currentTradeItemPrice.text = (settlementsManager.currentItemSelected.tradeSettlementItem.price * ReturnCurentSliderValue()).ToString();
-        }else if (settlementsManager.currentItemSelected.tradeInventoryItem != null)
-        {
-            currentTradeItemPrice.text = (settlementsManager.currentItemSelected.tradeSettlementItem.price * ReturnCurentSliderValue()).ToString();
         }
-        else
+        //SELL
+        if (settlementsManager.currentItemSelected.tradeInventoryItem != null)
         {
-            currentTradeItemPrice.text = "No item selected";
+            currentTradeItemPrice.text = (settlementsManager.currentItemSelected.tradeInventoryItem.averageValue * ReturnCurentSliderValue()).ToString();
         }
+       
 
         
     }
