@@ -43,7 +43,7 @@ public class PlayerMovement_M : MonoBehaviour
         }
 
         // Apply all modifiers
-        float modifierSpeed = player.stats.staminaSpeedModifier * player.stats.consumableSpeedModifier * player.stats.terrainSpeedModifier * player.stats.currentWeightModifier;
+        float modifierSpeed = player.stats.staminaSpeedModifier * player.stats.consumableSpeedModifier * player.stats.terrainSpeedModifier * player.stats.currentWeightModifier * player.stats.WEATHER_SPEED_MODIFIER;
 
         player.stats.moveSpeed = Mathf.Max(0f, player.stats.baseSpeed * modifierSpeed);
 

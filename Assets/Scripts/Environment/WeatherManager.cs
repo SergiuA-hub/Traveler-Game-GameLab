@@ -88,7 +88,12 @@ public class WeatherManager : MonoBehaviour
             }
         }
         if (currentSeason == Season.Spring)
+        {
+            currentWeather = springWeather;
+            GameServices.Instance.player.stats.setWeatherModifiers(currentWeather);
             weatherVisual.changeWeather(currentSeason, springWeather);
+        }
+            
 
         if (summerWeather == WeatherType.Clear)
         {
@@ -110,7 +115,11 @@ public class WeatherManager : MonoBehaviour
             }
         }
         if (currentSeason == Season.Summer)
+        {
+            currentWeather = summerWeather;
+            GameServices.Instance.player.stats.setWeatherModifiers(currentWeather);
             weatherVisual.changeWeather(currentSeason, summerWeather);
+        }
 
         if (fallWeather == WeatherType.Clear)
         {
@@ -140,7 +149,11 @@ public class WeatherManager : MonoBehaviour
             }
         }
         if (currentSeason == Season.Fall)
+        {
+            currentWeather = fallWeather;
+            GameServices.Instance.player.stats.setWeatherModifiers(currentWeather);
             weatherVisual.changeWeather(currentSeason, fallWeather);
+        }
 
         if (winterWeather == WeatherType.Clear)
         {
@@ -172,8 +185,14 @@ public class WeatherManager : MonoBehaviour
             }
         }
         if (currentSeason == Season.Winter)
+        {
+            currentWeather = winterWeather;
+            
+            GameServices.Instance.player.stats.setWeatherModifiers(currentWeather);
             weatherVisual.changeWeather(currentSeason, winterWeather);
+        }
 
+        updateUI();
     }   
 
     public void morning(DateTime t)
@@ -195,26 +214,26 @@ public class WeatherManager : MonoBehaviour
     public void setCurrentSeason(Season season)
     {
         currentSeason = season;
-        weatherVisual.changeWeather(currentSeason, currentWeather);
 
         if (currentSeason == Season.Spring)
         {
-            //weatherVisual.changeWeather(currentSeason, currentWeather);            
-            //weatherVisual.SetWeather(springWeather);
+            currentWeather = springWeather;
         }
 
         if (currentSeason == Season.Summer)
         {
-            //weatherVisual.SetWeather(summerWeather);
+            currentWeather = summerWeather;
         }
 
         if (currentSeason == Season.Fall)
         {
-            //weatherVisual.SetWeather(fallWeather);
-        }
+            currentWeather = fallWeather;
+        }                
 
         if (currentSeason == Season.Winter)
         {
+            currentWeather = winterWeather;
+
             int hour = timeManager.currentTime.Hour;
 
             if (hour >= 20 || hour < 6)
@@ -226,5 +245,9 @@ public class WeatherManager : MonoBehaviour
                 weatherVisual.deFrost();
             }
         }
+
+        updateUI();
+        weatherVisual.changeWeather(currentSeason, currentWeather);
+        GameServices.Instance.player.stats.setWeatherModifiers(currentWeather);
     }
 }
