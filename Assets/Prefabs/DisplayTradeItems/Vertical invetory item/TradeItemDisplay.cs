@@ -11,6 +11,7 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
     public TextMeshProUGUI itemNameText;
     public TextMeshProUGUI itemNameAmountText;
     public TextMeshProUGUI itemBasePriceText;
+    public TextMeshProUGUI itemAveragePriceText;
     public GameObject lockedPanel;
 
     [Header("Current Price")]
@@ -49,6 +50,7 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
 
     public void PopulateBuyIcon(TradeGood settlementItem, CityUI UI, bool locked)
     {
+        itemAveragePriceText.gameObject.SetActive(false);
 
         itemNameText.text = settlementItem.resource.itemName.ToString();
 
@@ -59,9 +61,11 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
         tradeSettlementItem = settlementItem;
         tradeInventoryItem = null;
         itemCurrentPriceText.text = settlementItem.price.ToString();
+        
+        //Profit indicator
         if(settlementItem.price == GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER * settlementItem.resource.baseValue)
         {
-            currentPriceTier = 4;
+            currentPriceTier = 5;
         }
         else if(settlementItem.price == GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER * settlementItem.resource.baseValue)
         {
@@ -107,7 +111,24 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
         cityUI = UI;
         tradeInventoryItem = inventoryItem;
         tradeSettlementItem = null;
-        //set locked panel
+        itemAveragePriceText.text = inventoryItem.averageValue.ToString();
+        itemCurrentPriceText.text = (cityUI.settlementsManager.currentSettlement.getStockPrice(this.tradeInventoryItem.resourceSO)- inventoryItem.averageValue  ).ToString();
+        //Price indicator
+
+        if (cityUI.settlementsManager.currentSettlement.getStockPrice(this.tradeInventoryItem.resourceSO) > inventoryItem.averageValue)
+        {
+            currentPriceTier = 5;
+        }
+        if (cityUI.settlementsManager.currentSettlement.getStockPrice(this.tradeInventoryItem.resourceSO) == inventoryItem.averageValue)
+        {
+            currentPriceTier = 3;
+        }
+        if (cityUI.settlementsManager.currentSettlement.getStockPrice(this.tradeInventoryItem.resourceSO) < inventoryItem.averageValue)
+        {
+            currentPriceTier = 1;
+        }
+        SetVisualsPriceTier(currentPriceTier);
+
         lockedPanel.SetActive(false);
     }
 

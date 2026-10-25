@@ -54,13 +54,21 @@ public class CityUI : MonoBehaviour
     public GameObject CurrentLockedPanel;
 
     //Price Tier Display
-    /*
-    [SerializeField] private TextMeshProUGUI TierIPrice;
-    [SerializeField] private TextMeshProUGUI TierIIPrice;
-    [SerializeField] private TextMeshProUGUI TierIIIPrice;
-    [SerializeField] private TextMeshProUGUI TierIVPrice;
+    [Header("Current Item Price Tier")]
+
+    [SerializeField] private TextMeshProUGUI TierVAmoun;
+    [SerializeField] private TextMeshProUGUI TierIVAmount;
+    [SerializeField] private TextMeshProUGUI TierIIIAmount;
+    [SerializeField] private TextMeshProUGUI TierIIAmount;
+    [SerializeField] private TextMeshProUGUI TierIAmount;
+
+
     [SerializeField] private TextMeshProUGUI TierVPrice;
-    */
+    [SerializeField] private TextMeshProUGUI TierIVPrice;
+    [SerializeField] private TextMeshProUGUI TierIIIPrice;
+    [SerializeField] private TextMeshProUGUI TierIIPrice;
+    [SerializeField] private TextMeshProUGUI TierIPrice;
+    
 
 
     [Header("SLIDER_TRADE")]
@@ -256,15 +264,17 @@ public class CityUI : MonoBehaviour
         settlementsManager.currentItemSelected = item;
         currentTradeItemImage.sprite = item.itemIcon.sprite;
         currentTradeItemName.text = item.itemNameText.text;
-        
-     
+
+        //Tiers
+        GetCurrentItemTiers();
+
         //Buttons
         SetButtonText(item);
         SliderMaxValue();
 
     }
 
-    public void SetTradeItemTier()
+    public void GetCurrentItemTiers()
     {
         TradeItemDisplay currentItem = settlementsManager.currentItemSelected;
         SettlementSO currentSettlement = settlementsManager.currentSettlement.defaultSettlementData;
@@ -272,9 +282,66 @@ public class CityUI : MonoBehaviour
         {
             return;
         }
+        float tierIStock;
+        float tierIIStock;
+        float tierIIIStock;
+        float tierIVStock;
+        float tierVStock;
+
+        foreach(var production in currentSettlement.production)
+        {
+            if(currentItem.tradeSettlementItem.resource == production.resource)
+            {
+                tierIStock = production.tier1_price_stock;
+                tierIIStock = production.tier2_price_stock;
+                tierIIIStock = production.tier3_price_stock;
+                tierIVStock = production.tier4_price_stock;
+                tierVStock = production.tier5_price_stock;
+                SetTierList(tierIStock, 0, 0, 0, tierVStock);
+            }
+            else
+            {
+                foreach(var consumption in currentSettlement.consumption)
+                {
+                    if (currentItem.tradeSettlementItem.resource == consumption.resource)
+                    {
+                        tierIStock = consumption.tier1_price_stock;
+                        tierIIStock = consumption.tier2_price_stock;
+                        tierIIIStock = consumption.tier3_price_stock;
+                        tierIVStock = consumption.tier4_price_stock;
+                        tierVStock = consumption.tier5_price_stock;
+                        SetTierList(tierIStock, 0, 0, 0, tierVStock);
+                    }
+                }
+            }
+        }
+        
 
 
+    }
 
+    private void SetTierList(float tierI,float tierII,float tierIII,float tierIV,float tierV)
+    {
+        //Amount
+        TierIAmount.text =tierI.ToString();
+        TierVAmoun.text = "+" + tierV.ToString();
+
+        //Price
+        TierVPrice.text = (tierI * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER +
+                    tierII * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER +
+                    tierIII * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER +
+                    tierIV * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER +
+                    tierV * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER).ToString();
+    }
+
+    private float CalculatePriceTiers(float tierI, float tierII, float tierIII, float tierIV, float tierV)
+    {
+        float sum = tierI * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER +
+                    tierII * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER +
+                    tierIII * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER +
+                    tierIV * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER +
+                    tierV * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
+        return sum;
     }
 
     //Slider
@@ -307,7 +374,7 @@ public class CityUI : MonoBehaviour
             return;
         }
         //Adding from shop
-        //shop item
+        //shop production
         if(settlementsManager.currentItemSelected.tradeSettlementItem != null)
         {
             //Trade Slider
@@ -321,7 +388,9 @@ public class CityUI : MonoBehaviour
         }
         if(settlementsManager.currentItemSelected.tradeInventoryItem != null)
         {
-            
+            weight_Trade_Slider.gameObject.SetActive(false);
+            volume_Trade_Slider.gameObject.SetActive(false);
+
             float weightAfterSale = playerInventory.currentWeight - currentItem.tradeInventoryItem.resourceSO.weight* ReturnCurentSliderValue();
             float volumeAfterSale = playerInventory.currentVolume - currentItem.tradeInventoryItem.resourceSO.volume * ReturnCurentSliderValue();
 

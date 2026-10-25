@@ -42,26 +42,26 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CausticScale: 2
-    - _CausticSpeed: 0.6
-    - _CausticStrength: 0.5
-    - _CausticWidth: 0.1
+    - _CausticScale: 0.5
+    - _CausticSpeed: 0.17
+    - _CausticStrength: 0.333
+    - _CausticWidth: 0.078
     - _EnableExternalAlpha: 0
-    - _FlowSpeed: 0.5
-    - _FrameRate: 8
+    - _FlowSpeed: 1.46
+    - _FrameRate: 30
     - _HighlightLuma: 0.6
-    - _IsoSquash: 2
+    - _IsoSquash: 2.15
     - _PixelsPerUnit: 32
     - _River: 1
     - _ShimmerStrength: 0.4
-    - _SparkleAmount: 0.005
-    - _SparkleRate: 3
-    - _Steps: 2
+    - _SparkleAmount: 0
+    - _SparkleRate: 0
+    - _Steps: 1
     - _Stretch: 2.5
-    - _WaterLuma: 0.65
+    - _WaterLuma: 1
     - _ZWrite: 0
     m_Colors:
-    - _CausticColor: {r: 0.8, g: 0.93, b: 1, a: 1}
+    - _CausticColor: {r: 0.7704254, g: 0.808106, b: 0.8207547, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _FlowDirection: {r: 1, g: -0.5, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
