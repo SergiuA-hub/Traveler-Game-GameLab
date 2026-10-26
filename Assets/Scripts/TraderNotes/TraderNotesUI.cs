@@ -27,6 +27,15 @@ public class TraderNotesUI : MonoBehaviour
         settlementsList.value = 0;
         settlementsList.RefreshShownValue();
     }
+    public void OnSearchFocus(string value)
+    {
+        GameServices.Instance.player.move.typing = true;
+    }
+
+    public void OnSearchUnfocus(string value)
+    {
+        GameServices.Instance.player.move.typing = false;
+    }
 
     private void OnEnable()
     {
@@ -39,6 +48,8 @@ public class TraderNotesUI : MonoBehaviour
         clearResources();
         searchInputField.text = "";
         settlementsList.value = 0;
+
+        GameServices.Instance.player.move.typing = false;
     }
 
     public void settlementDropDownSelected()
