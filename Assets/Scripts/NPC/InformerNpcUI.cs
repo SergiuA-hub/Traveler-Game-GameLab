@@ -1,5 +1,6 @@
 using HeyHeyThere.WeatherFX;
 using JetBrains.Annotations;
+using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -202,6 +203,10 @@ public class InformerNpcUI : MonoBehaviour
             .Replace("{lowSettlement}", informer.springLowResource.settlement.settlementName)
             .Replace("{lowPrice}", informer.springLowResource.tradeGood.price.ToString("0.#"));
 
+        DateTime currentTimeForNote = GameServices.Instance.timeManager.currentTime;
+        GameServices.Instance.player.notes.AddSellNote(informer.springHighResource.tradeGood.resource, informer.springHighResource.tradeGood.price, informer.springHighResource.settlement.settlementName, currentTimeForNote);
+        GameServices.Instance.player.notes.AddBuyNote(informer.springLowResource.tradeGood.resource, informer.springLowResource.tradeGood.price, informer.springLowResource.settlement.settlementName, currentTimeForNote);
+        
         tradeInfoText.text = infoText;
     }
 
@@ -243,6 +248,10 @@ public class InformerNpcUI : MonoBehaviour
             .Replace("{lowResource}", informer.summerLowResource.tradeGood.resource.itemName)
             .Replace("{lowSettlement}", informer.summerLowResource.settlement.settlementName)
             .Replace("{lowPrice}", informer.summerLowResource.tradeGood.price.ToString("0.#"));
+
+        DateTime currentTimeForNote = GameServices.Instance.timeManager.currentTime;
+        GameServices.Instance.player.notes.AddSellNote(informer.summerHighResource.tradeGood.resource, informer.summerHighResource.tradeGood.price, informer.summerHighResource.settlement.settlementName, currentTimeForNote);
+        GameServices.Instance.player.notes.AddBuyNote(informer.summerLowResource.tradeGood.resource, informer.summerLowResource.tradeGood.price, informer.summerLowResource.settlement.settlementName, currentTimeForNote);
 
         tradeInfoText.text = infoText;
     }
@@ -292,6 +301,10 @@ public class InformerNpcUI : MonoBehaviour
             .Replace("{lowSettlement}", informer.fallLowResource.settlement.settlementName)
             .Replace("{lowPrice}", informer.fallLowResource.tradeGood.price.ToString("0.#"));
 
+        DateTime currentTimeForNote = GameServices.Instance.timeManager.currentTime;
+        GameServices.Instance.player.notes.AddSellNote(informer.fallHighResource.tradeGood.resource, informer.fallHighResource.tradeGood.price, informer.fallHighResource.settlement.settlementName, currentTimeForNote);
+        GameServices.Instance.player.notes.AddBuyNote(informer.fallLowResource.tradeGood.resource, informer.fallLowResource.tradeGood.price, informer.fallLowResource.settlement.settlementName, currentTimeForNote);
+
         tradeInfoText.text = infoText;
     }
 
@@ -333,6 +346,10 @@ public class InformerNpcUI : MonoBehaviour
             .Replace("{lowResource}", informer.winterLowResource.tradeGood.resource.itemName)
             .Replace("{lowSettlement}", informer.winterLowResource.settlement.settlementName)
             .Replace("{lowPrice}", informer.winterLowResource.tradeGood.price.ToString("0.#"));
+
+        DateTime currentTimeForNote = GameServices.Instance.timeManager.currentTime;
+        GameServices.Instance.player.notes.AddSellNote(informer.winterHighResource.tradeGood.resource, informer.winterHighResource.tradeGood.price, informer.winterHighResource.settlement.settlementName, currentTimeForNote);
+        GameServices.Instance.player.notes.AddBuyNote(informer.winterLowResource.tradeGood.resource, informer.winterLowResource.tradeGood.price, informer.winterLowResource.settlement.settlementName, currentTimeForNote);
 
         tradeInfoText.text = infoText;
     }

@@ -75,7 +75,9 @@ public class SettlementRuntime
             trade.tier4_price_stock = tier4_stock;
             trade.tier5_price_stock = tier5_stock;
         }
-    }    
+    }
+
+
 
     public float getPriceFor(TradeGood res)
     {
@@ -117,6 +119,19 @@ public class SettlementRuntime
                 if (tier == 5)
                     return res.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
             }
+        }
+
+        return currentPrice;
+    }
+
+    public float getPriceFor(ResourceSO res)
+    {
+        float currentPrice = res.baseValue;
+
+        foreach(var trade in settlementStock)
+        {
+            if (trade.resource.itemName == res.itemName)
+                return trade.price;
         }
 
         return currentPrice;
@@ -278,10 +293,32 @@ public class SettlementsManager : MonoBehaviour
                 UnityEngine.Debug.Log($"Player entered in {settlement.settlementName}");
                 currentSettlement = settlement;
                 SettlementUI.GetComponent<CityUI>().prepareSettlement(settlement);
+
+                takeNotes(settlement);
+                break;
             }
         }
 
         SettlementUI.SetActive(true);
+    }
+
+    public void takeNotes(SettlementRuntime currentSettlementForNotes)
+    {
+        foreach(var tradeGood in currentSettlementForNotes.defaultSettlementData.production)
+        {
+            //if can trade to be added here
+            float price = currentSettlementForNotes.getPriceFor(tradeGood.resource);
+            DateTime currentTimeForNote = GameServices.Instance.timeManager.currentTime;
+            GameServices.Instance.player.notes.AddBuyNote(tradeGood.resource, price, currentSettlementForNotes.settlementName, currentTimeForNote);
+        }
+
+        foreach (var tradeGood in currentSettlementForNotes.defaultSettlementData.consumption)
+        {
+            //if can trade to be added here
+            float price = currentSettlementForNotes.getPriceFor(tradeGood.resource);
+            DateTime currentTimeForNote = GameServices.Instance.timeManager.currentTime;
+            GameServices.Instance.player.notes.AddSellNote(tradeGood.resource, price, currentSettlementForNotes.settlementName, currentTimeForNote);
+        }
     }
 
     public void BuyOrSell()
