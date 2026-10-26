@@ -24,28 +24,10 @@ public class UpgradeItemDisplay : MonoBehaviour, IPointerClickHandler
         //Visual
         iconImage.sprite = cargo.cargoSO.icon;
         itemName.text = cargo.cargoSO.name;
-        itemType.text = cargo.itemType.ToString();
+        itemType.text = cargo.category.ToString();
         price.text = cargo.cargoSO.price.ToString();
 
-        Cargo owned = CargoManager.instance.PlayerOwnedCargo.Find(x => x != null && x.cargoSO == cargo.cargoSO);
-        int highest = CargoManager.instance.GetHighestOwnedLevel(cargo.itemType);
-        int level = cargo.cargoSO.level;
-
-        if(owned != null)
-        {
-            status.text = owned.itemStatus.ToString();
-            cargo.SetStatus(Status.Owned);
-        }else if (level == highest + 1)
-        {
-            status.text = "AVALABILE";
-            cargo.SetStatus(Status.Avalabile);
-
-        }
-        else 
-        {
-            status.text = "LOCKED";
-           
-        }
+      
     }
 
     public void OnPointerClick(PointerEventData eventData)

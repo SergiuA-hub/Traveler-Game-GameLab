@@ -1,11 +1,11 @@
-using JetBrains.Annotations;
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+
 [System.Serializable]
 public class SettlementDeployment
 {
@@ -206,11 +206,11 @@ public class SettlementsManager : MonoBehaviour
             }
             foreach(var item in settl.settlementSo.itemsShop)
             {
-                currentSettlement.settlementShopItems.Add(new Cargo(item.ItemName,item.cargoSO,item.itemType));
+                currentSettlement.settlementShopItems.Add(new Cargo(item.ItemName,item.cargoSO,item.category,item.type));
             }
             foreach(var upgradeItem in settl.settlementSo.upgradeShop)
             {
-                currentSettlement.settlmentUpgradeItems.Add(new Cargo(upgradeItem.ItemName,upgradeItem.cargoSO,upgradeItem.itemType));
+                currentSettlement.settlmentUpgradeItems.Add(new Cargo(upgradeItem.ItemName,upgradeItem.cargoSO,upgradeItem.category,upgradeItem.type));
             }
             foreach(var l in settl.settlementSo.Licenses_Shop)
             {
@@ -359,14 +359,18 @@ public class SettlementsManager : MonoBehaviour
             return;
         }
 
-        if(currentShopItemSelected.cargo.itemStatus != Status.Owned || currentShopItemSelected.cargo.itemStatus != Status.Locked  )
+        if (CargoManager.instance.CanBuy(currentShopItemSelected.cargo,player.invetory.CurrentCoins))
         {
-            CargoManager.instance.AddItem(currentShopItemSelected.cargo, ref player.invetory.CurrentCoins);
+            CargoManager.instance.AddCargoItem(currentShopItemSelected.cargo,ref player.invetory.CurrentCoins);
+        }else
+        {
+            //Already owned
+            return;
         }
 
         //Refresh Page After buy
         cityUI.DisplayShop();
-        cityUI.SetButtonTextShop(currentShopItemSelected);
+       
         
     }
 
@@ -379,13 +383,14 @@ public class SettlementsManager : MonoBehaviour
             return;
         }
 
-        if (!CargoManager.instance.CanBuy(currentUpgradeItem.upgrade))
+        /*if (!CargoManager.instance.CanBuy(currentUpgradeItem.upgrade))
         {
-            CargoManager.instance.AddItem(currentUpgradeItem.upgrade,ref player.invetory.CurrentCoins);
+            CargoManager.instance.AddCargoItem(currentUpgradeItem.upgrade,ref player.invetory.CurrentCoins);
         }
 
         //RefreshPage
         cityUI.DisplayUpgradePanel();
+        */
         
     }
 

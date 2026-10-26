@@ -21,11 +21,12 @@ public class ShopItemDisplay : MonoBehaviour, IPointerClickHandler
     {
         cityUI = ui;
         cargo = item;
-
+        
+        //Visual
         IconImage.sprite = item.cargoSO.icon;
        
 
-
+        /*
         Cargo owned = null;
         owned = CargoManager.instance.PlayerOwnedCargo.Find(x => x != null && x.cargoSO == item.cargoSO);
 
@@ -33,7 +34,7 @@ public class ShopItemDisplay : MonoBehaviour, IPointerClickHandler
             Debug.LogError($"'status' nu e asignat pe prefab-ul {name}", this);
         else
             status.text = owned != null ? owned.itemStatus.ToString() : "Disponibil";
-       
+       */
 
     }
 

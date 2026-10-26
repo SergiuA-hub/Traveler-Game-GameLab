@@ -23,7 +23,7 @@ public class CargoSO : ScriptableObject
     public float itemMaxWeight;
     public float itemMaxVolume;
 
-    //Speed modifiers
+    
 
     //Usable
     [Header("Player visual")]

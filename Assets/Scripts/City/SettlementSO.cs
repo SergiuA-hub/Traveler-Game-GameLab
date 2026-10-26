@@ -58,11 +58,10 @@ public enum CargoCategory
     HorseCart
 }
 
-public enum Status
+public enum ItemType
 {
-    Owned,
-    Avalabile,
-    Locked
+    Item,
+    Upgrade
 }
 
 [System.Serializable]
@@ -72,22 +71,19 @@ public class Cargo
     public CargoSO cargoSO;
     
 
-    //enums
-    public CargoCategory itemType;
-    public Status itemStatus;
+    //Item enums
+    public CargoCategory category;
+    public ItemType type;
     
 
-    public Cargo(string name, CargoSO cargoSO,CargoCategory type)
+    public Cargo(string name, CargoSO cargoSO,CargoCategory category,ItemType type)
     {
         this.ItemName = name;
         this.cargoSO = cargoSO;
-        this.itemType = type;
+        this.category= category;
+        this .type = type;
     }
 
-    public void SetStatus(Status status)
-    {
-        itemStatus = status;
-    }
     
 }
 

@@ -90,7 +90,8 @@ public class CityUI : MonoBehaviour
     [SerializeField] private Image currentShopItemIcon;
     [SerializeField] private TextMeshProUGUI currentShopItemName;
     [SerializeField] private TextMeshProUGUI currentShopItemPrice;
-    [SerializeField] private TextMeshProUGUI buyButtonText;
+    [SerializeField] private TextMeshProUGUI currentShopItemDescription;
+    [SerializeField] private TextMeshProUGUI buyShopButtonText;
     [SerializeField] private BulletLIstCreator bulletList;
     
 
@@ -446,6 +447,8 @@ public class CityUI : MonoBehaviour
             ShopItemDisplay row = Instantiate(ItemShopPrefab, ShopContent);
             row.PopulateIcons(item, this);
         }
+
+        
     }
     public void SetCurrentShopItem(ShopItemDisplay shopItem)
     {
@@ -454,9 +457,10 @@ public class CityUI : MonoBehaviour
         currentShopItemIcon.sprite = shopItem.IconImage.sprite;
         currentShopItemPrice.text = shopItem.cargo.cargoSO.price.ToString();
         currentShopItemName.text = shopItem.cargo.cargoSO.itemName.ToString();
+        currentShopItemDescription.text = shopItem.cargo.cargoSO.Description;
 
         //Button
-        SetButtonTextShop(settlementsManager.currentShopItemSelected);
+        SetButtonTextShop(shopItem.cargo);
         bulletList.CreateBulletList(settlementsManager.currentShopItemSelected.cargo.cargoSO.features);
     }
 
@@ -516,7 +520,7 @@ public class CityUI : MonoBehaviour
     {
         settlementsManager.currentLicenceSelected= licenceItemDisplay;
 
-        LicenseIcon = licenceItemDisplay.icon;
+        LicenseIcon.sprite = licenceItemDisplay.icon.sprite;
         LicenseName.text = licenceItemDisplay.licencename.text;
         LicensePrice.text = licenceItemDisplay.price.text;
 
@@ -571,16 +575,23 @@ public class CityUI : MonoBehaviour
     }
 
     //BUY BUTTON -> SHOP PANEL
-    public void SetButtonTextShop (ShopItemDisplay item)
+    public void SetButtonTextShop (Cargo cargo)
     {
-        if(item.cargo.itemStatus == Status.Owned || item.cargo.itemStatus == Status.Locked)
+        if (cargo == null)
         {
-            
-            buyButtonText.text = "LOCKED";
+            return;
         }
-        else
+        foreach(Cargo item in CargoManager.instance.PlayerOwnedCargo)
         {
-            buyButtonText.text = "BUY";
+            if(cargo.cargoSO == item.cargoSO)
+            {
+                buyShopButtonText.text = "OWNED";
+            }
+            else
+            {
+                buyShopButtonText.text = "BUY";
+            }
+            
         }
     } 
     

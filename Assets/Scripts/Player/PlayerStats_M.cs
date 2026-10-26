@@ -61,7 +61,12 @@ public class PlayerStats_M : MonoBehaviour
     public float maxVolume;
     public float maxWeight;
 
-
+    private Player_M player;
+    private void Awake()
+    {
+        player = GetComponent<Player_M>();
+    }
+    
     public void Start()
     {
         currentHp = maxHp;
@@ -74,6 +79,8 @@ public class PlayerStats_M : MonoBehaviour
         currentStaminaDrainMultiplier = STAMINA_DRAIN_MULTIPLIER;
 
         setMaxSpeed(GlobalSettingsManager.HOUR_DURATION);
+        GetItemValues(player.attachments.currentItemSelected);
+
     }
 
     public void setMaxSpeed(float timeModifier)
@@ -81,7 +88,9 @@ public class PlayerStats_M : MonoBehaviour
         MaxSpeeed = maxBaseSpeed * (GlobalSettingsManager.HOUR_DURATION / timeModifier);
     }
 
-    private void Update()
-    {        
+    private void GetItemValues(Cargo cargo)
+    {
+        maxVolume = cargo.cargoSO.itemMaxVolume;
+        maxWeight = cargo.cargoSO.itemMaxWeight;
     }
 }
