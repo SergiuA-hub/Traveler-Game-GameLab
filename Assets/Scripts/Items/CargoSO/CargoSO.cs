@@ -16,6 +16,8 @@ public class CargoSO : ScriptableObject
     public int price;
     public int level;
     public CargoSOType type;
+    public string Description;
+    public string[] features;
 
     [Header("Stats")]
     public float itemMaxWeight;

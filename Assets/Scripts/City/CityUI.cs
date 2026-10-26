@@ -91,6 +91,7 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentShopItemName;
     [SerializeField] private TextMeshProUGUI currentShopItemPrice;
     [SerializeField] private TextMeshProUGUI buyButtonText;
+    [SerializeField] private BulletLIstCreator bulletList;
     
 
     [Header("UPGRADE PAGE")]
@@ -451,11 +452,12 @@ public class CityUI : MonoBehaviour
         settlementsManager.currentShopItemSelected = shopItem;
         //Visual
         currentShopItemIcon.sprite = shopItem.IconImage.sprite;
-        currentShopItemName.text = shopItem.itemName.text;
-        currentShopItemPrice.text =shopItem.price.text;
+        currentShopItemPrice.text = shopItem.cargo.cargoSO.price.ToString();
+        currentShopItemName.text = shopItem.cargo.cargoSO.itemName.ToString();
 
         //Button
         SetButtonTextShop(settlementsManager.currentShopItemSelected);
+        bulletList.CreateBulletList(settlementsManager.currentShopItemSelected.cargo.cargoSO.features);
     }
 
 

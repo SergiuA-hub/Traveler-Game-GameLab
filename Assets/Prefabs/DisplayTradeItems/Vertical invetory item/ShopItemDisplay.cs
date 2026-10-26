@@ -23,9 +23,7 @@ public class ShopItemDisplay : MonoBehaviour, IPointerClickHandler
         cargo = item;
 
         IconImage.sprite = item.cargoSO.icon;
-        itemName.text = item.cargoSO.itemName;
-        type.text = item.cargoSO.type.ToString();
-        price.text = item.cargoSO.price.ToString();
+       
 
 
         Cargo owned = null;
