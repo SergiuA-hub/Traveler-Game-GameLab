@@ -6691,6 +6691,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6557450717808028808, guid: 0d01a28920720dd4980192a3c5787ca4, type: 3}
   m_PrefabInstance: {fileID: 33756830}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &34849785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 34849786}
+  - component: {fileID: 34849787}
+  m_Layer: 0
+  m_Name: ContractsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &34849786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34849785}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 820223903}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &34849787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34849785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e88ecb0805efac479d62612a7c4bf7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestManager
+  contracts: []
 --- !u!1001 &35164678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -713264,6 +713309,7 @@ MonoBehaviour:
   weatherManager: {fileID: 665919135}
   campManager: {fileID: 1622856382}
   settlementManager: {fileID: 2027388441}
+  contractManager: {fileID: 0}
   environmentManager: {fileID: 879770968}
   weatherVisual: {fileID: 1524531858}
   HUD: {fileID: 1120130146}
@@ -812354,7 +812400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3567988128967545564, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: maxStamina
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3683512654714695150, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_IsActive
@@ -813579,6 +813625,7 @@ Transform:
   - {fileID: 665919134}
   - {fileID: 932758301}
   - {fileID: 69659305}
+  - {fileID: 34849786}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &820362842
