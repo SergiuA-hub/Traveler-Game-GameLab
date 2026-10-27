@@ -9,7 +9,7 @@ public class TraderNpc : MonoBehaviour, INpcInteraction
     public int maxTradeCount;
 
     public List<TradeGood> tradeGoods = new List<TradeGood>();
-
+    public bool haggled = false;
     public void Interact()
     {
         Debug.Log("Open Trader UI");
@@ -22,9 +22,14 @@ public class TraderNpc : MonoBehaviour, INpcInteraction
         // Open trader screen
     }
 
+    public void haggleDone()
+    {
+        haggled = true;
+    }
     private void Start()
     {
         npc = GetComponent<Npc>();
+        haggled = false;
 
         tradeGoods.Clear();
 

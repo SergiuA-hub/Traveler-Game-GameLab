@@ -1,5 +1,6 @@
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,9 @@ public class TraderNpcUI : MonoBehaviour
     public Slider sizeSlider;
     public TMP_Text volumeValue;
     public TMP_Text traderCoins;
+    public GameObject resourcesPanel;    
+    public HaggleUI haggleUI;
+    public Button haggleButton;
     public void Open(TraderNpc trader, Player_M player)
     {
         this.trader = trader;
@@ -32,9 +36,13 @@ public class TraderNpcUI : MonoBehaviour
         player.Root();
 
         refreshTradeGoods();
-
+        
+        resourcesPanel.SetActive(true);
+        haggleUI.gameObject.SetActive(false);
+        
         selectedItemPanel.SetActive(false);
         updateInventoryData();
+        haggleButton.interactable = !trader.haggled;
 
         gameObject.SetActive(true);
     }
@@ -125,15 +133,11 @@ public class TraderNpcUI : MonoBehaviour
         updateInventoryData();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void startHaggle()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        resourcesPanel.SetActive(false);
+        trader.haggleDone();
+        haggleButton.interactable = !trader.haggled;
+        haggleUI.startHaggleForResoruce(selectedTrageGood);
+    }    
 }
