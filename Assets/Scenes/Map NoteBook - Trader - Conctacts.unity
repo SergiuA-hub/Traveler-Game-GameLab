@@ -20723,7 +20723,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CityUIManager
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1377935542}
-  prompt: {fileID: 245054118}
   tradeButton: {fileID: 700676057}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
@@ -814328,7 +814327,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CityUIManager
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1377935542}
-  prompt: {fileID: 245054118}
   tradeButton: {fileID: 700676057}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
@@ -912844,6 +912842,8 @@ MonoBehaviour:
     defaultSettlementData: {fileID: 0}
     settlementStock: []
     settlementShopItems: []
+    settlmentUpgradeItems: []
+    settlmentLicenses: []
     settlementGo: {fileID: 0}
   currentpage: 0
   itemPrefab: {fileID: 7698181275806001906, guid: 8eb821cee3573cc41bea9cac25c9e540, type: 3}
@@ -912853,25 +912853,65 @@ MonoBehaviour:
   buyContent: {fileID: 1957438991}
   tradePlayerPrefab: {fileID: 6307333992456499657, guid: 1736463a4b3435c42ba05194d6e8ff62, type: 3}
   SellContent: {fileID: 310689142}
-  setlement: {fileID: 0}
   playerInventory: {fileID: 1153219630}
+  player: {fileID: 0}
   playerCoinsDisplay: {fileID: 672999353}
   currentTradeItemImage: {fileID: 1405244770}
   currentTradeItemName: {fileID: 1405244769}
   currentTradeItemPrice: {fileID: 1405244768}
   buySellButtonText: {fileID: 1701562386}
   currentItemAmount: {fileID: 1405244767}
+  CurrentLockedPanel: {fileID: 0}
+  TierVAmoun: {fileID: 0}
+  TierIVAmount: {fileID: 0}
+  TierIIIAmount: {fileID: 0}
+  TierIIAmount: {fileID: 0}
+  TierIAmount: {fileID: 0}
+  TierVPrice: {fileID: 0}
+  TierIVPrice: {fileID: 0}
+  TierIIIPrice: {fileID: 0}
+  TierIIPrice: {fileID: 0}
+  TierIPrice: {fileID: 0}
   sliderAmount: {fileID: 920457145}
   currentTextAmount: {fileID: 1405244767}
+  weight_Invetory_Slider: {fileID: 0}
+  weight_Trade_Slider: {fileID: 0}
+  volume_Invetory_Slider: {fileID: 0}
+  volume_Trade_Slider: {fileID: 0}
   ShopContent: {fileID: 1346709382}
   ItemShopPrefab: {fileID: -1069711792664807353, guid: 7859c14d0a52c3d46b77977913071327, type: 3}
   currentShopItemIcon: {fileID: 215289586}
   currentShopItemName: {fileID: 1366073085}
   currentShopItemPrice: {fileID: 66115134}
   currentShopItemDescription: {fileID: 810362894}
+  buyShopButtonText: {fileID: 0}
+  bulletList: {fileID: 0}
+  UpgradeContent: {fileID: 0}
+  upgradeItemDisplayPrefab: {fileID: 0}
+  currentUpgradeItemIcon: {fileID: 0}
+  upgradeItemName: {fileID: 0}
+  upgradeItemPrice: {fileID: 0}
+  upgradeItemDescription: {fileID: 0}
+  TradeGuildContent: {fileID: 0}
+  LicensesDisplayPrefab: {fileID: 0}
+  LicenseIcon: {fileID: 0}
+  LicenseName: {fileID: 0}
+  LicensePrice: {fileID: 0}
+  LicenseUnlockList: {fileID: 0}
+  unlockItem: {fileID: 0}
+  managmentContent: {fileID: 0}
+  upgradeDisplayPrefab: {fileID: 0}
+  pageIndex: 1
+  currentManagmentItemIcon: {fileID: 0}
+  currentManagmentItemName: {fileID: 0}
+  currentManagmentUpgradeIcon: {fileID: 0}
+  currentManagmentUpgradeName: {fileID: 0}
   LobbyPanel: {fileID: 1830166094}
   ShopPanel: {fileID: 173693355}
   TradePanel: {fileID: 742383145}
+  UpgradePanel: {fileID: 0}
+  GuildPanel: {fileID: 0}
+  CartManagmentPanel: {fileID: 0}
 --- !u!1 &1378080561
 GameObject:
   m_ObjectHideFlags: 0
@@ -986318,7 +986358,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CityUIManager
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1377935542}
-  prompt: {fileID: 245054118}
   tradeButton: {fileID: 700676057}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
@@ -1089163,7 +1089202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CityUIManager
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1377935542}
-  prompt: {fileID: 245054118}
   tradeButton: {fileID: 700676057}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
@@ -1116894,14 +1116932,18 @@ MonoBehaviour:
   settlements: []
   currentItemSelected: {fileID: 0}
   currentShopItemSelected: {fileID: 0}
+  currentUpgradeItem: {fileID: 0}
+  currentLicenceSelected: {fileID: 0}
   currentSettlement:
     settlementName: 
     defaultSettlementData: {fileID: 0}
     settlementStock: []
     settlementShopItems: []
+    settlmentUpgradeItems: []
+    settlmentLicenses: []
     settlementGo: {fileID: 0}
-  SliderAmount: {fileID: 0}
   timeManager: {fileID: 932758302}
+  licenseManager: {fileID: 0}
 --- !u!4 &2027388442
 Transform:
   m_ObjectHideFlags: 0
