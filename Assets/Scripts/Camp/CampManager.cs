@@ -172,7 +172,7 @@ public class CampManager : MonoBehaviour
             if (food.resourceSO.itemName == item.resourceSO.itemName)
             {
                 food.amount++;
-                player.invetory.Remove(item.resourceSO);
+                player.invetory.Remove(item.resourceSO,1);
                 Debug.Log($"Amount increased for {food.resourceSO.itemName} to {food.amount}");
                 calculateTotalFoodRestore();
                 
@@ -186,7 +186,7 @@ public class CampManager : MonoBehaviour
         Debug.Log($"{consumeR.resourceSO.itemName} was added with amount: {consumeR.amount}");
         foodItems.Add(consumeR);
         calculateTotalFoodRestore();
-        player.invetory.Remove(item.resourceSO);
+        player.invetory.Remove(item.resourceSO,1);
 
         player.stats.currentHunger += item.resourceSO.stat_restore;
         player.stats.currentHp += item.resourceSO.HP_restore;
@@ -215,7 +215,7 @@ public class CampManager : MonoBehaviour
             if (drink.resourceSO.itemName == item.resourceSO.itemName)
             {
                 drink.amount++;
-                player.invetory.Remove(item.resourceSO);
+                player.invetory.Remove(item.resourceSO, 1);
                 Debug.Log($"Amount increased for {drink.resourceSO.itemName} to {drink.amount}");
                 calculateTotalDrinkRestore();
 
@@ -227,7 +227,7 @@ public class CampManager : MonoBehaviour
         ConsumedResource consumeR = new ConsumedResource(item.resourceSO, 1);
         Debug.Log($"{consumeR.resourceSO.itemName} was added with amount: {consumeR.amount}");
         drinkItems.Add(consumeR);
-        player.invetory.Remove(item.resourceSO);
+        player.invetory.Remove(item.resourceSO, 1);
         calculateTotalDrinkRestore();
 
         player.stats.currentThirst += item.resourceSO.stat_restore;

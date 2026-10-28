@@ -19,6 +19,7 @@ public class PlayerStats_M : MonoBehaviour
     public float staminaSpeedModifier;
     public float terrainSpeedModifier;
     public float consumableSpeedModifier;
+    public float WEATHER_SPEED_MODIFIER;
 
     [Header("Weight speed modifier")]
     public float currentWeightModifier;
@@ -34,6 +35,7 @@ public class PlayerStats_M : MonoBehaviour
     [Header("Drain Modifiers")]
     //stamina
     public float STAMINA_DRAIN_MULTIPLIER;
+    public float WEATHER_STAMINA_DRAIN_MODIFIER;
     public float BASE_STAMINA_DROP_PER_H;
     public float BASE_STAMINA_IDLE_DRAIN;
     public float BASE_THIRST_IDLE_DRAIN;
@@ -92,5 +94,39 @@ public class PlayerStats_M : MonoBehaviour
     {
         maxVolume = cargo.cargoSO.itemMaxVolume;
         maxWeight = cargo.cargoSO.itemMaxWeight;
+    }
+    public void setWeatherModifiers(WeatherType weather)
+    {
+        switch (weather)
+        {
+            case WeatherType.Clear:
+                WEATHER_SPEED_MODIFIER = 1f;
+                WEATHER_STAMINA_DRAIN_MODIFIER = 1f;
+                break;
+
+            case WeatherType.Rain:
+                WEATHER_SPEED_MODIFIER = 0.95f;
+                WEATHER_STAMINA_DRAIN_MODIFIER = 1.05f;
+                break;
+
+            case WeatherType.Storm:
+                WEATHER_SPEED_MODIFIER = 0.8f;
+                WEATHER_STAMINA_DRAIN_MODIFIER = 1.25f;
+                break;
+
+            case WeatherType.Snow:
+                WEATHER_SPEED_MODIFIER = 0.95f;
+                WEATHER_STAMINA_DRAIN_MODIFIER = 1.1f;
+                break;
+
+            case WeatherType.Blizzard:
+                WEATHER_SPEED_MODIFIER = 0.7f;
+                WEATHER_STAMINA_DRAIN_MODIFIER = 1.4f;
+                break;
+            default:
+                WEATHER_SPEED_MODIFIER = 1f;
+                WEATHER_STAMINA_DRAIN_MODIFIER = 1f;
+                break;
+        }
     }
 }

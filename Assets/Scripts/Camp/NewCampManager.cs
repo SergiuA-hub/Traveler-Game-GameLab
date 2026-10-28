@@ -568,7 +568,7 @@ public class NewCampManager : MonoBehaviour
                 campStats.IncreaseFire(restore);
 
                 res.amount--;
-                player.invetory.Remove(res.resourceSO);
+                player.invetory.Remove(res.resourceSO,1);
             }
 
             // Fire is full, no need to check other resources
@@ -594,7 +594,7 @@ public class NewCampManager : MonoBehaviour
                 campStats.IncreaseShelter(restore);
 
                 res.amount--;
-                player.invetory.Remove(res.resourceSO);
+                player.invetory.Remove(res.resourceSO, 1);
             }
 
             // Fire is full, no need to check other resources
@@ -620,7 +620,7 @@ public class NewCampManager : MonoBehaviour
                 campStats.IncreaseCargoSafety(restore);
 
                 res.amount--;
-                player.invetory.Remove(res.resourceSO);
+                player.invetory.Remove(res.resourceSO, 1);
             }
 
             // Fire is full, no need to check other resources

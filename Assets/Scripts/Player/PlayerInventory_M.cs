@@ -100,7 +100,7 @@ public class PlayerInventory_M : MonoBehaviour
         return true;
     }
 
-    public void Remove(ResourceSO resource, int amount = 1)
+    public void Remove(ResourceSO resource, int amount )
     {
         InventoryItem existingItem = Inventory.Find(x => x.resourceSO.itemName == resource.itemName);
 

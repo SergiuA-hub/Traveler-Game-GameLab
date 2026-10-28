@@ -110,7 +110,7 @@ public class TraderNpcUI : MonoBehaviour
 
         if(player.invetory.CanCarry(selectedTrageGood.tradeGood.resource.volume, selectedTrageGood.tradeGood.resource.weight))
         {
-            player.invetory.tradeIn(selectedTrageGood.tradeGood.resource, selectedTrageGood.tradeGood.price);
+            player.invetory.tradeIn(selectedTrageGood.tradeGood.resource, selectedTrageGood.tradeGood.price,1);
             selectedTrageGood.tradeGood.amount--;
             if(selectedTrageGood.tradeGood.amount <= 0)
             {

@@ -62,7 +62,7 @@ public class Setlement : MonoBehaviour
             if(player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price 
             && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume, currentItemSelected.tradeSettlementItem.resource.weight))
             {
-                player.invetory.AddItem(currentItemSelected.tradeSettlementItem.resource);
+                player.invetory.AddItem(currentItemSelected.tradeSettlementItem.resource,cityUI.ReturnCurentSliderValue());
                 player.invetory.Buy(currentItemSelected.tradeSettlementItem.price);
                 currentItemSelected.tradeSettlementItem.amount = -1;
                 //Display
@@ -77,7 +77,7 @@ public class Setlement : MonoBehaviour
         if (currentItemSelected.tradeInventoryItem != null)
         {
             currentItemSelected.tradeInventoryItem.amount = -1;
-            player.invetory.Remove(currentItemSelected.tradeSettlementItem.resource);
+            player.invetory.Remove(currentItemSelected.tradeSettlementItem.resource, cityUI.ReturnCurentSliderValue());
             player.invetory.Sell(currentItemSelected.tradeSettlementItem.price);
             
             //Display
