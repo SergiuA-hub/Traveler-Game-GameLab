@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,7 +29,7 @@ public class PlayerStats_M : MonoBehaviour
 
     [Header("Stamina")]
     public float maxStamina;
-    public float currentStaminaDrainMultiplier;    
+    public float currentStaminaDrainMultiplier;
 
 
     [Header("Drain Modifiers")]
@@ -40,8 +39,9 @@ public class PlayerStats_M : MonoBehaviour
     public float BASE_STAMINA_DROP_PER_H;
     public float BASE_STAMINA_IDLE_DRAIN;
     public float BASE_THIRST_IDLE_DRAIN;
+    
     public float HUNGER_PENALTY;
-    public float THIRST_PENALTY;   
+    public float THIRST_PENALTY;
 
     //Thirts
     public float THIRST_DRAIN_PER_H;    
@@ -63,7 +63,12 @@ public class PlayerStats_M : MonoBehaviour
     public float maxVolume;
     public float maxWeight;
 
-
+    private Player_M player;
+    private void Awake()
+    {
+        player = GetComponent<Player_M>();
+    }
+    
     public void Start()
     {
         currentHp = maxHp;
@@ -73,9 +78,11 @@ public class PlayerStats_M : MonoBehaviour
 
         maxBaseSpeed = GlobalSettingsManager.PLAYER_BASE_SPEED;
 
-        currentStaminaDrainMultiplier = STAMINA_DRAIN_MULTIPLIER * WEATHER_STAMINA_DRAIN_MODIFIER;
+        currentStaminaDrainMultiplier = STAMINA_DRAIN_MULTIPLIER;
 
         setMaxSpeed(GlobalSettingsManager.HOUR_DURATION);
+        GetItemValues(player.attachments.currentItemSelected);
+
     }
 
     public void setMaxSpeed(float timeModifier)
@@ -83,6 +90,11 @@ public class PlayerStats_M : MonoBehaviour
         MaxSpeeed = maxBaseSpeed * (GlobalSettingsManager.HOUR_DURATION / timeModifier);
     }
 
+    private void GetItemValues(Cargo cargo)
+    {
+        maxVolume = cargo.cargoSO.itemMaxVolume;
+        maxWeight = cargo.cargoSO.itemMaxWeight;
+    }
     public void setWeatherModifiers(WeatherType weather)
     {
         switch (weather)
@@ -116,9 +128,5 @@ public class PlayerStats_M : MonoBehaviour
                 WEATHER_STAMINA_DRAIN_MODIFIER = 1f;
                 break;
         }
-    }
-
-    private void Update()
-    {        
     }
 }

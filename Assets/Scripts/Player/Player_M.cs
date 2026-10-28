@@ -5,13 +5,10 @@ using UnityEngine;
 
 public class Player_M : MonoBehaviour
 {
-    //Backpack
-    [SerializeField] private Backpack currentBackpack;
 
     public bool isResting = false;
     public bool isCamping = false;
     public bool rooted = false;
-    public bool isDead = false;
 
     //Components
     public PlayerStats_M stats;
@@ -22,7 +19,7 @@ public class Player_M : MonoBehaviour
     public PlayerVisual_M visual;
     public Rigidbody2D rb;
     public GameInput gameInput;
-    //public TimeManager timeManager;      
+    public TimeManager timeManager;      
     
     public float moveCounter = 0;
     public float stationaryCounter = 0;
@@ -46,66 +43,51 @@ public class Player_M : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
     
-    private void Start()
-    {
-        GetBackpackMax();
-        isDead = false;
-        
-    }
-
+ 
+    
 
     private void Update()
     {
-        if (GameServices.Instance.timeManager.time_stopped)
+        
+        if (timeManager.time_stopped)
             return;
 
         if (isResting)
+        {
             return;
+        }
+            
 
         if (move.IsMoving() && !rooted)
         {
-            float staminaDrain = stats.BASE_STAMINA_DROP_PER_H * stats.currentStaminaDrainMultiplier * stats.WEATHER_STAMINA_DRAIN_MODIFIER;
-
-            stats.currentStamina -= (staminaDrain / GameServices.Instance.timeManager.getHourDuration()) * Time.deltaTime;
-            stats.currentThirst -= (stats.THIRST_DRAIN_PER_H / GameServices.Instance.timeManager.getHourDuration()) * Time.deltaTime;
-
-            staminDropPerHour = staminaDrain;
+            stats.currentStamina -= (stats.BASE_STAMINA_DROP_PER_H * stats.currentStaminaDrainMultiplier / timeManager.getHourDuration()) * Time.deltaTime;            
+            stats.currentThirst -= (stats.THIRST_DRAIN_PER_H / timeManager.getHourDuration()) * Time.deltaTime;
+            
+            staminDropPerHour = stats.BASE_STAMINA_DROP_PER_H * stats.currentStaminaDrainMultiplier;
             thirstDropPerHour = stats.THIRST_DRAIN_PER_H;
         }
         else
         {
-            float staminaDrain = stats.BASE_STAMINA_IDLE_DRAIN * stats.currentStaminaDrainMultiplier;
+            stats.currentStamina -= (stats.BASE_STAMINA_IDLE_DRAIN * stats.currentStaminaDrainMultiplier / timeManager.getHourDuration()) * Time.deltaTime;
+            stats.currentThirst -= (stats.BASE_THIRST_IDLE_DRAIN / timeManager.getHourDuration()) * Time.deltaTime;
 
-            stats.currentStamina -= (staminaDrain / GameServices.Instance.timeManager.getHourDuration()) * Time.deltaTime;
-            stats.currentThirst -= (stats.BASE_THIRST_IDLE_DRAIN / GameServices.Instance.timeManager.getHourDuration()) * Time.deltaTime;
-
-            staminDropPerHour = staminaDrain;
+            staminDropPerHour = stats.BASE_STAMINA_IDLE_DRAIN * stats.currentStaminaDrainMultiplier;
             thirstDropPerHour = stats.BASE_THIRST_IDLE_DRAIN;
         }
 
-        // Hunger drain
-        stats.currentHunger -= (stats.HUNGER_DRAIN_PER_H / GameServices.Instance.timeManager.getHourDuration()) * Time.deltaTime;
+        //not related to movement, but still needs to be updated
+        stats.currentHunger -= (stats.HUNGER_DRAIN_PER_H / timeManager.getHourDuration()) * Time.deltaTime;
         hungerDropPerHour = stats.HUNGER_DRAIN_PER_H;
 
-        // Update stamina drain multiplier based on hunger and thirst
-        if (stats.currentThirst < GlobalSettingsManager.PLAYER_THIRST_THRESHOLD ||
-            stats.currentHunger < GlobalSettingsManager.PLAYER_HUNGER_THRESHOLD)
+        //update stamina drain multiplier based on hunger and thirst thresholds
+        if (stats.currentThirst < GlobalSettingsManager.PLAYER_THIRST_THRESHOLD || stats.currentHunger < GlobalSettingsManager.PLAYER_HUNGER_THRESHOLD)
         {
-            float thirstP = stats.currentThirst < GlobalSettingsManager.PLAYER_THIRST_THRESHOLD
-                ? stats.THIRST_PENALTY : 0f;
+            float thirsP = stats.currentThirst<GlobalSettingsManager.PLAYER_THIRST_THRESHOLD ? stats.THIRST_PENALTY : 0f;
+            float hungerP = stats.currentHunger < GlobalSettingsManager.PLAYER_HUNGER_THRESHOLD ? stats.HUNGER_PENALTY : 0f;
 
-            float hungerP = stats.currentHunger < GlobalSettingsManager.PLAYER_HUNGER_THRESHOLD
-                ? stats.HUNGER_PENALTY : 0f;
+            stats.currentStaminaDrainMultiplier = stats.STAMINA_DRAIN_MULTIPLIER + thirsP + hungerP;
+        }else stats.currentStaminaDrainMultiplier = stats.STAMINA_DRAIN_MULTIPLIER;
 
-            stats.currentStaminaDrainMultiplier =
-                stats.STAMINA_DRAIN_MULTIPLIER + thirstP + hungerP;
-        }
-        else
-        {
-            stats.currentStaminaDrainMultiplier = stats.STAMINA_DRAIN_MULTIPLIER;
-        }
-
-        // Clamp stats
         stats.currentStamina = Mathf.Max(0, stats.currentStamina);
         stats.currentHunger = Mathf.Max(0, stats.currentHunger);
         stats.currentThirst = Mathf.Max(0, stats.currentThirst);
@@ -116,23 +98,12 @@ public class Player_M : MonoBehaviour
         invetory.HandleWeightAndVolume();
     }
     //Publics 
-    public void GetBackpackMax()
-    {
-        stats.maxVolume = currentBackpack.GetVolume();
-        stats.maxWeight = currentBackpack.GetVolume();
-    }
+ 
 
     // ------HP------ 
     public void TakeDamage(float damage)
     {
-        if (isDead) 
-            return;
         stats.currentHp -= damage;
-        if (stats.currentHp <= 0)
-        {
-            stats.currentHp = 0;
-            isDead = true;
-        }
     }
 
     public void Eat(ResourceSO res, int amount = 1)
@@ -173,6 +144,7 @@ public class Player_M : MonoBehaviour
 
     public void UnRoot()
     {
+        Debug.Log("PLYER UNROOTED");
         rooted = false;
     }
 }

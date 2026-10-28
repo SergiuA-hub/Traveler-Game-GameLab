@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735cc53ed61604a4d99c3db2244daee7, type: 3}
   m_Name: SummerSettlement
   m_EditorClassIdentifier: Assembly-CSharp::SettlementSO
-  settlementName: Summer Village
+  settlementName: Farming Village
   region: 1
   production:
   - resource: {fileID: 11400000, guid: 2b0310fe8c317f74a83bc7cd61330605, type: 2}
@@ -28,7 +28,7 @@ MonoBehaviour:
     licenseCost: 24
   - resource: {fileID: 11400000, guid: 1c8f8ca846032ec479d1044edc2c361a, type: 2}
     dailyChange: 12
-    startingStock: 120
+    startingStock: 360
     minStock: 0
     maxStock: 360
     tier1_price_stock: 36
@@ -128,22 +128,30 @@ MonoBehaviour:
     licenseCost: -1
   itemsShop:
   - ItemName: Worn Backpack
-    shopItems: {fileID: 11400000, guid: 430f33826f9ed7140bf686cffa1873c4, type: 2}
-    itemType: 0
-    itemStatus: 0
+    cargoSO: {fileID: 11400000, guid: 430f33826f9ed7140bf686cffa1873c4, type: 2}
+    category: 0
+    type: 0
+  - ItemName: Merchant Backpack
+    cargoSO: {fileID: 11400000, guid: c8d8048bcf838dc4286f7d1d98bb56ef, type: 2}
+    category: 0
+    type: 0
+  upgradeShop:
+  - ItemName: Reinforced Backpack
+    cargoSO: {fileID: 11400000, guid: f85ddd264843b5645ba56b233fcce575, type: 2}
+    category: 0
+    type: 0
+  - ItemName: Sturdy Backapack
+    cargoSO: {fileID: 11400000, guid: ee74e63db67958a45886689fba9bccec, type: 2}
+    category: 0
+    type: 0
+  - ItemName: Merchant Backpack
+    cargoSO: {fileID: 11400000, guid: c8d8048bcf838dc4286f7d1d98bb56ef, type: 2}
+    category: 0
+    type: 0
   - ItemName: Masterwork Backpack
-    shopItems: {fileID: 11400000, guid: c845cb139223a51418173076ea638dfd, type: 2}
-    itemType: 1
-    itemStatus: 0
-  - ItemName: Heavy-Duty Ox Cart
-    shopItems: {fileID: 11400000, guid: e7037a5967b031547afea9e1178267fa, type: 2}
-    itemType: 1
-    itemStatus: 0
-  - ItemName: Sturdy Hand Cart
-    shopItems: {fileID: 11400000, guid: ee74e63db67958a45886689fba9bccec, type: 2}
-    itemType: 1
-    itemStatus: 0
-  - ItemName: Reinforced Horse Cart
-    shopItems: {fileID: 11400000, guid: 68b048a0f527f5a49bcebedd09b84543, type: 2}
-    itemType: 1
-    itemStatus: 0
+    cargoSO: {fileID: 11400000, guid: c8d8048bcf838dc4286f7d1d98bb56ef, type: 2}
+    category: 0
+    type: 0
+  Licenses_Shop:
+  - {fileID: 11400000, guid: e3ab1229ff9bb3741bbb00e39f39158c, type: 2}
+  - {fileID: 11400000, guid: 132f2c4c075628f4bb93af041cd07a70, type: 2}

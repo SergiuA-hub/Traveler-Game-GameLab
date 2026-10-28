@@ -1,27 +1,25 @@
 using NUnit.Framework;
-using System;
 using UnityEngine;
 
 public class PlayerAttachments_M : MonoBehaviour
 {
-    public TimeManager timeManager;
+    public Cargo currentItemSelected;
+    
 
-    public ShopItem[] playerItems;
-    public GameObject travelLamp;
-
-    public void Start()
+    public Cargo ReturnCurrenntItem()
     {
-        timeManager.onMorning.AddListener(turnOffLamp);
-        timeManager.onEvening.AddListener(turnOnLamp);
+        if (currentItemSelected == null)
+        {
+            Debug.Log("Player doesent have a item attached to him ");
+            return null;
+        }
+
+        return currentItemSelected;
     }
 
-    public void turnOffLamp(DateTime t)
+    public void SetCurrentPlayerSprite()
     {
-        travelLamp.SetActive(false);
+        //set the player from the cargoSO 
     }
 
-    public void turnOnLamp(DateTime t)
-    {
-        travelLamp.SetActive(true);
-    }
 }
