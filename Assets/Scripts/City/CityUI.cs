@@ -293,7 +293,8 @@ public class CityUI : MonoBehaviour
     {
         TradeItemDisplay currentItem = settlementsManager.currentItemSelected;
         SettlementSO currentSettlement = settlementsManager.currentSettlement.defaultSettlementData;
-        if(currentItem == null)
+        ResourceSO resToShowTier = currentItem.tradeSettlementItem == null ? currentItem.tradeInventoryItem.resourceSO : currentItem.tradeSettlementItem.resource;
+        if (currentItem == null)
         {
             return;
         }
@@ -305,7 +306,7 @@ public class CityUI : MonoBehaviour
 
         foreach(var production in currentSettlement.production)
         {
-            if(currentItem.tradeSettlementItem.resource == production.resource)
+            if(resToShowTier == production.resource)
             {
                 tierIStock = production.tier1_price_stock;
                 tierIIStock = production.tier2_price_stock;
@@ -318,7 +319,7 @@ public class CityUI : MonoBehaviour
             {
                 foreach(var consumption in currentSettlement.consumption)
                 {
-                    if (currentItem.tradeSettlementItem.resource == consumption.resource)
+                    if (resToShowTier == consumption.resource)
                     {
                         tierIStock = consumption.tier1_price_stock;
                         tierIIStock = consumption.tier2_price_stock;
