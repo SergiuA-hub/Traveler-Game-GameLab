@@ -22,17 +22,17 @@ MonoBehaviour:
   outcomeCoins: 0
   lootDrop:
   - resource:
+      resourceSO: {fileID: 11400000, guid: 1e2f3b0e438a9dc4c905a4e8ca2d0c82, type: 2}
+      amount: 2
+    dropChance: 90
+  - resource:
       resourceSO: {fileID: 11400000, guid: 977e07f63e21de04eab6d24732cd7a04, type: 2}
       amount: 2
-    dropChance: 70
+    dropChance: 15
   - resource:
       resourceSO: {fileID: 11400000, guid: b3aad3b0b4bbd164a86d75f59d54b84e, type: 2}
       amount: 2
-    dropChance: 45
-  - resource:
-      resourceSO: {fileID: 11400000, guid: 1e2f3b0e438a9dc4c905a4e8ca2d0c82, type: 2}
-      amount: 2
-    dropChance: 60
+    dropChance: 10
   - resource:
       resourceSO: {fileID: 11400000, guid: 4ba6b85d27f214442a30c33be8df8e87, type: 2}
       amount: 2

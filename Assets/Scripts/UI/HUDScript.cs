@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Data;
+using System;
 
 public class HUDScript : MonoBehaviour
 {
@@ -42,7 +44,15 @@ public class HUDScript : MonoBehaviour
     public TextMeshProUGUI weatherText;
     public Season currentSeason = Season.Summer;
     public WeatherType currentWeather = WeatherType.Clear;
-
+    public Image timeProgress;
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI extendedTimerText;
+    public GameObject level1BuffPanel;
+    public GameObject level2BuffPanel;
+    public GameObject level3BuffPanel;
+    public GameObject level4BuffPanel;
+    public GameObject level5BuffPanel;
+    public BuffFlames flames;
 
     void Start()
     {
@@ -51,6 +61,7 @@ public class HUDScript : MonoBehaviour
         staminaSlider.maxValue = player.stats.maxStamina;
         thirstSlider.maxValue = player.stats.maxThirst;
         hungerSlider.maxValue = player.stats.maxHunger;
+        timeProgress.fillAmount = 1;
     }
 
    
@@ -96,6 +107,36 @@ public class HUDScript : MonoBehaviour
     void UpdateTimeDisplay ()
     {
         dateText.text = "Day " + timeManager.currentTime.Day.ToString() + "\n" + timeManager.currentTime.Hour.ToString() + ":00";
+        //var timesp = new TimeSpan((long)timeManager.timerCurrent * 10000000);
+        var timesp = new TimeSpan(0, 0, (int)timeManager.timerCurrent);
+
+        timerText.text = timesp.ToString("mm\\:ss");
+        extendedTimerText.text = $"{timesp.ToString("mm\\:ss")} remaining";
+        
+        timeProgress.fillAmount = timeManager.timerCurrent / timeManager.timerMax;
+
+        float ratio = Mathf.Clamp01((float)timeManager.timerCurrent / timeManager.timerMax);
+
+        level1BuffPanel.SetActive(ratio > 0f);
+        level2BuffPanel.SetActive(ratio >= 0.2f);
+        level3BuffPanel.SetActive(ratio >= 0.4f);
+        level4BuffPanel.SetActive(ratio >= 0.6f);
+        level5BuffPanel.SetActive(ratio >= 0.8f);
+
+        Color flameColor;
+
+        if (ratio >= 0.8f)
+            flameColor = new Color32(67, 200, 255, 255);  // Level 5
+        else if (ratio >= 0.6f)
+            flameColor = new Color32(60, 155, 255, 255);  // Level 4
+        else if (ratio >= 0.4f)
+            flameColor = new Color32(79, 116, 243, 255);  // Level 3
+        else if (ratio >= 0.2f)
+            flameColor = new Color32(106, 85, 232, 255);  // Level 2
+        else
+            flameColor = new Color32(155, 69, 223, 255);  // Level 1
+
+        flames.SetFlameColor(flameColor);
     }
 
     private void EnablePlayerHUD()

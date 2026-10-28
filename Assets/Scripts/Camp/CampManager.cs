@@ -20,7 +20,6 @@ public class CampManager : MonoBehaviour
     
     private TimeManager timeManager;
     private Coroutine fadeCoroutine;
-    private float restTimer = 0f;
     private bool resting = false;
     private bool eventOccurred = false;
     private bool eventInProgress = false;

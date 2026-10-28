@@ -115,13 +115,21 @@ public class LootPanelUI : MonoBehaviour
         resourceDrops.Clear();
         foreach (ResourceDrop drop in outcome.lootDrop)
         {
-            float roll = Random.Range(0f, 1f);
+            float roll = Random.Range(0f, 100f);
 
-            ResourceDrop newDrop = new ResourceDrop(drop.resource.resourceSO, Random.Range(1, drop.resource.amount + 1), drop.dropChance);
+            Debug.Log($"Roll: {roll} for drop chance {drop.dropChance}");
             if (roll <= drop.dropChance)
             {
+                ResourceDrop newDrop = new ResourceDrop(drop.resource.resourceSO, Random.Range(1, drop.resource.amount + 1), drop.dropChance);
                 resourceDrops.Add(newDrop);
             }
+        }
+
+        if (resourceDrops.Count == 0 && outcome.lootDrop.Count > 0)
+        {
+            ResourceDrop drop = outcome.lootDrop[0];
+            ResourceDrop newDrop = new ResourceDrop(drop.resource.resourceSO, 1, drop.dropChance);
+            resourceDrops.Add(newDrop);
         }
     }
 

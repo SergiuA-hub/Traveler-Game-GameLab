@@ -1,0 +1,264 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class NpcManager : MonoBehaviour
+{
+    public GameObject npcInteractButton;
+    private Player_M player;
+    private TimeManager timeManager;
+
+    public float npcVisibleDistance = 30f;
+    public bool optimizeNpcVizibility;
+    public int maxAliveNPC;
+    private float visibilityTimer = 0f;
+
+    public List<RoadPath> roads = new();
+
+    public List<GameObject> NPCs;
+    public Transform npcSpawner;
+
+    public List<Npc> aliveNPCs = new();
+    public float spawnChange;
+
+    public List<Npc> npcPlayerCanInteract;
+    private string lastSettlement;
+    private float speedModifier = 1;
+    [SerializeField] private float initialSpawnDelay = 5f;
+
+    private void Start()
+    {
+        player = GameServices.Instance.player;
+        timeManager = GameServices.Instance.timeManager;
+
+        foreach (RoadPath road in roads)
+        {
+            road.Initialize();
+        }
+
+        StartCoroutine(InitialNpcSpawn());
+    }
+
+    private IEnumerator InitialNpcSpawn()
+    {
+        for (int i = 0; i < maxAliveNPC; i++)
+        {
+            spawnRandomNPC(100);
+
+            if (i < maxAliveNPC - 1)
+                yield return new WaitForSeconds(initialSpawnDelay);
+        }
+
+        timeManager.onHourChanged.AddListener(hourlNpcSpawnerCheck);
+    }
+
+    public void hourlNpcSpawnerCheck(DateTime time)
+    {
+        if(aliveNPCs.Count < maxAliveNPC)
+        {
+            spawnRandomNPC(spawnChange);
+        }
+    }
+    
+    public void spawnRandomNPC(float chance)
+    {
+        if (UnityEngine.Random.Range(0, 100) > chance)
+            return;
+
+        bool direction = UnityEngine.Random.Range(0, 2) == 1;
+        RoadPath randomRoad = roads[UnityEngine.Random.Range(0, roads.Count)];
+        string startLocation = direction ? randomRoad.startSettlement.settlementName : randomRoad.endSettlement.settlementName;
+
+        if (lastSettlement == startLocation)
+            return;
+        
+        SpawnNPC(randomRoad, direction);
+    }    
+
+    private void Update()
+    {
+        for (int i = aliveNPCs.Count - 1; i >= 0; i--)
+        {
+            MoveNPC(aliveNPCs[i]);
+        }
+
+        if (player.isCamping)
+            return;
+
+        if (!optimizeNpcVizibility)
+            return;
+
+        visibilityTimer += Time.deltaTime;
+
+        if (visibilityTimer >= 0.5f)
+        {
+            visibilityTimer = 0f;
+
+            foreach (Npc npc in aliveNPCs)
+            {
+                UpdateNPCVisibility(npc);
+            }
+        }
+
+        if(npcPlayerCanInteract.Count > 0)
+        {
+            npcInteractButton.SetActive(true);
+        }else npcInteractButton.SetActive(false);
+    }
+
+    public void adjustSpeed(float timeModifier)
+    {
+        speedModifier = (GlobalSettingsManager.HOUR_DURATION / timeModifier);
+    }
+
+    private void UpdateNPCVisibility(Npc npc)
+    {
+        float sqrDistance =
+            (npc.transform.position - player.transform.position).sqrMagnitude;
+
+        float maxDistanceSqr =
+            npcVisibleDistance * npcVisibleDistance;
+
+        bool shouldBeVisible =
+            sqrDistance <= maxDistanceSqr;
+
+        if (npc.visuals.activeSelf != shouldBeVisible)
+        {
+            npc.visuals.SetActive(shouldBeVisible);
+        }        
+    }
+
+    public void hideAllNPC()
+    {
+        foreach (Npc npc in aliveNPCs)
+        {
+            npc.visuals.SetActive(false);
+        }
+    }
+
+    public void restoreNPCVizibility()
+    {
+        if (!optimizeNpcVizibility)
+        {
+            foreach (Npc npc in aliveNPCs)
+            {
+                npc.visuals.SetActive(true);
+            }
+
+            return;
+        }
+        
+        foreach (Npc npc in aliveNPCs)
+        {
+            UpdateNPCVisibility(npc);
+        }
+    }
+    public void SpawnNPC(RoadPath road, bool forward)
+    {
+        if (road == null || road.waypoints.Count == 0)
+            return;
+
+        int startIndex = forward ? 0 : road.waypoints.Count - 1;
+
+        GameObject NPC = NPCs[UnityEngine.Random.Range(0, NPCs.Count)];
+        GameObject npcObject = Instantiate(
+            NPC,
+            road.waypoints[startIndex].position,
+            Quaternion.identity,
+            npcSpawner
+        );
+
+        Npc npc = npcObject.GetComponent<Npc>();
+        npc.setNpcManager(this, timeManager);
+
+        if (npc == null)
+        {
+            Destroy(npcObject);
+            return;
+        }
+
+        npc.currentRoad = road;
+        npc.forward = forward;
+
+        npc.currentWaypointIndex = forward
+            ? 1
+            : road.waypoints.Count - 2;
+
+        npc.transform.position =
+            road.waypoints[startIndex].position + npc.pathOffset;
+        
+        npc.gameObject.SetActive(false);
+        lastSettlement = forward ? road.startSettlement.settlementName : road.endSettlement.settlementName;
+        aliveNPCs.Add(npc);
+    }
+
+    private void MoveNPC(Npc npc)
+    {
+        if (npc == null)
+            return;
+
+        if (npc.currentRoad == null)
+            return;
+
+        if (npc.rooted)
+            return;
+
+        if (npc.currentWaypointIndex < 0 ||
+            npc.currentWaypointIndex >= npc.currentRoad.waypoints.Count)
+        {
+            aliveNPCs.Remove(npc);
+            Destroy(npc.gameObject);
+            return;
+        }
+
+        Vector3 target =
+            npc.currentRoad.waypoints[npc.currentWaypointIndex].position
+            + npc.pathOffset;
+
+        npc.transform.position = Vector3.MoveTowards(
+            npc.transform.position,
+            target,
+            npc.speed * Time.deltaTime * speedModifier
+        );
+
+        // Direction towards target
+        Vector3 direction = target - npc.transform.position;
+
+        // Flip sprite based on horizontal movement
+        if (direction.x < -0.01f)
+            npc.spriteRenderer.flipX = false;
+        else if (direction.x > 0.01f)
+            npc.spriteRenderer.flipX = true;
+
+        if (Vector3.Distance(npc.transform.position, target) < 0.01f)
+        {
+            if (npc.forward)
+                npc.currentWaypointIndex++;
+            else
+                npc.currentWaypointIndex--;
+        }
+    }
+
+    public void playerInRange(Npc npc)
+    {
+        if (!npcPlayerCanInteract.Contains(npc))
+        {
+            npcPlayerCanInteract.Add(npc);
+        }
+    }
+
+    public void playerOutOfRange(Npc npc)
+    {
+        if (npcPlayerCanInteract.Contains(npc))
+        {
+            npcPlayerCanInteract.Remove(npc);
+        }
+    }
+
+    public void InteractWithClosestNPC()
+    {
+        if (npcPlayerCanInteract.Count > 0)
+            npcPlayerCanInteract[0].Interact();
+    }
+}

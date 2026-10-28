@@ -4,16 +4,20 @@ using static UnityEditor.Progress;
 public enum LootType
 {
     SmallSack,
-    BigSack
+    BigSack,
+    Crate
 }
+
 public class LootPrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public LootType type;
+    public Season lootLocation;
 
     private LootManager callback;
-    public void setup(LootManager cb)
+    public void setup(LootManager cb, Season location)
     {
         callback = cb;
+        lootLocation = location;
     }
     public void OnPointerEnter(PointerEventData eventData)
     {

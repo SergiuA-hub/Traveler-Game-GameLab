@@ -2,11 +2,29 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class TimeManager : MonoBehaviour
 {
     [Header("Player")]
-    public Player_M player;
+    private Player_M player;
+
+    [Header("NPC")]
+    private NpcManager npcManager;
+
+    [Header("Day / Night")]
+    [SerializeField] private Light2D globalLight;
+    [SerializeField] private float nightIntensity = 0.20f;
+    [SerializeField] private float dayIntensity = 1.0f;
+
+    [SerializeField] private float sunriseStart = 5f;
+    [SerializeField] private float sunriseEnd = 7f;
+
+    [SerializeField] private float sunsetStart = 20f;
+    [SerializeField] private float sunsetEnd = 23f;
+    [SerializeField] private Color dayColor = new Color(1f, 0.96f, 0.90f);
+    [SerializeField] private Color nightColor = new Color(0.57f, 0.65f, 0.84f);
 
     [Header("Time Settings")]
     private float hour_duration = GlobalSettingsManager.HOUR_DURATION;
@@ -27,8 +45,20 @@ public class TimeManager : MonoBehaviour
     private int lastDay;
     private int lastMonth;
     private int lastYear;
+
+    [Header("Timer")]
+    public float timerMax;
+    public float timerCurrent;
+    public float timerCritical;
+    public float timerDamage;
+    public float dmgFreq;
+    private float t = 0;
+
     void Start()
     {
+        player = GameServices.Instance.player;
+        npcManager = GameServices.Instance.npcManager;
+
         hour_duration = GlobalSettingsManager.HOUR_DURATION;
         currentTime = new DateTime(1251, 3, 25, 0, 0, 0);
         timeLeft = hour_duration;
@@ -37,6 +67,8 @@ public class TimeManager : MonoBehaviour
         lastMonth = currentTime.Month;
         lastYear = currentTime.Year;
         onHourChanged?.Invoke(currentTime);
+
+        timerCurrent = timerMax;
     }
 
     public void pause()
@@ -93,6 +125,98 @@ public class TimeManager : MonoBehaviour
         }
     }
 
+    void HandleTimer(float dec)
+    {
+        timerCurrent -= dec / (hour_duration / GlobalSettingsManager.HOUR_DURATION);
+        if (timerCurrent <= 0)
+        {
+            timerCurrent = 0;
+            t += Time.deltaTime;
+            if (t >= dmgFreq)
+            {
+                player.TakeDamage(timerDamage);
+                t = 0;
+            }
+        }
+        else if (timerCurrent > timerMax)
+            timerCurrent = timerMax;
+    }
+
+    private void UpdateDayNightLight()
+    {
+        if (globalLight == null)
+            return;
+
+        // Cât de mult am progresat prin ora curentă
+        float hourProgress = 1f - (timeLeft / hour_duration);
+
+        // Ex:
+        // currentTime.Hour = 6
+        // hourProgress = 0.5
+        // => 06:30
+        float currentHour = currentTime.Hour + hourProgress;
+
+        float targetIntensity;
+
+        // Sunrise: 05:00 -> 07:00
+        if (currentHour >= sunriseStart && currentHour < sunriseEnd)
+        {
+            float t = Mathf.InverseLerp(
+                sunriseStart,
+                sunriseEnd,
+                currentHour
+            );
+
+            targetIntensity = Mathf.Lerp(
+                nightIntensity,
+                dayIntensity,
+                t
+            );
+        }
+
+        // Day
+        else if (currentHour >= sunriseEnd && currentHour < sunsetStart)
+        {
+            targetIntensity = dayIntensity;
+        }
+
+        // Sunset: 20:00 -> 23:00
+        else if (currentHour >= sunsetStart && currentHour < sunsetEnd)
+        {
+            float t = Mathf.InverseLerp(
+                sunsetStart,
+                sunsetEnd,
+                currentHour
+            );
+
+            targetIntensity = Mathf.Lerp(
+                dayIntensity,
+                nightIntensity,
+                t
+            );
+        }
+
+        // Night
+        else
+        {
+            targetIntensity = nightIntensity;
+        }
+
+        globalLight.intensity = targetIntensity;
+
+        float colorTransition = Mathf.InverseLerp(
+            nightIntensity,
+            dayIntensity,
+            targetIntensity
+        );
+
+        globalLight.color = Color.Lerp(
+            nightColor,
+            dayColor,
+            colorTransition
+        );
+    }
+
     public float getHourDuration()
     {
         return hour_duration;
@@ -101,8 +225,11 @@ public class TimeManager : MonoBehaviour
     void Update()
     {
         HandleTimeInput();
+        UpdateDayNightLight();
 
         if (time_stopped) return;
+
+        HandleTimer(Time.deltaTime);
 
         timeLeft -= Time.deltaTime;
         if (timeLeft <= 0f)
@@ -164,10 +291,11 @@ public class TimeManager : MonoBehaviour
 
             // Calculate % progress already passed
             float progressPercent = 1f - (timeLeft / oldHourDuration);
-
             // Apply new hour duration
             hour_duration = speed;
             player.stats.setMaxSpeed(hour_duration);
+            npcManager.adjustSpeed(hour_duration);
+
             // Recalculate timeLeft to preserve progress
             timeLeft = hour_duration * (1f - progressPercent);
         }
