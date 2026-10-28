@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -40,7 +41,15 @@ public class ShopItemDisplay : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        cityUI.SetCurrentShopItem(this);
+        if (cityUI.currentpage == CityUIPage.Shop)
+        {
+
+            cityUI.SetCurrentShopItem(this);
+        }
+        else if (cityUI.currentpage == CityUIPage.CartManagment) 
+        {
+            cityUI.SetCurrentCartManagmentItem(this);
+        }
         
         
     }

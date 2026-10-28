@@ -7,10 +7,7 @@ using static UnityEditor.Progress;
 public class UpgradeItemDisplay : MonoBehaviour, IPointerClickHandler
 {
     public Image iconImage;
-    public TextMeshProUGUI itemName;
-    public TextMeshProUGUI itemType;
-    public TextMeshProUGUI price;
-    public TextMeshProUGUI status;
+    
     
     public CityUI cityUi;
     public Cargo upgrade;
@@ -23,9 +20,7 @@ public class UpgradeItemDisplay : MonoBehaviour, IPointerClickHandler
         
         //Visual
         iconImage.sprite = cargo.cargoSO.icon;
-        itemName.text = cargo.cargoSO.name;
-        itemType.text = cargo.category.ToString();
-        price.text = cargo.cargoSO.price.ToString();
+       
 
       
     }

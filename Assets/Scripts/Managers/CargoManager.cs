@@ -9,6 +9,8 @@ public class CargoManager : MonoBehaviour
     public static CargoManager instance { get; private set; }
 
     public List<Cargo> PlayerOwnedCargo = new List<Cargo>();
+
+    public List<Cargo> PlayerOwnedUpgrades = new List<Cargo>();
     public Cargo currentCargoSelected;
 
     private void Awake()

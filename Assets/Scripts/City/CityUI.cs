@@ -116,7 +116,20 @@ public class CityUI : MonoBehaviour
     [SerializeField] private Transform LicenseUnlockList;
     [SerializeField] private LicenceUnlock unlockItem;
 
-    //Cart Managment
+    
+    [Header("Cart Managment Display")]
+    [SerializeField] private Transform managmentContent;
+    [SerializeField] private UpgradeItemDisplay upgradeDisplayPrefab;
+
+    [SerializeField] private int pageIndex=1;
+
+    [Header("Current Item_Cart_Managment")]
+    [SerializeField] private Image currentManagmentItemIcon;
+    [SerializeField] private TextMeshProUGUI currentManagmentItemName;
+
+    [Header("Current Upgrade_Cart_Managment")]
+    [SerializeField] private Image currentManagmentUpgradeIcon;
+    [SerializeField] private TextMeshProUGUI currentManagmentUpgradeName;
 
     [Header("PAGES")]
     [SerializeField] private GameObject LobbyPanel;
@@ -488,8 +501,7 @@ public class CityUI : MonoBehaviour
         settlementsManager.currentUpgradeItem= item;
 
         currentUpgradeItemIcon = item.iconImage;
-        upgradeItemPrice.text = item.price.text;
-        upgradeItemName.text= item.itemName.text;
+        
     }
 
 
@@ -542,8 +554,50 @@ public class CityUI : MonoBehaviour
     //############
     public void DisplayCartManagmentPanel()
     {
+        
 
+        //Delete extinting items 
+        
+        if(pageIndex == 1)
+        {
+            foreach (Transform child in managmentContent)
+            {
+                Destroy(child.gameObject);
+            }
+            //Display invetory items
+
+            foreach (var item in CargoManager.instance.PlayerOwnedCargo)
+            {
+                ShopItemDisplay row = Instantiate(ItemShopPrefab, managmentContent);
+                row.PopulateIcons(item, this);
+            }
+        }
+        else if (pageIndex == 2)  
+        {
+            foreach (Transform child in managmentContent)
+            {
+                Destroy(child.gameObject);
+            }
+            //Display invetory upgrades
+            foreach (var item in CargoManager.instance.PlayerOwnedUpgrades)
+            {
+                UpgradeItemDisplay row = Instantiate(upgradeDisplayPrefab, managmentContent);
+                row.PopulateUpgrade(item, this);
+            }
+        }
     }
+    public void SetCurrentCartManagmentItem(ShopItemDisplay shopItem)
+    {
+        currentManagmentItemIcon.sprite = shopItem.IconImage.sprite;
+        currentManagmentItemName.text = shopItem.cargo.ItemName;
+    } 
+
+    public void ChangeCargoContentPage(int x)
+    {
+        pageIndex = x;
+        DisplayCartManagmentPanel();
+    }
+
     //############
     //REST 
     //############
