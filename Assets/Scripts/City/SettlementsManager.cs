@@ -383,14 +383,18 @@ public class SettlementsManager : MonoBehaviour
             return;
         }
 
-        /*if (!CargoManager.instance.CanBuy(currentUpgradeItem.upgrade))
-        {
-            CargoManager.instance.AddCargoItem(currentUpgradeItem.upgrade,ref player.invetory.CurrentCoins);
-        }
+        CargoManager.instance.AddUpgradeItem(currentUpgradeItem.upgrade,ref player.invetory.CurrentCoins);
+
+        //Remove from setlment
+        
+
+        CargoManager.instance.RemoveCargoItemFromShop(currentUpgradeItem.upgrade,ref currentSettlement.defaultSettlementData.upgradeShop);
+        CargoManager.instance.RemoveCargoItemFromShop(currentUpgradeItem.upgrade, ref currentSettlement.settlmentUpgradeItems);
+        currentUpgradeItem = null;
 
         //RefreshPage
         cityUI.DisplayUpgradePanel();
-        */
+        
         
     }
 

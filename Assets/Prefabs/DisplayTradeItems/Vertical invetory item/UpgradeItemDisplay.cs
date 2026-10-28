@@ -21,8 +21,6 @@ public class UpgradeItemDisplay : MonoBehaviour, IPointerClickHandler
         //Visual
         iconImage.sprite = cargo.cargoSO.icon;
        
-
-      
     }
 
     public void OnPointerClick(PointerEventData eventData)

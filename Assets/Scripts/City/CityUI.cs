@@ -101,7 +101,7 @@ public class CityUI : MonoBehaviour
 
     [Header("Current UPGRADE_SHOP_ITEM_DISPLAY")]
     [SerializeField] private Image currentUpgradeItemIcon;
-    [SerializeField] private TextMeshProUGUI upgradeItemName;
+    [SerializeField] private TextMeshProUGUI currentUpgradeItemName;
     [SerializeField] private TextMeshProUGUI upgradeItemPrice;
     [SerializeField] private TextMeshProUGUI upgradeItemDescription;
 
@@ -493,6 +493,7 @@ public class CityUI : MonoBehaviour
         {
             UpgradeItemDisplay row = Instantiate(upgradeItemDisplayPrefab, UpgradeContent);
             row.PopulateUpgrade(item, this);
+            settlementsManager.currentUpgradeItem =row ;
         }
     }
 
@@ -501,6 +502,9 @@ public class CityUI : MonoBehaviour
         settlementsManager.currentUpgradeItem= item;
 
         currentUpgradeItemIcon = item.iconImage;
+        currentUpgradeItemName.text = item.upgrade.ItemName.ToString();
+        upgradeItemPrice.text = item.upgrade.cargoSO.price.ToString();
+        
         
     }
 

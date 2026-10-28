@@ -63,8 +63,25 @@ public class CargoManager : MonoBehaviour
         playerCoins -= cargo.cargoSO.price;
         PlayerOwnedCargo.Add(cargo);
     }
+    public void AddUpgradeItem(Cargo cargo, ref float playerCoins)
+    {
+        if (playerCoins < cargo.cargoSO.price)
+        {
+            return;
+        }
+        playerCoins -= cargo.cargoSO.price;
+        PlayerOwnedUpgrades.Add(cargo);
 
+    }
+    public void RemoveCargoItemFromInvetory(Cargo cargo)
+    {
+        PlayerOwnedUpgrades.Remove(cargo);
+    }
 
+    public void RemoveCargoItemFromShop(Cargo cargo, ref List<Cargo> list)
+    {
+        list.Remove(cargo);
+    }
 
     //######
     // UPGRADES
