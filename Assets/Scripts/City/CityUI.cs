@@ -149,7 +149,7 @@ public class CityUI : MonoBehaviour
 
     private void Update()
     {
-        DisplayPlayerCoins();
+        //DisplayPlayerCoins();
         ShowTotalPrice();
         currentTextAmount.text = sliderAmount.value.ToString();
 

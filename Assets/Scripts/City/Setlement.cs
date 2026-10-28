@@ -66,7 +66,7 @@ public class Setlement : MonoBehaviour
                 player.invetory.Buy(currentItemSelected.tradeSettlementItem.price);
                 currentItemSelected.tradeSettlementItem.amount = -1;
                 //Display
-                cityUI.DisplayTrade();
+               // cityUI.DisplayTrade();
                 cityUI.DisplayPlayerCoins();
                 return;
             }
@@ -81,7 +81,7 @@ public class Setlement : MonoBehaviour
             player.invetory.Sell(currentItemSelected.tradeSettlementItem.price);
             
             //Display
-            cityUI.DisplayTrade();
+           // cityUI.DisplayTrade();
             cityUI.DisplayPlayerCoins();
             return;
         }
