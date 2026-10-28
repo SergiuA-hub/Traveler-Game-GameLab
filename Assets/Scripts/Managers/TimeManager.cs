@@ -99,10 +99,10 @@ public class TimeManager : MonoBehaviour
         var keyboard = Keyboard.current;
         if (keyboard == null) return;
 
-        if (keyboard.spaceKey.wasPressedThisFrame)
-        {
-            time_stopped = true;
-        }
+        //if (keyboard.spaceKey.wasPressedThisFrame)
+        //{
+        //    time_stopped = true;
+        //}
 
         if (keyboard.digit1Key.wasPressedThisFrame)
         {

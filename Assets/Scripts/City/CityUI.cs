@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using Mono.Cecil;
+using NUnit.Framework;
 using System;
 using TMPro;
 using Unity.Mathematics;
@@ -37,21 +38,20 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TradeItemDisplay tradePlayerPrefab;
     [SerializeField] private Transform SellContent;
 
-    [Header("Player Components")]
-    
+    [Header("Player Components")]    
     public PlayerInventory_M playerInventory;
     public Player_M player;
     [SerializeField] private TextMeshProUGUI playerCoinsDisplay;
 
 
-    [Header("Current TRADE_ITEM_DISPLAY")]
-    
+    [Header("Current TRADE_ITEM_DISPLAY")]    
     [SerializeField] private Image currentTradeItemImage;
     [SerializeField] private TextMeshProUGUI currentTradeItemName;
     [SerializeField] private TextMeshProUGUI currentTradeItemPrice;
     [SerializeField] private TextMeshProUGUI buySellButtonText;
     [SerializeField] private TextMeshProUGUI currentItemAmount;
     public GameObject CurrentLockedPanel;
+    private SettlementGood selectedSettlementGood;
 
     //Price Tier Display
     [Header("Current Item Price Tier")]
@@ -61,14 +61,12 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TierIIIAmount;
     [SerializeField] private TextMeshProUGUI TierIIAmount;
     [SerializeField] private TextMeshProUGUI TierIAmount;
-
-
     [SerializeField] private TextMeshProUGUI TierVPrice;
     [SerializeField] private TextMeshProUGUI TierIVPrice;
     [SerializeField] private TextMeshProUGUI TierIIIPrice;
     [SerializeField] private TextMeshProUGUI TierIIPrice;
     [SerializeField] private TextMeshProUGUI TierIPrice;
-    
+    public TradeTierUIIndicator tierIndicator;
 
 
     [Header("SLIDER_TRADE")]
@@ -150,7 +148,7 @@ public class CityUI : MonoBehaviour
     private void Update()
     {
         //DisplayPlayerCoins();
-        ShowTotalPrice();
+        //ShowTotalPrice();
         currentTextAmount.text = sliderAmount.value.ToString();
 
         SetPlayerWeightVolumeTrade();
@@ -254,10 +252,7 @@ public class CityUI : MonoBehaviour
             {
                 row = Instantiate(tradePrfab, buyContent);
                 row.PopulateBuyIcon(item, this, true);
-            }
-            
-           
-            
+            } 
         }
 
         foreach (InventoryItem item in playerInventory.Inventory)
@@ -271,22 +266,24 @@ public class CityUI : MonoBehaviour
 
     public void DisplayPlayerCoins()
     {
-        playerCoinsDisplay.text= ": "+playerInventory.CurrentCoins.ToString();
+        playerCoinsDisplay.text= $": {playerInventory.CurrentCoins:F1}";
     }
 
     public void SetCurrentTradeItem(TradeItemDisplay item)
     {
+        selection_totalPrice = 0f;
+
         settlementsManager.currentItemSelected = item;
         currentTradeItemImage.sprite = item.itemIcon.sprite;
         currentTradeItemName.text = item.itemNameText.text;
 
         //Tiers
         GetCurrentItemTiers();
+        tierIndicator.clearIndicator();
 
         //Buttons
         SetButtonText(item);
         SliderMaxValue();
-
     }
 
     public void GetCurrentItemTiers()
@@ -298,85 +295,65 @@ public class CityUI : MonoBehaviour
         {
             return;
         }
-        float tierIStock;
-        float tierIIStock;
-        float tierIIIStock;
-        float tierIVStock;
-        float tierVStock;
 
         foreach(var production in currentSettlement.production)
         {
             if(resToShowTier == production.resource)
             {
-                tierIStock = production.tier1_price_stock;
-                tierIIStock = production.tier2_price_stock;
-                tierIIIStock = production.tier3_price_stock;
-                tierIVStock = production.tier4_price_stock;
-                tierVStock = production.tier5_price_stock;
-                SetTierList(tierIStock, 0, 0, 0, tierVStock);
-            }
-            else
-            {
-                foreach(var consumption in currentSettlement.consumption)
-                {
-                    if (resToShowTier == consumption.resource)
-                    {
-                        tierIStock = consumption.tier1_price_stock;
-                        tierIIStock = consumption.tier2_price_stock;
-                        tierIIIStock = consumption.tier3_price_stock;
-                        tierIVStock = consumption.tier4_price_stock;
-                        tierVStock = consumption.tier5_price_stock;
-                        SetTierList(tierIStock, 0, 0, 0, tierVStock);
-                    }
-                }
+                selectedSettlementGood = production;
+                SetTierList(production);
+                return;
             }
         }
-        
 
-
+        foreach (var consumption in currentSettlement.consumption)
+        {
+            if (resToShowTier == consumption.resource)
+            {
+                selectedSettlementGood = consumption;
+                SetTierList(consumption);
+                return;
+            }
+        }
     }
 
-    private void SetTierList(float tierI,float tierII,float tierIII,float tierIV,float tierV)
+    private void SetTierList(SettlementGood settlemeGood)
     {
-        //Amount
-        TierIAmount.text =tierI.ToString();
-        TierVAmoun.text = "+" + tierV.ToString();
+        TierIAmount.text = $"Stock: below {settlemeGood.tier1_price_stock}";
+        TierIPrice.text = $"{(settlemeGood.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER):F1}";
 
-        //Price
-        TierVPrice.text = (tierI * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER +
-                    tierII * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER +
-                    tierIII * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER +
-                    tierIV * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER +
-                    tierV * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER).ToString();
-    }
+        TierIIAmount.text = $"Stock: {settlemeGood.tier1_price_stock}–{settlemeGood.tier2_price_stock}";
+        TierIIPrice.text = $"{(settlemeGood.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER):F1}";
 
-    private float CalculatePriceTiers(float tierI, float tierII, float tierIII, float tierIV, float tierV)
-    {
-        float sum = tierI * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER +
-                    tierII * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER +
-                    tierIII * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER +
-                    tierIV * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER +
-                    tierV * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
-        return sum;
+        TierIIIAmount.text = $"Stock: {settlemeGood.tier2_price_stock}–{settlemeGood.tier3_price_stock}";
+        TierIIIPrice.text = $"{(settlemeGood.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER):F1}";
+
+        TierIVAmount.text = $"Stock: {settlemeGood.tier3_price_stock}–{settlemeGood.tier4_price_stock}";
+        TierIVPrice.text = $"{(settlemeGood.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER):F1}";
+
+        TierVAmoun.text = $"Stock: above {settlemeGood.tier4_price_stock}";
+        TierVPrice.text = $"{(settlemeGood.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER):F1}";
     }
 
     //Slider
     public void SliderMaxValue()
     {
-       
-        if (settlementsManager.currentItemSelected.tradeInventoryItem == null)
+        if (settlementsManager.currentItemSelected.tradeSettlementItem != null)
         {
-            sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeSettlementItem.amount;
+            float maxSetlementAmount = settlementsManager.currentItemSelected.tradeSettlementItem.amount;
+            float maxAmountBasedOnWeight = (GameServices.Instance.player.stats.maxWeight - GameServices.Instance.player.invetory.currentWeight) / settlementsManager.currentItemSelected.tradeSettlementItem.resource.weight;
+            float maxAmountBasedOnVolume = (GameServices.Instance.player.stats.maxVolume - GameServices.Instance.player.invetory.currentVolume) / settlementsManager.currentItemSelected.tradeSettlementItem.resource.volume;
+            //float maxAmountBasedOnCoins = GameServices.Instance.player.invetory.CurrentCoins / settlementsManager.currentItemSelected.tradeSettlementItem.resource.baseValue;
+            
+            sliderAmount.maxValue = Mathf.Max(0, Mathf.FloorToInt(Mathf.Min(maxSetlementAmount,maxAmountBasedOnWeight,maxAmountBasedOnVolume)));
         }
-        if (settlementsManager.currentItemSelected.tradeSettlementItem == null)
+        if (settlementsManager.currentItemSelected.tradeInventoryItem != null)
         {
             sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeInventoryItem.amount;
         }
-        
     }
 
     //Weight & Volume
-
     private void SetPlayerWeightVolumeTrade() 
     {
         TradeItemDisplay currentItem = settlementsManager.currentItemSelected;
@@ -389,6 +366,7 @@ public class CityUI : MonoBehaviour
          
             return;
         }
+
         //Adding from shop
         //shop production
         if(settlementsManager.currentItemSelected.tradeSettlementItem != null)
@@ -417,34 +395,118 @@ public class CityUI : MonoBehaviour
         }
     }
 
+    public void BuyOrSell()
+    {
+        if (selection_totalPrice == 0 || Mathf.RoundToInt(ReturnCurentSliderValue()) == 0)
+            return;
+
+        GameServices.Instance.settlementManager.BuyOrSell(selection_totalPrice, Mathf.RoundToInt(ReturnCurentSliderValue()));
+    }
+
     public int ReturnCurentSliderValue()
     {
         return Mathf.RoundToInt(sliderAmount.value);
     }
-    //Total Price
 
+    //Total Price
+    private float selection_totalPrice;
     public void ShowTotalPrice()
     {
-        if(settlementsManager.currentItemSelected == null)
+        if (settlementsManager.currentItemSelected == null)
         {
             currentTradeItemPrice.text = "0";
-            return ;
+            return;
         }
-        //BUY
-        if(settlementsManager.currentItemSelected.tradeSettlementItem != null)
-        {
-            currentTradeItemPrice.text = (settlementsManager.currentItemSelected.tradeSettlementItem.price * ReturnCurentSliderValue()).ToString();
-        }
-        //SELL
-        if (settlementsManager.currentItemSelected.tradeInventoryItem != null)
-        {
-            currentTradeItemPrice.text = (settlementsManager.currentItemSelected.tradeInventoryItem.averageValue * ReturnCurentSliderValue()).ToString();
-        }
-       
 
+        int amount = Mathf.RoundToInt(ReturnCurentSliderValue());
+        float totalPrice = 0f;
+
+        // BUY
+        if (settlementsManager.currentItemSelected.tradeSettlementItem != null)
+        {
+            float currentStock = settlementsManager.currentSettlement.getStock(settlementsManager.currentItemSelected.tradeSettlementItem.resource);
+
+            for (int i = 0; i < amount; i++)
+            {
+                float newStock = currentStock - i - 1;
+                float currentPrice = 0f;
+
+                if (newStock < selectedSettlementGood.tier1_price_stock)
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(1);
+                }
+                else if (newStock < selectedSettlementGood.tier2_price_stock)
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(2);
+                }
+                else if (newStock < selectedSettlementGood.tier3_price_stock)
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(3);
+                }
+                else if (newStock < selectedSettlementGood.tier4_price_stock)
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(4);
+                }
+                else
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(5);
+                }
+
+                totalPrice += currentPrice;
+                currentTradeItemPrice.color = totalPrice > GameServices.Instance.player.invetory.CurrentCoins ? new Color32(220, 80, 80, 255) : Color.white;
+            }
+        }
+
+        // SELL
+        else if (settlementsManager.currentItemSelected.tradeInventoryItem != null)
+        {
+            float currentStock = settlementsManager.currentSettlement.getStock(settlementsManager.currentItemSelected.tradeInventoryItem.resourceSO);
+
+            for (int i = 0; i < amount; i++)
+            {
+                float newStock = currentStock + i;
+                float currentPrice = 0f;
+
+                if (newStock < selectedSettlementGood.tier1_price_stock)
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(1);
+                }
+                else if (newStock < selectedSettlementGood.tier2_price_stock)
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(2);
+                }
+                else if (newStock < selectedSettlementGood.tier3_price_stock)
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(3);
+                }
+                else if (newStock < selectedSettlementGood.tier4_price_stock)
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(4);
+                }
+                else
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(5);
+                }
+                currentTradeItemPrice.color = Color.white;
+                totalPrice += currentPrice;
+            }
+        }
         
+        selection_totalPrice = totalPrice;
+
+        currentTradeItemPrice.text = $"{totalPrice:F1}";
     }
-  
+
     //############
     //SHOP AREA
     //############
@@ -614,6 +676,7 @@ public class CityUI : MonoBehaviour
         ChangePage(0);
         //setlement.CityObjectUI.SetActive(false);
         this.gameObject.SetActive(false);
+        GameServices.Instance.player.UnRoot();
     }
 
     //BUY || SELL BUTTON  -> TRADE PANEL

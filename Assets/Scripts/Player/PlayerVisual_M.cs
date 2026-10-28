@@ -27,20 +27,18 @@ public class PlayerVisual_M : MonoBehaviour
 
     private void Update()
     {
-        if (playerMovement.IsMoving() && currentState !=1)
+        bool isMoving = playerMovement.IsMoving() && !playerMovement.typing;
+
+        if (isMoving && currentState != 1)
         {
             anim.SetTrigger("IsWalking");
             currentState = 1;
         }
-        if (!playerMovement.IsMoving() && currentState != 0)
+        else if (!isMoving && currentState != 0)
         {
             anim.SetTrigger("IsIdle");
             currentState = 0;
         }
- //       if (timeManager.timerCurrent <= timerCriticalValue)
- //       {
-  //          StartVignette();
- //       }
     }
 
     void StartVignette()
