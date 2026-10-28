@@ -88,10 +88,7 @@ public class InformerNpc : MonoBehaviour, INpcInteraction
         winterTradePrice = winterHighResource.tradeGood.resource.baseValue;
     }
 
-    private void FindBestDeals(
-    Season region,
-    out InformerTradeDeal highest,
-    out InformerTradeDeal lowest)
+    private void FindBestDeals(Season region,out InformerTradeDeal highest,out InformerTradeDeal lowest)
     {
         List<InformerTradeDeal> highestCandidates = new();
         List<InformerTradeDeal> lowestCandidates = new();
