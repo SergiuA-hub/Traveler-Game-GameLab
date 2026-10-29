@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Contract : MonoBehaviour
+public class Contract
 {
     public SettlementSO settlement;
     public ContractType contractType;

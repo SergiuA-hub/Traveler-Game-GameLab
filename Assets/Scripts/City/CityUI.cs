@@ -5,6 +5,7 @@ using System;
 using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -237,7 +238,8 @@ public class CityUI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        
+
+        bool selectionReseted = false;
         //Create list
         foreach (var item in currentSettlement.settlementStock)
         {
@@ -252,7 +254,13 @@ public class CityUI : MonoBehaviour
             {
                 row = Instantiate(tradePrfab, buyContent);
                 row.PopulateBuyIcon(item, this, true);
-            } 
+            }
+
+            if (settlementsManager.currentItemSelected != null && settlementsManager.currentItemSelected.tradeSettlementItem != null && settlementsManager.currentItemSelected.tradeSettlementItem.resource.itemName == item.resource.itemName)
+            {
+                selectionReseted = true;
+                SetCurrentTradeItem(row);
+            }
         }
 
         foreach (InventoryItem item in playerInventory.Inventory)
@@ -260,8 +268,24 @@ public class CityUI : MonoBehaviour
             TradeItemDisplay row = Instantiate(tradePlayerPrefab, SellContent);
 
             row.PopulateSellIcon(item, this);
+
+            if (settlementsManager.currentItemSelected != null && settlementsManager.currentItemSelected.tradeInventoryItem != null && settlementsManager.currentItemSelected.tradeInventoryItem.resourceSO.itemName == item.resourceSO.itemName)
+            {
+                selectionReseted = true;
+                SetCurrentTradeItem(row);
+            }
         }
 
+        if (!selectionReseted)
+        {
+            settlementsManager.currentItemSelected = null;
+            SliderMaxValue();
+        }
+    }
+
+    public void resetTransaction()
+    {
+        sliderAmount.value = 0;
     }
 
     public void DisplayPlayerCoins()
@@ -284,6 +308,24 @@ public class CityUI : MonoBehaviour
         //Buttons
         SetButtonText(item);
         SliderMaxValue();
+        
+        sliderAmount.value = 0;
+
+        if(settlementsManager.currentItemSelected != null)
+        {
+            if(settlementsManager.currentItemSelected.tradeInventoryItem != null)
+            {
+                //inventory seleceted -> flip slider (right to left)
+                sliderAmount.gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+
+            }
+
+            if (settlementsManager.currentItemSelected.tradeSettlementItem != null)
+            {
+                //settlement selected -> normal orientation to slider (left to right)
+                sliderAmount.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+        }
     }
 
     public void GetCurrentItemTiers()
@@ -338,6 +380,13 @@ public class CityUI : MonoBehaviour
     //Slider
     public void SliderMaxValue()
     {
+        if(settlementsManager.currentItemSelected == null)
+        {
+            sliderAmount.maxValue = 0;
+            sliderAmount.value = 0;
+            return;
+        }
+
         if (settlementsManager.currentItemSelected.tradeSettlementItem != null)
         {
             float maxSetlementAmount = settlementsManager.currentItemSelected.tradeSettlementItem.amount;
@@ -347,6 +396,7 @@ public class CityUI : MonoBehaviour
             
             sliderAmount.maxValue = Mathf.Max(0, Mathf.FloorToInt(Mathf.Min(maxSetlementAmount,maxAmountBasedOnWeight,maxAmountBasedOnVolume)));
         }
+
         if (settlementsManager.currentItemSelected.tradeInventoryItem != null)
         {
             sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeInventoryItem.amount;

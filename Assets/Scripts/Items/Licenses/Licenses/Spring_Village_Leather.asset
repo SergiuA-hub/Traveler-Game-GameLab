@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46ce27db215351419496b815f328999, type: 3}
+  m_Name: Spring_Village_Leather
+  m_EditorClassIdentifier: Assembly-CSharp::LicensesSO
+  LicenseName: Leather License
+  icon: {fileID: 7373608591449670567, guid: e53b6497c87d5dc49bacc7ba98c494f4, type: 3}
+  cost: 210
+  resourse_unlock:
+  - {fileID: 11400000, guid: dddc04a2a8132ff429a5819264360ad7, type: 2}
+  settlementSO: {fileID: 11400000, guid: 057c3065bb798934d94d9234049cfdd4, type: 2}

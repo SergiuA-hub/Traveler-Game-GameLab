@@ -22,7 +22,7 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
     public Color[] Tiers_colors;
     public Sprite[] Tiers_indicators;
     public int currentPriceTier;
-    
+    private int currentColorTier;
 
 
     [Header("Item Components")]
@@ -55,40 +55,37 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
         itemNameText.text = settlementItem.resource.itemName.ToString();
 
         itemNameAmountText.text = settlementItem.amount.ToString();
-        itemBasePriceText.text = settlementItem.resource.baseValue.ToString();
+        
+        //itemBasePriceText.text = settlementItem.resource.baseValue.ToString();        
+        //show empty space to keep formating
+        itemBasePriceText.text = "";
+
         itemIcon.sprite = settlementItem.resource.sprite;
         cityUI = UI;
         tradeSettlementItem = settlementItem;
         tradeInventoryItem = null;
-        itemCurrentPriceText.text = settlementItem.price.ToString();
+        itemCurrentPriceText.text = $"{settlementItem.price:F1}";
         
         //Profit indicator
-        if(settlementItem.price == GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER * settlementItem.resource.baseValue)
+        if(settlementItem.price > settlementItem.resource.baseValue)
         {
             currentPriceTier = 5;
+            currentColorTier = 1;
         }
-        else if(settlementItem.price == GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER * settlementItem.resource.baseValue)
-        {
-            currentPriceTier = 4;
-        }
-        else if (settlementItem.price == GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER * settlementItem.resource.baseValue)
+        else if(settlementItem.price == settlementItem.resource.baseValue)
         {
             currentPriceTier = 3;
+            currentColorTier = 3;
         }
-        else if (settlementItem.price == GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER * settlementItem.resource.baseValue)
-        {
-            currentPriceTier = 2;
-        }
-        else if (settlementItem.price == GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER * settlementItem.resource.baseValue)
+        else if (settlementItem.price < settlementItem.resource.baseValue)
         {
             currentPriceTier = 1;
-        }else
-        {
-            Debug.Log("Something went wrong");
-
+            currentColorTier = 5;
         }
-        SetVisualsPriceTier(currentPriceTier);
-      
+
+        setVisualColor(currentColorTier);
+        setVisualPriceIndicator(currentPriceTier);
+
         //lockedPanel
         if (locked)
         {
@@ -106,37 +103,49 @@ public class TradeItemDisplay : MonoBehaviour, IPointerClickHandler
     {
         itemNameText.text = inventoryItem.resourceSO.itemName.ToString();
         itemNameAmountText.text = inventoryItem.amount.ToString();
-        itemBasePriceText.text = inventoryItem.resourceSO.baseValue.ToString();
+        //itemBasePriceText.text = inventoryItem.resourceSO.baseValue.ToString();
+        itemBasePriceText.text = "";
+
         itemIcon.sprite = inventoryItem.resourceSO.sprite;
         cityUI = UI;
         tradeInventoryItem = inventoryItem;
         tradeSettlementItem = null;
-        itemAveragePriceText.text = inventoryItem.averageValue.ToString();
-        itemCurrentPriceText.text = (cityUI.settlementsManager.currentSettlement.getStockPrice(this.tradeInventoryItem.resourceSO)- inventoryItem.averageValue  ).ToString();
+        itemAveragePriceText.text = $"{inventoryItem.averageValue:F1}";
+        //itemCurrentPriceText.text = (cityUI.settlementsManager.currentSettlement.getStockPrice(this.tradeInventoryItem.resourceSO)- inventoryItem.averageValue  ).ToString();
+        itemCurrentPriceText.text = "";
+        
         //Price indicator
 
         if (cityUI.settlementsManager.currentSettlement.getStockPrice(this.tradeInventoryItem.resourceSO) > inventoryItem.averageValue)
         {
             currentPriceTier = 5;
+            currentColorTier = 5;
         }
         if (cityUI.settlementsManager.currentSettlement.getStockPrice(this.tradeInventoryItem.resourceSO) == inventoryItem.averageValue)
         {
             currentPriceTier = 3;
+            currentColorTier = 3;
         }
         if (cityUI.settlementsManager.currentSettlement.getStockPrice(this.tradeInventoryItem.resourceSO) < inventoryItem.averageValue)
         {
             currentPriceTier = 1;
+            currentColorTier = 1;
         }
-        SetVisualsPriceTier(currentPriceTier);
+        setVisualColor(currentColorTier);
+        setVisualPriceIndicator(currentPriceTier);
 
         lockedPanel.SetActive(false);
     }
 
-    private void SetVisualsPriceTier(int tier) 
+    private void setVisualColor(int tier)
     {
         itemCurrentPriceText.color = Tiers_colors[tier - 1];
-        indicatorICon.sprite = Tiers_indicators[tier - 1];
         indicatorICon.color = Tiers_colors[tier - 1];
+    }
+
+    public void setVisualPriceIndicator(int tier)
+    {
+        indicatorICon.sprite = Tiers_indicators[tier - 1];
     }
 
     public void OnPointerClick(PointerEventData eventData)

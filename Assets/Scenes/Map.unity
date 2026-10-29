@@ -12969,7 +12969,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Profit
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -655192,7 +655192,7 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -666444,11 +666444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5144683523191883485, guid: 1e4511342a027034c83b8c41f5028aa8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5822911661155839287, guid: 1e4511342a027034c83b8c41f5028aa8, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5822911661155839287, guid: 1e4511342a027034c83b8c41f5028aa8, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
@@ -679604,7 +679604,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2027388441}
         m_TargetAssemblyTypeName: SettlementsManager, Assembly-CSharp
         m_MethodName: BuyLicence
         m_Mode: 1
@@ -692599,9 +692599,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Value
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -765721,7 +765719,7 @@ MonoBehaviour:
   m_fontSizeMin: 8
   m_fontSizeMax: 10
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -818468,11 +818466,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 430f33826f9ed7140bf686cffa1873c4, type: 2}
     - target: {fileID: 60880057156043123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.854
+      value: 1.41
       objectReference: {fileID: 0}
     - target: {fileID: 60880057156043123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.538
+      value: 0.66
       objectReference: {fileID: 0}
     - target: {fileID: 60880057156043123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -820429,7 +820427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CityUIManager
   settlementManager: {fileID: 2027388441}
-  cityUI: {fileID: 0}
+  cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
@@ -954978,7 +954976,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Value
+  m_text: '
 
 '
   m_isRightToLeft: 0
@@ -995592,7 +995590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CityUIManager
   settlementManager: {fileID: 2027388441}
-  cityUI: {fileID: 0}
+  cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
@@ -1100004,7 +1100002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CityUIManager
   settlementManager: {fileID: 2027388441}
-  cityUI: {fileID: 0}
+  cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
@@ -1130787,7 +1130785,7 @@ MonoBehaviour:
   m_fontSizeMin: 8
   m_fontSizeMax: 10
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1156693,7 +1156691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e88ecb0805efac479d62612a7c4bf7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestManager
-  contracts: []
 --- !u!1 &2131597460
 GameObject:
   m_ObjectHideFlags: 0

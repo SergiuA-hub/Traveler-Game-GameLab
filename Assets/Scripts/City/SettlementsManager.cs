@@ -237,10 +237,12 @@ public class SettlementsManager : MonoBehaviour
             {
                 currentSettlement.settlmentUpgradeItems.Add(new Cargo(upgradeItem.ItemName,upgradeItem.cargoSO,upgradeItem.category,upgradeItem.type));
             }
+
             foreach(var l in settl.settlementSo.Licenses_Shop)
             {
                 currentSettlement.settlmentLicenses.Add(l);
             }
+
             currentSettlement.calculatePriceTiers();
 
             currentSettlement.settlementGo = settl.settlmentGo;
