@@ -521,34 +521,43 @@ public class CityUI : MonoBehaviour
             {
                 float newStock = currentStock + i;
                 float currentPrice = 0f;
-
-                if (newStock < selectedSettlementGood.tier1_price_stock)
+                
+                if(selectedSettlementGood == null)
                 {
-                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER;
-                    tierIndicator.indicateTier(1);
-                }
-                else if (newStock < selectedSettlementGood.tier2_price_stock)
-                {
-                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER;
-                    tierIndicator.indicateTier(2);
-                }
-                else if (newStock < selectedSettlementGood.tier3_price_stock)
-                {
-                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER;
-                    tierIndicator.indicateTier(3);
-                }
-                else if (newStock < selectedSettlementGood.tier4_price_stock)
-                {
-                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER;
-                    tierIndicator.indicateTier(4);
+                    currentTradeItemPrice.color = Color.yellow;
+                    currentPrice = settlementsManager.currentItemSelected.tradeInventoryItem.resourceSO.baseValue * GlobalSettingsManager.UNWANTED_GOOD_PRICE_MULTIPLIER;
+                    totalPrice += currentPrice;
                 }
                 else
                 {
-                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
-                    tierIndicator.indicateTier(5);
+                    if (newStock < selectedSettlementGood.tier1_price_stock)
+                    {
+                        currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER;
+                        tierIndicator.indicateTier(1);
+                    }
+                    else if (newStock < selectedSettlementGood.tier2_price_stock)
+                    {
+                        currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER;
+                        tierIndicator.indicateTier(2);
+                    }
+                    else if (newStock < selectedSettlementGood.tier3_price_stock)
+                    {
+                        currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER;
+                        tierIndicator.indicateTier(3);
+                    }
+                    else if (newStock < selectedSettlementGood.tier4_price_stock)
+                    {
+                        currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER;
+                        tierIndicator.indicateTier(4);
+                    }
+                    else
+                    {
+                        currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
+                        tierIndicator.indicateTier(5);
+                    }
+                    currentTradeItemPrice.color = Color.white;
+                    totalPrice += currentPrice;
                 }
-                currentTradeItemPrice.color = Color.white;
-                totalPrice += currentPrice;
             }
         }
         
@@ -727,6 +736,7 @@ public class CityUI : MonoBehaviour
         //setlement.CityObjectUI.SetActive(false);
         this.gameObject.SetActive(false);
         GameServices.Instance.player.UnRoot();
+        GameServices.Instance.settlementManager.leaveSettlement();
     }
 
     //BUY || SELL BUTTON  -> TRADE PANEL

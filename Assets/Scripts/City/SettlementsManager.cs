@@ -11,6 +11,7 @@ public class SettlementDeployment
 {
     public SettlementSO settlementSo;
     public GameObject settlmentGo;
+    public SettlementContractsPanel contractsPanel;
 }
 
 [System.Serializable]
@@ -40,7 +41,7 @@ public class SettlementRuntime
     public List<Cargo> settlmentUpgradeItems;
     public List<LicensesSO> settlmentLicenses;
     public GameObject settlementGo;
-
+    public SettlementContractsPanel contractsPanel;
     public SettlementRuntime(SettlementSO so)
     {
         defaultSettlementData = so;
@@ -219,6 +220,7 @@ public class SettlementsManager : MonoBehaviour
         foreach(var settl in settlementsList)
         {
             SettlementRuntime currentSettlement = new SettlementRuntime(settl.settlementSo);
+            currentSettlement.contractsPanel = settl.contractsPanel;
 
             foreach (var res in settl.settlementSo.production)
             {
@@ -318,7 +320,6 @@ public class SettlementsManager : MonoBehaviour
                 currentSettlement = settlement;
                 SettlementUI.GetComponent<CityUI>().prepareSettlement(settlement);
 
-                takeNotes(settlement);
                 break;
             }
         }
@@ -326,14 +327,22 @@ public class SettlementsManager : MonoBehaviour
         SettlementUI.SetActive(true);
     }
 
+    public void leaveSettlement()
+    {
+        takeNotes(currentSettlement);
+    }
+
     public void takeNotes(SettlementRuntime currentSettlementForNotes)
     {
         foreach(var tradeGood in currentSettlementForNotes.defaultSettlementData.production)
         {
-            //if can trade to be added here
-            float price = currentSettlementForNotes.getPriceFor(tradeGood.resource);
-            DateTime currentTimeForNote = GameServices.Instance.timeManager.currentTime;
-            GameServices.Instance.player.notes.AddBuyNote(tradeGood.resource, price, currentSettlementForNotes.settlementName, currentTimeForNote);
+            if (GameServices.Instance.licenseManager.CanTrade(tradeGood.resource, currentSettlement.defaultSettlementData))
+            {
+                //if can trade to be added here
+                float price = currentSettlementForNotes.getPriceFor(tradeGood.resource);
+                DateTime currentTimeForNote = GameServices.Instance.timeManager.currentTime;
+                GameServices.Instance.player.notes.AddBuyNote(tradeGood.resource, price, currentSettlementForNotes.settlementName, currentTimeForNote);
+            }
         }
 
         foreach (var tradeGood in currentSettlementForNotes.defaultSettlementData.consumption)

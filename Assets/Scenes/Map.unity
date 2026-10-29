@@ -1444,10 +1444,10 @@ RectTransform:
   - {fileID: 599020974}
   m_Father: {fileID: 63979641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 485.74072, y: -35}
+  m_SizeDelta: {x: 61.85185, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7516969
 MonoBehaviour:
@@ -12029,10 +12029,10 @@ RectTransform:
   - {fileID: 7516968}
   m_Father: {fileID: 1583391238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 273.3333, y: -35}
+  m_SizeDelta: {x: 516.6666, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &63979642
 MonoBehaviour:
@@ -16241,6 +16241,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3241232257144521049, guid: 6d37816bb34a20949997682bcf74b761, type: 3}
   m_PrefabInstance: {fileID: 81587471}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &81587473 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8718788587391197802, guid: 6d37816bb34a20949997682bcf74b761, type: 3}
+  m_PrefabInstance: {fileID: 81587471}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406529015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50af391ee89ccd8408a9c43fa31a6a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettlementContractsPanel
 --- !u!1 &82038277
 GameObject:
   m_ObjectHideFlags: 0
@@ -17715,10 +17726,10 @@ RectTransform:
   - {fileID: 542555087}
   m_Father: {fileID: 307731568}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 210, y: -22.9455}
+  m_SizeDelta: {x: 60, y: 45.891}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &91186223
 MonoBehaviour:
@@ -27392,10 +27403,10 @@ RectTransform:
   - {fileID: 686156601}
   m_Father: {fileID: 307731568}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -22.9455}
+  m_SizeDelta: {x: 60, y: 45.891}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &136431136
 MonoBehaviour:
@@ -652360,10 +652371,10 @@ RectTransform:
   - {fileID: 1531647215}
   m_Father: {fileID: 1337309226}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 189.99997, y: -40}
+  m_SizeDelta: {x: 126.66665, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &172726386
 MonoBehaviour:
@@ -655230,7 +655241,7 @@ RectTransform:
   m_Father: {fileID: 672624897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -685755,6 +685766,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3241232257144521049, guid: 6d37816bb34a20949997682bcf74b761, type: 3}
   m_PrefabInstance: {fileID: 329385486}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &329385488 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8718788587391197802, guid: 6d37816bb34a20949997682bcf74b761, type: 3}
+  m_PrefabInstance: {fileID: 329385486}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675188943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50af391ee89ccd8408a9c43fa31a6a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettlementContractsPanel
 --- !u!1 &329712764
 GameObject:
   m_ObjectHideFlags: 0
@@ -698523,7 +698545,7 @@ RectTransform:
   m_Father: {fileID: 1012559399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -698784,10 +698806,10 @@ RectTransform:
   - {fileID: 1209690417}
   m_Father: {fileID: 1337309226}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 63.333324, y: -40}
+  m_SizeDelta: {x: 126.66665, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &392298412
 MonoBehaviour:
@@ -706811,10 +706833,10 @@ RectTransform:
   - {fileID: 585613179}
   m_Father: {fileID: 63979641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 397.96292, y: -35}
+  m_SizeDelta: {x: 113.7037, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &431463903
 MonoBehaviour:
@@ -717965,6 +717987,7 @@ MonoBehaviour:
   weatherManager: {fileID: 665919135}
   campManager: {fileID: 1622856382}
   settlementManager: {fileID: 2027388441}
+  licenseManager: {fileID: 914465852}
   contractManager: {fileID: 2130779018}
   environmentManager: {fileID: 879770968}
   weatherVisual: {fileID: 1524531858}
@@ -721689,10 +721712,10 @@ RectTransform:
   - {fileID: 1927308381}
   m_Father: {fileID: 63979641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 284.25925, y: -35}
+  m_SizeDelta: {x: 113.7037, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &512937012
 MonoBehaviour:
@@ -737198,10 +737221,10 @@ RectTransform:
   - {fileID: 181788874}
   m_Father: {fileID: 7516968}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 30.925924, y: -47.5}
+  m_SizeDelta: {x: 61.85185, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &599020975
 MonoBehaviour:
@@ -739181,10 +739204,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2027388442}
+  - {fileID: 329385487}
   - {fileID: 1781247030}
   - {fileID: 1027312738}
   - {fileID: 81587472}
-  - {fileID: 329385487}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &609637412
@@ -749575,10 +749598,10 @@ RectTransform:
   - {fileID: 223051064}
   m_Father: {fileID: 7516968}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 30.925924, y: -22.5}
+  m_SizeDelta: {x: 61.85185, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &665635282
 MonoBehaviour:
@@ -818574,11 +818597,23 @@ PrefabInstance:
       objectReference: {fileID: 1622856382}
     - target: {fileID: 4539409219275482829, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: CurrentCoins
-      value: 50
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 4539409219275482829, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: Inventory.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539409219275482829, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: Inventory.Array.data[0].amount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539409219275482829, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: Inventory.Array.data[0].resourceSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e08b41a2d12ce443bcb2e67975f287a, type: 2}
+    - target: {fileID: 4539409219275482829, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: Inventory.Array.data[0].averageValue
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5174494233664980123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: baseIntensity
@@ -856666,6 +856701,7 @@ MonoBehaviour:
     settlmentUpgradeItems: []
     settlmentLicenses: []
     settlementGo: {fileID: 0}
+    contractsPanel: {fileID: 0}
   currentpage: 0
   itemPrefab: {fileID: 7698181275806001906, guid: 8eb821cee3573cc41bea9cac25c9e540, type: 3}
   Content: {fileID: 842314010}
@@ -858023,6 +858059,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3241232257144521049, guid: 6d37816bb34a20949997682bcf74b761, type: 3}
   m_PrefabInstance: {fileID: 1027312737}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1027312739 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8718788587391197802, guid: 6d37816bb34a20949997682bcf74b761, type: 3}
+  m_PrefabInstance: {fileID: 1027312737}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876873804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50af391ee89ccd8408a9c43fa31a6a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettlementContractsPanel
 --- !u!1 &1027440670
 GameObject:
   m_ObjectHideFlags: 0
@@ -868398,10 +868445,10 @@ RectTransform:
   - {fileID: 1762950018}
   m_Father: {fileID: 307731568}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 90, y: -22.9455}
+  m_SizeDelta: {x: 60, y: 45.891}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1082234527
 MonoBehaviour:
@@ -874050,7 +874097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1120130142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913281,10 +913328,10 @@ RectTransform:
   - {fileID: 172726385}
   m_Father: {fileID: 1583391238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 658.33325, y: -35}
+  m_SizeDelta: {x: 253.3333, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1337309227
 MonoBehaviour:
@@ -913875,10 +913922,10 @@ RectTransform:
   - {fileID: 1602539971}
   m_Father: {fileID: 63979641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 170.55554, y: -35}
+  m_SizeDelta: {x: 113.7037, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1341329025
 MonoBehaviour:
@@ -965391,10 +965438,10 @@ RectTransform:
   - {fileID: 1582497619}
   m_Father: {fileID: 307731568}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 30, y: -22.9455}
+  m_SizeDelta: {x: 60, y: 45.891}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1522663044
 MonoBehaviour:
@@ -965595,7 +965642,7 @@ RectTransform:
   m_Father: {fileID: 1594088848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -976332,7 +976379,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -240, y: 0}
-  m_SizeDelta: {x: 0, y: 45.891}
+  m_SizeDelta: {x: 10, y: 45.891}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1576133314
 MonoBehaviour:
@@ -1011977,6 +1012024,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3241232257144521049, guid: 6d37816bb34a20949997682bcf74b761, type: 3}
   m_PrefabInstance: {fileID: 1781247029}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1781247031 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8718788587391197802, guid: 6d37816bb34a20949997682bcf74b761, type: 3}
+  m_PrefabInstance: {fileID: 1781247029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119582310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50af391ee89ccd8408a9c43fa31a6a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettlementContractsPanel
 --- !u!1001 &1781613851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1104851,7 +1104909,7 @@ RectTransform:
   m_Father: {fileID: 978966148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1122768,10 +1122826,10 @@ RectTransform:
   - {fileID: 2051494690}
   m_Father: {fileID: 63979641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 56.85185, y: -35}
+  m_SizeDelta: {x: 113.7037, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1993614987
 MonoBehaviour:
@@ -1128263,14 +1128321,18 @@ MonoBehaviour:
   player: {fileID: 1153219631}
   playerAtSettlement: {fileID: 0}
   settlementsList:
-  - settlementSo: {fileID: 11400000, guid: 5c45bdb57a6c67441ad678f1fe3b4597, type: 2}
-    settlmentGo: {fileID: 108411027}
-  - settlementSo: {fileID: 11400000, guid: 3865eccc54f10a4468cd7fb4b17dc00f, type: 2}
-    settlmentGo: {fileID: 1682988975}
   - settlementSo: {fileID: 11400000, guid: 057c3065bb798934d94d9234049cfdd4, type: 2}
     settlmentGo: {fileID: 824724274}
+    contractsPanel: {fileID: 329385488}
+  - settlementSo: {fileID: 11400000, guid: 5c45bdb57a6c67441ad678f1fe3b4597, type: 2}
+    settlmentGo: {fileID: 108411027}
+    contractsPanel: {fileID: 1781247031}
+  - settlementSo: {fileID: 11400000, guid: 3865eccc54f10a4468cd7fb4b17dc00f, type: 2}
+    settlmentGo: {fileID: 1682988975}
+    contractsPanel: {fileID: 1027312739}
   - settlementSo: {fileID: 11400000, guid: 2d2b2a289677d5347ad2eb7b2b6e8f38, type: 2}
     settlmentGo: {fileID: 1874263206}
+    contractsPanel: {fileID: 81587473}
   settlements: []
   currentItemSelected: {fileID: 0}
   currentShopItemSelected: {fileID: 0}
@@ -1128284,6 +1128346,7 @@ MonoBehaviour:
     settlmentUpgradeItems: []
     settlmentLicenses: []
     settlementGo: {fileID: 0}
+    contractsPanel: {fileID: 0}
   timeManager: {fileID: 932758302}
   licenseManager: {fileID: 914465852}
 --- !u!4 &2027388442
@@ -1156691,6 +1156754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e88ecb0805efac479d62612a7c4bf7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestManager
+  contracts: []
 --- !u!1 &2131597460
 GameObject:
   m_ObjectHideFlags: 0
