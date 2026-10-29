@@ -139,6 +139,11 @@ MonoBehaviour:
     licenseCost: -1
   itemsShop:
   - ItemName: 
-    shopItems: {fileID: 0}
-    itemType: 0
-    itemStatus: 0
+    cargoSO: {fileID: 0}
+    category: 0
+    type: 0
+  upgradeShop: []
+  Licenses_Shop:
+  - {fileID: 11400000, guid: 3e84318eabfc8434ea48984f824ef170, type: 2}
+  - {fileID: 11400000, guid: ffc182ba0854de74d8f2866dcdb08b2f, type: 2}
+  - {fileID: 11400000, guid: 17008ed36465e694e931e1a97da67cd1, type: 2}

@@ -7,8 +7,5 @@ public class LicensesSO : ScriptableObject
     public Sprite icon;
     public float cost;
     public ResourceSO[] resourse_unlock;
-    public SettlementSO settlementSO;
-
-    
-       
+    public SettlementSO settlementSO;   
 }
