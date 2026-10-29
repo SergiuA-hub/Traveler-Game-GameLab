@@ -14,7 +14,6 @@ public class CargoSO : ScriptableObject
     public string itemName;
     public Sprite icon;
     public int price;
-    public int level;
     public CargoSOType type;
     public string Description;
     public string[] features;

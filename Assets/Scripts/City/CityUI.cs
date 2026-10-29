@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using Mono.Cecil;
 using NUnit.Framework;
 using System;
+using System.ComponentModel;
 using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
@@ -113,6 +114,7 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI LicensePrice;
     [SerializeField] private Transform LicenseUnlockList;
     [SerializeField] private LicenceUnlock unlockItem;
+    [SerializeField] private TextMeshProUGUI notEnoughMoneyText;
 
     
     [Header("Cart Managment Display")]
@@ -565,7 +567,7 @@ public class CityUI : MonoBehaviour
         settlementsManager.currentUpgradeItem= item;
 
         currentUpgradeItemIcon = item.iconImage;
-        currentUpgradeItemName.text = item.upgrade.ItemName.ToString();
+        currentUpgradeItemName.text = item.upgrade.cargoSO.itemName.ToString();
         upgradeItemPrice.text = item.upgrade.cargoSO.price.ToString();
         
         
@@ -602,6 +604,7 @@ public class CityUI : MonoBehaviour
         LicenseIcon.sprite = licenceItemDisplay.icon.sprite;
         LicenseName.text = licenceItemDisplay.licencename.text;
         LicensePrice.text = licenceItemDisplay.price.text;
+        NotEnoughMoneyDisplay(LicenseManager.instance.CanBuy(settlementsManager.currentLicenceSelected.licenseSO, playerInventory.CurrentCoins));
 
         foreach(Transform child in LicenseUnlockList)
         {
@@ -612,6 +615,19 @@ public class CityUI : MonoBehaviour
         {
             LicenceUnlock row = Instantiate(unlockItem, LicenseUnlockList);
             row.Create(item);
+        }
+    }
+
+    public void NotEnoughMoneyDisplay(bool verify)
+    {
+        if (!verify)
+        {
+            notEnoughMoneyText.text = "NOT ENOUGH COINS";
+
+        }
+        else
+        {
+            notEnoughMoneyText.text = "";
         }
     }
     
@@ -656,7 +672,7 @@ public class CityUI : MonoBehaviour
     public void SetCurrentCartManagmentItem(ShopItemDisplay shopItem)
     {
         currentManagmentItemIcon.sprite = shopItem.IconImage.sprite;
-        currentManagmentItemName.text = shopItem.cargo.ItemName;
+        currentManagmentItemName.text = shopItem.cargo.cargoSO.itemName;
     } 
 
     public void ChangeCargoContentPage(int x)

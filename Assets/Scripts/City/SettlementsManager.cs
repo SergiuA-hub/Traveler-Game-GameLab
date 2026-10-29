@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 [System.Serializable]
 public class SettlementDeployment
@@ -231,11 +232,11 @@ public class SettlementsManager : MonoBehaviour
             }
             foreach(var item in settl.settlementSo.itemsShop)
             {
-                currentSettlement.settlementShopItems.Add(new Cargo(item.ItemName,item.cargoSO,item.category,item.type));
+                currentSettlement.settlementShopItems.Add(new Cargo(item.cargoSO,item.upgradesSpaces,item.Upgrades,item.category,item.type));
             }
             foreach(var upgradeItem in settl.settlementSo.upgradeShop)
             {
-                currentSettlement.settlmentUpgradeItems.Add(new Cargo(upgradeItem.ItemName,upgradeItem.cargoSO,upgradeItem.category,upgradeItem.type));
+                currentSettlement.settlmentUpgradeItems.Add(new Cargo(upgradeItem.cargoSO, upgradeItem.upgradesSpaces, upgradeItem.Upgrades,upgradeItem.category,upgradeItem.type));
             }
             foreach(var l in settl.settlementSo.Licenses_Shop)
             {
@@ -450,7 +451,7 @@ public class SettlementsManager : MonoBehaviour
         
     }
 
-    //Upgrade buy item
+    //Buy Upgrade item
 
     public void BuyUpgradeItem()
     {
@@ -473,7 +474,7 @@ public class SettlementsManager : MonoBehaviour
         
         
     }
-
+    //Buy License
     public void BuyLicence()
     {
         if(currentLicenceSelected == null)

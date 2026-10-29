@@ -68,8 +68,12 @@ public enum ItemType
 [System.Serializable]
 public class Cargo
 {
-    public string ItemName;
+   
     public CargoSO cargoSO;
+
+    //Upgrading Items
+    public int upgradesSpaces;
+    public CargoSO[] Upgrades;
     
 
     //Item enums
@@ -77,10 +81,11 @@ public class Cargo
     public ItemType type;
     
 
-    public Cargo(string name, CargoSO cargoSO,CargoCategory category,ItemType type)
+    public Cargo( CargoSO cargoSO,int upSpace, CargoSO[] upgrades ,CargoCategory category,ItemType type)
     {
-        this.ItemName = name;
         this.cargoSO = cargoSO;
+        this.upgradesSpaces = upSpace;
+        this.Upgrades = upgrades;
         this.category= category;
         this .type = type;
     }
