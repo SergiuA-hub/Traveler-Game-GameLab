@@ -82,7 +82,9 @@ public class SettlementRuntime
             trade.tier4_price_stock = tier4_stock;
             trade.tier5_price_stock = tier5_stock;
         }
-    }    
+    }
+
+
 
     public float getPriceFor(TradeGood res)
     {
@@ -129,6 +131,19 @@ public class SettlementRuntime
         return currentPrice;
     }
 
+    public float getPriceFor(ResourceSO res)
+    {
+        float currentPrice = res.baseValue;
+
+        foreach(var trade in settlementStock)
+        {
+            if (trade.resource.itemName == res.itemName)
+                return trade.price;
+        }
+
+        return currentPrice;
+    }
+
     public float getStockPrice(ResourceSO res)
     {
         foreach(var r in settlementStock)
@@ -138,6 +153,16 @@ public class SettlementRuntime
         }
 
         return res.baseValue * GlobalSettingsManager.UNWANTED_GOOD_PRICE_MULTIPLIER;
+    }
+
+    public float getStock(ResourceSO res)
+    {
+        foreach (var r in settlementStock)
+        {
+            if (r.resource.itemName == res.itemName)
+                return r.amount;
+        }
+        return 0;
     }
 
     public void increaseStock(ResourceSO res, int amount)
@@ -290,15 +315,65 @@ public class SettlementsManager : MonoBehaviour
                 Debug.Log($"Player entered in {settlement.settlementName}");
                 currentSettlement = settlement;
                 SettlementUI.GetComponent<CityUI>().prepareSettlement(settlement);
+
+                takeNotes(settlement);
+                break;
             }
         }
 
         SettlementUI.SetActive(true);
     }
 
-    public void BuyOrSell()
+    public void takeNotes(SettlementRuntime currentSettlementForNotes)
     {
-        //Debug.Log("BUY SELL");
+        foreach(var tradeGood in currentSettlementForNotes.defaultSettlementData.production)
+        {
+            //if can trade to be added here
+            float price = currentSettlementForNotes.getPriceFor(tradeGood.resource);
+            DateTime currentTimeForNote = GameServices.Instance.timeManager.currentTime;
+            GameServices.Instance.player.notes.AddBuyNote(tradeGood.resource, price, currentSettlementForNotes.settlementName, currentTimeForNote);
+        }
+
+        foreach (var tradeGood in currentSettlementForNotes.defaultSettlementData.consumption)
+        {
+            //if can trade to be added here
+            float price = currentSettlementForNotes.getPriceFor(tradeGood.resource);
+            DateTime currentTimeForNote = GameServices.Instance.timeManager.currentTime;
+            GameServices.Instance.player.notes.AddSellNote(tradeGood.resource, price, currentSettlementForNotes.settlementName, currentTimeForNote);
+        }
+    }
+
+    public void BuyOrSell(float transactionTotalPrice, int amount)
+    {
+        if (currentItemSelected.isLocked)
+            return;
+
+        //BUY
+        if (currentItemSelected.tradeSettlementItem != null)
+        {
+            if (transactionTotalPrice > GameServices.Instance.player.invetory.CurrentCoins)
+                return;
+
+            GameServices.Instance.player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, transactionTotalPrice/amount,amount);
+            currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource, amount);
+            updateCurrentSettlementPrices();
+
+            cityUI.DisplayTrade();
+            return;
+        }
+
+        //SELL
+        if (currentItemSelected.tradeInventoryItem != null)
+        {
+            player.invetory.tradeOut(currentItemSelected.tradeInventoryItem.resourceSO, transactionTotalPrice/amount, amount);
+            currentSettlement.increaseStock(currentItemSelected.tradeInventoryItem.resourceSO, cityUI.ReturnCurentSliderValue());
+            updateCurrentSettlementPrices();
+
+            cityUI.DisplayTrade();
+        }
+    }
+    public void BuyOrSell()
+    {   
         if(currentItemSelected.isLocked == false)
         {
             //BUY
@@ -320,6 +395,7 @@ public class SettlementsManager : MonoBehaviour
 
                     //Slider
                     cityUI.SliderMaxValue();
+
                     //Display
                     SettlementUI.GetComponent<CityUI>().DisplayTrade();
                     SettlementUI.GetComponent<CityUI>().DisplayPlayerCoins();

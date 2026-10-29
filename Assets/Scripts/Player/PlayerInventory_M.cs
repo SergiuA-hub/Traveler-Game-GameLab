@@ -70,7 +70,7 @@ public class PlayerInventory_M : MonoBehaviour
         else
         {
             InventoryItem r = new InventoryItem(resource, amount, buyPrice);
-            r.averageValue = buyPrice/ amount;
+            r.averageValue = buyPrice;
 
             Inventory.Add(r);
 

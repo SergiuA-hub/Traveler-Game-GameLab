@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement_M : MonoBehaviour
 {
     private Player_M player;
-   
+    public bool typing = false;
     private void Start()
     {
         player = GetComponent<Player_M>();
@@ -23,7 +23,7 @@ public class PlayerMovement_M : MonoBehaviour
     {
         Vector2 moveInput = player.gameInput.GetMoveVectorNormalized();
 
-        if (player.isRooted())
+        if (player.isRooted() || typing)
             moveInput = Vector2.zero;
 
         bool isMoving = moveInput.sqrMagnitude > 0.001f;

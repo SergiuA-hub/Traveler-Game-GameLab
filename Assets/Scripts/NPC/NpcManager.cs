@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NpcManager : MonoBehaviour
 {
@@ -78,6 +79,16 @@ public class NpcManager : MonoBehaviour
 
     private void Update()
     {
+        var keyboard = Keyboard.current;
+        if (keyboard != null)
+        {
+            if (keyboard.f1Key.wasPressedThisFrame)
+            {
+                spawnRandomNPC(100);
+            }
+        }
+
+        
         for (int i = aliveNPCs.Count - 1; i >= 0; i--)
         {
             MoveNPC(aliveNPCs[i]);

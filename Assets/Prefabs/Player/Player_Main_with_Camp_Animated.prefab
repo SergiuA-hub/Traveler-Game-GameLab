@@ -416,6 +416,9 @@ PrefabInstance:
       addedObject: {fileID: 6594599302863174263}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1994453858807167521, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      insertIndex: 7
+      addedObject: {fileID: 6078144872133176413}
+    - targetCorrespondingSourceObject: {fileID: 1994453858807167521, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3629902954964899256}
     - targetCorrespondingSourceObject: {fileID: 4578881446101011588, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
@@ -715,6 +718,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1994453858807167521, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
   m_PrefabInstance: {fileID: 8033877529580285278}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6078144872133176413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8418257102270338943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59105e2d75f051240a188c495a08b459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TraderNotes
 --- !u!95 &3629902954964899256
 Animator:
   serializedVersion: 7

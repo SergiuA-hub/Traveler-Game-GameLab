@@ -30,6 +30,11 @@ public class TradeGoodPrefab : MonoBehaviour, IPointerClickHandler
         amount.text = $"{tradeGood.amount}";
     }
 
+    public void updatePrice()
+    {
+        price.text = $"{tradeGood.price:F1}";
+    }
+
     public void goodSelected()
     {
         callback.itemSelected(this);
