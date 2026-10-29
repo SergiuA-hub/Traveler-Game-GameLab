@@ -6,6 +6,12 @@ public class SettlementContractsPanel : MonoBehaviour
     public GameObject newContractsImage;
     public List<Contract> contractBoardList;
     private bool newContracts;
+
+    private void Start()
+    {
+        setNewFlag(false);
+    }
+
     public void AddContract(Contract contract)
     {
         contractBoardList.Add(contract);

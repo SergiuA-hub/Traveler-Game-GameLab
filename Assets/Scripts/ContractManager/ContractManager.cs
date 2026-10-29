@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ContractManager : MonoBehaviour
 {
+    public Button ContractPanelButton;
+    public GameObject contractsWoodenPanel;
     public List<Contract> contracts = new();
-    private SettlementContractsPanel playerInRange;
+    private SettlementContractsPanel panelInRange;
 
     public void Start()
     {
@@ -71,7 +74,8 @@ public class ContractManager : MonoBehaviour
                 settlement.contractsPanel.AddContract(contract1);
                 settlement.contractsPanel.AddContract(contract2);
             }
-            
+
+            settlement.contractsPanel.setNewFlag(true);
         }
     }
     public DateTime GetNextMonday()
@@ -89,11 +93,23 @@ public class ContractManager : MonoBehaviour
 
     public void playerMovedCloseTo(SettlementContractsPanel contractPanel)
     {
-        playerInRange = contractPanel;
+        panelInRange = contractPanel;
+        ContractPanelButton.gameObject.SetActive(true);
     }
 
     public void playetMovedAwayFrom(SettlementContractsPanel panel)
     {
-        playerInRange = null;
+        panelInRange = null;
+        ContractPanelButton.gameObject.SetActive(false);
+    }
+
+    public void checkBoard()
+    {
+        panelInRange.setNewFlag(false);
+
+        GameServices.Instance.player.Root();
+
+        ContractPanelButton.gameObject.SetActive(false);
+        contractsWoodenPanel.SetActive(true);
     }
 }
