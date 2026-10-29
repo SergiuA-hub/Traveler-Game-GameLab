@@ -725,7 +725,7 @@ public class CityUI : MonoBehaviour
         currentManagmentItemIcon.sprite = shopItem.IconImage.sprite;
         currentManagmentItemName.text = shopItem.cargo.cargoSO.itemName;
         int i = shopItem.cargo.upgradesSpaces;
-        
+        for (i;)
     } 
 
     public void SetCurrentCartManagemtnUpgrade(UpgradeItemDisplay upgradeItem)
