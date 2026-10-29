@@ -121,7 +121,7 @@ public class CityUI : MonoBehaviour
     [SerializeField] private Transform managmentContent;
     [SerializeField] private UpgradeItemDisplay upgradeDisplayPrefab;
 
-    [SerializeField] private int pageIndex=1;
+     private int pageIndex=1;
 
     [Header("Current Item_Cart_Managment")]
     [SerializeField] private Image currentManagmentItemIcon;
@@ -130,6 +130,7 @@ public class CityUI : MonoBehaviour
     [Header("Current Upgrade_Cart_Managment")]
     [SerializeField] private Image currentManagmentUpgradeIcon;
     [SerializeField] private TextMeshProUGUI currentManagmentUpgradeName;
+    [SerializeField] private TextMeshProUGUI currentManagmentUpgradeBonus;
 
     [Header("PAGES")]
     [SerializeField] private GameObject LobbyPanel;
@@ -673,7 +674,36 @@ public class CityUI : MonoBehaviour
     {
         currentManagmentItemIcon.sprite = shopItem.IconImage.sprite;
         currentManagmentItemName.text = shopItem.cargo.cargoSO.itemName;
+        int i = shopItem.cargo.upgradesSpaces;
+        for (i;)
     } 
+
+    public void SetCurrentCartManagemtnUpgrade(UpgradeItemDisplay upgradeItem)
+    {
+       
+        currentManagmentUpgradeIcon.sprite = upgradeItem.iconImage.sprite;
+        currentManagmentUpgradeName.text = upgradeItem.upgrade.cargoSO.itemName;
+
+        currentManagmentUpgradeBonus.text = "";
+            if (upgradeItem.upgrade.cargoSO.itemMaxVolume != 0)
+            {
+                currentManagmentUpgradeBonus.text = "Volume : + " + upgradeItem.upgrade.cargoSO.itemMaxVolume.ToString() + "    ";
+                if (upgradeItem.upgrade.cargoSO.itemMaxWeight != 0)
+                {
+                    currentManagmentUpgradeBonus.text += "Weight : + " + upgradeItem.upgrade.cargoSO.itemMaxWeight.ToString();
+                     return;
+                }
+
+
+            }
+            else if (upgradeItem.upgrade.cargoSO.itemMaxWeight != 0)
+            {
+                currentManagmentUpgradeBonus.text += "Weight : + " + upgradeItem.upgrade.cargoSO.itemMaxWeight.ToString();
+            }
+           
+        
+        
+    }
 
     public void ChangeCargoContentPage(int x)
     {
@@ -685,7 +715,9 @@ public class CityUI : MonoBehaviour
     //REST 
     //############
 
-    //BUTTONS FUNCTIONS
+    //############
+    //Button Functo
+    //############
     public void ChangePage(int pageIndex)
     {
         ShowCurrentPage((CityUIPage)pageIndex);

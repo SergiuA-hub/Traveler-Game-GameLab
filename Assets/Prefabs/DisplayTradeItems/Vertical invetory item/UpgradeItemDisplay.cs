@@ -25,6 +25,16 @@ public class UpgradeItemDisplay : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        cityUi.SetCurrentUpgradeItem(this);
+        
+        if(cityUi.currentpage == CityUIPage.UpgradeShop)
+        {
+            cityUi.SetCurrentUpgradeItem(this);
+
+        } 
+
+        if(cityUi.currentpage == CityUIPage.CartManagment)
+        {
+            cityUi.SetCurrentCartManagemtnUpgrade(this);
+        }
     }
 }
