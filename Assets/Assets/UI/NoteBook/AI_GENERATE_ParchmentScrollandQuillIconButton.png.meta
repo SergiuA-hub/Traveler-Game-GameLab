@@ -1,28 +1,10 @@
 fileFormatVersion: 2
-guid: a2d15d58b1a71c94c8503bf1efe5eae2
+guid: a7496d5468717484eb71cc0fc177deb2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2523060059494426733
-    second: AI_GENERATE_ParchmentScrollandQuillIcon_0
-  - first:
-      213: 7469452905296965007
-    second: AI_GENERATE_ParchmentScrollandQuillIcon_1
-  - first:
-      213: -2080072998112266227
-    second: AI_GENERATE_ParchmentScrollandQuillIcon_2
-  - first:
-      213: -8580972934400361878
-    second: AI_GENERATE_ParchmentScrollandQuillIcon_3
-  - first:
-      213: -8146419871715628203
-    second: AI_GENERATE_ParchmentScrollandQuillIcon_4
-  - first:
-      213: 8940975141647193950
-    second: AI_GENERATE_ParchmentScrollandQuillIcon_5
-  - first:
-      213: -7307622890660455960
-    second: AI_GENERATE_ParchmentScrollandQuillIcon_6
+      213: -8691604100778290817
+    second: AI_GENERATE_ParchmentScrollandQuillIconButton_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -114,17 +96,56 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AI_GENERATE_ParchmentScrollandQuillIcon_0
+      name: AI_GENERATE_ParchmentScrollandQuillIconButton_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 23
-        width: 1315
-        height: 1141
+        x: 10
+        y: 42
+        width: 940
+        height: 897
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,140 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 397dbde5e3a4cfcd0800000000000000
-      internalID: -2523060059494426733
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_ParchmentScrollandQuillIcon_1
-      rect:
-        serializedVersion: 2
-        x: 521
-        y: 1151
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f8d2cbea7d3d8a760800000000000000
-      internalID: 7469452905296965007
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_ParchmentScrollandQuillIcon_2
-      rect:
-        serializedVersion: 2
-        x: 1234
-        y: 584
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d08f2a001a81223e0800000000000000
-      internalID: -2080072998112266227
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_ParchmentScrollandQuillIcon_3
-      rect:
-        serializedVersion: 2
-        x: 1313
-        y: 574
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a6a33d184924ae880800000000000000
-      internalID: -8580972934400361878
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_ParchmentScrollandQuillIcon_4
-      rect:
-        serializedVersion: 2
-        x: 1322
-        y: 347
-        width: 8
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 55be43bc94a12fe80800000000000000
-      internalID: -8146419871715628203
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_ParchmentScrollandQuillIcon_5
-      rect:
-        serializedVersion: 2
-        x: 90
-        y: 172
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e579a7f1589b41c70800000000000000
-      internalID: 8940975141647193950
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AI_GENERATE_ParchmentScrollandQuillIcon_6
-      rect:
-        serializedVersion: 2
-        x: 286
-        y: 7
-        width: 14
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8e99ba9c2bb169a90800000000000000
-      internalID: -7307622890660455960
+      spriteID: f7118c4de18316780800000000000000
+      internalID: -8691604100778290817
       vertices: []
       indices: 
       edges: []
@@ -275,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -285,13 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AI_GENERATE_ParchmentScrollandQuillIcon_0: -2523060059494426733
-      AI_GENERATE_ParchmentScrollandQuillIcon_1: 7469452905296965007
-      AI_GENERATE_ParchmentScrollandQuillIcon_2: -2080072998112266227
-      AI_GENERATE_ParchmentScrollandQuillIcon_3: -8580972934400361878
-      AI_GENERATE_ParchmentScrollandQuillIcon_4: -8146419871715628203
-      AI_GENERATE_ParchmentScrollandQuillIcon_5: 8940975141647193950
-      AI_GENERATE_ParchmentScrollandQuillIcon_6: -7307622890660455960
+      AI_GENERATE_ParchmentScrollandQuillIconButton_0: -8691604100778290817
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
