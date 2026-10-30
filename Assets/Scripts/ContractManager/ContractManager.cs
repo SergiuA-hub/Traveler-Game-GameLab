@@ -109,7 +109,14 @@ public class ContractManager : MonoBehaviour
 
         GameServices.Instance.player.Root();
 
+        contractsWoodenPanel.GetComponent<ContractsBoardUI>().setup(panelInRange);
+
         ContractPanelButton.gameObject.SetActive(false);
         contractsWoodenPanel.SetActive(true);
+    }
+
+    public void showContractDetails(Contract contract)
+    {
+
     }
 }
