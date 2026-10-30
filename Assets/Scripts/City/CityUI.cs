@@ -127,6 +127,8 @@ public class CityUI : MonoBehaviour
     [Header("Current Item_Cart_Managment")]
     [SerializeField] private Image currentManagmentItemIcon;
     [SerializeField] private TextMeshProUGUI currentManagmentItemName;
+    [SerializeField] private Transform componentsArea;
+    [SerializeField] private UpgradeSlot upgradeSlotPrefab;
 
     [Header("Current Upgrade_Cart_Managment")]
     [SerializeField] private Image currentManagmentUpgradeIcon;
@@ -724,8 +726,19 @@ public class CityUI : MonoBehaviour
     {
         currentManagmentItemIcon.sprite = shopItem.IconImage.sprite;
         currentManagmentItemName.text = shopItem.cargo.cargoSO.itemName;
-        int i = shopItem.cargo.upgradesSpaces;
-        for (i;)
+
+        foreach (Transform child in componentsArea)
+        {
+            Destroy(child.gameObject);
+        }
+        //Set components Slots 
+        for (int i =1; i <= shopItem.cargo.upgradesSpaces; i++)
+        {
+            
+            //Display 
+            Instantiate(upgradeSlotPrefab, componentsArea);
+        }
+        
     } 
 
     public void SetCurrentCartManagemtnUpgrade(UpgradeItemDisplay upgradeItem)
@@ -777,7 +790,7 @@ public class CityUI : MonoBehaviour
     {
         ChangePage(0);
         //setlement.CityObjectUI.SetActive(false);
-        this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);               
         GameServices.Instance.player.UnRoot();
     }
 

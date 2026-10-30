@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6548089142417133468}
   - component: {fileID: 740377370246155601}
+  - component: {fileID: 7961713894466211950}
+  - component: {fileID: -1181125723246795204}
   m_Layer: 0
   m_Name: UpgradeItem
   m_TagString: Untagged
@@ -50,16 +52,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeItemDisplay
   iconImage: {fileID: 5090153800396602495}
-  itemName: {fileID: 0}
-  itemType: {fileID: 0}
-  price: {fileID: 0}
-  status: {fileID: 0}
   cityUi: {fileID: 0}
   upgrade:
-    ItemName: 
     cargoSO: {fileID: 0}
+    upgradesSpaces: 0
+    Upgrades: []
     category: 0
     type: 0
+--- !u!225 &7961713894466211950
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5789610475021129604}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &-1181125723246795204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5789610475021129604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bdff0143be9054cadd47d566c4941d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DragableUpgrade
+  dragAlpha: 0.8
+  parentAfterDrag: {fileID: 0}
 --- !u!1 &8986194649989996136
 GameObject:
   m_ObjectHideFlags: 0
