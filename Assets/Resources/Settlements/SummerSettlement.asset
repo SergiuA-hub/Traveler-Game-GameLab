@@ -127,29 +127,33 @@ MonoBehaviour:
     tier5_price_stock: 30
     licenseCost: -1
   itemsShop:
-  - ItemName: Worn Backpack
+  - weight: 0
+    volume: 0
     cargoSO: {fileID: 11400000, guid: 430f33826f9ed7140bf686cffa1873c4, type: 2}
+    upgradesSpaces: 0
+    Upgrades: []
     category: 0
     type: 0
-  - ItemName: Merchant Backpack
+  - weight: 0
+    volume: 0
     cargoSO: {fileID: 11400000, guid: c8d8048bcf838dc4286f7d1d98bb56ef, type: 2}
+    upgradesSpaces: 0
+    Upgrades: []
     category: 0
     type: 0
   upgradeShop:
-  - ItemName: Reinforced Backpack
-    cargoSO: {fileID: 11400000, guid: f85ddd264843b5645ba56b233fcce575, type: 2}
+  - weight: 0
+    volume: 0
+    cargoSO: {fileID: 11400000, guid: 0a54f8617e2791142aae11883103bd84, type: 2}
+    upgradesSpaces: 0
+    Upgrades: []
     category: 0
     type: 0
-  - ItemName: Sturdy Backapack
-    cargoSO: {fileID: 11400000, guid: ee74e63db67958a45886689fba9bccec, type: 2}
-    category: 0
-    type: 0
-  - ItemName: Merchant Backpack
-    cargoSO: {fileID: 11400000, guid: c8d8048bcf838dc4286f7d1d98bb56ef, type: 2}
-    category: 0
-    type: 0
-  - ItemName: Masterwork Backpack
-    cargoSO: {fileID: 11400000, guid: c8d8048bcf838dc4286f7d1d98bb56ef, type: 2}
+  - weight: 0
+    volume: 0
+    cargoSO: {fileID: 11400000, guid: 05286b5baa4fc674eb18c05aa728bdc3, type: 2}
+    upgradesSpaces: 0
+    Upgrades: []
     category: 0
     type: 0
   Licenses_Shop:

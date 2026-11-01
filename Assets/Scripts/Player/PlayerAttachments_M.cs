@@ -17,9 +17,6 @@ public class PlayerAttachments_M : MonoBehaviour
         return currentItemSelected;
     }
 
-    public void SetCurrentPlayerSprite()
-    {
-        //set the player from the cargoSO 
-    }
+    
 
 }

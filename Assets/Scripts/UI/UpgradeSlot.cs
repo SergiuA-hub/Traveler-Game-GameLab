@@ -1,10 +1,14 @@
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UpgradeSlot : MonoBehaviour
 {
-
+    public Image icon;
+   
+    public void PopulateSlot(CargoSO cargo)
+    {
+        icon.sprite = cargo.icon;
+    }
 }
 
 

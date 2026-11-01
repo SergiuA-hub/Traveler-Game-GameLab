@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class UpgradeFrame : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public Transform SlotPlace;
+    public UpgradeSlot upgradeSlot;
 
-    // Update is called once per frame
-    void Update()
+    public Transform ReturnSlotPlace()
     {
-        
+        return SlotPlace;
     }
 }

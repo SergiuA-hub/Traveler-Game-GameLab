@@ -124,7 +124,9 @@ public class CityUI : MonoBehaviour
     [SerializeField] private Image currentManagmentItemIcon;
     [SerializeField] private TextMeshProUGUI currentManagmentItemName;
     [SerializeField] private Transform componentsArea;
+    [SerializeField] private Transform upgradeComponentsArea;
     [SerializeField] private UpgradeSlot upgradeSlotPrefab;
+    [SerializeField] private UpgradeFrame upgradeFramePrefab;
 
     [Header("Current Upgrade_Cart_Managment")]
     [SerializeField] private Image currentManagmentUpgradeIcon;
@@ -721,7 +723,7 @@ public class CityUI : MonoBehaviour
         }
 
 
-
+        //Set pages
         if (pageIndex == 1)
         {
            
@@ -742,12 +744,22 @@ public class CityUI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        foreach (Transform child in upgradeComponentsArea)
+        {
+            Destroy(child.gameObject);
+        }
         //Set components Slots 
         for (int i =1; i <= shopItem.cargo.upgradesSpaces; i++)
         {
+            //Frame
+            Instantiate(upgradeFramePrefab, componentsArea);
             
-            //Display 
-            Instantiate(upgradeSlotPrefab, componentsArea);
+        }
+        //out of index
+        for (int i = 0; i <= shopItem.cargo.Upgrades.Count; i++)
+        {
+            UpgradeSlot slot = Instantiate(upgradeSlotPrefab, upgradeComponentsArea);
+            slot.PopulateSlot(shopItem.cargo.Upgrades[i]);
         }
         
     } 

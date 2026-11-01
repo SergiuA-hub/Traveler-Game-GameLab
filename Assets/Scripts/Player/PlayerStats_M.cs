@@ -90,10 +90,10 @@ public class PlayerStats_M : MonoBehaviour
         MaxSpeeed = maxBaseSpeed * (GlobalSettingsManager.HOUR_DURATION / timeModifier);
     }
 
-    private void GetItemValues(Cargo cargo)
+    public void GetItemValues(Cargo cargo)
     {
-        maxVolume = cargo.cargoSO.itemMaxVolume;
-        maxWeight = cargo.cargoSO.itemMaxWeight;
+        maxVolume = cargo.volume;
+        maxWeight = cargo.weight;
     }
     public void setWeatherModifiers(WeatherType weather)
     {
