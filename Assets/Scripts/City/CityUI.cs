@@ -1,14 +1,8 @@
-using JetBrains.Annotations;
-using Mono.Cecil;
-using NUnit.Framework;
-using System;
-using System.ComponentModel;
+using System.Collections.Generic;
 using TMPro;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public enum CityUIPage
 {
@@ -121,8 +115,10 @@ public class CityUI : MonoBehaviour
     [Header("Cart Managment Display")]
     [SerializeField] private Transform managmentContent;
     [SerializeField] private UpgradeItemDisplay upgradeDisplayPrefab;
+    [SerializeField] public List<UpgradeItemDisplay> upgradeList = new List<UpgradeItemDisplay>();
 
-     private int pageIndex=1;
+    [SerializeField] public List<ShopItemDisplay> itemsList = new List<ShopItemDisplay>();
+    private int pageIndex=1;
 
     [Header("Current Item_Cart_Managment")]
     [SerializeField] private Image currentManagmentItemIcon;
@@ -692,38 +688,53 @@ public class CityUI : MonoBehaviour
     {
         
 
-        //Delete extinting items 
-        
-        if(pageIndex == 1)
+        foreach (Transform child in managmentContent)
         {
-            foreach (Transform child in managmentContent)
-            {
-                Destroy(child.gameObject);
-            }
-            //Display invetory items
+            Destroy(child.gameObject);
 
-            foreach (var item in CargoManager.instance.PlayerOwnedCargo)
+        }
+        foreach (var item in CargoManager.instance.PlayerOwnedCargo)
+        {
+            ShopItemDisplay row = Instantiate(ItemShopPrefab, managmentContent);
+            row.PopulateIcons(item, this);
+            itemsList.Add(row);
+
+
+        }
+        foreach (var upgrades in CargoManager.instance.PlayerOwnedUpgrades)
+        {
+            UpgradeItemDisplay row = Instantiate(upgradeDisplayPrefab, managmentContent);
+            row.PopulateUpgrade(upgrades, this);
+            upgradeList.Add(row);
+
+        }
+        if (settlementsManager.currentManagmentItem == null)
+        {
+            foreach (ShopItemDisplay item in itemsList)
             {
-                ShopItemDisplay row = Instantiate(ItemShopPrefab, managmentContent);
-                row.PopulateIcons(item, this);
+                
+                    SetCurrentCartManagmentItem(item);
+                
+               
             }
+
+        }
+
+
+
+        if (pageIndex == 1)
+        {
+           
         }
         else if (pageIndex == 2)  
         {
-            foreach (Transform child in managmentContent)
-            {
-                Destroy(child.gameObject);
-            }
-            //Display invetory upgrades
-            foreach (var item in CargoManager.instance.PlayerOwnedUpgrades)
-            {
-                UpgradeItemDisplay row = Instantiate(upgradeDisplayPrefab, managmentContent);
-                row.PopulateUpgrade(item, this);
-            }
+            
+            
         }
     }
     public void SetCurrentCartManagmentItem(ShopItemDisplay shopItem)
     {
+        settlementsManager.currentManagmentItem = shopItem;
         currentManagmentItemIcon.sprite = shopItem.IconImage.sprite;
         currentManagmentItemName.text = shopItem.cargo.cargoSO.itemName;
 
@@ -743,7 +754,7 @@ public class CityUI : MonoBehaviour
 
     public void SetCurrentCartManagemtnUpgrade(UpgradeItemDisplay upgradeItem)
     {
-       
+        settlementsManager.currentManagmentUpgrade = upgradeItem;
         currentManagmentUpgradeIcon.sprite = upgradeItem.iconImage.sprite;
         currentManagmentUpgradeName.text = upgradeItem.upgrade.cargoSO.itemName;
 

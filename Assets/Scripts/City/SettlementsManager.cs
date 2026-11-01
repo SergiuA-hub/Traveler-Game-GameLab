@@ -200,7 +200,9 @@ public class SettlementsManager : MonoBehaviour
     public ShopItemDisplay currentShopItemSelected;
     public UpgradeItemDisplay currentUpgradeItem;
     public LicenceItemDisplay currentLicenceSelected;
-   
+    [Header("Cart Managment")]
+    public ShopItemDisplay currentManagmentItem;
+    public UpgradeItemDisplay currentManagmentUpgrade;
     public SettlementRuntime currentSettlement;
 
     //Managers
@@ -491,5 +493,23 @@ public class SettlementsManager : MonoBehaviour
           
     }
 
+    //Equip upgrade on item
+    public void EquipUpgrade()
+    {
+        if(currentManagmentUpgrade == null || currentManagmentItem == null)
+        {
+            return;
+        }
+        //Add it to current item selected
+        currentManagmentItem.cargo.Upgrades.Add(currentManagmentUpgrade.upgrade.cargoSO);
+        currentManagmentItem.cargo.CalculateTotalWeightAndVolume();
+
+        //Remove upgrade from player cargo  
+
+        CargoManager.instance.RemoveCargoItemFromInvetory(currentManagmentUpgrade.upgrade);
+        cityUI.DisplayCartManagmentPanel();
+
+        //currentManagmentUpgrade;
+    }
     
 }

@@ -68,12 +68,15 @@ public enum ItemType
 [System.Serializable]
 public class Cargo
 {
-   
+    //Total Stats
+    public float weight;
+    public float volume;
+
     public CargoSO cargoSO;
 
     //Upgrading Items
     public int upgradesSpaces;
-    public CargoSO[] Upgrades;
+    public List<CargoSO> Upgrades = new List<CargoSO>();
     
 
     //Item enums
@@ -81,13 +84,26 @@ public class Cargo
     public ItemType type;
     
 
-    public Cargo( CargoSO cargoSO,int upSpace, CargoSO[] upgrades ,CargoCategory category,ItemType type)
+    public Cargo( CargoSO cargoSO,int upSpace, List<CargoSO> upgrades ,CargoCategory category,ItemType type)
     {
         this.cargoSO = cargoSO;
         this.upgradesSpaces = upSpace;
         this.Upgrades = upgrades;
         this.category= category;
         this .type = type;
+        this.weight = cargoSO.itemMaxWeight;
+        this.volume= cargoSO.itemMaxVolume;
+    }
+
+    public void CalculateTotalWeightAndVolume()
+    {
+        weight = cargoSO.itemMaxWeight;
+
+        //Adding Upgrades
+        foreach (CargoSO item in Upgrades)
+        {
+            weight += item.itemMaxWeight;
+        }
     }
 
     
