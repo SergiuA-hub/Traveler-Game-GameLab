@@ -270,16 +270,5 @@ public class ContractManager : MonoBehaviour
         {
             amountBought += (int)amount;            
         }
-    }
-
-    private void Update()
-    {
-        var keyboard = Keyboard.current;
-        if (keyboard == null) return;
-
-        if (keyboard.spaceKey.wasPressedThisFrame)
-        {
-            resetPanelContracts(new DateTime());
-        }
-    }
+    }    
 }
