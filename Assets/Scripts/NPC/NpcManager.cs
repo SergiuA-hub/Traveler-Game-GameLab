@@ -281,11 +281,15 @@ public class NpcManager : MonoBehaviour
         {
             if (spawnPoint.season == season)
             {
-                GameObject npcObject = Instantiate(spawnPoint.npcPrefab,spawnPoint.spawnPoint.transform);
-                npcObject.transform.localPosition= Vector3.zero;
-                Npc npc = npcObject.GetComponent<Npc>();
-                npc.setNpcManager(this, timeManager);                
-                npc.animateIdle();
+                float roll = UnityEngine.Random.Range(0f, 100f);
+                if (roll <= spawnPoint.spawnChance)
+                {
+                    GameObject npcObject = Instantiate(spawnPoint.npcPrefab,spawnPoint.spawnPoint.transform);
+                    npcObject.transform.localPosition= Vector3.zero;
+                    Npc npc = npcObject.GetComponent<Npc>();
+                    npc.setNpcManager(this, timeManager);                
+                    npc.animateIdle();
+                }
             }
             else
             {
