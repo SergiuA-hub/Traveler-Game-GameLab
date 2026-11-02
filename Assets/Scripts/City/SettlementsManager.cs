@@ -216,7 +216,7 @@ public class SettlementsManager : MonoBehaviour
 
         calculateDailyPrices();
 
-        currentManagmentItem.cargo = player.attachments.currentItemSelected;
+        
     }
 
     public void initializeSettlements()
@@ -507,12 +507,13 @@ public class SettlementsManager : MonoBehaviour
         currentManagmentItem.cargo.CalculateTotalWeightAndVolume();
 
         //Remove upgrade from player cargo  
-
         CargoManager.instance.RemoveCargoItemFromInvetory(currentManagmentUpgrade.upgrade);
         cityUI.DisplayCartManagmentPanel();
         //Add it to player stats
         player.stats.GetItemValues(player.attachments.currentItemSelected);
 
+        //Visual 
+        cityUI.SetCurrentCartManagmentItem(currentManagmentItem);
         //currentManagmentUpgrade;
     }
     

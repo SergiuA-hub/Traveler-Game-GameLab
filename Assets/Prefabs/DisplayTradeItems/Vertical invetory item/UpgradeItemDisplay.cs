@@ -7,11 +7,15 @@ using static UnityEditor.Progress;
 public class UpgradeItemDisplay : MonoBehaviour, IPointerClickHandler
 {
     public Image iconImage;
-    
+    public Image Selected;
     
     public CityUI cityUi;
     public Cargo upgrade;
 
+    private void OnEnable()
+    {
+        Selected.gameObject.SetActive(false);
+    }
     public void PopulateUpgrade(Cargo cargo,CityUI city )
     {
         //Components
@@ -22,7 +26,19 @@ public class UpgradeItemDisplay : MonoBehaviour, IPointerClickHandler
         iconImage.sprite = cargo.cargoSO.icon;
        
     }
+    public void SetActivSelectedUpgrade()
+    {
+        if(cityUi.settlementsManager.currentManagmentUpgrade != null)
+        {
+            cityUi.settlementsManager.currentManagmentUpgrade.Selected.gameObject.SetActive(false);
+        }
 
+        cityUi.settlementsManager.currentManagmentUpgrade = this;
+        Selected.gameObject.SetActive(true);
+
+
+    }
+   
     public void OnPointerClick(PointerEventData eventData)
     {
         

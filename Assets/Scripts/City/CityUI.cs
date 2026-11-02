@@ -697,9 +697,29 @@ public class CityUI : MonoBehaviour
         }
         foreach (var item in CargoManager.instance.PlayerOwnedCargo)
         {
+            if(item == null)
+            {
+                return;
+            }
+           
             ShopItemDisplay row = Instantiate(ItemShopPrefab, managmentContent);
+            
             row.PopulateIcons(item, this);
-            itemsList.Add(row);
+            
+
+            foreach (ShopItemDisplay itemShop in itemsList)
+            {
+                if (row == itemShop )
+                {
+                    return;
+                    
+                }
+                else
+                {
+                    itemsList.Add(row);
+                }
+            }
+            
 
 
         }
@@ -707,36 +727,29 @@ public class CityUI : MonoBehaviour
         {
             UpgradeItemDisplay row = Instantiate(upgradeDisplayPrefab, managmentContent);
             row.PopulateUpgrade(upgrades, this);
+            
             upgradeList.Add(row);
 
         }
-        if (settlementsManager.currentManagmentItem == null)
-        {
-            foreach (ShopItemDisplay item in itemsList)
-            {
-                
-                    SetCurrentCartManagmentItem(item);
-                
-               
-            }
-
-        }
-
-
+        
+        
         //Set pages
         if (pageIndex == 1)
         {
-           
+            
         }
         else if (pageIndex == 2)  
         {
-            
             
         }
     }
     public void SetCurrentCartManagmentItem(ShopItemDisplay shopItem)
     {
-        settlementsManager.currentManagmentItem = shopItem;
+        if(settlementsManager.currentManagmentItem == null)
+        {
+            settlementsManager.currentManagmentItem = shopItem;
+        }
+        
         currentManagmentItemIcon.sprite = shopItem.IconImage.sprite;
         currentManagmentItemName.text = shopItem.cargo.cargoSO.itemName;
 
@@ -755,8 +768,7 @@ public class CityUI : MonoBehaviour
             Instantiate(upgradeFramePrefab, componentsArea);
             
         }
-        //out of index
-        for (int i = 0; i <= shopItem.cargo.Upgrades.Count; i++)
+        for (int i = 0; i <= shopItem.cargo.Upgrades.Count-1; i++)
         {
             UpgradeSlot slot = Instantiate(upgradeSlotPrefab, upgradeComponentsArea);
             slot.PopulateSlot(shopItem.cargo.Upgrades[i]);
@@ -769,7 +781,7 @@ public class CityUI : MonoBehaviour
         settlementsManager.currentManagmentUpgrade = upgradeItem;
         currentManagmentUpgradeIcon.sprite = upgradeItem.iconImage.sprite;
         currentManagmentUpgradeName.text = upgradeItem.upgrade.cargoSO.itemName;
-
+        upgradeItem.SetActivSelectedUpgrade(); 
         currentManagmentUpgradeBonus.text = "";
             if (upgradeItem.upgrade.cargoSO.itemMaxVolume != 0)
             {

@@ -91,8 +91,7 @@ public class Cargo
         this.Upgrades = upgrades;
         this.category= category;
         this .type = type;
-        this.weight = cargoSO.itemMaxWeight;
-        this.volume= cargoSO.itemMaxVolume;
+        
     }
 
     public void CalculateTotalWeightAndVolume()
