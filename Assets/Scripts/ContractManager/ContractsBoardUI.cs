@@ -14,8 +14,9 @@ public class ContractsBoardUI : MonoBehaviour
 
     public void setup(SettlementContractsPanel panel)
     {
-        boardPanel = panel;
+        clearBoard();
 
+        boardPanel = panel;
         int index = 0;
         foreach(var contract in boardPanel.contractBoardList)
         {
@@ -30,6 +31,32 @@ public class ContractsBoardUI : MonoBehaviour
 
             index++;
         }
+    }
 
+    public void refreshQuestPanel()
+    {
+        clearBoard();
+        setup(boardPanel);
+    }
+
+    public void clearBoard()
+    {
+        for(int i=0; i< placeholdersList.Count; i++)
+        {
+            if (placeholdersList[i].transform.childCount > 0)
+            {
+                foreach (Transform child in placeholdersList[i].transform)
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+        }
+    }
+
+    public void closeBoard()
+    {
+        clearBoard();
+        GameServices.Instance.player.UnRoot();
+        this.gameObject.SetActive(false);
     }
 }

@@ -34,6 +34,10 @@ public class LicenseManager : MonoBehaviour
                 return true;
             
         }
+
+        if(settlementSO.settlementNeedsResource(resource))
+            return true;
+
         return false;
     }
 }

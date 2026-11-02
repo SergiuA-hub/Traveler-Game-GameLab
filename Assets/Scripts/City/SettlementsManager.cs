@@ -42,9 +42,11 @@ public class SettlementRuntime
     public List<LicensesSO> settlmentLicenses;
     public GameObject settlementGo;
     public SettlementContractsPanel contractsPanel;
+    public float reputation;
     public SettlementRuntime(SettlementSO so)
     {
         defaultSettlementData = so;
+        reputation = 0;
         this.settlementName = defaultSettlementData.settlementName;
         settlementShopItems = new List<Cargo>();
         settlmentUpgradeItems = new List<Cargo>();
@@ -252,6 +254,15 @@ public class SettlementsManager : MonoBehaviour
             settlements.Add(currentSettlement);
         }
     }
+    public void refreshSettlementQuests()
+    {
+        //currentSettlement.contractsPanel
+        //foreach (var settl in settlements)
+        //{
+
+        //    settl.contractsPanel = contractsPanel
+        //}
+    }
     public void OnDestroy()
     {
         if(timeManager != null)
@@ -368,8 +379,9 @@ public class SettlementsManager : MonoBehaviour
             GameServices.Instance.player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, transactionTotalPrice/amount,amount);
             currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource, amount);
             updateCurrentSettlementPrices();
-
-            cityUI.DisplayTrade();
+            GameServices.Instance.contractManager.buyResources(currentItemSelected.tradeSettlementItem.resource, amount, currentSettlement.defaultSettlementData);
+            
+            cityUI.DisplayTrade();            
             return;
         }
 
@@ -379,10 +391,13 @@ public class SettlementsManager : MonoBehaviour
             player.invetory.tradeOut(currentItemSelected.tradeInventoryItem.resourceSO, transactionTotalPrice/amount, amount);
             currentSettlement.increaseStock(currentItemSelected.tradeInventoryItem.resourceSO, cityUI.ReturnCurentSliderValue());
             updateCurrentSettlementPrices();
-
+            GameServices.Instance.contractManager.sellResources(currentItemSelected.tradeInventoryItem.resourceSO, amount, currentSettlement.defaultSettlementData);
+            
             cityUI.DisplayTrade();
+            return;
         }
     }
+
     public void BuyOrSell()
     {   
         if(currentItemSelected.isLocked == false)
@@ -495,5 +510,16 @@ public class SettlementsManager : MonoBehaviour
           
     }
 
-    
+    public void addReputation(SettlementSO settlement, float amount)
+    {
+        foreach (var settl in settlements)
+        {
+            if (settl.defaultSettlementData.settlementName == settlement.settlementName)
+            {
+                settl.reputation += amount;
+                Debug.Log($"Reputation for {settl.settlementName} is now {settl.reputation}");
+            }
+        }
+    }
+
 }

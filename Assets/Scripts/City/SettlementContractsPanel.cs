@@ -18,6 +18,16 @@ public class SettlementContractsPanel : MonoBehaviour
         contractBoardList.Add(contract);
     }
 
+    public void clearContracts()
+    {
+        contractBoardList.Clear();
+    }
+
+    public void RemoveContract(Contract contract)
+    {
+        contractBoardList.Remove(contract);
+    }
+
     public void setNewFlag(bool flag)
     {
         newContracts = flag;

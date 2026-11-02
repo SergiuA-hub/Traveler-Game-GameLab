@@ -26,7 +26,7 @@ public class ContractPanelPrefab : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         contract = c;
 
-        contractResIcon.sprite = contract.contractRequest.resourceSO.sprite;
+        contractResIcon.sprite = contract.contractRequest.sprite;
 
         setContractType(contract);
     }
