@@ -31,6 +31,7 @@ public class CityUI : MonoBehaviour
     [SerializeField] private VerticalInvetoryItem itemPrefab;
     [SerializeField] private Transform Content;
     [SerializeField] private TMP_Text settlementName;
+    [SerializeField] private TMP_Text reputation;
 
     [Header("Trade Panel")]
     [SerializeField] private TradeItemDisplay tradePrfab;
@@ -204,6 +205,8 @@ public class CityUI : MonoBehaviour
     private void DisplayInvetory()
     {
         settlementName.text = currentSettlement.settlementName;
+        reputation.text = $"Reputation\n{currentSettlement.reputation:F1}";
+
         //Delete List
         foreach (Transform child in Content)
         {

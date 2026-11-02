@@ -392,7 +392,12 @@ public class SettlementsManager : MonoBehaviour
             currentSettlement.increaseStock(currentItemSelected.tradeInventoryItem.resourceSO, cityUI.ReturnCurentSliderValue());
             updateCurrentSettlementPrices();
             GameServices.Instance.contractManager.sellResources(currentItemSelected.tradeInventoryItem.resourceSO, amount, currentSettlement.defaultSettlementData);
-            
+
+            if(currentSettlement.defaultSettlementData.settlementNeedsResource(currentItemSelected.tradeInventoryItem.resourceSO))
+            {
+                currentSettlement.reputation += GlobalSettingsManager.REPUTATION_GAIN_PER_SALE * amount;
+            }
+
             cityUI.DisplayTrade();
             return;
         }
