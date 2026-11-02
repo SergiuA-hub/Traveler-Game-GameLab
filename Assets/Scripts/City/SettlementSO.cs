@@ -14,8 +14,16 @@ public class SettlementSO : ScriptableObject
     public List<Cargo> upgradeShop;
     public List<LicensesSO> Licenses_Shop;
 
+    public bool settlementNeedsResource(ResourceSO resource)
+    {
+        foreach (var good in consumption)
+        {
+            if (good.resource == resource)
+                return true;
+        }
+        return false;
+    }
 
-    
 }
 
 [System.Serializable]

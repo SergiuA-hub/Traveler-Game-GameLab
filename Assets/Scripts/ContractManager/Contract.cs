@@ -1,22 +1,28 @@
 using System;
 using UnityEngine;
 
+[Serializable]
 public class Contract
 {
     public SettlementSO settlement;
     public ContractType contractType;
-    public ResourceAmount contractRequest;
+    public ResourceSO contractRequest;
+    public float contractTotalAmount;
     public float contractRemainingHours;
-    public DateTime contractEndDate;
+    public float contractRemainingAmount;
+    public float contractDuration;
     public float rewardCoins;
     public float rewardReputation;
-
-    public Contract(SettlementSO settlementSO, ContractType cType, ResourceAmount res, DateTime endDate, float rewardC, float rewardRep)
+    public Contract(SettlementSO settlementSO, ContractType cType, ResourceSO res,float amount, float duration, float rewardC, float rewardRep)
     {
         settlement = settlementSO;
         contractType = cType;
         contractRequest = res;
-        contractEndDate = endDate;
+        contractTotalAmount = amount;
+        contractRemainingAmount = contractTotalAmount;
+
+        contractDuration = duration;
+        contractRemainingHours = contractDuration;
         rewardCoins = rewardC;
         rewardReputation = rewardRep;
     }
