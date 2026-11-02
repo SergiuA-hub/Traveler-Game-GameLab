@@ -10,6 +10,8 @@ public class NpcManager : MonoBehaviour
     private Player_M player;
     private TimeManager timeManager;
 
+    public List<StaticNPCSpawnPoint> staticSpawnPoints;
+
     public float npcVisibleDistance = 30f;
     public bool optimizeNpcVizibility;
     public int maxAliveNPC;
@@ -271,5 +273,30 @@ public class NpcManager : MonoBehaviour
     {
         if (npcPlayerCanInteract.Count > 0)
             npcPlayerCanInteract[0].Interact();
+    }
+
+    public void playerEnteredArea(Season season)
+    {
+        foreach (StaticNPCSpawnPoint spawnPoint in staticSpawnPoints)
+        {
+            if (spawnPoint.season == season)
+            {
+                GameObject npcObject = Instantiate(spawnPoint.npcPrefab,spawnPoint.spawnPoint.transform);
+                npcObject.transform.localPosition= Vector3.zero;
+                Npc npc = npcObject.GetComponent<Npc>();
+                npc.setNpcManager(this, timeManager);                
+                npc.animateIdle();
+            }
+            else
+            {
+                if (spawnPoint.spawnPoint.childCount > 0)
+                {
+                    foreach (Transform child in spawnPoint.spawnPoint)
+                    {
+                        Destroy(child.gameObject);
+                    }
+                }
+            }
+        }
     }
 }
