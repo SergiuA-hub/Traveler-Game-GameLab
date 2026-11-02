@@ -11,7 +11,7 @@ public class Npc : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public Vector3 pathOffset = new Vector3(0f, 0.5f, 0f);
     public float speed = 1f;
     public bool forward = true;
-
+    public bool isStatic;
     [HideInInspector] public RoadPath currentRoad;
     [HideInInspector] public int currentWaypointIndex;
     public GameObject visuals;
@@ -50,7 +50,8 @@ public class Npc : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private void OnEnable()
     {
-        animateMove();
+        if(!isStatic)
+            animateMove();
     }
 
     public void Interact()
@@ -119,7 +120,8 @@ public class Npc : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void UnRoot()
     {
         rooted = false;
-        animateMove();
+        if(!isStatic)
+            animateMove();
     }
     
     public void OnPointerEnter(PointerEventData eventData)

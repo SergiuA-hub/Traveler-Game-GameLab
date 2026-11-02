@@ -12,7 +12,6 @@ public class TraderNpc : MonoBehaviour, INpcInteraction
     public bool haggled = false;
     public void Interact()
     {
-        Debug.Log("Open Trader UI");
         if (!npc.interested)
         {
             npc.showNotCurious();

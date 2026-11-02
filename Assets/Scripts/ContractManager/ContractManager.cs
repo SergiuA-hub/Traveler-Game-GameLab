@@ -66,7 +66,6 @@ public class ContractManager : MonoBehaviour
     {        
         contracts.Clear();
 
-        Debug.Log(GameServices.Instance.settlementManager.settlements.Count);
         foreach (var settlement in GameServices.Instance.settlementManager.settlements)
         {
             settlement.contractsPanel.clearContracts();
