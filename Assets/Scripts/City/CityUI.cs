@@ -97,7 +97,7 @@ public class CityUI : MonoBehaviour
     [SerializeField] private Image currentUpgradeItemIcon;
     [SerializeField] private TextMeshProUGUI currentUpgradeItemName;
     [SerializeField] private TextMeshProUGUI upgradeItemPrice;
-    [SerializeField] private TextMeshProUGUI upgradeItemDescription;
+    [SerializeField] private BulletLIstCreator bulletLIstCreator;
 
     [Header("TRADE GUILD PAGE")]
     [SerializeField] private Transform TradeGuildContent;
@@ -113,7 +113,8 @@ public class CityUI : MonoBehaviour
 
     
     [Header("Cart Managment Display")]
-    [SerializeField] private Transform managmentContent;
+    [SerializeField] private Transform itemManagmentContent;
+    [SerializeField] private Transform upgradeManagmentContent;
     [SerializeField] private UpgradeItemDisplay upgradeDisplayPrefab;
     [SerializeField] public List<UpgradeItemDisplay> upgradeList = new List<UpgradeItemDisplay>();
 
@@ -617,10 +618,10 @@ public class CityUI : MonoBehaviour
     {
         settlementsManager.currentUpgradeItem= item;
 
-        currentUpgradeItemIcon = item.iconImage;
+        currentUpgradeItemIcon.sprite = item.upgrade.cargoSO.icon;
         currentUpgradeItemName.text = item.upgrade.cargoSO.itemName.ToString();
         upgradeItemPrice.text = item.upgrade.cargoSO.price.ToString();
-        
+        bulletLIstCreator.CreateBulletList(settlementsManager.currentUpgradeItem.upgrade.cargoSO.features);
         
     }
 
@@ -688,9 +689,27 @@ public class CityUI : MonoBehaviour
     //############
     public void DisplayCartManagmentPanel()
     {
+        //Clear CityUI invetory Lists 
+        if(upgradeList != null)
+        {
+            foreach (UpgradeItemDisplay upgrade in upgradeList)
+            {
+                upgradeList.Remove(upgrade);
+            }
+        }
         
+        if(itemsList != null)
+        {
+            foreach (ShopItemDisplay item in itemsList)
+            {
+                itemsList.Remove(item);
+            }
+        }
+        
+        
+        //Display Invetory Items
 
-        foreach (Transform child in managmentContent)
+        foreach (Transform child in itemManagmentContent)
         {
             Destroy(child.gameObject);
 
@@ -702,7 +721,7 @@ public class CityUI : MonoBehaviour
                 return;
             }
            
-            ShopItemDisplay row = Instantiate(ItemShopPrefab, managmentContent);
+            ShopItemDisplay row = Instantiate(ItemShopPrefab, itemManagmentContent);
             
             row.PopulateIcons(item, this);
             
@@ -723,9 +742,11 @@ public class CityUI : MonoBehaviour
 
 
         }
+        //Display Invetory Upgrades
+
         foreach (var upgrades in CargoManager.instance.PlayerOwnedUpgrades)
         {
-            UpgradeItemDisplay row = Instantiate(upgradeDisplayPrefab, managmentContent);
+            UpgradeItemDisplay row = Instantiate(upgradeDisplayPrefab, upgradeManagmentContent);
             row.PopulateUpgrade(upgrades, this);
             
             upgradeList.Add(row);
@@ -733,15 +754,7 @@ public class CityUI : MonoBehaviour
         }
         
         
-        //Set pages
-        if (pageIndex == 1)
-        {
-            
-        }
-        else if (pageIndex == 2)  
-        {
-            
-        }
+        
     }
     public void SetCurrentCartManagmentItem(ShopItemDisplay shopItem)
     {

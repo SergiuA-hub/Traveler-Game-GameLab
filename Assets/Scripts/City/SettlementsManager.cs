@@ -502,19 +502,25 @@ public class SettlementsManager : MonoBehaviour
         {
             return;
         }
-        //Add it to current item selected
-        currentManagmentItem.cargo.Upgrades.Add(currentManagmentUpgrade.upgrade.cargoSO);
-        currentManagmentItem.cargo.CalculateTotalWeightAndVolume();
 
-        //Remove upgrade from player cargo  
-        CargoManager.instance.RemoveCargoItemFromInvetory(currentManagmentUpgrade.upgrade);
-        cityUI.DisplayCartManagmentPanel();
-        //Add it to player stats
-        player.stats.GetItemValues(player.attachments.currentItemSelected);
+        //Check if currentItem has space for upgrade
+        
+            //Add it to current item selected
+            currentManagmentItem.cargo.Upgrades.Add(currentManagmentUpgrade.upgrade.cargoSO);
+            currentManagmentItem.cargo.CalculateTotalWeightAndVolume();
+            //Remove upgrade from player cargo  
+            CargoManager.instance.RemoveCargoItemFromInvetory(currentManagmentUpgrade.upgrade);
+            cityUI.DisplayCartManagmentPanel();
+            //Add it to player stats
+            player.stats.GetItemValues(player.attachments.currentItemSelected);
 
-        //Visual 
-        cityUI.SetCurrentCartManagmentItem(currentManagmentItem);
-        //currentManagmentUpgrade;
+            //Visual 
+            cityUI.SetCurrentCartManagmentItem(currentManagmentItem);
+            currentManagmentUpgrade = null;
+
+        
+
+       
     }
     
 }
