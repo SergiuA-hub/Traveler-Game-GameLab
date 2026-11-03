@@ -576,6 +576,7 @@ public class CityUI : MonoBehaviour
         {
             ShopItemDisplay row = Instantiate(ItemShopPrefab, ShopContent);
             row.PopulateIcons(item, this);
+            SetCurrentShopItem(row);
         }
 
         
@@ -611,6 +612,7 @@ public class CityUI : MonoBehaviour
             UpgradeItemDisplay row = Instantiate(upgradeItemDisplayPrefab, UpgradeContent);
             row.PopulateUpgrade(item, this);
             settlementsManager.currentUpgradeItem =row ;
+            SetCurrentUpgradeItem(row);
         }
     }
 

@@ -97,11 +97,24 @@ public class Cargo
     public void CalculateTotalWeightAndVolume()
     {
         weight = cargoSO.itemMaxWeight;
-
+        volume = cargoSO.itemMaxVolume;
         //Adding Upgrades
         foreach (CargoSO item in Upgrades)
         {
             weight += item.itemMaxWeight;
+            volume += item.itemMaxVolume;
+        }
+    }
+
+    public bool CanAddUpgrade(CargoSO cargo)
+    {
+        if(Upgrades.Count < upgradesSpaces)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
