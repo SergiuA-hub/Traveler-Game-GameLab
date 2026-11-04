@@ -10,8 +10,11 @@ public class GameServices : MonoBehaviour
     public WeatherManager weatherManager;
     public NewCampManager campManager;
     public SettlementsManager settlementManager;
+    public LicenseManager licenseManager;
     public ContractManager contractManager;
     public EnvironmentManager environmentManager;
+    public WizardManager wizardManager;
+
     public WeatherVisualManager weatherVisual;
 
     [Header("UI")]

@@ -29,9 +29,14 @@ public class SeasonManager : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        HUDScript.currentSeason = season;
-        HUDScript.ChangeSeason();
-        environmentManager.setSeason(season);
-        weatherManager.setCurrentSeason(season);
+        //HUDScript.currentSeason = season;
+        //HUDScript.ChangeSeason();
+        //environmentManager.setSeason(season);
+        //weatherManager.setCurrentSeason(season);
+        GameServices.Instance.HUD.currentSeason = season;
+        GameServices.Instance.HUD.ChangeSeason();
+        GameServices.Instance.environmentManager.setSeason(season);
+        GameServices.Instance.weatherManager.setCurrentSeason(season);
+        GameServices.Instance.npcManager.playerEnteredArea(season);
     }
 }
