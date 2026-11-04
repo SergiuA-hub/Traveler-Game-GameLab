@@ -326,13 +326,10 @@ public class SettlementsManager : MonoBehaviour
 
     public void EnterCity()
     {
-        Debug.Log($"Player enering {playerAtSettlement}");
-
         foreach (var settlement in settlements)
         {
             if (settlement.settlementGo.name == playerAtSettlement.name)
             {
-                Debug.Log($"Player entered in {settlement.settlementName}");
                 currentSettlement = settlement;
                 SettlementUI.GetComponent<CityUI>().prepareSettlement(settlement);
 

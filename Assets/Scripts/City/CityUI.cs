@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Rendering.Universal.ShaderGUI;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public enum CityUIPage
 {
@@ -408,6 +406,7 @@ public class CityUI : MonoBehaviour
     {
         if(settlementsManager.currentItemSelected == null)
         {
+            Debug.LogWarning("No item selected for trade. Cannot set slider max value.");
             sliderAmount.maxValue = 0;
             sliderAmount.value = 0;
             return;
@@ -419,7 +418,7 @@ public class CityUI : MonoBehaviour
             float maxAmountBasedOnWeight = (GameServices.Instance.player.stats.maxWeight - GameServices.Instance.player.invetory.currentWeight) / settlementsManager.currentItemSelected.tradeSettlementItem.resource.weight;
             float maxAmountBasedOnVolume = (GameServices.Instance.player.stats.maxVolume - GameServices.Instance.player.invetory.currentVolume) / settlementsManager.currentItemSelected.tradeSettlementItem.resource.volume;
             //float maxAmountBasedOnCoins = GameServices.Instance.player.invetory.CurrentCoins / settlementsManager.currentItemSelected.tradeSettlementItem.resource.baseValue;
-            
+
             sliderAmount.maxValue = Mathf.Max(0, Mathf.FloorToInt(Mathf.Min(maxSetlementAmount,maxAmountBasedOnWeight,maxAmountBasedOnVolume)));
         }
 
@@ -960,7 +959,6 @@ public class CityUI : MonoBehaviour
     //initial setup
     public void prepareSettlement(SettlementRuntime settlement)
     {
-        Debug.Log($"prepareSettlement({settlement.settlementName})");
         currentSettlement = settlement;
         DisplayTrade();
     }

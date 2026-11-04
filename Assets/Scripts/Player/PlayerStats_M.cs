@@ -92,6 +92,7 @@ public class PlayerStats_M : MonoBehaviour
 
     public void GetItemValues(Cargo cargo)
     {
+        cargo.CalculateTotalWeightAndVolume();
         maxVolume = cargo.volume;
         maxWeight = cargo.weight;
     }

@@ -662942,7 +662942,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 721550664}
   m_HandleRect: {fileID: 721550663}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -674621,7 +674621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -25, y: 24.8}
+  m_AnchoredPosition: {x: -25, y: 24.800049}
   m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &272556664
@@ -819873,6 +819873,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1928349594743092773, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: visual
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928349594743092773, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: gameInput
       value: 
       objectReference: {fileID: 932758300}
@@ -819891,6 +819895,14 @@ PrefabInstance:
     - target: {fileID: 3230410155822635123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: timerCriticalValue
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3567988128967545564, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: maxVolume
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3567988128967545564, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: maxWeight
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3567988128967545564, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: maxStamina
@@ -819922,7 +819934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4539409219275482829, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: Inventory.Array.data[0].amount
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4539409219275482829, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: Inventory.Array.data[1].amount
@@ -819943,7 +819955,7 @@ PrefabInstance:
     - target: {fileID: 4539409219275482829, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: Inventory.Array.data[0].resourceSO
       value: 
-      objectReference: {fileID: 11400000, guid: 379b63d90c0fddd4ba4b5bd154b16d52, type: 2}
+      objectReference: {fileID: 11400000, guid: 1c8f8ca846032ec479d1044edc2c361a, type: 2}
     - target: {fileID: 4539409219275482829, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: Inventory.Array.data[1].resourceSO
       value: 
@@ -819962,7 +819974,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 74d1cb5eba7ad4543959d2562f0052e9, type: 2}
     - target: {fileID: 4539409219275482829, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: Inventory.Array.data[0].averageValue
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4539409219275482829, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: Inventory.Array.data[1].averageValue
@@ -1120335,7 +1120347,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2083993074}
   m_HandleRect: {fileID: 2083993073}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
