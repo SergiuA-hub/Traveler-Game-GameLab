@@ -56,7 +56,8 @@ public class CityUI : MonoBehaviour
 
     //Price Tier Display
     [Header("Current Item Price Tier")]
-
+    public GameObject TierDisplayPanel;
+    public TMP_Text additionalInfo;
     [SerializeField] private TextMeshProUGUI TierVAmoun;
     [SerializeField] private TextMeshProUGUI TierIVAmount;
     [SerializeField] private TextMeshProUGUI TierIIIAmount;
@@ -302,6 +303,15 @@ public class CityUI : MonoBehaviour
             settlementsManager.currentItemSelected = null;
             SliderMaxValue();
         }
+
+        if(settlementsManager.currentItemSelected == null)
+        {
+            TierDisplayPanel.SetActive(false);
+            additionalInfo.text = "Please select one resources to trade";
+            additionalInfo.gameObject.SetActive(true);
+            currentTradeItemName.text = "No selection";
+            currentTradeItemImage.gameObject.SetActive(false);
+        }
     }
 
     public void resetTransaction()
@@ -325,6 +335,9 @@ public class CityUI : MonoBehaviour
         currentTradeItemImage.sprite = item.itemIcon.sprite;
         currentTradeItemName.text = item.itemNameText.text;
 
+        TierDisplayPanel.SetActive(true);
+        additionalInfo.gameObject.SetActive(false);
+        currentTradeItemImage.gameObject.SetActive(true);
         //Tiers
         GetCurrentItemTiers();
         tierIndicator.clearIndicator();
@@ -381,6 +394,10 @@ public class CityUI : MonoBehaviour
                 return;
             }
         }
+
+        TierDisplayPanel.SetActive(false);
+        additionalInfo.gameObject.SetActive(true);
+        additionalInfo.text = $"Current resource is not needed by the settlement. It will be bought at a price of {GlobalSettingsManager.UNWANTED_GOOD_PRICE_MULTIPLIER * resToShowTier.baseValue}";        
     }
 
     private void SetTierList(SettlementGood settlemeGood)
@@ -446,6 +463,9 @@ public class CityUI : MonoBehaviour
         //shop production
         if(settlementsManager.currentItemSelected.tradeSettlementItem != null)
         {
+            weight_Trade_Slider.gameObject.SetActive(true);
+            volume_Trade_Slider.gameObject.SetActive(true);
+
             //Trade Slider
             float weightBuy = playerInventory.currentWeight + currentItem.tradeSettlementItem.resource.weight * ReturnCurentSliderValue();
             float volumeBuy = playerInventory.currentVolume + currentItem.tradeSettlementItem.resource.volume * ReturnCurentSliderValue();
@@ -542,19 +562,20 @@ public class CityUI : MonoBehaviour
         {
             float currentStock = settlementsManager.currentSettlement.getStock(settlementsManager.currentItemSelected.tradeInventoryItem.resourceSO);
 
-            for (int i = 0; i < amount; i++)
+            if(settlementsManager.currentSettlement.isUnwantedGood(settlementsManager.currentItemSelected.tradeInventoryItem.resourceSO))
             {
-                float newStock = currentStock + i;
-                float currentPrice = 0f;
-                
-                if(selectedSettlementGood == null)
+                currentTradeItemPrice.color = Color.yellow;
+                float currentPrice = settlementsManager.currentItemSelected.tradeInventoryItem.resourceSO.baseValue * GlobalSettingsManager.UNWANTED_GOOD_PRICE_MULTIPLIER;
+                totalPrice = currentPrice * amount;
+                Debug.LogWarning("Selected Settlement Good is null. Using UNWANTED_GOOD_PRICE_MULTIPLIER for price calculation.");
+            }
+            else
+            {
+                for (int i = 0; i < amount; i++)
                 {
-                    currentTradeItemPrice.color = Color.yellow;
-                    currentPrice = settlementsManager.currentItemSelected.tradeInventoryItem.resourceSO.baseValue * GlobalSettingsManager.UNWANTED_GOOD_PRICE_MULTIPLIER;
-                    totalPrice += currentPrice;
-                }
-                else
-                {
+                    float newStock = currentStock + i;
+                    float currentPrice = 0f;
+
                     if (newStock < selectedSettlementGood.tier1_price_stock)
                     {
                         currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER;
