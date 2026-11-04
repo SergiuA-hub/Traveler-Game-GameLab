@@ -447,7 +447,6 @@ public class SettlementsManager : MonoBehaviour
             CargoManager.instance.AddCargoItem(currentShopItemSelected.cargo,ref player.invetory.CurrentCoins);
         }else
         {
-            //Already owned
             return;
         }
 
@@ -466,7 +465,18 @@ public class SettlementsManager : MonoBehaviour
             return;
         }
 
-        CargoManager.instance.AddUpgradeItem(currentUpgradeItem.upgrade,ref player.invetory.CurrentCoins);
+        if (currentUpgradeItem.upgrade.cargoSO.price > player.invetory.CurrentCoins)
+        {
+            return;
+            //jucatorul nu are bani - Feedback on that
+            
+        }
+        else
+        {
+            player.invetory.CurrentCoins -= currentUpgradeItem.upgrade.cargoSO.price;
+            CargoManager.instance.PlayerOwnedUpgrades.Add(currentUpgradeItem.upgrade);
+        }
+       
 
         //Remove from setlment
         
@@ -502,25 +512,26 @@ public class SettlementsManager : MonoBehaviour
         {
             return;
         }
-
-        //Check if currentItem has space for upgrade
+        ShopItemDisplay sameItem = currentManagmentItem;
         
             //Add it to current item selected
             currentManagmentItem.cargo.Upgrades.Add(currentManagmentUpgrade.upgrade.cargoSO);
             currentManagmentItem.cargo.CalculateTotalWeightAndVolume();
             //Remove upgrade from player cargo  
             CargoManager.instance.RemoveCargoItemFromInvetory(currentManagmentUpgrade.upgrade);
-            cityUI.DisplayCartManagmentPanel();
+            
             //Add it to player stats
             player.stats.GetItemValues(player.attachments.currentItemSelected);
+        Destroy(currentManagmentUpgrade.gameObject);
+        //Visual 
+        cityUI.SetCurrentCartManagmentItem(sameItem);
+            cityUI.LoadItemUpgrades(currentManagmentItem);
+            cityUI.DisplayCartManagmentPanel();
 
-            //Visual 
-            cityUI.SetCurrentCartManagmentItem(currentManagmentItem);
-            currentManagmentUpgrade = null;
 
-        
 
-       
+
+
     }
     
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Rendering.Universal.ShaderGUI;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
@@ -37,7 +38,12 @@ public class CityUI : MonoBehaviour
     [Header("Player Components")]    
     public PlayerInventory_M playerInventory;
     public Player_M player;
+    [Header("Player Coins display")]
     [SerializeField] private TextMeshProUGUI playerCoinsDisplay;
+    [SerializeField] private TextMeshProUGUI playerCoinsShopPanel;
+    [SerializeField] private TextMeshProUGUI playerCoinsLicensePanel;
+    [SerializeField] private TextMeshProUGUI playerCoinsUpgradePanel;
+
 
 
     [Header("Current TRADE_ITEM_DISPLAY")]    
@@ -86,6 +92,7 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentShopItemPrice;
     [SerializeField] private TextMeshProUGUI currentShopItemDescription;
     [SerializeField] private TextMeshProUGUI buyShopButtonText;
+    [SerializeField] public TextMeshProUGUI restItemShop;
     [SerializeField] private BulletLIstCreator bulletList;
     
 
@@ -97,6 +104,8 @@ public class CityUI : MonoBehaviour
     [SerializeField] private Image currentUpgradeItemIcon;
     [SerializeField] private TextMeshProUGUI currentUpgradeItemName;
     [SerializeField] private TextMeshProUGUI upgradeItemPrice;
+    [SerializeField] private TextMeshProUGUI restUpgradeShop;
+    [SerializeField] private TextMeshProUGUI buttonUpgradeShop;
     [SerializeField] private BulletLIstCreator bulletLIstCreator;
 
     [Header("TRADE GUILD PAGE")]
@@ -129,6 +138,13 @@ public class CityUI : MonoBehaviour
     [SerializeField] private UpgradeSlot upgradeSlotPrefab;
     [SerializeField] private UpgradeFrame upgradeFramePrefab;
 
+    [Header("Current item stats")]
+    [SerializeField] private TextMeshProUGUI itemVolume;
+    [SerializeField] private TextMeshProUGUI itemweight;
+    [SerializeField] private TextMeshProUGUI upgradeVolume;
+    [SerializeField] private TextMeshProUGUI upgradeWeight;
+
+
     [Header("Current Upgrade_Cart_Managment")]
     [SerializeField] private Image currentManagmentUpgradeIcon;
     [SerializeField] private TextMeshProUGUI currentManagmentUpgradeName;
@@ -152,7 +168,7 @@ public class CityUI : MonoBehaviour
 
     private void Update()
     {
-        //DisplayPlayerCoins();
+        DisplayPlayerCoins();
         //ShowTotalPrice();
         currentTextAmount.text = sliderAmount.value.ToString();
 
@@ -295,6 +311,9 @@ public class CityUI : MonoBehaviour
     public void DisplayPlayerCoins()
     {
         playerCoinsDisplay.text= $": {playerInventory.CurrentCoins:F1}";
+        playerCoinsLicensePanel.text = $": {playerInventory.CurrentCoins:F1}";
+        playerCoinsShopPanel.text = $": {playerInventory.CurrentCoins:F1}";
+        playerCoinsUpgradePanel.text = $": {playerInventory.CurrentCoins:F1}";
     }
 
     public void SetCurrentTradeItem(TradeItemDisplay item)
@@ -589,9 +608,22 @@ public class CityUI : MonoBehaviour
         currentShopItemPrice.text = shopItem.cargo.cargoSO.price.ToString();
         currentShopItemName.text = shopItem.cargo.cargoSO.itemName.ToString();
         currentShopItemDescription.text = shopItem.cargo.cargoSO.Description;
+        //Set not enoughMoney
+        if(shopItem.cargo.cargoSO.price > player.invetory.CurrentCoins)//And not owned
+        {
+            restItemShop.text = "Need " + (shopItem.cargo.cargoSO.price - player.invetory.CurrentCoins);
+            buyShopButtonText.color = Color.red;
+            buyShopButtonText.text = "Not enough coins";
+        }
+        else
+        {
 
+            SetButtonTextShop(shopItem.cargo);
+            buyShopButtonText.color = Color.grey;
+            restItemShop.text = "";
+        }
+        
         //Button
-        SetButtonTextShop(shopItem.cargo);
         bulletList.CreateBulletList(settlementsManager.currentShopItemSelected.cargo.cargoSO.features);
     }
 
@@ -619,12 +651,31 @@ public class CityUI : MonoBehaviour
     public void SetCurrentUpgradeItem(UpgradeItemDisplay item)
     {
         settlementsManager.currentUpgradeItem= item;
-
+        item.SetActivSelectedUpgrade();
         currentUpgradeItemIcon.sprite = item.upgrade.cargoSO.icon;
         currentUpgradeItemName.text = item.upgrade.cargoSO.itemName.ToString();
         upgradeItemPrice.text = item.upgrade.cargoSO.price.ToString();
         bulletLIstCreator.CreateBulletList(settlementsManager.currentUpgradeItem.upgrade.cargoSO.features);
-        
+
+        if(player.invetory.CurrentCoins < item.upgrade.cargoSO.price)
+        {
+            //buuton text
+            buttonUpgradeShop.text = "Not enough coins";
+            buttonUpgradeShop.color = Color.red;
+            //Need rest money text
+            restUpgradeShop.text = "Need " + (item.upgrade.cargoSO.price - player.invetory.CurrentCoins);
+
+        }
+        else
+        {
+
+            //buuton text
+            buttonUpgradeShop.text = "BUY";
+            buttonUpgradeShop.color = Color.grey;
+            //Need rest money text
+            restUpgradeShop.text = "";
+        }
+
     }
 
 
@@ -691,24 +742,13 @@ public class CityUI : MonoBehaviour
     //############
     public void DisplayCartManagmentPanel()
     {
+        SetCurrentCartManagmentItem(CreatePlayerShopItem(ref settlementsManager.currentManagmentItem));
+
         //Clear CityUI invetory Lists 
-        if(upgradeList != null)
-        {
-            foreach (UpgradeItemDisplay upgrade in upgradeList)
-            {
-                upgradeList.Remove(upgrade);
-            }
-        }
-        
-        if(itemsList != null)
-        {
-            foreach (ShopItemDisplay item in itemsList)
-            {
-                itemsList.Remove(item);
-            }
-        }
-        
-        
+        upgradeList.Clear();
+        itemsList.Clear(); 
+
+
         //Display Invetory Items
 
         foreach (Transform child in itemManagmentContent)
@@ -760,14 +800,13 @@ public class CityUI : MonoBehaviour
     }
     public void SetCurrentCartManagmentItem(ShopItemDisplay shopItem)
     {
-        if(settlementsManager.currentManagmentItem == null)
-        {
-            settlementsManager.currentManagmentItem = shopItem;
-        }
         
+        settlementsManager.currentManagmentItem = shopItem;
+        //Set text and Icon
         currentManagmentItemIcon.sprite = shopItem.IconImage.sprite;
         currentManagmentItemName.text = shopItem.cargo.cargoSO.itemName;
-
+        
+        //Clear old upgrades
         foreach (Transform child in componentsArea)
         {
             Destroy(child.gameObject);
@@ -776,6 +815,7 @@ public class CityUI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        
         //Set components Slots 
         for (int i =1; i <= shopItem.cargo.upgradesSpaces; i++)
         {
@@ -783,17 +823,18 @@ public class CityUI : MonoBehaviour
             Instantiate(upgradeFramePrefab, componentsArea);
             
         }
-        for (int i = 0; i <= shopItem.cargo.Upgrades.Count-1; i++)
-        {
-            UpgradeSlot slot = Instantiate(upgradeSlotPrefab, upgradeComponentsArea);
-            slot.PopulateSlot(shopItem.cargo.Upgrades[i]);
-        }
+        //Set item stats
+        itemVolume.text = shopItem.cargo.volume.ToString();
+        itemweight.text = shopItem.cargo.weight.ToString();
+
+
+        LoadItemUpgrades(shopItem);
         
     } 
 
     public void SetCurrentCartManagemtnUpgrade(UpgradeItemDisplay upgradeItem)
     {
-        settlementsManager.currentManagmentUpgrade = upgradeItem;
+        
         currentManagmentUpgradeIcon.sprite = upgradeItem.iconImage.sprite;
         currentManagmentUpgradeName.text = upgradeItem.upgrade.cargoSO.itemName;
         upgradeItem.SetActivSelectedUpgrade(); 
@@ -814,14 +855,33 @@ public class CityUI : MonoBehaviour
                 currentManagmentUpgradeBonus.text += "Weight : + " + upgradeItem.upgrade.cargoSO.itemMaxWeight.ToString();
             }
            
-        
-        
-    }
+        upgradeVolume.text ="+" + upgradeItem.upgrade.volume.ToString();
+        upgradeWeight.text = "+" + upgradeItem.upgrade.weight.ToString();
 
-    public void ChangeCargoContentPage(int x)
+
+    }
+    public void LoadItemUpgrades(ShopItemDisplay shopItem)
     {
-        pageIndex = x;
-        DisplayCartManagmentPanel();
+        for (int i = 0; i <= shopItem.cargo.Upgrades.Count - 1; i++)
+        {
+            UpgradeSlot slot = Instantiate(upgradeSlotPrefab, upgradeComponentsArea);
+            slot.PopulateSlot(shopItem.cargo.Upgrades[i]);
+        }
+    }
+    public ShopItemDisplay CreatePlayerShopItem(ref ShopItemDisplay settlementCurrentItem)
+    {
+        ShopItemDisplay shopItem;
+       
+            
+        ShopItemDisplay playerItem = Instantiate(ItemShopPrefab, Content);
+        playerItem.PopulateIcons(player.attachments.currentItemSelected, this);
+        settlementCurrentItem = playerItem;
+        
+        shopItem = settlementsManager.currentManagmentItem;
+        Destroy(playerItem.gameObject);
+        return shopItem;
+        
+        
     }
 
     //############
@@ -842,6 +902,7 @@ public class CityUI : MonoBehaviour
         //setlement.CityObjectUI.SetActive(false);
         this.gameObject.SetActive(false);               
         GameServices.Instance.player.UnRoot();
+
     }
 
     //BUY || SELL BUTTON  -> TRADE PANEL
