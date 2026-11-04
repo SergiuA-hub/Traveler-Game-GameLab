@@ -784,6 +784,11 @@ public class CityUI : MonoBehaviour
 
 
         }
+        foreach (Transform child in upgradeManagmentContent)
+        {
+            Destroy(child.gameObject);
+
+        }
         //Display Invetory Upgrades
 
         foreach (var upgrades in CargoManager.instance.PlayerOwnedUpgrades)
