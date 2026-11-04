@@ -200,9 +200,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 802764920015358972, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+    - target: {fileID: 683166728089969869, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 809834778761719167, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: m_Sprite
@@ -252,14 +252,30 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -4608818801236732244, guid: 62268680e5a11ad49aa5467692120070, type: 3}
+    - target: {fileID: 3103145238714227345, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3407145737415593048, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -4608818801236732244, guid: 62268680e5a11ad49aa5467692120070, type: 3}
+    - target: {fileID: 4118373332965896616, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4247367738808915167, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -7226846049606579820, guid: bb9e9c529d8d5b24b84be02bca731515, type: 3}
+    - target: {fileID: 4420828683175391588, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791396658837918527, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 5873021218158562195, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: Inventory.Array.size
       value: 6
@@ -295,6 +311,22 @@ PrefabInstance:
     - target: {fileID: 6843812548157636482, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: maxStamina
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978518409002190902, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974629685736275836, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7992136251225416538, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7992218123398086685, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8045217955246582829, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -340,6 +372,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8480052639407404358, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8483883059455597435, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: rb
       value: 
@@ -380,6 +416,9 @@ PrefabInstance:
       addedObject: {fileID: 6594599302863174263}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1994453858807167521, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      insertIndex: 7
+      addedObject: {fileID: 6078144872133176413}
+    - targetCorrespondingSourceObject: {fileID: 1994453858807167521, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3629902954964899256}
     - targetCorrespondingSourceObject: {fileID: 4578881446101011588, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
@@ -388,9 +427,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4578881446101011588, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3230410155822635123}
-    - targetCorrespondingSourceObject: {fileID: 4578881446101011588, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4019138003705536823}
     - targetCorrespondingSourceObject: {fileID: 7992218123398086685, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7014872139820401620}
@@ -666,18 +702,6 @@ MonoBehaviour:
   timeManager: {fileID: 0}
   vignetteVol: {fileID: 0}
   timerCriticalValue: 10
---- !u!114 &4019138003705536823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5833680382982775258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f98d30f9610f33a40a41d2eef6abc057, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LayerOrder1
 --- !u!114 &8416442730723997504 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1995982071714601502, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
@@ -694,6 +718,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1994453858807167521, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
   m_PrefabInstance: {fileID: 8033877529580285278}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6078144872133176413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8418257102270338943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59105e2d75f051240a188c495a08b459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TraderNotes
 --- !u!95 &3629902954964899256
 Animator:
   serializedVersion: 7

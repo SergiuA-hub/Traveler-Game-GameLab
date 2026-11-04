@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46ce27db215351419496b815f328999, type: 3}
+  m_Name: Summer_Village_Vegetables
+  m_EditorClassIdentifier: Assembly-CSharp::LicensesSO
+  LicenseName: Vegetables License
+  icon: {fileID: -9051100846552327761, guid: ab4b6de56a730e64bb56f8acb53ba162, type: 3}
+  cost: 240
+  resourse_unlock:
+  - {fileID: 11400000, guid: 1e2f3b0e438a9dc4c905a4e8ca2d0c82, type: 2}
+  settlementSO: {fileID: 11400000, guid: 5c45bdb57a6c67441ad678f1fe3b4597, type: 2}

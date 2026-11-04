@@ -5,19 +5,17 @@ using UnityEngine;
 
 public class Player_M : MonoBehaviour
 {
-    //Backpack
-    [SerializeField] private Backpack currentBackpack;
 
     public bool isResting = false;
     public bool isCamping = false;
     public bool rooted = false;
-    public bool isDead = false;
 
     //Components
     public PlayerStats_M stats;
     public PlayerMovement_M move;
     public PlayerInventory_M invetory;
     public PlayerAttachments_M attachments;
+    public TraderNotes notes;
     public PlayerVisual_M visual;
     public Rigidbody2D rb;
     public GameInput gameInput;
@@ -38,18 +36,14 @@ public class Player_M : MonoBehaviour
         move = GetComponent<PlayerMovement_M>();
         invetory = GetComponent<PlayerInventory_M>();
         attachments = GetComponent<PlayerAttachments_M>();
+        notes = GetComponent<TraderNotes>();
         visual = GetComponent<PlayerVisual_M>();
 
         //OtherComponents
         rb = GetComponent<Rigidbody2D>();
     }
     
-    private void Start()
-    {
-        GetBackpackMax();
-        isDead = false;
-        
-    }
+ 
     
 
     private void Update()
@@ -104,23 +98,12 @@ public class Player_M : MonoBehaviour
         invetory.HandleWeightAndVolume();
     }
     //Publics 
-    public void GetBackpackMax()
-    {
-        stats.maxVolume = currentBackpack.GetVolume();
-        stats.maxWeight = currentBackpack.GetVolume();
-    }
+ 
 
     // ------HP------ 
     public void TakeDamage(float damage)
     {
-        if (isDead) 
-            return;
         stats.currentHp -= damage;
-        if (stats.currentHp <= 0)
-        {
-            stats.currentHp = 0;
-            isDead = true;
-        }
     }
 
     public void Eat(ResourceSO res, int amount = 1)

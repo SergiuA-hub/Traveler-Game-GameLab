@@ -4,9 +4,7 @@ using UnityEngine.UI;
 
 public class InventoryDisplayUI : MonoBehaviour
 {
-   
-    
-    public Player_M player;
+    private Player_M player;
     private PlayerInventory_M inventory;
     public GameObject ItemPrefab;
     public GameObject ItemList;
@@ -19,6 +17,9 @@ public class InventoryDisplayUI : MonoBehaviour
 
     private void OnEnable()
     {
+        if(player == null)
+            player = GameServices.Instance.player;
+
         inventory = player.invetory;
         inventory.HandleWeightAndVolume();
         foreach (var item in inventory.Inventory)
@@ -42,7 +43,11 @@ public class InventoryDisplayUI : MonoBehaviour
 
     void Start()
     {
-        
+        if (GameServices.Instance.player == null)
+            Debug.LogError("ERROR");
+
+        player = GameServices.Instance.player;
+        inventory = player.invetory;
     }
 
    

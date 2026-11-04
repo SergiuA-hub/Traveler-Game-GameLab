@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46ce27db215351419496b815f328999, type: 3}
+  m_Name: Spring_Village_Charcoal
+  m_EditorClassIdentifier: Assembly-CSharp::LicensesSO
+  LicenseName: Charcoal License
+  icon: {fileID: 5838570765213527895, guid: 4faf73f6c4da4b14fa497996e16864ad, type: 3}
+  cost: 160
+  resourse_unlock:
+  - {fileID: 11400000, guid: cf23858f5ed539f43b85fdd88d1b293c, type: 2}
+  settlementSO: {fileID: 11400000, guid: 057c3065bb798934d94d9234049cfdd4, type: 2}

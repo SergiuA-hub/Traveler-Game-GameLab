@@ -1,11 +1,16 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NpcManager : MonoBehaviour
 {
-    public Transform player;
-    public TimeManager timeManager;
+    public GameObject npcInteractButton;
+    private Player_M player;
+    private TimeManager timeManager;
+
+    public List<StaticNPCSpawnPoint> staticSpawnPoints;
 
     public float npcVisibleDistance = 30f;
     public bool optimizeNpcVizibility;
@@ -18,34 +23,52 @@ public class NpcManager : MonoBehaviour
     public Transform npcSpawner;
 
     public List<Npc> aliveNPCs = new();
+    public float spawnChange;
 
     public List<Npc> npcPlayerCanInteract;
     private string lastSettlement;
+    private float speedModifier = 1;
+    [SerializeField] private float initialSpawnDelay = 5f;
+
     private void Start()
     {
+        player = GameServices.Instance.player;
+        timeManager = GameServices.Instance.timeManager;
+
         foreach (RoadPath road in roads)
         {
             road.Initialize();
         }
 
-        for (int i = 0; i < 5; i++)
+        StartCoroutine(InitialNpcSpawn());
+    }
+
+    private IEnumerator InitialNpcSpawn()
+    {
+        for (int i = 0; i < maxAliveNPC; i++)
         {
-            spawnRandomNPC();
+            spawnRandomNPC(100);
+
+            if (i < maxAliveNPC - 1)
+                yield return new WaitForSeconds(initialSpawnDelay);
         }
 
         timeManager.onHourChanged.AddListener(hourlNpcSpawnerCheck);
-    }    
+    }
 
     public void hourlNpcSpawnerCheck(DateTime time)
     {
         if(aliveNPCs.Count < maxAliveNPC)
         {
-            spawnRandomNPC();
+            spawnRandomNPC(spawnChange);
         }
     }
     
-    public void spawnRandomNPC()
+    public void spawnRandomNPC(float chance)
     {
+        if (UnityEngine.Random.Range(0, 100) > chance)
+            return;
+
         bool direction = UnityEngine.Random.Range(0, 2) == 1;
         RoadPath randomRoad = roads[UnityEngine.Random.Range(0, roads.Count)];
         string startLocation = direction ? randomRoad.startSettlement.settlementName : randomRoad.endSettlement.settlementName;
@@ -54,15 +77,27 @@ public class NpcManager : MonoBehaviour
             return;
         
         SpawnNPC(randomRoad, direction);
-        Debug.Log("NPC SPAWN");
-    }
+    }    
 
     private void Update()
     {
+        var keyboard = Keyboard.current;
+        if (keyboard != null)
+        {
+            if (keyboard.f1Key.wasPressedThisFrame)
+            {
+                spawnRandomNPC(100);
+            }
+        }
+
+        
         for (int i = aliveNPCs.Count - 1; i >= 0; i--)
         {
             MoveNPC(aliveNPCs[i]);
         }
+
+        if (player.isCamping)
+            return;
 
         if (!optimizeNpcVizibility)
             return;
@@ -78,11 +113,22 @@ public class NpcManager : MonoBehaviour
                 UpdateNPCVisibility(npc);
             }
         }
+
+        if(npcPlayerCanInteract.Count > 0)
+        {
+            npcInteractButton.SetActive(true);
+        }else npcInteractButton.SetActive(false);
     }
+
+    public void adjustSpeed(float timeModifier)
+    {
+        speedModifier = (GlobalSettingsManager.HOUR_DURATION / timeModifier);
+    }
+
     private void UpdateNPCVisibility(Npc npc)
     {
         float sqrDistance =
-            (npc.transform.position - player.position).sqrMagnitude;
+            (npc.transform.position - player.transform.position).sqrMagnitude;
 
         float maxDistanceSqr =
             npcVisibleDistance * npcVisibleDistance;
@@ -93,9 +139,34 @@ public class NpcManager : MonoBehaviour
         if (npc.visuals.activeSelf != shouldBeVisible)
         {
             npc.visuals.SetActive(shouldBeVisible);
+        }        
+    }
+
+    public void hideAllNPC()
+    {
+        foreach (Npc npc in aliveNPCs)
+        {
+            npc.visuals.SetActive(false);
         }
     }
 
+    public void restoreNPCVizibility()
+    {
+        if (!optimizeNpcVizibility)
+        {
+            foreach (Npc npc in aliveNPCs)
+            {
+                npc.visuals.SetActive(true);
+            }
+
+            return;
+        }
+        
+        foreach (Npc npc in aliveNPCs)
+        {
+            UpdateNPCVisibility(npc);
+        }
+    }
     public void SpawnNPC(RoadPath road, bool forward)
     {
         if (road == null || road.waypoints.Count == 0)
@@ -112,6 +183,7 @@ public class NpcManager : MonoBehaviour
         );
 
         Npc npc = npcObject.GetComponent<Npc>();
+        npc.setNpcManager(this, timeManager);
 
         if (npc == null)
         {
@@ -128,7 +200,8 @@ public class NpcManager : MonoBehaviour
 
         npc.transform.position =
             road.waypoints[startIndex].position + npc.pathOffset;
-
+        
+        npc.gameObject.SetActive(false);
         lastSettlement = forward ? road.startSettlement.settlementName : road.endSettlement.settlementName;
         aliveNPCs.Add(npc);
     }
@@ -139,6 +212,9 @@ public class NpcManager : MonoBehaviour
             return;
 
         if (npc.currentRoad == null)
+            return;
+
+        if (npc.rooted)
             return;
 
         if (npc.currentWaypointIndex < 0 ||
@@ -156,8 +232,17 @@ public class NpcManager : MonoBehaviour
         npc.transform.position = Vector3.MoveTowards(
             npc.transform.position,
             target,
-            npc.speed * Time.deltaTime
+            npc.speed * Time.deltaTime * speedModifier
         );
+
+        // Direction towards target
+        Vector3 direction = target - npc.transform.position;
+
+        // Flip sprite based on horizontal movement
+        if (direction.x < -0.01f)
+            npc.spriteRenderer.flipX = false;
+        else if (direction.x > 0.01f)
+            npc.spriteRenderer.flipX = true;
 
         if (Vector3.Distance(npc.transform.position, target) < 0.01f)
         {
@@ -181,6 +266,41 @@ public class NpcManager : MonoBehaviour
         if (npcPlayerCanInteract.Contains(npc))
         {
             npcPlayerCanInteract.Remove(npc);
+        }
+    }
+
+    public void InteractWithClosestNPC()
+    {
+        if (npcPlayerCanInteract.Count > 0)
+            npcPlayerCanInteract[0].Interact();
+    }
+
+    public void playerEnteredArea(Season season)
+    {
+        foreach (StaticNPCSpawnPoint spawnPoint in staticSpawnPoints)
+        {
+            if (spawnPoint.season == season)
+            {
+                float roll = UnityEngine.Random.Range(0f, 100f);
+                if (roll <= spawnPoint.spawnChance)
+                {
+                    GameObject npcObject = Instantiate(spawnPoint.npcPrefab,spawnPoint.spawnPoint.transform);
+                    npcObject.transform.localPosition= Vector3.zero;
+                    Npc npc = npcObject.GetComponent<Npc>();
+                    npc.setNpcManager(this, timeManager);                
+                    npc.animateIdle();
+                }
+            }
+            else
+            {
+                if (spawnPoint.spawnPoint.childCount > 0)
+                {
+                    foreach (Transform child in spawnPoint.spawnPoint)
+                    {
+                        Destroy(child.gameObject);
+                    }
+                }
+            }
         }
     }
 }

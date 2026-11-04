@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement_M : MonoBehaviour
 {
     private Player_M player;
-   
+    public bool typing = false;
     private void Start()
     {
         player = GetComponent<Player_M>();
@@ -23,7 +23,7 @@ public class PlayerMovement_M : MonoBehaviour
     {
         Vector2 moveInput = player.gameInput.GetMoveVectorNormalized();
 
-        if (player.isRooted())
+        if (player.isRooted() || typing)
             moveInput = Vector2.zero;
 
         bool isMoving = moveInput.sqrMagnitude > 0.001f;
@@ -43,7 +43,7 @@ public class PlayerMovement_M : MonoBehaviour
         }
 
         // Apply all modifiers
-        float modifierSpeed = player.stats.staminaSpeedModifier * player.stats.consumableSpeedModifier * player.stats.terrainSpeedModifier * player.stats.currentWeightModifier;
+        float modifierSpeed = player.stats.staminaSpeedModifier * player.stats.consumableSpeedModifier * player.stats.terrainSpeedModifier * player.stats.currentWeightModifier * player.stats.WEATHER_SPEED_MODIFIER;
 
         player.stats.moveSpeed = Mathf.Max(0f, player.stats.baseSpeed * modifierSpeed);
 

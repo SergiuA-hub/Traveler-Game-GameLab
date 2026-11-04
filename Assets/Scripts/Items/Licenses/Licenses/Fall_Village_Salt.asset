@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46ce27db215351419496b815f328999, type: 3}
+  m_Name: Fall_Village_Salt
+  m_EditorClassIdentifier: Assembly-CSharp::LicensesSO
+  LicenseName: Salt License
+  icon: {fileID: -1162442978445507191, guid: d035083af081db244bc585a8a8ae5a2b, type: 3}
+  cost: 160
+  resourse_unlock:
+  - {fileID: 11400000, guid: 1803df224911e9348aa0033f2f65d7ad, type: 2}
+  settlementSO: {fileID: 11400000, guid: 3865eccc54f10a4468cd7fb4b17dc00f, type: 2}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46ce27db215351419496b815f328999, type: 3}
+  m_Name: Summer_Village_Wheat
+  m_EditorClassIdentifier: Assembly-CSharp::LicensesSO
+  LicenseName: Wheat License
+  icon: {fileID: 6271399085124507442, guid: 049c15c0c68eb444b87ba6442f96a6d9, type: 3}
+  cost: 240
+  resourse_unlock:
+  - {fileID: 11400000, guid: 2b0310fe8c317f74a83bc7cd61330605, type: 2}
+  settlementSO: {fileID: 11400000, guid: 5c45bdb57a6c67441ad678f1fe3b4597, type: 2}

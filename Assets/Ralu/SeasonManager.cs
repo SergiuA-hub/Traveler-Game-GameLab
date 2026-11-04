@@ -12,11 +12,14 @@ public class SeasonManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Season season;
-    public HUDScript HUDScript;
-    public EnvironmentManager environmentManager;
+    private HUDScript HUDScript;
+    private EnvironmentManager environmentManager;
+    private WeatherManager weatherManager;
     void Start()
     {
-        
+        HUDScript = GameServices.Instance.HUD;
+        environmentManager = GameServices.Instance.environmentManager;
+        weatherManager = GameServices.Instance.weatherManager;
     }
 
     // Update is called once per frame
@@ -26,8 +29,14 @@ public class SeasonManager : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        HUDScript.currentSeason = season;
-        HUDScript.ChangeSeason();
-        environmentManager.setSeason(season);
+        //HUDScript.currentSeason = season;
+        //HUDScript.ChangeSeason();
+        //environmentManager.setSeason(season);
+        //weatherManager.setCurrentSeason(season);
+        GameServices.Instance.HUD.currentSeason = season;
+        GameServices.Instance.HUD.ChangeSeason();
+        GameServices.Instance.environmentManager.setSeason(season);
+        GameServices.Instance.weatherManager.setCurrentSeason(season);
+        GameServices.Instance.npcManager.playerEnteredArea(season);
     }
 }

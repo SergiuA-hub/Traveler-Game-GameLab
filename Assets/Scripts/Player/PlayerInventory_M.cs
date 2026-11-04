@@ -37,9 +37,9 @@ public class PlayerInventory_M : MonoBehaviour
         player= GetComponent<Player_M>();
     }
 
-    public void AddItem(ResourceSO resource, int amount = 1)
+    public void AddItem(ResourceSO resource, int amount )
     {
-        Debug.Log($"Add to inventory{resource.itemName} - {amount}");
+        //Debug.Log($"Add to inventory{resource.itemName} - {amount}");
         InventoryItem existingItem = Inventory.Find(x => x.resourceSO.itemName == resource.itemName);
 
 
@@ -56,7 +56,7 @@ public class PlayerInventory_M : MonoBehaviour
     }
 
     //player is buying goods
-    public void tradeIn(ResourceSO resource, float buyPrice, int amount = 1)
+    public void tradeIn(ResourceSO resource, float buyPrice, int amount)
     {
         InventoryItem existingItem = Inventory.Find(x => x.resourceSO.itemName == resource.itemName);
 
@@ -70,7 +70,7 @@ public class PlayerInventory_M : MonoBehaviour
         else
         {
             InventoryItem r = new InventoryItem(resource, amount, buyPrice);
-            r.averageValue = buyPrice/ amount;
+            r.averageValue = buyPrice;
 
             Inventory.Add(r);
 
@@ -81,7 +81,7 @@ public class PlayerInventory_M : MonoBehaviour
     }
 
     //player is sellign goods
-    public void tradeOut(ResourceSO resource, float sellPrice, int amount = 1)
+    public void tradeOut(ResourceSO resource, float sellPrice, int amount)
     {
         Remove(resource,amount);
         
@@ -100,7 +100,7 @@ public class PlayerInventory_M : MonoBehaviour
         return true;
     }
 
-    public void Remove(ResourceSO resource, int amount = 1)
+    public void Remove(ResourceSO resource, int amount )
     {
         InventoryItem existingItem = Inventory.Find(x => x.resourceSO.itemName == resource.itemName);
 
@@ -161,7 +161,7 @@ public class PlayerInventory_M : MonoBehaviour
     
     public bool CanCarry(float volume,float weight)
     {
-        if (currentVolume + volume <= player.stats.maxVolume || currentWeight + weight<= player.stats.maxWeight)
+        if (currentVolume + volume <= player.stats.maxVolume && currentWeight + weight<= player.stats.maxWeight)
         {
             return true;
         }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46ce27db215351419496b815f328999, type: 3}
+  m_Name: Default_Mountain
+  m_EditorClassIdentifier: Assembly-CSharp::LicensesSO
+  LicenseName: 
+  icon: {fileID: 0}
+  cost: 0
+  resourse_unlock:
+  - {fileID: 11400000, guid: b21a88f18b68d5247b2885e25831e83f, type: 2}
+  - {fileID: 11400000, guid: 1c8f8ca846032ec479d1044edc2c361a, type: 2}
+  settlementSO: {fileID: 11400000, guid: 3865eccc54f10a4468cd7fb4b17dc00f, type: 2}
+  canBuy: 1

@@ -7,10 +7,23 @@ using UnityEngine;
 public class SettlementSO : ScriptableObject
 {
     public string settlementName;
+    public Season region;
     public List<SettlementGood> production;
     public List<SettlementGood> consumption;
-    public List<ShopItem> itemsShop;
-    
+    public List<Cargo> itemsShop;
+    public List<Cargo> upgradeShop;
+    public List<LicensesSO> Licenses_Shop;
+
+    public bool settlementNeedsResource(ResourceSO resource)
+    {
+        foreach (var good in consumption)
+        {
+            if (good.resource == resource)
+                return true;
+        }
+        return false;
+    }
+
 }
 
 [System.Serializable]
@@ -45,36 +58,41 @@ public class SettlementGood
         return 0;
     }
 }
-public enum ShopItemType
+public enum CargoCategory
 {
-    Usable,
+    
     Backpack,
     HandCart,
     OxCart,
     HorseCart
 }
 
-public enum Status
+public enum ItemType
 {
-    Owned,
-    Avalabile,
-    Locked
+    Item,
+    Upgrade
 }
 
 [System.Serializable]
-public class ShopItem
+public class Cargo
 {
     public string ItemName;
-    public ItemsSO shopItems;
-    public ShopItemType itemType;
-    public Status itemStatus;
+    public CargoSO cargoSO;
     
 
-    public ShopItem(string name, ItemsSO itemSO,ShopItemType type)
+    //Item enums
+    public CargoCategory category;
+    public ItemType type;
+    
+
+    public Cargo(string name, CargoSO cargoSO,CargoCategory category,ItemType type)
     {
         this.ItemName = name;
-        this.shopItems = itemSO;
-        this.itemType = type;
+        this.cargoSO = cargoSO;
+        this.category= category;
+        this .type = type;
     }
+
     
 }
+

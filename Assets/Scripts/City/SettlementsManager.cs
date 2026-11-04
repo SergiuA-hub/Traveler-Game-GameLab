@@ -1,13 +1,17 @@
+
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
+
 [System.Serializable]
 public class SettlementDeployment
 {
     public SettlementSO settlementSo;
     public GameObject settlmentGo;
+    public SettlementContractsPanel contractsPanel;
 }
 
 [System.Serializable]
@@ -33,15 +37,21 @@ public class SettlementRuntime
     public string settlementName;
     public SettlementSO defaultSettlementData;
     public List<TradeGood> settlementStock;
-    public List<ShopItem> settlementShopItems;
+    public List<Cargo> settlementShopItems;
+    public List<Cargo> settlmentUpgradeItems;
+    public List<LicensesSO> settlmentLicenses;
     public GameObject settlementGo;
-
+    public SettlementContractsPanel contractsPanel;
+    public float reputation;
     public SettlementRuntime(SettlementSO so)
     {
         defaultSettlementData = so;
+        reputation = 0;
         this.settlementName = defaultSettlementData.settlementName;
-        settlementShopItems = new List<ShopItem>();
+        settlementShopItems = new List<Cargo>();
+        settlmentUpgradeItems = new List<Cargo>();
         settlementStock = new List<TradeGood>();
+        settlmentLicenses = new List<LicensesSO>();
 
     }
     public void calculatePriceTiers()
@@ -75,7 +85,9 @@ public class SettlementRuntime
             trade.tier4_price_stock = tier4_stock;
             trade.tier5_price_stock = tier5_stock;
         }
-    }    
+    }
+
+
 
     public float getPriceFor(TradeGood res)
     {
@@ -122,6 +134,19 @@ public class SettlementRuntime
         return currentPrice;
     }
 
+    public float getPriceFor(ResourceSO res)
+    {
+        float currentPrice = res.baseValue;
+
+        foreach(var trade in settlementStock)
+        {
+            if (trade.resource.itemName == res.itemName)
+                return trade.price;
+        }
+
+        return currentPrice;
+    }
+
     public float getStockPrice(ResourceSO res)
     {
         foreach(var r in settlementStock)
@@ -133,7 +158,17 @@ public class SettlementRuntime
         return res.baseValue * GlobalSettingsManager.UNWANTED_GOOD_PRICE_MULTIPLIER;
     }
 
-    public void increaseStock(ResourceSO res, int amount =1)
+    public float getStock(ResourceSO res)
+    {
+        foreach (var r in settlementStock)
+        {
+            if (r.resource.itemName == res.itemName)
+                return r.amount;
+        }
+        return 0;
+    }
+
+    public void increaseStock(ResourceSO res, int amount)
     {
         foreach (var r in settlementStock)
         {
@@ -142,7 +177,7 @@ public class SettlementRuntime
         }
     }
 
-    public void decreaseStock(ResourceSO res, int amount = 1)
+    public void decreaseStock(ResourceSO res, int amount )
     {
         foreach (var r in settlementStock)
         {
@@ -162,14 +197,17 @@ public class SettlementsManager : MonoBehaviour
 
     public List<SettlementRuntime> settlements;
     
-    //Current Item selected
+    //Current Cargo selected
     public TradeItemDisplay currentItemSelected;
     public ShopItemDisplay currentShopItemSelected;
-    public SettlementRuntime currentSettlement;
-    public Slider SliderAmount;
+    public UpgradeItemDisplay currentUpgradeItem;
+    public LicenceItemDisplay currentLicenceSelected;
    
+    public SettlementRuntime currentSettlement;
+
+    //Managers
     public TimeManager timeManager;
-    
+    public LicenseManager licenseManager;   
     void Start()
     {
         if(timeManager!=null)
@@ -184,6 +222,7 @@ public class SettlementsManager : MonoBehaviour
         foreach(var settl in settlementsList)
         {
             SettlementRuntime currentSettlement = new SettlementRuntime(settl.settlementSo);
+            currentSettlement.contractsPanel = settl.contractsPanel;
 
             foreach (var res in settl.settlementSo.production)
             {
@@ -196,14 +235,33 @@ public class SettlementsManager : MonoBehaviour
             }
             foreach(var item in settl.settlementSo.itemsShop)
             {
-                currentSettlement.settlementShopItems.Add(new ShopItem(item.ItemName,item.shopItems,item.itemType));
+                currentSettlement.settlementShopItems.Add(new Cargo(item.ItemName,item.cargoSO,item.category,item.type));
             }
+            foreach(var upgradeItem in settl.settlementSo.upgradeShop)
+            {
+                currentSettlement.settlmentUpgradeItems.Add(new Cargo(upgradeItem.ItemName,upgradeItem.cargoSO,upgradeItem.category,upgradeItem.type));
+            }
+
+            foreach(var l in settl.settlementSo.Licenses_Shop)
+            {
+                currentSettlement.settlmentLicenses.Add(l);
+            }
+
             currentSettlement.calculatePriceTiers();
 
             currentSettlement.settlementGo = settl.settlmentGo;
 
             settlements.Add(currentSettlement);
         }
+    }
+    public void refreshSettlementQuests()
+    {
+        //currentSettlement.contractsPanel
+        //foreach (var settl in settlements)
+        //{
+
+        //    settl.contractsPanel = contractsPanel
+        //}
     }
     public void OnDestroy()
     {
@@ -234,8 +292,6 @@ public class SettlementsManager : MonoBehaviour
 
     public void dailyEvents(DateTime t)
     {
-        Stopwatch sw = Stopwatch.StartNew();
-
         foreach (var settlement in settlements)
         {
             foreach (var good in settlement.defaultSettlementData.production)
@@ -250,10 +306,6 @@ public class SettlementsManager : MonoBehaviour
         }
 
         calculateDailyPrices();
-
-        sw.Stop();
-
-        UnityEngine.Debug.Log($"dailyEvents took {sw.Elapsed.TotalMilliseconds:F3} ms");
     }
 
     public void playerAtSettlementGate(GameObject settlementGo)
@@ -269,64 +321,142 @@ public class SettlementsManager : MonoBehaviour
 
     public void EnterCity()
     {
-        UnityEngine.Debug.Log($"Player enering {playerAtSettlement}");
+        Debug.Log($"Player enering {playerAtSettlement}");
 
         foreach (var settlement in settlements)
         {
             if (settlement.settlementGo.name == playerAtSettlement.name)
             {
-                UnityEngine.Debug.Log($"Player entered in {settlement.settlementName}");
+                Debug.Log($"Player entered in {settlement.settlementName}");
                 currentSettlement = settlement;
                 SettlementUI.GetComponent<CityUI>().prepareSettlement(settlement);
+
+                break;
             }
         }
 
         SettlementUI.SetActive(true);
     }
 
-    public void BuyOrSell()
+    public void leaveSettlement()
     {
-        //Debug.Log("BUY SELL");
-        
+        takeNotes(currentSettlement);
+    }
+
+    public void takeNotes(SettlementRuntime currentSettlementForNotes)
+    {
+        foreach(var tradeGood in currentSettlementForNotes.defaultSettlementData.production)
+        {
+            if (GameServices.Instance.licenseManager.CanTrade(tradeGood.resource, currentSettlement.defaultSettlementData))
+            {
+                //if can trade to be added here
+                float price = currentSettlementForNotes.getPriceFor(tradeGood.resource);
+                DateTime currentTimeForNote = GameServices.Instance.timeManager.currentTime;
+                GameServices.Instance.player.notes.AddBuyNote(tradeGood.resource, price, currentSettlementForNotes.settlementName, currentTimeForNote);
+            }
+        }
+
+        foreach (var tradeGood in currentSettlementForNotes.defaultSettlementData.consumption)
+        {
+            //if can trade to be added here
+            float price = currentSettlementForNotes.getPriceFor(tradeGood.resource);
+            DateTime currentTimeForNote = GameServices.Instance.timeManager.currentTime;
+            GameServices.Instance.player.notes.AddSellNote(tradeGood.resource, price, currentSettlementForNotes.settlementName, currentTimeForNote);
+        }
+    }
+
+    public void BuyOrSell(float transactionTotalPrice, int amount)
+    {
+        if (currentItemSelected.isLocked)
+            return;
+
         //BUY
         if (currentItemSelected.tradeSettlementItem != null)
         {
+            if (transactionTotalPrice > GameServices.Instance.player.invetory.CurrentCoins)
+                return;
+
+            GameServices.Instance.player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, transactionTotalPrice/amount,amount);
+            currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource, amount);
+            updateCurrentSettlementPrices();
+            GameServices.Instance.contractManager.buyResources(currentItemSelected.tradeSettlementItem.resource, amount, currentSettlement.defaultSettlementData);
             
-            //Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with proce {currentItemSelected.tradeSettlementItem.price}");
-            //Check player money & space in backpack
-            
-            if (player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price
-            && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume, currentItemSelected.tradeSettlementItem.resource.weight))
+            cityUI.DisplayTrade();            
+            return;
+        }
+
+        //SELL
+        if (currentItemSelected.tradeInventoryItem != null)
+        {
+            player.invetory.tradeOut(currentItemSelected.tradeInventoryItem.resourceSO, transactionTotalPrice/amount, amount);
+            currentSettlement.increaseStock(currentItemSelected.tradeInventoryItem.resourceSO, cityUI.ReturnCurentSliderValue());
+            updateCurrentSettlementPrices();
+            GameServices.Instance.contractManager.sellResources(currentItemSelected.tradeInventoryItem.resourceSO, amount, currentSettlement.defaultSettlementData);
+
+            if(currentSettlement.defaultSettlementData.settlementNeedsResource(currentItemSelected.tradeInventoryItem.resourceSO))
             {
-                player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, currentItemSelected.tradeSettlementItem.price);                
-                currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource);
+                currentSettlement.reputation += GlobalSettingsManager.REPUTATION_GAIN_PER_SALE * amount;
+            }
+
+            cityUI.DisplayTrade();
+            return;
+        }
+    }
+
+    public void BuyOrSell()
+    {   
+        if(currentItemSelected.isLocked == false)
+        {
+            //BUY
+            if (currentItemSelected.tradeSettlementItem != null)
+            {
+
+                //Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with prce {currentItemSelected.tradeSettlementItem.price}");
+
+                //Check player money & space in backpack
+
+                if (player.invetory.CurrentCoins >= currentItemSelected.tradeSettlementItem.price * cityUI.ReturnCurentSliderValue()
+                && player.invetory.CanCarry(currentItemSelected.tradeSettlementItem.resource.volume * cityUI.ReturnCurentSliderValue(),
+                currentItemSelected.tradeSettlementItem.resource.weight * cityUI.ReturnCurentSliderValue()))
+
+                {
+                    player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, currentItemSelected.tradeSettlementItem.price, cityUI.ReturnCurentSliderValue());
+                    currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource, cityUI.ReturnCurentSliderValue());
+                    updateCurrentSettlementPrices();
+
+                    //Slider
+                    cityUI.SliderMaxValue();
+
+                    //Display
+                    SettlementUI.GetComponent<CityUI>().DisplayTrade();
+                    SettlementUI.GetComponent<CityUI>().DisplayPlayerCoins();
+                    return;
+                }
+            }
+
+            //Sell
+            if (currentItemSelected.tradeInventoryItem != null)
+            {
+
+                if (!player.invetory.hasResources(currentItemSelected.tradeInventoryItem.resourceSO))
+                    return;
+
+                player.invetory.tradeOut(currentItemSelected.tradeInventoryItem.resourceSO, currentSettlement.getStockPrice(currentItemSelected.tradeInventoryItem.resourceSO), cityUI.ReturnCurentSliderValue());
+                currentSettlement.increaseStock(currentItemSelected.tradeInventoryItem.resourceSO, cityUI.ReturnCurentSliderValue());
                 updateCurrentSettlementPrices();
-                
+
+                //Slider
+                cityUI.SliderMaxValue();
                 //Display
-                
                 SettlementUI.GetComponent<CityUI>().DisplayTrade();
                 SettlementUI.GetComponent<CityUI>().DisplayPlayerCoins();
                 return;
             }
         }
-
-        //Sell
-        if (currentItemSelected.tradeInventoryItem != null)
-        {
-            
-            if (!player.invetory.hasResources(currentItemSelected.tradeInventoryItem.resourceSO))
-                return;
-
-            player.invetory.tradeOut(currentItemSelected.tradeInventoryItem.resourceSO, currentSettlement.getStockPrice(currentItemSelected.tradeInventoryItem.resourceSO));            
-            currentSettlement.increaseStock(currentItemSelected.tradeInventoryItem.resourceSO);
-            updateCurrentSettlementPrices();
-            
-            //Display
-            SettlementUI.GetComponent<CityUI>().DisplayTrade();
-            SettlementUI.GetComponent<CityUI>().DisplayPlayerCoins();
-            return;
-        }
+        
     }
+
+  
 
     //Shop buy item
     public void BuyShopItem()
@@ -335,7 +465,66 @@ public class SettlementsManager : MonoBehaviour
         {
             return;
         }
+
+        if (CargoManager.instance.CanBuy(currentShopItemSelected.cargo,player.invetory.CurrentCoins))
+        {
+            CargoManager.instance.AddCargoItem(currentShopItemSelected.cargo,ref player.invetory.CurrentCoins);
+        }else
+        {
+            //Already owned
+            return;
+        }
+
+        //Refresh Page After buy
+        cityUI.DisplayShop();
+       
+        
     }
 
-    
+    //Upgrade buy item
+
+    public void BuyUpgradeItem()
+    {
+        if(currentUpgradeItem == null )
+        {
+            return;
+        }
+
+        /*if (!CargoManager.instance.CanBuy(currentUpgradeItem.upgrade))
+        {
+            CargoManager.instance.AddCargoItem(currentUpgradeItem.upgrade,ref player.invetory.CurrentCoins);
+        }
+
+        //RefreshPage
+        cityUI.DisplayUpgradePanel();
+        */
+        
+    }
+
+    public void BuyLicence()
+    {
+        if(currentLicenceSelected == null)
+        {
+            return;
+        }
+
+        licenseManager.PuchaseLicenses(currentLicenceSelected.licenseSO, ref player.invetory.CurrentCoins);
+
+        //Reset Panel
+        cityUI.DisplayTradeGuildPanel();       
+          
+    }
+
+    public void addReputation(SettlementSO settlement, float amount)
+    {
+        foreach (var settl in settlements)
+        {
+            if (settl.defaultSettlementData.settlementName == settlement.settlementName)
+            {
+                settl.reputation += amount;
+                Debug.Log($"Reputation for {settl.settlementName} is now {settl.reputation}");
+            }
+        }
+    }
+
 }

@@ -147,8 +147,9 @@ public class ResourceAmount
 public class NewCampManager : MonoBehaviour
 {
     public Button campButton;
-    public Player_M player;
-    public EnvironmentManager envManager;
+    private Player_M player;
+    private NpcManager npcManager;
+    private EnvironmentManager envManager;
     public CampStats campStats = new CampStats();
     private int restTimeCounter = 0;
     private int restDuration = 0;
@@ -159,9 +160,7 @@ public class NewCampManager : MonoBehaviour
     public TMP_Text restScreenText;
     public GameObject restScreenPanel;
     public CanvasGroup restScreenCanvasGroup;
-
     public float fadeDuration = 1f;
-
     private Coroutine fadeCoroutine;
     public Camera playerCam;
     public float caravanCameraSize;
@@ -191,12 +190,17 @@ public class NewCampManager : MonoBehaviour
     public CampResolutionScreen campResloution;
     private void Start()
     {
+        player = GameServices.Instance.player;
+        npcManager = GameServices.Instance.npcManager;
+        envManager = GameServices.Instance.environmentManager;
+
         caravanCameraSize = playerCam.orthographicSize;
     }
 
     public void startCamping()
     {
         player.Root();
+        
         startFadeIn("Preparing camp...");
     }
 
@@ -247,6 +251,7 @@ public class NewCampManager : MonoBehaviour
         campStats.resetStats();
 
         player.isCamping = true;
+        npcManager.hideAllNPC();
 
         campButton.interactable = false;
         playerCaravan.SetActive(false);
@@ -289,6 +294,8 @@ public class NewCampManager : MonoBehaviour
         roadsObject.SetActive(true);
 
         player.isCamping = false;
+        npcManager.restoreNPCVizibility();
+
         Debug.Log("Camp dismissed");
         moveCameraToCaravan();
     }
@@ -561,7 +568,7 @@ public class NewCampManager : MonoBehaviour
                 campStats.IncreaseFire(restore);
 
                 res.amount--;
-                player.invetory.Remove(res.resourceSO);
+                player.invetory.Remove(res.resourceSO,1);
             }
 
             // Fire is full, no need to check other resources
@@ -587,7 +594,7 @@ public class NewCampManager : MonoBehaviour
                 campStats.IncreaseShelter(restore);
 
                 res.amount--;
-                player.invetory.Remove(res.resourceSO);
+                player.invetory.Remove(res.resourceSO, 1);
             }
 
             // Fire is full, no need to check other resources
@@ -613,7 +620,7 @@ public class NewCampManager : MonoBehaviour
                 campStats.IncreaseCargoSafety(restore);
 
                 res.amount--;
-                player.invetory.Remove(res.resourceSO);
+                player.invetory.Remove(res.resourceSO, 1);
             }
 
             // Fire is full, no need to check other resources

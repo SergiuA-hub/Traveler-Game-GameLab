@@ -1,17 +1,23 @@
 using JetBrains.Annotations;
+using Mono.Cecil;
+using NUnit.Framework;
+using System;
 using TMPro;
 using Unity.Mathematics;
+using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+
 public enum CityUIPage
 {
     Lobby=0,
     Shop=1,
     Trade=2,
-    TradeGuild=3,
-    CartManagment=4,
-    Rest =5
+    UpgradeShop = 3,
+    TradeGuild=4,
+    CartManagment=5,
+    Rest =6
 }
 
 [System.Serializable]
@@ -25,35 +31,57 @@ public class CityUI : MonoBehaviour
     [SerializeField] private VerticalInvetoryItem itemPrefab;
     [SerializeField] private Transform Content;
     [SerializeField] private TMP_Text settlementName;
+    [SerializeField] private TMP_Text reputation;
 
     [Header("Trade Panel")]
-
-    // BUY & SELL
     [SerializeField] private TradeItemDisplay tradePrfab;
     [SerializeField] private Transform buyContent;
 
     [SerializeField] private TradeItemDisplay tradePlayerPrefab;
     [SerializeField] private Transform SellContent;
 
-    //Components
-    public Setlement setlement;
+    [Header("Player Components")]    
     public PlayerInventory_M playerInventory;
+    public Player_M player;
     [SerializeField] private TextMeshProUGUI playerCoinsDisplay;
 
 
-    [Header("Current TRADE_ITEM_DISPLAY")]
-    
+    [Header("Current TRADE_ITEM_DISPLAY")]    
     [SerializeField] private Image currentTradeItemImage;
     [SerializeField] private TextMeshProUGUI currentTradeItemName;
     [SerializeField] private TextMeshProUGUI currentTradeItemPrice;
     [SerializeField] private TextMeshProUGUI buySellButtonText;
     [SerializeField] private TextMeshProUGUI currentItemAmount;
-    //Slider
+    public GameObject CurrentLockedPanel;
+    private SettlementGood selectedSettlementGood;
+
+    //Price Tier Display
+    [Header("Current Item Price Tier")]
+
+    [SerializeField] private TextMeshProUGUI TierVAmoun;
+    [SerializeField] private TextMeshProUGUI TierIVAmount;
+    [SerializeField] private TextMeshProUGUI TierIIIAmount;
+    [SerializeField] private TextMeshProUGUI TierIIAmount;
+    [SerializeField] private TextMeshProUGUI TierIAmount;
+    [SerializeField] private TextMeshProUGUI TierVPrice;
+    [SerializeField] private TextMeshProUGUI TierIVPrice;
+    [SerializeField] private TextMeshProUGUI TierIIIPrice;
+    [SerializeField] private TextMeshProUGUI TierIIPrice;
+    [SerializeField] private TextMeshProUGUI TierIPrice;
+    public TradeTierUIIndicator tierIndicator;
+
+
+    [Header("SLIDER_TRADE")]
     public Slider sliderAmount;
     [SerializeField] private TextMeshProUGUI currentTextAmount;
-    
+    //weight display
+    public Image weight_Invetory_Slider;
+    public Image weight_Trade_Slider;
+    //volume Display
+    public Image volume_Invetory_Slider;
+    public Image volume_Trade_Slider;
 
-    [Header("Shop page")]
+    [Header("SHOP PAGE")]
 
     [SerializeField] private Transform ShopContent;
     [SerializeField] private ShopItemDisplay ItemShopPrefab;
@@ -63,29 +91,69 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentShopItemName;
     [SerializeField] private TextMeshProUGUI currentShopItemPrice;
     [SerializeField] private TextMeshProUGUI currentShopItemDescription;
+    [SerializeField] private TextMeshProUGUI buyShopButtonText;
+    [SerializeField] private BulletLIstCreator bulletList;
     
 
+    [Header("UPGRADE PAGE")]
+    [SerializeField] private Transform UpgradeContent;
+    [SerializeField] UpgradeItemDisplay upgradeItemDisplayPrefab;
 
+    [Header("Current UPGRADE_SHOP_ITEM_DISPLAY")]
+    [SerializeField] private Image currentUpgradeItemIcon;
+    [SerializeField] private TextMeshProUGUI upgradeItemName;
+    [SerializeField] private TextMeshProUGUI upgradeItemPrice;
+    [SerializeField] private TextMeshProUGUI upgradeItemDescription;
+
+    [Header("TRADE GUILD PAGE")]
+    [SerializeField] private Transform TradeGuildContent;
+    [SerializeField] private LicenceItemDisplay LicensesDisplayPrefab;
+
+    [Header("Current LICENSE DISPLAY")]
+    [SerializeField] private Image LicenseIcon;
+    [SerializeField] private TextMeshProUGUI LicenseName;
+    [SerializeField] private TextMeshProUGUI LicensePrice;
+    [SerializeField] private Transform LicenseUnlockList;
+    [SerializeField] private LicenceUnlock unlockItem;
+
+    
+    [Header("Cart Managment Display")]
+    [SerializeField] private Transform managmentContent;
+    [SerializeField] private UpgradeItemDisplay upgradeDisplayPrefab;
+
+    [SerializeField] private int pageIndex=1;
+
+    [Header("Current Item_Cart_Managment")]
+    [SerializeField] private Image currentManagmentItemIcon;
+    [SerializeField] private TextMeshProUGUI currentManagmentItemName;
+
+    [Header("Current Upgrade_Cart_Managment")]
+    [SerializeField] private Image currentManagmentUpgradeIcon;
+    [SerializeField] private TextMeshProUGUI currentManagmentUpgradeName;
 
     [Header("PAGES")]
     [SerializeField] private GameObject LobbyPanel;
     [SerializeField] private GameObject ShopPanel;
     [SerializeField] private GameObject TradePanel;
+    [SerializeField] private GameObject UpgradePanel;
 
-    private void Awake()
-    {
-        setlement = GetComponent<Setlement>();
-    }
+    [SerializeField] private GameObject GuildPanel;
+    [SerializeField] private GameObject CartManagmentPanel;
+
+    
     private void OnEnable()
     {
-        setlement = GetComponent<Setlement>();        
+        
         ShowCurrentPage(currentpage);
     }
 
     private void Update()
     {
-        DisplayPlayerCoins();
+        //DisplayPlayerCoins();
+        //ShowTotalPrice();
         currentTextAmount.text = sliderAmount.value.ToString();
+
+        SetPlayerWeightVolumeTrade();
         
     }
 
@@ -96,6 +164,9 @@ public class CityUI : MonoBehaviour
         LobbyPanel.SetActive(page == CityUIPage.Lobby);
         ShopPanel.SetActive(page == CityUIPage.Shop);
         TradePanel.SetActive(page == CityUIPage.Trade);
+        UpgradePanel.SetActive(page == CityUIPage.UpgradeShop);
+        GuildPanel.SetActive(page == CityUIPage.TradeGuild);
+        CartManagmentPanel.SetActive(page == CityUIPage.CartManagment);
 
         switch (currentpage)
         {
@@ -104,16 +175,19 @@ public class CityUI : MonoBehaviour
                
                 break;
             case CityUIPage.Shop:
-               DisplayShop();
+                DisplayShop();
                 break;
             case CityUIPage.Trade:
                 DisplayTrade();
                 break;
+            case CityUIPage.UpgradeShop:
+                DisplayUpgradePanel();
+                break;
             case CityUIPage.TradeGuild:
-
+                DisplayTradeGuildPanel();
                 break;
             case CityUIPage.CartManagment:
-
+                DisplayCartManagmentPanel();
                 break;
             case CityUIPage.Rest:
 
@@ -131,6 +205,8 @@ public class CityUI : MonoBehaviour
     private void DisplayInvetory()
     {
         settlementName.text = currentSettlement.settlementName;
+        reputation.text = $"Reputation\n{currentSettlement.reputation:F1}";
+
         //Delete List
         foreach (Transform child in Content)
         {
@@ -165,21 +241,29 @@ public class CityUI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        
+
+        bool selectionReseted = false;
         //Create list
         foreach (var item in currentSettlement.settlementStock)
         {
-            TradeItemDisplay row = Instantiate(tradePrfab, buyContent);
-            row.PopulateBuyIcon(item, this);
-            
+            TradeItemDisplay row;
 
-            if (settlementsManager.currentItemSelected != null && settlementsManager.currentItemSelected.tradeSettlementItem != null)
-                if(item.resource.itemName == settlementsManager.currentItemSelected.tradeSettlementItem.resource.itemName)
-                {
-                    //Debug.Log($"item.resource.itemName:{item.resource.itemName}");
-                    SetCurrentTradeItem(row);
-                }
-            
+            if (LicenseManager.instance.CanTrade(item.resource,currentSettlement.defaultSettlementData))
+            {
+                 row = Instantiate(tradePrfab, buyContent);
+                row.PopulateBuyIcon(item, this,false);
+            }
+            else
+            {
+                row = Instantiate(tradePrfab, buyContent);
+                row.PopulateBuyIcon(item, this, true);
+            }
+
+            if (settlementsManager.currentItemSelected != null && settlementsManager.currentItemSelected.tradeSettlementItem != null && settlementsManager.currentItemSelected.tradeSettlementItem.resource.itemName == item.resource.itemName)
+            {
+                selectionReseted = true;
+                SetCurrentTradeItem(row);
+            }
         }
 
         foreach (InventoryItem item in playerInventory.Inventory)
@@ -187,45 +271,189 @@ public class CityUI : MonoBehaviour
             TradeItemDisplay row = Instantiate(tradePlayerPrefab, SellContent);
 
             row.PopulateSellIcon(item, this);
+
+            if (settlementsManager.currentItemSelected != null && settlementsManager.currentItemSelected.tradeInventoryItem != null && settlementsManager.currentItemSelected.tradeInventoryItem.resourceSO.itemName == item.resourceSO.itemName)
+            {
+                selectionReseted = true;
+                SetCurrentTradeItem(row);
+            }
         }
 
+        if (!selectionReseted)
+        {
+            settlementsManager.currentItemSelected = null;
+            SliderMaxValue();
+        }
+    }
+
+    public void resetTransaction()
+    {
+        sliderAmount.value = 0;
     }
 
     public void DisplayPlayerCoins()
     {
-        playerCoinsDisplay.text= ": "+playerInventory.CurrentCoins.ToString();
+        playerCoinsDisplay.text= $": {playerInventory.CurrentCoins:F1}";
     }
 
     public void SetCurrentTradeItem(TradeItemDisplay item)
     {
+        selection_totalPrice = 0f;
+
         settlementsManager.currentItemSelected = item;
         currentTradeItemImage.sprite = item.itemIcon.sprite;
         currentTradeItemName.text = item.itemNameText.text;
-        
 
-
-        if (item.tradeSettlementItem != null)
-            currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeSettlementItem.resource).ToString("0.0");
-        else currentTradeItemPrice.text = settlementsManager.currentSettlement.getStockPrice(item.tradeInventoryItem.resourceSO).ToString("0.0");
+        //Tiers
+        GetCurrentItemTiers();
+        tierIndicator.clearIndicator();
 
         //Buttons
         SetButtonText(item);
         SliderMaxValue();
+        
+        sliderAmount.value = 0;
 
+        if(settlementsManager.currentItemSelected != null)
+        {
+            if(settlementsManager.currentItemSelected.tradeInventoryItem != null)
+            {
+                //inventory seleceted -> flip slider (right to left)
+                sliderAmount.gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+
+            }
+
+            if (settlementsManager.currentItemSelected.tradeSettlementItem != null)
+            {
+                //settlement selected -> normal orientation to slider (left to right)
+                sliderAmount.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+        }
     }
 
+    public void GetCurrentItemTiers()
+    {
+        TradeItemDisplay currentItem = settlementsManager.currentItemSelected;
+        SettlementSO currentSettlement = settlementsManager.currentSettlement.defaultSettlementData;
+        ResourceSO resToShowTier = currentItem.tradeSettlementItem == null ? currentItem.tradeInventoryItem.resourceSO : currentItem.tradeSettlementItem.resource;
+        if (currentItem == null)
+        {
+            return;
+        }
+
+        foreach(var production in currentSettlement.production)
+        {
+            if(resToShowTier == production.resource)
+            {
+                selectedSettlementGood = production;
+                SetTierList(production);
+                return;
+            }
+        }
+
+        foreach (var consumption in currentSettlement.consumption)
+        {
+            if (resToShowTier == consumption.resource)
+            {
+                selectedSettlementGood = consumption;
+                SetTierList(consumption);
+                return;
+            }
+        }
+    }
+
+    private void SetTierList(SettlementGood settlemeGood)
+    {
+        TierIAmount.text = $"Stock: below {settlemeGood.tier1_price_stock}";
+        TierIPrice.text = $"{(settlemeGood.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER):F1}";
+
+        TierIIAmount.text = $"Stock: {settlemeGood.tier1_price_stock}–{settlemeGood.tier2_price_stock}";
+        TierIIPrice.text = $"{(settlemeGood.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER):F1}";
+
+        TierIIIAmount.text = $"Stock: {settlemeGood.tier2_price_stock}–{settlemeGood.tier3_price_stock}";
+        TierIIIPrice.text = $"{(settlemeGood.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER):F1}";
+
+        TierIVAmount.text = $"Stock: {settlemeGood.tier3_price_stock}–{settlemeGood.tier4_price_stock}";
+        TierIVPrice.text = $"{(settlemeGood.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER):F1}";
+
+        TierVAmoun.text = $"Stock: above {settlemeGood.tier4_price_stock}";
+        TierVPrice.text = $"{(settlemeGood.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER):F1}";
+    }
+
+    //Slider
     public void SliderMaxValue()
     {
-        //Slider
-        if (settlementsManager.currentItemSelected.tradeInventoryItem == null)
+        if(settlementsManager.currentItemSelected == null)
         {
-            sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeSettlementItem.amount;
+            sliderAmount.maxValue = 0;
+            sliderAmount.value = 0;
+            return;
         }
-        if (settlementsManager.currentItemSelected.tradeSettlementItem == null)
+
+        if (settlementsManager.currentItemSelected.tradeSettlementItem != null)
+        {
+            float maxSetlementAmount = settlementsManager.currentItemSelected.tradeSettlementItem.amount;
+            float maxAmountBasedOnWeight = (GameServices.Instance.player.stats.maxWeight - GameServices.Instance.player.invetory.currentWeight) / settlementsManager.currentItemSelected.tradeSettlementItem.resource.weight;
+            float maxAmountBasedOnVolume = (GameServices.Instance.player.stats.maxVolume - GameServices.Instance.player.invetory.currentVolume) / settlementsManager.currentItemSelected.tradeSettlementItem.resource.volume;
+            //float maxAmountBasedOnCoins = GameServices.Instance.player.invetory.CurrentCoins / settlementsManager.currentItemSelected.tradeSettlementItem.resource.baseValue;
+            
+            sliderAmount.maxValue = Mathf.Max(0, Mathf.FloorToInt(Mathf.Min(maxSetlementAmount,maxAmountBasedOnWeight,maxAmountBasedOnVolume)));
+        }
+
+        if (settlementsManager.currentItemSelected.tradeInventoryItem != null)
         {
             sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeInventoryItem.amount;
         }
+    }
+
+    //Weight & Volume
+    private void SetPlayerWeightVolumeTrade() 
+    {
+        TradeItemDisplay currentItem = settlementsManager.currentItemSelected;
+        //already in invetory
+        weight_Invetory_Slider.fillAmount = playerInventory.currentWeight / player.stats.maxWeight;
+        volume_Invetory_Slider.fillAmount = playerInventory.currentVolume / player.stats.maxVolume;
+
+        if(settlementsManager.currentItemSelected == null)
+        {
+         
+            return;
+        }
+
+        //Adding from shop
+        //shop production
+        if(settlementsManager.currentItemSelected.tradeSettlementItem != null)
+        {
+            //Trade Slider
+            float weightBuy = playerInventory.currentWeight + currentItem.tradeSettlementItem.resource.weight * ReturnCurentSliderValue();
+            float volumeBuy = playerInventory.currentVolume + currentItem.tradeSettlementItem.resource.volume * ReturnCurentSliderValue();
+
+            weight_Trade_Slider.fillAmount = weightBuy / player.stats.maxWeight;
+            volume_Trade_Slider.fillAmount = volumeBuy / player.stats.maxVolume;
+
+            
+        }
+        if(settlementsManager.currentItemSelected.tradeInventoryItem != null)
+        {
+            weight_Trade_Slider.gameObject.SetActive(false);
+            volume_Trade_Slider.gameObject.SetActive(false);
+
+            float weightAfterSale = playerInventory.currentWeight - currentItem.tradeInventoryItem.resourceSO.weight* ReturnCurentSliderValue();
+            float volumeAfterSale = playerInventory.currentVolume - currentItem.tradeInventoryItem.resourceSO.volume * ReturnCurentSliderValue();
+
+            //Sell Slider
+            weight_Invetory_Slider.fillAmount = weightAfterSale / player.stats.maxWeight ;
+            volume_Invetory_Slider.fillAmount = volumeAfterSale / player.stats.maxVolume ;
         
+        }
+    }
+
+    public void BuyOrSell()
+    {
+        if (selection_totalPrice == 0 || Mathf.RoundToInt(ReturnCurentSliderValue()) == 0)
+            return;
+
+        GameServices.Instance.settlementManager.BuyOrSell(selection_totalPrice, Mathf.RoundToInt(ReturnCurentSliderValue()));
     }
 
     public int ReturnCurentSliderValue()
@@ -233,6 +461,113 @@ public class CityUI : MonoBehaviour
         return Mathf.RoundToInt(sliderAmount.value);
     }
 
+    //Total Price
+    private float selection_totalPrice;
+    public void ShowTotalPrice()
+    {
+        if (settlementsManager.currentItemSelected == null)
+        {
+            currentTradeItemPrice.text = "0";
+            return;
+        }
+
+        int amount = Mathf.RoundToInt(ReturnCurentSliderValue());
+        float totalPrice = 0f;
+
+        // BUY
+        if (settlementsManager.currentItemSelected.tradeSettlementItem != null)
+        {
+            float currentStock = settlementsManager.currentSettlement.getStock(settlementsManager.currentItemSelected.tradeSettlementItem.resource);
+
+            for (int i = 0; i < amount; i++)
+            {
+                float newStock = currentStock - i - 1;
+                float currentPrice = 0f;
+
+                if (newStock < selectedSettlementGood.tier1_price_stock)
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(1);
+                }
+                else if (newStock < selectedSettlementGood.tier2_price_stock)
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(2);
+                }
+                else if (newStock < selectedSettlementGood.tier3_price_stock)
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(3);
+                }
+                else if (newStock < selectedSettlementGood.tier4_price_stock)
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(4);
+                }
+                else
+                {
+                    currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
+                    tierIndicator.indicateTier(5);
+                }
+
+                totalPrice += currentPrice;
+                currentTradeItemPrice.color = totalPrice > GameServices.Instance.player.invetory.CurrentCoins ? new Color32(220, 80, 80, 255) : Color.white;
+            }
+        }
+
+        // SELL
+        else if (settlementsManager.currentItemSelected.tradeInventoryItem != null)
+        {
+            float currentStock = settlementsManager.currentSettlement.getStock(settlementsManager.currentItemSelected.tradeInventoryItem.resourceSO);
+
+            for (int i = 0; i < amount; i++)
+            {
+                float newStock = currentStock + i;
+                float currentPrice = 0f;
+                
+                if(selectedSettlementGood == null)
+                {
+                    currentTradeItemPrice.color = Color.yellow;
+                    currentPrice = settlementsManager.currentItemSelected.tradeInventoryItem.resourceSO.baseValue * GlobalSettingsManager.UNWANTED_GOOD_PRICE_MULTIPLIER;
+                    totalPrice += currentPrice;
+                }
+                else
+                {
+                    if (newStock < selectedSettlementGood.tier1_price_stock)
+                    {
+                        currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_1_PRICE_MULTIPLIER;
+                        tierIndicator.indicateTier(1);
+                    }
+                    else if (newStock < selectedSettlementGood.tier2_price_stock)
+                    {
+                        currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_2_PRICE_MULTIPLIER;
+                        tierIndicator.indicateTier(2);
+                    }
+                    else if (newStock < selectedSettlementGood.tier3_price_stock)
+                    {
+                        currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_3_PRICE_MULTIPLIER;
+                        tierIndicator.indicateTier(3);
+                    }
+                    else if (newStock < selectedSettlementGood.tier4_price_stock)
+                    {
+                        currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_4_PRICE_MULTIPLIER;
+                        tierIndicator.indicateTier(4);
+                    }
+                    else
+                    {
+                        currentPrice = selectedSettlementGood.resource.baseValue * GlobalSettingsManager.TIER_5_PRICE_MULTIPLIER;
+                        tierIndicator.indicateTier(5);
+                    }
+                    currentTradeItemPrice.color = Color.white;
+                    totalPrice += currentPrice;
+                }
+            }
+        }
+        
+        selection_totalPrice = totalPrice;
+
+        currentTradeItemPrice.text = $"{totalPrice:F1}";
+    }
 
     //############
     //SHOP AREA
@@ -248,20 +583,149 @@ public class CityUI : MonoBehaviour
         foreach (var item in currentSettlement.settlementShopItems)
         {
             ShopItemDisplay row = Instantiate(ItemShopPrefab, ShopContent);
-            row.PopulateIcons(item.shopItems, this);
+            row.PopulateIcons(item, this);
         }
+
+        
     }
     public void SetCurrentShopItem(ShopItemDisplay shopItem)
     {
         settlementsManager.currentShopItemSelected = shopItem;
+        //Visual
+        currentShopItemIcon.sprite = shopItem.IconImage.sprite;
+        currentShopItemPrice.text = shopItem.cargo.cargoSO.price.ToString();
+        currentShopItemName.text = shopItem.cargo.cargoSO.itemName.ToString();
+        currentShopItemDescription.text = shopItem.cargo.cargoSO.Description;
 
-        //Set The display Icons
-        //currentShopItemIcon.sprite = shopItem.IconImage.sprite;
-        currentShopItemName.text = shopItem.itemName.text;
-        
-
+        //Button
+        SetButtonTextShop(shopItem.cargo);
+        bulletList.CreateBulletList(settlementsManager.currentShopItemSelected.cargo.cargoSO.features);
     }
 
+
+    //############
+    //UPGRADE AREA
+    //############
+
+    public void DisplayUpgradePanel()
+    {
+        foreach(Transform child in UpgradeContent)
+        {
+            Destroy (child.gameObject);
+        }
+
+        foreach (var item in currentSettlement.settlmentUpgradeItems)
+        {
+            UpgradeItemDisplay row = Instantiate(upgradeItemDisplayPrefab, UpgradeContent);
+            row.PopulateUpgrade(item, this);
+        }
+    }
+
+    public void SetCurrentUpgradeItem(UpgradeItemDisplay item)
+    {
+        settlementsManager.currentUpgradeItem= item;
+
+        currentUpgradeItemIcon = item.iconImage;
+        
+    }
+
+
+    //############
+    //TRADE GUILD
+    //############
+
+    public void DisplayTradeGuildPanel()
+    {
+        foreach (Transform child in TradeGuildContent)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (var license in currentSettlement.settlmentLicenses)
+        {
+
+            if (!LicenseManager.instance.AlreadyOwnsLicense(license))
+            {
+                LicenceItemDisplay row = Instantiate(LicensesDisplayPrefab, TradeGuildContent);
+                row.PopulateLicense(license, this);
+            }
+                
+        }
+       
+    }
+
+    public void SetCurrentLicence(LicenceItemDisplay licenceItemDisplay)
+    {
+        settlementsManager.currentLicenceSelected= licenceItemDisplay;
+
+        LicenseIcon.sprite = licenceItemDisplay.icon.sprite;
+        LicenseName.text = licenceItemDisplay.licencename.text;
+        LicensePrice.text = licenceItemDisplay.price.text;
+
+        foreach(Transform child in LicenseUnlockList)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach(var item in licenceItemDisplay.licenseSO.resourse_unlock)
+        {
+            LicenceUnlock row = Instantiate(unlockItem, LicenseUnlockList);
+            row.Create(item);
+        }
+    }
+    
+
+    //############
+    //CART MANAGMENT
+    //############
+    public void DisplayCartManagmentPanel()
+    {
+        
+
+        //Delete extinting items 
+        
+        if(pageIndex == 1)
+        {
+            foreach (Transform child in managmentContent)
+            {
+                Destroy(child.gameObject);
+            }
+            //Display invetory items
+
+            foreach (var item in CargoManager.instance.PlayerOwnedCargo)
+            {
+                ShopItemDisplay row = Instantiate(ItemShopPrefab, managmentContent);
+                row.PopulateIcons(item, this);
+            }
+        }
+        else if (pageIndex == 2)  
+        {
+            foreach (Transform child in managmentContent)
+            {
+                Destroy(child.gameObject);
+            }
+            //Display invetory upgrades
+            foreach (var item in CargoManager.instance.PlayerOwnedUpgrades)
+            {
+                UpgradeItemDisplay row = Instantiate(upgradeDisplayPrefab, managmentContent);
+                row.PopulateUpgrade(item, this);
+            }
+        }
+    }
+    public void SetCurrentCartManagmentItem(ShopItemDisplay shopItem)
+    {
+        currentManagmentItemIcon.sprite = shopItem.IconImage.sprite;
+        currentManagmentItemName.text = shopItem.cargo.ItemName;
+    } 
+
+    public void ChangeCargoContentPage(int x)
+    {
+        pageIndex = x;
+        DisplayCartManagmentPanel();
+    }
+
+    //############
+    //REST 
+    //############
 
     //BUTTONS FUNCTIONS
     public void ChangePage(int pageIndex)
@@ -274,7 +738,11 @@ public class CityUI : MonoBehaviour
         ChangePage(0);
         //setlement.CityObjectUI.SetActive(false);
         this.gameObject.SetActive(false);
+        GameServices.Instance.player.UnRoot();
+        GameServices.Instance.settlementManager.leaveSettlement();
     }
+
+    //BUY || SELL BUTTON  -> TRADE PANEL
     private void SetButtonText(TradeItemDisplay typeItem)
     {
         if(typeItem.tradeInventoryItem != null)
@@ -286,6 +754,27 @@ public class CityUI : MonoBehaviour
             buySellButtonText.text = "BUY";
         }
     }
+
+    //BUY BUTTON -> SHOP PANEL
+    public void SetButtonTextShop (Cargo cargo)
+    {
+        if (cargo == null)
+        {
+            return;
+        }
+        foreach(Cargo item in CargoManager.instance.PlayerOwnedCargo)
+        {
+            if(cargo.cargoSO == item.cargoSO)
+            {
+                buyShopButtonText.text = "OWNED";
+            }
+            else
+            {
+                buyShopButtonText.text = "BUY";
+            }
+            
+        }
+    } 
     
     //initial setup
     public void prepareSettlement(SettlementRuntime settlement)

@@ -8,8 +8,11 @@ using UnityEngine.Rendering.Universal;
 public class TimeManager : MonoBehaviour
 {
     [Header("Player")]
-    public Player_M player;
-    
+    private Player_M player;
+
+    [Header("NPC")]
+    private NpcManager npcManager;
+
     [Header("Day / Night")]
     [SerializeField] private Light2D globalLight;
     [SerializeField] private float nightIntensity = 0.20f;
@@ -53,6 +56,9 @@ public class TimeManager : MonoBehaviour
 
     void Start()
     {
+        player = GameServices.Instance.player;
+        npcManager = GameServices.Instance.npcManager;
+
         hour_duration = GlobalSettingsManager.HOUR_DURATION;
         currentTime = new DateTime(1251, 3, 25, 0, 0, 0);
         timeLeft = hour_duration;
@@ -93,10 +99,10 @@ public class TimeManager : MonoBehaviour
         var keyboard = Keyboard.current;
         if (keyboard == null) return;
 
-        if (keyboard.spaceKey.wasPressedThisFrame)
-        {
-            time_stopped = true;
-        }
+        //if (keyboard.spaceKey.wasPressedThisFrame)
+        //{
+        //    time_stopped = true;
+        //}
 
         if (keyboard.digit1Key.wasPressedThisFrame)
         {
@@ -121,7 +127,7 @@ public class TimeManager : MonoBehaviour
 
     void HandleTimer(float dec)
     {
-        timerCurrent -= dec;
+        timerCurrent -= dec;// (hour_duration / GlobalSettingsManager.HOUR_DURATION);
         if (timerCurrent <= 0)
         {
             timerCurrent = 0;
@@ -285,10 +291,11 @@ public class TimeManager : MonoBehaviour
 
             // Calculate % progress already passed
             float progressPercent = 1f - (timeLeft / oldHourDuration);
-
             // Apply new hour duration
             hour_duration = speed;
             player.stats.setMaxSpeed(hour_duration);
+            npcManager.adjustSpeed(hour_duration);
+
             // Recalculate timeLeft to preserve progress
             timeLeft = hour_duration * (1f - progressPercent);
         }

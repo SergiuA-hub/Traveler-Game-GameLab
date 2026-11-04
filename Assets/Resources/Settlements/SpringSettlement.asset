@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SpringSettlement
   m_EditorClassIdentifier: Assembly-CSharp::SettlementSO
   settlementName: Spring Village
+  region: 0
   production:
   - resource: {fileID: 11400000, guid: bd4b42c652ba9c94da6d95e33a465157, type: 2}
     dailyChange: 10
@@ -137,3 +138,9 @@ MonoBehaviour:
     tier5_price_stock: 15
     licenseCost: -1
   itemsShop: []
+  upgradeShop: []
+  Licenses_Shop:
+  - {fileID: 11400000, guid: d37b6cdbf76ccce4da17293f23ee0331, type: 2}
+  - {fileID: 11400000, guid: 8c3edaa3c69fc4b45a5608578c9bc580, type: 2}
+  - {fileID: 11400000, guid: 7a56bf452e9c6564581d94ea9dfa925f, type: 2}
+  - {fileID: 11400000, guid: 10b9c6294a4b20e46b88da029467ca67, type: 2}
