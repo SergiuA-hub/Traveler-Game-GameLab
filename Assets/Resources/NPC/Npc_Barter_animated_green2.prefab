@@ -502,7 +502,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -4608818801236732244, guid: 62268680e5a11ad49aa5467692120070, type: 3}
+  m_Sprite: {fileID: -2475660581154848702, guid: 67edf9c513c4fd2448fb9bf39afe1a1b, type: 3}
   m_Color: {r: 0.5151702, g: 0.89411765, b: 0.4745098, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -522,7 +522,7 @@ Animator:
   m_GameObject: {fileID: 4117371115681317972}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 41969bbf0ffb5ef489e0b8a16347aa91, type: 2}
+  m_Controller: {fileID: 22100000, guid: 84963a68c40c38343944f4648de29aab, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -589,6 +589,7 @@ MonoBehaviour:
   pathOffset: {x: 0, y: 0.5, z: 0}
   speed: 1
   forward: 1
+  isStatic: 0
   currentRoad:
     roadName: 
     physicalPath: {fileID: 0}
