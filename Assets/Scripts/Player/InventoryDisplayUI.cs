@@ -14,18 +14,30 @@ public class InventoryDisplayUI : MonoBehaviour
     public TextMeshProUGUI capTxt;
     public TextMeshProUGUI moneyDisplay;
 
+    //Current Item Display
+    public InventoryItem currentInventoryItem;
+    public Image currentItemIcon;
+    public TextMeshProUGUI currentItemName;
+    public TextMeshProUGUI currrntItemWeight;
+    public TextMeshProUGUI currrntItemVolume;
+    public TextMeshProUGUI currrntItemAveragePrice;
+    public TextMeshProUGUI currentItemTextAmount;
+    [SerializeField] private int currentItemAmount=1;
+
+
 
     private void OnEnable()
     {
         if(player == null)
             player = GameServices.Instance.player;
-
+         
         inventory = player.invetory;
         inventory.HandleWeightAndVolume();
         foreach (var item in inventory.Inventory)
         {
             GameObject go = Instantiate(ItemPrefab, ItemList.transform);
-            go.GetComponent<DisplayInventoryItem>().Setup(item);
+            go.GetComponent<DisplayInventoryItem>().Setup(item,this);
+            SetCurrentIventoryItem(item);
         }
         weightTxt.text = inventory.currentWeight.ToString() + "/" + player.stats.maxWeight.ToString();
         weightSlider.maxValue = player.stats.maxWeight;
@@ -49,12 +61,8 @@ public class InventoryDisplayUI : MonoBehaviour
         player = GameServices.Instance.player;
         inventory = player.invetory;
     }
-
-   
-    void Update()
-    {
-        
-    }
+    
+    
     private void OnDisable()
     {
         foreach (Transform go in ItemList.transform)
@@ -62,4 +70,47 @@ public class InventoryDisplayUI : MonoBehaviour
             Destroy(go.gameObject);
         }
     }
+    public void SetCurrentIventoryItem(InventoryItem inventoryItem)
+    {
+        currentItemIcon.sprite =inventoryItem.resourceSO.sprite;
+        currentItemName.text = inventoryItem.resourceSO.itemName;
+        
+        //Values Display
+        currrntItemVolume.text = (inventoryItem.resourceSO.volume * currentItemAmount).ToString();
+        currrntItemWeight.text = (inventoryItem.resourceSO.weight * currentItemAmount).ToString();
+        currrntItemAveragePrice.text = inventoryItem.averageValue.ToString();
+        currentInventoryItem = inventoryItem;
+        
+
+    }
+    
+
+    public void ChangeCurrentItemAmount()
+    {
+        if (currentItemAmount ==1)
+        {
+            
+            currentItemAmount = currentInventoryItem.amount;
+            currentItemTextAmount.text = currentInventoryItem.amount.ToString();
+        }
+        else
+        {
+            currentItemAmount = 1;
+            currentItemTextAmount.text = "1";
+        }
+        SetCurrentIventoryItem(currentInventoryItem);
+
+    }
+ 
+    
+    public void ExitInventory()
+    {
+        currentInventoryItem = null;
+        currentItemIcon.sprite = null;
+        currentItemName.text ="";
+        currrntItemWeight.text = "";
+        currrntItemVolume.text = "";
+        currrntItemAveragePrice.text = "";
+        currentItemTextAmount.text = "1";
+}
 }
