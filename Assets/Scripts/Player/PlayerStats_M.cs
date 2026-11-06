@@ -3,8 +3,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerStats_M : MonoBehaviour
 {
-   
-
     [Header("Movement")]
     public float moveSpeed;
     public float currentSpeed;
@@ -81,7 +79,6 @@ public class PlayerStats_M : MonoBehaviour
         currentStaminaDrainMultiplier = STAMINA_DRAIN_MULTIPLIER;
 
         setMaxSpeed(GlobalSettingsManager.HOUR_DURATION);
-        GetItemValues(player.attachments.currentItemSelected);
 
     }
 
@@ -89,13 +86,7 @@ public class PlayerStats_M : MonoBehaviour
     {
         MaxSpeeed = maxBaseSpeed * (GlobalSettingsManager.HOUR_DURATION / timeModifier);
     }
-
-    public void GetItemValues(Cargo cargo)
-    {
-        cargo.CalculateTotalWeightAndVolume();
-        maxVolume = cargo.volume;
-        maxWeight = cargo.weight;
-    }
+    
     public void setWeatherModifiers(WeatherType weather)
     {
         switch (weather)

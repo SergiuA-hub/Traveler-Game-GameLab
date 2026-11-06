@@ -1,12 +1,30 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class UpgradeFrame : MonoBehaviour
+public class UpgradeFrame : MonoBehaviour, IPointerClickHandler
 {
-    public Transform SlotPlace;
-    public UpgradeSlot upgradeSlot;
+    public Image upgradeIcon;
+    public UpgradesSO upgradeSlot;
 
-    public Transform ReturnSlotPlace()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        return SlotPlace;
+        GameServices.Instance.player.attachments.RemoveUpgrade(upgradeSlot);
+        GameServices.Instance.cityUI.DisplayCartManagmentPanel();
+    }
+
+    public void showUpgrade(UpgradesSO upgrade)
+    {
+        if(upgrade == null)
+        {
+            upgradeSlot = null;
+            upgradeIcon.gameObject.SetActive(false);
+            return;
+        }
+
+        upgradeSlot = upgrade;
+
+        upgradeIcon.sprite = upgradeSlot.icon;
+        upgradeIcon.gameObject.SetActive(true);
     }
 }

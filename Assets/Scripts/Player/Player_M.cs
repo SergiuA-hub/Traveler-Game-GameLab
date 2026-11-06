@@ -41,10 +41,19 @@ public class Player_M : MonoBehaviour
 
         //OtherComponents
         rb = GetComponent<Rigidbody2D>();
+
+        if(attachments.carryCargo == null)
+        {
+            attachments.carryCargo = GameServices.Instance.cargoManager.defaultCargoEqupment;
+        }
+        calculateInventorySize();
     }
-    
  
-    
+    public void calculateInventorySize()
+    {
+        stats.maxWeight = attachments.GetTotalWeight();
+        stats.maxVolume = attachments.GetTotalVolume();
+    }
 
     private void Update()
     {

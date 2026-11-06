@@ -6,9 +6,11 @@ public class SettlementRuntime
 {
     public string settlementName;
     public SettlementSO defaultSettlementData;
-    public List<TradeGood> settlementStock;
+    public List<TradeGood> settlementStock;    
     public List<Cargo> settlementShopItems;
+    public List<CargoSO> availableCargoItems;
     public List<Cargo> settlmentUpgradeItems;
+    public List<UpgradesSO> availableUpgrades;
     public List<LicensesSO> settlmentLicenses;
     public GameObject settlementGo;
     public SettlementContractsPanel contractsPanel;
@@ -19,7 +21,11 @@ public class SettlementRuntime
         reputation = 0;
         this.settlementName = defaultSettlementData.settlementName;
         settlementShopItems = new List<Cargo>();
+        availableCargoItems = new List<CargoSO>();
+
         settlmentUpgradeItems = new List<Cargo>();
+        availableUpgrades = new List<UpgradesSO>();
+
         settlementStock = new List<TradeGood>();
         settlmentLicenses = new List<LicensesSO>();
 
@@ -56,8 +62,6 @@ public class SettlementRuntime
             trade.tier5_price_stock = tier5_stock;
         }
     }
-
-
 
     public float getPriceFor(TradeGood res)
     {

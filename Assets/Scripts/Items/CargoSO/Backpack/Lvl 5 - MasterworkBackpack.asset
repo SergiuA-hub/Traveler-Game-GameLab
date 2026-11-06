@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 175ff423f8d900d47b5015371074f381, type: 3}
-  m_Name: ReinforcedBackpack
-  m_EditorClassIdentifier: Assembly-CSharp::CargoSO
-  itemName: Reinforced Backpack
-  icon: {fileID: 0}
-  price: 80
-  level: 3
-  type: 1
-  itemMaxWeight: 25
-  itemMaxVolume: 25
+  m_Name: Lvl 5 - MasterworkBackpack
+  m_EditorClassIdentifier: Assembly-CSharp::ItemsSO
+  itemName: Masterwork Backpack
+  icon: {fileID: 21300000, guid: 7cd8b36c473aca344826931a5d39860c, type: 3}
+  price: 200
+  upgradesSpaces: 3
+  category: 0
+  type: 0
+  Description: 
+  features: []
+  itemMaxWeight: 60
+  itemMaxVolume: 60
   Prefab: {fileID: 0}

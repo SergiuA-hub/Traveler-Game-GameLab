@@ -9,17 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 175ff423f8d900d47b5015371074f381, type: 3}
-  m_Name: Volume&WeightI
-  m_EditorClassIdentifier: Assembly-CSharp::CargoSO
-  itemName: Volume & Weight I
+  m_Script: {fileID: 11500000, guid: a10126038815f9e468e4ccef7cbae2c5, type: 3}
+  m_Name: Volume&Weight Upgrade 1
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradesSO
+  itemName: Volume&Weight Lvl 1
   icon: {fileID: 2403018677218161724, guid: 2a2bbfd77b2638849afeedf3b1865d23, type: 3}
   price: 100
-  type: 1
+  category: 0
   Description: 
   features:
-  - Increase volume space
-  - Increase weight space
-  itemMaxWeight: 5
-  itemMaxVolume: 5
-  Prefab: {fileID: 0}
+  - Increase Volume Space
+  - Increase Weight Space
+  additionalWeight: 5
+  additionalVolume: 5

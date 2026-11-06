@@ -44,11 +44,11 @@ public class ShopItemDisplay : MonoBehaviour, IPointerClickHandler
         if (cityUI.currentpage == CityUIPage.Shop)
         {
 
-            cityUI.SetCurrentShopItem(this);
+            //cityUI.SetCurrentShopItem(this);
         }
         else if (cityUI.currentpage == CityUIPage.CartManagment) 
         {
-            cityUI.SetCurrentCartManagmentItem(this);
+            //cityUI.SetCurrentCartManagmentItem(this);
         }
         
         

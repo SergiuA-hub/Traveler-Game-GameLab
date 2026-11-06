@@ -44,13 +44,13 @@ public class UpgradeItemDisplay : MonoBehaviour, IPointerClickHandler
         
         if(cityUi.currentpage == CityUIPage.UpgradeShop)
         {
-            cityUi.SetCurrentUpgradeItem(this);
+            //cityUi.SetCurrentUpgradeItem(this);
 
         } 
 
         if(cityUi.currentpage == CityUIPage.CartManagment)
         {
-            cityUi.SetCurrentCartManagemtnUpgrade(this);
+            //cityUi.SetCurrentCartManagemtnUpgrade(this);
         }
     }
 }

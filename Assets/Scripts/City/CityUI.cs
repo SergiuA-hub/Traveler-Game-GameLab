@@ -84,7 +84,10 @@ public class CityUI : MonoBehaviour
     [Header("SHOP PAGE")]
 
     [SerializeField] private Transform ShopContent;
-    [SerializeField] private ShopItemDisplay ItemShopPrefab;
+    [SerializeField] private GameObject ItemShopPrefab;
+
+    public GameObject selectedShopItemPanel;
+    public GameObject noShopItemSelected;
 
     [Header("Current SHOP_ITEM_DISPLAY")]
     [SerializeField] private Image currentShopItemIcon;
@@ -93,12 +96,16 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentShopItemDescription;
     [SerializeField] private TextMeshProUGUI buyShopButtonText;
     [SerializeField] public TextMeshProUGUI restItemShop;
-    [SerializeField] private BulletLIstCreator bulletList;
-    
+    [SerializeField] private TextMeshProUGUI shopItemDetails;
+
 
     [Header("UPGRADE PAGE")]
     [SerializeField] private Transform UpgradeContent;
-    [SerializeField] UpgradeItemDisplay upgradeItemDisplayPrefab;
+    [SerializeField] private GameObject upgradeItemDisplayPrefab;
+
+    public GameObject upgradePageSelectedItemPanel;
+    public GameObject upgradePageNoItemSelectedPanel;
+    public Button buyUpgradesButton;
 
     [Header("Current UPGRADE_SHOP_ITEM_DISPLAY")]
     [SerializeField] private Image currentUpgradeItemIcon;
@@ -106,11 +113,13 @@ public class CityUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI upgradeItemPrice;
     [SerializeField] private TextMeshProUGUI restUpgradeShop;
     [SerializeField] private TextMeshProUGUI buttonUpgradeShop;
-    [SerializeField] private BulletLIstCreator bulletLIstCreator;
+    [SerializeField] private TextMeshProUGUI upgradeDescriptionText;
 
     [Header("TRADE GUILD PAGE")]
     [SerializeField] private Transform TradeGuildContent;
     [SerializeField] private LicenceItemDisplay LicensesDisplayPrefab;
+    public GameObject selectedTradeLicensePanel;
+    public GameObject noTradeLicenseSelectedPanel;
 
     [Header("Current LICENSE DISPLAY")]
     [SerializeField] private Image LicenseIcon;
@@ -124,19 +133,16 @@ public class CityUI : MonoBehaviour
     [Header("Cart Managment Display")]
     [SerializeField] private Transform itemManagmentContent;
     [SerializeField] private Transform upgradeManagmentContent;
-    [SerializeField] private UpgradeItemDisplay upgradeDisplayPrefab;
-    [SerializeField] public List<UpgradeItemDisplay> upgradeList = new List<UpgradeItemDisplay>();
-
-    [SerializeField] public List<ShopItemDisplay> itemsList = new List<ShopItemDisplay>();
+    [SerializeField] private GameObject managementCargoDisplayPrefab;
+    [SerializeField] private GameObject managementUpgradeDisplayPrefab;
     private int pageIndex=1;
 
     [Header("Current Item_Cart_Managment")]
     [SerializeField] private Image currentManagmentItemIcon;
     [SerializeField] private TextMeshProUGUI currentManagmentItemName;
     [SerializeField] private Transform componentsArea;
-    [SerializeField] private Transform upgradeComponentsArea;
     [SerializeField] private UpgradeSlot upgradeSlotPrefab;
-    [SerializeField] private UpgradeFrame upgradeFramePrefab;
+    [SerializeField] private GameObject upgradeFramePrefab;
 
     [Header("Current item stats")]
     [SerializeField] private TextMeshProUGUI itemVolume;
@@ -146,9 +152,7 @@ public class CityUI : MonoBehaviour
 
 
     [Header("Current Upgrade_Cart_Managment")]
-    [SerializeField] private Image currentManagmentUpgradeIcon;
-    [SerializeField] private TextMeshProUGUI currentManagmentUpgradeName;
-    [SerializeField] private TextMeshProUGUI currentManagmentUpgradeBonus;
+    [SerializeField] private TextMeshProUGUI upgradeSlotsText;
 
     [Header("PAGES")]
     [SerializeField] private GameObject LobbyPanel;
@@ -623,42 +627,56 @@ public class CityUI : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (var item in currentSettlement.settlementShopItems)
+        foreach (var item in currentSettlement.availableCargoItems)
         {
-            ShopItemDisplay row = Instantiate(ItemShopPrefab, ShopContent);
-            row.PopulateIcons(item, this);
-            SetCurrentShopItem(row);
+            if(GameServices.Instance.cargoManager.playerOwnsCargo(item))
+                continue;
+
+            GameObject row = Instantiate(ItemShopPrefab, ShopContent);
+            row.GetComponent<CargoItemDisplay>().setup(item);
         }
 
-        
+        setNoShopSelection();
     }
-    public void SetCurrentShopItem(ShopItemDisplay shopItem)
+
+    public void setNoShopSelection()
     {
-        settlementsManager.currentShopItemSelected = shopItem;
+        selectedShopItemPanel.SetActive(false);
+        noShopItemSelected.SetActive(true);
+    }
+
+public void SetCurrentShopItem(CargoSO cargoItem)
+    {
+        settlementsManager.currentShopItemSelectedSO = cargoItem;
+
         //Visual
-        currentShopItemIcon.sprite = shopItem.IconImage.sprite;
-        currentShopItemPrice.text = shopItem.cargo.cargoSO.price.ToString();
-        currentShopItemName.text = shopItem.cargo.cargoSO.itemName.ToString();
-        currentShopItemDescription.text = shopItem.cargo.cargoSO.Description;
+        currentShopItemIcon.sprite = cargoItem.icon;
+        currentShopItemPrice.text = cargoItem.price.ToString();
+        currentShopItemName.text = cargoItem.itemName.ToString();
+        currentShopItemDescription.text = cargoItem.Description;
         //Set not enoughMoney
-        if(shopItem.cargo.cargoSO.price > player.invetory.CurrentCoins)//And not owned
+        
+        if(cargoItem.price > player.invetory.CurrentCoins)//And not owned
         {
-            restItemShop.text = "Need " + (shopItem.cargo.cargoSO.price - player.invetory.CurrentCoins);
+            restItemShop.text = "Need " + (cargoItem.price - player.invetory.CurrentCoins);
             buyShopButtonText.color = Color.red;
             buyShopButtonText.text = "Not enough coins";
         }
         else
         {
 
-            SetButtonTextShop(shopItem.cargo);
+            SetButtonTextShop(cargoItem);
             buyShopButtonText.color = Color.grey;
             restItemShop.text = "";
         }
-        
-        //Button
-        bulletList.CreateBulletList(settlementsManager.currentShopItemSelected.cargo.cargoSO.features);
+
+        shopItemDetails.text = $"Weight: {cargoItem.itemMaxWeight}\nVolume: {cargoItem.itemMaxVolume}\nUpgrade slots: {cargoItem.upgradesSpaces}";
+
+        selectedShopItemPanel.SetActive(true);
+        noShopItemSelected.SetActive(false);
     }
 
+    
 
     //############
     //UPGRADE AREA
@@ -671,31 +689,43 @@ public class CityUI : MonoBehaviour
             Destroy (child.gameObject);
         }
 
-        foreach (var item in currentSettlement.settlmentUpgradeItems)
+        foreach (var item in currentSettlement.availableUpgrades)
         {
-            UpgradeItemDisplay row = Instantiate(upgradeItemDisplayPrefab, UpgradeContent);
-            row.PopulateUpgrade(item, this);
-            settlementsManager.currentUpgradeItem =row ;
-            SetCurrentUpgradeItem(row);
+            if (GameServices.Instance.cargoManager.playerOwnsUpgrade(item))
+                continue;
+
+            GameObject row = Instantiate(upgradeItemDisplayPrefab, UpgradeContent);
+            row.GetComponent<UpgradeItemPrefab>().setup(item);            
+            //SetCurrentUpgradeItem(item);
         }
+
+        noUpgradeSelected();
     }
 
-    public void SetCurrentUpgradeItem(UpgradeItemDisplay item)
+    public void noUpgradeSelected()
+    {
+        upgradePageSelectedItemPanel.SetActive(false);
+        upgradePageNoItemSelectedPanel.SetActive(true);
+        buyUpgradesButton.interactable = false;
+    }
+
+    public void SetCurrentUpgradeItem(UpgradesSO item)
     {
         settlementsManager.currentUpgradeItem= item;
-        item.SetActivSelectedUpgrade();
-        currentUpgradeItemIcon.sprite = item.upgrade.cargoSO.icon;
-        currentUpgradeItemName.text = item.upgrade.cargoSO.itemName.ToString();
-        upgradeItemPrice.text = item.upgrade.cargoSO.price.ToString();
-        bulletLIstCreator.CreateBulletList(settlementsManager.currentUpgradeItem.upgrade.cargoSO.features);
+        //item.SetActivSelectedUpgrade();
+        currentUpgradeItemIcon.sprite = item.icon;
+        currentUpgradeItemName.text = item.itemName.ToString();
+        upgradeItemPrice.text = item.price.ToString();
 
-        if(player.invetory.CurrentCoins < item.upgrade.cargoSO.price)
+        upgradeDescriptionText.text = $"Volume: {item.additionalVolume:F0}\nWeight: {item.additionalWeight:F0}";
+
+        if (player.invetory.CurrentCoins < item.price)
         {
             //buuton text
             buttonUpgradeShop.text = "Not enough coins";
             buttonUpgradeShop.color = Color.red;
             //Need rest money text
-            restUpgradeShop.text = "Need " + (item.upgrade.cargoSO.price - player.invetory.CurrentCoins);
+            restUpgradeShop.text = "Need " + (item.price - player.invetory.CurrentCoins);
 
         }
         else
@@ -708,6 +738,9 @@ public class CityUI : MonoBehaviour
             restUpgradeShop.text = "";
         }
 
+        upgradePageSelectedItemPanel.SetActive(true);
+        upgradePageNoItemSelectedPanel.SetActive(false);
+        buyUpgradesButton.interactable = true;
     }
 
 
@@ -729,9 +762,15 @@ public class CityUI : MonoBehaviour
                 LicenceItemDisplay row = Instantiate(LicensesDisplayPrefab, TradeGuildContent);
                 row.PopulateLicense(license, this);
             }
-                
         }
-       
+
+        noTradeLinceseSelected();
+    }
+
+    public void noTradeLinceseSelected()
+    {
+        selectedTradeLicensePanel.SetActive(false);
+        noTradeLicenseSelectedPanel.SetActive(true);
     }
 
     public void SetCurrentLicence(LicenceItemDisplay licenceItemDisplay)
@@ -753,6 +792,9 @@ public class CityUI : MonoBehaviour
             LicenceUnlock row = Instantiate(unlockItem, LicenseUnlockList);
             row.Create(item);
         }
+
+        selectedTradeLicensePanel.SetActive(true);
+        noTradeLicenseSelectedPanel.SetActive(false);
     }
 
     public void NotEnoughMoneyDisplay(bool verify)
@@ -774,12 +816,7 @@ public class CityUI : MonoBehaviour
     //############
     public void DisplayCartManagmentPanel()
     {
-        SetCurrentCartManagmentItem(CreatePlayerShopItem(ref settlementsManager.currentManagmentItem));
-
-        //Clear CityUI invetory Lists 
-        upgradeList.Clear();
-        itemsList.Clear(); 
-
+        //SetCurrentCartManagmentItem(CreatePlayerShopItem(ref settlementsManager.currentManagmentItem));
 
         //Display Invetory Items
 
@@ -788,137 +825,94 @@ public class CityUI : MonoBehaviour
             Destroy(child.gameObject);
 
         }
-        foreach (var item in CargoManager.instance.PlayerOwnedCargo)
+        foreach (var item in GameServices.Instance.cargoManager.playerOwnedCargo)
         {
-            if(item == null)
-            {
-                return;
-            }
-           
-            ShopItemDisplay row = Instantiate(ItemShopPrefab, itemManagmentContent);
-            
-            row.PopulateIcons(item, this);
-            
+            if (GameServices.Instance.player.attachments.HasCargo(item))
+                continue;
 
-            foreach (ShopItemDisplay itemShop in itemsList)
-            {
-                if (row == itemShop )
-                {
-                    return;
-                    
-                }
-                else
-                {
-                    itemsList.Add(row);
-                }
-            }
-            
-
-
+            GameObject row = Instantiate(managementCargoDisplayPrefab, itemManagmentContent);
+            row.GetComponent<CargoEquipItemPrefab>().setup(item);            
         }
+
         foreach (Transform child in upgradeManagmentContent)
         {
             Destroy(child.gameObject);
 
         }
+
         //Display Invetory Upgrades
-
-        foreach (var upgrades in CargoManager.instance.PlayerOwnedUpgrades)
+        foreach (var upgrade in GameServices.Instance.cargoManager.playerOwnedUpgrades)
         {
-            UpgradeItemDisplay row = Instantiate(upgradeDisplayPrefab, upgradeManagmentContent);
-            row.PopulateUpgrade(upgrades, this);
-            
-            upgradeList.Add(row);
+            if (GameServices.Instance.player.attachments.HasUpgrade(upgrade))
+                continue;
 
+            GameObject row = Instantiate(managementUpgradeDisplayPrefab, upgradeManagmentContent);
+            row.GetComponent<UpgradesEquipItemPrefab>().setup(upgrade);
         }
         
-        
-        
+        showEquippment();        
     }
-    public void SetCurrentCartManagmentItem(ShopItemDisplay shopItem)
+
+    public void showEquippment()
     {
-        
-        settlementsManager.currentManagmentItem = shopItem;
-        //Set text and Icon
-        currentManagmentItemIcon.sprite = shopItem.IconImage.sprite;
-        currentManagmentItemName.text = shopItem.cargo.cargoSO.itemName;
-        
-        //Clear old upgrades
-        foreach (Transform child in componentsArea)
-        {
-            Destroy(child.gameObject);
-        }
-        foreach (Transform child in upgradeComponentsArea)
-        {
-            Destroy(child.gameObject);
-        }
-        
-        //Set components Slots 
-        for (int i =1; i <= shopItem.cargo.upgradesSpaces; i++)
-        {
-            //Frame
-            Instantiate(upgradeFramePrefab, componentsArea);
-            
-        }
-        //Set item stats
-        itemVolume.text = shopItem.cargo.volume.ToString();
-        itemweight.text = shopItem.cargo.weight.ToString();
 
+        if (player.attachments.carryCargo != null)
+        {
+            currentManagmentItemIcon.sprite = player.attachments.carryCargo.icon;
+            currentManagmentItemName.text = player.attachments.carryCargo.itemName;
 
-        LoadItemUpgrades(shopItem);
-        
-    } 
-
-    public void SetCurrentCartManagemtnUpgrade(UpgradeItemDisplay upgradeItem)
-    {
-        
-        currentManagmentUpgradeIcon.sprite = upgradeItem.iconImage.sprite;
-        currentManagmentUpgradeName.text = upgradeItem.upgrade.cargoSO.itemName;
-        upgradeItem.SetActivSelectedUpgrade(); 
-        currentManagmentUpgradeBonus.text = "";
-            if (upgradeItem.upgrade.cargoSO.itemMaxVolume != 0)
+            foreach (Transform child in componentsArea)
             {
-                currentManagmentUpgradeBonus.text = "Volume : + " + upgradeItem.upgrade.cargoSO.itemMaxVolume.ToString() + "    ";
-                if (upgradeItem.upgrade.cargoSO.itemMaxWeight != 0)
-                {
-                    currentManagmentUpgradeBonus.text += "Weight : + " + upgradeItem.upgrade.cargoSO.itemMaxWeight.ToString();
-                     return;
-                }
-
-
+                Destroy(child.gameObject);
             }
-            else if (upgradeItem.upgrade.cargoSO.itemMaxWeight != 0)
+            foreach (Transform child in componentsArea)
             {
-                currentManagmentUpgradeBonus.text += "Weight : + " + upgradeItem.upgrade.cargoSO.itemMaxWeight.ToString();
+                Destroy(child.gameObject);
             }
-           
-        upgradeVolume.text ="+" + upgradeItem.upgrade.volume.ToString();
-        upgradeWeight.text = "+" + upgradeItem.upgrade.weight.ToString();
 
+            //Set components Slots 
+            for (int i = 1; i <= player.attachments.carryCargo.upgradesSpaces; i++)
+            {
+                //Frame
+                GameObject go = Instantiate(upgradeFramePrefab, componentsArea);
+                if (GameServices.Instance.player.attachments.carryUpgrades.Count >= i)
+                    go.GetComponent<UpgradeFrame>().showUpgrade(GameServices.Instance.player.attachments.carryUpgrades[i-1]);
+                else go.GetComponent<UpgradeFrame>().showUpgrade(null);
+            }
 
-    }
-    public void LoadItemUpgrades(ShopItemDisplay shopItem)
-    {
-        for (int i = 0; i <= shopItem.cargo.Upgrades.Count - 1; i++)
-        {
-            UpgradeSlot slot = Instantiate(upgradeSlotPrefab, upgradeComponentsArea);
-            slot.PopulateSlot(shopItem.cargo.Upgrades[i]);
+            itemVolume.text = player.attachments.carryCargo.itemMaxVolume.ToString();
+            itemweight.text = player.attachments.carryCargo.itemMaxWeight.ToString();
+
+            upgradeVolume.text = $"{GameServices.Instance.player.attachments.GetTotalUpgradesVolume():F0}";
+            upgradeWeight.text = $"{GameServices.Instance.player.attachments.GetTotalUpgradesWeight():F0}";
         }
     }
-    public ShopItemDisplay CreatePlayerShopItem(ref ShopItemDisplay settlementCurrentItem)
+
+    public void showUpgradeMouseOver(UpgradesSO upgradeToShow)
     {
-        ShopItemDisplay shopItem;
-       
-            
-        ShopItemDisplay playerItem = Instantiate(ItemShopPrefab, Content);
-        playerItem.PopulateIcons(player.attachments.currentItemSelected, this);
-        settlementCurrentItem = playerItem;
-        
-        shopItem = settlementsManager.currentManagmentItem;
-        Destroy(playerItem.gameObject);
-        return shopItem;
-        
-        
+        upgradeVolume.text = $"+{upgradeToShow.additionalVolume}";
+        upgradeWeight.text = $"+{upgradeToShow.additionalWeight}";
+    }
+
+    public void showCargoMouseOver(CargoSO cargoToShow)
+    {
+        string volumeSign = (cargoToShow.itemMaxVolume - player.attachments.carryCargo.itemMaxVolume) >= 0 ? "+" : "";
+        string weightSing = (cargoToShow.itemMaxWeight - player.attachments.carryCargo.itemMaxWeight) >= 0 ? "+" : "";
+        string upgradeSlotsSign = (cargoToShow.upgradesSpaces - player.attachments.carryCargo.upgradesSpaces) >= 0 ? "+" : "";
+
+        itemVolume.text = $"{player.attachments.carryCargo.itemMaxVolume}({volumeSign}{cargoToShow.itemMaxVolume - player.attachments.carryCargo.itemMaxVolume})";
+        itemweight.text = $"{player.attachments.carryCargo.itemMaxWeight}({weightSing}{cargoToShow.itemMaxWeight - player.attachments.carryCargo.itemMaxWeight})";
+        upgradeSlotsText.text = $"Upgrades Slots ({upgradeSlotsSign}{cargoToShow.upgradesSpaces - player.attachments.carryCargo.upgradesSpaces})";
+    }
+
+    public void clearMouseOver()
+    {
+        upgradeVolume.text = $"{GameServices.Instance.player.attachments.GetTotalUpgradesVolume():F0}";
+        upgradeWeight.text = $"{GameServices.Instance.player.attachments.GetTotalUpgradesWeight():F0}";
+        upgradeSlotsText.text = $"Upgrades Slots";
+
+        itemVolume.text = player.attachments.carryCargo.itemMaxVolume.ToString();
+        itemweight.text = player.attachments.carryCargo.itemMaxWeight.ToString();
     }
 
     //############
@@ -957,15 +951,15 @@ public class CityUI : MonoBehaviour
     }
 
     //BUY BUTTON -> SHOP PANEL
-    public void SetButtonTextShop (Cargo cargo)
+    public void SetButtonTextShop (CargoSO cargo)
     {
         if (cargo == null)
         {
             return;
         }
-        foreach(Cargo item in CargoManager.instance.PlayerOwnedCargo)
+        foreach(CargoSO item in GameServices.Instance.cargoManager.playerOwnedCargo)
         {
-            if(cargo.cargoSO == item.cargoSO)
+            if(cargo == item)
             {
                 buyShopButtonText.text = "OWNED";
             }

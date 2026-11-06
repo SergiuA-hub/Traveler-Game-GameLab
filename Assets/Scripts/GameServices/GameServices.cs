@@ -14,6 +14,7 @@ public class GameServices : MonoBehaviour
     public ContractManager contractManager;
     public EnvironmentManager environmentManager;
     public WizardManager wizardManager;
+    public CargoManager cargoManager;
 
     public WeatherVisualManager weatherVisual;
 
@@ -22,6 +23,7 @@ public class GameServices : MonoBehaviour
     public TraderNpcUI traderNpcUI;
     public BarterNpcUI barterNpcUI;
     public InformerNpcUI informerNpcUI;
+    public CityUI cityUI;
 
     [Header("Player")]
     public Player_M player;

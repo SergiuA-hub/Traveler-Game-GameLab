@@ -15,7 +15,9 @@ public class SettlementsManager : MonoBehaviour
     //Current Cargo selected
     public TradeItemDisplay currentItemSelected;
     public ShopItemDisplay currentShopItemSelected;
-    public UpgradeItemDisplay currentUpgradeItem;
+    public CargoSO currentShopItemSelectedSO;
+
+    public UpgradesSO currentUpgradeItem;
     public LicenceItemDisplay currentLicenceSelected;
     [Header("Cart Managment")]
     public ShopItemDisplay currentManagmentItem;
@@ -31,8 +33,6 @@ public class SettlementsManager : MonoBehaviour
         initializeSettlements();
 
         calculateDailyPrices();
-
-        
     }
 
     public void initializeSettlements()
@@ -55,7 +55,18 @@ public class SettlementsManager : MonoBehaviour
             {
                 currentSettlement.settlementShopItems.Add(new Cargo(item.cargoSO,item.upgradesSpaces,item.Upgrades,item.category,item.type));
             }
-            foreach(var upgradeItem in settl.settlementSo.upgradeShop)
+
+            foreach (var item in settl.settlementSo.availableUpgrades)
+            {
+                currentSettlement.availableUpgrades.Add(item);
+            }
+
+            foreach (var item in settl.settlementSo.itemsShopSO)
+            {
+                currentSettlement.availableCargoItems.Add(item);
+            }
+
+            foreach (var upgradeItem in settl.settlementSo.upgradeShop)
             {
                 currentSettlement.settlmentUpgradeItems.Add(new Cargo(upgradeItem.cargoSO, upgradeItem.upgradesSpaces, upgradeItem.Upgrades,upgradeItem.category,upgradeItem.type));
             }
@@ -276,14 +287,15 @@ public class SettlementsManager : MonoBehaviour
     //Shop buy item
     public void BuyShopItem()
     {
-        if(currentShopItemSelected == null)
+        if(currentShopItemSelectedSO == null)
         {
+            Debug.Log("No item selected");
             return;
         }
 
-        if (CargoManager.instance.CanBuy(currentShopItemSelected.cargo,player.invetory.CurrentCoins))
+        if (GameServices.Instance.cargoManager.CanBuy(currentShopItemSelectedSO,player.invetory.CurrentCoins))
         {
-            CargoManager.instance.AddCargoItem(currentShopItemSelected.cargo,ref player.invetory.CurrentCoins);
+            GameServices.Instance.cargoManager.AddCargoItem(currentShopItemSelectedSO,ref player.invetory.CurrentCoins);
         }else
         {
             return;
@@ -304,7 +316,7 @@ public class SettlementsManager : MonoBehaviour
             return;
         }
 
-        if (currentUpgradeItem.upgrade.cargoSO.price > player.invetory.CurrentCoins)
+        if (currentUpgradeItem.price > player.invetory.CurrentCoins)
         {
             return;
             //jucatorul nu are bani - Feedback on that
@@ -312,16 +324,14 @@ public class SettlementsManager : MonoBehaviour
         }
         else
         {
-            player.invetory.CurrentCoins -= currentUpgradeItem.upgrade.cargoSO.price;
-            CargoManager.instance.PlayerOwnedUpgrades.Add(currentUpgradeItem.upgrade);
+            player.invetory.CurrentCoins -= currentUpgradeItem.price;
+            GameServices.Instance.cargoManager.playerOwnedUpgrades.Add(currentUpgradeItem);
         }
        
 
-        //Remove from setlment
-        
-
-        CargoManager.instance.RemoveCargoItemFromShop(currentUpgradeItem.upgrade,ref currentSettlement.defaultSettlementData.upgradeShop);
-        CargoManager.instance.RemoveCargoItemFromShop(currentUpgradeItem.upgrade, ref currentSettlement.settlmentUpgradeItems);
+        //Remove from setlment        
+        //CargoManager.instance.RemoveCargoItemFromShop(currentUpgradeItem,ref currentSettlement.defaultSettlementData.upgradeShop);
+        //CargoManager.instance.RemoveCargoItemFromShop(currentUpgradeItem, ref currentSettlement.settlmentUpgradeItems);
         currentUpgradeItem = null;
 
         //RefreshPage
@@ -357,14 +367,15 @@ public class SettlementsManager : MonoBehaviour
             currentManagmentItem.cargo.Upgrades.Add(currentManagmentUpgrade.upgrade.cargoSO);
             currentManagmentItem.cargo.CalculateTotalWeightAndVolume();
             //Remove upgrade from player cargo  
-            CargoManager.instance.RemoveCargoItemFromInvetory(currentManagmentUpgrade.upgrade);
+            //CargoManager.instance.RemoveCargoItemFromInvetory(currentManagmentUpgrade.upgrade);
             
             //Add it to player stats
-            player.stats.GetItemValues(player.attachments.currentItemSelected);
+            //player.stats.GetItemValues(player.attachments.currentItemSelected);
+
         Destroy(currentManagmentUpgrade.gameObject);
         //Visual 
-        cityUI.SetCurrentCartManagmentItem(sameItem);
-            cityUI.LoadItemUpgrades(currentManagmentItem);
+//        cityUI.SetCurrentCartManagmentItem(sameItem);
+            //cityUI.LoadItemUpgrades(currentManagmentItem);
             cityUI.DisplayCartManagmentPanel();
 
 
