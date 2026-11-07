@@ -51,10 +51,6 @@ public class SettlementsManager : MonoBehaviour
             {
                 currentSettlement.settlementStock.Add(new TradeGood(res.resource, res.startingStock, res.resource.baseValue));
             }
-            foreach(var item in settl.settlementSo.itemsShop)
-            {
-                currentSettlement.settlementShopItems.Add(new Cargo(item.cargoSO,item.upgradesSpaces,item.Upgrades,item.category,item.type));
-            }
 
             foreach (var item in settl.settlementSo.availableUpgrades)
             {
@@ -64,12 +60,7 @@ public class SettlementsManager : MonoBehaviour
             foreach (var item in settl.settlementSo.itemsShopSO)
             {
                 currentSettlement.availableCargoItems.Add(item);
-            }
-
-            foreach (var upgradeItem in settl.settlementSo.upgradeShop)
-            {
-                currentSettlement.settlmentUpgradeItems.Add(new Cargo(upgradeItem.cargoSO, upgradeItem.upgradesSpaces, upgradeItem.Upgrades,upgradeItem.category,upgradeItem.type));
-            }
+            }            
 
             foreach(var l in settl.settlementSo.Licenses_Shop)
             {
@@ -167,6 +158,7 @@ public class SettlementsManager : MonoBehaviour
     public void leaveSettlement()
     {
         takeNotes(currentSettlement);
+        GameServices.Instance.timeManager.resume();
     }
 
     public void takeNotes(SettlementRuntime currentSettlementForNotes)

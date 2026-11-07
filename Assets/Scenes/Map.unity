@@ -661718,7 +661718,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 950405435}
   m_Direction: 2
   m_Value: -0.00000511672
-  m_Size: 0.58244216
+  m_Size: 0.5825
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -702597,7 +702597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -355}
+  m_AnchoredPosition: {x: 75, y: -300}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &402097534
@@ -841049,7 +841049,7 @@ MonoBehaviour:
   onEvening:
     m_PersistentCalls:
       m_Calls: []
-  timerMax: 3600
+  timerMax: 3000
   timerCurrent: 0
   timerCritical: 30
   timerDamage: 5
@@ -844740,7 +844740,7 @@ RectTransform:
   m_Father: {fileID: 16526792}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.58244216}
+  m_AnchorMax: {x: 1, y: 0.5825}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -861079,7 +861079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1037813997
 RectTransform:
   m_ObjectHideFlags: 0
@@ -957531,6 +957531,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9139431221377429098, guid: f3eb93ab1ccfe2145b915ed0d4dfc1c9, type: 3}
   m_PrefabInstance: {fileID: 1467872262}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1467976232 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 373295487478499503, guid: 51a69d0975b33b341b3d836228ba3aaa, type: 3}
+  m_PrefabInstance: {fileID: 1536999514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1468285049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -970241,6 +970246,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1120130145}
     m_Modifications:
+    - target: {fileID: 373295487478499503, guid: 51a69d0975b33b341b3d836228ba3aaa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 384509621357002017, guid: 51a69d0975b33b341b3d836228ba3aaa, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -970821,6 +970830,10 @@ PrefabInstance:
       propertyPath: currentItemTextAmount
       value: 
       objectReference: {fileID: 79836077}
+    - target: {fileID: 6909422275443603368, guid: 51a69d0975b33b341b3d836228ba3aaa, type: 3}
+      propertyPath: currentSelectedItemPanel
+      value: 
+      objectReference: {fileID: 1467976232}
     - target: {fileID: 7029646789629283075, guid: 51a69d0975b33b341b3d836228ba3aaa, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1133683,7 +1133696,7 @@ MonoBehaviour:
   investigateTimer: {fileID: 256055468}
   lootPanelUI: {fileID: 1775988276}
   campButton: {fileID: 1209690418}
-  InventoryPanel: {fileID: 0}
+  InventoryPanel: {fileID: 1684105967}
 --- !u!4 &2036221411
 Transform:
   m_ObjectHideFlags: 0

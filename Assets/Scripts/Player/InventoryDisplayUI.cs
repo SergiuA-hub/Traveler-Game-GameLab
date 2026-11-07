@@ -16,6 +16,7 @@ public class InventoryDisplayUI : MonoBehaviour
 
     //Current Item Display
     public InventoryItem currentInventoryItem;
+    public GameObject currentSelectedItemPanel;
     public Image currentItemIcon;
     public TextMeshProUGUI currentItemName;
     public TextMeshProUGUI currrntItemWeight;
@@ -28,7 +29,9 @@ public class InventoryDisplayUI : MonoBehaviour
 
     private void OnEnable()
     {
-        if(player == null)
+        currentSelectedItemPanel.SetActive(false);
+
+        if (player == null)
             player = GameServices.Instance.player;
          
         inventory = player.invetory;
@@ -80,8 +83,7 @@ public class InventoryDisplayUI : MonoBehaviour
         currrntItemWeight.text = (inventoryItem.resourceSO.weight * currentItemAmount).ToString();
         currrntItemAveragePrice.text = inventoryItem.averageValue.ToString();
         currentInventoryItem = inventoryItem;
-        
-
+        currentSelectedItemPanel.SetActive(true);
     }
     
 

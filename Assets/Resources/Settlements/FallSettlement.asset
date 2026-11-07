@@ -126,7 +126,12 @@ MonoBehaviour:
     tier4_price_stock: 42
     tier5_price_stock: 90
     licenseCost: -1
-  itemsShop: []
+  itemsShopSO:
+  - {fileID: 11400000, guid: ee74e63db67958a45886689fba9bccec, type: 2}
+  - {fileID: 11400000, guid: 430f33826f9ed7140bf686cffa1873c4, type: 2}
+  - {fileID: 11400000, guid: f85ddd264843b5645ba56b233fcce575, type: 2}
+  - {fileID: 11400000, guid: c8d8048bcf838dc4286f7d1d98bb56ef, type: 2}
+  - {fileID: 11400000, guid: c845cb139223a51418173076ea638dfd, type: 2}
   availableUpgrades:
   - {fileID: 11400000, guid: 2591fe3f72da02746be5eb5eb12fe862, type: 2}
   - {fileID: 11400000, guid: cb23727a74ee3c440bbb8a73d825d090, type: 2}
@@ -135,7 +140,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e3ee0b8342882c245b6311992c9f3ba5, type: 2}
   - {fileID: 11400000, guid: 66dc9eb0a2f07994cb78203601c371d2, type: 2}
   - {fileID: 11400000, guid: 380801bdd001ff045bbbef6e7c040360, type: 2}
-  upgradeShop: []
   Licenses_Shop:
   - {fileID: 11400000, guid: 3572383ed6b13a54f80063ff04ea269a, type: 2}
   - {fileID: 11400000, guid: 29d54543f11bf9f4094b690546ac674f, type: 2}
