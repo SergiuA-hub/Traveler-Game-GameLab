@@ -24,6 +24,7 @@ public class SettlementsManager : MonoBehaviour
     public UpgradeItemDisplay currentManagmentUpgrade;
     public SettlementRuntime currentSettlement;
 
+
     //Managers
     //public TimeManager timeManager;
     //public LicenseManager licenseManager;   
