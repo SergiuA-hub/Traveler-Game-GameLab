@@ -3,10 +3,30 @@ using UnityEngine;
 
 public class EnterCityNotification : MonoBehaviour
 {
-    [SerializeField] private GameObject EnterVilageNotificator;
+    [Header("Notification")]
+    [SerializeField] private GameObject target;
+    [SerializeField] private float fadeInTime;
+    [SerializeField] private float vizibleTime;
+    [SerializeField] private float fadeOutTime;
+
+
+    [Header("Components")]
     [SerializeField] private TextMeshProUGUI SettlementNameText;
     [SerializeField] private SettlementSO settlementSO;
-    [SerializeField] private float duration;
+
+    //Private Components
+    private CanvasGroup canvasGroup;
+    private float control = -1f;
+
+    private void Awake()
+    {
+        canvasGroup= target.GetComponent<CanvasGroup>();
+        
+        //Start on hidden
+        canvasGroup.alpha = 0;
+        target.gameObject.SetActive(false);
+
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -14,15 +34,14 @@ public class EnterCityNotification : MonoBehaviour
             
             SettlementNameText.text = settlementSO.settlementName;
             
-            
-                EnterVilageNotificator.SetActive(true);
-                
-            
-
-
-
         }
     }
 
-   
+    private void Update()
+    {
+        if (control < 0) return;
+
+    }
+
+
 }
