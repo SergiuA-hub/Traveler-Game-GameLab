@@ -646619,7 +646619,6 @@ GameObject:
   - component: {fileID: 314889203}
   - component: {fileID: 314889204}
   - component: {fileID: 314889205}
-  - component: {fileID: 314889206}
   m_Layer: 0
   m_Name: Enter_Village_Notificator
   m_TagString: Untagged
@@ -646639,7 +646638,8 @@ Transform:
   m_LocalPosition: {x: 8.4, y: 0.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 466932969}
   m_Father: {fileID: 1781247030}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &314889204
@@ -646693,7 +646693,7 @@ PolygonCollider2D:
       - {x: -0.21114081, y: -0.20410246}
       - {x: 0.97584283, y: -0.9003247}
       - {x: 1.4646621, y: -0.53557944}
-      - {x: 1.4646623, y: -0.5355795}
+      - {x: 1.4519298, y: -0.5355795}
   m_UseDelaunayMesh: 1
 --- !u!114 &314889205
 MonoBehaviour:
@@ -646707,31 +646707,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ff80c769c55ad4ea6a5efcde885707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnterCityNotification
-  target: {fileID: 0}
-  fadeInTime: 0
-  vizibleTime: 0
-  fadeOutTime: 0
+  target: {fileID: 1438210912}
+  entryPoint: {fileID: 466932969}
+  fadeInTime: 0.5
+  visibleTime: 2
+  fadeOutTime: 1
   SettlementNameText: {fileID: 1494609467}
   settlementSO: {fileID: 11400000, guid: 5c45bdb57a6c67441ad678f1fe3b4597, type: 2}
---- !u!251 &314889206
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314889202}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 64
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &319873078
 GameObject:
   m_ObjectHideFlags: 0
@@ -659767,6 +659749,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466844520}
   m_CullTransparentMesh: 1
+--- !u!1 &466932968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466932969}
+  m_Layer: 0
+  m_Name: Enter point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &466932969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466932968}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 314889203}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &466983925
 GameObject:
   m_ObjectHideFlags: 0
@@ -749017,8 +749030,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1438210912}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &1438902697
 GameObject:
