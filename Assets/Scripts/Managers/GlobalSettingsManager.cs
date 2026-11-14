@@ -17,6 +17,6 @@ public static class GlobalSettingsManager
     public static float TIER_4_PRICE_MULTIPLIER = 0.6f;
     public static float TIER_5_PRICE_MULTIPLIER = 0.4f;
 
-    public static float CAMP_STAMINA_POSSIBLE = 15f;
+    public static float CAMP_STAMINA_POSSIBLE = 25f;
     public static float REPUTATION_GAIN_PER_SALE = 0.1f;
 }
