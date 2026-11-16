@@ -9,8 +9,6 @@ public class EnterCityNotification : MonoBehaviour
     [SerializeField] private float fadeInTime;
     [SerializeField] private float visibleTime;
     [SerializeField] private float fadeOutTime;
-    [SerializeField] private string[] ButtonTexts;
-
 
     [Header("Components")]
     public CityUIManager cityUIManager;

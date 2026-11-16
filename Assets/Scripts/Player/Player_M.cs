@@ -47,8 +47,11 @@ public class Player_M : MonoBehaviour
             attachments.carryCargo = GameServices.Instance.cargoManager.defaultCargoEqupment;
         }
         calculateInventorySize();
+
     }
- 
+
+    
+
     public void calculateInventorySize()
     {
         stats.maxWeight = attachments.GetTotalWeight();
@@ -57,6 +60,7 @@ public class Player_M : MonoBehaviour
 
     private void Update()
     {
+        
         
         if (timeManager.time_stopped)
             return;
@@ -113,7 +117,18 @@ public class Player_M : MonoBehaviour
     public void TakeDamage(float damage)
     {
         stats.currentHp -= damage;
+        if (stats.currentHp <= 0)
+        {
+            Die();
+        }
     }
+
+    public void Die()
+    {
+        GameServices.Instance.HUD.DeathScreen.gameObject.SetActive(true);         
+    }
+
+    // ------STATS------ 
 
     public void Eat(ResourceSO res, int amount = 1)
     {

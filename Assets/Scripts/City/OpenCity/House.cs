@@ -36,6 +36,6 @@ public class House : MonoBehaviour
 
     private void SetButtonText(string houseString)
     {
-        cityUIManager.tradeButtonText.text = houseString;
+        //cityUIManager.tradeButtonText.text = houseString;
     }
 }

@@ -10,8 +10,8 @@ public class CityUIManager : MonoBehaviour
     bool playerInCity = false;
     bool UIup = false;
     public Button tradeButton;
-    public TextMeshProUGUI tradeButtonText;
-    public TextMeshProUGUI SettlmentNameText;
+   // public TextMeshProUGUI tradeButtonText;
+    //public TextMeshProUGUI SettlmentNameText;
 
     public Vector2 input;
 
@@ -45,7 +45,7 @@ public class CityUIManager : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerInCity = true;
-            //tradeButton.gameObject.SetActive(true);
+            tradeButton.gameObject.SetActive(true);
             settlementManager.playerAtSettlementGate(gameObject);
            
             gameInput.OnInteract += GameInput_OnInteract;
@@ -58,7 +58,7 @@ public class CityUIManager : MonoBehaviour
             cityUI.gameObject.SetActive(false);
             UIup = false;
             playerInCity = false;
-            //tradeButton.gameObject.SetActive(false) ;
+            tradeButton.gameObject.SetActive(false) ;
             settlementManager.playerLeftSettlement();
             
             gameInput.OnInteract -= GameInput_OnInteract;
