@@ -24346,6 +24346,8 @@ MonoBehaviour:
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
+  tradeButtonText: {fileID: 0}
+  SettlmentNameText: {fileID: 0}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
 --- !u!61 &108411030
@@ -828432,6 +828434,8 @@ MonoBehaviour:
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
+  tradeButtonText: {fileID: 0}
+  SettlmentNameText: {fileID: 0}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
 --- !u!1001 &672154888
@@ -898221,11 +898225,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: ee74e63db67958a45886689fba9bccec, type: 2}
     - target: {fileID: 60880057156043123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.11
+      value: 20.05
       objectReference: {fileID: 0}
     - target: {fileID: 60880057156043123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.31
+      value: 18.94
       objectReference: {fileID: 0}
     - target: {fileID: 60880057156043123, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -900386,6 +900390,8 @@ MonoBehaviour:
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
+  tradeButtonText: {fileID: 0}
+  SettlmentNameText: {fileID: 0}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
 --- !u!61 &824724277
@@ -936650,6 +936656,8 @@ MonoBehaviour:
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
+  tradeButtonText: {fileID: 0}
+  SettlmentNameText: {fileID: 0}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
 --- !u!114 &999542979 stripped
@@ -955750,6 +955758,8 @@ MonoBehaviour:
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
+  tradeButtonText: {fileID: 0}
+  SettlmentNameText: {fileID: 0}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
 --- !u!114 &1090124266 stripped
@@ -1020370,6 +1020380,8 @@ GameObject:
   - component: {fileID: 1412622396}
   - component: {fileID: 1412622398}
   - component: {fileID: 1412622397}
+  - component: {fileID: 1412622400}
+  - component: {fileID: 1412622399}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -1036234,6 +1036246,78 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!66 &1412622399
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412622395}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths: []
+  m_CompositePaths:
+    m_Paths: []
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+  m_UseDelaunayMesh: 0
+  m_CompositeGameObject: {fileID: 1412622395}
+--- !u!50 &1412622400
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412622395}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1413893317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1092499,6 +1092583,8 @@ MonoBehaviour:
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
+  tradeButtonText: {fileID: 0}
+  SettlmentNameText: {fileID: 0}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
 --- !u!61 &1682988978
@@ -1200216,6 +1200302,8 @@ MonoBehaviour:
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
+  tradeButtonText: {fileID: 0}
+  SettlmentNameText: {fileID: 0}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
 --- !u!61 &1874263209
@@ -1256350,6 +1256438,8 @@ MonoBehaviour:
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
+  tradeButtonText: {fileID: 0}
+  SettlmentNameText: {fileID: 0}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
 --- !u!1001 &2106201740
