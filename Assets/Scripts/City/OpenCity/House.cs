@@ -4,20 +4,23 @@ using UnityEngine.UI;
 
 public class House : MonoBehaviour
 {
-    public int uiPage;
-    [SerializeField] string textButton;
-    public Button openShop;
-    [SerializeField] private TextMeshProUGUI openShopText;
-    public CityUI cityUI;
+    [SerializeField] private int uiPage;
+    [SerializeField] private string textForEnterButton;
+    [SerializeField] private  CityUIManager cityUIManager;
+
+    private void Awake()
+    {
+        cityUIManager = transform.parent.GetComponent<CityUIManager>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            
-            openShop.gameObject.SetActive(true);
-            cityUI.ChangePage(uiPage);
-            SetButtonText(textButton);
+            SetButtonText(textForEnterButton);
+            cityUIManager.tradeButton.gameObject.SetActive(true);
+            cityUIManager.settlementManager.cityUI.ChangePage(uiPage);
+           
         }
     }
 
@@ -26,13 +29,13 @@ public class House : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
 
-            openShop.gameObject.SetActive(false);
-            cityUI.ChangePage(uiPage);
+            cityUIManager.tradeButton.gameObject.SetActive(false);
+            
         }
     }
 
     private void SetButtonText(string houseString)
     {
-        openShopText.text = houseString;
+        cityUIManager.tradeButtonText.text = houseString;
     }
 }

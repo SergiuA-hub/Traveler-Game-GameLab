@@ -9,9 +9,11 @@ public class EnterCityNotification : MonoBehaviour
     [SerializeField] private float fadeInTime;
     [SerializeField] private float visibleTime;
     [SerializeField] private float fadeOutTime;
+    [SerializeField] private string[] ButtonTexts;
 
 
     [Header("Components")]
+    public CityUIManager cityUIManager;
     [SerializeField] private TextMeshProUGUI SettlementNameText;
     [SerializeField] private SettlementSO settlementSO;
 
@@ -21,6 +23,7 @@ public class EnterCityNotification : MonoBehaviour
 
     private void Awake()
     {
+        cityUIManager = transform.parent.GetComponent<CityUIManager>();
         canvasGroup= target.GetComponent<CanvasGroup>();
         if (canvasGroup == null) canvasGroup = target.AddComponent<CanvasGroup>();
 
@@ -31,8 +34,10 @@ public class EnterCityNotification : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.CompareTag("Player"))
         {
+            //One way collider
             Vector2 ToEntry = entryPoint.position - transform.position;
             Vector2 ToPlayer = collision.transform.position - transform.position;
             if (Vector2.Dot(ToEntry, ToPlayer) <= 0) return;
@@ -57,11 +62,11 @@ public class EnterCityNotification : MonoBehaviour
         float end = fadeOutStart + fadeOutTime;
 
         if (control < fadeInTime)
-            canvasGroup.alpha = control / fadeInTime;                               // fading in
+            canvasGroup.alpha = control / fadeInTime;                               
         else if (control < fadeOutStart)
-            canvasGroup.alpha = 1f;                                                 // fully visible
+            canvasGroup.alpha = 1f;                                                
         else if (control < end)
-            canvasGroup.alpha = 1f - (control - fadeOutStart) / fadeOutTime;        // fading out
+            canvasGroup.alpha = 1f - (control - fadeOutStart) / fadeOutTime;       
         else
         {
             canvasGroup.alpha = 0f;

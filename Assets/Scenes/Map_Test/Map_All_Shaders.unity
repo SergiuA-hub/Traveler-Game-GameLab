@@ -9372,6 +9372,8 @@ MonoBehaviour:
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
+  tradeButtonText: {fileID: 978370460}
+  SettlmentNameText: {fileID: 1494609467}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
 --- !u!61 &108411030
@@ -646712,6 +646714,8 @@ MonoBehaviour:
   fadeInTime: 0.5
   visibleTime: 2
   fadeOutTime: 1
+  ButtonTexts: []
+  cityUIManager: {fileID: 0}
   SettlementNameText: {fileID: 1494609467}
   settlementSO: {fileID: 11400000, guid: 5c45bdb57a6c67441ad678f1fe3b4597, type: 2}
 --- !u!1 &319873078
@@ -661531,10 +661535,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::House
   uiPage: 2
-  textButton: 
-  openShop: {fileID: 700676057}
-  openShopText: {fileID: 0}
-  cityUI: {fileID: 1020971487}
+  textForEnterButton: 
+  cityUIManager: {fileID: 0}
 --- !u!61 &489301849
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -685442,6 +685444,8 @@ MonoBehaviour:
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
+  tradeButtonText: {fileID: 978370460}
+  SettlmentNameText: {fileID: 1494609467}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
 --- !u!61 &824724277
@@ -686031,10 +686035,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::House
   uiPage: 3
-  textButton: 
-  openShop: {fileID: 700676057}
-  openShopText: {fileID: 0}
-  cityUI: {fileID: 1020971487}
+  textForEnterButton: 
+  cityUIManager: {fileID: 0}
 --- !u!61 &832009991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -714938,11 +714940,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ca6e364fe60084a91fbbd3c18165de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::House
-  uiPage: 2
-  textButton: 
-  openShop: {fileID: 700676057}
-  openShopText: {fileID: 0}
-  cityUI: {fileID: 1020971487}
+  uiPage: 1
+  textForEnterButton: 
+  cityUIManager: {fileID: 0}
 --- !u!61 &1198960474
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -758445,10 +758445,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::House
   uiPage: 4
-  textButton: 
-  openShop: {fileID: 700676057}
-  openShopText: {fileID: 0}
-  cityUI: {fileID: 1020971487}
+  textForEnterButton: 
+  cityUIManager: {fileID: 0}
 --- !u!61 &1546667589
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -769209,6 +769207,8 @@ MonoBehaviour:
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
+  tradeButtonText: {fileID: 0}
+  SettlmentNameText: {fileID: 0}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
 --- !u!61 &1682988978
@@ -853389,6 +853389,8 @@ MonoBehaviour:
   settlementManager: {fileID: 2027388441}
   cityUI: {fileID: 1020971486}
   tradeButton: {fileID: 700676057}
+  tradeButtonText: {fileID: 0}
+  SettlmentNameText: {fileID: 0}
   input: {x: 0, y: 0}
   gameInput: {fileID: 932758300}
 --- !u!61 &1874263209
