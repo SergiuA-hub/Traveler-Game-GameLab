@@ -441,11 +441,16 @@ public class CityUI : MonoBehaviour
             //float maxAmountBasedOnCoins = GameServices.Instance.player.invetory.CurrentCoins / settlementsManager.currentItemSelected.tradeSettlementItem.resource.baseValue;
 
             sliderAmount.maxValue = Mathf.Max(0, Mathf.FloorToInt(Mathf.Min(maxSetlementAmount,maxAmountBasedOnWeight,maxAmountBasedOnVolume)));
+            if (sliderAmount.maxValue > 0)
+                sliderAmount.minValue = 1;
         }
 
         if (settlementsManager.currentItemSelected.tradeInventoryItem != null)
         {
             sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeInventoryItem.amount;
+            
+            if (sliderAmount.maxValue > 0)
+                sliderAmount.minValue = 1;
         }
     }
 
