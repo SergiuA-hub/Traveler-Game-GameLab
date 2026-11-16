@@ -126,14 +126,28 @@ MonoBehaviour:
     tier4_price_stock: 7
     tier5_price_stock: 30
     licenseCost: -1
-  itemsShop:
-  - weight: 0
-    volume: 0
-    cargoSO: {fileID: 11400000, guid: 430f33826f9ed7140bf686cffa1873c4, type: 2}
-    upgradesSpaces: 0
-    Upgrades: []
-    category: 0
-    type: 0
+  - resource: {fileID: 11400000, guid: b4a1567e34bf82042bf276fd1ef115fa, type: 2}
+    dailyChange: 2
+    startingStock: 14
+    minStock: 1
+    maxStock: 30
+    tier1_price_stock: 6
+    tier2_price_stock: 10
+    tier3_price_stock: 14
+    tier4_price_stock: 28
+    tier5_price_stock: 30
+    licenseCost: -1
+  - resource: {fileID: 11400000, guid: d1f3bb36f003e6548976810a827c8c22, type: 2}
+    dailyChange: 3
+    startingStock: 20
+    minStock: 1
+    maxStock: 90
+    tier1_price_stock: 9
+    tier2_price_stock: 15
+    tier3_price_stock: 21
+    tier4_price_stock: 42
+    tier5_price_stock: 90
+    licenseCost: -1
   itemsShopSO:
   - {fileID: 11400000, guid: ee74e63db67958a45886689fba9bccec, type: 2}
   - {fileID: 11400000, guid: 430f33826f9ed7140bf686cffa1873c4, type: 2}
@@ -146,21 +160,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a43562462ed5be4aa50c418fd02ac25, type: 2}
   - {fileID: 11400000, guid: 380801bdd001ff045bbbef6e7c040360, type: 2}
   - {fileID: 11400000, guid: 66dc9eb0a2f07994cb78203601c371d2, type: 2}
-  upgradeShop:
-  - weight: 0
-    volume: 0
-    cargoSO: {fileID: 11400000, guid: 0a54f8617e2791142aae11883103bd84, type: 2}
-    upgradesSpaces: 0
-    Upgrades: []
-    category: 0
-    type: 0
-  - weight: 0
-    volume: 0
-    cargoSO: {fileID: 11400000, guid: 05286b5baa4fc674eb18c05aa728bdc3, type: 2}
-    upgradesSpaces: 0
-    Upgrades: []
-    category: 0
-    type: 0
   Licenses_Shop:
   - {fileID: 11400000, guid: 3e54f0e5bd105f741b413dadea6fddb0, type: 2}
   - {fileID: 11400000, guid: a038c6e6d58b77048ad09cb30da82346, type: 2}

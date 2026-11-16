@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735cc53ed61604a4d99c3db2244daee7, type: 3}
+  m_Name: SummerFarm
+  m_EditorClassIdentifier: Assembly-CSharp::SettlementSO
+  settlementName: Summer Farm
+  region: 1
+  production:
+  - resource: {fileID: 11400000, guid: 880ef20bdb96e8b4185440134bb2e9c8, type: 2}
+    dailyChange: 3
+    startingStock: 12
+    minStock: 0
+    maxStock: 100
+    tier1_price_stock: 9
+    tier2_price_stock: 15
+    tier3_price_stock: 21
+    tier4_price_stock: 42
+    tier5_price_stock: 100
+    licenseCost: -1
+  consumption:
+  - resource: {fileID: 11400000, guid: 009e14a48e4fd0f4195db467db6be134, type: 2}
+    dailyChange: 1
+    startingStock: 10
+    minStock: 2
+    maxStock: 40
+    tier1_price_stock: 3
+    tier2_price_stock: 5
+    tier3_price_stock: 7
+    tier4_price_stock: 14
+    tier5_price_stock: 40
+    licenseCost: -1
+  - resource: {fileID: 11400000, guid: b3aad3b0b4bbd164a86d75f59d54b84e, type: 2}
+    dailyChange: 1
+    startingStock: 15
+    minStock: 2
+    maxStock: 40
+    tier1_price_stock: 3
+    tier2_price_stock: 5
+    tier3_price_stock: 7
+    tier4_price_stock: 14
+    tier5_price_stock: 40
+    licenseCost: 0
+  itemsShopSO:
+  - {fileID: 11400000, guid: ee74e63db67958a45886689fba9bccec, type: 2}
+  availableUpgrades:
+  - {fileID: 11400000, guid: 9dd6f9c0f9297c6458d802d4f9f0a46d, type: 2}
+  Licenses_Shop: []

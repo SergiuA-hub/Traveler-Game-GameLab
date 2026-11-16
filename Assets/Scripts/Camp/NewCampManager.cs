@@ -256,7 +256,7 @@ public class NewCampManager : MonoBehaviour
         campButton.interactable = false;
         playerCaravan.SetActive(false);
         playerCamp.SetActive(true);
-        WorldStatsCampPreconditionScreen.SetActive(true);
+        WorldStatsCampPreconditionScreen.SetActive(false);
 
         //map setup
         interactableObjects.SetActive(false);
@@ -464,7 +464,8 @@ public class NewCampManager : MonoBehaviour
         int maxStamina = Mathf.FloorToInt(player.stats.maxStamina);
 
         //one stamina per hour => hours == stamina restoure
-        return maxStamina - currentStamina;
+        return 8;
+        //return maxStamina - currentStamina;
     }
 
     public void doResting(int staminaIncrease)
@@ -481,8 +482,9 @@ public class NewCampManager : MonoBehaviour
         player.isResting = true;
         restDuration = staminaIncrease;
 
-        campResloution.gameObject.SetActive(true);        
-        campResloution.launchCampResolution();
+        campResloution.gameObject.SetActive(true);
+        resumeRestingAfterResolution();
+        //campResloution.launchCampResolution();
     }
 
     public void calculateCampStats()
@@ -643,11 +645,31 @@ public class NewCampManager : MonoBehaviour
 
         fadeCoroutine = StartCoroutine(FadeRestScreen(0f, 1f, false));
         restScreenPanel.GetComponent<RestingUI>().showRestingMessage();
-        
+
+        consumeFood();
+        consumeDrink();
+
+        float staminaToRest = player.stats.maxStamina - player.stats.currentStamina;
+
+        float hungLeft = player.stats.maxHunger - player.stats.currentHunger;
+        float thirstLeft = player.stats.maxThirst - player.stats.currentThirst;
+
+        // 1 = perfect fed/hydrated
+        // 0 = completely hungry/thirsty
+        float hungerRatio = 1f - (hungLeft / player.stats.maxHunger);
+        float thirstRatio = 1f - (thirstLeft / player.stats.maxThirst);
+
+        float recoveryRatio = (hungerRatio * 0.5f) + (thirstRatio * 0.5f);
+
+        float baseStaminaPerHour = staminaToRest / getRestHoursUntillFull(); ;
+        float staminaPerHour = baseStaminaPerHour * recoveryRatio;
+        campStats.staminaRestoreRatio = staminaPerHour;
+
+        Debug.Log($"Resting started with Food: {getFoodAmount()} and drink {getDrinkAmount()} and hp: {getHPAmount()} and restore stamina/h {staminaPerHour}");
 
         timeManager.onHourChanged.AddListener(hourlyUpdate);
     }
-
+    
     public void hourlyUpdate(DateTime t)
     {
         Debug.Log("HOURLY");
@@ -656,7 +678,7 @@ public class NewCampManager : MonoBehaviour
         if (remainingHours > 0)
         {            
             player.stats.currentStamina = Mathf.Min(player.stats.currentStamina + campStats.staminaRestoreRatio, player.stats.maxStamina);
-            restScreenText.text = $"{remainingHours} hours remaining";
+            restScreenText.text = $"{remainingHours} hours remaining and restored {player.stats.currentStamina:F1} / {player.stats.maxStamina:F1}";
         }
         else
         {

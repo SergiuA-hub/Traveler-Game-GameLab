@@ -210,11 +210,11 @@ public class ContractManager : MonoBehaviour
         if (activeContract != null)
         {
             activeContract.contractRemainingHours -= 1f;
+            contractButtonText.text = $"{activeContract.contractRemainingHours:F0}h";
             if (activeContract.contractRemainingHours <= 0f)
             {
                 finalizeContract();
             }
-            contractButtonText.text = $"{activeContract.contractRemainingHours:F0}h";
         }
     }
 
@@ -223,6 +223,7 @@ public class ContractManager : MonoBehaviour
         isContractActive = false;
         activeContract = null;
         contractButton.gameObject.SetActive(false);
+        contractProgressUI.gameObject.SetActive(false);
 
         GameServices.Instance.timeManager.onHourChanged.RemoveListener(hourlyUpdateContractTimer);
     }   
