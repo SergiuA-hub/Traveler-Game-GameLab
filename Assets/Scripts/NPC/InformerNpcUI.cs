@@ -1,14 +1,8 @@
-using HeyHeyThere.WeatherFX;
-using JetBrains.Annotations;
 using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
-using static UnityEditor.Rendering.MaterialUpgrader;
+
 
 public class InformerNpcUI : MonoBehaviour
 {

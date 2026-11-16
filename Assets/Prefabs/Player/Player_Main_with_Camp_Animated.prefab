@@ -393,10 +393,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8483883059455597435, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
-      propertyPath: visual
-      value: 
-      objectReference: {fileID: 2247229955733826335}
-    - target: {fileID: 8483883059455597435, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: invetory
       value: 
       objectReference: {fileID: 4539409219275482829}
@@ -406,6 +402,7 @@ PrefabInstance:
       objectReference: {fileID: 23460019940096960}
     m_RemovedComponents:
     - {fileID: 8762946185978872032, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+    - {fileID: 8093481663943771713, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8045217955246582829, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
@@ -626,17 +623,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc9064744276ff458f02ff83f5c03e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_M
---- !u!114 &2247229955733826335 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8093481663943771713, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
-  m_PrefabInstance: {fileID: 8033877529580285278}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8418257102270338943}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be1f98a7492235c4bbd089061f2bfa6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerVisual_M
 --- !u!114 &3567988128967545564 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6843812548157636482, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
@@ -730,6 +716,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59105e2d75f051240a188c495a08b459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TraderNotes
+  toSell: []
+  toBuy: []
 --- !u!95 &3629902954964899256
 Animator:
   serializedVersion: 7

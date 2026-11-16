@@ -6,70 +6,70 @@ using UnityEngine.UIElements;
 
 public class CargoManager : MonoBehaviour
 {
-    public static CargoManager instance { get; private set; }
-
-    public List<Cargo> PlayerOwnedCargo = new List<Cargo>();
-
-    public List<Cargo> PlayerOwnedUpgrades = new List<Cargo>();
+    public CargoSO defaultCargoEqupment;
+    public List<CargoSO> playerOwnedCargo = new List<CargoSO>();
+    public List<UpgradesSO> playerOwnedUpgrades = new List<UpgradesSO>();
     public Cargo currentCargoSelected;
 
-    private void Awake()
-    {
-        if(instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        instance = this;
-    }
-    
-  
-
-    
     //######
     // ITEMS
     //######
-    public bool CanBuy(Cargo item,float coins)
+    public bool CanBuy(CargoSO item,float coins)
     {
-       bool can= false;
-       if(coins >= item.cargoSO.price)
+       bool can= true;
+        if(item.price > coins)
         {
-            foreach(var cargo in PlayerOwnedCargo)
+            return false;
+        }
+
+        foreach (var cargo in playerOwnedCargo)
+        {
+            if(item.itemName == cargo.itemName)
             {
-                if(item.cargoSO == cargo.cargoSO)
-                {
-                    can = false;
-                    return false;
-                }
-                else
-                {
-                    can = true;
-                }
+                return false;
             }
         }
-        else
-        {
-            //cant buy
-            can=  false;
-        }
        return can;
+    }
 
-       
+    public bool playerOwnsUpgrade(UpgradesSO item)
+    {
+        foreach (var cargo in playerOwnedUpgrades)
+        {
+            if (item.itemName == cargo.itemName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool playerOwnsCargo(CargoSO item)
+    {
+        foreach (var cargo in playerOwnedCargo)
+        {
+            if (item.itemName == cargo.itemName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     //BUY ITEM
-    public void AddCargoItem(Cargo cargo,ref float playerCoins)
+    public void AddCargoItem(CargoSO cargo,ref float playerCoins)
     {
-        playerCoins -= cargo.cargoSO.price;
-        PlayerOwnedCargo.Add(cargo);
+        playerCoins -= cargo.price;
+        playerOwnedCargo.Add(cargo);
     }
 
+    public void RemoveCargoItemFromInvetory(UpgradesSO cargo)
+    {
+        playerOwnedUpgrades.Remove(cargo);
+    }
 
-
-    //######
-    // UPGRADES
-    //######
-
-
-
+    public void RemoveCargoItemFromShop(UpgradesSO cargo, ref List<UpgradesSO> list)
+    {
+        list.Remove(cargo);
+    }
 }

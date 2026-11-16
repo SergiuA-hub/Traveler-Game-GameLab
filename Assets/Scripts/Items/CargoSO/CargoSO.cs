@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public enum CargoSOType
 {
@@ -13,8 +12,9 @@ public class CargoSO : ScriptableObject
     [Header("Cargo info")]
     public string itemName;
     public Sprite icon;
-    public int price;
-    public int level;
+    public float price;
+    public int upgradesSpaces;
+    public CargoCategory category;
     public CargoSOType type;
     public string Description;
     public string[] features;

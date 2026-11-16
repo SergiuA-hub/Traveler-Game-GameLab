@@ -8,7 +8,8 @@ public class LicenseManager : MonoBehaviour
 
     public List<LicensesSO> ownedLicenses = new List<LicensesSO>();
     //check for already owned licenses
-    public bool AlreadyOwnsLicense(LicensesSO licensesSO) => ownedLicenses.Contains(licensesSO);    
+    public bool AlreadyOwnsLicense(LicensesSO licensesSO) => ownedLicenses.Contains(licensesSO);
+    public bool CanBuy(LicensesSO licenseSO, float playerGold) => playerGold >= licenseSO.cost;
     public void Awake()
     {
         instance = this;

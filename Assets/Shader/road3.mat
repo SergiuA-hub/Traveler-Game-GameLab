@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: road3
-  m_Shader: {fileID: 4800000, guid: 51b2be4b9e90b4241a99bd2965697831, type: 3}
+  m_Shader: {fileID: 4800000, guid: e76f504f8cfb12a43b9f1974646c1fe4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -47,7 +47,15 @@ Material:
     m_Floats:
     - _AOStrength: 0.305
     - _AOWidth: 0.147
+    - _BaseV: 0
+    - _Droop: 0.25
     - _EnableExternalAlpha: 0
+    - _FlutterSpeed: 12
+    - _FlutterStrength: 0.015
+    - _GustScale: 0.15
+    - _GustSpeed: 1
+    - _GustStrength: 0.15
+    - _InteractionStrength: 0
     - _LipPixels: 4.82
     - _NearWallPixels: 5.6
     - _NoiseScale: 2
@@ -56,10 +64,16 @@ Material:
     - _ShadeSteps: 3
     - _ShadowPixels: 1
     - _ShadowSkew: -0.5
+    - _Stiffness: 1.5
     - _Threshold: 0.6
+    - _TipV: 1
     - _TuftPixels: 2
     - _WallLipShade: 0.6
     - _WallPixels: 5.5
+    - _WaveScale: 0.6
+    - _WindDirection: 1
+    - _WindSpeed: 2
+    - _WindStrength: 0.12
     - _ZWrite: 0
     m_Colors:
     - _CellInv: {r: 1, g: 0, b: 0, a: 1}

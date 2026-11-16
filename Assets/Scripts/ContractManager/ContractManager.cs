@@ -1,10 +1,8 @@
-using JetBrains.Annotations;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class ContractManager : MonoBehaviour
@@ -22,10 +20,27 @@ public class ContractManager : MonoBehaviour
     public Button contractButton;
     public TMP_Text contractButtonText;
 
-    public void Start()
+    public IEnumerator Start()
     {
         isContractActive = false;
         contractButton.gameObject.SetActive(false);
+        // Wait until SettlementManager is initialized
+
+        float timeout = Time.realtimeSinceStartup + 5f;
+
+        yield return new WaitUntil(() =>
+            (GameServices.Instance != null &&
+             GameServices.Instance.settlementManager != null &&
+             GameServices.Instance.settlementManager.settlements != null &&
+             GameServices.Instance.settlementManager.settlements.Count > 0)
+            || Time.realtimeSinceStartup >= timeout
+        );
+
+        if (Time.realtimeSinceStartup >= timeout)
+        {
+            Debug.LogError("ContractManager initialization timed out!");
+            yield break;
+        }
 
         initializeQuests();
         resetPanelFlags();
@@ -195,11 +210,11 @@ public class ContractManager : MonoBehaviour
         if (activeContract != null)
         {
             activeContract.contractRemainingHours -= 1f;
+            contractButtonText.text = $"{activeContract.contractRemainingHours:F0}h";
             if (activeContract.contractRemainingHours <= 0f)
             {
                 finalizeContract();
             }
-            contractButtonText.text = $"{activeContract.contractRemainingHours:F0}h";
         }
     }
 
@@ -208,6 +223,7 @@ public class ContractManager : MonoBehaviour
         isContractActive = false;
         activeContract = null;
         contractButton.gameObject.SetActive(false);
+        contractProgressUI.gameObject.SetActive(false);
 
         GameServices.Instance.timeManager.onHourChanged.RemoveListener(hourlyUpdateContractTimer);
     }   
