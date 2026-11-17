@@ -186,12 +186,17 @@ public class CookingPotUI : MonoBehaviour
 
             if (hungerFull && hpFull)
                 return;
+
+            GameServices.Instance.soundManager.playEatSound();
         }
 
         if (item.resourceSO.resourceType.Contains(ResourceType.Drink))
         {
+            
             if (player.stats.currentThirst + campManager.getDrinkAmount() >= player.stats.maxThirst)
                 return;
+
+            GameServices.Instance.soundManager.playDrinkSound();
         }
 
         campManager.addResourceToCampUsage(item.resourceSO);

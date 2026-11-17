@@ -99,6 +99,8 @@ public class TimeManager : MonoBehaviour
         var keyboard = Keyboard.current;
         if (keyboard == null) return;
 
+        if (player.isCamping)
+            return;
         //if (keyboard.spaceKey.wasPressedThisFrame)
         //{
         //    time_stopped = true;
@@ -114,15 +116,15 @@ public class TimeManager : MonoBehaviour
             SetTimeSpeed(GlobalSettingsManager.HOUR_DURATION / 2);
         }
 
-        if (keyboard.digit3Key.wasPressedThisFrame)
-        {
-            SetTimeSpeed(GlobalSettingsManager.HOUR_DURATION / 3);
-        }
+        //if (keyboard.digit3Key.wasPressedThisFrame)
+        //{
+        //    SetTimeSpeed(GlobalSettingsManager.HOUR_DURATION / 3);
+        //}
 
-        if (keyboard.digit4Key.wasPressedThisFrame)
-        {
-            SetTimeSpeed(GlobalSettingsManager.HOUR_DURATION / 4);
-        }
+        //if (keyboard.digit4Key.wasPressedThisFrame)
+        //{
+        //    SetTimeSpeed(GlobalSettingsManager.HOUR_DURATION / 4);
+        //}
     }
 
     void HandleTimer(float dec)

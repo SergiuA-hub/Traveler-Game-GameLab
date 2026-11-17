@@ -442,7 +442,7 @@ public class CityUI : MonoBehaviour
 
             sliderAmount.maxValue = Mathf.Max(0, Mathf.FloorToInt(Mathf.Min(maxSetlementAmount,maxAmountBasedOnWeight,maxAmountBasedOnVolume)));
             if (sliderAmount.maxValue > 0)
-                sliderAmount.minValue = 1;
+                sliderAmount.minValue = 0;
         }
 
         if (settlementsManager.currentItemSelected.tradeInventoryItem != null)
@@ -450,7 +450,7 @@ public class CityUI : MonoBehaviour
             sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeInventoryItem.amount;
             
             if (sliderAmount.maxValue > 0)
-                sliderAmount.minValue = 1;
+                sliderAmount.minValue = 0;
         }
     }
 
