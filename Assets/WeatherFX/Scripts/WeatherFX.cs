@@ -65,7 +65,7 @@ namespace HeyHeyThere.WeatherFX
             StrikeSeedId = Shader.PropertyToID("_StrikeSeed");
         static int timeFrame = -1, screenFrame = -1;
 
-        Material instance;  // the renderer's, made here from `material` or the shader's defaults
+        Material instance;  // the render's, made here from `material` or the shader's defaults
         Mesh mesh;
         MeshRenderer meshRenderer;
         Rect drawn;

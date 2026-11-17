@@ -19,7 +19,8 @@ public class Player_M : MonoBehaviour
     public PlayerVisual_M visual;
     public Rigidbody2D rb;
     public GameInput gameInput;
-    public TimeManager timeManager;      
+    public TimeManager timeManager;
+    
     
     public float moveCounter = 0;
     public float stationaryCounter = 0;
@@ -50,7 +51,7 @@ public class Player_M : MonoBehaviour
 
     }
 
-    
+
 
     public void calculateInventorySize()
     {

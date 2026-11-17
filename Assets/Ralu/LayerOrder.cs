@@ -1,16 +1,18 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LayerOrder : MonoBehaviour
 {
-
     private const int IsometricRangePerYUnit = 100;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Renderer render;
+
+
     void Start()
     {
-        Renderer renderer = GetComponent<Renderer>();
-        if (renderer != null)
+        render = GetComponent<Renderer>();
+        if (render != null)
         {
-            renderer.sortingOrder = -(int)((transform.position.y - renderer.bounds.size.y / 2.0) * IsometricRangePerYUnit);
+            render.sortingOrder = -(int)((transform.position.y - render.bounds.size.y / 2.0) * IsometricRangePerYUnit);
         }
     }
 
