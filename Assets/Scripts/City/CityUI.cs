@@ -934,7 +934,7 @@ public void SetCurrentShopItem(CargoSO cargoItem)
 
     public void LeaveSettlement()
     {
-        ChangePage(0);
+        //ChangePage(0);
         //setlement.CityObjectUI.SetActive(false);
         this.gameObject.SetActive(false);               
         GameServices.Instance.player.UnRoot();

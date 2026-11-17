@@ -127,6 +127,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Testing[G]"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f79d824-1694-431e-bc1a-dce605b198d3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -217,6 +226,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Invetory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""557509fb-d4d8-4e37-b54f-b474783cb292"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Testing[G]"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -229,6 +249,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Invetory = m_Player.FindAction("Invetory", throwIfNotFound: true);
+        m_Player_TestingG = m_Player.FindAction("Testing[G]", throwIfNotFound: true);
     }
 
     ~@PlayerInputAction()
@@ -313,6 +334,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Invetory;
+    private readonly InputAction m_Player_TestingG;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -340,6 +362,10 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Invetory".
         /// </summary>
         public InputAction @Invetory => m_Wrapper.m_Player_Invetory;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/TestingG".
+        /// </summary>
+        public InputAction @TestingG => m_Wrapper.m_Player_TestingG;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -378,6 +404,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Invetory.started += instance.OnInvetory;
             @Invetory.performed += instance.OnInvetory;
             @Invetory.canceled += instance.OnInvetory;
+            @TestingG.started += instance.OnTestingG;
+            @TestingG.performed += instance.OnTestingG;
+            @TestingG.canceled += instance.OnTestingG;
         }
 
         /// <summary>
@@ -401,6 +430,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Invetory.started -= instance.OnInvetory;
             @Invetory.performed -= instance.OnInvetory;
             @Invetory.canceled -= instance.OnInvetory;
+            @TestingG.started -= instance.OnTestingG;
+            @TestingG.performed -= instance.OnTestingG;
+            @TestingG.canceled -= instance.OnTestingG;
         }
 
         /// <summary>
@@ -469,5 +501,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInvetory(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Testing[G]" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTestingG(InputAction.CallbackContext context);
     }
 }
