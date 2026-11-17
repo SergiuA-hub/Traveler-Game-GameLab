@@ -44,7 +44,7 @@ public class WeatherManager : MonoBehaviour
         HUD = GameServices.Instance.HUD;
 
         currentWeather = WeatherType.Clear;
-        currentSeason = Season.Summer;
+        currentSeason = Season.Summer;        
 
         environmentManager.setWeather(currentWeather);
         updateUI();
@@ -52,6 +52,8 @@ public class WeatherManager : MonoBehaviour
         
         timeManager.onMorning.AddListener(morning);
         timeManager.onEvening.AddListener(evening);
+
+        
     }
 
     private void OnDestroy()
@@ -111,7 +113,6 @@ public class WeatherManager : MonoBehaviour
             if (summerWeatherDuration <= 0)
             {
                 summerWeather = WeatherType.Clear;
-                //weatherVisual.SetWeather(summerWeather);
             }
         }
         if (currentSeason == Season.Summer)
@@ -145,7 +146,6 @@ public class WeatherManager : MonoBehaviour
             if (fallWeatherDuration <= 0)
             {
                 fallWeather = WeatherType.Clear;
-                //weatherVisual.SetWeather(fallWeather);
             }
         }
         if (currentSeason == Season.Fall)
@@ -172,7 +172,6 @@ public class WeatherManager : MonoBehaviour
                     winterWeather = WeatherType.Snow;
                     winterWeatherDuration = UnityEngine.Random.Range(minWeatherDuration, maxWeatherDuration);
                 }
-                
             }
         }
         else
@@ -181,7 +180,6 @@ public class WeatherManager : MonoBehaviour
             if (winterWeatherDuration <= 0)
             {
                 winterWeather = WeatherType.Clear;
-                //weatherVisual.SetWeather(winterWeather);
             }
         }
         if (currentSeason == Season.Winter)
@@ -191,6 +189,9 @@ public class WeatherManager : MonoBehaviour
             GameServices.Instance.player.stats.setWeatherModifiers(currentWeather);
             weatherVisual.changeWeather(currentSeason, winterWeather);
         }
+
+        if (currentWeather == WeatherType.Clear)
+            GameServices.Instance.soundManager.stopWeatherEffect();
 
         updateUI();
     }   
@@ -218,22 +219,25 @@ public class WeatherManager : MonoBehaviour
         if (currentSeason == Season.Spring)
         {
             currentWeather = springWeather;
+            GameServices.Instance.soundManager.springSounds();
         }
 
         if (currentSeason == Season.Summer)
         {
             currentWeather = summerWeather;
+            GameServices.Instance.soundManager.summerSounds();
         }
 
         if (currentSeason == Season.Fall)
         {
             currentWeather = fallWeather;
+            GameServices.Instance.soundManager.fallSounds();
         }                
 
         if (currentSeason == Season.Winter)
         {
             currentWeather = winterWeather;
-
+            GameServices.Instance.soundManager.winterSounds();
             int hour = timeManager.currentTime.Hour;
 
             if (hour >= 20 || hour < 6)

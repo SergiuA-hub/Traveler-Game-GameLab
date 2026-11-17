@@ -667,6 +667,8 @@ public class NewCampManager : MonoBehaviour
 
         Debug.Log($"Resting started with Food: {getFoodAmount()} and drink {getDrinkAmount()} and hp: {getHPAmount()} and restore stamina/h {staminaPerHour}");
 
+        GameServices.Instance.soundManager.playSleepSound();
+
         timeManager.onHourChanged.AddListener(hourlyUpdate);
     }
     
@@ -695,6 +697,8 @@ public class NewCampManager : MonoBehaviour
 
     public void StopRest()
     {
+        GameServices.Instance.soundManager.stopPlayerSounds();
+
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);        
 

@@ -154,12 +154,15 @@ public class SettlementsManager : MonoBehaviour
         currentItemSelected = null;
 
         SettlementUI.SetActive(true);
+
+        GameServices.Instance.soundManager.playSettlementSound();
     }
 
     public void leaveSettlement()
     {
         takeNotes(currentSettlement);
         GameServices.Instance.timeManager.resume();
+        GameServices.Instance.soundManager.stopSettlementSound();
     }
 
     public void takeNotes(SettlementRuntime currentSettlementForNotes)
