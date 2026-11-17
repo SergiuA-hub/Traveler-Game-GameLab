@@ -294,8 +294,6 @@ public class SoundManager : MonoBehaviour
 
     public void stopWeatherEffect()
     {
-        Debug.Log("SOUND EFFECT ON - CLEAR SOUND EFFECTS");
-
         if (!weatherEffect.isPlaying)
             return;
 
