@@ -249,6 +249,7 @@ public class WeatherVisualManager : MonoBehaviour
                         rainEffect.Set("speed", 0.6f);
 
                         rainEffect.FadeIn(3f);
+                        GameServices.Instance.soundManager.springRainEffect();
                         break;
                 }
                 break;
@@ -274,6 +275,8 @@ public class WeatherVisualManager : MonoBehaviour
                         windEffect.Set("speed", 0.15f);
                         windEffect.Set("intensity", 0.08f);
                         windEffect.FadeIn(3f);
+
+                        GameServices.Instance.soundManager.summerRainEffect();
                         break;
                 }
                 break;
@@ -315,6 +318,8 @@ public class WeatherVisualManager : MonoBehaviour
                         windEffect.Set("intensity", 0.15f);
                         windEffect.FadeIn(3f);
 
+                        GameServices.Instance.soundManager.fallRainEffect();
+
                         break;
                     case WeatherType.Storm:
                         InitializeRain();
@@ -343,7 +348,7 @@ public class WeatherVisualManager : MonoBehaviour
                         leavesEffect.Set("speed", 3f);
                         leavesEffect.Set("wind", 1f);
                         leavesEffect.FadeIn(4f);
-
+                        GameServices.Instance.soundManager.fallStormEffect();
                         break;
                 }
                 break;
@@ -370,6 +375,7 @@ public class WeatherVisualManager : MonoBehaviour
                         blizzardEffect.Set("speed", 0.6f);
 
                         blizzardEffect.FadeIn(8f);
+                        GameServices.Instance.soundManager.winterBlizzardEffect();
                         break;
                 }
                 break;
@@ -429,6 +435,7 @@ public class WeatherVisualManager : MonoBehaviour
         if (Random.value <= lightningChance)
         {
             lightningEffect.Strike();
+            GameServices.Instance.soundManager.fallThunderEffect();
         }
     }
 

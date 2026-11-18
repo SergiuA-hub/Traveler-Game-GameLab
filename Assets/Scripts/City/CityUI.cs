@@ -441,11 +441,16 @@ public class CityUI : MonoBehaviour
             //float maxAmountBasedOnCoins = GameServices.Instance.player.invetory.CurrentCoins / settlementsManager.currentItemSelected.tradeSettlementItem.resource.baseValue;
 
             sliderAmount.maxValue = Mathf.Max(0, Mathf.FloorToInt(Mathf.Min(maxSetlementAmount,maxAmountBasedOnWeight,maxAmountBasedOnVolume)));
+            if (sliderAmount.maxValue > 0)
+                sliderAmount.minValue = 0;
         }
 
         if (settlementsManager.currentItemSelected.tradeInventoryItem != null)
         {
             sliderAmount.maxValue = settlementsManager.currentItemSelected.tradeInventoryItem.amount;
+            
+            if (sliderAmount.maxValue > 0)
+                sliderAmount.minValue = 0;
         }
     }
 
@@ -929,7 +934,7 @@ public void SetCurrentShopItem(CargoSO cargoItem)
 
     public void LeaveSettlement()
     {
-        ChangePage(0);
+        //ChangePage(0);
         //setlement.CityObjectUI.SetActive(false);
         this.gameObject.SetActive(false);               
         GameServices.Instance.player.UnRoot();

@@ -16,6 +16,7 @@ public class GameServices : MonoBehaviour
     public WizardManager wizardManager;
     public CargoManager cargoManager;
 
+    public SoundManager soundManager;
     public WeatherVisualManager weatherVisual;
 
     [Header("UI")]

@@ -24,6 +24,7 @@ public class SettlementsManager : MonoBehaviour
     public UpgradeItemDisplay currentManagmentUpgrade;
     public SettlementRuntime currentSettlement;
 
+
     //Managers
     //public TimeManager timeManager;
     //public LicenseManager licenseManager;   
@@ -153,12 +154,15 @@ public class SettlementsManager : MonoBehaviour
         currentItemSelected = null;
 
         SettlementUI.SetActive(true);
+
+        GameServices.Instance.soundManager.playSettlementSound();
     }
 
     public void leaveSettlement()
     {
         takeNotes(currentSettlement);
         GameServices.Instance.timeManager.resume();
+        GameServices.Instance.soundManager.stopSettlementSound();
     }
 
     public void takeNotes(SettlementRuntime currentSettlementForNotes)
@@ -222,13 +226,17 @@ public class SettlementsManager : MonoBehaviour
     }
 
     public void BuyOrSell()
-    {   
+    {
+        if (currentItemSelected == null)
+            return;
+
         if(currentItemSelected.isLocked == false)
         {
             //BUY
             if (currentItemSelected.tradeSettlementItem != null)
             {
-
+                if (currentItemSelected.tradeSettlementItem.amount == 0)
+                    return;
                 //Debug.Log($"SETTLEMENT IS SELLING {currentItemSelected.tradeSettlementItem.resource.itemName} with prce {currentItemSelected.tradeSettlementItem.price}");
 
                 //Check player money & space in backpack
@@ -255,6 +263,8 @@ public class SettlementsManager : MonoBehaviour
             //Sell
             if (currentItemSelected.tradeInventoryItem != null)
             {
+                if (currentItemSelected.tradeInventoryItem.amount == 0)
+                    return;
 
                 if (!player.invetory.hasResources(currentItemSelected.tradeInventoryItem.resourceSO))
                     return;

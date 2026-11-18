@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Data;
 using System;
+using Unity.VisualScripting;
 
 public class HUDScript : MonoBehaviour
 {
@@ -13,9 +14,9 @@ public class HUDScript : MonoBehaviour
     public TimeManager timeManager;
 
     [Header("HUD elements")]
-    //Full Component
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject CityUI;
+    [SerializeField] private GameInput gameInput;
 
     //Stamina
     public Slider staminaSlider;
@@ -52,10 +53,15 @@ public class HUDScript : MonoBehaviour
     public GameObject level3BuffPanel;
     public GameObject level4BuffPanel;
     public GameObject level5BuffPanel;
-    public BuffFlames flames;
+
+    [SerializeField] private GameObject PauseMenu;
+    public bool isGamePaused =false;
+    public GameObject DeathScreen;
 
     void Start()
     {
+        gameInput.OnPauseGame += GameInput_OnPauseGame;
+
         inventory = player.invetory;
         hpSlider.maxValue = player.stats.maxHp;
         staminaSlider.maxValue = player.stats.maxStamina;
@@ -65,11 +71,13 @@ public class HUDScript : MonoBehaviour
     }
 
    
+
     void Update()
     {
         UpdateStats();
         UpdateTimeDisplay();
         EnablePlayerHUD();
+        
     }
 
     void UpdateStats()
@@ -123,25 +131,11 @@ public class HUDScript : MonoBehaviour
         level4BuffPanel.SetActive(ratio >= 0.6f);
         level5BuffPanel.SetActive(ratio >= 0.8f);
 
-        Color flameColor;
-
-        if (ratio >= 0.8f)
-            flameColor = new Color32(67, 200, 255, 255);  // Level 5
-        else if (ratio >= 0.6f)
-            flameColor = new Color32(60, 155, 255, 255);  // Level 4
-        else if (ratio >= 0.4f)
-            flameColor = new Color32(79, 116, 243, 255);  // Level 3
-        else if (ratio >= 0.2f)
-            flameColor = new Color32(106, 85, 232, 255);  // Level 2
-        else
-            flameColor = new Color32(155, 69, 223, 255);  // Level 1
-
-        flames.SetFlameColor(flameColor);
     }
 
     private void EnablePlayerHUD()
     {
-        if(CityUI.activeSelf)
+        if(CityUI.activeSelf )
         {
             //Aici playerul intra in oras
             HUD.SetActive(false);
@@ -161,4 +155,32 @@ public class HUDScript : MonoBehaviour
     {
         weatherText.text = currentWeather.ToString();
     }
+    private void GameInput_OnPauseGame(object sender, EventArgs e)
+    {
+        if (!isGamePaused && !CityUI.activeSelf)
+        {
+            PauseMenu.SetActive(true);
+            isGamePaused = true;
+            player.Root();
+            Time.timeScale = 0f;
+           
+        }
+        else
+        {
+
+            PauseMenu.SetActive(false);
+            isGamePaused = false;
+            player.UnRoot();
+            Time.timeScale = 1f;
+            
+        }
+
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    
 }

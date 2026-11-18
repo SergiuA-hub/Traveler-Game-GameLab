@@ -10,6 +10,9 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnInventory;
 
     public event EventHandler OnPauseGame;
+    
+    //Testing {G}
+    public event EventHandler OnTesting;
     private void Start()
     {
         inputs =new PlayerInputAction();
@@ -19,6 +22,7 @@ public class GameInput : MonoBehaviour
         inputs.Player.Interact.performed += Interact_performed;
         inputs.Player.Invetory.performed += Invetory_performed;
         inputs.Player.Pause.performed += Pause_performed;
+        inputs.Player.TestingG.performed += TestingG_performed;
     }
 
     
@@ -43,6 +47,12 @@ public class GameInput : MonoBehaviour
     private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         OnPauseGame?.Invoke(this, EventArgs.Empty);
+    }
+
+    //G For testing 
+    private void TestingG_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnTesting?.Invoke(this, EventArgs.Empty);
     }
 }
 

@@ -144,7 +144,7 @@ public class LootPanelUI : MonoBehaviour
 
         if(outcome.hpLoss > 0)
         {
-            player.stats.currentHp -= outcome.hpLoss;
+            player.TakeDamage(outcome.hpLoss);
         }
 
         if(outcome.staminaLoss > 0)

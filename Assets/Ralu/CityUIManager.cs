@@ -9,7 +9,9 @@ public class CityUIManager : MonoBehaviour
     public GameObject cityUI;
     bool playerInCity = false;
     bool UIup = false;
-    public Button tradeButton; 
+    public Button tradeButton;
+   // public TextMeshProUGUI tradeButtonText;
+    //public TextMeshProUGUI SettlmentNameText;
 
     public Vector2 input;
 
