@@ -651,18 +651,22 @@ public class NewCampManager : MonoBehaviour
 
         float staminaToRest = player.stats.maxStamina - player.stats.currentStamina;
 
-        float hungLeft = player.stats.maxHunger - player.stats.currentHunger;
-        float thirstLeft = player.stats.maxThirst - player.stats.currentThirst;
+        float hungerRatio = player.stats.currentHunger / player.stats.maxHunger;
+        float thirstRatio = player.stats.currentThirst / player.stats.maxThirst;
 
-        // 1 = perfect fed/hydrated
-        // 0 = completely hungry/thirsty
-        float hungerRatio = 1f - (hungLeft / player.stats.maxHunger);
-        float thirstRatio = 1f - (thirstLeft / player.stats.maxThirst);
+        // Minimum 50% recovery no matter what.
+        // Remaining 50%:
+        // 25% from hunger
+        // 25% from thirst
+        float recoveryRatio =
+            0.5f +
+            (hungerRatio * 0.25f) +
+            (thirstRatio * 0.25f);
 
-        float recoveryRatio = (hungerRatio * 0.5f) + (thirstRatio * 0.5f);
+        float baseStaminaPerHour = staminaToRest / getRestHoursUntillFull();
 
-        float baseStaminaPerHour = staminaToRest / getRestHoursUntillFull(); ;
         float staminaPerHour = baseStaminaPerHour * recoveryRatio;
+
         campStats.staminaRestoreRatio = staminaPerHour;
 
         Debug.Log($"Resting started with Food: {getFoodAmount()} and drink {getDrinkAmount()} and hp: {getHPAmount()} and restore stamina/h {staminaPerHour}");

@@ -22,9 +22,9 @@ public class LicenceItemDisplay : MonoBehaviour, IPointerClickHandler
         licenseSO = license;
 
         icon.sprite = licenseSO.icon;
-        licencename.text = license.name;
+        licencename.text = license.LicenseName;
         
-        price.text = license.cost.ToString();
+        price.text = $"{license.cost:F1}";
         
         //resourses ulock
     }
