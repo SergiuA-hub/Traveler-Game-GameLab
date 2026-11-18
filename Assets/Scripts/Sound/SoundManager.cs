@@ -365,10 +365,14 @@ public class SoundManager : MonoBehaviour
     {
         if (introSoundSource == null)
             return;
-        
-        if(introSoundSource.isPlaying)
+
+        if (introSoundSource.isPlaying)
             GameServices.Instance.player.Root();
-        else GameServices.Instance.player.UnRoot();
+        else
+        {
+            introSoundSource = null;
+            GameServices.Instance.player.UnRoot();
+        }
     }
 
     public void skipIntro()

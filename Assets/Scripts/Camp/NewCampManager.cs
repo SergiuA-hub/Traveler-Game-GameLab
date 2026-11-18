@@ -910,4 +910,9 @@ public class NewCampManager : MonoBehaviour
         }
         return totalHP;
     }
+
+    public void allowCamp(bool sw)
+    {
+        campButton.interactable = sw;
+    }
 }
