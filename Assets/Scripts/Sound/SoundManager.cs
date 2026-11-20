@@ -366,9 +366,9 @@ public class SoundManager : MonoBehaviour
         if (introSoundSource == null)
             return;
 
-        if (introSoundSource.isPlaying)
-            GameServices.Instance.player.Root();
-        else
+        GameServices.Instance.player.Root();
+
+        if (introSoundSource.time >= introSoundSource.clip.length - 0.1f)
         {
             introSoundSource = null;
             GameServices.Instance.player.UnRoot();
@@ -377,6 +377,9 @@ public class SoundManager : MonoBehaviour
 
     public void skipIntro()
     {
-        introSoundSource.Stop();
+        if(introSoundSource!= null)
+            introSoundSource.Stop();
+        
+        introSoundSource = null;
     }
 }

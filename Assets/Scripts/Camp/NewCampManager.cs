@@ -180,6 +180,7 @@ public class NewCampManager : MonoBehaviour
 
     public GameObject WorldStatsCampPreconditionScreen;
     public GameObject roadsObject;
+    public GameObject staticNPCsList;
     public GameObject interactableObjects;
 
     //public List<ResourceAmount> campSupplies = new List<ResourceAmount>();
@@ -261,6 +262,7 @@ public class NewCampManager : MonoBehaviour
         //map setup
         interactableObjects.SetActive(false);
         roadsObject.SetActive(false);
+        staticNPCsList.SetActive(false);
 
         timeManager.pause();
         campResPanel.SetActive(true);
@@ -292,6 +294,7 @@ public class NewCampManager : MonoBehaviour
         //map setup back
         interactableObjects.SetActive(true);
         roadsObject.SetActive(true);
+        staticNPCsList.SetActive(true);
 
         player.isCamping = false;
         npcManager.restoreNPCVizibility();

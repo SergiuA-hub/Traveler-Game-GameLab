@@ -239,9 +239,9 @@ public class ContractManager : MonoBehaviour
 
     public void sellResources(ResourceSO res, float amount, SettlementSO settlement)
     {
-        if(activeContract == null)
+        if (activeContract == null)
             return;
-
+        
         if(activeContract.contractType == ContractType.Import && activeContract.contractRequest == res && activeContract.settlement == settlement)
         {
             activeContract.contractRemainingAmount -= amount;
@@ -278,10 +278,11 @@ public class ContractManager : MonoBehaviour
 
     public void buyResources(ResourceSO res, float amount, SettlementSO settlement)
     {
+        
         if (activeContract == null)
             return;
 
-        if(activeContract.contractType == ContractType.Export && activeContract.contractRequest == res && activeContract.settlement == settlement)
+        if (activeContract.contractType == ContractType.Export && activeContract.contractRequest == res && activeContract.settlement == settlement)
         {
             amountBought += (int)amount;            
         }
