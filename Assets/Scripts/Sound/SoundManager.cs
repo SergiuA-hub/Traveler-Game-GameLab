@@ -53,10 +53,16 @@ public class SoundManager : MonoBehaviour
 
         weatherNormalVolume = weatherEffect.volume;
 
-        introSoundSource.clip = introSoundClip;
-        introSoundSource.loop = false;
-        introSoundSource.Play();
-
+        if (!GameServices.Instance.internalTesting)
+        {
+            introSoundSource.clip = introSoundClip;
+            introSoundSource.loop = false;
+            introSoundSource.Play();
+        }
+        else
+        {
+            introSoundSource = null;
+        }
     }
 
     public void playEatSound()
@@ -263,6 +269,8 @@ public class SoundManager : MonoBehaviour
     public void winterSounds()
     {
         worldSfxEffect.Stop();
+        weatherEffect.Stop();
+        specialWeatherFfx.Stop();
     }
 
     public void winterBlizzardEffect()
