@@ -96,10 +96,10 @@ public class HUDScript : MonoBehaviour
         staminaConsumptionText.text = staminaToShow;
         hpConsumptionText.text = $"";
         
-        if(player.stats.currentStamina < GlobalSettingsManager.CAMP_STAMINA_POSSIBLE && !player.isCamping)
-        {            
-            campButton.interactable = true;
-        }else campButton.interactable = false;
+        //if(player.stats.currentStamina < GlobalSettingsManager.CAMP_STAMINA_POSSIBLE && !player.isCamping)
+        //{            
+        //    campButton.interactable = true;
+        //}else campButton.interactable = false;
 
         string hungerToShow = player.stats.currentHunger == 0 ? "-" : $"- {player.hungerDropPerHour}/h";
         hungerConsumptionText.text = hungerToShow;
