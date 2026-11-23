@@ -26,12 +26,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3683512654714695150}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.068, y: 0.047, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.06799984, y: 0.648, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1639975573155533776}
+  m_Father: {fileID: 60880057156043123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1393178714090282161
 MonoBehaviour:
@@ -448,7 +448,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8045217955246582829, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       insertIndex: 0
       addedObject: {fileID: 469228647233373104}
-    - targetCorrespondingSourceObject: {fileID: 8771969825038728846, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8045217955246582829, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6594599302863174263}
     m_AddedComponents:
@@ -651,11 +651,6 @@ PolygonCollider2D:
 --- !u!50 &1604098999061235800 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 8736128433924007174, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
-  m_PrefabInstance: {fileID: 8033877529580285278}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1639975573155533776 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8771969825038728846, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
   m_PrefabInstance: {fileID: 8033877529580285278}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1928349594743092773 stripped
