@@ -1292,9 +1292,9 @@ RectTransform:
   m_Father: {fileID: 3941894709822432254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 3, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8289608820593180270
 CanvasRenderer:
@@ -5795,7 +5795,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4754483584751011644}
   m_HandleRect: {fileID: 8924020146687162627}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -7387,7 +7387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8292949555058816922
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7460,7 +7460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cf79cf2f725c84cb8cce46cbbc2132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDisplayUI
-  player: {fileID: 0}
   ItemPrefab: {fileID: 4876554756627009130, guid: dd232ee2a35f9e547bd83092d98586e3, type: 3}
   ItemList: {fileID: 6462591866966668101}
   weightSlider: {fileID: 1644520589370548185}
@@ -7468,6 +7467,18 @@ MonoBehaviour:
   weightTxt: {fileID: 8713228868472358434}
   capTxt: {fileID: 5911996051429540891}
   moneyDisplay: {fileID: 4291829129444479526}
+  currentInventoryItem:
+    resourceSO: {fileID: 0}
+    amount: 0
+    averageValue: 0
+  currentSelectedItemPanel: {fileID: 0}
+  currentItemIcon: {fileID: 0}
+  currentItemName: {fileID: 0}
+  currrntItemWeight: {fileID: 0}
+  currrntItemVolume: {fileID: 0}
+  currrntItemAveragePrice: {fileID: 0}
+  currentItemTextAmount: {fileID: 0}
+  currentItemAmount: 1
 --- !u!1 &822529443447001132
 GameObject:
   m_ObjectHideFlags: 0
@@ -18248,7 +18259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3263322016741706338
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18289,34 +18300,105 @@ MonoBehaviour:
     defaultSettlementData: {fileID: 0}
     settlementStock: []
     settlementShopItems: []
+    availableCargoItems: []
+    settlmentUpgradeItems: []
+    availableUpgrades: []
+    settlmentLicenses: []
     settlementGo: {fileID: 0}
+    contractsPanel: {fileID: 0}
+    reputation: 0
   currentpage: 0
   itemPrefab: {fileID: 7698181275806001906, guid: 8eb821cee3573cc41bea9cac25c9e540, type: 3}
   Content: {fileID: 1047038616834332776}
   settlementName: {fileID: 2973042633173424752}
+  reputation: {fileID: 0}
   tradePrfab: {fileID: 6307333992456499657, guid: 1736463a4b3435c42ba05194d6e8ff62, type: 3}
   buyContent: {fileID: 8196533156367967762}
   tradePlayerPrefab: {fileID: 6307333992456499657, guid: 1736463a4b3435c42ba05194d6e8ff62, type: 3}
   SellContent: {fileID: 4716779475150880617}
-  setlement: {fileID: 0}
   playerInventory: {fileID: 0}
+  player: {fileID: 0}
   playerCoinsDisplay: {fileID: 2584155417545406168}
+  playerCoinsShopPanel: {fileID: 0}
+  playerCoinsLicensePanel: {fileID: 0}
+  playerCoinsUpgradePanel: {fileID: 0}
   currentTradeItemImage: {fileID: 6947994062166217939}
   currentTradeItemName: {fileID: 2258134386189240205}
   currentTradeItemPrice: {fileID: 677897278933657130}
   buySellButtonText: {fileID: 8496800178635680754}
   currentItemAmount: {fileID: 9007058553369329632}
+  CurrentLockedPanel: {fileID: 0}
+  TierDisplayPanel: {fileID: 0}
+  additionalInfo: {fileID: 0}
+  TierVAmoun: {fileID: 0}
+  TierIVAmount: {fileID: 0}
+  TierIIIAmount: {fileID: 0}
+  TierIIAmount: {fileID: 0}
+  TierIAmount: {fileID: 0}
+  TierVPrice: {fileID: 0}
+  TierIVPrice: {fileID: 0}
+  TierIIIPrice: {fileID: 0}
+  TierIIPrice: {fileID: 0}
+  TierIPrice: {fileID: 0}
+  tierIndicator: {fileID: 0}
   sliderAmount: {fileID: 0}
   currentTextAmount: {fileID: 9007058553369329632}
+  weight_Invetory_Slider: {fileID: 0}
+  weight_Trade_Slider: {fileID: 0}
+  volume_Invetory_Slider: {fileID: 0}
+  volume_Trade_Slider: {fileID: 0}
   ShopContent: {fileID: 0}
   ItemShopPrefab: {fileID: 0}
+  selectedShopItemPanel: {fileID: 0}
+  noShopItemSelected: {fileID: 0}
   currentShopItemIcon: {fileID: 0}
   currentShopItemName: {fileID: 0}
   currentShopItemPrice: {fileID: 0}
   currentShopItemDescription: {fileID: 0}
+  buyShopButtonText: {fileID: 0}
+  restItemShop: {fileID: 0}
+  shopItemDetails: {fileID: 0}
+  UpgradeContent: {fileID: 0}
+  upgradeItemDisplayPrefab: {fileID: 0}
+  upgradePageSelectedItemPanel: {fileID: 0}
+  upgradePageNoItemSelectedPanel: {fileID: 0}
+  buyUpgradesButton: {fileID: 0}
+  currentUpgradeItemIcon: {fileID: 0}
+  currentUpgradeItemName: {fileID: 0}
+  upgradeItemPrice: {fileID: 0}
+  restUpgradeShop: {fileID: 0}
+  buttonUpgradeShop: {fileID: 0}
+  upgradeDescriptionText: {fileID: 0}
+  TradeGuildContent: {fileID: 0}
+  LicensesDisplayPrefab: {fileID: 0}
+  selectedTradeLicensePanel: {fileID: 0}
+  noTradeLicenseSelectedPanel: {fileID: 0}
+  LicenseIcon: {fileID: 0}
+  LicenseName: {fileID: 0}
+  LicensePrice: {fileID: 0}
+  LicenseUnlockList: {fileID: 0}
+  unlockItem: {fileID: 0}
+  notEnoughMoneyText: {fileID: 0}
+  itemManagmentContent: {fileID: 0}
+  upgradeManagmentContent: {fileID: 0}
+  managementCargoDisplayPrefab: {fileID: 0}
+  managementUpgradeDisplayPrefab: {fileID: 0}
+  currentManagmentItemIcon: {fileID: 0}
+  currentManagmentItemName: {fileID: 0}
+  componentsArea: {fileID: 0}
+  upgradeSlotPrefab: {fileID: 0}
+  upgradeFramePrefab: {fileID: 0}
+  itemVolume: {fileID: 0}
+  itemweight: {fileID: 0}
+  upgradeVolume: {fileID: 0}
+  upgradeWeight: {fileID: 0}
+  upgradeSlotsText: {fileID: 0}
   LobbyPanel: {fileID: 5660843752874332687}
   ShopPanel: {fileID: 8527247098586214550}
   TradePanel: {fileID: 7783330579280783596}
+  UpgradePanel: {fileID: 0}
+  GuildPanel: {fileID: 0}
+  CartManagmentPanel: {fileID: 0}
 --- !u!1 &2169687565156955519
 GameObject:
   m_ObjectHideFlags: 0
@@ -21810,7 +21892,7 @@ RectTransform:
   m_Father: {fileID: 2294869522150291029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -23928,7 +24010,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7244558873999700535}
   m_HandleRect: {fileID: 1624455836442096803}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -24136,7 +24218,7 @@ RectTransform:
   m_Father: {fileID: 7176371711413403267}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -3.5, y: 0}
   m_SizeDelta: {x: 8.3631, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -24865,7 +24947,7 @@ RectTransform:
   m_Father: {fileID: 7647427842802362676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -25387,7 +25469,7 @@ RectTransform:
   m_Father: {fileID: 7648190891618361656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -32267,7 +32349,7 @@ RectTransform:
   m_Father: {fileID: 194096429800383720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -3.5, y: 0}
   m_SizeDelta: {x: 8.3631, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -34885,6 +34967,15 @@ MonoBehaviour:
   weatherText: {fileID: 4959483002772836227}
   currentSeason: 1
   currentWeather: 0
+  timeProgress: {fileID: 0}
+  timerText: {fileID: 0}
+  extendedTimerText: {fileID: 0}
+  level1BuffPanel: {fileID: 0}
+  level2BuffPanel: {fileID: 0}
+  level3BuffPanel: {fileID: 0}
+  level4BuffPanel: {fileID: 0}
+  level5BuffPanel: {fileID: 0}
+  flames: {fileID: 0}
 --- !u!1 &4278682341841658718
 GameObject:
   m_ObjectHideFlags: 0
@@ -62511,7 +62602,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 493656489760904676}
   m_HandleRect: {fileID: 3103172471576418576}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -63918,7 +64009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4290459057570257165
 RectTransform:
   m_ObjectHideFlags: 0
