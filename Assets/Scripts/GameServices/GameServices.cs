@@ -1,8 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameServices : MonoBehaviour
 {
     public static GameServices Instance { get; private set; }
+    public bool internalTesting;
 
     [Header("Managers")]
     public TimeManager timeManager;
@@ -29,6 +31,8 @@ public class GameServices : MonoBehaviour
     [Header("Player")]
     public Player_M player;
 
+    [Header("Tools")]
+    public Teleporter teleport;
     private void Awake()
     {
         if (Instance != null && Instance != this)

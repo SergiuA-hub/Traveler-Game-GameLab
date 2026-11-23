@@ -189,6 +189,7 @@ public class SettlementsManager : MonoBehaviour
 
     public void BuyOrSell(float transactionTotalPrice, int amount)
     {
+        Debug.Log("BUY OR SELL WITH PARAMS");
         if (currentItemSelected.isLocked)
             return;
 
@@ -201,6 +202,8 @@ public class SettlementsManager : MonoBehaviour
             GameServices.Instance.player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, transactionTotalPrice/amount,amount);
             currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource, amount);
             updateCurrentSettlementPrices();
+            
+            
             GameServices.Instance.contractManager.buyResources(currentItemSelected.tradeSettlementItem.resource, amount, currentSettlement.defaultSettlementData);
             
             cityUI.DisplayTrade();            
@@ -248,6 +251,7 @@ public class SettlementsManager : MonoBehaviour
                 {
                     player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, currentItemSelected.tradeSettlementItem.price, cityUI.ReturnCurentSliderValue());
                     currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource, cityUI.ReturnCurentSliderValue());
+                    GameServices.Instance.contractManager.buyResources(currentItemSelected.tradeSettlementItem.resource, currentItemSelected.tradeSettlementItem.amount, currentSettlement.defaultSettlementData);
                     updateCurrentSettlementPrices();
 
                     //Slider
@@ -271,6 +275,7 @@ public class SettlementsManager : MonoBehaviour
 
                 player.invetory.tradeOut(currentItemSelected.tradeInventoryItem.resourceSO, currentSettlement.getStockPrice(currentItemSelected.tradeInventoryItem.resourceSO), cityUI.ReturnCurentSliderValue());
                 currentSettlement.increaseStock(currentItemSelected.tradeInventoryItem.resourceSO, cityUI.ReturnCurentSliderValue());
+                GameServices.Instance.contractManager.sellResources(currentItemSelected.tradeInventoryItem.resourceSO, cityUI.ReturnCurentSliderValue(), currentSettlement.defaultSettlementData);
                 updateCurrentSettlementPrices();
 
                 //Slider
