@@ -212,6 +212,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1051782662989733147, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_labelHash
+      value: 1.3971405e-28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051782662989733147, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_CategoryHash
+      value: 3.33836e-36
+      objectReference: {fileID: 0}
     - target: {fileID: 1450329689077161137, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
@@ -276,6 +284,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 5845536500831388056, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7827269773814497656, guid: 009ba1e071dc70043b0feafb7922daa8, type: 3}
     - target: {fileID: 5873021218158562195, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: Inventory.Array.size
       value: 6
@@ -308,6 +320,14 @@ PrefabInstance:
       propertyPath: Inventory.Array.data[5].averageValue
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6442017937030710853, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_labelHash
+      value: 2.6263963e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442017937030710853, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_CategoryHash
+      value: 0.00037763524
+      objectReference: {fileID: 0}
     - target: {fileID: 6843812548157636482, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: maxStamina
       value: 15
@@ -315,6 +335,22 @@ PrefabInstance:
     - target: {fileID: 6978518409002190902, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500999722287619990, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Size.x
+      value: 0.2680664
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500999722287619990, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Size.y
+      value: 0.08807707
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500999722287619990, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.043147087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500999722287619990, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.04127288
       objectReference: {fileID: 0}
     - target: {fileID: 7974629685736275836, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: m_Layer
@@ -400,6 +436,10 @@ PrefabInstance:
       propertyPath: attachments
       value: 
       objectReference: {fileID: 23460019940096960}
+    - target: {fileID: 8910714748781824895, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2882518606283578620, guid: 6ee4358c7071c6247aa414cc8ab5347c, type: 3}
     m_RemovedComponents:
     - {fileID: 8762946185978872032, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
     - {fileID: 8093481663943771713, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
@@ -430,6 +470,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7992218123398086685, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7014872139820401620}
+    - targetCorrespondingSourceObject: {fileID: 688447485889659529, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6116204862581927380}
   m_SourcePrefab: {fileID: 100100000, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
 --- !u!114 &23460019940096960 stripped
 MonoBehaviour:
@@ -688,6 +731,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerVisual_M
   player: {fileID: 1928349594743092773}
+  timeManager: {fileID: 0}
+  vignetteVol: {fileID: 0}
+  timerCriticalValue: 10
+--- !u!1 &7418495505503023063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 688447485889659529, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+  m_PrefabInstance: {fileID: 8033877529580285278}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6116204862581927380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418495505503023063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1f98a7492235c4bbd089061f2bfa6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerVisual_M
+  player: {fileID: 0}
   timeManager: {fileID: 0}
   vignetteVol: {fileID: 0}
   timerCriticalValue: 10

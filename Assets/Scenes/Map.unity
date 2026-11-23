@@ -1157355,6 +1157355,10 @@ PrefabInstance:
       propertyPath: m_PointLightInnerRadius
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1501711702932694561, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2882518606283578620, guid: 6ee4358c7071c6247aa414cc8ab5347c, type: 3}
     - target: {fileID: 1639975573155533776, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1157427,6 +1157431,10 @@ PrefabInstance:
       propertyPath: exhaustSpeed
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3629902954964899256, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3683512654714695150, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1157435,6 +1157443,10 @@ PrefabInstance:
       propertyPath: campManager
       value: 
       objectReference: {fileID: 1622856382}
+    - target: {fileID: 4495038236091133126, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7827269773814497656, guid: 009ba1e071dc70043b0feafb7922daa8, type: 3}
     - target: {fileID: 4539409219275482829, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: CurrentCoins
       value: 20
@@ -1157519,10 +1157531,30 @@ PrefabInstance:
       propertyPath: campManager
       value: 
       objectReference: {fileID: 1622856382}
+    - target: {fileID: 6116204862581927380, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1153219631}
+    - target: {fileID: 6116204862581927380, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: timeManager
+      value: 
+      objectReference: {fileID: 932758302}
+    - target: {fileID: 6116204862581927380, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: vignetteVol
+      value: 
+      objectReference: {fileID: 1379976940}
+    - target: {fileID: 6381196823629177006, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: offsetX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6398753607869012972, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: campManager
       value: 
       objectReference: {fileID: 1622856382}
+    - target: {fileID: 6407902516379878066, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 701759561126032583, guid: 7ed7c7bee950a094e81483158df7c293, type: 3}
     - target: {fileID: 6426973710071676673, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1157542,6 +1157574,14 @@ PrefabInstance:
     - target: {fileID: 7014872139820401620, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054536759279546437, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: m_labelHash
+      value: 1.3971405e-28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054536759279546437, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      propertyPath: m_CategoryHash
+      value: 3.33836e-36
       objectReference: {fileID: 0}
     - target: {fileID: 7351292451732785555, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       propertyPath: m_IsActive
@@ -1157576,7 +1157616,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7401840050674390317, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1920227456}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3868479719699044065, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1575817731}
   m_SourcePrefab: {fileID: 100100000, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
 --- !u!82 &814492383 stripped
 AudioSource:
@@ -1343634,6 +1343677,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6557450717808028808, guid: 0d01a28920720dd4980192a3c5787ca4, type: 3}
   m_PrefabInstance: {fileID: 1575790914}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1575817727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3868479719699044065, guid: 4c33e85e96882e74885b6199735d8ce2, type: 3}
+  m_PrefabInstance: {fileID: 814492382}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1575817731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575817727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
+  m_CategoryHash: 0.0000007297967
+  m_labelHash: 9.442472e-29
+  m_SpriteKey: 0
+  m_SpriteHash: 780042869
 --- !u!1 &1576133312
 GameObject:
   m_ObjectHideFlags: 0
