@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class PlayerVisual_M : MonoBehaviour
     Animator anim;
     int currentState; // 0: idle, 1: moving
 
+    public GameObject Lamp;
 
     private void Start()
     {
@@ -22,7 +24,20 @@ public class PlayerVisual_M : MonoBehaviour
         playerMovement = player.gameObject.GetComponent<PlayerMovement_M>();
         currentState = 0;
         anim = GetComponent<Animator>();
-  //      vignetteVol = GetComponent<Volume>();
+        //      vignetteVol = GetComponent<Volume>();
+
+        GameServices.Instance.timeManager.onEvening.AddListener(turnOnLight);
+        GameServices.Instance.timeManager.onMorning.AddListener(turnOffLight);
+    }
+
+    public void turnOnLight(DateTime t)
+    {
+        Lamp.SetActive(true);
+    }
+
+    public void turnOffLight(DateTime t)
+    {
+        Lamp.SetActive(false);
     }
 
     private void Update()
