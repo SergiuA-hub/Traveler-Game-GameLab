@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -173,5 +174,15 @@ public class SettlementRuntime
                 return false;
         }
         return true;
+    }
+
+    public bool needResource(ResourceSO res)
+    {
+        foreach(var good in defaultSettlementData.consumption)
+        {
+            if (good.resource.itemName == res.itemName)
+                return true;
+        }
+        return false;
     }
 }
