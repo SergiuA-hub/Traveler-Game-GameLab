@@ -6,6 +6,10 @@ public class Contract
 {
     public SettlementSO settlement;
     public ContractType contractType;
+    public string fromSettlement;
+    public int buyAmount;
+    public string toSettlement;
+    public int sellAmount;
     public ResourceSO contractRequest;
     public float contractTotalAmount;
     public float contractRemainingHours;
@@ -25,6 +29,9 @@ public class Contract
         contractRemainingHours = contractDuration;
         rewardCoins = rewardC;
         rewardReputation = rewardRep;
+
+        buyAmount = 0;
+        sellAmount = 0;
     }
 }
 

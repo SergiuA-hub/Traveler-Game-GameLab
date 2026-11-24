@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SettlementsManager : MonoBehaviour
@@ -75,6 +77,99 @@ public class SettlementsManager : MonoBehaviour
             settlements.Add(currentSettlement);
         }
     }
+
+    public string getSettlementWihtNeed(ResourceSO res)
+    {
+        List<string> settlmentsWithNeed = new();
+        settlmentsWithNeed.Clear();
+
+        foreach (var set in settlements)
+        {
+            if (set.needResource(res))
+            {
+                Debug.Log($"Res{res.itemName} is needed in {set.settlementName}");
+                settlmentsWithNeed.Add(set.settlementName);
+            }
+        }
+
+        if (settlmentsWithNeed.Count == 0)
+            return "";
+
+        return settlmentsWithNeed[UnityEngine.Random.Range(0, settlmentsWithNeed.Count)];
+    }
+
+    public string getSettlementWithProduction(ResourceSO res)
+    {
+        List<string> settlementsWithProduction = new();
+
+        foreach (var set in settlements)
+        {
+            if (set.defaultSettlementData.production.Any(p => p.resource.itemName == res.itemName))
+                settlementsWithProduction.Add(set.settlementName);
+        }
+
+        if (settlementsWithProduction.Count == 0)
+            return "";
+
+        return settlementsWithProduction[UnityEngine.Random.Range(0, settlementsWithProduction.Count)];
+    }
+
+    public float getDistance(string locationFrom, string locationTo)
+    {
+        if (locationFrom == locationTo)
+            return 0f;
+
+        Dictionary<string, float> distances = new();
+        HashSet<string> visited = new();
+
+        distances[locationFrom] = 0f;
+
+        while (true)
+        {
+            string current = null;
+            float minDistance = float.MaxValue;
+
+            foreach (var entry in distances)
+            {
+                if (!visited.Contains(entry.Key) &&
+                    entry.Value < minDistance)
+                {
+                    current = entry.Key;
+                    minDistance = entry.Value;
+                }
+            }
+
+            if (current == null)
+                return -1f;
+
+            if (current == locationTo)
+                return minDistance;
+
+            visited.Add(current);
+
+            foreach (var road in GameServices.Instance.npcManager.roads)
+            {
+                string neighbour = null;
+
+                if (road.startSettlement.settlementName == current)
+                    neighbour = road.endSettlement.settlementName;
+                else if (road.endSettlement.settlementName == current)
+                    neighbour = road.startSettlement.settlementName;
+
+                if (neighbour == null || visited.Contains(neighbour))
+                    continue;
+
+                float newDistance = minDistance + road.totalLength;
+
+                if (!distances.ContainsKey(neighbour) ||
+                    newDistance < distances[neighbour])
+                {
+                    distances[neighbour] = newDistance;
+                }
+            }
+        }
+    }
+
     public void refreshSettlementQuests()
     {
         //currentSettlement.contractsPanel
@@ -251,7 +346,7 @@ public class SettlementsManager : MonoBehaviour
                 {
                     player.invetory.tradeIn(currentItemSelected.tradeSettlementItem.resource, currentItemSelected.tradeSettlementItem.price, cityUI.ReturnCurentSliderValue());
                     currentSettlement.decreaseStock(currentItemSelected.tradeSettlementItem.resource, cityUI.ReturnCurentSliderValue());
-                    GameServices.Instance.contractManager.buyResources(currentItemSelected.tradeSettlementItem.resource, currentItemSelected.tradeSettlementItem.amount, currentSettlement.defaultSettlementData);
+                    GameServices.Instance.contractManager.buyResources(currentItemSelected.tradeSettlementItem.resource, cityUI.ReturnCurentSliderValue(), currentSettlement.defaultSettlementData);
                     updateCurrentSettlementPrices();
 
                     //Slider

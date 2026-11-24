@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -27,11 +28,22 @@ public class LicenseManager : MonoBehaviour
 
     }
 
+    public bool canAquire(ResourceSO resource, string settlement)
+    {
+        foreach (var license in ownedLicenses)
+        {
+            if (license.resourse_unlock.Contains(resource) && license.settlementSO.settlementName == settlement)
+                return true;
+        }
+
+        return false;
+    }
+
     public bool CanTrade(ResourceSO resource,SettlementSO settlementSO)
     {
         foreach(var license in ownedLicenses)
         {
-            if(license.resourse_unlock.Contains(resource) && license.settlementSO == settlementSO) 
+            if(license.resourse_unlock.Contains(resource) && license.settlementSO == settlementSO)
                 return true;
             
         }

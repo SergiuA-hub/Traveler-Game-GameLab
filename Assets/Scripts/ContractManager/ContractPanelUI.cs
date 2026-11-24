@@ -31,14 +31,14 @@ public class ContractPanelUI : MonoBehaviour
             contractTypeIcon.color = new Color32(84, 122, 69, 255);
             contractTypeIcon.GetComponentInChildren<TMP_Text>().text = "Export";
 
-            contractDescription.text = $"Purchase {amount:F0} {resource} from <b>{settlement}</b> to help distribute its local produce.";
+            contractDescription.text = $"Purchase {amount:F0} {resource} from <b>{contract.fromSettlement}</b> and sell them in <b>{contract.toSettlement}</b> to help reduce our surplus stock.";
         }
         else if (contract.contractType == ContractType.Import)
         {
             contractTypeIcon.color = new Color32(163, 78, 66, 255);
             contractTypeIcon.GetComponentInChildren<TMP_Text>().text = "Import";
 
-            contractDescription.text = $"Deliver and sell {amount:F0} {resource} to <b>{settlement}</b> to help replenish its supplies.";
+            contractDescription.text = $"Purchase {amount:F0} {resource} from <b>{contract.fromSettlement}</b> and sell them in <b>{contract.toSettlement}</b> to help meet our local demand.";
         }
 
         resourceAmount.text = $"{contract.contractTotalAmount:F0}";
@@ -47,7 +47,9 @@ public class ContractPanelUI : MonoBehaviour
         contracTRewardCoins.text = $"{contract.rewardCoins:F1}";
         contracTRewardReputation.text = $"{contract.rewardReputation:F1}";
 
-        bool canAccept = GameServices.Instance.licenseManager.CanTrade(contract.contractRequest, contract.settlement);
+
+        bool canAccept = GameServices.Instance.licenseManager.canAquire(contract.contractRequest, contract.fromSettlement);
+
         acceptContractButton.interactable = canAccept;
         if (canAccept)
         {
