@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4071452e2ad28e49b06affaabb59b4b, type: 3}
+  m_Name: Barrel_Gold
+  m_EditorClassIdentifier: Assembly-CSharp::LootOutcome
+  outcomeForLoot: 3
+  outcomeStory: "Oh my, you found a pot of gold! Or, well, a barrel of gold. It's
+    filled to the brim with gold is the point! \n\nAs you reach in to grab a handful
+    of gold from the barrel, most of it disappears in a puff of smoke. Perhaps the
+    celebration was too soon. Oh well, at least there's still some loose change rattling
+    about in there. "
+  outcomeImage: {fileID: -1873093071912141978, guid: 3425007bf26117846b29ad3e6dd25dd0, type: 3}
+  outcomeChance: 15
+  outcomeCoins: 10
+  lootDrop: []
+  hpLoss: 0
+  staminaLoss: 0
+  investigationDuration: 1

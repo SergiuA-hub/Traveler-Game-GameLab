@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4071452e2ad28e49b06affaabb59b4b, type: 3}
+  m_Name: Barrel_HpLoss
+  m_EditorClassIdentifier: Assembly-CSharp::LootOutcome
+  outcomeForLoot: 3
+  outcomeStory: 'This barrel is home to a very angry cat. You should not have disturbed
+    it. '
+  outcomeImage: {fileID: 6520911284774323891, guid: 3425007bf26117846b29ad3e6dd25dd0, type: 3}
+  outcomeChance: 35
+  outcomeCoins: 0
+  lootDrop:
+  - resource:
+      resourceSO: {fileID: 11400000, guid: cf9a79bc928b2a745af1e82703c67f0f, type: 2}
+      amount: 1
+    dropChance: 15
+  hpLoss: 10
+  staminaLoss: 0
+  investigationDuration: 1

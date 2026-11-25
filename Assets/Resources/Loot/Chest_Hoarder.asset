@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4071452e2ad28e49b06affaabb59b4b, type: 3}
+  m_Name: Chest_Hoarder
+  m_EditorClassIdentifier: Assembly-CSharp::LootOutcome
+  outcomeForLoot: 4
+  outcomeStory: It looks like someone tried to bury this chest, but they haven't
+    done a very good job as it's still clearly visible. After dislodging it from
+    the ground and getting it open, you discover a large amount of supplies stashed
+    away. These would certainly come in handy in a survival situation...
+  outcomeImage: {fileID: -5281422124547630143, guid: 573855c267e807540b203224634614d4, type: 3}
+  outcomeChance: 25
+  outcomeCoins: 10
+  lootDrop:
+  - resource:
+      resourceSO: {fileID: 11400000, guid: 2b0310fe8c317f74a83bc7cd61330605, type: 2}
+      amount: 4
+    dropChance: 30
+  - resource:
+      resourceSO: {fileID: 11400000, guid: 379b63d90c0fddd4ba4b5bd154b16d52, type: 2}
+      amount: 2
+    dropChance: 30
+  - resource:
+      resourceSO: {fileID: 11400000, guid: 1c8f8ca846032ec479d1044edc2c361a, type: 2}
+      amount: 3
+    dropChance: 50
+  - resource:
+      resourceSO: {fileID: 11400000, guid: b4a1567e34bf82042bf276fd1ef115fa, type: 2}
+      amount: 1
+    dropChance: 25
+  - resource:
+      resourceSO: {fileID: 11400000, guid: cf23858f5ed539f43b85fdd88d1b293c, type: 2}
+      amount: 3
+    dropChance: 25
+  - resource:
+      resourceSO: {fileID: 11400000, guid: 100b6ba188f7a3c40a47921c12576638, type: 2}
+      amount: 2
+    dropChance: 25
+  hpLoss: 0
+  staminaLoss: 2
+  investigationDuration: 3

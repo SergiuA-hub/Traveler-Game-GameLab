@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4071452e2ad28e49b06affaabb59b4b, type: 3}
+  m_Name: Chest_Mimic
+  m_EditorClassIdentifier: Assembly-CSharp::LootOutcome
+  outcomeForLoot: 4
+  outcomeStory: 'As you reach out to open the chest, it suddenly snaps open all by
+    itself to reveal a mouth full of teeth. This is no chest, it''s a monster! Taking
+    advantage of your momentary disorientation, the chest creature pulls a knife
+    out of its mouth and demands you hand over your money. '
+  outcomeImage: {fileID: 4714410783012859700, guid: 573855c267e807540b203224634614d4, type: 3}
+  outcomeChance: 14
+  outcomeCoins: -15
+  lootDrop: []
+  hpLoss: 0
+  staminaLoss: 0
+  investigationDuration: 0
