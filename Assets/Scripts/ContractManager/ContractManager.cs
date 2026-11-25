@@ -147,8 +147,8 @@ public class ContractManager : MonoBehaviour
                 settlement.contractsPanel.AddContract(contract2);
             }
             
-            var consumption = settlement.defaultSettlementData.consumption;
-
+            var consumption = settlement.defaultSettlementData.consumption.Where(p => p.resource.itemName != "Fish").ToList(); ;
+            
             if (consumption.Count >= 2)
             {
                 int index1 = UnityEngine.Random.Range(0, consumption.Count);
