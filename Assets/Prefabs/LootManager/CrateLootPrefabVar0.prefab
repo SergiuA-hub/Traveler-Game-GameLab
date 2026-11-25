@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7745297832380185706}
   - component: {fileID: 5896303385990325279}
+  - component: {fileID: 8644297623159572106}
   m_Layer: 0
   m_Name: Crate
   m_TagString: Untagged
@@ -175,3 +176,15 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &8644297623159572106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315464556402341746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0821b8024603d04685683dbad184cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LayerOrder

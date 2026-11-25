@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 4202988651769798081}
   - component: {fileID: 8718788587391197802}
   - component: {fileID: 1877765738145269685}
+  - component: {fileID: 496210463123647187}
   m_Layer: 0
   m_Name: WelcomeSign_0
   m_TagString: Untagged
@@ -258,6 +259,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.9689498, y: 3.3983266}
   m_EdgeRadius: 0
+--- !u!114 &496210463123647187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450876619225588918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0821b8024603d04685683dbad184cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LayerOrder
 --- !u!1 &2916334855787548821
 GameObject:
   m_ObjectHideFlags: 0

@@ -786,7 +786,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8762946185978872032, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
     - {fileID: 8093481663943771713, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4578881446101011588, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8045217955246582829, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       insertIndex: 0
@@ -810,12 +811,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1994453858807167521, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       insertIndex: -1
       addedObject: {fileID: -6488384379772069526}
-    - targetCorrespondingSourceObject: {fileID: 4578881446101011588, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2788846933443144487}
-    - targetCorrespondingSourceObject: {fileID: 4578881446101011588, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3230410155822635123}
     - targetCorrespondingSourceObject: {fileID: 7992218123398086685, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7014872139820401620}
@@ -1075,50 +1070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e7bb69f1267dc46bc5ff589ac69ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInvetory_M
---- !u!1 &5833680382982775258 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4578881446101011588, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
-  m_PrefabInstance: {fileID: 8033877529580285278}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2788846933443144487
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5833680382982775258}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 41969bbf0ffb5ef489e0b8a16347aa91, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3230410155822635123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5833680382982775258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be1f98a7492235c4bbd089061f2bfa6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerVisual_M
-  player: {fileID: 1928349594743092773}
-  timeManager: {fileID: 0}
-  vignetteVol: {fileID: 1003722105761581270}
-  timerCriticalValue: 20
-  Lamp: {fileID: 0}
 --- !u!1 &6515425235121048979 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3825070897457373389, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}

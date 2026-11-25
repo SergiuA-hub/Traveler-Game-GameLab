@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1872550491699187791}
   - component: {fileID: 1488186184044654805}
+  - component: {fileID: 6077218730769345027}
   m_Layer: 0
   m_Name: Sack
   m_TagString: Untagged
@@ -91,6 +92,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &6077218730769345027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2607088644516002689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0821b8024603d04685683dbad184cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LayerOrder
 --- !u!1 &2891404436547364254
 GameObject:
   m_ObjectHideFlags: 0
