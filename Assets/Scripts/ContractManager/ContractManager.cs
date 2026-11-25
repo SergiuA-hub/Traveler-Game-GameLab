@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,14 +13,24 @@ public class ContractManager : MonoBehaviour
     public GameObject contractsWoodenPanel;
     public List<Contract> contracts = new();
     public Contract activeContract;
+    public Contract lastCompletedContract;
     private bool isContractActive;
     private int amountBought;
     private int amountSold;
     private SettlementContractsPanel panelInRange;
     public ContractPanelUI contractdetailsUI;
     public ContractProgressPanelUI contractProgressUI;
+    public GameObject contractProgressButton;
+
+    public CompletedContractPanelUI completedContractUI;
+    public GameObject completedContractButton;
     public Button contractButton;
     public TMP_Text contractButtonText;
+    public AudioClip acceptContractAudio;
+    public AudioClip contractCompletionAudio;
+    public AudioClip contractFailedAudio;
+
+    public List<AudioClip> abandontSoundList;
 
     public IEnumerator Start()
     {
@@ -233,6 +244,8 @@ public class ContractManager : MonoBehaviour
             amountSold = 0;
 
             activeContract = contract;
+            GameServices.Instance.soundManager.triggerSound(acceptContractAudio);
+
             Debug.Log($"Contracts Count:{contracts.Count}");
             contracts.Remove(contract);
             panelInRange.RemoveContract(contract);
@@ -243,6 +256,8 @@ public class ContractManager : MonoBehaviour
             GameServices.Instance.timeManager.onHourChanged.AddListener(hourlyUpdateContractTimer);
             contractButton.gameObject.SetActive(true);
             contractButtonText.text = $"{activeContract.contractRemainingHours:F0} h";
+            
+            completedContractButton.SetActive(false);
         }
     }
 
@@ -254,16 +269,32 @@ public class ContractManager : MonoBehaviour
             contractButtonText.text = $"{activeContract.contractRemainingHours:F0}h";
             if (activeContract.contractRemainingHours <= 0f)
             {
-                finalizeContract();
+                failContract();
             }
         }
     }
 
-    public void finalizeContract()
+    public void failContract()
     {
         isContractActive = false;
         activeContract = null;
+        lastCompletedContract = null;
+        completedContractButton.SetActive(false);
+        contractProgressButton.SetActive(false);
+
+        GameServices.Instance.soundManager.triggerSound(contractFailedAudio);
+        GameServices.Instance.timeManager.onHourChanged.RemoveListener(hourlyUpdateContractTimer);
+    }
+
+    public void finalizeContract()
+    {
+        GameServices.Instance.soundManager.triggerSound(contractCompletionAudio);
+
+        isContractActive = false;
+        lastCompletedContract = activeContract;
+        activeContract = null;
         contractButton.gameObject.SetActive(false);
+        completedContractButton.SetActive(true);
         contractProgressUI.gameObject.SetActive(false);
 
         GameServices.Instance.timeManager.onHourChanged.RemoveListener(hourlyUpdateContractTimer);
@@ -278,6 +309,28 @@ public class ContractManager : MonoBehaviour
         contractProgressUI.gameObject.SetActive(true);
     }
 
+    public void showCompletedContract()
+    {
+        if (isContractActive)
+        {
+            Debug.Log("Contract is still active");
+            completedContractButton.SetActive(false);
+            contractProgressButton.SetActive(true);
+            return;
+        }
+
+        if(lastCompletedContract == null)
+        {
+            Debug.Log("Last contract is null");
+            completedContractButton.SetActive(false);
+            contractProgressButton.SetActive(true);
+            return;
+        }
+
+        completedContractUI.setup(lastCompletedContract);
+        completedContractUI.gameObject.SetActive(true);
+    }
+
     public void sellResources(ResourceSO res, float amount, SettlementSO settlement)
     {
         if (!isContractActive)
@@ -286,11 +339,15 @@ public class ContractManager : MonoBehaviour
         if (activeContract == null)
             return;
 
-        if (settlement.settlementName == activeContract.toSettlement)
-            activeContract.sellAmount = Mathf.Clamp(activeContract.sellAmount + (int)amount,0,(int)activeContract.contractTotalAmount);
-
         if (settlement.settlementName == activeContract.fromSettlement)
-            activeContract.buyAmount = Mathf.Clamp(activeContract.buyAmount - (int)amount,0,(int)activeContract.contractTotalAmount);
+            activeContract.buyAmount = Mathf.Max(
+                activeContract.sellAmount,
+                activeContract.buyAmount - (int)amount);
+
+        if (settlement.settlementName == activeContract.toSettlement)
+            activeContract.sellAmount = Mathf.Min(
+                activeContract.buyAmount,
+                activeContract.sellAmount + (int)amount);
 
         checkContractCompletion();
     }
@@ -305,13 +362,14 @@ public class ContractManager : MonoBehaviour
 
         if (activeContract.contractRequest.itemName != res.itemName)
             return;
-        
+
         if (settlement.settlementName == activeContract.fromSettlement)
-            activeContract.buyAmount = Mathf.Clamp(activeContract.buyAmount + (int)amount, 0, (int)activeContract.contractTotalAmount);
+            activeContract.buyAmount += (int)amount;
 
         if (settlement.settlementName == activeContract.toSettlement)
-            activeContract.sellAmount = Mathf.Clamp(activeContract.sellAmount - (int)amount, 0, (int)activeContract.contractTotalAmount);
-        
+            activeContract.sellAmount = Mathf.Max(
+                0, activeContract.sellAmount - (int)amount);
+
         checkContractCompletion();
     }
 
@@ -329,5 +387,17 @@ public class ContractManager : MonoBehaviour
             GameServices.Instance.settlementManager.addReputation(activeContract.settlement, activeContract.rewardReputation);
             finalizeContract();
         }
+    }
+
+    public void abandonActiveContract()
+    {
+        GameServices.Instance.settlementManager.addReputation(activeContract.settlement, -5f);
+        GameServices.Instance.soundManager.triggerSound(abandontSoundList[UnityEngine.Random.Range(0, abandontSoundList.Count)]);
+        isContractActive = false;
+        activeContract = null;
+        contractButton.gameObject.SetActive(false);
+        contractProgressUI.gameObject.SetActive(false);
+
+        GameServices.Instance.timeManager.onHourChanged.RemoveListener(hourlyUpdateContractTimer);
     }
 }

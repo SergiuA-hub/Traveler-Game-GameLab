@@ -14,7 +14,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource specialSoundsSource;
     public AudioSource settlementSoundSource;
     public AudioSource playerSoundSource;
-
+    public AudioSource uiSoundSource;
     [Header("Intro")]
     public AudioClip introSoundClip;
 
@@ -367,6 +367,13 @@ public class SoundManager : MonoBehaviour
         specialSoundsSource.clip = clip;
         specialSoundsSource.loop = false;
         specialSoundsSource.Play();
+    }
+
+    public void UISound(AudioClip clip)
+    {
+        uiSoundSource.clip = clip;
+        uiSoundSource.loop = false;
+        uiSoundSource.Play();
     }
 
     public void Update()
