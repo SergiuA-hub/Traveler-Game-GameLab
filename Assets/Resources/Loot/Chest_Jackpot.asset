@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4071452e2ad28e49b06affaabb59b4b, type: 3}
+  m_Name: Chest_Jackpot
+  m_EditorClassIdentifier: Assembly-CSharp::LootOutcome
+  outcomeForLoot: 4
+  outcomeStory: "Congratulations, you have been selected as this season's winner
+    of the Occasional Roadside Chest Sweepstakes! \nTo redeem your prize, go to:
+    This chest, right here. \nIf you did not sign up for the Occasional Roadside
+    Chest Sweepstakes: Are you sure? You're definitely on our list of ticket holders.
+    You probably signed up and forgot about it.\n "
+  outcomeImage: {fileID: -4685547431992939551, guid: 573855c267e807540b203224634614d4, type: 3}
+  outcomeChance: 1
+  outcomeCoins: 500
+  lootDrop: []
+  hpLoss: 0
+  staminaLoss: 0
+  investigationDuration: 1

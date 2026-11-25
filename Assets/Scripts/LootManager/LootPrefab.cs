@@ -4,7 +4,9 @@ public enum LootType
 {
     SmallSack,
     BigSack,
-    Crate
+    Crate,
+    Barrel,
+    Chest
 }
 
 public class LootPrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
