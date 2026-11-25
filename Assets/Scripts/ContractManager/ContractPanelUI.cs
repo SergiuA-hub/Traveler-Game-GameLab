@@ -43,7 +43,7 @@ public class ContractPanelUI : MonoBehaviour
 
         resourceAmount.text = $"{contract.contractTotalAmount:F0}";
         resAmoutnIncon.sprite = contract.contractRequest.sprite;
-        contractTime.text = $"{contract.contractDuration:F0} h";
+        contractTime.text = $"{contract.contractRemainingHours:F0} h";
         contracTRewardCoins.text = $"{contract.rewardCoins:F1}";
         contracTRewardReputation.text = $"{contract.rewardReputation:F1}";
 

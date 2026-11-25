@@ -47,14 +47,17 @@ public class ContractProgressPanelUI : MonoBehaviour
 
             contractDescription.text = $"Purchase <b>{resource}</b> from <b>{contract.fromSettlement}</b> and sell it to <b>{contract.toSettlement}</b> to complete your contract.";
         }
+        float buyProgress = Mathf.Min(contract.buyAmount, contract.contractTotalAmount);
+
+        float sellProgress = Mathf.Min(contract.sellAmount, buyProgress);
 
         fromSettlement.text = $"{contract.fromSettlement}";
         fromResIcon.sprite = contract.contractRequest.sprite;
-        fromBuyProgress.text = $"{contract.buyAmount:F0} / {contract.contractTotalAmount:F0}";
+        fromBuyProgress.text = $"{buyProgress:F0} / {contract.contractTotalAmount:F0}";
 
         toSettlement.text = $"{contract.toSettlement}";
         toResIcon.sprite = contract.contractRequest.sprite;
-        toSellProgress.text = $"{contract.sellAmount:F0} / {contract.contractTotalAmount:F0}";
+        toSellProgress.text = $"{sellProgress:F0} / {contract.contractTotalAmount:F0}";
 
         contractTime.text = $"{contract.contractRemainingHours:F0} h";
         contracTRewardCoins.text = $"{contract.rewardCoins:F1}";
