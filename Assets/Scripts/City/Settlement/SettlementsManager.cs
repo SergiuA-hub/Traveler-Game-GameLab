@@ -153,7 +153,7 @@ public class SettlementsManager : MonoBehaviour
         }
         currentItemSelected = null;
 
-        SettlementUI.SetActive(true);
+        //SettlementUI.SetActive(true);
 
         GameServices.Instance.soundManager.playSettlementSound();
     }
