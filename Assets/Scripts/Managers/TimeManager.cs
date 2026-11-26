@@ -42,6 +42,7 @@ public class TimeManager : MonoBehaviour
     public UnityEvent<DateTime> onYearChanged;
     public UnityEvent<DateTime> onMorning;
     public UnityEvent<DateTime> onEvening;
+    public UnityEvent<float> onWizardTime;
     private int lastDay;
     private int lastMonth;
     private int lastYear;
@@ -129,7 +130,15 @@ public class TimeManager : MonoBehaviour
 
     void HandleTimer(float dec)
     {
-        timerCurrent -= dec;// (hour_duration / GlobalSettingsManager.HOUR_DURATION);
+        int previousMinute = Mathf.CeilToInt(timerCurrent / 60f);
+
+        timerCurrent = Mathf.Clamp(timerCurrent - dec, 0, timerMax);
+
+        int currentMinute = Mathf.CeilToInt(timerCurrent / 60f);
+
+        if (previousMinute != currentMinute)
+            onWizardTime?.Invoke(currentMinute);
+
         if (timerCurrent <= 0)
         {
             timerCurrent = 0;
