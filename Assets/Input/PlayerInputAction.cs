@@ -239,6 +239,54 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""AnimalAttack"",
+            ""id"": ""be19ba6d-7608-450d-8ba9-fbce1b3b2539"",
+            ""actions"": [
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac33df6c-18bc-4605-b05c-3d5174a35ef9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""b8478db5-249c-469b-8adf-7b34b95ddaaf"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6337800c-8b38-4979-b9b4-b97700cbeca6"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be383b64-bac8-40f9-aeea-1588f5e84bbb"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -250,11 +298,16 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Invetory = m_Player.FindAction("Invetory", throwIfNotFound: true);
         m_Player_TestingG = m_Player.FindAction("Testing[G]", throwIfNotFound: true);
+        // AnimalAttack
+        m_AnimalAttack = asset.FindActionMap("AnimalAttack", throwIfNotFound: true);
+        m_AnimalAttack_Left = m_AnimalAttack.FindAction("Left", throwIfNotFound: true);
+        m_AnimalAttack_Right = m_AnimalAttack.FindAction("Right", throwIfNotFound: true);
     }
 
     ~@PlayerInputAction()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerInputAction.Player.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_AnimalAttack.enabled, "This will cause a leak and performance issues, PlayerInputAction.AnimalAttack.Disable() has not been called.");
     }
 
     /// <summary>
@@ -466,6 +519,113 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
     /// </summary>
     public PlayerActions @Player => new PlayerActions(this);
+
+    // AnimalAttack
+    private readonly InputActionMap m_AnimalAttack;
+    private List<IAnimalAttackActions> m_AnimalAttackActionsCallbackInterfaces = new List<IAnimalAttackActions>();
+    private readonly InputAction m_AnimalAttack_Left;
+    private readonly InputAction m_AnimalAttack_Right;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "AnimalAttack".
+    /// </summary>
+    public struct AnimalAttackActions
+    {
+        private @PlayerInputAction m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public AnimalAttackActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "AnimalAttack/Left".
+        /// </summary>
+        public InputAction @Left => m_Wrapper.m_AnimalAttack_Left;
+        /// <summary>
+        /// Provides access to the underlying input action "AnimalAttack/Right".
+        /// </summary>
+        public InputAction @Right => m_Wrapper.m_AnimalAttack_Right;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_AnimalAttack; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="AnimalAttackActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(AnimalAttackActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="AnimalAttackActions" />
+        public void AddCallbacks(IAnimalAttackActions instance)
+        {
+            if (instance == null || m_Wrapper.m_AnimalAttackActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_AnimalAttackActionsCallbackInterfaces.Add(instance);
+            @Left.started += instance.OnLeft;
+            @Left.performed += instance.OnLeft;
+            @Left.canceled += instance.OnLeft;
+            @Right.started += instance.OnRight;
+            @Right.performed += instance.OnRight;
+            @Right.canceled += instance.OnRight;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="AnimalAttackActions" />
+        private void UnregisterCallbacks(IAnimalAttackActions instance)
+        {
+            @Left.started -= instance.OnLeft;
+            @Left.performed -= instance.OnLeft;
+            @Left.canceled -= instance.OnLeft;
+            @Right.started -= instance.OnRight;
+            @Right.performed -= instance.OnRight;
+            @Right.canceled -= instance.OnRight;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="AnimalAttackActions.UnregisterCallbacks(IAnimalAttackActions)" />.
+        /// </summary>
+        /// <seealso cref="AnimalAttackActions.UnregisterCallbacks(IAnimalAttackActions)" />
+        public void RemoveCallbacks(IAnimalAttackActions instance)
+        {
+            if (m_Wrapper.m_AnimalAttackActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="AnimalAttackActions.AddCallbacks(IAnimalAttackActions)" />
+        /// <seealso cref="AnimalAttackActions.RemoveCallbacks(IAnimalAttackActions)" />
+        /// <seealso cref="AnimalAttackActions.UnregisterCallbacks(IAnimalAttackActions)" />
+        public void SetCallbacks(IAnimalAttackActions instance)
+        {
+            foreach (var item in m_Wrapper.m_AnimalAttackActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_AnimalAttackActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="AnimalAttackActions" /> instance referencing this action map.
+    /// </summary>
+    public AnimalAttackActions @AnimalAttack => new AnimalAttackActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
     /// </summary>
@@ -508,5 +668,27 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTestingG(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "AnimalAttack" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="AnimalAttackActions.AddCallbacks(IAnimalAttackActions)" />
+    /// <seealso cref="AnimalAttackActions.RemoveCallbacks(IAnimalAttackActions)" />
+    public interface IAnimalAttackActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Left" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Right" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRight(InputAction.CallbackContext context);
     }
 }

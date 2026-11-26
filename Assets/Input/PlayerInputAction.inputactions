@@ -153,6 +153,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "AnimalAttack",
+            "id": "be19ba6d-7608-450d-8ba9-fbce1b3b2539",
+            "actions": [
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "ac33df6c-18bc-4605-b05c-3d5174a35ef9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "b8478db5-249c-469b-8adf-7b34b95ddaaf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6337800c-8b38-4979-b9b4-b97700cbeca6",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be383b64-bac8-40f9-aeea-1588f5e84bbb",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
