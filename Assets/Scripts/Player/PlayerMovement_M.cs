@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement_M : MonoBehaviour
 {
     private Player_M player;
+    public Transform chatBubbleCanvas;
     public bool typing = false;
     private void Start()
     {
@@ -69,6 +70,14 @@ public class PlayerMovement_M : MonoBehaviour
                 player.transform.localScale.z
             );
         }
+
+        // Compensate player flip for chat bubble
+        Vector3 bubbleScale = chatBubbleCanvas.localScale;
+
+        bubbleScale.x = Mathf.Abs(bubbleScale.x) *
+                        Mathf.Sign(player.transform.localScale.x);
+
+        chatBubbleCanvas.localScale = bubbleScale;
     }
 
 
