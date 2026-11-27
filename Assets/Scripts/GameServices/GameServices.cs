@@ -17,9 +17,10 @@ public class GameServices : MonoBehaviour
     public EnvironmentManager environmentManager;
     public WizardManager wizardManager;
     public CargoManager cargoManager;
-
+    public OrchardManager orchadManager;
     public SoundManager soundManager;
     public WeatherVisualManager weatherVisual;
+    public UiManager uiManager;
 
     [Header("UI")]
     public HUDScript HUD;

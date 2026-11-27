@@ -54,6 +54,7 @@ MonoBehaviour:
   pathOffset: {x: 0, y: 0.5, z: 0}
   speed: 1
   forward: 1
+  isStatic: 0
   currentRoad:
     roadName: 
     physicalPath: {fileID: 0}
@@ -109,11 +110,9 @@ MonoBehaviour:
   - resource: {fileID: 11400000, guid: b3aad3b0b4bbd164a86d75f59d54b84e, type: 2}
     maxAmount: 5
     spawnChance: 5
-  - resource: {fileID: 11400000, guid: 1c8f8ca846032ec479d1044edc2c361a, type: 2}
-    maxAmount: 10
-    spawnChance: 30
   maxTradeCount: 3
   tradeGoods: []
+  haggled: 0
 --- !u!114 &4955497502493854374
 MonoBehaviour:
   m_ObjectHideFlags: 0

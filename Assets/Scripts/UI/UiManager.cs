@@ -4,7 +4,8 @@ public class UiManager : MonoBehaviour
 {
     public GameObject inventoryDialog;
     public GameObject notesDialog;
-
+    public GameObject inventoryButton;
+    public GameObject campButton;
     private bool inventoryToggleSwitch;
     public void toggleInventory()
     {
@@ -24,6 +25,17 @@ public class UiManager : MonoBehaviour
 
         inventoryDialog.SetActive(inventoryToggleSwitch);
         notesDialog.SetActive(inventoryToggleSwitch);
+    }
+
+    public void dismissInventoryUI()
+    {
+        inventoryDialog.SetActive(false);
+        notesDialog.SetActive(false);
+    }
+
+    public void campingButtonState(bool sw)
+    {
+        campButton.SetActive(sw);
     }
 
     // Update is called once per frame

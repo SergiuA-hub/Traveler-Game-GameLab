@@ -15,6 +15,7 @@ public class Player_M : MonoBehaviour
     public PlayerMovement_M move;
     public PlayerInventory_M invetory;
     public PlayerAttachments_M attachments;
+    public Talk talk;
     public TraderNotes notes;
     public PlayerVisual_M visual;
     public Rigidbody2D rb;
@@ -38,7 +39,7 @@ public class Player_M : MonoBehaviour
         attachments = GetComponent<PlayerAttachments_M>();
         notes = GetComponent<TraderNotes>();
         visual = GetComponent<PlayerVisual_M>();
-
+        talk = GetComponent<Talk>();
         //OtherComponents
         rb = GetComponent<Rigidbody2D>();
 
