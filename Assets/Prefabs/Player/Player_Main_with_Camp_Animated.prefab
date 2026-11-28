@@ -365,6 +365,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4948791862396401805}
   - component: {fileID: 3913884647976202604}
+  - component: {fileID: 3901013272064861683}
+  - component: {fileID: 6011677492074977701}
   m_Layer: 11
   m_Name: Pot2
   m_TagString: Untagged
@@ -446,6 +448,58 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &3901013272064861683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3491671807275308968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80cc6a45d2eed0c4f9f89f187d406900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CampInteract
+  spriteRenderer: {fileID: 3913884647976202604}
+  campItem: 1
+  hoverScale: 1.08
+  campManager: {fileID: 0}
+--- !u!58 &6011677492074977701
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3491671807275308968}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.058237314, y: 0.21215093}
+  m_Radius: 0.42791545
 --- !u!1 &3683512654714695150
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,8 +909,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 469411828630561919, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
+      propertyPath: campItem
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 469411828630561919, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 683166728089969869, guid: 861874ba1a82c7b42a394e70d11b5cd7, type: 3}
       propertyPath: m_Layer
@@ -1551,7 +1609,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
