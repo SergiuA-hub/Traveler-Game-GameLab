@@ -160,7 +160,6 @@ public class Player_M : MonoBehaviour
     public void Root()
     {
         rooted = true;
-        Debug.Log("ROOTED");
     }
 
     public bool isRooted()
@@ -171,6 +170,5 @@ public class Player_M : MonoBehaviour
     public void UnRoot()
     {
         rooted = false;
-        Debug.Log("UN-ROOTED");
     }
 }
