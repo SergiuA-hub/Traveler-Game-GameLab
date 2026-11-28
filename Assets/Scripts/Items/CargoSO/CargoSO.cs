@@ -12,6 +12,7 @@ public class CargoSO : ScriptableObject
     [Header("Cargo info")]
     public string itemName;
     public Sprite icon;
+    public Sprite sprite;
     public float price;
     public int upgradesSpaces;
     public CargoCategory category;
