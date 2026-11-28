@@ -38,7 +38,7 @@ public class Player_M : MonoBehaviour
         invetory = GetComponent<PlayerInventory_M>();
         attachments = GetComponent<PlayerAttachments_M>();
         notes = GetComponent<TraderNotes>();
-        visual = GetComponent<PlayerVisual_M>();
+        //visual = GetComponent<PlayerVisual_M>();
         talk = GetComponent<Talk>();
         //OtherComponents
         rb = GetComponent<Rigidbody2D>();
