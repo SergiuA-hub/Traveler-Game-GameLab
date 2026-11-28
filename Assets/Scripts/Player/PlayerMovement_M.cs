@@ -10,7 +10,6 @@ public class PlayerMovement_M : MonoBehaviour
     private void Start()
     {
         player = GetComponent<Player_M>();
-        
     }
     private void Update()
     {

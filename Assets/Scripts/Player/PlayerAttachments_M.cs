@@ -60,6 +60,7 @@ public class PlayerAttachments_M : MonoBehaviour
     {
         carryCargo = cargo;
         GameServices.Instance.player.calculateInventorySize();
+        GameServices.Instance.player.visual.ChangeBackpack(cargo);
     }
 
     public bool canEquipMore()

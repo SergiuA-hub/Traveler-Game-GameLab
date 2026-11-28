@@ -9,6 +9,7 @@ public class PlayerVisual_M : MonoBehaviour
     public Player_M player;
     private PlayerMovement_M playerMovement;
     public TimeManager timeManager;
+    public SpriteRenderer backpackSprite; 
 
     public Volume vignetteVol;
     public float timerCriticalValue = 10f;
@@ -55,10 +56,8 @@ public class PlayerVisual_M : MonoBehaviour
             currentState = 0;
         }
     }
-
-    void StartVignette()
+    public void ChangeBackpack(CargoSO currentBackpack)
     {
-
+        backpackSprite.sprite = currentBackpack.sprite;
     }
-
 }
